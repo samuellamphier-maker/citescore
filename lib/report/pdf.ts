@@ -9,6 +9,7 @@ const FOREST = "#2c5847";
 const COPPER = "#b24a22";
 const OCHRE = "#8a6a24";
 const CREAM = "#faf6ee";
+const LEFT = 54;
 const BOTTOM = 64;
 
 function toneColor(score: number) {
@@ -22,7 +23,7 @@ export function renderReportPdf(report: AuditReport): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const doc = new PDFDocument({
       size: "LETTER",
-      margins: { top: 48, bottom: BOTTOM, left: 54, right: 54 },
+      margins: { top: 48, bottom: BOTTOM, left: LEFT, right: LEFT },
       info: {
         Title: `${report.product} — CiteScore audit`,
         Author: "CiteScore",
@@ -34,7 +35,7 @@ export function renderReportPdf(report: AuditReport): Promise<Buffer> {
     doc.on("end", () => resolve(Buffer.concat(chunks)));
     doc.on("error", reject);
 
-    const pageWidth = doc.page.width - 108;
+    const width = doc.page.width - LEFT * 2;
     let pageNo = 1;
 
     const stampChrome = () => {
@@ -50,12 +51,12 @@ export function renderReportPdf(report: AuditReport): Promise<Buffer> {
         report.sample
           ? "CiteScore sample report — fictional product, illustrative scores."
           : "CiteScore audit — on-page GEO signals, not a live ChatGPT query.",
-        54,
+        LEFT,
         y,
-        { width: pageWidth - 48, lineBreak: false },
+        { width: width - 48, lineBreak: false },
       );
-      doc.text(String(pageNo), 54, y, {
-        width: pageWidth,
+      doc.text(String(pageNo), LEFT, y, {
+        width,
         align: "right",
         lineBreak: false,
       });
@@ -69,180 +70,273 @@ export function renderReportPdf(report: AuditReport): Promise<Buffer> {
     stampChrome();
     doc.on("pageAdded", stampChrome);
 
-    doc.fillColor(COPPER).font("Courier").fontSize(9);
-    doc.text(report.sample ? "CITESCORE AUDIT  ·  SAMPLE" : "CITESCORE AUDIT", 54, 28, {
-      width: pageWidth / 2,
+    write(doc, LEFT, 30, report.sample ? "CITESCORE AUDIT  ·  SAMPLE" : "CITESCORE AUDIT", {
+      font: "Courier",
+      size: 9,
+      color: COPPER,
+      width: width * 0.55,
     });
-    doc.fillColor(SOFT).text(report.auditedAt, 54 + pageWidth / 2, 28, {
-      width: pageWidth / 2,
+    write(doc, LEFT + width * 0.55, 30, report.auditedAt, {
+      font: "Courier",
+      size: 9,
+      color: SOFT,
+      width: width * 0.45,
       align: "right",
     });
 
     const headerY = 52;
-    doc.fillColor(INK).font("Times-Bold").fontSize(26).text(report.product, 54, headerY, {
-      width: pageWidth - 130,
+    write(doc, LEFT, headerY, report.product, {
+      font: "Times-Bold",
+      size: 26,
+      color: INK,
+      width: width - 130,
     });
-    const afterTitle = doc.y;
-    doc.fillColor(SOFT).font("Times-Italic").fontSize(12).text(report.oneLiner, 54, afterTitle + 4, {
-      width: pageWidth - 130,
+    const afterTitle = doc.y + 4;
+    write(doc, LEFT, afterTitle, report.oneLiner, {
+      font: "Times-Italic",
+      size: 12,
+      color: SOFT,
+      width: width - 130,
     });
-    doc.fillColor(SOFT).font("Courier").fontSize(8).text(report.url, 54, doc.y + 6, {
-      width: pageWidth - 130,
+    write(doc, LEFT, doc.y + 6, report.url, {
+      font: "Courier",
+      size: 8,
+      color: SOFT,
+      width: width - 130,
     });
+    const afterMeta = doc.y;
 
-    const boxX = 54 + pageWidth - 108;
+    const boxX = LEFT + width - 108;
     const boxY = headerY;
     doc.save();
     doc.roundedRect(boxX, boxY, 108, 88, 8).lineWidth(1).strokeColor(RULE).stroke();
     doc.restore();
-    doc.fillColor(toneColor(report.overall)).font("Times-Bold").fontSize(30).text(
-      String(report.overall),
-      boxX,
-      boxY + 14,
-      { width: 108, align: "center" },
-    );
-    doc.fillColor(SOFT).font("Courier").fontSize(7).text("CITESCORE / 100", boxX, boxY + 48, {
+    write(doc, boxX, boxY + 14, String(report.overall), {
+      font: "Times-Bold",
+      size: 30,
+      color: toneColor(report.overall),
       width: 108,
       align: "center",
     });
-    doc.fillColor(INK).font("Times-Italic").fontSize(10).text(report.grade, boxX, boxY + 64, {
+    write(doc, boxX, boxY + 48, "CITESCORE / 100", {
+      font: "Courier",
+      size: 7,
+      color: SOFT,
+      width: 108,
+      align: "center",
+    });
+    write(doc, boxX, boxY + 64, report.grade, {
+      font: "Times-Italic",
+      size: 10,
+      color: INK,
       width: 108,
       align: "center",
     });
 
-    doc.y = Math.max(doc.y, boxY + 104);
-    rule(doc, pageWidth);
+    let y = Math.max(afterMeta, boxY + 104) + 8;
+    y = line(doc, y, width);
 
-    heading(doc, "Executive read");
-    body(doc, report.summary, pageWidth);
-    doc.moveDown(0.4);
-    doc.fillColor(SOFT).font("Times-Italic").fontSize(9).text(report.methodology, {
-      width: pageWidth,
-      lineGap: 2,
-    });
+    y = section(doc, y, width, "Executive read");
+    y = paragraph(doc, y, width, report.summary, 11);
+    y += 6;
+    y = paragraph(doc, y, width, report.methodology, 9, true);
 
-    heading(doc, "Engine snapshot");
-    doc.fillColor(SOFT).font("Times-Italic").fontSize(8).text(
+    y = section(doc, y, width, "Engine snapshot");
+    y = paragraph(
+      doc,
+      y,
+      width,
       "Inferred from on-page GEO signals. Not a live query of ChatGPT, Perplexity, or AI Overviews.",
-      { width: pageWidth },
+      8,
+      true,
     );
-    doc.moveDown(0.4);
-
-    drawTableRow(doc, pageWidth, "Engine", "Status", "Note", true);
+    y += 8;
+    y = tableRow(doc, y, width, "Engine", "Status", "Note", true);
     for (const engine of report.engines) {
-      drawTableRow(doc, pageWidth, engine.engine, engine.status, engine.detail, false);
+      y = tableRow(doc, y, width, engine.engine, engine.status, engine.detail, false);
     }
 
-    heading(doc, "Dimension breakdown");
+    y = section(doc, y, width, "Dimension breakdown");
     for (const dimension of report.dimensions) {
       const note = `${dimension.note} Weight ${dimension.weight}.`;
-      const height = Math.max(26, doc.heightOfString(note, { width: pageWidth - 160 }) + 10);
-      ensureSpace(doc, height + 8);
-      const y = doc.y;
-      doc.fillColor(INK).font("Times-Bold").fontSize(10).text(dimension.name, 54, y, { width: 118 });
-      doc.fillColor(SOFT).font("Times-Roman").fontSize(9).text(note, 178, y, {
-        width: pageWidth - 168,
+      const height = Math.max(28, doc.font("Times-Roman").fontSize(9).heightOfString(note, { width: width - 160 }) + 12);
+      y = ensure(doc, y, height + 8);
+      write(doc, LEFT, y, dimension.name, {
+        font: "Times-Bold",
+        size: 10,
+        color: INK,
+        width: 118,
       });
-      doc.fillColor(toneColor(dimension.score)).font("Times-Bold").fontSize(16).text(
-        String(dimension.score),
-        54 + pageWidth - 36,
-        y,
-        { width: 36, align: "right" },
-      );
-      doc.y = y + height;
-      rule(doc, pageWidth);
-      doc.moveDown(0.15);
+      write(doc, 178, y, note, {
+        font: "Times-Roman",
+        size: 9,
+        color: SOFT,
+        width: width - 168,
+      });
+      write(doc, LEFT + width - 36, y, String(dimension.score), {
+        font: "Times-Bold",
+        size: 16,
+        color: toneColor(dimension.score),
+        width: 36,
+        align: "right",
+      });
+      y = line(doc, y + height, width);
     }
 
-    heading(doc, "Ten fixes that would get this site cited");
-    doc.fillColor(SOFT).font("Times-Italic").fontSize(9).text(
+    y = section(doc, y, width, "Ten fixes that would get this site cited");
+    y = paragraph(
+      doc,
+      y,
+      width,
       "Ranked by expected citation lift, not by how good they look on a launch tweet.",
-      { width: pageWidth },
+      9,
+      true,
     );
-    doc.moveDown(0.5);
+    y += 10;
 
     for (const fix of report.fixes) {
-      ensureSpace(doc, 90);
-      const y = doc.y;
-      doc.save();
-      doc.rect(54, y, pageWidth, 1).fill(RULE);
-      doc.restore();
-      doc.fillColor(INK).font("Times-Bold").fontSize(12).text(
-        `${fix.rank}.  ${fix.title}`,
-        54,
-        y + 10,
-        { width: pageWidth },
-      );
-      doc.fillColor(SOFT).font("Courier").fontSize(8).text(
-        `${fix.impact} impact · ${fix.effort}  ·  ${fix.where}`,
-        { width: pageWidth },
-      );
-      doc.moveDown(0.25);
-      labeled(doc, "Why it matters. ", fix.why, pageWidth);
-      labeled(doc, "Do this. ", fix.doThis, pageWidth);
-      doc.moveDown(0.55);
+      y = ensure(doc, y, 88);
+      y = line(doc, y, width);
+      y += 10;
+      write(doc, LEFT, y, `${fix.rank}.  ${fix.title}`, {
+        font: "Times-Bold",
+        size: 12,
+        color: INK,
+        width,
+      });
+      y = doc.y + 4;
+      write(doc, LEFT, y, `${fix.impact} impact · ${fix.effort}  ·  ${fix.where}`, {
+        font: "Courier",
+        size: 8,
+        color: SOFT,
+        width,
+      });
+      y = doc.y + 8;
+      y = labeledBlock(doc, y, width, "Why it matters. ", fix.why);
+      y += 4;
+      y = labeledBlock(doc, y, width, "Do this. ", fix.doThis);
+      y += 14;
     }
 
     doc.end();
   });
 }
 
-function heading(doc: PDFKit.PDFDocument, title: string) {
-  ensureSpace(doc, 48);
-  doc.moveDown(0.8);
-  doc.fillColor(INK).font("Times-Bold").fontSize(16).text(title);
-  doc.moveDown(0.3);
-}
+type WriteOpts = {
+  font: string;
+  size: number;
+  color: string;
+  width: number;
+  align?: "left" | "center" | "right";
+};
 
-function body(doc: PDFKit.PDFDocument, text: string, width: number) {
-  doc.fillColor(SOFT).font("Times-Roman").fontSize(11).text(text, { width, lineGap: 3 });
-}
-
-function labeled(doc: PDFKit.PDFDocument, label: string, text: string, width: number) {
-  doc.fillColor(INK).font("Times-Bold").fontSize(9).text(label, { continued: true, width });
-  doc.fillColor(SOFT).font("Times-Roman").text(text, { width });
-}
-
-function rule(doc: PDFKit.PDFDocument, pageWidth: number) {
-  doc.save();
-  doc.moveTo(54, doc.y).lineTo(54 + pageWidth, doc.y).strokeColor(RULE).lineWidth(0.6).stroke();
-  doc.restore();
-}
-
-function drawTableRow(
+function write(
   doc: PDFKit.PDFDocument,
-  pageWidth: number,
+  x: number,
+  y: number,
+  text: string,
+  opts: WriteOpts,
+) {
+  doc.font(opts.font).fontSize(opts.size).fillColor(opts.color);
+  doc.text(text, x, y, {
+    width: opts.width,
+    align: opts.align ?? "left",
+    lineGap: 2,
+  });
+}
+
+function paragraph(
+  doc: PDFKit.PDFDocument,
+  y: number,
+  width: number,
+  text: string,
+  size: number,
+  italic = false,
+) {
+  y = ensure(doc, y, 36);
+  write(doc, LEFT, y, text, {
+    font: italic ? "Times-Italic" : "Times-Roman",
+    size,
+    color: SOFT,
+    width,
+  });
+  return doc.y + 4;
+}
+
+function labeledBlock(doc: PDFKit.PDFDocument, y: number, width: number, label: string, text: string) {
+  y = ensure(doc, y, 36);
+  doc.font("Times-Bold").fontSize(9).fillColor(INK);
+  doc.text(label, LEFT, y, { continued: true, width });
+  doc.font("Times-Roman").fillColor(SOFT).text(text, { width });
+  return doc.y + 2;
+}
+
+function section(doc: PDFKit.PDFDocument, y: number, width: number, title: string) {
+  y = ensure(doc, y + 16, 40);
+  write(doc, LEFT, y, title, {
+    font: "Times-Bold",
+    size: 16,
+    color: INK,
+    width,
+  });
+  return doc.y + 8;
+}
+
+function line(doc: PDFKit.PDFDocument, y: number, width: number) {
+  doc.save();
+  doc.moveTo(LEFT, y).lineTo(LEFT + width, y).strokeColor(RULE).lineWidth(0.6).stroke();
+  doc.restore();
+  return y + 2;
+}
+
+function tableRow(
+  doc: PDFKit.PDFDocument,
+  y: number,
+  width: number,
   engine: string,
   status: string,
   detail: string,
   header: boolean,
 ) {
   const height = Math.max(
-    20,
+    22,
     doc.font(header ? "Times-Bold" : "Times-Roman").fontSize(9).heightOfString(detail, {
-      width: pageWidth - 200,
-    }) + 10,
+      width: width - 200,
+    }) + 12,
   );
-  ensureSpace(doc, height + 6);
-  const y = doc.y;
+  y = ensure(doc, y, height + 6);
   if (header) {
     doc.save();
-    doc.rect(54, y, pageWidth, height).fill(CREAM);
+    doc.rect(LEFT, y, width, height).fill(CREAM);
     doc.restore();
   }
-  doc
-    .fillColor(INK)
-    .font(header ? "Times-Bold" : "Times-Roman")
-    .fontSize(9)
-    .text(engine, 60, y + 5, { width: 88 });
-  doc.text(status, 150, y + 5, { width: 88 });
-  doc.fillColor(header ? INK : SOFT).text(detail, 244, y + 5, { width: pageWidth - 200 });
-  doc.y = y + height;
-  rule(doc, pageWidth);
+  write(doc, LEFT + 6, y + 5, engine, {
+    font: header ? "Times-Bold" : "Times-Roman",
+    size: 9,
+    color: INK,
+    width: 88,
+  });
+  write(doc, 150, y + 5, status, {
+    font: header ? "Times-Bold" : "Times-Roman",
+    size: 9,
+    color: INK,
+    width: 88,
+  });
+  write(doc, 244, y + 5, detail, {
+    font: header ? "Times-Bold" : "Times-Roman",
+    size: 9,
+    color: header ? INK : SOFT,
+    width: width - 200,
+  });
+  return line(doc, y + height, width);
 }
 
-function ensureSpace(doc: PDFKit.PDFDocument, min: number) {
-  if (doc.y + min > doc.page.height - BOTTOM) doc.addPage();
+function ensure(doc: PDFKit.PDFDocument, y: number, min: number) {
+  if (y + min > doc.page.height - BOTTOM) {
+    doc.addPage();
+    return 48;
+  }
+  return y;
 }
 
 export function reportFilename(report: AuditReport) {
