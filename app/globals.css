@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, "Iowan Old Style", Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "IBM Plex Mono", monospace;
+
+  --color-paper: #f3eee4;
+  --color-paper-2: #e7dfd0;
+  --color-cream: #faf6ee;
+  --color-ink: #1b1814;
+  --color-ink-soft: #5c564c;
+  --color-rule: #cfc4ae;
+  --color-forest: #2c5847;
+  --color-forest-deep: #1d3c31;
+  --color-copper: #b24a22;
+  --color-ochre: #8a6a24;
+}
+
+:root {
+  color-scheme: light;
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 100% -10%, rgba(178, 74, 34, 0.05), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 0% 0%, rgba(44, 88, 71, 0.05), transparent 45%);
+}
+
+::selection {
+  background: #cfe0d6;
+  color: var(--color-ink);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.hairline {
+  border-color: var(--color-rule);
+}
+
+.report-sheet {
+  background: var(--color-cream);
+  box-shadow:
+    0 1px 0 rgba(27, 24, 20, 0.04),
+    0 24px 60px -28px rgba(27, 24, 20, 0.28);
+}
+
+@media print {
+  html,
+  body {
+    background: white !important;
+    background-image: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .report-sheet {
+    box-shadow: none;
+    background: white;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}

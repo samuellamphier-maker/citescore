@@ -1,0 +1,21 @@
+export function Logo({ className = "" }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-2 ${className}`}>
+      <svg
+        viewBox="0 0 32 32"
+        className="h-7 w-7 shrink-0"
+        aria-hidden="true"
+      >
+        <rect width="32" height="32" rx="7" fill="#1B1814" />
+        <path
+          d="M10 12.2c0-2.4 1.5-4.2 3.8-4.2.3 0 .6 0 .8.1v2.1c-.3-.1-.5-.1-.8-.1-1.1 0-1.8.9-1.8 2.1V14H15v6h-5v-7.8Zm8.2 0c0-2.4 1.5-4.2 3.8-4.2.3 0 .6 0 .8.1v2.1c-.3-.1-.5-.1-.8-.1-1.1 0-1.8.9-1.8 2.1V14H23v6h-4.8v-7.8Z"
+          fill="#F3EEE4"
+        />
+        <rect x="9" y="22.5" width="14" height="1.4" rx="0.7" fill="#B24A22" />
+      </svg>
+      <span className="font-serif text-lg tracking-tight text-ink">
+        CiteScore
+      </span>
+    </span>
+  );
+}
