@@ -34,8 +34,9 @@ yarn-error.log*
 .env*
 !.env.example
 
-# local waitlist store
+# local waitlist / job stores
 /data/waitlist.json
+/data/jobs.json
 
 # vercel
 .vercel

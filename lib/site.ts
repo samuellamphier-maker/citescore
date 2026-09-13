@@ -10,11 +10,19 @@ export const site = {
 
 export const checkoutUrl = process.env.NEXT_PUBLIC_CHECKOUT_URL?.trim() || "";
 
+/**
+ * Stripe Payment Links persist `client_reference_id` onto the Checkout
+ * Session (200-char limit). That is how the webhook recovers `site_url`.
+ * `site_url` is also set for thank-you pages and Lemon Squeezy-style links.
+ */
 export function buildPaymentHref(siteUrl?: string) {
   if (!checkoutUrl) return "";
   try {
     const url = new URL(checkoutUrl);
-    if (siteUrl) url.searchParams.set("site_url", siteUrl);
+    if (siteUrl) {
+      url.searchParams.set("site_url", siteUrl);
+      url.searchParams.set("client_reference_id", siteUrl.slice(0, 200));
+    }
     return url.toString();
   } catch {
     return checkoutUrl;
