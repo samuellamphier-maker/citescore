@@ -2,7 +2,7 @@ export type Dimension = {
   id: string;
   name: string;
   score: number;
-  weight: string;
+  weight: "High" | "Medium" | "Low";
   note: string;
 };
 
@@ -22,6 +22,33 @@ export type Fix = {
   doThis: string;
 };
 
+export type AuditReport = {
+  sample?: boolean;
+  product: string;
+  oneLiner: string;
+  url: string;
+  auditedAt: string;
+  overall: number;
+  grade: string;
+  summary: string;
+  methodology: string;
+  engines: EngineSnapshot[];
+  dimensions: Dimension[];
+  fixes: Fix[];
+};
+
+export const METHODOLOGY =
+  "CiteScore does not query ChatGPT, Perplexity, or Google AI Overviews live. Engine snapshots estimate citation likelihood from on-page GEO signals (definitions, entities, evidence, schema, freshness, crawler access) plus, when configured, a language-model review of the public HTML we fetched. Treat them as a diagnostic, not a screenshot of an AI product’s UI.";
+
+export function gradeFromScore(score: number) {
+  if (score < 30) return "Poor";
+  if (score < 45) return "Needs work";
+  if (score < 60) return "Mixed";
+  if (score < 75) return "Promising";
+  if (score < 90) return "Strong";
+  return "Citation-ready";
+}
+
 export const sampleReport = {
   sample: true as const,
   product: "Northbound",
@@ -30,6 +57,7 @@ export const sampleReport = {
   auditedAt: "12 September 2026",
   overall: 47,
   grade: "Needs work",
+  methodology: METHODOLOGY,
   summary:
     "Northbound is a plausible product with a thin citation surface. Models can describe what it is in generic terms, but they do not treat the site as a source. Competitors with named methods, original numbers, and comparison pages win the citation. The ten fixes below are ordered by expected lift for ChatGPT, Perplexity, and Google AI Overviews — not by how impressive they look on a marketing site.",
   engines: [

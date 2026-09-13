@@ -38,7 +38,7 @@ export default async function CheckoutPage({
         </h1>
         <p className="mt-4 text-ink-soft leading-7">
           {paymentsLive
-            ? "You’ll complete payment on a Stripe or Lemon Squeezy payment link. After we confirm the charge, we crawl the URL and email the PDF. This pre-sell does not generate the report in the browser."
+            ? "You’ll complete payment on a Stripe Payment Link. After Stripe confirms the charge, we crawl the URL, score on-page GEO signals, and email the PDF. The report is not generated in this browser tab."
             : "A payment link is not configured on this deploy. Leave your email and the URL you want audited — we will notify you the moment the $39 checkout is live."}
         </p>
 
@@ -67,10 +67,11 @@ export default async function CheckoutPage({
                   Continue to payment · {site.priceLabel}
                 </a>
                 <p className="text-sm leading-6 text-ink-soft">
-                  The payment link receives{" "}
-                  <code className="font-mono text-xs">site_url</code> as a
-                  query parameter so you can map it to a custom field in Stripe
-                  or Lemon Squeezy.
+                  The Payment Link receives{" "}
+                  <code className="font-mono text-xs">client_reference_id</code>{" "}
+                  (the site URL, first 200 characters) so the webhook can attach
+                  the right URL to the session. We also pass{" "}
+                  <code className="font-mono text-xs">site_url</code>.
                 </p>
                 <Link href="/sample" className="block text-sm text-forest underline">
                   Preview the sample report first

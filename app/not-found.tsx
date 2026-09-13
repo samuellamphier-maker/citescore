@@ -12,7 +12,7 @@ export default function NotFound() {
           That page is not in the report.
         </h1>
         <p className="mt-4 text-ink-soft leading-7">
-          The URL you opened is not part of this pre-sell site.
+          The URL you opened is not part of this site.
         </p>
         <div className="mt-8 flex gap-4 text-sm">
           <Link href="/" className="text-forest underline">

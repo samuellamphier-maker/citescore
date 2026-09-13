@@ -58,12 +58,12 @@ const faqs = [
     a: "The URL you submit, and publicly fetchable content from that site, may be sent to a large language model to help score visibility and draft fixes. Do not submit a URL whose public pages you are not allowed to have processed. We do not ask for passwords, sitemaps behind auth, or private docs. See Privacy.",
   },
   {
-    q: "Is this live scoring or a pre-sell?",
-    a: "This site is the pre-sell. Checkout collects payment (or your email if payments are not wired yet). The crawler, scorer, and PDF email ship in the next build. You are buying a real audit, fulfilled as that engine comes online — not a fake “instant AI” demo.",
+    q: "Do you actually query ChatGPT?",
+    a: "No. We do not log into ChatGPT, Perplexity, or Google AI Overviews on your behalf. The score and engine snapshot come from on-page GEO signals (definitions, entities, evidence, schema, freshness, crawler access) plus a language-model review of the public HTML we fetched. The report says so.",
   },
   {
     q: "How long until I get the report?",
-    a: "Once the engine is live, typical turnaround is same day. During this pre-sell window we email you when your audit is ready. There is no account to babysit.",
+    a: "After payment, typical turnaround is a few minutes. You get a PDF by email and a web copy of the same report. There is no account to babysit.",
   },
 ];
 

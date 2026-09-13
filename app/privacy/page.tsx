@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         </h1>
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
           <p>
-            CiteScore is a pre-sell audit product. We collect the minimum
+            CiteScore is a one-time audit product. We collect the minimum
             needed to take an order and produce a report.
           </p>
           <h2 className="font-serif text-2xl text-ink">URL you submit</h2>
@@ -43,9 +43,9 @@ export default function PrivacyPage() {
           <p>
             Used to send the PDF, payment receipts, and — if checkout is not
             live — a one-time notice that payments are open. We do not sell
-            emails. Waitlist rows live in a JSON file (or{" "}
-            <code className="font-mono text-xs">/tmp</code> on Vercel) until
-            you swap the store.
+            emails. Paid jobs are stored in Supabase when configured, otherwise
+            a JSON file (or <code className="font-mono text-xs">/tmp</code> on
+            Vercel). Waitlist rows use the same file-store pattern.
           </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>
           <p>

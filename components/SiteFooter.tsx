@@ -33,8 +33,8 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-rule/70">
         <p className="mx-auto max-w-5xl px-5 py-4 text-xs text-ink-soft">
-          © {new Date().getFullYear()} CiteScore. Pre-sell MVP — reports are
-          fulfilled as the audit engine ships.
+          © {new Date().getFullYear()} CiteScore. One-time GEO audits —
+          crawl, score, PDF, email.
         </p>
       </div>
     </footer>
