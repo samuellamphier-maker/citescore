@@ -1,16 +1,15 @@
+import { resolveHttpOrigin } from "@/lib/urls";
+
 /** Server-side env helpers. Never import this from a client component. */
 
 export function appUrl() {
-  const explicit =
-    process.env.APP_URL?.trim() || process.env.NEXT_PUBLIC_APP_URL?.trim();
-  if (explicit) return explicit.replace(/\/$/, "");
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  }
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-  return "http://localhost:3000";
+  return (
+    resolveHttpOrigin(process.env.APP_URL) ||
+    resolveHttpOrigin(process.env.NEXT_PUBLIC_APP_URL) ||
+    resolveHttpOrigin(process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
+    resolveHttpOrigin(process.env.VERCEL_URL) ||
+    "http://localhost:3000"
+  );
 }
 
 export function adminToken() {

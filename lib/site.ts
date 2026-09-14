@@ -1,3 +1,5 @@
+import { resolveHttpOrigin } from "@/lib/urls";
+
 export const site = {
   name: "CiteScore",
   tagline: "GEO / AI-visibility audits",
@@ -12,13 +14,12 @@ export const site = {
 export const productionOrigin = "https://citescore.vercel.app";
 
 export function publicOrigin() {
-  const explicit =
-    process.env.NEXT_PUBLIC_APP_URL?.trim() || process.env.APP_URL?.trim();
-  if (explicit) return explicit.replace(/\/$/, "");
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  }
-  return productionOrigin;
+  return (
+    resolveHttpOrigin(process.env.NEXT_PUBLIC_APP_URL) ||
+    resolveHttpOrigin(process.env.APP_URL) ||
+    resolveHttpOrigin(process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
+    productionOrigin
+  );
 }
 
 export const checkoutUrl = process.env.NEXT_PUBLIC_CHECKOUT_URL?.trim() || "";
