@@ -17,6 +17,15 @@ export function SiteFooter() {
           <Link href="/sample" className="hover:text-ink">
             Sample report
           </Link>
+          <Link href="/blog" className="hover:text-ink">
+            Guides
+          </Link>
+          <Link href="/geo-audit" className="hover:text-ink">
+            GEO audit
+          </Link>
+          <Link href="/alternatives/otterly" className="hover:text-ink">
+            vs Otterly
+          </Link>
           <Link href="/#pricing" className="hover:text-ink">
             Pricing
           </Link>

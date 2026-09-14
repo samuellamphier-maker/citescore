@@ -25,8 +25,17 @@ Requires Node 20+.
 
 | Path | Purpose |
 | --- | --- |
-| `/` | Landing: value prop, 3 steps, deliverables, sample teaser, $39 pricing, FAQ |
+| `/` | Landing: value prop, 3 steps, deliverables, sample teaser, $39 pricing, guides, FAQ |
+| `/blog` | GEO / AI-visibility guides index |
+| `/blog/what-is-geo` | What is GEO (generative engine optimization)? |
+| `/blog/chatgpt-citation-checklist` | ChatGPT citation checklist for SaaS homepages |
+| `/blog/citescore-vs-enterprise-geo-tools` | CiteScore vs Otterly- / Profound-class tools |
+| `/geo-audit` | High-intent GEO audit landing + $39 checkout form |
+| `/alternatives` | Comparison hub |
+| `/alternatives/otterly` | CiteScore vs Otterly |
 | `/sample` | Printable HTML sample report (fictional SaaS “Northbound”) |
+| `/sitemap.xml` | Generated from `app/sitemap.ts` |
+| `/robots.txt` | Generated from `app/robots.ts` |
 | `/api/reports/sample/pdf` | Same sample, as a PDF |
 | `/checkout` | Payment-link CTA, or waitlist form if the link is unset |
 | `/thanks` | Post-payment “we’re crawling it” page (set this as the Payment Link success URL) |

@@ -12,6 +12,9 @@ export function SiteHeader() {
           <Link href="/sample" className="hover:text-ink">
             Sample
           </Link>
+          <Link href="/blog" className="hover:text-ink">
+            Guides
+          </Link>
           <Link href="/#pricing" className="hidden hover:text-ink sm:inline">
             Pricing
           </Link>

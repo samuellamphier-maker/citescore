@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
 import { ScoreRing } from "@/components/ScoreRing";
@@ -5,6 +6,11 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { sampleReport } from "@/lib/sample-report";
 import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 
 const steps = [
   {
@@ -260,6 +266,82 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="border-b border-rule/80">
+          <div className="mx-auto max-w-5xl px-5 py-14">
+            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+              <div>
+                <p className="kicker">Guides</p>
+                <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
+                  Read the category before you buy another dashboard.
+                </h2>
+              </div>
+              <Link
+                href="/blog"
+                className="text-sm font-medium text-forest underline-offset-4 hover:underline"
+              >
+                All guides
+              </Link>
+            </div>
+            <p className="mt-4 max-w-2xl text-ink-soft leading-7">
+              Editorial pages for founders searching GEO, ChatGPT citations,
+              and Otterly-class alternatives. No invented testimonials.
+            </p>
+            <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+              <li className="rounded-2xl border border-rule bg-cream p-5">
+                <p className="kicker">Explainer</p>
+                <h3 className="mt-3 font-serif text-xl">
+                  <Link href="/blog/what-is-geo" className="hover:text-forest">
+                    What is GEO?
+                  </Link>
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">
+                  Generative engine optimization, minus the prompt-hacking
+                  folklore.
+                </p>
+              </li>
+              <li className="rounded-2xl border border-rule bg-cream p-5">
+                <p className="kicker">Checklist</p>
+                <h3 className="mt-3 font-serif text-xl">
+                  <Link
+                    href="/blog/chatgpt-citation-checklist"
+                    className="hover:text-forest"
+                  >
+                    ChatGPT citation checklist
+                  </Link>
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">
+                  Twelve on-page checks you can run on a SaaS homepage today.
+                </p>
+              </li>
+              <li className="rounded-2xl border border-rule bg-cream p-5">
+                <p className="kicker">Comparison</p>
+                <h3 className="mt-3 font-serif text-xl">
+                  <Link
+                    href="/blog/citescore-vs-enterprise-geo-tools"
+                    className="hover:text-forest"
+                  >
+                    vs enterprise GEO tools
+                  </Link>
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">
+                  {site.priceLabel} once versus Otterly- and Profound-class
+                  monitors.{" "}
+                  <Link
+                    href="/alternatives/otterly"
+                    className="text-forest underline"
+                  >
+                    vs Otterly
+                  </Link>
+                  {" · "}
+                  <Link href="/geo-audit" className="text-forest underline">
+                    GEO audit
+                  </Link>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </section>
+
         <section id="faq">
           <div className="mx-auto max-w-5xl px-5 py-14">
             <p className="kicker">FAQ</p>
@@ -279,9 +361,22 @@ export default function HomePage() {
                   </summary>
                   <p className="mt-2 max-w-3xl text-sm leading-7 text-ink-soft">
                     {item.a}{" "}
+                    {item.q === "What is GEO?" ? (
+                      <Link
+                        href="/blog/what-is-geo"
+                        className="text-forest underline"
+                      >
+                        Longer explainer
+                      </Link>
+                    ) : null}
                     {item.q.includes("LLM") ? (
                       <Link href="/privacy" className="text-forest underline">
                         Privacy
+                      </Link>
+                    ) : null}
+                    {item.q.includes("actually query") ? (
+                      <Link href="/geo-audit" className="text-forest underline">
+                        GEO audit methodology
                       </Link>
                     ) : null}
                   </p>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
-import { site } from "@/lib/site";
+import { publicOrigin, site } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,6 +20,7 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(publicOrigin()),
   title: {
     default: `${site.name} — ${site.tagline}`,
     template: `%s · ${site.name}`,
@@ -30,6 +31,13 @@ export const metadata: Metadata = {
     title: `${site.name} — Get cited by AI search`,
     description: site.description,
     type: "website",
+    siteName: site.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
   },
 };
 

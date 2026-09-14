@@ -7,6 +7,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Payment received",
   description: `Thanks — your ${site.priceLabel} CiteScore audit is in the queue.`,
+  robots: { index: false, follow: false },
 };
 
 export default function ThanksPage() {

@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { pageMeta } from "@/lib/content/meta";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy",
   description:
     "How CiteScore handles URLs, emails, and language-model processing.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
