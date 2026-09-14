@@ -4,13 +4,15 @@ import { AuditReport } from "@/components/AuditReport";
 import { PrintButton } from "@/components/PrintButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { pageMeta } from "@/lib/content/meta";
 import { sampleReport } from "@/lib/sample-report";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Sample report — Northbound",
   description:
     "A fictional CiteScore audit for Northbound, a sample SaaS product. Labeled as a sample throughout.",
-};
+  path: "/sample",
+});
 
 export default function SampleReportPage() {
   return (

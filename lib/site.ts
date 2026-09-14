@@ -8,6 +8,19 @@ export const site = {
     "Paste a URL. Get a scored AI-search visibility report for ChatGPT, Perplexity, and Google AI Overviews — plus the concrete fixes that would get the site cited.",
 } as const;
 
+/** Canonical public origin. Prefer an explicit env, then Vercel production. */
+export const productionOrigin = "https://citescore.vercel.app";
+
+export function publicOrigin() {
+  const explicit =
+    process.env.NEXT_PUBLIC_APP_URL?.trim() || process.env.APP_URL?.trim();
+  if (explicit) return explicit.replace(/\/$/, "");
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  return productionOrigin;
+}
+
 export const checkoutUrl = process.env.NEXT_PUBLIC_CHECKOUT_URL?.trim() || "";
 
 /**

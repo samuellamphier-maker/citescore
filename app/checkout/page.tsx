@@ -3,13 +3,15 @@ import Link from "next/link";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { pageMeta } from "@/lib/content/meta";
 import { buildPaymentHref, checkoutUrl, site } from "@/lib/site";
 import { normalizeSiteUrl } from "@/lib/urls";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Checkout",
   description: `Pay ${site.priceLabel} for a CiteScore audit, or join the waitlist if checkout is not live yet.`,
-};
+  path: "/checkout",
+});
 
 function firstString(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
