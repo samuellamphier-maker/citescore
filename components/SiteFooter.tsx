@@ -23,8 +23,20 @@ export function SiteFooter() {
           <Link href="/geo-audit" className="hover:text-ink">
             GEO audit
           </Link>
+          <Link href="/chatgpt-citation-check" className="hover:text-ink">
+            ChatGPT check
+          </Link>
+          <Link href="/ai-overviews" className="hover:text-ink">
+            AI Overviews
+          </Link>
+          <Link href="/answer-engine-optimization" className="hover:text-ink">
+            AEO
+          </Link>
           <Link href="/alternatives/otterly" className="hover:text-ink">
             vs Otterly
+          </Link>
+          <Link href="/alternatives/profound" className="hover:text-ink">
+            vs Profound
           </Link>
           <Link href="/#pricing" className="hover:text-ink">
             Pricing

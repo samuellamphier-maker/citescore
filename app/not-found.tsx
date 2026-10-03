@@ -24,6 +24,12 @@ export default function NotFound() {
           <Link href="/geo-audit" className="text-forest underline">
             GEO audit
           </Link>
+          <Link href="/chatgpt-citation-check" className="text-forest underline">
+            ChatGPT citation check
+          </Link>
+          <Link href="/ai-overviews" className="text-forest underline">
+            AI Overviews
+          </Link>
           <Link href="/sample" className="text-forest underline">
             Sample report
           </Link>

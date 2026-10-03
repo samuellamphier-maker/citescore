@@ -4,6 +4,7 @@ import { AuditForm } from "@/components/AuditForm";
 import { ScoreRing } from "@/components/ScoreRing";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { topicPages } from "@/lib/content/topics";
 import { sampleReport } from "@/lib/sample-report";
 import { site } from "@/lib/site";
 
@@ -342,6 +343,39 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="border-b border-rule/80 bg-paper-2/50">
+          <div className="mx-auto max-w-5xl px-5 py-14">
+            <p className="kicker">Search pages</p>
+            <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
+              Land on the page that matches the query.
+            </h2>
+            <p className="mt-4 max-w-2xl text-ink-soft leading-7">
+              Separate URLs for a ChatGPT citation check, AI Overviews
+              visibility, Perplexity footnotes, llms.txt, crawler tokens, AEO,
+              and Profound. Same {site.priceLabel} audit. No second product
+              hiding behind the headline.
+            </p>
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+              {topicPages.map((page) => (
+                <li
+                  key={page.path}
+                  className="rounded-2xl border border-rule bg-cream p-5"
+                >
+                  <p className="kicker">{page.kicker}</p>
+                  <h3 className="mt-3 font-serif text-xl">
+                    <Link href={page.path} className="hover:text-forest">
+                      {page.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-ink-soft">
+                    {page.card}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         <section id="faq">
           <div className="mx-auto max-w-5xl px-5 py-14">
             <p className="kicker">FAQ</p>
@@ -375,9 +409,18 @@ export default function HomePage() {
                       </Link>
                     ) : null}
                     {item.q.includes("actually query") ? (
-                      <Link href="/geo-audit" className="text-forest underline">
-                        GEO audit methodology
-                      </Link>
+                      <>
+                        <Link href="/geo-audit" className="text-forest underline">
+                          GEO audit methodology
+                        </Link>
+                        {" · "}
+                        <Link
+                          href="/chatgpt-citation-check"
+                          className="text-forest underline"
+                        >
+                          ChatGPT citation check
+                        </Link>
+                      </>
                     ) : null}
                   </p>
                 </details>

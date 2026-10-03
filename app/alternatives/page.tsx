@@ -19,6 +19,11 @@ const links = [
     dek: "Otterly monitors live prompts across ChatGPT, AI Overviews, Perplexity, and Copilot. CiteScore is a one-time page audit.",
   },
   {
+    href: "/alternatives/profound",
+    title: "CiteScore vs Profound",
+    dek: "Profound is the enterprise citation-share platform. CiteScore is still the $39 punch-list PDF.",
+  },
+  {
     href: "/blog/citescore-vs-enterprise-geo-tools",
     title: "CiteScore vs enterprise GEO tools",
     dek: "The longer comparison, including Profound-class citation dashboards and who each tool is actually for.",

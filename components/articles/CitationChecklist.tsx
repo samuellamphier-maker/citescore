@@ -27,11 +27,29 @@ const items = [
   },
   {
     title: "Do not block the bots you want citations from",
-    body: "Check robots.txt for GPTBot, PerplexityBot, and Google-Extended. A leftover ‘Disallow: /’ from a staging deploy is an own-goal. If you block them on purpose, say so — and do not buy an AI-visibility audit.",
+    body: (
+      <>
+        Check robots.txt for GPTBot, PerplexityBot, and Google-Extended. A
+        leftover “Disallow: /” from a staging deploy is an own-goal. If you
+        block them on purpose, say so — and read the crawler dimension with
+        that policy in mind. The audit’s exact rules are on the{" "}
+        <Link href="/ai-crawlers">AI crawlers page</Link>, including the
+        user-agents it does not parse.
+      </>
+    ),
   },
   {
     title: "Add llms.txt if you have a canonical explainer",
-    body: "llms.txt is a small, plaintext map of the pages you want a model to read. It is not magic. It is a courtesy, and CiteScore treats its presence as a positive crawler-access signal.",
+    body: (
+      <>
+        llms.txt is a small Markdown map of the pages you want a model to
+        read. It is not magic. CiteScore only checks that{" "}
+        <code>/llms.txt</code> returned a non-empty body, and counts that as
+        a positive crawler-access signal. The{" "}
+        <Link href="/llms-txt">llms.txt page</Link> is the exact check,
+        including what a missing file does to the score.
+      </>
+    ),
   },
   {
     title: "Ship a comparison or alternatives URL",
@@ -65,7 +83,9 @@ export function CitationChecklistArticle() {
         If you want the longer definition of the category, start with{" "}
         <Link href="/blog/what-is-geo">what GEO is</Link>. If you want the
         scored version of this list on your URL, that is the{" "}
-        <Link href="/geo-audit">{`$39 GEO audit`}</Link>.
+        <Link href="/geo-audit">{`$39 GEO audit`}</Link> — also described as a{" "}
+        <Link href="/chatgpt-citation-check">ChatGPT citation check</Link> for
+        the search that asks for one.
       </p>
 
       <ol>
@@ -85,11 +105,13 @@ export function CitationChecklistArticle() {
       <h2>What this checklist is not</h2>
       <p>
         It is not a live citation rank. Prompt wording, user location, and
-        whether browsing is on will move any single ChatGPT answer. Enterprise
-        monitors such as{" "}
-        <Link href="/alternatives/otterly">Otterly</Link> or Profound exist
-        to sample those prompts over time. That is a different product — and
-        a different{" "}
+        whether browsing is on will move any single ChatGPT answer. The{" "}
+        <Link href="/ai-overviews">AI Overviews</Link> and{" "}
+        <Link href="/perplexity-citations">Perplexity</Link> pages describe
+        the other two rows in the same PDF. Enterprise monitors such as{" "}
+        <Link href="/alternatives/otterly">Otterly</Link> or{" "}
+        <Link href="/alternatives/profound">Profound</Link> exist to sample
+        prompts over time. That is a different product — and a different{" "}
         <Link href="/blog/citescore-vs-enterprise-geo-tools">price</Link>.
       </p>
       <p>
