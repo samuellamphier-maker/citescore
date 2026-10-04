@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
+  verification: {
+    google: "MC5jDg5-OJHO_BrY01y1P9p-7FEBLfKLy9U639OOvG4",
+  },
   openGraph: {
     title: `${site.name} — Get cited by AI search`,
     description: site.description,
