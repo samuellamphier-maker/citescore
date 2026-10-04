@@ -117,6 +117,8 @@ export function VsEnterpriseArticle() {
         What those platforms will not do for you, on day one, is sit you down
         and say “your H1 is a metaphor; write the product sentence.” They
         assume you have a content ops team. CiteScore assumes you do not.
+        The Profound-only writeup is{" "}
+        <Link href="/alternatives/profound">CiteScore vs Profound</Link>.
       </p>
 
       <h2>You can use both, in order</h2>

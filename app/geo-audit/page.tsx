@@ -212,10 +212,28 @@ export default function GeoAuditPage() {
               </Link>
               {" · "}
               <Link
+                href="/answer-engine-optimization"
+                className="text-forest underline"
+              >
+                AEO
+              </Link>
+              {" · "}
+              <Link
+                href="/chatgpt-citation-check"
+                className="text-forest underline"
+              >
+                ChatGPT citation check
+              </Link>
+              {" · "}
+              <Link href="/ai-overviews" className="text-forest underline">
+                AI Overviews
+              </Link>
+              {" · "}
+              <Link
                 href="/blog/chatgpt-citation-checklist"
                 className="text-forest underline"
               >
-                ChatGPT citation checklist
+                Citation checklist
               </Link>
               {" · "}
               <Link href="/blog" className="text-forest underline">

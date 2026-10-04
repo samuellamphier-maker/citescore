@@ -49,9 +49,28 @@ export default async function BlogPostPage({
   if (!post || !Article) notFound();
 
   const origin = publicOrigin();
+  const topicRelated = {
+    "what-is-geo": [
+      { href: "/answer-engine-optimization", label: "Answer engine optimization (AEO)" },
+      { href: "/ai-overviews", label: "Google AI Overviews visibility" },
+      { href: "/ai-crawlers", label: "GPTBot, PerplexityBot, and Google-Extended" },
+    ],
+    "chatgpt-citation-checklist": [
+      { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
+      { href: "/llms-txt", label: "llms.txt — what the audit checks" },
+      { href: "/perplexity-citations", label: "Perplexity citations" },
+    ],
+    "citescore-vs-enterprise-geo-tools": [
+      { href: "/alternatives/profound", label: "CiteScore vs Profound" },
+      { href: "/answer-engine-optimization", label: "Answer engine optimization (AEO)" },
+      { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
+    ],
+  } as const;
+
   const related = relatedFromPosts(
     blogPosts.filter((item) => item.slug !== post.slug),
     [
+      ...(topicRelated[post.slug as keyof typeof topicRelated] ?? []),
       { href: "/geo-audit", label: "GEO audit — what you get for $39" },
       { href: "/alternatives/otterly", label: "CiteScore vs Otterly" },
       { href: "/sample", label: "Sample report" },

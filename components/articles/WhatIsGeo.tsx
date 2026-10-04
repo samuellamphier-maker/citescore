@@ -64,6 +64,10 @@ export function WhatIsGeoArticle() {
           <strong>Crawler access.</strong>{" "}
           <code>robots.txt</code> that does not block GPTBot, PerplexityBot,
           or Google-Extended, plus an <code>llms.txt</code> if you have one.
+          The audit records those three tokens and whether{" "}
+          <Link href="/llms-txt">/llms.txt</Link> returned a body.{" "}
+          <Link href="/ai-crawlers">What each token controls</Link> is its own
+          page, because Google-Extended is not an AI Overviews switch.
         </li>
       </ul>
       <p>
@@ -108,6 +112,15 @@ export function WhatIsGeoArticle() {
         Overviews on your behalf. The per-engine snapshot in the report is an
         inferred likelihood, labeled that way. Treat it as a diagnostic, not
         as a claim that Sam Altman personally bookmarked your pricing page.
+        The same snapshot is written up per search: a{" "}
+        <Link href="/chatgpt-citation-check">ChatGPT citation check</Link>,{" "}
+        <Link href="/ai-overviews">AI Overviews visibility</Link>, and{" "}
+        <Link href="/perplexity-citations">Perplexity citations</Link>. If the
+        query said{" "}
+        <Link href="/answer-engine-optimization">
+          answer engine optimization
+        </Link>
+        , that is this audit under the other label.
       </p>
       <p>
         That honesty is the product. A founder who needs a Monday punch list

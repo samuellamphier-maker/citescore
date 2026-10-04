@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { blogPosts } from "@/lib/content/blog";
+import { topicPages } from "@/lib/content/topics";
 import { formatDisplayDate, pageMeta } from "@/lib/content/meta";
 import { publicOrigin, site } from "@/lib/site";
 
@@ -86,6 +87,30 @@ export default function BlogIndexPage() {
             </li>
           ))}
         </ol>
+
+        <section className="mt-12">
+          <p className="kicker">Search pages</p>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-ink-soft">
+            URLs for queries the essays above do not target: a citation
+            check, AI Overviews, Perplexity, llms.txt, crawler tokens, AEO,
+            and Profound.
+          </p>
+          <ul className="mt-4 divide-y divide-rule border-y border-rule">
+            {topicPages.map((page) => (
+              <li key={page.path} className="py-4">
+                <Link
+                  href={page.path}
+                  className="font-medium text-forest underline-offset-4 hover:underline"
+                >
+                  {page.title}
+                </Link>
+                <p className="mt-1 text-sm leading-6 text-ink-soft">
+                  {page.card}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className="mt-12">
           <p className="kicker">Also on the site</p>

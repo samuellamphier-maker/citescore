@@ -41,22 +41,30 @@ export function getPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
 }
 
-export const marketingPaths = [
-  { path: "/", changeFrequency: "weekly" as const, priority: 1 },
-  { path: "/blog", changeFrequency: "weekly" as const, priority: 0.8 },
-  { path: "/geo-audit", changeFrequency: "monthly" as const, priority: 0.9 },
+export type MarketingPath = {
+  path: string;
+  changeFrequency: "weekly" | "monthly" | "yearly";
+  priority: number;
+  /** ISO date (YYYY-MM-DD). Defaults to the original marketing launch day. */
+  lastModified?: string;
+};
+
+export const marketingPaths: MarketingPath[] = [
+  { path: "/", changeFrequency: "weekly", priority: 1 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/geo-audit", changeFrequency: "monthly", priority: 0.9 },
   {
     path: "/alternatives",
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.6,
   },
   {
     path: "/alternatives/otterly",
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.8,
   },
-  { path: "/sample", changeFrequency: "monthly" as const, priority: 0.7 },
-  { path: "/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/sample", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
   ...blogPosts.map((post) => ({
     path: `/blog/${post.slug}`,
     changeFrequency: "monthly" as const,
