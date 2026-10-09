@@ -12,6 +12,50 @@ export type TopicPage = {
 /** Indexable pages for searches the blog, /geo-audit, and /alternatives do not already own. */
 export const topicPages: TopicPage[] = [
   {
+    path: "/free-check",
+    title: "Free AI search visibility check",
+    description:
+      "Free, no-signup check: does your site have llms.txt, AI-crawler rules in robots.txt, a sitemap and JSON-LD schema? Results in seconds.",
+    kicker: "Free tool",
+    card: "Instant check of llms.txt, robots.txt AI-crawler rules, sitemap and schema.",
+    priority: 1.0,
+    publishedAt: "2026-10-09",
+    minutes: 4,
+  },
+  {
+    path: "/how-to-get-cited-by-chatgpt",
+    title: "How to get cited by ChatGPT",
+    description:
+      "How to get cited by ChatGPT in 2026: let OAI-SearchBot and GPTBot in, write answer-first copy, add evidence and schema, and check the basics free.",
+    kicker: "Guide",
+    card: "Seven practical steps to show up as a ChatGPT source, in order of payoff.",
+    priority: 0.9,
+    publishedAt: "2026-10-09",
+    minutes: 9,
+  },
+  {
+    path: "/ai-crawler-robots-txt-checker",
+    title: "AI crawler robots.txt checker",
+    description:
+      "Check whether your robots.txt allows or blocks GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot and Google-Extended, with copy-paste rules for each.",
+    kicker: "robots.txt",
+    card: "Which AI user agents your robots.txt lets in, and the exact lines to change.",
+    priority: 0.9,
+    publishedAt: "2026-10-09",
+    minutes: 6,
+  },
+  {
+    path: "/aeo-checklist",
+    title: "Answer engine optimization (AEO) checklist",
+    description:
+      "A practical AEO / GEO checklist for small sites: crawler access, answer-first copy, schema, evidence, llms.txt, and how to verify each item for free.",
+    kicker: "Checklist",
+    card: "Twelve checks for answer engine optimization, each with a free way to verify it.",
+    priority: 0.8,
+    publishedAt: "2026-10-09",
+    minutes: 7,
+  },
+  {
     path: "/chatgpt-citation-check",
     title: "ChatGPT citation check",
     description:
