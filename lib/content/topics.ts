@@ -45,6 +45,39 @@ export const topicPages: TopicPage[] = [
     minutes: 6,
   },
   {
+    path: "/llms-txt-generator",
+    title: "Free llms.txt generator",
+    description:
+      "Free, no-signup llms.txt generator. Add your site name, a one-line summary and the canonical URLs worth reading, then copy Markdown for /llms.txt. It stays in your browser.",
+    kicker: "llms.txt",
+    card: "Copy a /llms.txt: site name, one-line summary, and the URLs worth reading.",
+    priority: 0.9,
+    publishedAt: "2026-10-10",
+    minutes: 4,
+  },
+  {
+    path: "/robots-txt-ai-crawler-generator",
+    title: "Free robots.txt AI crawler generator",
+    description:
+      "Free, no-signup robots.txt generator for GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot and Google-Extended. Choose allow or block, then copy the file.",
+    kicker: "robots.txt",
+    card: "Copy allow or block rules for GPTBot, OAI-SearchBot, PerplexityBot, ClaudeBot and Google-Extended.",
+    priority: 0.9,
+    publishedAt: "2026-10-10",
+    minutes: 5,
+  },
+  {
+    path: "/faq-schema-generator",
+    title: "Free FAQ schema generator",
+    description:
+      "Free, no-signup FAQPage JSON-LD generator. Add the questions already visible on the page and copy a script tag. Nothing is uploaded. Not a Google FAQ rich result.",
+    kicker: "FAQ schema",
+    card: "Copy FAQPage JSON-LD for questions that are already visible on the page.",
+    priority: 0.9,
+    publishedAt: "2026-10-10",
+    minutes: 4,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
