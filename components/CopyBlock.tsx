@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type Props = {
   label: string;
@@ -9,6 +9,7 @@ type Props = {
 };
 
 export function CopyBlock({ label, value, empty }: Props) {
+  const areaRef = useRef<HTMLTextAreaElement>(null);
   const [copied, setCopied] = useState(false);
   const [failed, setFailed] = useState(false);
   const ready = value.trim().length > 0;
@@ -18,11 +19,39 @@ export function CopyBlock({ label, value, empty }: Props) {
   async function copy() {
     if (!ready) return;
     setFailed(false);
+    const area = areaRef.current;
+    area?.focus();
+    area?.select();
+
+    let ok = false;
     try {
-      await navigator.clipboard.writeText(value);
+      if (navigator.clipboard?.writeText) {
+        await Promise.race([
+          navigator.clipboard.writeText(value),
+          new Promise<never>((_, reject) => {
+            window.setTimeout(() => reject(new Error("clipboard timeout")), 1000);
+          }),
+        ]);
+        ok = true;
+      }
+    } catch {
+      ok = false;
+    }
+
+    if (!ok) {
+      area?.focus();
+      area?.select();
+      try {
+        ok = document.execCommand("copy");
+      } catch {
+        ok = false;
+      }
+    }
+
+    if (ok) {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
-    } catch {
+    } else {
       setCopied(false);
       setFailed(true);
     }
@@ -42,6 +71,7 @@ export function CopyBlock({ label, value, empty }: Props) {
         </button>
       </div>
       <textarea
+        ref={areaRef}
         readOnly
         value={shown}
         rows={rows}

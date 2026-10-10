@@ -21,7 +21,7 @@ export function LlmsTxtGenerator() {
   const [summary, setSummary] = useState("");
   const [details, setDetails] = useState("");
   const [section, setSection] = useState("Docs");
-  const [pages, setPages] = useState<Row[]>([emptyRow("page-1"), emptyRow("page-2")]);
+  const [pages, setPages] = useState<Row[]>([emptyRow("page-1")]);
   const [optional, setOptional] = useState<Row[]>([emptyRow("opt-1")]);
 
   const output = useMemo(
