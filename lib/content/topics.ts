@@ -12,6 +12,17 @@ export type TopicPage = {
 /** Indexable pages for searches the blog, /geo-audit, and /alternatives do not already own. */
 export const topicPages: TopicPage[] = [
   {
+    path: "/how-to-get-cited-by-ai-answer-engines",
+    title: "How to get your site cited by AI answer engines",
+    description:
+      "How to get cited by ChatGPT, Perplexity, Google AI Overviews and Claude: allow AI crawlers, write answer-first passages, add schema and evidence, and check it free.",
+    kicker: "Guide",
+    card: "A cross-engine playbook for becoming the source AI answers footnote.",
+    priority: 0.9,
+    publishedAt: "2026-10-12",
+    minutes: 8,
+  },
+  {
     path: "/free-check",
     title: "Free AI search visibility check",
     description:
