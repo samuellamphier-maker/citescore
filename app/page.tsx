@@ -306,6 +306,21 @@ export default function HomePage() {
               Editorial pages for founders searching GEO, ChatGPT citations,
               and Otterly-class alternatives. No invented testimonials.
             </p>
+            <Link
+              href="/checklist"
+              className="mt-8 block rounded-2xl border border-rule bg-cream p-5 hover:border-forest"
+            >
+              <p className="kicker">Free on this page</p>
+              <h3 className="mt-3 font-serif text-2xl tracking-tight">
+                AI Citation Readiness Checklist
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-ink-soft">
+                40 checks across crawler access, llms.txt, structured data,
+                answer-ready content, evidence, and entity clarity. The full
+                list is on the page. No email. The {site.priceLabel} audit
+                scores one URL.
+              </p>
+            </Link>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
               <li className="rounded-2xl border border-rule bg-cream p-5">
                 <p className="kicker">Explainer</p>
