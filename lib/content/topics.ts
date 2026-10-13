@@ -12,6 +12,29 @@ export type TopicPage = {
 /** Indexable pages for searches the blog, /geo-audit, and /alternatives do not already own. */
 export const topicPages: TopicPage[] = [
   {
+    path: "/robots-txt-for-ai-crawlers",
+    title:
+      "robots.txt for AI crawlers: GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and CCBot",
+    description:
+      "What GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and CCBot each control, with copy-paste robots.txt groups. A disallow is a policy choice, not a citation.",
+    kicker: "Guide",
+    card: "Five tokens, the job each one does, and robots.txt you can paste without blocking the wrong crawler.",
+    priority: 0.8,
+    publishedAt: "2026-10-13",
+    minutes: 12,
+  },
+  {
+    path: "/schema-markup-for-ai-search",
+    title: "Schema markup for AI search: Organization, Product, FAQ, and Article",
+    description:
+      "JSON-LD examples for Organization, Product, FAQPage, and Article. The markup has to match the page. No invented ratings. Google stopped showing FAQ rich results on 7 May 2026.",
+    kicker: "Guide",
+    card: "Copy-paste JSON-LD for Organization, Product, FAQ, and Article, and the fields you should leave out.",
+    priority: 0.8,
+    publishedAt: "2026-10-13",
+    minutes: 11,
+  },
+  {
     path: "/llms-txt-examples",
     title: "llms.txt examples: 10 real SaaS sites and what they get right",
     description:

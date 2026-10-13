@@ -17,6 +17,7 @@ type Props = {
   dek: string;
   publishedAt?: string;
   minutes?: number;
+  author?: string;
   children: ReactNode;
   related?: Related[];
   ctaId?: string;
@@ -28,6 +29,7 @@ export function ArticleShell({
   dek,
   publishedAt,
   minutes,
+  author,
   children,
   related = [],
   ctaId,
@@ -42,6 +44,7 @@ export function ArticleShell({
         {publishedAt ? (
           <p className="mt-3 text-sm text-ink-soft">
             {formatDisplayDate(publishedAt)}
+            {author ? ` · ${author}` : null}
             {minutes ? ` · ${minutes} min read` : null}
           </p>
         ) : null}

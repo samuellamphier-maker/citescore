@@ -1,0 +1,74 @@
+import { ArticleShell } from "@/components/ArticleShell";
+import {
+  RobotsTxtForAiCrawlersArticle,
+  robotsFaqs,
+} from "@/components/articles/RobotsTxtForAiCrawlers";
+import { JsonLd } from "@/components/JsonLd";
+import { getTopic } from "@/lib/content/topics";
+import { pageMeta } from "@/lib/content/meta";
+import { publicOrigin } from "@/lib/site";
+
+const topic = getTopic("/robots-txt-for-ai-crawlers");
+
+export const metadata = pageMeta({
+  title: topic.title,
+  description: topic.description,
+  path: topic.path,
+  type: "article",
+  publishedTime: topic.publishedAt,
+});
+
+export default function RobotsTxtForAiCrawlersPage() {
+  const origin = publicOrigin();
+
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: topic.title,
+          description: topic.description,
+          datePublished: topic.publishedAt,
+          url: `${origin}${topic.path}`,
+          author: {
+            "@type": "Organization",
+            name: "CiteScore Team",
+            url: origin,
+          },
+          publisher: { "@type": "Organization", name: "CiteScore", url: origin },
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: robotsFaqs.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }}
+      />
+      <ArticleShell
+        kicker={topic.kicker}
+        title={topic.title}
+        dek={topic.description}
+        publishedAt={topic.publishedAt}
+        minutes={topic.minutes}
+        author="CiteScore Team"
+        ctaId="robots-txt-for-ai-crawlers"
+        related={[
+          { href: "/free-check", label: "Free AI citation-readiness check" },
+          { href: "/geo-audit", label: "$39 GEO audit" },
+          { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
+          { href: "/robots-txt-ai-crawler-generator", label: "Free robots.txt AI crawler generator" },
+          { href: "/ai-crawlers", label: "GPTBot, PerplexityBot, and Google-Extended" },
+          { href: "/geo-vs-seo", label: "GEO vs SEO" },
+        ]}
+      >
+        <RobotsTxtForAiCrawlersArticle />
+      </ArticleShell>
+    </>
+  );
+}
