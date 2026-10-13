@@ -271,6 +271,14 @@ export default function HomePage() {
               </ul>
               <div id="audit" className="mt-8 max-w-xl">
                 <AuditForm id="pricing-audit" />
+                <p className="mt-3 text-sm">
+                  <a
+                    href="/sample-audit.pdf"
+                    className="font-medium text-forest underline underline-offset-4 hover:underline"
+                  >
+                    See a sample report (PDF)
+                  </a>
+                </p>
               </div>
             </div>
             <div className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">

@@ -213,6 +213,12 @@ export default function ForAgenciesPage() {
               >
                 Buy the white-label audit
               </a>
+              <a
+                href="/sample-audit.pdf"
+                className="mt-4 inline-flex text-sm font-medium text-[#d7c7b0] underline underline-offset-4 hover:text-cream"
+              >
+                See a sample report (PDF)
+              </a>
             </div>
           </div>
         </section>

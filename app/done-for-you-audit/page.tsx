@@ -111,6 +111,14 @@ export default function DoneForYouAuditPage() {
                 CiteScore reads public pages. It does not log into ChatGPT,
                 Perplexity, or Google AI Overviews.
               </p>
+              <p className="mt-3 text-sm">
+                <a
+                  href="/sample-audit.pdf"
+                  className="font-medium text-forest underline underline-offset-4 hover:underline"
+                >
+                  See a sample report (PDF)
+                </a>
+              </p>
             </div>
             <aside className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
               <p className="kicker text-[#d7c7b0]">One URL</p>
