@@ -58,6 +58,7 @@ export default function RobotsTxtForAiCrawlersPage() {
         minutes={topic.minutes}
         author="CiteScore Team"
         ctaId="robots-txt-for-ai-crawlers"
+        guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },

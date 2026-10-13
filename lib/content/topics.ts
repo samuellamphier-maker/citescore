@@ -4,6 +4,8 @@ export type TopicPage = {
   description: string;
   kicker: string;
   card: string;
+  /** Short label in the Related guides list. Falls back to the full title. */
+  navLabel?: string;
   priority: number;
   publishedAt: string;
   minutes: number;
@@ -19,6 +21,7 @@ export const topicPages: TopicPage[] = [
       "What GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and CCBot each control, with copy-paste robots.txt groups. A disallow is a policy choice, not a citation.",
     kicker: "Guide",
     card: "Five tokens, the job each one does, and robots.txt you can paste without blocking the wrong crawler.",
+    navLabel: "robots.txt for AI crawlers",
     priority: 0.8,
     publishedAt: "2026-10-13",
     minutes: 12,
@@ -30,6 +33,7 @@ export const topicPages: TopicPage[] = [
       "JSON-LD examples for Organization, Product, FAQPage, and Article. The markup has to match the page. No invented ratings. Google stopped showing FAQ rich results on 7 May 2026.",
     kicker: "Guide",
     card: "Copy-paste JSON-LD for Organization, Product, FAQ, and Article, and the fields you should leave out.",
+    navLabel: "Schema markup for AI search",
     priority: 0.8,
     publishedAt: "2026-10-13",
     minutes: 11,
@@ -41,6 +45,7 @@ export const topicPages: TopicPage[] = [
       "Ten SaaS llms.txt files fetched on 13 October 2026 — Vercel, Stripe, Cloudflare, Anthropic, and six others — and the specific choice each file gets right.",
     kicker: "Guide",
     card: "Ten live files, fetched 13 October 2026, and the one choice each file makes well.",
+    navLabel: "llms.txt examples from 10 SaaS sites",
     priority: 0.8,
     publishedAt: "2026-10-13",
     minutes: 16,
@@ -52,17 +57,55 @@ export const topicPages: TopicPage[] = [
       "GEO and SEO answer different questions. What changes when the result is a quoted answer, what stays the same, and what a free check or a $39 audit can see.",
     kicker: "Guide",
     card: "What changes when the result is a quoted answer, and what a rank report still does not say.",
+    navLabel: "GEO vs SEO",
     priority: 0.8,
     publishedAt: "2026-10-13",
     minutes: 12,
   },
   {
+    path: "/how-to-get-cited-by-perplexity",
+    title: "How to get cited by Perplexity",
+    description:
+      "What Perplexity publishes: allow PerplexityBot and its IP ranges if you want the site in search results. Perplexity-User is a separate, user-triggered fetch.",
+    kicker: "Guide",
+    card: "PerplexityBot, Perplexity-User, and the firewall rule Perplexity actually publishes.",
+    navLabel: "How to get cited by Perplexity",
+    priority: 0.9,
+    publishedAt: "2026-10-13",
+    minutes: 10,
+  },
+  {
+    path: "/google-ai-overviews-optimization",
+    title: "Google AI Overviews optimization",
+    description:
+      "What Google Search Central says about AI Overviews and AI Mode: snippet-eligible pages, the Search Console control, and the tactics Google says to skip.",
+    kicker: "Guide",
+    card: "Eligibility, the Search Console control, and the tactics Google says to ignore.",
+    navLabel: "Google AI Overviews optimization",
+    priority: 0.9,
+    publishedAt: "2026-10-13",
+    minutes: 12,
+  },
+  {
+    path: "/ai-search-readiness-checklist-for-saas",
+    title: "AI search readiness checklist for SaaS",
+    description:
+      "A SaaS checklist drawn from OpenAI, Perplexity, and Google Search Central: crawler tokens, snippet eligibility, and a link to the 40-point checklist.",
+    kicker: "Guide",
+    card: "Cross-engine checks for a SaaS site. The longer on-page list is the 40-point checklist.",
+    navLabel: "AI search readiness checklist for SaaS",
+    priority: 0.9,
+    publishedAt: "2026-10-13",
+    minutes: 9,
+  },
+  {
     path: "/how-to-get-cited-by-ai-answer-engines",
     title: "How to get your site cited by AI answer engines",
     description:
-      "How to get cited by ChatGPT, Perplexity, Google AI Overviews and Claude: allow AI crawlers, write answer-first passages, add schema and evidence, and check it free.",
+      "Which control OpenAI, Perplexity, and Google publish for ChatGPT search, Perplexity search, and AI Overviews, and which files they do not require.",
     kicker: "Guide",
-    card: "A cross-engine playbook for becoming the source AI answers footnote.",
+    card: "The published control for each engine, and the files they do not require.",
+    navLabel: "How to get cited by AI answer engines",
     priority: 0.9,
     publishedAt: "2026-10-12",
     minutes: 8,
@@ -82,12 +125,13 @@ export const topicPages: TopicPage[] = [
     path: "/how-to-get-cited-by-chatgpt",
     title: "How to get cited by ChatGPT",
     description:
-      "How to get cited by ChatGPT in 2026: let OAI-SearchBot and GPTBot in, write answer-first copy, add evidence and schema, and check the basics free.",
+      "What OpenAI documents for ChatGPT search: OAI-SearchBot, GPTBot, and ChatGPT-User are separate controls. Allowing search is a different decision from allowing training.",
     kicker: "Guide",
-    card: "Seven practical steps to show up as a ChatGPT source, in order of payoff.",
+    card: "The three OpenAI tokens, which one controls ChatGPT search answers, and what OpenAI does not publish.",
+    navLabel: "How to get cited by ChatGPT",
     priority: 0.9,
-    publishedAt: "2026-10-09",
-    minutes: 9,
+    publishedAt: "2026-10-13",
+    minutes: 11,
   },
   {
     path: "/ai-crawler-robots-txt-checker",
@@ -223,8 +267,34 @@ export const topicPages: TopicPage[] = [
   },
 ];
 
+const guideNavOrder = [
+  "/how-to-get-cited-by-chatgpt",
+  "/how-to-get-cited-by-perplexity",
+  "/google-ai-overviews-optimization",
+  "/ai-search-readiness-checklist-for-saas",
+  "/geo-vs-seo",
+  "/how-to-get-cited-by-ai-answer-engines",
+  "/robots-txt-for-ai-crawlers",
+  "/schema-markup-for-ai-search",
+  "/llms-txt-examples",
+];
+
 export function getTopic(path: string) {
   const topic = topicPages.find((page) => page.path === path);
   if (!topic) throw new Error(`Unknown topic page: ${path}`);
   return topic;
+}
+
+/** Other pages with the Guide kicker, in a stable reading order. */
+export function relatedGuidePages(current: string) {
+  return topicPages
+    .filter((page) => page.kicker === "Guide" && page.path !== current)
+    .slice()
+    .sort((a, b) => {
+      const ai = guideNavOrder.indexOf(a.path);
+      const bi = guideNavOrder.indexOf(b.path);
+      const aRank = ai === -1 ? guideNavOrder.length : ai;
+      const bRank = bi === -1 ? guideNavOrder.length : bi;
+      return aRank - bRank;
+    });
 }

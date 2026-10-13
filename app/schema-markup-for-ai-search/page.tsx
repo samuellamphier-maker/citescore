@@ -34,6 +34,7 @@ export default function SchemaMarkupForAiSearchPage() {
         minutes={topic.minutes}
         author="CiteScore Team"
         ctaId="schema-markup-for-ai-search"
+        guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },

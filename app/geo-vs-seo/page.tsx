@@ -38,6 +38,7 @@ export default function GeoVsSeoPage() {
         publishedAt={topic.publishedAt}
         minutes={topic.minutes}
         ctaId="geo-vs-seo"
+        guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },

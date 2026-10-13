@@ -42,7 +42,7 @@ export const citationCheckGroups: CitationCheckGroup[] = [
       {
         id: "chatgpt-user",
         title: "ChatGPT-User can fetch when a person clicks",
-        body: "ChatGPT-User is the agent for a fetch a person triggered inside ChatGPT. A disallow stops that fetch even when GPTBot is allowed. The CiteScore crawl does not score this token. Check the group yourself if user-triggered fetches matter.",
+        body: "ChatGPT-User is the agent for a fetch a person triggered inside ChatGPT or a Custom GPT. OpenAI’s crawler overview says robots.txt rules may not apply, because a person started the fetch, and that ChatGPT-User is not used to decide whether content appears in Search. The search control is OAI-SearchBot. The CiteScore crawl does not score ChatGPT-User.",
       },
       {
         id: "perplexitybot",

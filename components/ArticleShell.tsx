@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { AuditCta } from "@/components/AuditCta";
+import { RelatedGuides } from "@/components/RelatedGuides";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { BlogPost } from "@/lib/content/blog";
@@ -21,6 +22,8 @@ type Props = {
   children: ReactNode;
   related?: Related[];
   ctaId?: string;
+  /** When set, render the shared Related guides list for this path. */
+  guidePath?: string;
 };
 
 export function ArticleShell({
@@ -33,6 +36,7 @@ export function ArticleShell({
   children,
   related = [],
   ctaId,
+  guidePath,
 }: Props) {
   return (
     <>
@@ -50,6 +54,7 @@ export function ArticleShell({
         ) : null}
         <div className="article-prose mt-10">{children}</div>
         <AuditCta id={ctaId} />
+        {guidePath ? <RelatedGuides current={guidePath} /> : null}
         {related.length > 0 ? (
           <nav className="mt-10 border-t border-rule pt-6" aria-label="Related">
             <p className="kicker">Keep reading</p>
