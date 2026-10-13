@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { templatePackLabel, templatePackUrl } from "@/lib/site";
 
 export function SiteHeader() {
   return (
     <header className="no-print border-b border-rule/80">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-4">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-3 px-5 py-4">
         <Link href="/" className="shrink-0" aria-label="CiteScore home">
           <Logo />
         </Link>
-        <nav className="flex items-center gap-4 text-sm text-ink-soft sm:gap-6">
+        <nav className="flex flex-wrap items-center justify-end gap-x-4 gap-y-2 text-sm text-ink-soft sm:gap-x-6">
           <Link href="/sample" className="hover:text-ink">
             Sample
           </Link>
@@ -18,6 +19,14 @@ export function SiteHeader() {
           <Link href="/checklist" className="hover:text-ink">
             Checklist
           </Link>
+          <a
+            href={templatePackUrl}
+            className="hover:text-ink"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {templatePackLabel}
+          </a>
           <Link href="/#pricing" className="hidden hover:text-ink sm:inline">
             Pricing
           </Link>

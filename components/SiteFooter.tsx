@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { templatePackLabel, templatePackUrl } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -23,6 +24,14 @@ export function SiteFooter() {
           <Link href="/checklist" className="hover:text-ink">
             Checklist
           </Link>
+          <a
+            href={templatePackUrl}
+            className="hover:text-ink"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {templatePackLabel}
+          </a>
           <Link href="/geo-audit" className="hover:text-ink">
             GEO audit
           </Link>

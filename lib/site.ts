@@ -24,6 +24,11 @@ export function publicOrigin() {
 
 export const checkoutUrl = process.env.NEXT_PUBLIC_CHECKOUT_URL?.trim() || "";
 
+export const templatePackUrl =
+  "https://buy.polar.sh/polar_cl_mxMcM1rQQ51e3dEJLagfjHsG4ziOrxLXF4vC6416Zfi";
+
+export const templatePackLabel = "GEO Content Template Pack ($19)";
+
 /**
  * Stripe Payment Links persist `client_reference_id` onto the Checkout
  * Session (200-char limit). That is how the webhook recovers `site_url`.
