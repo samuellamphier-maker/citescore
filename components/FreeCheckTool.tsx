@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { freeCheckAuditPitch } from "@/lib/free-check-pitch";
 
 type Result = {
   origin: string;
@@ -25,6 +26,28 @@ function Row({ ok, label, detail }: { ok: boolean; label: string; detail: string
 }
 
 const botLabel = (v: string) => (v === "disallow" ? "blocked" : v === "allow" ? "allowed" : "not mentioned (falls back to *)");
+
+function AuditUpsell({
+  origin,
+  pitch,
+}: {
+  origin: string;
+  pitch: ReturnType<typeof freeCheckAuditPitch>;
+}) {
+  return (
+    <aside className="mt-8 rounded-2xl border border-rule bg-cream p-6">
+      <p className="kicker text-copper">$39 audit</p>
+      <h2 className="mt-2 font-serif text-2xl">{pitch.heading}</h2>
+      <p className="mt-2 text-sm leading-6 text-ink-soft">{pitch.detail}</p>
+      <Link
+        href={`/geo-audit?url=${encodeURIComponent(origin)}`}
+        className="mt-4 inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 font-medium text-cream hover:bg-forest-deep"
+      >
+        Get the $39 audit
+      </Link>
+    </aside>
+  );
+}
 
 export function FreeCheckTool() {
   const [url, setUrl] = useState("");
@@ -57,7 +80,7 @@ export function FreeCheckTool() {
     ? [result.robots.gptBot, result.robots.perplexityBot, result.robots.googleExtended].filter((v) => v === "disallow").length
     : 0;
   const passed = result
-    ? [result.homepage.reachable, result.robots.found && blocked === 0, result.llmsTxt.found, result.sitemap.found, result.schema.found, result.homepage.hasMetaDescription].filter(Boolean).length
+    ? [result.homepage.reachable, result.robots.found && blocked === 0, result.llmsTxt.found, result.sitemap.found, result.homepage.reachable && result.schema.found, result.homepage.reachable && result.homepage.hasMetaDescription].filter(Boolean).length
     : 0;
 
   return (
@@ -75,30 +98,23 @@ export function FreeCheckTool() {
           {loading ? "Checking…" : "Run free check"}
         </button>
       </form>
-      <p className="mt-2 text-xs text-ink-soft">No signup, no email. We fetch four public files and your homepage, nothing else.</p>
+      <p className="mt-2 text-xs text-ink-soft">
+        No signup, no email. We fetch four public files and your homepage. This is a citation-readiness signal check — we do not query live ChatGPT, Perplexity, or Google AI Overviews.
+      </p>
       {error && <p className="mt-4 text-red-700">{error}</p>}
       {result && (
         <div className="mt-8">
           <p className="kicker">{result.origin}</p>
-          <p className="mt-2 font-serif text-2xl">{passed} of 6 AI-readiness basics in place</p>
+          <p className="mt-2 font-serif text-2xl">{passed} of 6 citation-readiness basics in place</p>
           <ul className="mt-4">
             <Row ok={result.homepage.reachable} label="Homepage reachable" detail={result.homepage.reachable ? `HTTP ${result.homepage.status}${result.homepage.title ? ` · “${result.homepage.title}”` : ""}` : "We could not load the homepage."} />
             <Row ok={result.robots.found && blocked === 0} label="robots.txt AI-crawler rules" detail={result.robots.found ? `GPTBot ${botLabel(result.robots.gptBot)} · PerplexityBot ${botLabel(result.robots.perplexityBot)} · Google-Extended ${botLabel(result.robots.googleExtended)}` : "No robots.txt found."} />
             <Row ok={result.llmsTxt.found} label="llms.txt" detail={result.llmsTxt.found ? "Found a non-empty /llms.txt." : "No /llms.txt. Optional, but a cheap signal."} />
             <Row ok={result.sitemap.found} label="Sitemap" detail={result.sitemap.found ? "Sitemap found or declared in robots.txt." : "No /sitemap.xml and none declared in robots.txt."} />
-            <Row ok={result.schema.found} label="Structured data (JSON-LD)" detail={result.schema.found ? result.schema.types.join(", ") : "No JSON-LD on the homepage. FAQ/Organization schema helps answer engines."} />
-            <Row ok={result.homepage.hasMetaDescription} label="Meta description" detail={result.homepage.hasMetaDescription ? "Present." : "Missing — answer engines often quote it."} />
+            <Row ok={result.homepage.reachable && result.schema.found} label="Structured data (JSON-LD)" detail={!result.homepage.reachable ? "Not checked — the homepage did not load." : result.schema.found ? result.schema.types.join(", ") : "No JSON-LD on the homepage. FAQ or Organization schema is a citation-readiness signal."} />
+            <Row ok={result.homepage.reachable && result.homepage.hasMetaDescription} label="Meta description" detail={!result.homepage.reachable ? "Not checked — the homepage did not load." : result.homepage.hasMetaDescription ? "Present." : "Missing. Answer engines often quote a meta description when one is present."} />
           </ul>
-          <aside className="mt-8 rounded-2xl border border-rule bg-cream p-6">
-            <p className="kicker text-copper">Next step</p>
-            <h2 className="mt-2 font-serif text-2xl">These are the plumbing checks. The $39 audit scores the content.</h2>
-            <p className="mt-2 text-sm text-ink-soft">
-              The full CiteScore audit grades one page across eight dimensions — answer fitness, evidence, entity clarity, ChatGPT / Perplexity / AI Overviews snapshots — and gives you a 0–100 score with about ten concrete fixes as a PDF.
-            </p>
-            <Link href={`/geo-audit?url=${encodeURIComponent(result.origin)}`} className="mt-4 inline-block rounded-lg bg-copper px-5 py-3 text-cream">
-              Get the full $39 audit →
-            </Link>
-          </aside>
+          <AuditUpsell origin={result.origin} pitch={freeCheckAuditPitch(result)} />
         </div>
       )}
     </div>

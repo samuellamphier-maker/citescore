@@ -24,11 +24,11 @@ export const topicPages: TopicPage[] = [
   },
   {
     path: "/free-check",
-    title: "Free AI search visibility check",
+    title: "Free AI citation-readiness check",
     description:
-      "Free, no-signup check: does your site have llms.txt, AI-crawler rules in robots.txt, a sitemap and JSON-LD schema? Results in seconds.",
+      "Free, no-signup check of crawler access and citation-readiness signals: robots.txt, llms.txt, sitemap, JSON-LD, and the homepage. We do not query live ChatGPT or Perplexity.",
     kicker: "Free tool",
-    card: "Instant check of llms.txt, robots.txt AI-crawler rules, sitemap and schema.",
+    card: "Instant signal check of llms.txt, robots.txt, sitemap, and schema. Not a live ChatGPT query.",
     priority: 1.0,
     publishedAt: "2026-10-09",
     minutes: 4,

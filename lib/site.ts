@@ -7,7 +7,7 @@ export const site = {
   priceLabel: "$39",
   subscriptionPriceLabel: "$29/mo",
   description:
-    "Paste a URL. Get a scored AI-search visibility report for ChatGPT, Perplexity, and Google AI Overviews — plus the concrete fixes that would get the site cited.",
+    "Check crawler access and AI citation-readiness signals for free. The $39 audit is a prioritized, page-specific action plan from those signals — not a live ChatGPT or Perplexity query.",
 } as const;
 
 /** Canonical public origin. Prefer an explicit env, then Vercel production. */

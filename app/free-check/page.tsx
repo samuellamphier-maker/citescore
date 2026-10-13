@@ -32,8 +32,8 @@ export default function FreeCheckPage() {
     >
         <FreeCheckTool />
         <h2>What this free check looks at</h2>
-        <p>Six basics that decide whether ChatGPT, Perplexity and Google AI Overviews can even read your site: homepage reachability, AI-crawler rules in robots.txt (GPTBot, PerplexityBot, Google-Extended), llms.txt, sitemap, JSON-LD schema and meta description.</p>
-        <p>Passing all six means the door is open. Whether you get cited depends on the content itself — that is what the <Link href="/geo-audit">$39 audit</Link> scores.</p>
+        <p>Six public citation-readiness signals: homepage reachability, AI-crawler rules in robots.txt (GPTBot, PerplexityBot, Google-Extended), llms.txt, sitemap, JSON-LD schema, and a meta description. CiteScore reads those files. It does not query live ChatGPT, Perplexity, or Google AI Overviews.</p>
+        <p>Passing all six means the basics are in place. Whether an answer engine cites the page depends on the content itself — that is what the <Link href="/geo-audit">$39 audit</Link> turns into a prioritized, page-specific fix list.</p>
       <p><Link href="/free-check">Run the free check</Link></p>
     </ArticleShell>
   );
