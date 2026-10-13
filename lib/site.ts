@@ -34,6 +34,18 @@ export const agencyKitUrl =
 
 export const agencyKitLabel = "GEO Agency Kit ($29)";
 
+export const whiteLabelAuditUrl =
+  "https://buy.polar.sh/polar_cl_4ixeoD1VrmaShwkSL60gREF6CT2o9LBv4UGrS2AlPoA";
+
+export const whiteLabelAuditLabel = "White-Label AI Search Audit ($149)";
+
+export const doneForYouAuditUrl =
+  "https://buy.polar.sh/polar_cl_wrxkQcHorscqB0oSBLLNLAU7cpFt4YBZ26D1q0SCh6C";
+
+export const doneForYouAuditPath = "/done-for-you-audit";
+
+export const doneForYouAuditLabel = "Done-For-You AI Search Audit ($99)";
+
 /**
  * Stripe Payment Links persist `client_reference_id` onto the Checkout
  * Session (200-char limit). That is how the webhook recovers `site_url`.

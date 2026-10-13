@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
+import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
 type Related = {
   href: string;
@@ -53,7 +54,22 @@ export function ArticleShell({
           </p>
         ) : null}
         <div className="article-prose mt-10">{children}</div>
-        <AuditCta id={ctaId} />
+        <AuditCta
+          id={ctaId}
+          footer={
+            guidePath ? (
+              <p className="text-sm leading-6 text-ink-soft">
+                <Link
+                  href={doneForYouAuditPath}
+                  className="font-medium text-forest underline underline-offset-4"
+                >
+                  {doneForYouAuditLabel}
+                </Link>
+                . A written walkthrough, delivered within 3 business days.
+              </p>
+            ) : null
+          }
+        />
         {guidePath ? <RelatedGuides current={guidePath} /> : null}
         {related.length > 0 ? (
           <nav className="mt-10 border-t border-rule pt-6" aria-label="Related">

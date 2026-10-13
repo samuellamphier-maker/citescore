@@ -76,6 +76,12 @@ export const marketingPaths: MarketingPath[] = [
     priority: 0.8,
     lastModified: "2026-10-13",
   },
+  {
+    path: "/done-for-you-audit",
+    changeFrequency: "monthly",
+    priority: 0.8,
+    lastModified: "2026-10-13",
+  },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
   ...blogPosts.map((post) => ({
     path: `/blog/${post.slug}`,

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { AuditForm } from "@/components/AuditForm";
 import { site } from "@/lib/site";
 
@@ -5,12 +6,14 @@ type Props = {
   id?: string;
   title?: string;
   body?: string;
+  footer?: ReactNode;
 };
 
 export function AuditCta({
   id = "article-audit",
   title = `Get the ${site.priceLabel} GEO audit`,
   body = "One public URL. A 0–100 CiteScore and about ten concrete fixes, as a PDF. We score on-page signals and run an LLM review of the HTML we fetched — we do not log into ChatGPT on your behalf.",
+  footer,
 }: Props) {
   return (
     <aside className="mt-12 rounded-2xl border border-rule bg-cream p-6 report-sheet">
@@ -22,6 +25,7 @@ export function AuditCta({
       <div className="mt-5">
         <AuditForm id={id} size="compact" />
       </div>
+      {footer ? <div className="mt-4 border-t border-rule pt-4">{footer}</div> : null}
     </aside>
   );
 }

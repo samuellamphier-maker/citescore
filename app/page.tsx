@@ -109,6 +109,15 @@ export default function HomePage() {
                 The free check reads public files on your site. CiteScore does
                 not query live ChatGPT, Perplexity, or Google AI Overviews.
               </p>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
+                <Link
+                  href="/done-for-you-audit"
+                  className="font-medium text-forest underline underline-offset-4 hover:underline"
+                >
+                  Done-For-You AI Search Audit ($99)
+                </Link>
+                . A written walkthrough, delivered within 3 business days.
+              </p>
             </div>
 
             <aside className="report-sheet rounded-2xl border border-rule p-6">

@@ -5,12 +5,19 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
-import { agencyKitLabel, agencyKitUrl, publicOrigin, site } from "@/lib/site";
+import {
+  agencyKitLabel,
+  agencyKitUrl,
+  publicOrigin,
+  site,
+  whiteLabelAuditLabel,
+  whiteLabelAuditUrl,
+} from "@/lib/site";
 
 const path = "/for-agencies";
 const title = "GEO audits for SEO agencies";
 const description =
-  "How an SEO agency uses the free CiteScore check, the $39 audit, and the $29 GEO Agency Kit to sell an AI-search engagement. The check reads public files. It does not query ChatGPT.";
+  "How an SEO agency uses the free CiteScore check, the $39 audit, the $149 white-label PDF, and the $29 GEO Agency Kit. The check reads public files. It does not query ChatGPT.";
 
 export const metadata: Metadata = pageMeta({
   title,
@@ -73,6 +80,10 @@ const faqs = [
   {
     q: "What do I hand over from the $39 audit?",
     a: "One PDF for one URL, plus a web copy of the same report. It has a 0–100 CiteScore, dimension scores, an inferred engine snapshot, and about ten prioritized fixes. The snapshot is an inference from the HTML we fetched. The report says so.",
+  },
+  {
+    q: "What is the white-label audit?",
+    a: "An unbranded PDF of the AI search audit, for $149, delivered within 3 business days. It is a separate purchase from the $39 self-serve audit and the $29 kit.",
   },
   {
     q: "What is in the $29 kit?",
@@ -173,6 +184,36 @@ export default function ForAgenciesPage() {
                 Sample report — fictional, labeled
               </Link>
             </aside>
+          </div>
+        </section>
+
+        <section id="white-label" className="border-b border-rule/80 bg-ink text-cream">
+          <div className="mx-auto grid max-w-5xl gap-10 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.7fr)] lg:items-center">
+            <div>
+              <p className="kicker text-[#d7c7b0]">For client delivery</p>
+              <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-5xl sm:leading-[1.1]">
+                {whiteLabelAuditLabel}
+              </h2>
+              <p className="mt-4 max-w-xl text-lg leading-8 text-[#d7c7b0]">
+                An unbranded PDF. Delivered within 3 business days. You send
+                one public URL. The file you get back has no CiteScore
+                branding, so you can hand it to a client under your own name.
+              </p>
+            </div>
+            <div>
+              <p className="font-serif text-6xl tracking-tight">$149</p>
+              <p className="mt-2 text-sm leading-6 text-[#d7c7b0]">
+                Unbranded PDF · 3 business days
+              </p>
+              <a
+                href={whiteLabelAuditUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 flex h-12 items-center justify-center rounded-lg bg-cream text-ink hover:bg-paper"
+              >
+                Buy the white-label audit
+              </a>
+            </div>
           </div>
         </section>
 
