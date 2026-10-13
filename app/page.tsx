@@ -16,24 +16,24 @@ export const metadata: Metadata = {
 const steps = [
   {
     n: "01",
-    title: "Paste the URL",
-    body: "The public page you want cited — homepage, docs, or a landing URL you send to buyers.",
+    title: "Check for free",
+    body: "We read public crawler access and citation-readiness signals — robots.txt, llms.txt, sitemap, schema, and the homepage. No signup. We do not query ChatGPT or Perplexity.",
   },
   {
     n: "02",
-    title: "We score AI visibility",
-    body: "A CiteScore from 0–100 across ChatGPT, Perplexity, and Google AI Overviews, with a dimension breakdown.",
+    title: "See what's missing",
+    body: "The free check lists the basics that are in place and the issues that are not. A passing row means the signal is present. It is not a live answer from an AI search product.",
   },
   {
     n: "03",
-    title: "You get ~10 concrete fixes",
-    body: "A PDF you can action this week: what to write, where to put it, and why a model would then cite you.",
+    title: "Get the $39 action plan",
+    body: "One URL, one PDF: a 0–100 CiteScore and about ten prioritized, page-specific fixes, estimated from those signals and the public HTML we fetched.",
   },
 ];
 
 const deliverables = [
   "Overall CiteScore (0–100) and a plain-language grade",
-  "Per-engine snapshot: ChatGPT, Perplexity, Google AI Overviews",
+  "Inferred snapshot for ChatGPT, Perplexity, and Google AI Overviews — not a live query",
   "Dimension scores — answers, entities, evidence, markup, freshness",
   "Ten prioritized fixes with effort, impact, and the exact page to change",
   "A print-ready PDF you can send to a founder or a client",
@@ -82,18 +82,33 @@ export default function HomePage() {
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:py-20">
             <div>
-              <p className="kicker">GEO audit · ChatGPT · Perplexity · AI Overviews</p>
+              <p className="kicker">Free check · citation-readiness signals</p>
               <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] tracking-tight text-ink sm:text-5xl sm:leading-[1.1]">
-                Would ChatGPT cite your product — or a competitor’s blog post?
+                Is your website ready to be cited by AI search?
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-8 text-ink-soft">
-                CiteScore is a {site.priceLabel} AI-visibility audit for indie
-                SaaS founders and small SEO shops. Paste a URL. Get a 0–100
-                score and the concrete changes that would get you cited.
+                Check your crawler access and AI citation-readiness signals
+                for free. See what&apos;s missing, then get a prioritized,
+                page-specific action plan for {site.priceLabel}.
               </p>
-              <div id="audit" className="mt-8 max-w-xl">
-                <AuditForm id="hero-audit" />
+              <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/free-check"
+                  className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
+                >
+                  Check for free
+                </Link>
+                <Link
+                  href="/#audit"
+                  className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink"
+                >
+                  Get the {site.priceLabel} audit
+                </Link>
               </div>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
+                The free check reads public files on your site. CiteScore does
+                not query live ChatGPT, Perplexity, or Google AI Overviews.
+              </p>
             </div>
 
             <aside className="report-sheet rounded-2xl border border-rule p-6">
@@ -131,7 +146,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl px-5 py-14">
             <p className="kicker">How it works</p>
             <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-              Three steps. A score. A short list.
+              Free check first. Then a page-specific plan.
             </h2>
             <ol className="mt-10 grid gap-0 border-t border-rule sm:grid-cols-3">
               {steps.map((step) => (
@@ -159,8 +174,9 @@ export default function HomePage() {
               </h2>
               <p className="mt-4 text-ink-soft leading-7">
                 Agencies use it as the first artifact in a GEO engagement.
-                Founders use it as a Monday punch list. Either way, it is a
-                scored audit — not a chatbot transcript.
+                Founders use it as a Monday punch list. Either way, it scores
+                citation-readiness signals — not a chatbot transcript, and not
+                a live ChatGPT or Perplexity result.
               </p>
             </div>
             <ul className="space-y-3">
@@ -244,6 +260,9 @@ export default function HomePage() {
                 <li>— Built for one founder or one client engagement</li>
                 <li>— Payment link checkout (Stripe or Lemon Squeezy)</li>
               </ul>
+              <div id="audit" className="mt-8 max-w-xl">
+                <AuditForm id="pricing-audit" />
+              </div>
             </div>
             <div className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
               <p className="kicker text-[#d7c7b0]">One-time audit</p>

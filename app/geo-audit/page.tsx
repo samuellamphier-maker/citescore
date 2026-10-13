@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import { publicOrigin, site } from "@/lib/site";
+import { normalizeSiteUrl } from "@/lib/urls";
 
 const description =
   "A one-time generative engine optimization audit. On-page GEO signals plus an LLM review of public HTML — not a live ChatGPT login. PDF with a 0–100 score and about ten fixes.";
@@ -39,7 +40,17 @@ const faqs = [
   },
 ];
 
-export default function GeoAuditPage() {
+function firstString(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function GeoAuditPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ url?: string | string[] }>;
+}) {
+  const params = await searchParams;
+  const siteUrl = normalizeSiteUrl(firstString(params.url) ?? "") ?? "";
   const origin = publicOrigin();
 
   return (
@@ -87,7 +98,7 @@ export default function GeoAuditPage() {
                 dashboard.
               </p>
               <div id="audit" className="mt-8 max-w-xl">
-                <AuditForm id="geo-audit-form" />
+                <AuditForm id="geo-audit-form" defaultUrl={siteUrl} />
               </div>
             </div>
             <aside className="report-sheet rounded-2xl border border-rule p-6">
