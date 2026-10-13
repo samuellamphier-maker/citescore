@@ -12,6 +12,28 @@ export type TopicPage = {
 /** Indexable pages for searches the blog, /geo-audit, and /alternatives do not already own. */
 export const topicPages: TopicPage[] = [
   {
+    path: "/llms-txt-examples",
+    title: "llms.txt examples: 10 real SaaS sites and what they get right",
+    description:
+      "Ten SaaS llms.txt files fetched on 13 October 2026 — Vercel, Stripe, Cloudflare, Anthropic, and six others — and the specific choice each file gets right.",
+    kicker: "Guide",
+    card: "Ten live files, fetched 13 October 2026, and the one choice each file makes well.",
+    priority: 0.8,
+    publishedAt: "2026-10-13",
+    minutes: 16,
+  },
+  {
+    path: "/geo-vs-seo",
+    title: "GEO vs SEO: what changes when AI answers the question",
+    description:
+      "GEO and SEO answer different questions. What changes when the result is a quoted answer, what stays the same, and what a free check or a $39 audit can see.",
+    kicker: "Guide",
+    card: "What changes when the result is a quoted answer, and what a rank report still does not say.",
+    priority: 0.8,
+    publishedAt: "2026-10-13",
+    minutes: 12,
+  },
+  {
     path: "/how-to-get-cited-by-ai-answer-engines",
     title: "How to get your site cited by AI answer engines",
     description:

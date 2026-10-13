@@ -20,6 +20,9 @@ export function SiteFooter() {
           <Link href="/blog" className="hover:text-ink">
             Guides
           </Link>
+          <Link href="/checklist" className="hover:text-ink">
+            Checklist
+          </Link>
           <Link href="/geo-audit" className="hover:text-ink">
             GEO audit
           </Link>
