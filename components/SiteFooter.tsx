@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { templatePackLabel, templatePackUrl } from "@/lib/site";
+import { agencyKitLabel, agencyKitUrl, templatePackLabel, templatePackUrl } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -31,6 +31,17 @@ export function SiteFooter() {
             rel="noopener noreferrer"
           >
             {templatePackLabel}
+          </a>
+          <Link href="/for-agencies" className="hover:text-ink">
+            For agencies
+          </Link>
+          <a
+            href={agencyKitUrl}
+            className="hover:text-ink"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {agencyKitLabel}
           </a>
           <Link href="/geo-audit" className="hover:text-ink">
             GEO audit

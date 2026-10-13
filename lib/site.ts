@@ -29,6 +29,11 @@ export const templatePackUrl =
 
 export const templatePackLabel = "GEO Content Template Pack ($19)";
 
+export const agencyKitUrl =
+  "https://buy.polar.sh/polar_cl_uy56d9a8UROOTnRqnqzGYgDVv0SlA47ymXKox008zil";
+
+export const agencyKitLabel = "GEO Agency Kit ($29)";
+
 /**
  * Stripe Payment Links persist `client_reference_id` onto the Checkout
  * Session (200-char limit). That is how the webhook recovers `site_url`.

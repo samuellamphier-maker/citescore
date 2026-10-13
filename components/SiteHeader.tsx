@@ -19,6 +19,9 @@ export function SiteHeader() {
           <Link href="/checklist" className="hover:text-ink">
             Checklist
           </Link>
+          <Link href="/for-agencies" className="hover:text-ink">
+            For agencies
+          </Link>
           <a
             href={templatePackUrl}
             className="hover:text-ink"
