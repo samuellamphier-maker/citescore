@@ -75,6 +75,78 @@ export const topicPages: TopicPage[] = [
     minutes: 10,
   },
   {
+    path: "/how-to-get-cited-by-claude",
+    title: "How to get cited by Claude",
+    description:
+      "What Anthropic publishes: ClaudeBot, Claude-SearchBot, and Claude-User are separate robots.txt controls. A training opt-out is not a search opt-out.",
+    kicker: "Guide",
+    card: "The three Anthropic robots, which one indexes pages for search, and what the crawler page does not require.",
+    navLabel: "How to get cited by Claude",
+    priority: 0.8,
+    publishedAt: "2026-10-14",
+    minutes: 9,
+  },
+  {
+    path: "/how-to-get-cited-by-gemini",
+    title: "How to get cited by Gemini",
+    description:
+      "Google-Extended controls Gemini Apps grounding and future Gemini training. AI Overviews stay a Google Search feature with a different control.",
+    kicker: "Guide",
+    card: "The Gemini Apps token, and why it does not add or remove AI Overviews.",
+    navLabel: "How to get cited by Gemini",
+    priority: 0.8,
+    publishedAt: "2026-10-14",
+    minutes: 9,
+  },
+  {
+    path: "/how-to-get-cited-by-copilot",
+    title: "How to get cited by Microsoft Copilot",
+    description:
+      "Bing’s guidelines put Copilot on the same crawl and index as Bing search. Bingbot, noindex, noarchive, and nocache are the controls Microsoft publishes.",
+    kicker: "Guide",
+    card: "Bingbot, and the meta tags Bing says change Copilot answers.",
+    navLabel: "How to get cited by Microsoft Copilot",
+    priority: 0.8,
+    publishedAt: "2026-10-14",
+    minutes: 10,
+  },
+  {
+    path: "/geo-for-local-businesses",
+    title: "GEO for local businesses",
+    description:
+      "What Google requires on LocalBusiness markup: name and address, hours and geo when they are true, and why a business should not mark up its own reviews.",
+    kicker: "Guide",
+    card: "The location page, the Business Profile, and the fields Google lists as required.",
+    navLabel: "GEO for local businesses",
+    priority: 0.8,
+    publishedAt: "2026-10-14",
+    minutes: 9,
+  },
+  {
+    path: "/llms-txt-best-practices",
+    title: "llms.txt best practices",
+    description:
+      "The llms.txt v2 section order, the mistakes that break it, and a validation pass the CiteScore fetch does not do. Includes the free generator.",
+    kicker: "Guide",
+    card: "Common mistakes against the v2 spec, and how to check the file before you upload it.",
+    navLabel: "llms.txt best practices",
+    priority: 0.8,
+    publishedAt: "2026-10-14",
+    minutes: 10,
+  },
+  {
+    path: "/ai-search-visibility-for-ecommerce",
+    title: "AI search visibility for ecommerce",
+    description:
+      "Product snippets versus merchant listings: the price, image, and availability fields Google requires on a page where the shopper can buy.",
+    kicker: "Guide",
+    card: "Product schema for a page someone can buy from, and what an AI shopping answer can repeat.",
+    navLabel: "AI search visibility for ecommerce",
+    priority: 0.8,
+    publishedAt: "2026-10-14",
+    minutes: 11,
+  },
+  {
     path: "/google-ai-overviews-optimization",
     title: "Google AI Overviews optimization",
     description:
@@ -270,13 +342,19 @@ export const topicPages: TopicPage[] = [
 const guideNavOrder = [
   "/how-to-get-cited-by-chatgpt",
   "/how-to-get-cited-by-perplexity",
+  "/how-to-get-cited-by-claude",
+  "/how-to-get-cited-by-gemini",
+  "/how-to-get-cited-by-copilot",
   "/google-ai-overviews-optimization",
   "/ai-search-readiness-checklist-for-saas",
   "/geo-vs-seo",
+  "/geo-for-local-businesses",
+  "/ai-search-visibility-for-ecommerce",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",
   "/llms-txt-examples",
+  "/llms-txt-best-practices",
 ];
 
 export function getTopic(path: string) {

@@ -25,6 +25,8 @@ type Props = {
   ctaId?: string;
   /** When set, render the shared Related guides list for this path. */
   guidePath?: string;
+  /** Paid audit box. Guides that only link the free check and checkout set this false. */
+  showAuditCta?: boolean;
 };
 
 export function ArticleShell({
@@ -38,6 +40,7 @@ export function ArticleShell({
   related = [],
   ctaId,
   guidePath,
+  showAuditCta = true,
 }: Props) {
   return (
     <>
@@ -54,22 +57,24 @@ export function ArticleShell({
           </p>
         ) : null}
         <div className="article-prose mt-10">{children}</div>
-        <AuditCta
-          id={ctaId}
-          footer={
-            guidePath ? (
-              <p className="text-sm leading-6 text-ink-soft">
-                <Link
-                  href={doneForYouAuditPath}
-                  className="font-medium text-forest underline underline-offset-4"
-                >
-                  {doneForYouAuditLabel}
-                </Link>
-                . A written walkthrough, delivered within 3 business days.
-              </p>
-            ) : null
-          }
-        />
+        {showAuditCta ? (
+          <AuditCta
+            id={ctaId}
+            footer={
+              guidePath ? (
+                <p className="text-sm leading-6 text-ink-soft">
+                  <Link
+                    href={doneForYouAuditPath}
+                    className="font-medium text-forest underline underline-offset-4"
+                  >
+                    {doneForYouAuditLabel}
+                  </Link>
+                  . A written walkthrough, delivered within 3 business days.
+                </p>
+              ) : null
+            }
+          />
+        ) : null}
         {guidePath ? <RelatedGuides current={guidePath} /> : null}
         {related.length > 0 ? (
           <nav className="mt-10 border-t border-rule pt-6" aria-label="Related">
