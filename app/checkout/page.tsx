@@ -166,6 +166,17 @@ export default async function CheckoutPage({
           . Refunds: 14 days if the file is missing, unreadable, or about the
           wrong URL.
         </p>
+        <p className="mt-3 text-sm leading-6 text-ink-soft">
+          Sold by CiteScore Team.{" "}
+          <Link href="/terms" className="text-forest underline">
+            Terms
+          </Link>{" "}
+          and{" "}
+          <Link href="/privacy" className="text-forest underline">
+            Privacy
+          </Link>
+          .
+        </p>
       </main>
       <SiteFooter />
     </>

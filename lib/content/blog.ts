@@ -83,6 +83,12 @@ export const marketingPaths: MarketingPath[] = [
     lastModified: "2026-10-13",
   },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
+  {
+    path: "/terms",
+    changeFrequency: "yearly",
+    priority: 0.3,
+    lastModified: "2026-10-14",
+  },
   ...blogPosts.map((post) => ({
     path: `/blog/${post.slug}`,
     changeFrequency: "monthly" as const,
