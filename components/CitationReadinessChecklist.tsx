@@ -8,6 +8,12 @@ import {
 
 const STORAGE_KEY = "citescore-citation-checklist";
 
+const itemNumbers = new Map(
+  citationCheckGroups
+    .flatMap((group) => group.items)
+    .map((item, index) => [item.id, String(index + 1).padStart(2, "0")]),
+);
+
 function loadStored(): string[] {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -28,6 +34,8 @@ export function CitationReadinessChecklist() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    // After mount, so the server HTML matches the first client render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate marks from localStorage
     setChecked(loadStored());
     setReady(true);
   }, []);
@@ -57,7 +65,6 @@ export function CitationReadinessChecklist() {
 
   const done = checked.length;
   const total = citationChecks.length;
-  let index = 0;
 
   return (
     <div>
@@ -102,8 +109,7 @@ export function CitationReadinessChecklist() {
             <p className="mt-3 text-sm leading-6 text-ink-soft">{group.intro}</p>
             <ol className="mt-5 space-y-3">
               {group.items.map((item) => {
-                index += 1;
-                const number = String(index).padStart(2, "0");
+                const number = itemNumbers.get(item.id) ?? "";
                 const isChecked = checked.includes(item.id);
                 return (
                   <li key={item.id}>

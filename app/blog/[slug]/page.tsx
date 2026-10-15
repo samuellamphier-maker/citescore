@@ -62,6 +62,7 @@ export default async function BlogPostPage({
     ],
     "citescore-vs-enterprise-geo-tools": [
       { href: "/alternatives/profound", label: "CiteScore vs Profound" },
+      { href: "/alternatives/peec-ai", label: "CiteScore vs Peec AI" },
       { href: "/answer-engine-optimization", label: "Answer engine optimization (AEO)" },
       { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
     ],

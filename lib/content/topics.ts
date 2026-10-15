@@ -274,6 +274,18 @@ export const topicPages: TopicPage[] = [
     minutes: 4,
   },
   {
+    path: "/organization-schema-generator",
+    title: "Free Organization schema generator",
+    description:
+      "Free, no-signup Organization JSON-LD generator. Add the name, URL, logo, description, profile URLs, and contact email, and optionally a WebSite block. Copy the script. Nothing is uploaded.",
+    kicker: "Organization schema",
+    card: "Copy Organization JSON-LD, and an optional WebSite block, from facts already on the page.",
+    navLabel: "Organization schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-15",
+    minutes: 5,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -359,6 +371,18 @@ export const topicPages: TopicPage[] = [
     card: "A punch-list PDF versus a Profound-class citation dashboard.",
     priority: 0.8,
     publishedAt: "2026-10-03",
+    minutes: 7,
+  },
+  {
+    path: "/alternatives/peec-ai",
+    title: "CiteScore vs Peec AI",
+    description:
+      "CiteScore is a $39 one-time GEO audit of one URL. Peec AI is ongoing AI-search analytics for marketing teams: prompts, visibility, position, and sentiment. Different jobs.",
+    kicker: "Comparison",
+    card: "A one-time punch-list PDF versus Peec AI’s ongoing AI-search analytics.",
+    navLabel: "CiteScore vs Peec AI",
+    priority: 0.8,
+    publishedAt: "2026-10-15",
     minutes: 7,
   },
 ];

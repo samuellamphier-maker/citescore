@@ -183,8 +183,15 @@ export default async function GeoAuditPage({
                     className="text-forest underline"
                   >
                     Otterly
-                  </Link>{" "}
-                  or a{" "}
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/alternatives/peec-ai"
+                    className="text-forest underline"
+                  >
+                    Peec AI
+                  </Link>
+                  , or a{" "}
                   <Link
                     href="/blog/citescore-vs-enterprise-geo-tools"
                     className="text-forest underline"

@@ -156,7 +156,11 @@ export function GeoVsSeoArticle() {
       <h2>Schema extracts. It does not rank.</h2>
       <p>
         Organization, SoftwareApplication, and FAQPage JSON-LD give a parser
-        a labeled copy of facts that are already in the HTML. The name in
+        a labeled copy of facts that are already in the HTML. The{" "}
+        <Link href="/organization-schema-generator">
+          Organization schema generator
+        </Link>{" "}
+        copies that Organization block from a form. The name in
         the schema has to match the name in the H1. FAQPage is for questions
         a person can read on that page. Google stopped showing FAQ rich
         results in May 2026, so this markup will not restore an accordion

@@ -24,6 +24,7 @@ export function AdminConsole() {
   useEffect(() => {
     const saved = sessionStorage.getItem(TOKEN_KEY) || "";
     if (saved) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- restore the admin token after mount
       setToken(saved);
       setDraft(saved);
     }
@@ -55,7 +56,9 @@ export function AdminConsole() {
   }, [headers, token]);
 
   useEffect(() => {
-    if (token) void load();
+    if (!token) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- load() fetches jobs and stores the response
+    void load();
   }, [token, load]);
 
   async function retry(id: string) {

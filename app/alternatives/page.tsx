@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "CiteScore alternatives",
   description:
-    "How a $39 one-off GEO audit compares with Otterly- and Profound-class AI-visibility platforms — and when to buy which.",
+    "How a $39 one-off GEO audit compares with Otterly, Profound, and Peec AI — ongoing AI-visibility monitors — and when to buy which.",
   path: "/alternatives",
 });
 
@@ -22,6 +22,11 @@ const links = [
     href: "/alternatives/profound",
     title: "CiteScore vs Profound",
     dek: "Profound is the enterprise citation-share platform. CiteScore is still the $39 punch-list PDF.",
+  },
+  {
+    href: "/alternatives/peec-ai",
+    title: "CiteScore vs Peec AI",
+    dek: "Peec AI is ongoing AI-search analytics for marketing teams. CiteScore is the one-time page audit.",
   },
   {
     href: "/blog/citescore-vs-enterprise-geo-tools",
@@ -46,9 +51,9 @@ export default function AlternativesIndexPage() {
         </h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">
           CiteScore is not trying to replace a mention-tracking suite. These
-          pages exist so a founder searching “Otterly alternative” or
-          “Profound vs …” can see the honest split: {site.priceLabel} once
-          versus a monthly monitor.
+          pages exist so a founder searching “Otterly alternative,”
+          “Profound vs …,” or “Peec AI alternative” can see the honest
+          split: {site.priceLabel} once versus a monthly monitor.
         </p>
         <ul className="mt-10 divide-y divide-rule border-y border-rule">
           {links.map((item) => (

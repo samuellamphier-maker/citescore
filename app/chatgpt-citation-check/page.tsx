@@ -153,7 +153,8 @@ export default function ChatgptCitationCheckPage() {
           A check of your homepage cannot reproduce that. If you need “for
           these 40 prompts, did ChatGPT mention us this week?”, that is a
           monitoring product.{" "}
-          <Link href="/alternatives/otterly">Otterly</Link> and{" "}
+          <Link href="/alternatives/otterly">Otterly</Link>,{" "}
+          <Link href="/alternatives/peec-ai">Peec AI</Link>, and{" "}
           <Link href="/alternatives/profound">Profound</Link> sell that job.
           CiteScore sells the prior job: make the page worth mentioning
           before you pay to watch prompts.

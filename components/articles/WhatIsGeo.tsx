@@ -126,8 +126,8 @@ export function WhatIsGeoArticle() {
         That honesty is the product. A founder who needs a Monday punch list
         does not need a $400/month mention dashboard. A team that{" "}
         <em>does</em> need daily prompt tracking should look at{" "}
-        <Link href="/alternatives/otterly">Otterly-class monitoring</Link> or
-        a{" "}
+        <Link href="/alternatives/otterly">Otterly-class monitoring</Link>,{" "}
+        <Link href="/alternatives/peec-ai">Peec AI</Link>, or a{" "}
         <Link href="/blog/citescore-vs-enterprise-geo-tools">
           Profound-class enterprise suite
         </Link>

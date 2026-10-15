@@ -124,7 +124,8 @@ export default function PerplexityCitationsPage() {
             third-party roundup, the roundup gets the number. An honest{" "}
             <code>/compare</code> or <code>/alternatives</code> page is the
             fix. We did the smaller version of that for{" "}
-            <Link href="/alternatives/otterly">Otterly</Link> and{" "}
+            <Link href="/alternatives/otterly">Otterly</Link>,{" "}
+            <Link href="/alternatives/peec-ai">Peec AI</Link>, and{" "}
             <Link href="/alternatives/profound">Profound</Link>.
           </li>
           <li>
