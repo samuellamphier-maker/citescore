@@ -111,6 +111,18 @@ export const topicPages: TopicPage[] = [
     minutes: 10,
   },
   {
+    path: "/how-to-get-cited-by-grok",
+    title: "How to get cited by Grok",
+    description:
+      "What xAI documents for Grok web citations: the Web Search tool, sources encountered versus inline links, and the robots.txt token xAI does not publish.",
+    kicker: "Guide",
+    card: "Web Search citations, X posts as a separate source, and the crawler token xAI does not publish.",
+    navLabel: "How to get cited by Grok",
+    priority: 0.8,
+    publishedAt: "2026-10-15",
+    minutes: 11,
+  },
+  {
     path: "/geo-for-local-businesses",
     title: "GEO for local businesses",
     description:
@@ -156,6 +168,18 @@ export const topicPages: TopicPage[] = [
     navLabel: "Google AI Overviews optimization",
     priority: 0.9,
     publishedAt: "2026-10-13",
+    minutes: 12,
+  },
+  {
+    path: "/google-ai-mode-optimization",
+    title: "Google AI Mode optimization",
+    description:
+      "How Google AI Mode differs from AI Overviews: subtopic searches, follow-up queries, position, and the same snippet and Search Console controls.",
+    kicker: "Guide",
+    card: "Subtopic fan-out, follow-ups counted as new queries, and the controls that do not change AI Mode.",
+    navLabel: "Google AI Mode optimization",
+    priority: 0.8,
+    publishedAt: "2026-10-15",
     minutes: 12,
   },
   {
@@ -345,7 +369,9 @@ const guideNavOrder = [
   "/how-to-get-cited-by-claude",
   "/how-to-get-cited-by-gemini",
   "/how-to-get-cited-by-copilot",
+  "/how-to-get-cited-by-grok",
   "/google-ai-overviews-optimization",
+  "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",
   "/geo-vs-seo",
   "/geo-for-local-businesses",

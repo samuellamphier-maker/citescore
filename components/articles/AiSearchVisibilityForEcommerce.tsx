@@ -42,6 +42,10 @@ export function AiSearchVisibilityForEcommerceArticle() {
         on{" "}
         <Link href="/google-ai-overviews-optimization">
           Google AI Overviews optimization
+        </Link>{" "}
+        and{" "}
+        <Link href="/google-ai-mode-optimization">
+          Google AI Mode optimization
         </Link>
         . Markup for pages that are not a product is on{" "}
         <Link href="/schema-markup-for-ai-search">

@@ -19,6 +19,7 @@ export default function HowToGetCitedByCopilotPage() {
     <GuideDocument
       topic={topic}
       related={guideLinks([
+        { href: "/how-to-get-cited-by-grok", label: "How to get cited by Grok" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}

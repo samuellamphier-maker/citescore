@@ -32,6 +32,11 @@ export function GoogleAiOverviewsOptimizationArticle() {
         <a href={aiGuide}>
           optimizing your website for generative AI features on Google Search
         </a>
+        . What is specific to AI Mode — subtopics searched at the same time,
+        follow-up questions counted as new queries, and position — is on{" "}
+        <Link href="/google-ai-mode-optimization">
+          Google AI Mode optimization
+        </Link>
         . ChatGPT and Perplexity publish different controls, covered on{" "}
         <Link href="/how-to-get-cited-by-chatgpt">
           how to get cited by ChatGPT

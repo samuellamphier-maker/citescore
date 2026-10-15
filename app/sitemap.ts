@@ -9,6 +9,8 @@ const addedGuidePaths = [
   "/how-to-get-cited-by-claude",
   "/how-to-get-cited-by-gemini",
   "/how-to-get-cited-by-copilot",
+  "/how-to-get-cited-by-grok",
+  "/google-ai-mode-optimization",
   "/geo-for-local-businesses",
   "/llms-txt-best-practices",
   "/ai-search-visibility-for-ecommerce",

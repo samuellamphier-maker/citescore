@@ -19,10 +19,15 @@ export function AiSearchReadinessChecklistForSaasArticle() {
         page wins, and the items below follow the vendor page. The engine
         essays are{" "}
         <Link href="/how-to-get-cited-by-chatgpt">ChatGPT</Link>,{" "}
-        <Link href="/how-to-get-cited-by-perplexity">Perplexity</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-perplexity">Perplexity</Link>,{" "}
         <Link href="/google-ai-overviews-optimization">
           Google AI Overviews
         </Link>
+        , and{" "}
+        <Link href="/google-ai-mode-optimization">Google AI Mode</Link>.
+        Grok’s documented web citations, which do not include a robots.txt
+        token, are on{" "}
+        <Link href="/how-to-get-cited-by-grok">how to get cited by Grok</Link>
         .
       </p>
 

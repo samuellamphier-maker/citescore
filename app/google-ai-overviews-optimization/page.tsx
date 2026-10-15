@@ -48,6 +48,7 @@ export default function GoogleAiOverviewsOptimizationPage() {
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },
+          { href: "/google-ai-mode-optimization", label: "Google AI Mode optimization" },
           { href: "/ai-overviews", label: "Google AI Overviews visibility" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
         ]}

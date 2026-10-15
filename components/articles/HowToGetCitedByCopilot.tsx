@@ -24,6 +24,9 @@ export function HowToGetCitedByCopilotArticle() {
       </p>
       <p>
         ChatGPT, Perplexity, Claude, and Gemini publish their own controls.
+        xAI’s Web Search tool, which does not come with a robots.txt token,
+        is on{" "}
+        <Link href="/how-to-get-cited-by-grok">how to get cited by Grok</Link>.
         The map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

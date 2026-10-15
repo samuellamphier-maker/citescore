@@ -25,8 +25,14 @@ export function HowToGetCitedByGeminiArticle() {
         The Search half of this is{" "}
         <Link href="/google-ai-overviews-optimization">
           Google AI Overviews optimization
+        </Link>{" "}
+        and{" "}
+        <Link href="/google-ai-mode-optimization">
+          Google AI Mode optimization
         </Link>
-        . ChatGPT, Perplexity, Claude, and Copilot publish different
+        . AI Mode uses the same snippet and Search Console rules, and a
+        different position rule. ChatGPT, Perplexity, Claude, and Copilot
+        publish different
         controls, linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
