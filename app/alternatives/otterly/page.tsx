@@ -150,8 +150,8 @@ export default function OtterlyAlternativePage() {
           <p>
             For Profound-class enterprise suites (citation share, SSO, SOC
             2), read{" "}
-            <Link href="/alternatives/profound">CiteScore vs Profound</Link>{" "}
-            or the longer{" "}
+            <Link href="/alternatives/profound">CiteScore vs Profound</Link>,{" "}
+            <Link href="/alternatives/peec-ai">CiteScore vs Peec AI</Link>, or the longer{" "}
             <Link href="/blog/citescore-vs-enterprise-geo-tools">
               enterprise comparison
             </Link>

@@ -168,9 +168,11 @@ export default function ProfoundAlternativePage() {
             budget that starts near $99 a month, turn on a monitor and see
             whether citations move. The{" "}
             <Link href="/alternatives/otterly">Otterly comparison</Link> is
-            the same argument against a lighter monitoring plan. Otterly is
-            the closer sticker price. Profound is the closer fit when the
-            buyer is a security review.
+            the same argument against a lighter monitoring plan.{" "}
+            <Link href="/alternatives/peec-ai">Peec AI</Link> is the same
+            argument against another prompt-tracking product. Otterly is the
+            closer sticker price. Profound is the closer fit when the buyer
+            is a security review.
           </p>
           <p>
             The three-way writeup — CiteScore, Otterly-class, Profound-class
@@ -196,6 +198,10 @@ export default function ProfoundAlternativePage() {
           {" · "}
           <Link href="/alternatives/otterly" className="text-forest underline">
             vs Otterly
+          </Link>
+          {" · "}
+          <Link href="/alternatives/peec-ai" className="text-forest underline">
+            vs Peec AI
           </Link>
           {" · "}
           <Link href="/blog" className="text-forest underline">

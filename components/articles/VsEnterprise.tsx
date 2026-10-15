@@ -121,6 +121,17 @@ export function VsEnterpriseArticle() {
         <Link href="/alternatives/profound">CiteScore vs Profound</Link>.
       </p>
 
+      <h2>When a Peec-class analytics product wins</h2>
+      <p>
+        Peec AI sits in the same monitoring category. Its public site
+        describes AI search analytics for marketing teams: tracked prompts,
+        visibility, position, and sentiment, with a free trial and brand
+        plans named Starter, Pro, Advanced, and Enterprise. Confirm the
+        current limits and price on peec.ai before you budget. We are not
+        affiliated, and the dedicated page is{" "}
+        <Link href="/alternatives/peec-ai">CiteScore vs Peec AI</Link>.
+      </p>
+
       <h2>You can use both, in order</h2>
       <p>
         A sane sequence for a small team: fix the page (checklist or a{" "}

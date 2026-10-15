@@ -127,7 +127,8 @@ export default function AnswerEngineOptimizationPage() {
                 </td>
                 <td>
                   No. That is{" "}
-                  <Link href="/alternatives/otterly">Otterly</Link> or a{" "}
+                  <Link href="/alternatives/otterly">Otterly</Link>,{" "}
+                  <Link href="/alternatives/peec-ai">Peec AI</Link>, or a{" "}
                   <Link href="/alternatives/profound">Profound</Link>-class
                   platform. Different price, different job.
                 </td>

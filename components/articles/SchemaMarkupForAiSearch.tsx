@@ -153,7 +153,13 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
       <p>
         If you copy this onto another site, replace the name, the URL, and
         the description. Pasting CiteScore’s name onto your domain describes
-        the wrong organization.
+        the wrong organization. The{" "}
+        <Link href="/organization-schema-generator">
+          Organization schema generator
+        </Link>{" "}
+        builds the same shape from a name, URL, logo, description, profile
+        URLs, and a contact email, and it can add a WebSite block. It
+        uploads nothing.
       </p>
 
       <h2>Product</h2>

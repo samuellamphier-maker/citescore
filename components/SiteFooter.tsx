@@ -61,6 +61,9 @@ export function SiteFooter() {
           <Link href="/alternatives/profound" className="hover:text-ink">
             vs Profound
           </Link>
+          <Link href="/alternatives/peec-ai" className="hover:text-ink">
+            vs Peec AI
+          </Link>
           <Link href="/#pricing" className="hover:text-ink">
             Pricing
           </Link>

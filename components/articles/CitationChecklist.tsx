@@ -109,7 +109,8 @@ export function CitationChecklistArticle() {
         <Link href="/ai-overviews">AI Overviews</Link> and{" "}
         <Link href="/perplexity-citations">Perplexity</Link> pages describe
         the other two rows in the same PDF. Enterprise monitors such as{" "}
-        <Link href="/alternatives/otterly">Otterly</Link> or{" "}
+        <Link href="/alternatives/otterly">Otterly</Link>,{" "}
+        <Link href="/alternatives/peec-ai">Peec AI</Link>, or{" "}
         <Link href="/alternatives/profound">Profound</Link> exist to sample
         prompts over time. That is a different product — and a different{" "}
         <Link href="/blog/citescore-vs-enterprise-geo-tools">price</Link>.

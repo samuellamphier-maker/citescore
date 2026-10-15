@@ -33,6 +33,8 @@ Requires Node 20+.
 | `/geo-audit` | High-intent GEO audit landing + $39 checkout form |
 | `/alternatives` | Comparison hub |
 | `/alternatives/otterly` | CiteScore vs Otterly |
+| `/alternatives/peec-ai` | CiteScore vs Peec AI |
+| `/organization-schema-generator` | Free Organization and optional WebSite JSON-LD generator |
 | `/sample` | Printable HTML sample report (fictional SaaS “Northbound”) |
 | `/sitemap.xml` | Generated from `app/sitemap.ts` |
 | `/robots.txt` | Generated from `app/robots.ts` |

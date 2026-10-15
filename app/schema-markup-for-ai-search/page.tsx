@@ -40,6 +40,7 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/faq-schema-generator", label: "Free FAQ schema generator" },
+          { href: "/organization-schema-generator", label: "Free Organization schema generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}

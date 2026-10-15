@@ -280,3 +280,96 @@ export function buildFaqSchema(pairs: FaqPair[]): string {
 
   return `<script type="application/ld+json">\n${json}\n</script>\n`;
 }
+
+export type OrganizationInput = {
+  name: string;
+  url: string;
+  logoUrl: string;
+  description: string;
+  sameAs: string[];
+  email: string;
+  includeWebsite: boolean;
+};
+
+/** Absolute http(s) URL, or null. A missing scheme is treated as https. */
+export function httpUrl(raw: string): string | null {
+  const trimmed = raw.trim();
+  if (!trimmed || /\s/.test(trimmed)) return null;
+  try {
+    const url = new URL(/^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    if (!url.hostname.includes(".") && url.hostname !== "localhost") return null;
+    url.hash = "";
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+export function organizationEmail(raw: string): string {
+  const value = raw.trim().replace(/^mailto:/i, "");
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? value : "";
+}
+
+function jsonLdScript(data: unknown): string {
+  const json = JSON.stringify(data, null, 2)
+    .replace(/</g, "\\u003c")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+  return `<script type="application/ld+json">\n${json}\n</script>\n`;
+}
+
+function plainLine(raw: string) {
+  return stripTags(raw).trim().replace(/\s+/g, " ");
+}
+
+export function buildOrganizationSchema(input: OrganizationInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const url = httpUrl(input.url);
+  const logo = httpUrl(input.logoUrl);
+  const description = plainLine(input.description);
+  const email = organizationEmail(input.email);
+  const sameAs = [
+    ...new Set(
+      input.sameAs
+        .map((item) => httpUrl(item))
+        .filter((item): item is string => Boolean(item)),
+    ),
+  ];
+
+  const organization: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name,
+  };
+  if (url) {
+    organization["@id"] = `${url.replace(/\/$/, "")}#organization`;
+    organization.url = url;
+  }
+  if (logo) organization.logo = logo;
+  if (description) organization.description = description;
+  if (sameAs.length > 0) organization.sameAs = sameAs;
+  if (email) organization.email = email;
+
+  const blocks = [jsonLdScript(organization)];
+
+  if (input.includeWebsite) {
+    const website: Record<string, unknown> = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name,
+    };
+    if (url) {
+      website["@id"] = `${url.replace(/\/$/, "")}#website`;
+      website.url = url;
+      if (typeof organization["@id"] === "string") {
+        website.publisher = { "@id": organization["@id"] };
+      }
+    }
+    blocks.push(jsonLdScript(website));
+  }
+
+  return `${blocks.join("\n")}\n`;
+}

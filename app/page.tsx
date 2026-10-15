@@ -376,13 +376,20 @@ export default function HomePage() {
                   </Link>
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-ink-soft">
-                  {site.priceLabel} once versus Otterly- and Profound-class
-                  monitors.{" "}
+                  {site.priceLabel} once versus Otterly-, Profound-, and
+                  Peec-class monitors.{" "}
                   <Link
                     href="/alternatives/otterly"
                     className="text-forest underline"
                   >
                     vs Otterly
+                  </Link>
+                  {" · "}
+                  <Link
+                    href="/alternatives/peec-ai"
+                    className="text-forest underline"
+                  >
+                    vs Peec AI
                   </Link>
                   {" · "}
                   <Link href="/geo-audit" className="text-forest underline">
@@ -403,7 +410,7 @@ export default function HomePage() {
             <p className="mt-4 max-w-2xl text-ink-soft leading-7">
               Separate URLs for a ChatGPT citation check, AI Overviews
               visibility, Perplexity footnotes, llms.txt, crawler tokens, AEO,
-              and Profound. Same {site.priceLabel} audit. No second product
+              Profound, and Peec AI. Same {site.priceLabel} audit. No second product
               hiding behind the headline.
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
