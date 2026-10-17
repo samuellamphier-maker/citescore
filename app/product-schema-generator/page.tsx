@@ -34,6 +34,8 @@ const related = [
   { href: "/organization-schema-generator", label: "Organization schema generator" },
   { href: "/product-schema-generator", label: "Product schema generator" },
   { href: "/article-schema-generator", label: "Article schema generator" },
+  { href: "/local-business-schema-generator", label: "Local business schema generator" },
+  { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-ecommerce", label: "AI search visibility for ecommerce" },
   { href: "/free-check", label: "Free AI visibility check" },
@@ -83,7 +85,9 @@ export default function ProductSchemaGeneratorPage() {
           <Link href="/ai-search-visibility-for-ecommerce">ecommerce guide</Link> lists what Google requires on a page where the shopper can buy. The{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link> shows the Product block this site publishes for the $39 audit, which has no rating. The{" "}
           <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. A product URL at another path is outside that fetch. The{" "}
-          <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy.
+          <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. A location page uses the{" "}
+          <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the{" "}
+          <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>.
         </p>
         <h2>What to leave out</h2>
         <ul>

@@ -34,6 +34,8 @@ const related = [
   { href: "/organization-schema-generator", label: "Organization schema generator" },
   { href: "/product-schema-generator", label: "Product schema generator" },
   { href: "/article-schema-generator", label: "Article schema generator" },
+  { href: "/local-business-schema-generator", label: "Local business schema generator" },
+  { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -82,7 +84,9 @@ export default function ArticleSchemaGeneratorPage() {
           <Link href="/schema-markup-for-ai-search">schema guide</Link> shows the Article this site publishes, with the byline CiteScore Team as an Organization. The{" "}
           <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The{" "}
           <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. A product page uses the{" "}
-          <Link href="/product-schema-generator">Product schema generator</Link>.
+          <Link href="/product-schema-generator">Product schema generator</Link>. A location page uses the{" "}
+          <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the{" "}
+          <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>.
         </p>
         <h2>What to leave out</h2>
         <ul>

@@ -310,6 +310,30 @@ export const topicPages: TopicPage[] = [
     minutes: 5,
   },
   {
+    path: "/local-business-schema-generator",
+    title: "Free LocalBusiness schema generator",
+    description:
+      "Free, no-signup LocalBusiness JSON-LD generator. Add the name, type, URL, phone, address, hours, and optional geo, profiles, logo, and image. Copy the script. Nothing is uploaded.",
+    kicker: "LocalBusiness schema",
+    card: "Copy LocalBusiness JSON-LD from the name, address, and hours already on the page.",
+    navLabel: "Local business schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-17",
+    minutes: 6,
+  },
+  {
+    path: "/breadcrumb-schema-generator",
+    title: "Free breadcrumb schema generator",
+    description:
+      "Free, no-signup BreadcrumbList JSON-LD generator. Add each crumb name and URL. Positions are numbered from 1 in order. Copy the script. Nothing is uploaded.",
+    kicker: "Breadcrumb schema",
+    card: "Copy BreadcrumbList JSON-LD from the names and URLs of the trail already on the page.",
+    navLabel: "Breadcrumb schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-17",
+    minutes: 4,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:

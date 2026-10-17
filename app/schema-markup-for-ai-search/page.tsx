@@ -43,6 +43,8 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/organization-schema-generator", label: "Free Organization schema generator" },
           { href: "/product-schema-generator", label: "Free Product schema generator" },
           { href: "/article-schema-generator", label: "Free Article schema generator" },
+          { href: "/local-business-schema-generator", label: "Free Local business schema generator" },
+          { href: "/breadcrumb-schema-generator", label: "Free breadcrumb schema generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}
