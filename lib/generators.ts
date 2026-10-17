@@ -576,3 +576,256 @@ export function buildArticleSchema(input: ArticleInput): string {
 
   return jsonLdScript(article);
 }
+
+/** schema.org LocalBusiness and common subtypes. The value is the @type. */
+export const LOCAL_BUSINESS_TYPE_GROUPS = [
+  { label: "General", types: ["LocalBusiness"] },
+  {
+    label: "Food",
+    types: [
+      "Restaurant",
+      "Bakery",
+      "BarOrPub",
+      "Brewery",
+      "CafeOrCoffeeShop",
+      "FastFoodRestaurant",
+      "FoodEstablishment",
+      "IceCreamShop",
+      "Winery",
+    ],
+  },
+  {
+    label: "Health",
+    types: ["Dentist", "Hospital", "MedicalClinic", "Optician", "Pharmacy", "Physician", "VeterinaryCare"],
+  },
+  {
+    label: "Professional services",
+    types: [
+      "AccountingService",
+      "Attorney",
+      "EmploymentAgency",
+      "FinancialService",
+      "InsuranceAgency",
+      "LegalService",
+      "Notary",
+      "ProfessionalService",
+      "RealEstateAgent",
+      "TravelAgency",
+    ],
+  },
+  {
+    label: "Home and repair",
+    types: [
+      "Electrician",
+      "GeneralContractor",
+      "HVACBusiness",
+      "HomeAndConstructionBusiness",
+      "HousePainter",
+      "Locksmith",
+      "MovingCompany",
+      "Plumber",
+      "RoofingContractor",
+    ],
+  },
+  {
+    label: "Beauty and fitness",
+    types: ["BeautySalon", "DaySpa", "ExerciseGym", "HairSalon", "HealthClub", "NailSalon", "SportsActivityLocation"],
+  },
+  {
+    label: "Lodging",
+    types: ["BedAndBreakfast", "Campground", "Hostel", "Hotel", "LodgingBusiness", "Motel", "Resort"],
+  },
+  {
+    label: "Automotive",
+    types: ["AutoBodyShop", "AutoDealer", "AutoRepair", "AutomotiveBusiness", "GasStation"],
+  },
+  {
+    label: "Store",
+    types: [
+      "BookStore",
+      "ClothingStore",
+      "ConvenienceStore",
+      "ElectronicsStore",
+      "Florist",
+      "FurnitureStore",
+      "GroceryStore",
+      "HardwareStore",
+      "JewelryStore",
+      "PetStore",
+      "ShoeStore",
+      "ShoppingCenter",
+      "Store",
+    ],
+  },
+  { label: "Other", types: ["ChildCare", "DryCleaningOrLaundry", "Library", "SelfStorage"] },
+] as const;
+
+export const LOCAL_BUSINESS_TYPES = LOCAL_BUSINESS_TYPE_GROUPS.flatMap((group) => [...group.types]);
+
+export const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
+
+export type Weekday = (typeof WEEKDAYS)[number];
+
+export type OpeningHoursInput = {
+  days: string[];
+  opens: string;
+  closes: string;
+};
+
+export type LocalBusinessInput = {
+  name: string;
+  type: string;
+  url: string;
+  telephone: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  hours: OpeningHoursInput[];
+  latitude: string;
+  longitude: string;
+  sameAs: string[];
+  logoUrl: string;
+  imageUrl: string;
+};
+
+export type BreadcrumbCrumb = {
+  name: string;
+  url: string;
+};
+
+/** 24-hour clock. A single-digit hour is padded. HH:MM:SS is kept. Empty when invalid. */
+export function clockTime(raw: string): string {
+  const match = /^([01]?\d|2[0-3]):([0-5]\d)(?::([0-5]\d))?$/.exec(raw.trim());
+  if (!match) return "";
+  const hour = match[1].padStart(2, "0");
+  return match[3] ? `${hour}:${match[2]}:${match[3]}` : `${hour}:${match[2]}`;
+}
+
+/** A phone string with 7–15 digits, or empty. Formatting characters are kept. */
+export function telephoneValue(raw: string): string {
+  const value = plainLine(raw);
+  if (!value || !/^[+().\-\s\d]+$/.test(value)) return "";
+  const digits = value.replace(/\D/g, "");
+  if (digits.length < 7 || digits.length > 15) return "";
+  return value;
+}
+
+/** Two-letter codes are uppercased. Any other non-empty country text is kept. */
+export function addressCountryValue(raw: string): string {
+  const value = plainLine(raw);
+  if (!value) return "";
+  return /^[A-Za-z]{2}$/.test(value) ? value.toUpperCase() : value;
+}
+
+/** A finite number inside the range, or null. */
+export function geoNumber(raw: string, min: number, max: number): number | null {
+  const value = raw.trim();
+  if (!/^-?\d+(\.\d+)?$/.test(value)) return null;
+  const number = Number(value);
+  if (!Number.isFinite(number) || number < min || number > max) return null;
+  return number;
+}
+
+/** Digits after the decimal point. A whole number is 0. */
+export function geoDecimalPlaces(raw: string): number {
+  const match = /\.(\d+)$/.exec(raw.trim());
+  return match ? match[1].length : 0;
+}
+
+function businessType(raw: string): string {
+  return LOCAL_BUSINESS_TYPES.some((type) => type === raw) ? raw : "LocalBusiness";
+}
+
+export function buildLocalBusinessSchema(input: LocalBusinessInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const business: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": businessType(input.type),
+    name,
+  };
+
+  const url = httpUrl(input.url);
+  if (url) business.url = url;
+
+  const telephone = telephoneValue(input.telephone);
+  if (telephone) business.telephone = telephone;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) business.image = [image];
+
+  const logo = httpUrl(input.logoUrl);
+  if (logo) business.logo = logo;
+
+  const streetAddress = plainLine(input.streetAddress);
+  const addressLocality = plainLine(input.addressLocality);
+  const addressRegion = plainLine(input.addressRegion);
+  const postalCode = plainLine(input.postalCode);
+  const addressCountry = addressCountryValue(input.addressCountry);
+  if (streetAddress || addressLocality || addressRegion || postalCode || addressCountry) {
+    const address: Record<string, unknown> = { "@type": "PostalAddress" };
+    if (streetAddress) address.streetAddress = streetAddress;
+    if (addressLocality) address.addressLocality = addressLocality;
+    if (addressRegion) address.addressRegion = addressRegion;
+    if (postalCode) address.postalCode = postalCode;
+    if (addressCountry) address.addressCountry = addressCountry;
+    business.address = address;
+  }
+
+  const latitude = geoNumber(input.latitude, -90, 90);
+  const longitude = geoNumber(input.longitude, -180, 180);
+  if (latitude !== null && longitude !== null) {
+    business.geo = { "@type": "GeoCoordinates", latitude, longitude };
+  }
+
+  const specs: Record<string, unknown>[] = [];
+  for (const row of input.hours) {
+    const days = WEEKDAYS.filter((day) => row.days.includes(day));
+    const opens = clockTime(row.opens);
+    const closes = clockTime(row.closes);
+    if (days.length === 0 || !opens || !closes) continue;
+    specs.push({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: days.length === 1 ? days[0] : [...days],
+      opens,
+      closes,
+    });
+  }
+  if (specs.length === 1) business.openingHoursSpecification = specs[0];
+  else if (specs.length > 1) business.openingHoursSpecification = specs;
+
+  const sameAs = [
+    ...new Set(input.sameAs.map((item) => httpUrl(item)).filter((item): item is string => Boolean(item))),
+  ];
+  if (sameAs.length > 0) business.sameAs = sameAs;
+
+  return jsonLdScript(business);
+}
+
+export function buildBreadcrumbSchema(crumbs: BreadcrumbCrumb[]): string {
+  const items = crumbs
+    .map((crumb) => ({
+      name: plainLine(crumb.name),
+      url: httpUrl(crumb.url),
+    }))
+    .filter((crumb) => crumb.name);
+
+  if (items.length === 0) return "";
+
+  return jsonLdScript({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((crumb, index) => {
+      const item: Record<string, unknown> = {
+        "@type": "ListItem",
+        position: index + 1,
+        name: crumb.name,
+      };
+      if (crumb.url) item.item = crumb.url;
+      return item;
+    }),
+  });
+}

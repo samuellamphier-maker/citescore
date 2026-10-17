@@ -38,6 +38,8 @@ const related = [
   { href: "/organization-schema-generator", label: "Organization schema generator" },
   { href: "/product-schema-generator", label: "Product schema generator" },
   { href: "/article-schema-generator", label: "Article schema generator" },
+  { href: "/local-business-schema-generator", label: "Local business schema generator" },
+  { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -92,7 +94,7 @@ export default function OrganizationSchemaGeneratorPage() {
           <li>A <code>sameAs</code> profile the organization does not control.</li>
           <li>An email address that is not a published contact on that page.</li>
           <li>
-            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. A product page that already shows a rating uses the <Link href="/product-schema-generator">Product schema generator</Link>. Questions that are already on the page use the <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the <Link href="/article-schema-generator">Article schema generator</Link>.
+            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. A product page that already shows a rating uses the <Link href="/product-schema-generator">Product schema generator</Link>. Questions that are already on the page use the <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the <Link href="/article-schema-generator">Article schema generator</Link>. A location page uses the <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>.
           </li>
         </ul>
         <h2>Questions about Organization schema</h2>

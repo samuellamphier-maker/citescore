@@ -14,6 +14,8 @@ const related = [
   { href: "/organization-schema-generator", label: "Organization schema generator" },
   { href: "/product-schema-generator", label: "Product schema generator" },
   { href: "/article-schema-generator", label: "Article schema generator" },
+  { href: "/local-business-schema-generator", label: "Local business schema generator" },
+  { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
   { href: "/llms-txt", label: "llms.txt checker" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },

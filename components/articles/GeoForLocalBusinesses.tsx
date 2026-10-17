@@ -91,6 +91,20 @@ export function GeoForLocalBusinessesArticle() {
         HTML says one street and the JSON-LD says another, the markup is
         describing a different place.
       </p>
+      <p>
+        The{" "}
+        <Link href="/local-business-schema-generator">
+          Local business schema generator
+        </Link>{" "}
+        copies a script from the name, type, address, phone, hours, and
+        optional geo, profiles, logo, and image. It stays in the browser.
+        Paste it into the HTML the server sends for that location. A trail
+        on the same page can use the{" "}
+        <Link href="/breadcrumb-schema-generator">
+          breadcrumb schema generator
+        </Link>
+        .
+      </p>
 
       <h2>Reviews of your own business</h2>
       <p>

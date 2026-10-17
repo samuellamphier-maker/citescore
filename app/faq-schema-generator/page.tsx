@@ -14,6 +14,8 @@ const related = [
   { href: "/organization-schema-generator", label: "Organization schema generator" },
   { href: "/product-schema-generator", label: "Product schema generator" },
   { href: "/article-schema-generator", label: "Article schema generator" },
+  { href: "/local-business-schema-generator", label: "Local business schema generator" },
+  { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
   { href: "/aeo-checklist", label: "AEO checklist" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -43,7 +45,7 @@ export default function FaqSchemaGeneratorPage() {
       </p>
       <h2>What it does not do</h2>
       <p>
-        Google stopped showing FAQ rich results in May 2026. This markup will not bring back an accordion under a Google listing. Keep it when the questions are real and visible. The <Link href="/geo-audit">$39 audit</Link> looks for JSON-LD that matches the copy, and the <Link href="/free-check">free check</Link> reports the <code>@type</code> values it finds on the homepage.
+        Google stopped showing FAQ rich results in May 2026. This markup will not bring back an accordion under a Google listing. Keep it when the questions are real and visible. The <Link href="/geo-audit">$39 audit</Link> looks for JSON-LD that matches the copy, and the <Link href="/free-check">free check</Link> reports the <code>@type</code> values it finds on the homepage. A location page uses the <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>.
       </p>
       <ul>
         <li>The question and the answer both need to be on the page. An expandable answer is fine if a person can open it.</li>

@@ -102,8 +102,14 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         <code>type=&quot;application/ld+json&quot;</code>, is the format
         Google recommends because it is easier to keep next to the HTML than
         attributes scattered through the layout. The four blocks below are
-        Organization, Product, FAQPage, and Article. Each one is valid only
-        when a person can read the same facts on that URL.
+        Organization, Product, FAQPage, and Article. A location page can use
+        the{" "}
+        <Link href="/local-business-schema-generator">
+          Local business schema generator
+        </Link>, and a visible trail can use the{" "}
+        <Link href="/breadcrumb-schema-generator">
+          breadcrumb schema generator
+        </Link>. Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
         None of them is a ranking file, and none of them makes ChatGPT,
@@ -234,6 +240,37 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         builds an Article or BlogPosting script from the headline,
         description, author, publisher, dates, image, and canonical URL. It
         uploads nothing.
+      </p>
+
+      <h2>LocalBusiness</h2>
+      <p>
+        Use LocalBusiness, or a more specific type such as Restaurant,
+        Dentist, or Bakery, on the page for one location. Google’s local
+        business documentation says a rich result needs <code>name</code> and{" "}
+        <code>address</code>. Add the URL, telephone, opening hours, and geo
+        when the page shows them. The{" "}
+        <Link href="/local-business-schema-generator">
+          Local business schema generator
+        </Link>{" "}
+        copies those fields, plus profile URLs and a logo or image, into one
+        script. It does not emit <code>review</code> or{" "}
+        <code>aggregateRating</code>. It uploads nothing. The longer note on
+        hours and reviews of your own business is{" "}
+        <Link href="/geo-for-local-businesses">GEO for local businesses</Link>.
+      </p>
+
+      <h2>BreadcrumbList</h2>
+      <p>
+        BreadcrumbList names the trail a person can already see. Google’s
+        breadcrumb documentation says the list needs at least two items, each
+        with a name and a position starting at 1. <code>item</code> is the
+        URL. It is not required on the last crumb. The{" "}
+        <Link href="/breadcrumb-schema-generator">
+          breadcrumb schema generator
+        </Link>{" "}
+        numbers the rows you add and skips a blank one. It uploads nothing.
+        The script does not rank the page, and Google does not guarantee the
+        trail appears in Search.
       </p>
 
       <h2>Questions about the markup</h2>
