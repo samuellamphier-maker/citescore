@@ -41,6 +41,8 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/faq-schema-generator", label: "Free FAQ schema generator" },
           { href: "/organization-schema-generator", label: "Free Organization schema generator" },
+          { href: "/product-schema-generator", label: "Free Product schema generator" },
+          { href: "/article-schema-generator", label: "Free Article schema generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}

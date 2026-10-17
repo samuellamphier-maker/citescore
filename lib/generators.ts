@@ -373,3 +373,206 @@ export function buildOrganizationSchema(input: OrganizationInput): string {
 
   return `${blocks.join("\n")}\n`;
 }
+
+/** schema.org ItemAvailability members. The value is written as a full schema.org URL. */
+export const PRODUCT_AVAILABILITY = [
+  "InStock",
+  "OutOfStock",
+  "PreOrder",
+  "BackOrder",
+  "Discontinued",
+  "LimitedAvailability",
+  "InStoreOnly",
+  "OnlineOnly",
+  "SoldOut",
+  "PreSale",
+] as const;
+
+export type ProductAvailability = (typeof PRODUCT_AVAILABILITY)[number];
+
+export type ProductInput = {
+  name: string;
+  description: string;
+  imageUrl: string;
+  brand: string;
+  sku: string;
+  price: string;
+  currency: string;
+  availability: string;
+  ratingValue: string;
+  reviewCount: string;
+  bestRating: string;
+};
+
+export const ARTICLE_TYPES = ["Article", "BlogPosting"] as const;
+
+export type ArticleType = (typeof ARTICLE_TYPES)[number];
+
+export type AuthorKind = "Person" | "Organization";
+
+export type ArticleInput = {
+  type: string;
+  headline: string;
+  description: string;
+  authorName: string;
+  authorKind: string;
+  publisherName: string;
+  publisherLogoUrl: string;
+  datePublished: string;
+  dateModified: string;
+  imageUrl: string;
+  canonicalUrl: string;
+};
+
+/** Three-letter ISO 4217 code, or empty. */
+export function isoCurrency(raw: string): string {
+  const value = raw.trim().toUpperCase();
+  return /^[A-Z]{3}$/.test(value) ? value : "";
+}
+
+function stripThousands(raw: string): string {
+  const value = raw.trim();
+  if (/^\d{1,3}(,\d{3})+(\.\d+)?$/.test(value)) return value.replace(/,/g, "");
+  return value;
+}
+
+/** A number greater than zero, thousands commas removed, or empty. */
+export function productPrice(raw: string): string {
+  const value = stripThousands(raw);
+  if (!/^\d+(\.\d+)?$/.test(value)) return "";
+  if (!(Number(value) > 0)) return "";
+  return value;
+}
+
+/** A number greater than zero, or empty. Commas are not treated as separators. */
+export function ratingDecimal(raw: string): string {
+  const value = raw.trim();
+  if (!/^\d+(\.\d+)?$/.test(value)) return "";
+  if (!(Number(value) > 0)) return "";
+  return value;
+}
+
+/** A positive integer, thousands commas removed, or empty. */
+export function reviewCountValue(raw: string): string {
+  const value = stripThousands(raw);
+  if (!/^[1-9]\d*$/.test(value)) return "";
+  return value;
+}
+
+/** A real YYYY-MM-DD calendar date, or empty. */
+export function isoDay(raw: string): string {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(raw.trim());
+  if (!match) return "";
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return "";
+  return `${match[1]}-${match[2]}-${match[3]}`;
+}
+
+function availabilityUrl(raw: string): string {
+  return PRODUCT_AVAILABILITY.some((item) => item === raw) ? `https://schema.org/${raw}` : "";
+}
+
+export function buildProductSchema(input: ProductInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const product: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) product.description = description;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) product.image = [image];
+
+  const brand = plainLine(input.brand);
+  if (brand) product.brand = { "@type": "Brand", name: brand };
+
+  const sku = plainLine(input.sku);
+  if (sku) product.sku = sku;
+
+  const price = productPrice(input.price);
+  const currency = isoCurrency(input.currency);
+  const availability = availabilityUrl(input.availability);
+  if (price || currency || availability) {
+    const offer: Record<string, unknown> = { "@type": "Offer" };
+    if (price) offer.price = price;
+    if (currency) offer.priceCurrency = currency;
+    if (availability) offer.availability = availability;
+    product.offers = offer;
+  }
+
+  const rating = ratingDecimal(input.ratingValue);
+  const reviews = reviewCountValue(input.reviewCount);
+  const bestRaw = input.bestRating.trim();
+  const best = bestRaw ? ratingDecimal(input.bestRating) : "";
+  if (rating && reviews && (!bestRaw || best)) {
+    const ceiling = best ? Number(best) : 5;
+    if (Number(rating) <= ceiling) {
+      const aggregateRating: Record<string, unknown> = {
+        "@type": "AggregateRating",
+        ratingValue: rating,
+        reviewCount: reviews,
+      };
+      if (best) aggregateRating.bestRating = best;
+      product.aggregateRating = aggregateRating;
+    }
+  }
+
+  return jsonLdScript(product);
+}
+
+export function buildArticleSchema(input: ArticleInput): string {
+  const headline = plainLine(input.headline);
+  if (!headline) return "";
+
+  const article: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": input.type === "BlogPosting" ? "BlogPosting" : "Article",
+    headline,
+  };
+
+  const description = plainLine(input.description);
+  if (description) article.description = description;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) article.image = [image];
+
+  const datePublished = isoDay(input.datePublished);
+  if (datePublished) article.datePublished = datePublished;
+  const dateModified = isoDay(input.dateModified);
+  if (dateModified) article.dateModified = dateModified;
+
+  const authorName = plainLine(input.authorName);
+  if (authorName) {
+    article.author = {
+      "@type": input.authorKind === "Person" ? "Person" : "Organization",
+      name: authorName,
+    };
+  }
+
+  const publisherName = plainLine(input.publisherName);
+  if (publisherName) {
+    const publisher: Record<string, unknown> = {
+      "@type": "Organization",
+      name: publisherName,
+    };
+    const logo = httpUrl(input.publisherLogoUrl);
+    if (logo) publisher.logo = { "@type": "ImageObject", url: logo };
+    article.publisher = publisher;
+  }
+
+  const url = httpUrl(input.canonicalUrl);
+  if (url) {
+    article.url = url;
+    article.mainEntityOfPage = url;
+  }
+
+  return jsonLdScript(article);
+}

@@ -180,7 +180,16 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         <code>39.00</code> survives. <code>priceCurrency</code> is the ISO
         code, here <code>USD</code>. Change both if your price is different.
         Do not invent a <code>sku</code>, a <code>gtin</code>, or a review
-        count to look complete.
+        count to look complete. The{" "}
+        <Link href="/product-schema-generator">Product schema generator</Link>{" "}
+        builds this shape from a name, description, image, brand, SKU, price,
+        currency, and availability, and it can add an aggregate rating when
+        the page already shows one. It uploads nothing. A buying page has
+        extra rules, listed on{" "}
+        <Link href="/ai-search-visibility-for-ecommerce">
+          AI search visibility for ecommerce
+        </Link>
+        .
       </p>
 
       <h2>FAQ</h2>
@@ -220,7 +229,11 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         you maintain several scripts, you can point Article’s{" "}
         <code>publisher</code> and <code>author</code> at an Organization{" "}
         <code>@id</code> you defined once. Separate script tags, as on this
-        page, are easier to check. Both are JSON-LD.
+        page, are easier to check. Both are JSON-LD. The{" "}
+        <Link href="/article-schema-generator">Article schema generator</Link>{" "}
+        builds an Article or BlogPosting script from the headline,
+        description, author, publisher, dates, image, and canonical URL. It
+        uploads nothing.
       </p>
 
       <h2>Questions about the markup</h2>
