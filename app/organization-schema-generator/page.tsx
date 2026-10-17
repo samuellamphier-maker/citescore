@@ -36,6 +36,8 @@ const related = [
   { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },
   { href: "/faq-schema-generator", label: "FAQ schema generator" },
   { href: "/organization-schema-generator", label: "Organization schema generator" },
+  { href: "/product-schema-generator", label: "Product schema generator" },
+  { href: "/article-schema-generator", label: "Article schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -90,7 +92,7 @@ export default function OrganizationSchemaGeneratorPage() {
           <li>A <code>sameAs</code> profile the organization does not control.</li>
           <li>An email address that is not a published contact on that page.</li>
           <li>
-            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. The <Link href="/faq-schema-generator">FAQ schema generator</Link> is the separate tool for questions that are already on the page.
+            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. A product page that already shows a rating uses the <Link href="/product-schema-generator">Product schema generator</Link>. Questions that are already on the page use the <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the <Link href="/article-schema-generator">Article schema generator</Link>.
           </li>
         </ul>
         <h2>Questions about Organization schema</h2>

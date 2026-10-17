@@ -12,6 +12,8 @@ const related = [
   { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },
   { href: "/faq-schema-generator", label: "FAQ schema generator" },
   { href: "/organization-schema-generator", label: "Organization schema generator" },
+  { href: "/product-schema-generator", label: "Product schema generator" },
+  { href: "/article-schema-generator", label: "Article schema generator" },
   { href: "/llms-txt", label: "llms.txt checker" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },

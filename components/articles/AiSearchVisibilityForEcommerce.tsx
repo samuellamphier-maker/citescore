@@ -139,6 +139,16 @@ export function AiSearchVisibilityForEcommerceArticle() {
       </ul>
       <pre className={preClass}>{example}</pre>
       <p>
+        The{" "}
+        <Link href="/product-schema-generator">Product schema generator</Link>{" "}
+        copies that shape from fields you type: name, description, image,
+        brand, SKU, price, currency, availability, and an optional aggregate
+        rating. It stays in the browser. Use it only for facts the product
+        page already shows. A guide or a blog post uses the{" "}
+        <Link href="/article-schema-generator">Article schema generator</Link>{" "}
+        instead.
+      </p>
+      <p>
         That block is an example. Do not add <code>aggregateRating</code> or{" "}
         <code>review</code> unless the page shows a rating you can support.
         Shipping and return policies can live once on the{" "}

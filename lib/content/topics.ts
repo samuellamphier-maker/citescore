@@ -286,6 +286,30 @@ export const topicPages: TopicPage[] = [
     minutes: 5,
   },
   {
+    path: "/product-schema-generator",
+    title: "Free Product schema generator",
+    description:
+      "Free, no-signup Product JSON-LD generator. Add the name, description, image, brand, SKU, price, currency, and availability, plus an optional rating the page already shows. Copy the script. Nothing is uploaded.",
+    kicker: "Product schema",
+    card: "Copy Product JSON-LD from the name, price, and availability already on the page.",
+    navLabel: "Product schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-17",
+    minutes: 5,
+  },
+  {
+    path: "/article-schema-generator",
+    title: "Free Article schema generator",
+    description:
+      "Free, no-signup Article and BlogPosting JSON-LD generator. Add the headline, description, author, publisher, dates, image, and canonical URL. Copy the script. Nothing is uploaded.",
+    kicker: "Article schema",
+    card: "Copy Article or BlogPosting JSON-LD from the headline, dates, and byline already on the page.",
+    navLabel: "Article schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-17",
+    minutes: 5,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:

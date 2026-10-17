@@ -160,7 +160,11 @@ export function GeoVsSeoArticle() {
         <Link href="/organization-schema-generator">
           Organization schema generator
         </Link>{" "}
-        copies that Organization block from a form. The name in
+        copies that Organization block from a form. The{" "}
+        <Link href="/product-schema-generator">Product schema generator</Link>{" "}
+        and the{" "}
+        <Link href="/article-schema-generator">Article schema generator</Link>{" "}
+        do the same for a product page and an article. The name in
         the schema has to match the name in the H1. FAQPage is for questions
         a person can read on that page. Google stopped showing FAQ rich
         results in May 2026, so this markup will not restore an accordion
