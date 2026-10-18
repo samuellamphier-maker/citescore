@@ -829,3 +829,234 @@ export function buildBreadcrumbSchema(crumbs: BreadcrumbCrumb[]): string {
     }),
   });
 }
+
+export type DurationParts = {
+  days: string;
+  hours: string;
+  minutes: string;
+};
+
+/** A whole number from 0 to 999999, or null when the field is filled but invalid. Empty is undefined. */
+function durationPart(raw: string): number | null | undefined {
+  const value = raw.trim();
+  if (!value) return undefined;
+  if (!/^\d{1,6}$/.test(value)) return null;
+  return Number(value);
+}
+
+/**
+ * ISO 8601 duration from days, hours, and minutes.
+ * Empty when any filled field is invalid or the total is zero.
+ * 45 minutes is PT45M. One day and two hours is P1DT2H.
+ */
+export function isoDuration(parts: DurationParts): string {
+  const days = durationPart(parts.days);
+  const hours = durationPart(parts.hours);
+  const minutes = durationPart(parts.minutes);
+  if (days === null || hours === null || minutes === null) return "";
+  const d = days ?? 0;
+  const h = hours ?? 0;
+  const m = minutes ?? 0;
+  if (d + h + m === 0) return "";
+  const date = d > 0 ? `${d}D` : "";
+  let time = "";
+  if (h > 0) time += `${h}H`;
+  if (m > 0) time += `${m}M`;
+  if (date && time) return `P${date}T${time}`;
+  if (date) return `P${date}`;
+  return `PT${time}`;
+}
+
+/** A number greater than or equal to zero, thousands commas removed, or empty. */
+export function nonNegativePrice(raw: string): string {
+  const value = stripThousands(raw);
+  if (!/^\d+(\.\d+)?$/.test(value)) return "";
+  if (!(Number(value) >= 0)) return "";
+  return value;
+}
+
+export type HowToStepInput = {
+  name: string;
+  text: string;
+  imageUrl: string;
+};
+
+export type HowToInput = {
+  name: string;
+  description: string;
+  days: string;
+  hours: string;
+  minutes: string;
+  cost: string;
+  currency: string;
+  supplies: string[];
+  tools: string[];
+  steps: HowToStepInput[];
+};
+
+function namedItems(type: string, names: string[]): Record<string, unknown>[] {
+  const seen = new Set<string>();
+  const items: Record<string, unknown>[] = [];
+  for (const raw of names) {
+    const name = plainLine(raw);
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    items.push({ "@type": type, name });
+  }
+  return items;
+}
+
+export function buildHowToSchema(input: HowToInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const howto: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) howto.description = description;
+
+  const totalTime = isoDuration({ days: input.days, hours: input.hours, minutes: input.minutes });
+  if (totalTime) howto.totalTime = totalTime;
+
+  const cost = nonNegativePrice(input.cost);
+  const currency = isoCurrency(input.currency);
+  if (cost && currency) {
+    howto.estimatedCost = {
+      "@type": "MonetaryAmount",
+      currency,
+      value: cost,
+    };
+  }
+
+  const supply = namedItems("HowToSupply", input.supplies);
+  if (supply.length > 0) howto.supply = supply;
+
+  const tool = namedItems("HowToTool", input.tools);
+  if (tool.length > 0) howto.tool = tool;
+
+  const steps: Record<string, unknown>[] = [];
+  for (const step of input.steps) {
+    const text = plainLine(step.text);
+    if (!text) continue;
+    const item: Record<string, unknown> = {
+      "@type": "HowToStep",
+      position: steps.length + 1,
+      text,
+    };
+    const stepName = plainLine(step.name);
+    if (stepName) item.name = stepName;
+    const image = httpUrl(step.imageUrl);
+    if (image) item.image = image;
+    steps.push(item);
+  }
+  if (steps.length > 0) howto.step = steps;
+
+  return jsonLdScript(howto);
+}
+
+/** Google’s documented SoftwareApplication applicationCategory values. */
+export const SOFTWARE_APPLICATION_CATEGORIES = [
+  "GameApplication",
+  "SocialNetworkingApplication",
+  "TravelApplication",
+  "ShoppingApplication",
+  "SportsApplication",
+  "LifestyleApplication",
+  "BusinessApplication",
+  "DesignApplication",
+  "DeveloperApplication",
+  "DriverApplication",
+  "EducationalApplication",
+  "HealthApplication",
+  "FinanceApplication",
+  "SecurityApplication",
+  "BrowserApplication",
+  "CommunicationApplication",
+  "DesktopEnhancementApplication",
+  "EntertainmentApplication",
+  "MultimediaApplication",
+  "HomeApplication",
+  "UtilitiesApplication",
+  "ReferenceApplication",
+] as const;
+
+export type SoftwareApplicationCategory = (typeof SOFTWARE_APPLICATION_CATEGORIES)[number];
+
+export type SoftwareApplicationInput = {
+  name: string;
+  operatingSystem: string;
+  applicationCategory: string;
+  price: string;
+  currency: string;
+  ratingValue: string;
+  reviewCount: string;
+  bestRating: string;
+  url: string;
+  description: string;
+};
+
+function applicationCategory(raw: string): string {
+  return SOFTWARE_APPLICATION_CATEGORIES.some((item) => item === raw) ? raw : "";
+}
+
+function aggregateRatingBlock(
+  ratingValue: string,
+  reviewCount: string,
+  bestRating: string,
+): Record<string, unknown> | null {
+  const rating = ratingDecimal(ratingValue);
+  const reviews = reviewCountValue(reviewCount);
+  const bestRaw = bestRating.trim();
+  const best = bestRaw ? ratingDecimal(bestRating) : "";
+  if (!(rating && reviews && (!bestRaw || best))) return null;
+  const ceiling = best ? Number(best) : 5;
+  if (Number(rating) > ceiling) return null;
+  const aggregateRating: Record<string, unknown> = {
+    "@type": "AggregateRating",
+    ratingValue: rating,
+    reviewCount: reviews,
+  };
+  if (best) aggregateRating.bestRating = best;
+  return aggregateRating;
+}
+
+export function buildSoftwareApplicationSchema(input: SoftwareApplicationInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const application: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) application.description = description;
+
+  const url = httpUrl(input.url);
+  if (url) application.url = url;
+
+  const operatingSystem = plainLine(input.operatingSystem);
+  if (operatingSystem) application.operatingSystem = operatingSystem;
+
+  const category = applicationCategory(input.applicationCategory);
+  if (category) application.applicationCategory = category;
+
+  const price = nonNegativePrice(input.price);
+  const currency = isoCurrency(input.currency);
+  if (price || currency) {
+    const offer: Record<string, unknown> = { "@type": "Offer" };
+    if (price) offer.price = price;
+    if (currency) offer.priceCurrency = currency;
+    application.offers = offer;
+  }
+
+  const aggregateRating = aggregateRatingBlock(input.ratingValue, input.reviewCount, input.bestRating);
+  if (aggregateRating) application.aggregateRating = aggregateRating;
+
+  return jsonLdScript(application);
+}

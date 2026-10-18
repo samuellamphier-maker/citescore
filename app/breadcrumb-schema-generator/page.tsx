@@ -36,6 +36,8 @@ const related = [
   { href: "/article-schema-generator", label: "Article schema generator" },
   { href: "/local-business-schema-generator", label: "Local business schema generator" },
   { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
+  { href: "/howto-schema-generator", label: "HowTo schema generator" },
+  { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -84,7 +86,9 @@ export default function BreadcrumbSchemaGeneratorPage() {
           <Link href="/schema-markup-for-ai-search">schema guide</Link> shows the other JSON-LD blocks on this site. The{" "}
           <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The{" "}
           <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. A location page uses the{" "}
-          <Link href="/local-business-schema-generator">Local business schema generator</Link>.
+          <Link href="/local-business-schema-generator">Local business schema generator</Link>. A procedure uses the{" "}
+          <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the{" "}
+          <Link href="/software-application-schema-generator">Software application schema generator</Link>.
         </p>
         <h2>How to install it</h2>
         <ol>

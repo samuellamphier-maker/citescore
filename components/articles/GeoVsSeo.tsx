@@ -173,6 +173,12 @@ export function GeoVsSeoArticle() {
         <Link href="/breadcrumb-schema-generator">
           Breadcrumb schema generator
         </Link>
+        . A procedure uses the{" "}
+        <Link href="/howto-schema-generator">HowTo schema generator</Link>. An
+        app page uses the{" "}
+        <Link href="/software-application-schema-generator">
+          Software application schema generator
+        </Link>
         . The name in
         the schema has to match the name in the H1. FAQPage is for questions
         a person can read on that page. Google stopped showing FAQ rich

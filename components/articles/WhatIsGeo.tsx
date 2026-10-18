@@ -50,7 +50,11 @@ export function WhatIsGeoArticle() {
         </li>
         <li>
           <strong>A clear product entity.</strong> The same name in the title,
-          H1, and Organization / SoftwareApplication JSON-LD.
+          H1, and Organization or SoftwareApplication JSON-LD. The{" "}
+          <Link href="/software-application-schema-generator">
+            Software application schema generator
+          </Link>{" "}
+          copies the name, price, and operating system the page already shows.
         </li>
         <li>
           <strong>Question-shaped copy.</strong> FAQ headings and FAQPage
