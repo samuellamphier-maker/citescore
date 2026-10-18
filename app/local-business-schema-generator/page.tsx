@@ -42,6 +42,7 @@ const related = [
   { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
   { href: "/howto-schema-generator", label: "HowTo schema generator" },
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
+  { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/geo-for-local-businesses", label: "GEO for local businesses" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
@@ -95,7 +96,7 @@ export default function LocalBusinessSchemaGeneratorPage() {
           <Link href="/breadcrumb-schema-generator">breadcrumb schema generator</Link>. A homepage that identifies the publisher uses the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. A procedure uses the{" "}
           <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the{" "}
-          <Link href="/software-application-schema-generator">Software application schema generator</Link>.
+          <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>.
         </p>
         <h2>How to install it</h2>
         <ol>

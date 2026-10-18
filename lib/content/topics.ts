@@ -358,6 +358,18 @@ export const topicPages: TopicPage[] = [
     minutes: 6,
   },
   {
+    path: "/person-schema-generator",
+    title: "Free Person schema generator",
+    description:
+      "Free, no-signup Person JSON-LD generator. Add the name, job title, URL, image, profile URLs, employer, school, and topics already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Person schema",
+    card: "Copy Person JSON-LD from the byline, job, and profiles already on the page.",
+    navLabel: "Person schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-18",
+    minutes: 5,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -422,6 +434,18 @@ export const topicPages: TopicPage[] = [
     priority: 0.8,
     publishedAt: "2026-10-03",
     minutes: 8,
+  },
+  {
+    path: "/ai-crawler-user-agents",
+    title: "AI crawler user agents: GPTBot, ClaudeBot, PerplexityBot, and the rest",
+    description:
+      "A reference table of AI crawler and assistant user-agent tokens, with operator, purpose, whether public docs say they honor robots.txt, and a copyable robots.txt group. Unconfirmed cells say so.",
+    kicker: "Crawlers",
+    card: "Operator, purpose, robots.txt behavior, and a copyable group for each documented AI user-agent token.",
+    navLabel: "AI crawler user agents",
+    priority: 0.9,
+    publishedAt: "2026-10-18",
+    minutes: 14,
   },
   {
     path: "/answer-engine-optimization",

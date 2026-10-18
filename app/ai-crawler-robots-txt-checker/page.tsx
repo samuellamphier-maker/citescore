@@ -25,11 +25,21 @@ export default function AiCrawlerRobotsTxtCheckerPage() {
         { href: "/free-check", label: "Free AI visibility check" },
         { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
         { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
+        { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
+        { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },
         { href: "/aeo-checklist", label: "AEO checklist" },
         { href: "/geo-audit", label: "$39 GEO audit" },
       ].filter((r) => r.href !== topic.path)}
     >
         <div dangerouslySetInnerHTML={{ __html: html }} />
+      <p>
+        The list above is the short set. The{" "}
+        <Link href="/ai-crawler-user-agents">user-agent reference</Link> adds
+        operator, purpose, whether the public docs say the token honors
+        robots.txt, and a copyable group. The{" "}
+        <Link href="/robots-txt-ai-crawler-generator">robots.txt generator</Link>{" "}
+        writes the six groups the form covers.
+      </p>
       <p><Link href="/free-check">Run the free check</Link></p>
     </ArticleShell>
   );

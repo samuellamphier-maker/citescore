@@ -44,7 +44,10 @@ export function RobotsTxtForAiCrawlersArticle() {
       <p>
         The operators publish these distinctions. CiteScore does not add a
         sixth meaning. A blank cell in your own file is not the same as a
-        disallow: if the token has no group, it follows <code>*</code>.
+        disallow: if the token has no group, it follows <code>*</code>. The
+        wider set, with a copyable group and a note when the operator does
+        not document compliance, is the{" "}
+        <Link href="/ai-crawler-user-agents">AI crawler user-agent reference</Link>.
       </p>
       <div className="table-wrap">
         <table>
