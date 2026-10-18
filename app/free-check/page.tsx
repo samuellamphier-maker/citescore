@@ -26,6 +26,7 @@ export default function FreeCheckPage() {
         { href: "/free-check", label: "Free AI visibility check" },
         { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
         { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
+        { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         { href: "/aeo-checklist", label: "AEO checklist" },
         { href: "/geo-audit", label: "$39 GEO audit" },
       ].filter((r) => r.href !== topic.path)}

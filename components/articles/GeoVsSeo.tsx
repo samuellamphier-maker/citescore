@@ -179,7 +179,9 @@ export function GeoVsSeoArticle() {
         <Link href="/software-application-schema-generator">
           Software application schema generator
         </Link>
-        . The name in
+        . An author profile uses the{" "}
+        <Link href="/person-schema-generator">Person schema generator</Link>.
+        The name in
         the schema has to match the name in the H1. FAQPage is for questions
         a person can read on that page. Google stopped showing FAQ rich
         results in May 2026, so this markup will not restore an accordion

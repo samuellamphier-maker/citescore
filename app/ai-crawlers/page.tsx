@@ -65,6 +65,9 @@ export default function AiCrawlersPage() {
           { href: "/chatgpt-citation-check", label: "How GPTBot affects the ChatGPT row" },
           { href: "/ai-overviews", label: "Google-Extended and AI Overviews" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
+          { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
+          { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
+          { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },
           { href: "/geo-audit", label: "GEO audit" },
         ]}
       >
@@ -140,7 +143,14 @@ export default function AiCrawlersPage() {
           the URL you paid to audit — you asked us to — with a warning on the
           crawl. Googlebot, Bingbot, ClaudeBot, Applebot-Extended, and
           CCBot are not in the three-token list. If your only question is
-          “does Googlebot index this?”, use Search Console.
+          “does Googlebot index this?”, use Search Console. The wider set,
+          with what each operator publishes about purpose and robots.txt, is
+          the{" "}
+          <Link href="/ai-crawler-user-agents">AI crawler user-agent reference</Link>.
+          The <Link href="/ai-crawler-robots-txt-checker">robots.txt checker</Link>{" "}
+          and the{" "}
+          <Link href="/robots-txt-ai-crawler-generator">robots.txt generator</Link>{" "}
+          cover the tokens this audit and the generator already name.
         </p>
 
         <h2>Allow, disallow, unspecified</h2>

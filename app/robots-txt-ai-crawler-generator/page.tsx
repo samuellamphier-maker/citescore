@@ -18,7 +18,9 @@ const related = [
   { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
   { href: "/howto-schema-generator", label: "HowTo schema generator" },
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
+  { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
+  { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -58,7 +60,7 @@ export default function RobotsTxtAiCrawlerGeneratorPage() {
         If you already have a robots.txt, copy the named groups in and merge the private paths with the rules you already wrote for Googlebot. Replacing the whole file can drop a Sitemap line or a Googlebot group you meant to keep. If you do not have a file, the copy is a complete starter.
       </p>
       <p>
-        The <Link href="/free-check">free check</Link> reads the live file for GPTBot, PerplexityBot and Google-Extended. The <Link href="/geo-audit">$39 audit</Link> scores the page those crawlers would fetch. The longer notes on each token are on the <Link href="/ai-crawlers">crawler guide</Link>.
+        The <Link href="/free-check">free check</Link> reads the live file for GPTBot, PerplexityBot and Google-Extended. The <Link href="/geo-audit">$39 audit</Link> scores the page those crawlers would fetch. The longer notes on each token are on the <Link href="/ai-crawlers">crawler guide</Link>. Tokens outside this form, including Claude-User, Claude-SearchBot, Perplexity-User, Applebot-Extended, Bingbot, and CCBot, are in the <Link href="/ai-crawler-user-agents">user-agent reference</Link>. The <Link href="/ai-crawler-robots-txt-checker">checker</Link> is the free check pointed at the live file.
       </p>
       <ToolNextLinks />
     </ArticleShell>

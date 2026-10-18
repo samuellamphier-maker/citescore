@@ -112,12 +112,14 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
           breadcrumb schema generator
         </Link>
         , a procedure can use the{" "}
-        <Link href="/howto-schema-generator">HowTo schema generator</Link>, and
-        an app page can use the{" "}
+        <Link href="/howto-schema-generator">HowTo schema generator</Link>, an
+        app page can use the{" "}
         <Link href="/software-application-schema-generator">
           Software application schema generator
         </Link>
-        . Each script is valid only when a person can read the same facts on that URL.
+        , and an author profile can use the{" "}
+        <Link href="/person-schema-generator">Person schema generator</Link>.
+        Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
         None of them is a ranking file, and none of them makes ChatGPT,
@@ -248,6 +250,23 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         builds an Article or BlogPosting script from the headline,
         description, author, publisher, dates, image, and canonical URL. It
         uploads nothing.
+      </p>
+
+      <h2>Person</h2>
+      <p>
+        Use Person on a page that names a person: an author bio, or an article
+        whose byline is a person rather than a team. Google’s helpful-content
+        guidance says a clear “who” — a byline that leads to background and
+        the areas the author writes about — is how a visitor judges
+        experience, expertise, authoritativeness, and trust. The script
+        repeats the name, job title, URL, image, profile URLs, employer,
+        school, and topics the page already shows. It does not create that
+        expertise, and it does not make an answer engine cite the page.
+        CiteScore Team is a team name, so this site’s articles use
+        Organization for the author. Use Person only when the page names a
+        person. The{" "}
+        <Link href="/person-schema-generator">Person schema generator</Link>{" "}
+        builds that script in the browser. It uploads nothing.
       </p>
 
       <h2>LocalBusiness</h2>

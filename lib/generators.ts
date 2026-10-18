@@ -1060,3 +1060,79 @@ export function buildSoftwareApplicationSchema(input: SoftwareApplicationInput):
 
   return jsonLdScript(application);
 }
+
+export type PersonInput = {
+  name: string;
+  jobTitle: string;
+  url: string;
+  imageUrl: string;
+  sameAs: string[];
+  worksForName: string;
+  worksForUrl: string;
+  alumniOfName: string;
+  alumniOfUrl: string;
+  knowsAbout: string[];
+};
+
+function uniqueLines(values: string[]): string[] {
+  const seen = new Set<string>();
+  const lines: string[] = [];
+  for (const raw of values) {
+    const line = plainLine(raw);
+    if (!line || seen.has(line)) continue;
+    seen.add(line);
+    lines.push(line);
+  }
+  return lines;
+}
+
+function uniqueHttpUrls(values: string[]): string[] {
+  return [
+    ...new Set(values.map((item) => httpUrl(item)).filter((item): item is string => Boolean(item))),
+  ];
+}
+
+/** Named organization. A URL without a name is omitted so the script does not invent an entity. */
+function organizationNode(type: string, nameRaw: string, urlRaw: string): Record<string, unknown> | null {
+  const name = plainLine(nameRaw);
+  if (!name) return null;
+  const node: Record<string, unknown> = { "@type": type, name };
+  const url = httpUrl(urlRaw);
+  if (url) node.url = url;
+  return node;
+}
+
+export function buildPersonSchema(input: PersonInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const person: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name,
+  };
+
+  const jobTitle = plainLine(input.jobTitle);
+  if (jobTitle) person.jobTitle = jobTitle;
+
+  const url = httpUrl(input.url);
+  if (url) person.url = url;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) person.image = image;
+
+  const sameAs = uniqueHttpUrls(input.sameAs);
+  if (sameAs.length > 0) person.sameAs = sameAs;
+
+  const worksFor = organizationNode("Organization", input.worksForName, input.worksForUrl);
+  if (worksFor) person.worksFor = worksFor;
+
+  const alumniOf = organizationNode("EducationalOrganization", input.alumniOfName, input.alumniOfUrl);
+  if (alumniOf) person.alumniOf = alumniOf;
+
+  const knowsAbout = uniqueLines(input.knowsAbout);
+  if (knowsAbout.length === 1) person.knowsAbout = knowsAbout[0];
+  else if (knowsAbout.length > 1) person.knowsAbout = knowsAbout;
+
+  return jsonLdScript(person);
+}
