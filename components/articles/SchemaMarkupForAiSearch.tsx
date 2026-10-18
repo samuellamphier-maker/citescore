@@ -117,8 +117,10 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         <Link href="/software-application-schema-generator">
           Software application schema generator
         </Link>
-        , and an author profile can use the{" "}
-        <Link href="/person-schema-generator">Person schema generator</Link>.
+        , an author profile can use the{" "}
+        <Link href="/person-schema-generator">Person schema generator</Link>
+        , and the homepage can use the{" "}
+        <Link href="/website-schema-generator">WebSite schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -176,6 +178,25 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         builds the same shape from a name, URL, logo, description, profile
         URLs, and a contact email, and it can add a WebSite block. It
         uploads nothing.
+      </p>
+
+      <h2>WebSite</h2>
+      <p>
+        Use WebSite on the homepage, once. <code>name</code> is the site
+        name in the header. <code>url</code> is that homepage.{" "}
+        <code>alternateName</code> is a second name the page already uses.{" "}
+        <code>publisher</code> is the organization, which can point at the
+        Organization block. schema.org also allows a <code>SearchAction</code>{" "}
+        whose <code>urlTemplate</code> contains{" "}
+        <code>{"{search_term_string}"}</code>. Google’s Search Central post
+        of 21 October 2024 says the sitelinks search box stopped on 21
+        November 2024, that rankings were not part of that change, and that
+        WebSite markup used for site names continues to be supported. A
+        search template will not restore that box. Keep the script when the
+        name is visible. The{" "}
+        <Link href="/website-schema-generator">WebSite schema generator</Link>{" "}
+        copies the name, alternate name, URL, search template, and publisher.
+        It uploads nothing.
       </p>
 
       <h2>Product</h2>

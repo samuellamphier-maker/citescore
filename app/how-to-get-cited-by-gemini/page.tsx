@@ -22,6 +22,7 @@ export default function HowToGetCitedByGeminiPage() {
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },
         { href: "/google-ai-mode-optimization", label: "Google AI Mode optimization" },
         { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
+        { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}
     >

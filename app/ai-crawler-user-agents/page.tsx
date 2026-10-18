@@ -156,7 +156,10 @@ export default function AiCrawlerUserAgentsPage() {
           Bingbot is Microsoft’s search crawler. This table does not call it a generative-model training token, because
           Microsoft’s crawler docs do not. Google-Extended and Applebot-Extended are control tokens. They do not show up
           as their own user-agent in an access log. Meta’s user-triggered fetcher is Meta-ExternalFetcher, which Meta
-          says may bypass robots.txt. It is a different token from Meta-ExternalAgent and is not a row above.
+          says may bypass robots.txt. It is a different token from Meta-ExternalAgent and is not a row above. The token
+          Meta’s crawler page ties to citations in Meta AI responses is Meta-WebIndexer, also not a row above. The
+          longer note, including why this page does not treat FacebookBot as that control, is{" "}
+          <Link href="/how-to-get-cited-by-meta-ai">how to get cited by Meta AI</Link>.
         </p>
 
         <h2>Questions about the tokens</h2>

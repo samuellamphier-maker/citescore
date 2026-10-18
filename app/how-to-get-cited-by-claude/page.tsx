@@ -22,6 +22,7 @@ export default function HowToGetCitedByClaudePage() {
         { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
         { href: "/how-to-get-cited-by-perplexity", label: "How to get cited by Perplexity" },
         { href: "/how-to-get-cited-by-grok", label: "How to get cited by Grok" },
+        { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}
     >

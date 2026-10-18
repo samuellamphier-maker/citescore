@@ -28,6 +28,11 @@ export function AiSearchReadinessChecklistForSaasArticle() {
         Grok’s documented web citations, which do not include a robots.txt
         token, are on{" "}
         <Link href="/how-to-get-cited-by-grok">how to get cited by Grok</Link>
+        . Meta’s crawler page, which names Meta-WebIndexer for citations in
+        Meta AI, is{" "}
+        <Link href="/how-to-get-cited-by-meta-ai">
+          how to get cited by Meta AI
+        </Link>
         .
       </p>
 

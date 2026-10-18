@@ -20,13 +20,17 @@ export function HowToGetCitedByPerplexityArticle() {
         <a href={crawlersDoc}>Perplexity’s crawler documentation</a>.
       </p>
       <p>
-        The matching pages for the other two engines are{" "}
+        The matching pages for the other engines are{" "}
         <Link href="/how-to-get-cited-by-chatgpt">
           how to get cited by ChatGPT
-        </Link>{" "}
-        and{" "}
+        </Link>
+        ,{" "}
         <Link href="/google-ai-overviews-optimization">
           Google AI Overviews optimization
+        </Link>
+        , and{" "}
+        <Link href="/how-to-get-cited-by-meta-ai">
+          how to get cited by Meta AI
         </Link>
         .
       </p>

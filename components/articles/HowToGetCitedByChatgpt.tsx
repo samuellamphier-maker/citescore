@@ -20,14 +20,18 @@ export function HowToGetCitedByChatgptArticle() {
       </p>
       <p>
         Three tokens do three jobs. Mixing them up is how a training opt-out
-        gets described as a search opt-out. The Perplexity and Google
+        gets described as a search opt-out.         The Perplexity, Google, and Meta AI
         equivalents are on{" "}
         <Link href="/how-to-get-cited-by-perplexity">
           how to get cited by Perplexity
-        </Link>{" "}
-        and{" "}
+        </Link>
+        ,{" "}
         <Link href="/google-ai-overviews-optimization">
           Google AI Overviews optimization
+        </Link>
+        , and{" "}
+        <Link href="/how-to-get-cited-by-meta-ai">
+          how to get cited by Meta AI
         </Link>
         .
       </p>

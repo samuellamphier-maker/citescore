@@ -31,9 +31,9 @@ export function HowToGetCitedByGeminiArticle() {
           Google AI Mode optimization
         </Link>
         . AI Mode uses the same snippet and Search Console rules, and a
-        different position rule. ChatGPT, Perplexity, Claude, and Copilot
-        publish different
-        controls, linked from{" "}
+        different position rule. ChatGPT, Perplexity, Claude, Copilot, and{" "}
+        <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link> publish
+        different controls, linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
         </Link>

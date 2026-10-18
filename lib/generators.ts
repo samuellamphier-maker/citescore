@@ -1136,3 +1136,85 @@ export function buildPersonSchema(input: PersonInput): string {
 
   return jsonLdScript(person);
 }
+
+export type WebsiteInput = {
+  name: string;
+  alternateName: string;
+  url: string;
+  searchUrlTemplate: string;
+  publisherName: string;
+  publisherUrl: string;
+};
+
+const SEARCH_PROBE = "citescore-search-probe";
+
+function substituteToken(value: string, token: string, replacement: string): string {
+  return value.split(token).join(replacement);
+}
+
+/**
+ * Absolute http(s) URL template that still contains {search_term_string}, or empty.
+ * A missing scheme is treated as https. A template without the token is rejected.
+ */
+export function searchUrlTemplate(raw: string): string {
+  const value = raw.trim();
+  if (!value || /\s/.test(value) || value.includes(SEARCH_PROBE)) return "";
+  if (!value.includes("{search_term_string}")) return "";
+  const probed = substituteToken(value, "{search_term_string}", SEARCH_PROBE);
+  if (probed.includes("{") || probed.includes("}")) return "";
+  const url = httpUrl(probed);
+  if (!url || !url.includes(SEARCH_PROBE)) return "";
+  return substituteToken(url, SEARCH_PROBE, "{search_term_string}");
+}
+
+function entityId(url: string, fragment: string): string {
+  return `${url.replace(/\/$/, "")}#${fragment}`;
+}
+
+export function buildWebsiteSchema(input: WebsiteInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const website: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name,
+  };
+
+  const alternateName = plainLine(input.alternateName);
+  if (alternateName && alternateName !== name) website.alternateName = alternateName;
+
+  const url = httpUrl(input.url);
+  if (url) {
+    website["@id"] = entityId(url, "website");
+    website.url = url;
+  }
+
+  const template = searchUrlTemplate(input.searchUrlTemplate);
+  if (template) {
+    website.potentialAction = {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: template,
+      },
+      "query-input": "required name=search_term_string",
+    };
+  }
+
+  const publisherName = plainLine(input.publisherName);
+  if (publisherName) {
+    const publisher: Record<string, unknown> = {
+      "@type": "Organization",
+      name: publisherName,
+    };
+    const publisherUrl = httpUrl(input.publisherUrl);
+    if (publisherUrl) {
+      publisher["@id"] = entityId(publisherUrl, "organization");
+      publisher.url = publisherUrl;
+    }
+    website.publisher = publisher;
+  }
+
+  return jsonLdScript(website);
+}

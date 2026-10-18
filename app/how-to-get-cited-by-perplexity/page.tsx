@@ -49,6 +49,7 @@ export default function HowToGetCitedByPerplexityPage() {
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
+          { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
           { href: "/robots-txt-ai-crawler-generator", label: "Free robots.txt AI crawler generator" },
         ]}
       >

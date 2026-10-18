@@ -49,6 +49,7 @@ export default function HowToGetCitedByChatgptPage() {
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
+          { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
         ]}
       >

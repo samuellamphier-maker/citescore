@@ -123,6 +123,18 @@ export const topicPages: TopicPage[] = [
     minutes: 11,
   },
   {
+    path: "/how-to-get-cited-by-meta-ai",
+    title: "How to get cited by Meta AI",
+    description:
+      "What Meta publishes for Meta AI: Meta-WebIndexer is the crawler Meta ties to citations. Meta-ExternalAgent is a separate training and indexing crawl. Meta does not publish a citation rate.",
+    kicker: "Guide",
+    card: "Meta-WebIndexer, Meta-ExternalAgent, and the robots.txt tokens Meta’s crawler page actually lists.",
+    navLabel: "How to get cited by Meta AI",
+    priority: 0.8,
+    publishedAt: "2026-10-18",
+    minutes: 11,
+  },
+  {
     path: "/geo-for-local-businesses",
     title: "GEO for local businesses",
     description:
@@ -370,6 +382,18 @@ export const topicPages: TopicPage[] = [
     minutes: 5,
   },
   {
+    path: "/website-schema-generator",
+    title: "Free WebSite schema generator",
+    description:
+      "Free, no-signup WebSite JSON-LD generator. Add the site name, alternate name, URL, an optional search URL template, and an optional publisher. Copy the script. Nothing is uploaded.",
+    kicker: "WebSite schema",
+    card: "Copy WebSite JSON-LD from the site name, URL, and search template already on the page.",
+    navLabel: "WebSite schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-18",
+    minutes: 5,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -490,6 +514,7 @@ const guideNavOrder = [
   "/how-to-get-cited-by-gemini",
   "/how-to-get-cited-by-copilot",
   "/how-to-get-cited-by-grok",
+  "/how-to-get-cited-by-meta-ai",
   "/google-ai-overviews-optimization",
   "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",

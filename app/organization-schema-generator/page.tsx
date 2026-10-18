@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "When should the optional WebSite block be included?",
-    a: "Include it when this URL is the site itself and the name matches the site name in the header. WebSite names the site. Organization names the publisher. The generator emits them as two script tags so each one can be checked on its own.",
+    a: "Include it when this URL is the site itself and the name matches the site name in the header. WebSite names the site. Organization names the publisher. The generator emits them as two script tags so each one can be checked on its own. An alternate name, a search URL template, and a publisher block are on the WebSite schema generator.",
   },
 ];
 
@@ -43,6 +43,7 @@ const related = [
   { href: "/howto-schema-generator", label: "HowTo schema generator" },
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/person-schema-generator", label: "Person schema generator" },
+  { href: "/website-schema-generator", label: "WebSite schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -89,7 +90,7 @@ export default function OrganizationSchemaGeneratorPage() {
           <Link href="/schema-markup-for-ai-search">schema guide</Link> shows the fields CiteScore publishes on its own pages, and the fields it leaves out.
         </p>
         <p>
-          The copy block is one <code>script</code> tag for Organization. Check “Also generate a WebSite script” when the page is the site itself, and a second tag is added for WebSite, with <code>publisher</code> pointing at the organization <code>@id</code>. Paste both into the HTML the server sends. The <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy.
+          The copy block is one <code>script</code> tag for Organization. Check “Also generate a WebSite script” when the page is the site itself, and a second tag is added for WebSite, with <code>publisher</code> pointing at the organization <code>@id</code>. That WebSite block is the name and URL only. An alternate name, a search URL template, and a publisher use the <Link href="/website-schema-generator">WebSite schema generator</Link>. Paste both into the HTML the server sends. The <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy.
         </p>
         <h2>What to leave out</h2>
         <ul>
@@ -97,7 +98,7 @@ export default function OrganizationSchemaGeneratorPage() {
           <li>A <code>sameAs</code> profile the organization does not control.</li>
           <li>An email address that is not a published contact on that page.</li>
           <li>
-            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. A product page that already shows a rating uses the <Link href="/product-schema-generator">Product schema generator</Link>. Questions that are already on the page use the <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the <Link href="/article-schema-generator">Article schema generator</Link>. A location page uses the <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>. A procedure uses the <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>.
+            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. A product page that already shows a rating uses the <Link href="/product-schema-generator">Product schema generator</Link>. Questions that are already on the page use the <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the <Link href="/article-schema-generator">Article schema generator</Link>. A location page uses the <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>. A procedure uses the <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>.
           </li>
         </ul>
         <h2>Questions about Organization schema</h2>

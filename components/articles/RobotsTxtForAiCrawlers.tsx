@@ -48,6 +48,9 @@ export function RobotsTxtForAiCrawlersArticle() {
         wider set, with a copyable group and a note when the operator does
         not document compliance, is the{" "}
         <Link href="/ai-crawler-user-agents">AI crawler user-agent reference</Link>.
+        Meta’s crawler page, including the token Meta ties to citations in
+        Meta AI, is{" "}
+        <Link href="/how-to-get-cited-by-meta-ai">how to get cited by Meta AI</Link>.
       </p>
       <div className="table-wrap">
         <table>

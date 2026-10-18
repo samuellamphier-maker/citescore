@@ -27,6 +27,12 @@ export function HowToGetCitedByCopilotArticle() {
         xAI’s Web Search tool, which does not come with a robots.txt token,
         is on{" "}
         <Link href="/how-to-get-cited-by-grok">how to get cited by Grok</Link>.
+        Meta’s published crawlers, including the token Meta ties to citations,
+        are on{" "}
+        <Link href="/how-to-get-cited-by-meta-ai">
+          how to get cited by Meta AI
+        </Link>
+        .
         The map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

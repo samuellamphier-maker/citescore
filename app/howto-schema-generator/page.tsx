@@ -39,6 +39,7 @@ const related = [
   { href: "/howto-schema-generator", label: "HowTo schema generator" },
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/person-schema-generator", label: "Person schema generator" },
+  { href: "/website-schema-generator", label: "WebSite schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -94,7 +95,7 @@ export default function HowToSchemaGeneratorPage() {
           <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. Questions already on the page use the{" "}
           <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the{" "}
           <Link href="/article-schema-generator">Article schema generator</Link>. An app page uses the{" "}
-          <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>.
+          <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>.
         </p>
         <h2>How to install it</h2>
         <ol>
