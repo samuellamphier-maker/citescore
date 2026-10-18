@@ -40,6 +40,8 @@ const related = [
   { href: "/article-schema-generator", label: "Article schema generator" },
   { href: "/local-business-schema-generator", label: "Local business schema generator" },
   { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
+  { href: "/howto-schema-generator", label: "HowTo schema generator" },
+  { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/geo-for-local-businesses", label: "GEO for local businesses" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
@@ -91,7 +93,9 @@ export default function LocalBusinessSchemaGeneratorPage() {
           <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. A location URL at another path is outside that fetch. The{" "}
           <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. A visible trail uses the{" "}
           <Link href="/breadcrumb-schema-generator">breadcrumb schema generator</Link>. A homepage that identifies the publisher uses the{" "}
-          <Link href="/organization-schema-generator">Organization schema generator</Link>.
+          <Link href="/organization-schema-generator">Organization schema generator</Link>. A procedure uses the{" "}
+          <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the{" "}
+          <Link href="/software-application-schema-generator">Software application schema generator</Link>.
         </p>
         <h2>How to install it</h2>
         <ol>

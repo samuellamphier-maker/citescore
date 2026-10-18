@@ -106,10 +106,18 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         the{" "}
         <Link href="/local-business-schema-generator">
           Local business schema generator
-        </Link>, and a visible trail can use the{" "}
+        </Link>
+        , a visible trail can use the{" "}
         <Link href="/breadcrumb-schema-generator">
           breadcrumb schema generator
-        </Link>. Each script is valid only when a person can read the same facts on that URL.
+        </Link>
+        , a procedure can use the{" "}
+        <Link href="/howto-schema-generator">HowTo schema generator</Link>, and
+        an app page can use the{" "}
+        <Link href="/software-application-schema-generator">
+          Software application schema generator
+        </Link>
+        . Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
         None of them is a ranking file, and none of them makes ChatGPT,
@@ -271,6 +279,37 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         numbers the rows you add and skips a blank one. It uploads nothing.
         The script does not rank the page, and Google does not guarantee the
         trail appears in Search.
+      </p>
+
+      <h2>HowTo</h2>
+      <p>
+        Use HowTo on a page that teaches a procedure a person can already
+        follow: a name, the steps in order, and the time, cost, supplies, and
+        tools the page states. schema.org encodes the time as an ISO 8601
+        duration and the cost as a MonetaryAmount. Google Search stopped
+        showing How-to rich results on 13 September 2023 and removed the
+        How-to documentation. The script will not put steps under a blue
+        link. Keep it when the steps are visible, so a parser can still tell
+        step two from an aside. The{" "}
+        <Link href="/howto-schema-generator">HowTo schema generator</Link>{" "}
+        copies those fields into one script and numbers each step from 1. It
+        uploads nothing.
+      </p>
+
+      <h2>SoftwareApplication</h2>
+      <p>
+        Use SoftwareApplication on the page for one app. Google’s software
+        app documentation says a rich result needs the name, a price (0 when
+        the app is free), and a rating or a review that is visible on the
+        page. The operating system and an application category from Google’s
+        list are recommended. Google does not guarantee the rich result, and
+        the script does not make an answer engine cite the page. The{" "}
+        <Link href="/software-application-schema-generator">
+          Software application schema generator
+        </Link>{" "}
+        writes that shape, including an aggregate rating only when you enter
+        both the rating and the review count. It does not invent a review. It
+        uploads nothing. A physical product still uses Product.
       </p>
 
       <h2>Questions about the markup</h2>

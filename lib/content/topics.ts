@@ -334,6 +334,30 @@ export const topicPages: TopicPage[] = [
     minutes: 4,
   },
   {
+    path: "/howto-schema-generator",
+    title: "Free HowTo schema generator",
+    description:
+      "Free, no-signup HowTo JSON-LD generator. Add the name, time, cost, supplies, tools, and ordered steps already on the page, then copy a script tag. Nothing is uploaded.",
+    kicker: "HowTo schema",
+    card: "Copy HowTo JSON-LD from the steps, time, and supplies already on the page.",
+    navLabel: "HowTo schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-18",
+    minutes: 6,
+  },
+  {
+    path: "/software-application-schema-generator",
+    title: "Free SoftwareApplication schema generator",
+    description:
+      "Free, no-signup SoftwareApplication JSON-LD generator. Add the name, operating system, category, price, URL, and an optional rating the page already shows. Copy the script. Nothing is uploaded.",
+    kicker: "SoftwareApplication schema",
+    card: "Copy SoftwareApplication JSON-LD from the name, price, and operating system already on the page.",
+    navLabel: "Software application schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-18",
+    minutes: 6,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
