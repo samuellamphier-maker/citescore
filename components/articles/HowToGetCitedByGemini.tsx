@@ -33,7 +33,10 @@ export function HowToGetCitedByGeminiArticle() {
         . AI Mode uses the same snippet and Search Console rules, and a
         different position rule. ChatGPT, Perplexity, Claude, Copilot, and{" "}
         <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link> publish
-        different controls, linked from{" "}
+        different controls. DeepSeek’s Search and Fetch guide, which does
+        not name a robots.txt token, is{" "}
+        <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
+        The others are linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
         </Link>

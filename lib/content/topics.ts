@@ -135,6 +135,18 @@ export const topicPages: TopicPage[] = [
     minutes: 11,
   },
   {
+    path: "/how-to-get-cited-by-deepseek",
+    title: "How to get cited by DeepSeek",
+    description:
+      "What DeepSeek’s Search and Fetch guide publishes: an in-house search API, a Markdown fetch, authority and snippet fields, and no robots.txt token. A search result is not a chat citation.",
+    kicker: "Guide",
+    card: "The Search API’s authority tier and snippet, and the crawler token DeepSeek does not publish.",
+    navLabel: "How to get cited by DeepSeek",
+    priority: 0.8,
+    publishedAt: "2026-10-20",
+    minutes: 11,
+  },
+  {
     path: "/geo-for-local-businesses",
     title: "GEO for local businesses",
     description:
@@ -418,6 +430,18 @@ export const topicPages: TopicPage[] = [
     minutes: 6,
   },
   {
+    path: "/event-schema-generator",
+    title: "Free Event schema generator",
+    description:
+      "Free, no-signup Event JSON-LD generator. Add the name, start and end, status, attendance mode, place or virtual URL, image, description, organizer, and offer already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Event schema",
+    card: "Copy Event JSON-LD from the name, date, place, and price already on the event page.",
+    navLabel: "Event schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-20",
+    minutes: 6,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -540,6 +564,7 @@ const guideNavOrder = [
   "/how-to-get-cited-by-copilot",
   "/how-to-get-cited-by-grok",
   "/how-to-get-cited-by-meta-ai",
+  "/how-to-get-cited-by-deepseek",
   "/google-ai-overviews-optimization",
   "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",

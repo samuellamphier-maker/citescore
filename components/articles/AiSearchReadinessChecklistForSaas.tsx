@@ -33,6 +33,11 @@ export function AiSearchReadinessChecklistForSaasArticle() {
         <Link href="/how-to-get-cited-by-meta-ai">
           how to get cited by Meta AI
         </Link>
+        . DeepSeek’s Search and Fetch guide, which does not name a robots.txt
+        token, is{" "}
+        <Link href="/how-to-get-cited-by-deepseek">
+          how to get cited by DeepSeek
+        </Link>
         .
       </p>
 

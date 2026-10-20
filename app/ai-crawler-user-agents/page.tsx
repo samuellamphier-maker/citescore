@@ -160,6 +160,9 @@ export default function AiCrawlerUserAgentsPage() {
           Meta’s crawler page ties to citations in Meta AI responses is Meta-WebIndexer, also not a row above. The
           longer note, including why this page does not treat FacebookBot as that control, is{" "}
           <Link href="/how-to-get-cited-by-meta-ai">how to get cited by Meta AI</Link>.
+          DeepSeek is not a row in the table. The Search and Fetch guide does not name a user-agent, and this page
+          does not add one from a third-party list. The note is{" "}
+          <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
         </p>
 
         <h2>Questions about the tokens</h2>

@@ -1334,3 +1334,181 @@ export function buildVideoSchema(input: VideoInput): string {
 
   return jsonLdScript(video);
 }
+
+/** schema.org EventStatusType values this generator will write. */
+export const EVENT_STATUSES = [
+  "EventScheduled",
+  "EventCancelled",
+  "EventPostponed",
+  "EventRescheduled",
+  "EventMovedOnline",
+] as const;
+
+/** schema.org EventAttendanceModeEnumeration values this generator will write. */
+export const EVENT_ATTENDANCE_MODES = [
+  "OfflineEventAttendanceMode",
+  "OnlineEventAttendanceMode",
+  "MixedEventAttendanceMode",
+] as const;
+
+/** ItemAvailability values Google’s event documentation lists for offers. */
+export const EVENT_OFFER_AVAILABILITY = ["InStock", "SoldOut", "PreOrder"] as const;
+
+export type EventInput = {
+  name: string;
+  startDate: string;
+  endDate: string;
+  eventStatus: string;
+  attendanceMode: string;
+  placeName: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  virtualUrl: string;
+  imageUrl: string;
+  description: string;
+  organizerName: string;
+  organizerUrl: string;
+  price: string;
+  currency: string;
+  offerUrl: string;
+  availability: string;
+};
+
+/** A price of zero or more, thousands commas removed, or empty. Zero is a free event. */
+export function eventPrice(raw: string): string {
+  const value = stripThousands(raw);
+  if (!/^\d+(\.\d+)?$/.test(value)) return "";
+  if (!(Number(value) >= 0)) return "";
+  return value;
+}
+
+function schemaOrgUrl(name: string, allowed: readonly string[]): string {
+  return allowed.some((item) => item === name) ? `https://schema.org/${name}` : "";
+}
+
+function timePart(value: string): string {
+  const index = value.indexOf("T");
+  return index === -1 ? "" : value.slice(index + 1);
+}
+
+function zonePart(value: string): string {
+  const match = /(Z|[+-]\d{2}:\d{2})$/.exec(value);
+  return match ? match[1] : "";
+}
+
+/**
+ * True when end is on or after start.
+ * The same calendar day with no clock time is an all-day event.
+ * A clock time that is earlier than the start, on that day, is rejected.
+ */
+export function eventEndOk(start: string, end: string): boolean {
+  if (end.slice(0, 10) > start.slice(0, 10)) return true;
+  if (end.slice(0, 10) < start.slice(0, 10)) return false;
+  const startTime = timePart(start);
+  const endTime = timePart(end);
+  if (!startTime || !endTime) return true;
+  const startZone = zonePart(start);
+  const endZone = zonePart(end);
+  if (startZone && endZone) {
+    const startMs = Date.parse(start);
+    const endMs = Date.parse(end);
+    if (Number.isFinite(startMs) && Number.isFinite(endMs)) return endMs >= startMs;
+  }
+  return endTime >= startTime;
+}
+
+function eventPlace(input: EventInput): Record<string, unknown> | null {
+  const placeName = plainLine(input.placeName);
+  const street = plainLine(input.streetAddress);
+  const locality = plainLine(input.addressLocality);
+  const region = plainLine(input.addressRegion);
+  const postal = plainLine(input.postalCode);
+  const country = addressCountryValue(input.addressCountry);
+  if (!placeName || !(street || locality) || !country) return null;
+  const address: Record<string, unknown> = { "@type": "PostalAddress" };
+  if (street) address.streetAddress = street;
+  if (locality) address.addressLocality = locality;
+  if (region) address.addressRegion = region;
+  if (postal) address.postalCode = postal;
+  address.addressCountry = country;
+  return { "@type": "Place", name: placeName, address };
+}
+
+function eventVirtual(raw: string): Record<string, unknown> | null {
+  const url = httpUrl(raw);
+  if (!url) return null;
+  return { "@type": "VirtualLocation", url };
+}
+
+/**
+ * Event JSON-LD. Empty until name, start date, attendance mode, and the
+ * location that mode requires are valid. Offline needs a place. Online needs
+ * a virtual URL. Mixed needs both.
+ */
+export function buildEventSchema(input: EventInput): string {
+  const name = plainLine(input.name);
+  const startDate = isoDateTime(input.startDate);
+  const attendance = schemaOrgUrl(input.attendanceMode, EVENT_ATTENDANCE_MODES);
+  if (!name || !startDate || !attendance) return "";
+
+  const offline = input.attendanceMode === "OfflineEventAttendanceMode";
+  const online = input.attendanceMode === "OnlineEventAttendanceMode";
+  const mixed = input.attendanceMode === "MixedEventAttendanceMode";
+  const place = eventPlace(input);
+  const virtual = eventVirtual(input.virtualUrl);
+  if ((offline || mixed) && !place) return "";
+  if ((online || mixed) && !virtual) return "";
+
+  const event: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name,
+    startDate,
+    eventAttendanceMode: attendance,
+  };
+
+  const endDate = isoDateTime(input.endDate);
+  if (endDate && eventEndOk(startDate, endDate)) event.endDate = endDate;
+
+  const status = schemaOrgUrl(input.eventStatus, EVENT_STATUSES);
+  if (status) event.eventStatus = status;
+
+  if (mixed && place && virtual) event.location = [place, virtual];
+  else if (offline && place) event.location = place;
+  else if (online && virtual) event.location = virtual;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) event.image = [image];
+
+  const description = plainLine(input.description);
+  if (description) event.description = description;
+
+  const organizerName = plainLine(input.organizerName);
+  if (organizerName) {
+    const organizer: Record<string, unknown> = {
+      "@type": "Organization",
+      name: organizerName,
+    };
+    const organizerUrl = httpUrl(input.organizerUrl);
+    if (organizerUrl) organizer.url = organizerUrl;
+    event.organizer = organizer;
+  }
+
+  const price = eventPrice(input.price);
+  const currency = isoCurrency(input.currency);
+  const offerUrl = httpUrl(input.offerUrl);
+  const availability = schemaOrgUrl(input.availability, EVENT_OFFER_AVAILABILITY);
+  if (price || currency || offerUrl || availability) {
+    const offer: Record<string, unknown> = { "@type": "Offer" };
+    if (price) offer.price = price;
+    if (currency) offer.priceCurrency = currency;
+    if (offerUrl) offer.url = offerUrl;
+    if (availability) offer.availability = availability;
+    event.offers = offer;
+  }
+
+  return jsonLdScript(event);
+}

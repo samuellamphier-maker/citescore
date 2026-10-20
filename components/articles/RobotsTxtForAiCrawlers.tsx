@@ -51,6 +51,9 @@ export function RobotsTxtForAiCrawlersArticle() {
         Meta’s crawler page, including the token Meta ties to citations in
         Meta AI, is{" "}
         <Link href="/how-to-get-cited-by-meta-ai">how to get cited by Meta AI</Link>.
+        DeepSeek’s Search and Fetch guide does not name a robots.txt token.
+        That note is{" "}
+        <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
       </p>
       <div className="table-wrap">
         <table>
