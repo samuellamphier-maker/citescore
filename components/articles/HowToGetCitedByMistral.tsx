@@ -50,8 +50,9 @@ export function HowToGetCitedByMistralArticle() {
         <Link href="/how-to-get-cited-by-gemini">Gemini</Link>,{" "}
         <Link href="/how-to-get-cited-by-copilot">Microsoft Copilot</Link>,{" "}
         <Link href="/how-to-get-cited-by-grok">Grok</Link>,{" "}
-        <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>. The short
+        <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>,{" "}
+        <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>. The short
         map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
@@ -224,6 +225,8 @@ export function HowToGetCitedByMistralArticle() {
         JSON-LD repeats facts a person can already read. It does not make Vibe
         cite the page. A product or an app that already shows reviews can use
         the <Link href="/review-schema-generator">Review schema generator</Link>.
+        A service page can use the{" "}
+        <Link href="/service-schema-generator">Service schema generator</Link>.
         The homepage can use the{" "}
         <Link href="/website-schema-generator">WebSite schema generator</Link>.
         The field list is the{" "}

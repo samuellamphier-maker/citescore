@@ -124,7 +124,7 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         , a watch page can use the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>
         , and an event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -361,6 +361,24 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         review text uses the{" "}
         <Link href="/review-schema-generator">Review schema generator</Link>. It
         uploads nothing. A physical product still uses Product.
+      </p>
+
+      <h2>Service</h2>
+      <p>
+        Use Service on the page for one offering that is not a shipped
+        product: an audit, a retainership, a cleaning, a consultation.{" "}
+        <code>name</code> is the service. <code>serviceType</code> is the
+        category the page already uses. <code>provider</code> is the
+        organization that does the work. <code>areaServed</code> is the place
+        the page names. <code>offers</code> is the price, and only when the
+        page shows a price and a currency. Google’s structured-data gallery,
+        read on 20 October 2026, does not list a Service rich result.
+        Organization, Local business, and Product are the neighboring features
+        that gallery does list. The script still tells a parser which string
+        is the service and which string is the firm. The{" "}
+        <Link href="/service-schema-generator">Service schema generator</Link>{" "}
+        writes that shape from fields you type. It uploads nothing. A street
+        address still uses LocalBusiness. A thing you ship still uses Product.
       </p>
 
       <h2>Questions about the markup</h2>

@@ -23,6 +23,7 @@ const related = [
   { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/event-schema-generator", label: "Event schema generator" },
   { href: "/review-schema-generator", label: "Review schema generator" },
+  { href: "/service-schema-generator", label: "Service schema generator" },
   { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
   { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
   { href: "/free-check", label: "Free AI visibility check" },

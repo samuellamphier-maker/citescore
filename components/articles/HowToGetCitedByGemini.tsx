@@ -38,6 +38,9 @@ export function HowToGetCitedByGeminiArticle() {
         <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
         Mistral’s Le Chat, now Vibe, is{" "}
         <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link>.
+        Brave Search’s crawler page, which does not publish its own user
+        agent, is{" "}
+        <Link href="/how-to-get-cited-by-brave-search">how to get cited by Brave Search</Link>.
         The others are linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

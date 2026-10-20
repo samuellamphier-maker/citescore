@@ -56,6 +56,8 @@ export function RobotsTxtForAiCrawlersArticle() {
         <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
         Mistral’s three tokens are on{" "}
         <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link>.
+        Brave’s crawler page does not publish a separate token. That note is{" "}
+        <Link href="/how-to-get-cited-by-brave-search">how to get cited by Brave Search</Link>.
       </p>
       <div className="table-wrap">
         <table>

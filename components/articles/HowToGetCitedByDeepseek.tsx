@@ -52,8 +52,9 @@ export function HowToGetCitedByDeepseekArticle() {
         <Link href="/how-to-get-cited-by-gemini">Gemini</Link>,{" "}
         <Link href="/how-to-get-cited-by-copilot">Microsoft Copilot</Link>,{" "}
         <Link href="/how-to-get-cited-by-grok">Grok</Link>,{" "}
-        <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>. The short
+        <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>,{" "}
+        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>. The short
         map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
@@ -246,7 +247,7 @@ export function HowToGetCitedByDeepseekArticle() {
           Schema that matches the visible page
         </Link>{" "}
         is for parsers that read JSON-LD. An event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>.
         The homepage can use the{" "}
         <Link href="/website-schema-generator">WebSite schema generator</Link>.
         None of those scripts is a DeepSeek switch. A mention on someone else’s

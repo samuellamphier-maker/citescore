@@ -1674,3 +1674,58 @@ export function buildReviewSchema(input: ReviewSchemaInput): string {
 
   return jsonLdScript(item);
 }
+
+export type ServiceInput = {
+  name: string;
+  serviceType: string;
+  description: string;
+  providerName: string;
+  providerUrl: string;
+  areaServed: string;
+  price: string;
+  currency: string;
+  url: string;
+};
+
+/**
+ * Service JSON-LD. Empty until the service name is present.
+ * An offer is written only when both a price (0 is free) and a currency are valid.
+ * A provider URL without a name is omitted.
+ */
+export function buildServiceSchema(input: ServiceInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const service: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+  };
+
+  const serviceType = plainLine(input.serviceType);
+  if (serviceType) service.serviceType = serviceType;
+
+  const description = plainLine(input.description);
+  if (description) service.description = description;
+
+  const url = httpUrl(input.url);
+  if (url) service.url = url;
+
+  const provider = organizationNode("Organization", input.providerName, input.providerUrl);
+  if (provider) service.provider = provider;
+
+  const areaServed = plainLine(input.areaServed);
+  if (areaServed) service.areaServed = areaServed;
+
+  const price = nonNegativePrice(input.price);
+  const currency = isoCurrency(input.currency);
+  if (price && currency) {
+    service.offers = {
+      "@type": "Offer",
+      price,
+      priceCurrency: currency,
+    };
+  }
+
+  return jsonLdScript(service);
+}

@@ -42,6 +42,11 @@ export function AiSearchReadinessChecklistForSaasArticle() {
         <Link href="/how-to-get-cited-by-mistral">
           how to get cited by Mistral
         </Link>
+        . Brave Search’s independent index, and a crawler page that does not
+        name its own user agent, are on{" "}
+        <Link href="/how-to-get-cited-by-brave-search">
+          how to get cited by Brave Search
+        </Link>
         .
       </p>
 

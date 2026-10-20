@@ -40,6 +40,10 @@ export function HowToGetCitedByPerplexityArticle() {
         <Link href="/how-to-get-cited-by-mistral">
           how to get cited by Mistral
         </Link>
+        , and{" "}
+        <Link href="/how-to-get-cited-by-brave-search">
+          how to get cited by Brave Search
+        </Link>
         .
       </p>
 

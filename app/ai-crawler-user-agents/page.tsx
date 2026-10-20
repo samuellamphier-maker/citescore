@@ -35,6 +35,7 @@ const related = [
   { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },
   { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
   { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
+  { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -166,6 +167,10 @@ export default function AiCrawlerUserAgentsPage() {
           <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
           Mistral’s crawler page names MistralAI-User, MistralAI-Index, and MistralAI-Training. The note is{" "}
           <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link>.
+          Brave’s crawler page does not advertise a differentiated user agent.
+          It says a page Googlebot cannot crawl is a page Brave will not crawl.
+          This table does not add a Brave token. The note is{" "}
+          <Link href="/how-to-get-cited-by-brave-search">how to get cited by Brave Search</Link>.
         </p>
 
         <h2>Questions about the tokens</h2>
