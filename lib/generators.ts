@@ -1218,3 +1218,119 @@ export function buildWebsiteSchema(input: WebsiteInput): string {
 
   return jsonLdScript(website);
 }
+
+export type VideoInput = {
+  name: string;
+  description: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  duration: string;
+  contentUrl: string;
+  embedUrl: string;
+  publisherName: string;
+  publisherUrl: string;
+};
+
+function durationNumber(raw: string | undefined): number {
+  return raw ? Number(raw) : 0;
+}
+
+/** Seconds token with trailing zeros removed. 1.50 becomes 1.5. 10.0 becomes 10. */
+function secondsToken(raw: string): string {
+  if (!raw.includes(".")) return String(Number(raw));
+  return raw.replace(/0+$/, "").replace(/\.$/, "");
+}
+
+/**
+ * ISO 8601 duration with a non-zero total.
+ * PT1M54S and PT00H30M5S are accepted. Zero parts are dropped, so PT00H30M5S is PT30M5S.
+ * Empty when the string is not a duration or the total is zero.
+ */
+export function videoIsoDuration(raw: string): string {
+  const value = raw.trim().toUpperCase().replace(/\s+/g, "");
+  if (!value) return "";
+  const match = /^P(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/.exec(value);
+  if (!match) return "";
+  const days = match[1];
+  const hours = match[2];
+  const minutes = match[3];
+  const seconds = match[4];
+  if (value.includes("T") && !hours && !minutes && !seconds) return "";
+  const d = durationNumber(days);
+  const h = durationNumber(hours);
+  const m = durationNumber(minutes);
+  const s = durationNumber(seconds);
+  if (!(d + h + m + s > 0)) return "";
+  let time = "";
+  if (h > 0) time += `${h}H`;
+  if (m > 0) time += `${m}M`;
+  if (s > 0 && seconds) time += `${secondsToken(seconds)}S`;
+  const date = d > 0 ? `${d}D` : "";
+  if (date && time) return `P${date}T${time}`;
+  if (date) return `P${date}`;
+  return time ? `PT${time}` : "";
+}
+
+/**
+ * ISO 8601 date or date-time. A date is YYYY-MM-DD.
+ * A time may include seconds, a fraction, and Z or ±HH:MM. A missing timezone is kept.
+ * Empty when the calendar date is impossible.
+ */
+export function isoDateTime(raw: string): string {
+  const value = raw.trim();
+  if (!value) return "";
+  const day = isoDay(value);
+  if (day) return day;
+  const match =
+    /^(\d{4}-\d{2}-\d{2})T([01]\d|2[0-3]):([0-5]\d)(?::([0-5]\d)(?:\.(\d+))?)?(Z|[+-]([01]\d|2[0-3]):?([0-5]\d))?$/.exec(
+      value,
+    );
+  if (!match || !isoDay(match[1])) return "";
+  const seconds = match[4] ? `:${match[4]}` : "";
+  const fractionDigits = match[5]?.replace(/0+$/, "") ?? "";
+  const fraction = fractionDigits ? `.${fractionDigits}` : "";
+  let zone = "";
+  if (match[6] === "Z") zone = "Z";
+  else if (match[7] && match[8]) zone = `${match[6][0]}${match[7]}:${match[8]}`;
+  return `${match[1]}T${match[2]}:${match[3]}${seconds}${fraction}${zone}`;
+}
+
+/**
+ * VideoObject JSON-LD. Empty until name, description, thumbnail, upload date,
+ * duration, and a content URL or an embed URL are all valid.
+ */
+export function buildVideoSchema(input: VideoInput): string {
+  const name = plainLine(input.name);
+  const description = plainLine(input.description);
+  const thumbnail = httpUrl(input.thumbnailUrl);
+  const uploadDate = isoDateTime(input.uploadDate);
+  const duration = videoIsoDuration(input.duration);
+  const contentUrl = httpUrl(input.contentUrl);
+  const embedUrl = httpUrl(input.embedUrl);
+  if (!name || !description || !thumbnail || !uploadDate || !duration || !(contentUrl || embedUrl)) return "";
+
+  const video: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name,
+    description,
+    thumbnailUrl: [thumbnail],
+    uploadDate,
+    duration,
+  };
+  if (contentUrl) video.contentUrl = contentUrl;
+  if (embedUrl) video.embedUrl = embedUrl;
+
+  const publisherName = plainLine(input.publisherName);
+  if (publisherName) {
+    const publisher: Record<string, unknown> = {
+      "@type": "Organization",
+      name: publisherName,
+    };
+    const publisherUrl = httpUrl(input.publisherUrl);
+    if (publisherUrl) publisher.url = publisherUrl;
+    video.publisher = publisher;
+  }
+
+  return jsonLdScript(video);
+}

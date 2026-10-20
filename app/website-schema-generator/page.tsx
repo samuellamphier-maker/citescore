@@ -40,6 +40,7 @@ const related = [
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/website-schema-generator", label: "WebSite schema generator" },
+  { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
   { href: "/free-check", label: "Free AI visibility check" },

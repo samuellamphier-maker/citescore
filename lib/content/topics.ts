@@ -230,6 +230,18 @@ export const topicPages: TopicPage[] = [
     minutes: 4,
   },
   {
+    path: "/how-to-check-if-chatgpt-mentions-your-brand",
+    title: "How to check if ChatGPT mentions your brand",
+    description:
+      "A practical way to see whether ChatGPT and other assistants name or link your brand: the same prompts, a log over time, robots.txt, llms.txt, structured data, and pages you do not control.",
+    kicker: "Guide",
+    card: "The prompts to repeat, the log to keep, and the public files that are not a mention.",
+    navLabel: "How to check if ChatGPT mentions your brand",
+    priority: 0.8,
+    publishedAt: "2026-10-20",
+    minutes: 11,
+  },
+  {
     path: "/how-to-get-cited-by-chatgpt",
     title: "How to get cited by ChatGPT",
     description:
@@ -394,6 +406,18 @@ export const topicPages: TopicPage[] = [
     minutes: 5,
   },
   {
+    path: "/video-schema-generator",
+    title: "Free Video schema generator",
+    description:
+      "Free, no-signup VideoObject JSON-LD generator. Add the name, description, thumbnail URL, upload date, ISO 8601 duration, and a content URL or embed URL, plus an optional publisher. Copy the script. Nothing is uploaded.",
+    kicker: "Video schema",
+    card: "Copy VideoObject JSON-LD from the title, thumbnail, and duration already on the watch page.",
+    navLabel: "Video schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-20",
+    minutes: 6,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -509,6 +533,7 @@ export const topicPages: TopicPage[] = [
 
 const guideNavOrder = [
   "/how-to-get-cited-by-chatgpt",
+  "/how-to-check-if-chatgpt-mentions-your-brand",
   "/how-to-get-cited-by-perplexity",
   "/how-to-get-cited-by-claude",
   "/how-to-get-cited-by-gemini",

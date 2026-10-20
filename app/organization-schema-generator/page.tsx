@@ -44,6 +44,7 @@ const related = [
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/website-schema-generator", label: "WebSite schema generator" },
+  { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -98,7 +99,7 @@ export default function OrganizationSchemaGeneratorPage() {
           <li>A <code>sameAs</code> profile the organization does not control.</li>
           <li>An email address that is not a published contact on that page.</li>
           <li>
-            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. A product page that already shows a rating uses the <Link href="/product-schema-generator">Product schema generator</Link>. Questions that are already on the page use the <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the <Link href="/article-schema-generator">Article schema generator</Link>. A location page uses the <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>. A procedure uses the <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>.
+            <code>aggregateRating</code> and <code>review</code>. This generator does not emit them. A product page that already shows a rating uses the <Link href="/product-schema-generator">Product schema generator</Link>. Questions that are already on the page use the <Link href="/faq-schema-generator">FAQ schema generator</Link>. An article uses the <Link href="/article-schema-generator">Article schema generator</Link>. A location page uses the <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>. A procedure uses the <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>. A watch page uses the <Link href="/video-schema-generator">Video schema generator</Link>.
           </li>
         </ul>
         <h2>Questions about Organization schema</h2>

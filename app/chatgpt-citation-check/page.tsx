@@ -68,6 +68,7 @@ export default function ChatgptCitationCheckPage() {
           { href: "/ai-crawlers", label: "GPTBot, PerplexityBot, and Google-Extended" },
           { href: "/ai-overviews", label: "Google AI Overviews visibility" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
+          { href: "/how-to-check-if-chatgpt-mentions-your-brand", label: "How to check if ChatGPT mentions your brand" },
           { href: "/geo-audit", label: "GEO audit — the same $39 PDF" },
           { href: "/sample", label: "Sample report (fictional company)" },
         ]}

@@ -40,6 +40,7 @@ export default function HowToGetCitedByMetaAiPage() {
           { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/website-schema-generator", label: "Free WebSite schema generator" },
+          { href: "/video-schema-generator", label: "Free Video schema generator" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         ])}
       >

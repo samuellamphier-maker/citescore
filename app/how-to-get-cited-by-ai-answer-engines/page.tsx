@@ -29,6 +29,7 @@ export default function HowToGetCitedByAiAnswerEnginesPage() {
         { href: "/how-to-get-cited-by-grok", label: "How to get cited by Grok" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
         { href: "/website-schema-generator", label: "Free WebSite schema generator" },
+        { href: "/video-schema-generator", label: "Free Video schema generator" },
         { href: "/google-ai-mode-optimization", label: "Google AI Mode optimization" },
         { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
         { href: "/aeo-checklist", label: "AEO checklist" },

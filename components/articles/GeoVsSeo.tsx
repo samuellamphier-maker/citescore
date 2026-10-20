@@ -183,6 +183,8 @@ export function GeoVsSeoArticle() {
         <Link href="/person-schema-generator">Person schema generator</Link>.
         The homepage uses the{" "}
         <Link href="/website-schema-generator">WebSite schema generator</Link>.
+        A watch page uses the{" "}
+        <Link href="/video-schema-generator">Video schema generator</Link>.
         The name in
         the schema has to match the name in the H1. FAQPage is for questions
         a person can read on that page. Google stopped showing FAQ rich

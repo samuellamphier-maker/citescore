@@ -49,6 +49,7 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/software-application-schema-generator", label: "Free Software application schema generator" },
           { href: "/person-schema-generator", label: "Free Person schema generator" },
           { href: "/website-schema-generator", label: "Free WebSite schema generator" },
+          { href: "/video-schema-generator", label: "Free Video schema generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}

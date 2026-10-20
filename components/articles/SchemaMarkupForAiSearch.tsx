@@ -119,8 +119,10 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         </Link>
         , an author profile can use the{" "}
         <Link href="/person-schema-generator">Person schema generator</Link>
-        , and the homepage can use the{" "}
-        <Link href="/website-schema-generator">WebSite schema generator</Link>.
+        , the homepage can use the{" "}
+        <Link href="/website-schema-generator">WebSite schema generator</Link>
+        , and a watch page can use the{" "}
+        <Link href="/video-schema-generator">Video schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>

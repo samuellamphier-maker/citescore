@@ -68,6 +68,7 @@ export default function RobotsTxtForAiCrawlersPage() {
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
           { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
           { href: "/website-schema-generator", label: "Free WebSite schema generator" },
+          { href: "/video-schema-generator", label: "Free Video schema generator" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}
       >

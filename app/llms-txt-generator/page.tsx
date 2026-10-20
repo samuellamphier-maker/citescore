@@ -20,6 +20,7 @@ const related = [
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/website-schema-generator", label: "WebSite schema generator" },
+  { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/llms-txt", label: "llms.txt checker" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },

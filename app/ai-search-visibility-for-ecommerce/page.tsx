@@ -28,6 +28,7 @@ export default function AiSearchVisibilityForEcommercePage() {
         { href: "/software-application-schema-generator", label: "Free Software application schema generator" },
         { href: "/person-schema-generator", label: "Free Person schema generator" },
         { href: "/website-schema-generator", label: "Free WebSite schema generator" },
+        { href: "/video-schema-generator", label: "Free Video schema generator" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },
         { href: "/how-to-get-cited-by-gemini", label: "How to get cited by Gemini" },

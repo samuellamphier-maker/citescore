@@ -40,6 +40,7 @@ const related = [
   { href: "/software-application-schema-generator", label: "Software application schema generator" },
   { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/website-schema-generator", label: "WebSite schema generator" },
+  { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -97,7 +98,8 @@ export default function SoftwareApplicationSchemaGeneratorPage() {
           <Link href="/organization-schema-generator">Organization schema generator</Link>. A procedure uses the{" "}
           <Link href="/howto-schema-generator">HowTo schema generator</Link>. An author profile uses the{" "}
           <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the{" "}
-          <Link href="/website-schema-generator">WebSite schema generator</Link>.
+          <Link href="/website-schema-generator">WebSite schema generator</Link>. A watch page uses the{" "}
+          <Link href="/video-schema-generator">Video schema generator</Link>.
         </p>
         <h2>How to install it</h2>
         <ol>
