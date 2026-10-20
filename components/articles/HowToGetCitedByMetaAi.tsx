@@ -49,8 +49,9 @@ export function HowToGetCitedByMetaAiArticle() {
         <Link href="/how-to-get-cited-by-claude">Claude</Link>,{" "}
         <Link href="/how-to-get-cited-by-gemini">Gemini</Link>,{" "}
         <Link href="/how-to-get-cited-by-copilot">Microsoft Copilot</Link>,{" "}
-        <Link href="/how-to-get-cited-by-grok">Grok</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>. The short map
+        <Link href="/how-to-get-cited-by-grok">Grok</Link>,{" "}
+        <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>. The short map
         is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

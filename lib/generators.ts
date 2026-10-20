@@ -1512,3 +1512,165 @@ export function buildEventSchema(input: EventInput): string {
 
   return jsonLdScript(event);
 }
+
+/** Item types this generator will nest a review in. LocalBusiness and Organization are omitted. */
+export const REVIEW_ITEM_TYPES = ["Product", "SoftwareApplication"] as const;
+
+export type ReviewItemType = (typeof REVIEW_ITEM_TYPES)[number];
+
+export type ReviewEntryInput = {
+  authorName: string;
+  authorKind: string;
+  name: string;
+  reviewBody: string;
+  ratingValue: string;
+  datePublished: string;
+};
+
+export type ReviewSchemaInput = {
+  itemType: string;
+  name: string;
+  description: string;
+  url: string;
+  ratingValue: string;
+  reviewCount: string;
+  ratingCount: string;
+  bestRating: string;
+  worstRating: string;
+  reviews: ReviewEntryInput[];
+};
+
+/** A number that is zero or greater, or empty. A worst rating may be 0. */
+export function ratingFloor(raw: string): string {
+  const value = raw.trim();
+  if (!/^\d+(\.\d+)?$/.test(value)) return "";
+  return value;
+}
+
+type RatingScale = {
+  best: string;
+  worst: string;
+  ceiling: number;
+  floor: number;
+};
+
+/** Blank best means 5. Blank worst means 1. An unreadable bound, or a floor that is not below the ceiling, is no scale. */
+function ratingScale(bestRaw: string, worstRaw: string): RatingScale | null {
+  const bestProvided = bestRaw.trim();
+  const worstProvided = worstRaw.trim();
+  const best = bestProvided ? ratingFloor(bestRaw) : "";
+  const worst = worstProvided ? ratingFloor(worstRaw) : "";
+  if (bestProvided && !best) return null;
+  if (worstProvided && !worst) return null;
+  const ceiling = best ? Number(best) : 5;
+  const floor = worst ? Number(worst) : 1;
+  if (!(floor < ceiling)) return null;
+  return { best, worst, ceiling, floor };
+}
+
+export function reviewScaleOk(bestRaw: string, worstRaw: string): boolean {
+  return ratingScale(bestRaw, worstRaw) !== null;
+}
+
+/** A rating on the scale, or empty. The digits you typed are kept. */
+export function ratingOnScale(raw: string, bestRaw: string, worstRaw: string): string {
+  const rating = ratingDecimal(raw);
+  const scale = ratingScale(bestRaw, worstRaw);
+  if (!rating || !scale) return "";
+  const value = Number(rating);
+  if (value < scale.floor || value > scale.ceiling) return "";
+  return rating;
+}
+
+function writeRatingBounds(node: Record<string, unknown>, scale: RatingScale) {
+  if (scale.best) node.bestRating = scale.best;
+  if (scale.worst) node.worstRating = scale.worst;
+}
+
+function buildReviewEntry(
+  entry: ReviewEntryInput,
+  bestRaw: string,
+  worstRaw: string,
+): Record<string, unknown> | null {
+  const scale = ratingScale(bestRaw, worstRaw);
+  if (!scale) return null;
+  const authorName = plainLine(entry.authorName);
+  if (!authorName || authorName.length >= 100) return null;
+  const reviewBody = plainLine(entry.reviewBody);
+  if (!reviewBody) return null;
+  const ratingValue = ratingOnScale(entry.ratingValue, bestRaw, worstRaw);
+  if (!ratingValue) return null;
+  const dateRaw = entry.datePublished.trim();
+  if (dateRaw && !isoDay(entry.datePublished)) return null;
+
+  const reviewRating: Record<string, unknown> = {
+    "@type": "Rating",
+    ratingValue,
+  };
+  writeRatingBounds(reviewRating, scale);
+
+  const review: Record<string, unknown> = {
+    "@type": "Review",
+    author: {
+      "@type": entry.authorKind === "Organization" ? "Organization" : "Person",
+      name: authorName,
+    },
+    reviewBody,
+    reviewRating,
+  };
+  const name = plainLine(entry.name);
+  if (name) review.name = name;
+  const datePublished = isoDay(entry.datePublished);
+  if (datePublished) review.datePublished = datePublished;
+  return review;
+}
+
+export function reviewEntryComplete(entry: ReviewEntryInput, bestRaw: string, worstRaw: string): boolean {
+  return Boolean(buildReviewEntry(entry, bestRaw, worstRaw));
+}
+
+function buildAggregateRating(input: ReviewSchemaInput): Record<string, unknown> | null {
+  const scale = ratingScale(input.bestRating, input.worstRating);
+  if (!scale) return null;
+  const ratingValue = ratingOnScale(input.ratingValue, input.bestRating, input.worstRating);
+  const reviewCount = reviewCountValue(input.reviewCount);
+  const ratingCount = reviewCountValue(input.ratingCount);
+  if (!ratingValue || (!reviewCount && !ratingCount)) return null;
+  const aggregate: Record<string, unknown> = {
+    "@type": "AggregateRating",
+    ratingValue,
+  };
+  if (reviewCount) aggregate.reviewCount = reviewCount;
+  if (ratingCount) aggregate.ratingCount = ratingCount;
+  writeRatingBounds(aggregate, scale);
+  return aggregate;
+}
+
+export function buildReviewSchema(input: ReviewSchemaInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+  const itemType = REVIEW_ITEM_TYPES.find((item) => item === input.itemType);
+  if (!itemType) return "";
+
+  const reviews = input.reviews
+    .map((entry) => buildReviewEntry(entry, input.bestRating, input.worstRating))
+    .filter((entry): entry is Record<string, unknown> => Boolean(entry));
+  const aggregateRating = buildAggregateRating(input);
+  if (reviews.length === 0 && !aggregateRating) return "";
+  if (reviews.length >= 2 && !aggregateRating) return "";
+
+  const item: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": itemType,
+    name,
+  };
+  const description = plainLine(input.description);
+  if (description) item.description = description;
+  const url = httpUrl(input.url);
+  if (url) item.url = url;
+  if (aggregateRating) item.aggregateRating = aggregateRating;
+  if (reviews.length === 1) item.review = reviews[0];
+  else if (reviews.length > 1) item.review = reviews;
+
+  return jsonLdScript(item);
+}

@@ -51,6 +51,7 @@ export default function HowToGetCitedByPerplexityPage() {
           { href: "/perplexity-citations", label: "Perplexity citations" },
           { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
           { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
+          { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/robots-txt-ai-crawler-generator", label: "Free robots.txt AI crawler generator" },
         ]}
       >

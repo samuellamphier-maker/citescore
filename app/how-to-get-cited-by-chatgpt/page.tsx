@@ -52,6 +52,7 @@ export default function HowToGetCitedByChatgptPage() {
           { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
           { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
           { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
+          { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
         ]}
       >

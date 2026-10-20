@@ -36,6 +36,8 @@ export function HowToGetCitedByGeminiArticle() {
         different controls. DeepSeek’s Search and Fetch guide, which does
         not name a robots.txt token, is{" "}
         <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
+        Mistral’s Le Chat, now Vibe, is{" "}
+        <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link>.
         The others are linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

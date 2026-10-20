@@ -113,7 +113,10 @@ export function GeoForLocalBusinessesArticle() {
         capture reviews about other businesses. A shop marking up its own
         stars is outside that recommendation. Leave both properties off the
         page you control, unless the page is a directory of other
-        businesses and the reviews follow the review-snippet guidelines.
+        businesses and the reviews follow the review-snippet guidelines. A
+        product or an app that already shows reviews uses the{" "}
+        <Link href="/review-schema-generator">Review schema generator</Link>,
+        which does not write LocalBusiness or Organization.
       </p>
 
       <h2>The profile is a second record</h2>

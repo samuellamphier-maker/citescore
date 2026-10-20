@@ -22,6 +22,7 @@ const related = [
   { href: "/website-schema-generator", label: "WebSite schema generator" },
   { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/event-schema-generator", label: "Event schema generator" },
+  { href: "/review-schema-generator", label: "Review schema generator" },
   { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
   { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
   { href: "/free-check", label: "Free AI visibility check" },

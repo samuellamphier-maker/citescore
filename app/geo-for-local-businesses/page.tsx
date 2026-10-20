@@ -20,6 +20,7 @@ export default function GeoForLocalBusinessesPage() {
       topic={topic}
       related={guideLinks([
         { href: "/local-business-schema-generator", label: "Local business schema generator" },
+        { href: "/review-schema-generator", label: "Review schema generator" },
         { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
         { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },

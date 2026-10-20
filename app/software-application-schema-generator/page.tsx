@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "When should the aggregate rating be filled in?",
-    a: "Only when the page shows the same rating value and the same review count. Leave the fields blank otherwise. Google’s rich result wants a rating or a review, and this generator does not invent either one. It does not emit a review. schema.org treats a missing best rating as 5.",
+    a: "Only when the page shows the same rating value and the same review count. Leave the fields blank otherwise. Google’s rich result wants a rating or a review, and this generator does not invent either one. It does not emit a review. The review text uses the Review schema generator. schema.org treats a missing best rating as 5.",
   },
   {
     q: "Which application category should I use, and where does the script go?",
@@ -42,6 +42,7 @@ const related = [
   { href: "/website-schema-generator", label: "WebSite schema generator" },
   { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/event-schema-generator", label: "Event schema generator" },
+  { href: "/review-schema-generator", label: "Review schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -101,7 +102,7 @@ export default function SoftwareApplicationSchemaGeneratorPage() {
           <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the{" "}
           <Link href="/website-schema-generator">WebSite schema generator</Link>. A watch page uses the{" "}
           <Link href="/video-schema-generator">Video schema generator</Link>. An event page uses the{" "}
-          <Link href="/event-schema-generator">Event schema generator</Link>.
+          <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>.
         </p>
         <h2>How to install it</h2>
         <ol>

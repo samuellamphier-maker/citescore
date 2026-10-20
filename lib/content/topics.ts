@@ -147,6 +147,18 @@ export const topicPages: TopicPage[] = [
     minutes: 11,
   },
   {
+    path: "/how-to-get-cited-by-mistral",
+    title: "How to get cited by Mistral",
+    description:
+      "Le Chat is now Vibe. What Mistral publishes for web search, Open URL, and the robots.txt tokens MistralAI-User, MistralAI-Index, and MistralAI-Training. No citation rate.",
+    kicker: "Guide",
+    card: "Le Chat is now Vibe. Three robots.txt tokens, source links in web search, and the files Mistral does not require.",
+    navLabel: "How to get cited by Mistral",
+    priority: 0.8,
+    publishedAt: "2026-10-20",
+    minutes: 12,
+  },
+  {
     path: "/geo-for-local-businesses",
     title: "GEO for local businesses",
     description:
@@ -442,6 +454,18 @@ export const topicPages: TopicPage[] = [
     minutes: 6,
   },
   {
+    path: "/review-schema-generator",
+    title: "Free Review schema generator",
+    description:
+      "Free, no-signup Review and AggregateRating JSON-LD for a Product or SoftwareApplication. Copy the script from ratings and review text already on the page. Nothing is uploaded. Not for self-serving LocalBusiness reviews.",
+    kicker: "Review schema",
+    card: "Copy Review and AggregateRating JSON-LD from the rating and review text already on the page.",
+    navLabel: "Review schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-20",
+    minutes: 7,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -565,6 +589,7 @@ const guideNavOrder = [
   "/how-to-get-cited-by-grok",
   "/how-to-get-cited-by-meta-ai",
   "/how-to-get-cited-by-deepseek",
+  "/how-to-get-cited-by-mistral",
   "/google-ai-overviews-optimization",
   "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",

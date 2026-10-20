@@ -124,7 +124,7 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         , a watch page can use the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>
         , and an event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -225,7 +225,8 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         <Link href="/product-schema-generator">Product schema generator</Link>{" "}
         builds this shape from a name, description, image, brand, SKU, price,
         currency, and availability, and it can add an aggregate rating when
-        the page already shows one. It uploads nothing. A buying page has
+        the page already shows one. It does not write the review text. That text uses the{" "}
+        <Link href="/review-schema-generator">Review schema generator</Link>. It uploads nothing. A buying page has
         extra rules, listed on{" "}
         <Link href="/ai-search-visibility-for-ecommerce">
           AI search visibility for ecommerce
@@ -306,7 +307,11 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         </Link>{" "}
         copies those fields, plus profile URLs and a logo or image, into one
         script. It does not emit <code>review</code> or{" "}
-        <code>aggregateRating</code>. It uploads nothing. The longer note on
+        <code>aggregateRating</code>. A product or an app that already shows
+        reviews uses the{" "}
+        <Link href="/review-schema-generator">Review schema generator</Link>,
+        which does not write a self-serving LocalBusiness or Organization
+        review. It uploads nothing. The longer note on
         hours and reviews of your own business is{" "}
         <Link href="/geo-for-local-businesses">GEO for local businesses</Link>.
       </p>
@@ -352,7 +357,9 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
           Software application schema generator
         </Link>{" "}
         writes that shape, including an aggregate rating only when you enter
-        both the rating and the review count. It does not invent a review. It
+        both the rating and the review count. It does not invent a review. The
+        review text uses the{" "}
+        <Link href="/review-schema-generator">Review schema generator</Link>. It
         uploads nothing. A physical product still uses Product.
       </p>
 

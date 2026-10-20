@@ -33,9 +33,13 @@ export function HowToGetCitedByChatgptArticle() {
         <Link href="/how-to-get-cited-by-meta-ai">
           how to get cited by Meta AI
         </Link>
-        , and{" "}
+        ,{" "}
         <Link href="/how-to-get-cited-by-deepseek">
           how to get cited by DeepSeek
+        </Link>
+        , and{" "}
+        <Link href="/how-to-get-cited-by-mistral">
+          how to get cited by Mistral
         </Link>
         .
       </p>
