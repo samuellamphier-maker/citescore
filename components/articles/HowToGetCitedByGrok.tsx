@@ -37,8 +37,9 @@ export function HowToGetCitedByGrokArticle() {
         <Link href="/how-to-get-cited-by-copilot">Microsoft Copilot</Link>,{" "}
         <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>,{" "}
         <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>,{" "}
-        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>.
+        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>,{" "}
+        <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-you-com">You.com</Link>.
         The short map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

@@ -53,6 +53,7 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/event-schema-generator", label: "Free Event schema generator" },
           { href: "/review-schema-generator", label: "Free Review schema generator" },
           { href: "/service-schema-generator", label: "Free Service schema generator" },
+          { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}

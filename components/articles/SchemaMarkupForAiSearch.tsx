@@ -124,7 +124,7 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         , a watch page can use the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>
         , and an event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -379,6 +379,29 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         <Link href="/service-schema-generator">Service schema generator</Link>{" "}
         writes that shape from fields you type. It uploads nothing. A street
         address still uses LocalBusiness. A thing you ship still uses Product.
+      </p>
+
+      <h2>Course</h2>
+      <p>
+        Use Course on the page for one curriculum: a series of lessons with
+        an educational outcome, an instructor, and a roster. Google’s{" "}
+        <a href="https://developers.google.com/search/docs/appearance/structured-data/course">
+          course-list documentation
+        </a>
+        , read on 20 October 2026, lists <code>name</code> and{" "}
+        <code>description</code> as required for that rich result, and lists{" "}
+        <code>provider</code> as recommended. The description has a display
+        limit of 60 characters. The same page says a course-list feature
+        needs at least three courses and <code>ItemList</code> markup. A
+        public event is not a course, and a single short video is not a
+        course. <code>offers</code> is the price, and only when the page
+        shows a price and a currency. <code>hasCourseInstance</code> is the
+        session: mode, dates, and a schedule. Google’s table does not list
+        the instance. It is still schema.org, and it belongs in the script
+        only when the page shows it. The{" "}
+        <Link href="/course-schema-generator">Course schema generator</Link>{" "}
+        writes one Course from fields you type. It does not write the
+        three-course list, and it uploads nothing.
       </p>
 
       <h2>Questions about the markup</h2>

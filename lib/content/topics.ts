@@ -171,6 +171,18 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/how-to-get-cited-by-you-com",
+    title: "How to get cited by You.com",
+    description:
+      "What You.com publishes for cited answers: its own crawler and index, verbatim excerpts in the Answer API, a freshness filter, and no robots.txt token. No citation rate.",
+    kicker: "Guide",
+    card: "You.com’s own index, verbatim excerpts, and the crawler token the docs do not name.",
+    navLabel: "How to get cited by You.com",
+    priority: 0.8,
+    publishedAt: "2026-10-20",
+    minutes: 11,
+  },
+  {
     path: "/geo-for-local-businesses",
     title: "GEO for local businesses",
     description:
@@ -490,6 +502,18 @@ export const topicPages: TopicPage[] = [
     minutes: 6,
   },
   {
+    path: "/course-schema-generator",
+    title: "Free Course schema generator",
+    description:
+      "Free, no-signup Course JSON-LD generator. Add the course name, description, provider, URL, an optional price, and an optional session with mode and schedule already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Course schema",
+    card: "Copy Course JSON-LD from the name, provider, price, and schedule already on the course page.",
+    navLabel: "Course schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-20",
+    minutes: 6,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -615,6 +639,7 @@ const guideNavOrder = [
   "/how-to-get-cited-by-deepseek",
   "/how-to-get-cited-by-mistral",
   "/how-to-get-cited-by-brave-search",
+  "/how-to-get-cited-by-you-com",
   "/google-ai-overviews-optimization",
   "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",

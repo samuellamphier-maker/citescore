@@ -44,6 +44,7 @@ export default function HowToGetCitedByBraveSearchPage() {
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
           { href: "/service-schema-generator", label: "Free Service schema generator" },
+          { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/geo-audit", label: "$39 GEO audit" },

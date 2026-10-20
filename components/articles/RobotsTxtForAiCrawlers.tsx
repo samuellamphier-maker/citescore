@@ -58,6 +58,9 @@ export function RobotsTxtForAiCrawlersArticle() {
         <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link>.
         Brave’s crawler page does not publish a separate token. That note is{" "}
         <Link href="/how-to-get-cited-by-brave-search">how to get cited by Brave Search</Link>.
+        You.com’s product page and Answer API guide do not name a token either.
+        That note is{" "}
+        <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
       </p>
       <div className="table-wrap">
         <table>

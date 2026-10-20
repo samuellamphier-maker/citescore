@@ -59,7 +59,8 @@ export function HowToGetCitedByBraveSearchArticle() {
         <Link href="/how-to-get-cited-by-grok">Grok</Link>,{" "}
         <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>,{" "}
         <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>. The short
+        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-you-com">You.com</Link>. The short
         map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
@@ -221,7 +222,7 @@ export function HowToGetCitedByBraveSearchArticle() {
         <li>
           Repeat the visible facts in JSON-LD if you want the labels. A
           service page can use the{" "}
-          <Link href="/service-schema-generator">Service schema generator</Link>.
+          <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>.
           The firm on the homepage can use the{" "}
           <Link href="/organization-schema-generator">
             Organization schema generator

@@ -47,6 +47,11 @@ export function AiSearchReadinessChecklistForSaasArticle() {
         <Link href="/how-to-get-cited-by-brave-search">
           how to get cited by Brave Search
         </Link>
+        . You.com’s Web Search API page names its own crawler and does not
+        name a robots.txt token. That note is{" "}
+        <Link href="/how-to-get-cited-by-you-com">
+          how to get cited by You.com
+        </Link>
         .
       </p>
 
