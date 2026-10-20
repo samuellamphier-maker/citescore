@@ -1729,3 +1729,135 @@ export function buildServiceSchema(input: ServiceInput): string {
 
   return jsonLdScript(service);
 }
+
+export type CourseInput = {
+  name: string;
+  description: string;
+  providerName: string;
+  providerUrl: string;
+  url: string;
+  price: string;
+  currency: string;
+  courseMode: string;
+  startDate: string;
+  endDate: string;
+  days: string[];
+  startTime: string;
+  endTime: string;
+};
+
+function timeSortKey(value: string): string {
+  return value.length === 5 ? `${value}:00` : value;
+}
+
+/**
+ * courseMode text, or an absolute http(s) URL.
+ * A value that starts with a scheme is a URL and is omitted when it is not http(s).
+ * schema.org examples use online, onsite, and blended. Other visible labels are kept.
+ */
+export function courseModeValue(raw: string): string {
+  const text = plainLine(raw);
+  if (!text) return "";
+  if (/^[a-z][a-z0-9+.-]*:/i.test(text)) {
+    try {
+      const url = new URL(text);
+      if (url.protocol !== "http:" && url.protocol !== "https:") return "";
+      if (!url.hostname.includes(".") && url.hostname !== "localhost") return "";
+      return url.toString();
+    } catch {
+      return "";
+    }
+  }
+  return text;
+}
+
+/** A real end date on or after the start date. An end date with no valid start is kept. */
+export function courseEndDate(startRaw: string, endRaw: string): string {
+  const end = isoDay(endRaw);
+  if (!end) return "";
+  const start = isoDay(startRaw);
+  if (start && end < start) return "";
+  return end;
+}
+
+/** A clock time later than the start. An end time with no valid start is kept. */
+export function courseEndTime(startRaw: string, endRaw: string): string {
+  const end = clockTime(endRaw);
+  if (!end) return "";
+  const start = clockTime(startRaw);
+  if (start && timeSortKey(end) <= timeSortKey(start)) return "";
+  return end;
+}
+
+function dayOfWeekUrl(day: Weekday): string {
+  return `https://schema.org/${day}`;
+}
+
+function courseInstance(input: CourseInput): Record<string, unknown> | null {
+  const mode = courseModeValue(input.courseMode);
+  const startDate = isoDay(input.startDate);
+  const endDate = courseEndDate(input.startDate, input.endDate);
+  const days = WEEKDAYS.filter((day) => input.days.includes(day));
+  const startTime = clockTime(input.startTime);
+  const endTime = courseEndTime(input.startTime, input.endTime);
+  const hasSchedule = days.length > 0 || Boolean(startTime) || Boolean(endTime);
+  if (!mode && !startDate && !endDate && !hasSchedule) return null;
+
+  const instance: Record<string, unknown> = { "@type": "CourseInstance" };
+  if (mode) instance.courseMode = mode;
+  if (startDate) instance.startDate = startDate;
+  if (endDate) instance.endDate = endDate;
+  if (hasSchedule) {
+    const schedule: Record<string, unknown> = { "@type": "Schedule" };
+    if (days.length === 1) schedule.byDay = dayOfWeekUrl(days[0]);
+    else if (days.length > 1) schedule.byDay = days.map((day) => dayOfWeekUrl(day));
+    if (startTime) schedule.startTime = startTime;
+    if (endTime) schedule.endTime = endTime;
+    instance.courseSchedule = schedule;
+  }
+  return instance;
+}
+
+/**
+ * Course JSON-LD. Empty until the course name is present.
+ * An offer is written only when both a price (0 is free) and a currency are valid.
+ * A provider URL without a name is omitted. The URL is written as both url and sameAs.
+ * hasCourseInstance is written only when courseMode, a date, or a schedule is valid.
+ */
+export function buildCourseSchema(input: CourseInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const course: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) course.description = description;
+
+  const url = httpUrl(input.url);
+  if (url) course.url = url;
+
+  const provider = organizationNode("Organization", input.providerName, input.providerUrl);
+  if (provider) {
+    if (typeof provider.url === "string") provider.sameAs = provider.url;
+    course.provider = provider;
+  }
+
+  const price = nonNegativePrice(input.price);
+  const currency = isoCurrency(input.currency);
+  if (price && currency) {
+    course.offers = {
+      "@type": "Offer",
+      price,
+      priceCurrency: currency,
+    };
+  }
+
+  const instance = courseInstance(input);
+  if (instance) course.hasCourseInstance = instance;
+
+  return jsonLdScript(course);
+}

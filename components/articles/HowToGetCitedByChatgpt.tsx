@@ -45,6 +45,10 @@ export function HowToGetCitedByChatgptArticle() {
         <Link href="/how-to-get-cited-by-brave-search">
           how to get cited by Brave Search
         </Link>
+        , and{" "}
+        <Link href="/how-to-get-cited-by-you-com">
+          how to get cited by You.com
+        </Link>
         .
       </p>
 

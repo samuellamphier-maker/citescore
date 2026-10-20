@@ -41,6 +41,9 @@ export function HowToGetCitedByGeminiArticle() {
         Brave Search’s crawler page, which does not publish its own user
         agent, is{" "}
         <Link href="/how-to-get-cited-by-brave-search">how to get cited by Brave Search</Link>.
+        You.com’s Answer API guide, which cites a source URL and a verbatim
+        excerpt and does not name a robots.txt token, is{" "}
+        <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
         The others are linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

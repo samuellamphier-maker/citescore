@@ -46,9 +46,11 @@ const related = [
   { href: "/event-schema-generator", label: "Event schema generator" },
   { href: "/review-schema-generator", label: "Review schema generator" },
   { href: "/service-schema-generator", label: "Service schema generator" },
+  { href: "/course-schema-generator", label: "Course schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
   { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
+  { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];

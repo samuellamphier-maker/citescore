@@ -36,6 +36,7 @@ const related = [
   { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
   { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
   { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
+  { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -171,6 +172,9 @@ export default function AiCrawlerUserAgentsPage() {
           It says a page Googlebot cannot crawl is a page Brave will not crawl.
           This table does not add a Brave token. The note is{" "}
           <Link href="/how-to-get-cited-by-brave-search">how to get cited by Brave Search</Link>.
+          You.com’s Web Search API page and Answer API guide do not name a robots.txt token.
+          This table does not add one. The note is{" "}
+          <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
         </p>
 
         <h2>Questions about the tokens</h2>

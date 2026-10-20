@@ -42,8 +42,10 @@ export default function HowToGetCitedByDeepseekPage() {
           { href: "/event-schema-generator", label: "Free Event schema generator" },
           { href: "/review-schema-generator", label: "Free Review schema generator" },
           { href: "/service-schema-generator", label: "Free Service schema generator" },
+          { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
+          { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         ])}

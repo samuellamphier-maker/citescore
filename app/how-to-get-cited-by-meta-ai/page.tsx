@@ -39,6 +39,7 @@ export default function HowToGetCitedByMetaAiPage() {
           { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
           { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
+          { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
           { href: "/how-to-get-cited-by-copilot", label: "How to get cited by Microsoft Copilot" },
           { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
@@ -47,6 +48,7 @@ export default function HowToGetCitedByMetaAiPage() {
           { href: "/event-schema-generator", label: "Free Event schema generator" },
           { href: "/review-schema-generator", label: "Free Review schema generator" },
           { href: "/service-schema-generator", label: "Free Service schema generator" },
+          { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         ])}
       >
