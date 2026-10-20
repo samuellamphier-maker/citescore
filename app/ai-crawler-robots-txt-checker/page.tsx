@@ -24,6 +24,7 @@ export default function AiCrawlerRobotsTxtCheckerPage() {
       related={[
         { href: "/free-check", label: "Free AI visibility check" },
         { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
+        { href: "/how-to-check-if-chatgpt-mentions-your-brand", label: "How to check if ChatGPT mentions your brand" },
         { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
         { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },

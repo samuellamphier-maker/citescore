@@ -1,0 +1,55 @@
+import { GuideDocument } from "@/components/articles/GuideDocument";
+import {
+  HowToCheckIfChatgptMentionsYourBrandArticle,
+  mentionCheckFaqs,
+} from "@/components/articles/HowToCheckIfChatgptMentionsYourBrand";
+import { guideLinks } from "@/components/articles/guide-links";
+import { JsonLd } from "@/components/JsonLd";
+import { getTopic } from "@/lib/content/topics";
+import { pageMeta } from "@/lib/content/meta";
+
+const topic = getTopic("/how-to-check-if-chatgpt-mentions-your-brand");
+
+export const metadata = pageMeta({
+  title: topic.title,
+  description: topic.description,
+  path: topic.path,
+  type: "article",
+  publishedTime: topic.publishedAt,
+});
+
+export default function HowToCheckIfChatgptMentionsYourBrandPage() {
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: mentionCheckFaqs.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.a,
+            },
+          })),
+        }}
+      />
+      <GuideDocument
+        topic={topic}
+        related={guideLinks([
+          { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
+          { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
+          { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
+          { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
+          { href: "/llms-txt", label: "llms.txt checker" },
+          { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
+          { href: "/video-schema-generator", label: "Free Video schema generator" },
+          { href: "/geo-audit", label: "$39 GEO audit" },
+        ])}
+      >
+        <HowToCheckIfChatgptMentionsYourBrandArticle />
+      </GuideDocument>
+    </>
+  );
+}

@@ -12,6 +12,8 @@ const addedGuidePaths = [
   "/how-to-get-cited-by-grok",
   "/how-to-get-cited-by-meta-ai",
   "/website-schema-generator",
+  "/video-schema-generator",
+  "/how-to-check-if-chatgpt-mentions-your-brand",
   "/google-ai-mode-optimization",
   "/geo-for-local-businesses",
   "/llms-txt-best-practices",

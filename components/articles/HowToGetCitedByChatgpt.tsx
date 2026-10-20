@@ -175,6 +175,10 @@ Disallow: /`}</pre>
         <Link href="/ai-search-readiness-checklist-for-saas">
           AI search readiness checklist for SaaS
         </Link>
+        . A practical log of whether the name shows up in answers is{" "}
+        <Link href="/how-to-check-if-chatgpt-mentions-your-brand">
+          how to check if ChatGPT mentions your brand
+        </Link>
         . The longer on-page list is the{" "}
         <Link href="/checklist">40-point checklist</Link>.
       </p>
