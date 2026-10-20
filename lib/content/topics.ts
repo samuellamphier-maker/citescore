@@ -159,6 +159,18 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/how-to-get-cited-by-brave-search",
+    title: "How to get cited by Brave Search",
+    description:
+      "What Brave publishes for AI Answers and Answer with AI: an independent index, source references, and a crawler that does not advertise its own user agent. No citation rate.",
+    kicker: "Guide",
+    card: "Brave’s independent index, AI Answers with sources, and the crawl rule the crawler page actually states.",
+    navLabel: "How to get cited by Brave Search",
+    priority: 0.8,
+    publishedAt: "2026-10-20",
+    minutes: 12,
+  },
+  {
     path: "/geo-for-local-businesses",
     title: "GEO for local businesses",
     description:
@@ -466,6 +478,18 @@ export const topicPages: TopicPage[] = [
     minutes: 7,
   },
   {
+    path: "/service-schema-generator",
+    title: "Free Service schema generator",
+    description:
+      "Free, no-signup Service JSON-LD generator. Add the service name, service type, description, provider, area served, URL, and an optional price already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Service schema",
+    card: "Copy Service JSON-LD from the name, provider, area, and price already on the service page.",
+    navLabel: "Service schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-20",
+    minutes: 6,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -590,6 +614,7 @@ const guideNavOrder = [
   "/how-to-get-cited-by-meta-ai",
   "/how-to-get-cited-by-deepseek",
   "/how-to-get-cited-by-mistral",
+  "/how-to-get-cited-by-brave-search",
   "/google-ai-overviews-optimization",
   "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",

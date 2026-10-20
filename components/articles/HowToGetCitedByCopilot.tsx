@@ -41,6 +41,11 @@ export function HowToGetCitedByCopilotArticle() {
         <Link href="/how-to-get-cited-by-mistral">
           how to get cited by Mistral
         </Link>
+        . Brave Search’s independent index, and the crawler rule that page
+        states, are on{" "}
+        <Link href="/how-to-get-cited-by-brave-search">
+          how to get cited by Brave Search
+        </Link>
         .
         The map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">

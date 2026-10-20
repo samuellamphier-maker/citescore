@@ -103,7 +103,8 @@ export function GeoForLocalBusinessesArticle() {
         <Link href="/breadcrumb-schema-generator">
           breadcrumb schema generator
         </Link>
-        .
+        . A service that business offers, on its own page, can use the{" "}
+        <Link href="/service-schema-generator">Service schema generator</Link>.
       </p>
 
       <h2>Reviews of your own business</h2>
