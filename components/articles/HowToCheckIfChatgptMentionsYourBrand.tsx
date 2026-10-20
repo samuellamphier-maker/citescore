@@ -140,7 +140,8 @@ export function HowToCheckIfChatgptMentionsYourBrandArticle() {
         Match the visible page. A name in the script and a different name in the title describes two entities. The{" "}
         <Link href="/organization-schema-generator">Organization schema generator</Link> and the{" "}
         <Link href="/website-schema-generator">WebSite schema generator</Link> copy those two blocks. A watch page
-        uses the <Link href="/video-schema-generator">Video schema generator</Link>. The field list, and what to
+        uses the <Link href="/video-schema-generator">Video schema generator</Link>. An event page
+        uses the <Link href="/event-schema-generator">Event schema generator</Link>. The field list, and what to
         leave out, is the <Link href="/schema-markup-for-ai-search">schema guide</Link>.
       </p>
 

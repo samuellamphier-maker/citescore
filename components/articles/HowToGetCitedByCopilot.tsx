@@ -32,6 +32,11 @@ export function HowToGetCitedByCopilotArticle() {
         <Link href="/how-to-get-cited-by-meta-ai">
           how to get cited by Meta AI
         </Link>
+        . DeepSeek’s Search and Fetch guide, which does not name a robots.txt
+        token, is{" "}
+        <Link href="/how-to-get-cited-by-deepseek">
+          how to get cited by DeepSeek
+        </Link>
         .
         The map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">

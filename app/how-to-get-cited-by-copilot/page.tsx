@@ -21,6 +21,7 @@ export default function HowToGetCitedByCopilotPage() {
       related={guideLinks([
         { href: "/how-to-get-cited-by-grok", label: "How to get cited by Grok" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
+        { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}

@@ -41,6 +41,7 @@ const related = [
   { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/website-schema-generator", label: "WebSite schema generator" },
   { href: "/video-schema-generator", label: "Video schema generator" },
+  { href: "/event-schema-generator", label: "Event schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -93,7 +94,7 @@ export default function ArticleSchemaGeneratorPage() {
           <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the{" "}
           <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>. A procedure uses the{" "}
           <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the{" "}
-          <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>. A watch page uses the <Link href="/video-schema-generator">Video schema generator</Link>.
+          <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>. A watch page uses the <Link href="/video-schema-generator">Video schema generator</Link>. An event page uses the <Link href="/event-schema-generator">Event schema generator</Link>.
         </p>
         <h2>What to leave out</h2>
         <ul>

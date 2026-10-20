@@ -41,6 +41,7 @@ const related = [
   { href: "/person-schema-generator", label: "Person schema generator" },
   { href: "/website-schema-generator", label: "WebSite schema generator" },
   { href: "/video-schema-generator", label: "Video schema generator" },
+  { href: "/event-schema-generator", label: "Event schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },

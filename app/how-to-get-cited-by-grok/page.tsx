@@ -23,6 +23,7 @@ export default function HowToGetCitedByGrokPage() {
         { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
         { href: "/how-to-get-cited-by-perplexity", label: "How to get cited by Perplexity" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
+        { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}
     >

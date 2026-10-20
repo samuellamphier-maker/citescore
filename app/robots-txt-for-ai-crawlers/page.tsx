@@ -67,8 +67,10 @@ export default function RobotsTxtForAiCrawlersPage() {
           { href: "/ai-crawlers", label: "GPTBot, PerplexityBot, and Google-Extended" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
           { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
+          { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
           { href: "/website-schema-generator", label: "Free WebSite schema generator" },
           { href: "/video-schema-generator", label: "Free Video schema generator" },
+          { href: "/event-schema-generator", label: "Free Event schema generator" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}
       >
