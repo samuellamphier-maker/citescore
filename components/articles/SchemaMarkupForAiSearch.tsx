@@ -124,7 +124,7 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         , a watch page can use the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>
         , and an event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -402,6 +402,28 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         <Link href="/course-schema-generator">Course schema generator</Link>{" "}
         writes one Course from fields you type. It does not write the
         three-course list, and it uploads nothing.
+      </p>
+
+      <h2>JobPosting</h2>
+      <p>
+        Use JobPosting on the page for one open job. Google’s{" "}
+        <a href="https://developers.google.com/search/docs/appearance/structured-data/job-posting">
+          job posting documentation
+        </a>
+        , read on 20 October 2026, lists <code>title</code>,{" "}
+        <code>description</code>, <code>datePosted</code>,{" "}
+        <code>hiringOrganization</code>, and <code>jobLocation</code> as
+        required for the job search experience. A job that is remote 100% of
+        the time uses <code>jobLocationType</code> <code>TELECOMMUTE</code>{" "}
+        and <code>applicantLocationRequirements</code> instead of a street
+        address. <code>baseSalary</code> is the pay the page already shows,
+        with a currency and a unit of <code>HOUR</code>, <code>DAY</code>,{" "}
+        <code>WEEK</code>, <code>MONTH</code>, or <code>YEAR</code>.{" "}
+        <code>directApply</code> is true only when the application is
+        completed on that page. The markup does not belong on a list of jobs.
+        The{" "}
+        <Link href="/job-posting-schema-generator">Job posting schema generator</Link>{" "}
+        writes one JobPosting from fields you type. It uploads nothing.
       </p>
 
       <h2>Questions about the markup</h2>

@@ -52,7 +52,8 @@ export function HowToGetCitedByYouComArticle() {
         <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>,{" "}
         <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>,{" "}
         <Link href="/how-to-get-cited-by-mistral">Mistral</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>. The
+        <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-duckduckgo-ai">DuckDuckGo</Link>. The
         short map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
@@ -198,7 +199,7 @@ export function HowToGetCitedByYouComArticle() {
         <li>
           Repeat the visible facts in JSON-LD if you want the labels. A course
           page can use the{" "}
-          <Link href="/course-schema-generator">Course schema generator</Link>.
+          <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>.
           A service page can use the{" "}
           <Link href="/service-schema-generator">Service schema generator</Link>.
           The field list is the{" "}

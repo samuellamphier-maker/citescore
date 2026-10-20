@@ -183,6 +183,18 @@ export const topicPages: TopicPage[] = [
     minutes: 11,
   },
   {
+    path: "/how-to-get-cited-by-duckduckgo-ai",
+    title: "How to get cited by DuckDuckGo",
+    description:
+      "What DuckDuckGo publishes for Search Assist and Duck.ai: DuckAssistBot for AI-assisted answers that cite one or two sources, DuckDuckBot for search, organic links largely from Bing, and no citation rate.",
+    kicker: "Guide",
+    card: "Search Assist’s one or two sources, DuckAssistBot, and the Bing links those pages do not assign to the answer.",
+    navLabel: "How to get cited by DuckDuckGo",
+    priority: 0.8,
+    publishedAt: "2026-10-20",
+    minutes: 12,
+  },
+  {
     path: "/geo-for-local-businesses",
     title: "GEO for local businesses",
     description:
@@ -514,6 +526,18 @@ export const topicPages: TopicPage[] = [
     minutes: 6,
   },
   {
+    path: "/job-posting-schema-generator",
+    title: "Free JobPosting schema generator",
+    description:
+      "Free, no-signup JobPosting JSON-LD generator. Add the title, description, date posted, hiring organization, and an office address or a 100% remote location, plus optional salary and direct apply. Copy the script. Nothing is uploaded.",
+    kicker: "JobPosting schema",
+    card: "Copy JobPosting JSON-LD from the title, employer, location, and salary already on the job page.",
+    navLabel: "Job posting schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-20",
+    minutes: 7,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -640,6 +664,7 @@ const guideNavOrder = [
   "/how-to-get-cited-by-mistral",
   "/how-to-get-cited-by-brave-search",
   "/how-to-get-cited-by-you-com",
+  "/how-to-get-cited-by-duckduckgo-ai",
   "/google-ai-overviews-optimization",
   "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",

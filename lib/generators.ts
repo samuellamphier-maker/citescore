@@ -1861,3 +1861,209 @@ export function buildCourseSchema(input: CourseInput): string {
 
   return jsonLdScript(course);
 }
+
+/** Google’s documented employmentType values. Case-sensitive. */
+export const EMPLOYMENT_TYPES = [
+  "FULL_TIME",
+  "PART_TIME",
+  "CONTRACTOR",
+  "TEMPORARY",
+  "INTERN",
+  "VOLUNTEER",
+  "PER_DIEM",
+  "OTHER",
+] as const;
+
+/** unitText values Google’s job posting page lists for baseSalary. */
+export const SALARY_UNITS = ["HOUR", "DAY", "WEEK", "MONTH", "YEAR"] as const;
+
+/** AdministrativeArea types this form will write for applicantLocationRequirements. */
+export const APPLICANT_LOCATION_TYPES = ["Country", "State", "City"] as const;
+
+export const JOB_LOCATION_KINDS = ["place", "telecommute", "hybrid"] as const;
+
+export type JobLocationKind = (typeof JOB_LOCATION_KINDS)[number];
+
+export type JobPostingInput = {
+  title: string;
+  description: string;
+  datePosted: string;
+  validThrough: string;
+  employmentTypes: string[];
+  organizationName: string;
+  organizationUrl: string;
+  organizationLogo: string;
+  locationKind: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  applicantLocationType: string;
+  applicantLocationName: string;
+  salaryMin: string;
+  salaryMax: string;
+  salaryCurrency: string;
+  salaryUnit: string;
+  directApply: string;
+};
+
+/**
+ * Job description as HTML paragraphs.
+ * A blank line starts a new p. A single line break becomes br.
+ * Tags the visitor pasted are removed before those wrappers are added.
+ */
+export function jobDescriptionHtml(raw: string): string {
+  const text = stripTags(raw).replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
+  if (!text) return "";
+  const paragraphs = text
+    .split(/\n{2,}/)
+    .map((block) =>
+      block
+        .split("\n")
+        .map((line) => line.replace(/[ \t]+/g, " ").trim())
+        .filter(Boolean)
+        .join("<br>"),
+    )
+    .filter(Boolean);
+  if (paragraphs.length === 0) return "";
+  return paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("");
+}
+
+/** Visible text of a job description, for the “not the same as the title” check. */
+export function jobDescriptionText(raw: string): string {
+  return plainLine(stripTags(raw).replace(/\r\n/g, "\n").replace(/\r/g, "\n"));
+}
+
+function salaryNumber(raw: string): string {
+  return nonNegativePrice(raw);
+}
+
+/**
+ * A single value, or a min and a max.
+ * A maximum with no minimum is omitted. Equal bounds collapse to one value.
+ * Null when a filled bound is invalid or the maximum is below the minimum.
+ */
+export function jobSalaryBounds(
+  minRaw: string,
+  maxRaw: string,
+): { value: string } | { minValue: string; maxValue: string } | null {
+  const minFilled = minRaw.trim();
+  const maxFilled = maxRaw.trim();
+  if (!minFilled && !maxFilled) return null;
+  const min = minFilled ? salaryNumber(minRaw) : "";
+  const max = maxFilled ? salaryNumber(maxRaw) : "";
+  if (minFilled && !min) return null;
+  if (maxFilled && !max) return null;
+  if (!min) return null;
+  if (!max) return { value: min };
+  if (Number(max) < Number(min)) return null;
+  if (Number(max) === Number(min)) return { value: min };
+  return { minValue: min, maxValue: max };
+}
+
+function jobPlace(input: JobPostingInput): Record<string, unknown> | null {
+  const country = addressCountryValue(input.addressCountry);
+  if (!country) return null;
+  const address: Record<string, unknown> = {
+    "@type": "PostalAddress",
+    addressCountry: country,
+  };
+  const street = plainLine(input.streetAddress);
+  const locality = plainLine(input.addressLocality);
+  const region = plainLine(input.addressRegion);
+  const postal = plainLine(input.postalCode);
+  if (street) address.streetAddress = street;
+  if (locality) address.addressLocality = locality;
+  if (region) address.addressRegion = region;
+  if (postal) address.postalCode = postal;
+  return { "@type": "Place", address };
+}
+
+function applicantLocation(input: JobPostingInput): Record<string, unknown> | null {
+  const name = plainLine(input.applicantLocationName);
+  const type = APPLICANT_LOCATION_TYPES.find((item) => item === input.applicantLocationType);
+  if (!name || !type) return null;
+  return { "@type": type, name };
+}
+
+/**
+ * JobPosting JSON-LD. Empty until title, a description that is not the title,
+ * datePosted, the hiring organization name, and the location the chosen mode
+ * requires are all valid. On-site needs a country. Remote needs an applicant
+ * location. Hybrid needs both. A salary is written only when currency, unit,
+ * and a minimum are valid. directApply is written only when chosen.
+ */
+export function buildJobPostingSchema(input: JobPostingInput): string {
+  const title = plainLine(input.title);
+  const description = jobDescriptionHtml(input.description);
+  const descriptionText = jobDescriptionText(input.description);
+  const datePosted = isoDateTime(input.datePosted);
+  const organizationName = plainLine(input.organizationName);
+  const kind = JOB_LOCATION_KINDS.find((item) => item === input.locationKind);
+  if (!title || !description || !descriptionText || descriptionText === title || !datePosted || !organizationName || !kind) {
+    return "";
+  }
+
+  const place = jobPlace(input);
+  const applicant = applicantLocation(input);
+  const needsPlace = kind === "place" || kind === "hybrid";
+  const needsRemote = kind === "telecommute" || kind === "hybrid";
+  if (needsPlace && !place) return "";
+  if (needsRemote && !applicant) return "";
+
+  const job: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title,
+    description,
+    datePosted,
+  };
+
+  const validThrough = isoDateTime(input.validThrough);
+  if (validThrough && eventEndOk(datePosted, validThrough)) job.validThrough = validThrough;
+
+  const employmentTypes = EMPLOYMENT_TYPES.filter((item) => input.employmentTypes.includes(item));
+  if (employmentTypes.length === 1) job.employmentType = employmentTypes[0];
+  else if (employmentTypes.length > 1) job.employmentType = [...employmentTypes];
+
+  const hiringOrganization: Record<string, unknown> = {
+    "@type": "Organization",
+    name: organizationName,
+  };
+  const organizationUrl = httpUrl(input.organizationUrl);
+  if (organizationUrl) {
+    hiringOrganization.url = organizationUrl;
+    hiringOrganization.sameAs = organizationUrl;
+  }
+  const logo = httpUrl(input.organizationLogo);
+  if (logo) hiringOrganization.logo = logo;
+  job.hiringOrganization = hiringOrganization;
+
+  if (needsPlace && place) job.jobLocation = place;
+  if (needsRemote && applicant) {
+    job.applicantLocationRequirements = applicant;
+    job.jobLocationType = "TELECOMMUTE";
+  }
+
+  const currency = isoCurrency(input.salaryCurrency);
+  const unit = SALARY_UNITS.find((item) => item === input.salaryUnit);
+  const bounds = jobSalaryBounds(input.salaryMin, input.salaryMax);
+  if (currency && unit && bounds) {
+    job.baseSalary = {
+      "@type": "MonetaryAmount",
+      currency,
+      value: {
+        "@type": "QuantitativeValue",
+        ...bounds,
+        unitText: unit,
+      },
+    };
+  }
+
+  if (input.directApply === "true" || input.directApply === "false") {
+    job.directApply = input.directApply === "true";
+  }
+
+  return jsonLdScript(job);
+}

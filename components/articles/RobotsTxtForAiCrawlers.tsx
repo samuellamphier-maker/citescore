@@ -61,6 +61,9 @@ export function RobotsTxtForAiCrawlersArticle() {
         You.com’s product page and Answer API guide do not name a token either.
         That note is{" "}
         <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
+        DuckDuckGo publishes DuckAssistBot for AI-assisted answers and
+        DuckDuckBot for search results. That note is{" "}
+        <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
       </p>
       <div className="table-wrap">
         <table>

@@ -44,6 +44,9 @@ export function HowToGetCitedByGeminiArticle() {
         You.com’s Answer API guide, which cites a source URL and a verbatim
         excerpt and does not name a robots.txt token, is{" "}
         <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
+        DuckDuckGo’s Search Assist page, which cites one or two sources and
+        names DuckAssistBot for that crawl, is{" "}
+        <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
         The others are linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

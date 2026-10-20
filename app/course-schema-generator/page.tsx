@@ -49,8 +49,10 @@ const related = [
   { href: "/review-schema-generator", label: "Review schema generator" },
   { href: "/service-schema-generator", label: "Service schema generator" },
   { href: "/course-schema-generator", label: "Course schema generator" },
+  { href: "/job-posting-schema-generator", label: "Job posting schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
+  { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -99,6 +101,8 @@ export default function CourseSchemaGeneratorPage() {
           Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without guessing which line is the
           fee. The script does not create a citation, and it does not rank the page. The same point, for You.com’s
           cited answers, is on <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
+          DuckDuckGo’s Search Assist answers are on{" "}
+          <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
         </p>
         <p>
           Google’s <a href={courseDocs}>course-list documentation</a>, read on 20 October 2026, lists <code>name</code>{" "}
