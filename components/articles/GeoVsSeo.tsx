@@ -186,7 +186,7 @@ export function GeoVsSeoArticle() {
         A watch page uses the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>.
         An event page uses the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>.
         The name in
         the schema has to match the name in the H1. FAQPage is for questions
         a person can read on that page. Google stopped showing FAQ rich

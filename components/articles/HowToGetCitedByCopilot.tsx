@@ -51,6 +51,11 @@ export function HowToGetCitedByCopilotArticle() {
         <Link href="/how-to-get-cited-by-you-com">
           how to get cited by You.com
         </Link>
+        . DuckDuckGo’s Search Assist page cites one or two sources, and
+        DuckAssistBot is the crawler named for those answers. That note is{" "}
+        <Link href="/how-to-get-cited-by-duckduckgo-ai">
+          how to get cited by DuckDuckGo
+        </Link>
         .
         The map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">

@@ -37,6 +37,7 @@ const related = [
   { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
   { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
   { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
+  { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -175,6 +176,9 @@ export default function AiCrawlerUserAgentsPage() {
           You.com’s Web Search API page and Answer API guide do not name a robots.txt token.
           This table does not add one. The note is{" "}
           <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
+          DuckAssistBot is the token DuckDuckGo publishes for AI-assisted answers.
+          DuckDuckBot is the search crawler. The note is{" "}
+          <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
         </p>
 
         <h2>Questions about the tokens</h2>

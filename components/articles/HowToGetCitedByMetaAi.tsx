@@ -53,7 +53,8 @@ export function HowToGetCitedByMetaAiArticle() {
         <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>,{" "}
         <Link href="/how-to-get-cited-by-mistral">Mistral</Link>,{" "}
         <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-you-com">You.com</Link>. The short map
+        <Link href="/how-to-get-cited-by-you-com">You.com</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-duckduckgo-ai">DuckDuckGo</Link>. The short map
         is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
