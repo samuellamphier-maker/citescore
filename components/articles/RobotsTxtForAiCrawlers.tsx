@@ -54,6 +54,8 @@ export function RobotsTxtForAiCrawlersArticle() {
         DeepSeek’s Search and Fetch guide does not name a robots.txt token.
         That note is{" "}
         <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
+        Mistral’s three tokens are on{" "}
+        <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link>.
       </p>
       <div className="table-wrap">
         <table>

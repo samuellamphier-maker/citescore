@@ -22,6 +22,7 @@ export default function HowToGetCitedByCopilotPage() {
         { href: "/how-to-get-cited-by-grok", label: "How to get cited by Grok" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
         { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
+        { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}

@@ -38,6 +38,10 @@ export function AiSearchReadinessChecklistForSaasArticle() {
         <Link href="/how-to-get-cited-by-deepseek">
           how to get cited by DeepSeek
         </Link>
+        . Mistral’s crawler page, which names three tokens for Vibe, is{" "}
+        <Link href="/how-to-get-cited-by-mistral">
+          how to get cited by Mistral
+        </Link>
         .
       </p>
 

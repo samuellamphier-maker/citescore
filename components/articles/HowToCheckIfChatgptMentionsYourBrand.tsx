@@ -141,7 +141,7 @@ export function HowToCheckIfChatgptMentionsYourBrandArticle() {
         <Link href="/organization-schema-generator">Organization schema generator</Link> and the{" "}
         <Link href="/website-schema-generator">WebSite schema generator</Link> copy those two blocks. A watch page
         uses the <Link href="/video-schema-generator">Video schema generator</Link>. An event page
-        uses the <Link href="/event-schema-generator">Event schema generator</Link>. The field list, and what to
+        uses the <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. The field list, and what to
         leave out, is the <Link href="/schema-markup-for-ai-search">schema guide</Link>.
       </p>
 

@@ -40,6 +40,8 @@ export default function HowToGetCitedByDeepseekPage() {
           { href: "/how-to-get-cited-by-copilot", label: "How to get cited by Microsoft Copilot" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/event-schema-generator", label: "Free Event schema generator" },
+          { href: "/review-schema-generator", label: "Free Review schema generator" },
+          { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         ])}

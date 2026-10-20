@@ -51,8 +51,9 @@ export function HowToGetCitedByDeepseekArticle() {
         <Link href="/how-to-get-cited-by-claude">Claude</Link>,{" "}
         <Link href="/how-to-get-cited-by-gemini">Gemini</Link>,{" "}
         <Link href="/how-to-get-cited-by-copilot">Microsoft Copilot</Link>,{" "}
-        <Link href="/how-to-get-cited-by-grok">Grok</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>. The short
+        <Link href="/how-to-get-cited-by-grok">Grok</Link>,{" "}
+        <Link href="/how-to-get-cited-by-meta-ai">Meta AI</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-mistral">Mistral</Link>. The short
         map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
@@ -245,10 +246,10 @@ export function HowToGetCitedByDeepseekArticle() {
           Schema that matches the visible page
         </Link>{" "}
         is for parsers that read JSON-LD. An event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>.
         The homepage can use the{" "}
         <Link href="/website-schema-generator">WebSite schema generator</Link>.
-        Neither script is a DeepSeek switch. A mention on someone else’s
+        None of those scripts is a DeepSeek switch. A mention on someone else’s
         site is a different URL. The guide does not say that a directory
         listing, a Wikipedia article, or a review causes your page to be
         returned.

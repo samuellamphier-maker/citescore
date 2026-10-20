@@ -42,9 +42,11 @@ const related = [
   { href: "/website-schema-generator", label: "WebSite schema generator" },
   { href: "/video-schema-generator", label: "Video schema generator" },
   { href: "/event-schema-generator", label: "Event schema generator" },
+  { href: "/review-schema-generator", label: "Review schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
   { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
+  { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];

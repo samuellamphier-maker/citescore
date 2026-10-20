@@ -37,6 +37,10 @@ export function HowToGetCitedByCopilotArticle() {
         <Link href="/how-to-get-cited-by-deepseek">
           how to get cited by DeepSeek
         </Link>
+        . Mistral’s Le Chat, now Vibe, is{" "}
+        <Link href="/how-to-get-cited-by-mistral">
+          how to get cited by Mistral
+        </Link>
         .
         The map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">

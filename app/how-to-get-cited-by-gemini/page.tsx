@@ -24,6 +24,7 @@ export default function HowToGetCitedByGeminiPage() {
         { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
         { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
+        { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}
     >

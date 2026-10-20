@@ -34,6 +34,7 @@ const related = [
   { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
   { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },
   { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
+  { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -163,6 +164,8 @@ export default function AiCrawlerUserAgentsPage() {
           DeepSeek is not a row in the table. The Search and Fetch guide does not name a user-agent, and this page
           does not add one from a third-party list. The note is{" "}
           <Link href="/how-to-get-cited-by-deepseek">how to get cited by DeepSeek</Link>.
+          Mistral’s crawler page names MistralAI-User, MistralAI-Index, and MistralAI-Training. The note is{" "}
+          <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link>.
         </p>
 
         <h2>Questions about the tokens</h2>
