@@ -55,9 +55,11 @@ const related = [
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
+  { href: "/book-schema-generator", label: "Book schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
+  { href: "/ai-search-visibility-for-real-estate", label: "AI search visibility for real estate" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -106,7 +108,8 @@ export default function SpeakableSchemaGeneratorPage() {
           does not rank the page. A law firm’s office page is a different problem, on{" "}
           <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic or
           health-tech site is on{" "}
-          <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A photo credit
+          <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage
+          office is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A photo credit
           uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>.
         </p>
         <p>

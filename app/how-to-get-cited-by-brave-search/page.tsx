@@ -50,6 +50,7 @@ export default function HowToGetCitedByBraveSearchPage() {
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
+          { href: "/book-schema-generator", label: "Free Book schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/geo-audit", label: "$39 GEO audit" },

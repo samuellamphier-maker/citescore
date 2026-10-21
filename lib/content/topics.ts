@@ -634,6 +634,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/book-schema-generator",
+    title: "Free Book schema generator",
+    description:
+      "Free, no-signup Book JSON-LD generator. Add the title, author, ISBN, format, page count, publication date, publisher, language, description, cover, page URL, and optional editions already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Book schema",
+    card: "Copy Book JSON-LD from the title, author, ISBN, format, and editions already on the page.",
+    navLabel: "Book schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-21",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-real-estate",
+    title: "AI search visibility for real estate",
+    description:
+      "How a brokerage, agent, or property manager site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: RealEstateAgent markup, listing pages, local signals, reviews, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Office pages, listing URLs, RealEstateAgent markup, and the crawler files a brokerage controls.",
+    navLabel: "AI search visibility for real estate",
+    priority: 0.8,
+    publishedAt: "2026-10-21",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -771,6 +795,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-ecommerce",
   "/ai-search-visibility-for-law-firms",
   "/ai-search-visibility-for-healthcare",
+  "/ai-search-visibility-for-real-estate",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

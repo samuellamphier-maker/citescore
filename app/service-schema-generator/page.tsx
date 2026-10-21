@@ -54,9 +54,11 @@ const related = [
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
+  { href: "/book-schema-generator", label: "Book schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
+  { href: "/ai-search-visibility-for-real-estate", label: "AI search visibility for real estate" },
   { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
   { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
@@ -126,6 +128,8 @@ export default function ServiceSchemaGeneratorPage() {
           page is the case on <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>.
           A clinic service page is the case on{" "}
           <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>.
+          A property-management service page is the case on{" "}
+          <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>.
           The company itself, on
           the homepage, uses the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. A shipped product uses the{" "}

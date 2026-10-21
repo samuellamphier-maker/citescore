@@ -54,6 +54,7 @@ export default function HowToCheckIfChatgptMentionsYourBrandPage() {
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
+          { href: "/book-schema-generator", label: "Free Book schema generator" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >
