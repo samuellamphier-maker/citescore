@@ -44,6 +44,7 @@ export default function HowToGetCitedByPerplexityCometPage() {
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
           { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
+          { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/perplexity-citations", label: "Perplexity citations" },

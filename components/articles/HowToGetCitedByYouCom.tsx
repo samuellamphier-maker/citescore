@@ -199,7 +199,7 @@ export function HowToGetCitedByYouComArticle() {
         <li>
           Repeat the visible facts in JSON-LD if you want the labels. A course
           page can use the{" "}
-          <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>.
+          <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>. A forum or support page where people can submit answers uses the <Link href="/qa-page-schema-generator">QAPage schema generator</Link>.
           A service page can use the{" "}
           <Link href="/service-schema-generator">Service schema generator</Link>.
           The field list is the{" "}

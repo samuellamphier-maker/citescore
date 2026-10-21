@@ -124,7 +124,7 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         , a watch page can use the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>
         , and an event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>. A forum or support page where people can submit answers uses the <Link href="/qa-page-schema-generator">QAPage schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -250,7 +250,10 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         questions are visible. Remove it when they are not. One canonical
         page is enough. Repeating the same FAQPage on every URL does not
         make the answers more true. A page where visitors post competing
-        answers is a QAPage, which this example is not.
+        answers is a QAPage, which this example is not. The{" "}
+        <Link href="/qa-page-schema-generator">QAPage schema generator</Link>{" "}
+        writes that script from one question, an accepted answer, suggested
+        answers, authors, and dates. It uploads nothing.
       </p>
 
       <h2>Article</h2>

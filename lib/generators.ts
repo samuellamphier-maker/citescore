@@ -2233,3 +2233,111 @@ export function buildRecipeSchema(input: RecipeInput): string {
 
   return jsonLdScript(recipe);
 }
+
+export const QA_AUTHOR_KINDS = ["Person", "Organization"] as const;
+
+export type QaAuthorKind = (typeof QA_AUTHOR_KINDS)[number];
+
+export type QaAnswerInput = {
+  text: string;
+  authorName: string;
+  authorKind: string;
+  authorUrl: string;
+  datePublished: string;
+  dateModified: string;
+  url: string;
+};
+
+export type QaPageInput = {
+  name: string;
+  text: string;
+  answerCount: string;
+  authorName: string;
+  authorKind: string;
+  authorUrl: string;
+  datePublished: string;
+  dateModified: string;
+  accepted: QaAnswerInput;
+  suggested: QaAnswerInput[];
+};
+
+/** A non-negative integer, thousands commas removed, or empty. */
+export function nonNegativeInt(raw: string): string {
+  const value = stripThousands(raw);
+  if (!/^(0|[1-9]\d*)$/.test(value)) return "";
+  return value;
+}
+
+function qaAuthor(nameRaw: string, kindRaw: string, urlRaw: string): Record<string, unknown> | null {
+  const name = plainLine(nameRaw);
+  if (!name) return null;
+  const author: Record<string, unknown> = {
+    "@type": kindRaw === "Organization" ? "Organization" : "Person",
+    name,
+  };
+  const url = httpUrl(urlRaw);
+  if (url) author.url = url;
+  return author;
+}
+
+function qaAnswer(input: QaAnswerInput): Record<string, unknown> | null {
+  const text = plainLine(input.text);
+  if (!text) return null;
+  const answer: Record<string, unknown> = { "@type": "Answer", text };
+  const author = qaAuthor(input.authorName, input.authorKind, input.authorUrl);
+  if (author) answer.author = author;
+  const datePublished = isoDateTime(input.datePublished);
+  if (datePublished) answer.datePublished = datePublished;
+  const dateModified = isoDateTime(input.dateModified);
+  if (dateModified) answer.dateModified = dateModified;
+  const url = httpUrl(input.url);
+  if (url) answer.url = url;
+  return answer;
+}
+
+/**
+ * QAPage JSON-LD. Empty until the question name is present.
+ * One accepted answer, and zero or more suggested answers, are included only when each has text.
+ * answerCount is the number entered when it is at least the answers in the script.
+ * Otherwise it is the number of answers included here, which is 0 when there are none.
+ * An author URL is written only with an author name.
+ */
+export function buildQaPageSchema(input: QaPageInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const question: Record<string, unknown> = {
+    "@type": "Question",
+    name,
+  };
+
+  const text = plainLine(input.text);
+  if (text) question.text = text;
+
+  const author = qaAuthor(input.authorName, input.authorKind, input.authorUrl);
+  if (author) question.author = author;
+
+  const datePublished = isoDateTime(input.datePublished);
+  if (datePublished) question.datePublished = datePublished;
+  const dateModified = isoDateTime(input.dateModified);
+  if (dateModified) question.dateModified = dateModified;
+
+  const accepted = qaAnswer(input.accepted);
+  if (accepted) question.acceptedAnswer = accepted;
+
+  const suggested = input.suggested
+    .map((row) => qaAnswer(row))
+    .filter((row): row is Record<string, unknown> => row !== null);
+  if (suggested.length === 1) question.suggestedAnswer = suggested[0];
+  else if (suggested.length > 1) question.suggestedAnswer = suggested;
+
+  const included = (accepted ? 1 : 0) + suggested.length;
+  const typed = nonNegativeInt(input.answerCount);
+  question.answerCount = typed && Number(typed) >= included ? Number(typed) : included;
+
+  return jsonLdScript({
+    "@context": "https://schema.org",
+    "@type": "QAPage",
+    mainEntity: question,
+  });
+}

@@ -25,6 +25,7 @@ export default function GeoForLocalBusinessesPage() {
         { href: "/course-schema-generator", label: "Course schema generator" },
         { href: "/job-posting-schema-generator", label: "Job posting schema generator" },
         { href: "/recipe-schema-generator", label: "Recipe schema generator" },
+        { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
         { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
         { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },

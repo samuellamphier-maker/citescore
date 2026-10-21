@@ -81,6 +81,7 @@ export default function RobotsTxtForAiCrawlersPage() {
           { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/job-posting-schema-generator", label: "Free Job posting schema generator" },
           { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
+          { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}
       >

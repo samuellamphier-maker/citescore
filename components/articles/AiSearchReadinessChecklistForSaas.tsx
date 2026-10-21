@@ -62,6 +62,11 @@ export function AiSearchReadinessChecklistForSaasArticle() {
         <Link href="/how-to-get-cited-by-perplexity-comet">
           how to get cited by Perplexity Comet
         </Link>
+        . The longer practical version for a software company, including
+        comparison pages, docs, pricing, and third-party mentions, is{" "}
+        <Link href="/ai-search-visibility-for-b2b-saas">
+          AI search visibility for B2B SaaS
+        </Link>
         .
       </p>
 

@@ -30,6 +30,8 @@ const addedGuidePaths = [
   "/ai-search-visibility-for-ecommerce",
   "/recipe-schema-generator",
   "/how-to-get-cited-by-perplexity-comet",
+  "/qa-page-schema-generator",
+  "/ai-search-visibility-for-b2b-saas",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

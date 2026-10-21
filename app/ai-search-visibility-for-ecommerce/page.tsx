@@ -19,6 +19,7 @@ export default function AiSearchVisibilityForEcommercePage() {
     <GuideDocument
       topic={topic}
       related={guideLinks([
+        { href: "/ai-search-visibility-for-b2b-saas", label: "AI search visibility for B2B SaaS" },
         { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
         { href: "/product-schema-generator", label: "Free Product schema generator" },
         { href: "/article-schema-generator", label: "Free Article schema generator" },
@@ -35,6 +36,7 @@ export default function AiSearchVisibilityForEcommercePage() {
         { href: "/course-schema-generator", label: "Free Course schema generator" },
         { href: "/job-posting-schema-generator", label: "Free Job posting schema generator" },
         { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
+        { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
         { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },
         { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
