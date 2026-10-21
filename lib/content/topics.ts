@@ -75,6 +75,18 @@ export const topicPages: TopicPage[] = [
     minutes: 10,
   },
   {
+    path: "/how-to-get-cited-by-perplexity-comet",
+    title: "How to get cited by Perplexity Comet",
+    description:
+      "What Perplexity publishes for Comet’s browser assistant: it reads the open page’s visible text, headlines, and metadata. Search citations still use PerplexityBot. No separate Comet token, and no citation rate.",
+    kicker: "Guide",
+    card: "The open tab’s visible text, and why Comet does not add a second robots.txt token.",
+    navLabel: "How to get cited by Perplexity Comet",
+    priority: 0.8,
+    publishedAt: "2026-10-21",
+    minutes: 11,
+  },
+  {
     path: "/how-to-get-cited-by-claude",
     title: "How to get cited by Claude",
     description:
@@ -538,6 +550,18 @@ export const topicPages: TopicPage[] = [
     minutes: 7,
   },
   {
+    path: "/recipe-schema-generator",
+    title: "Free Recipe schema generator",
+    description:
+      "Free, no-signup Recipe JSON-LD generator. Add the dish name, description, image, author, prep, cook, and total time, yield, ingredients, steps, calories, and an optional rating already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Recipe schema",
+    card: "Copy Recipe JSON-LD from the name, image, ingredients, steps, and time already on the recipe page.",
+    navLabel: "Recipe schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-21",
+    minutes: 7,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -655,6 +679,7 @@ const guideNavOrder = [
   "/how-to-get-cited-by-chatgpt",
   "/how-to-check-if-chatgpt-mentions-your-brand",
   "/how-to-get-cited-by-perplexity",
+  "/how-to-get-cited-by-perplexity-comet",
   "/how-to-get-cited-by-claude",
   "/how-to-get-cited-by-gemini",
   "/how-to-get-cited-by-copilot",

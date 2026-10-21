@@ -60,7 +60,8 @@ export function HowToGetCitedByDuckDuckGoArticle() {
         <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>,{" "}
         <Link href="/how-to-get-cited-by-mistral">Mistral</Link>,{" "}
         <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-you-com">You.com</Link>. The short
+        <Link href="/how-to-get-cited-by-you-com">You.com</Link>, and{" "}
+        <Link href="/how-to-get-cited-by-perplexity-comet">Perplexity Comet</Link>. The short
         map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
@@ -229,6 +230,8 @@ export function HowToGetCitedByDuckDuckGoArticle() {
           <Link href="/job-posting-schema-generator">Job posting schema generator</Link>.
           A course page can use the{" "}
           <Link href="/course-schema-generator">Course schema generator</Link>.
+          A recipe page can use the{" "}
+          <Link href="/recipe-schema-generator">Recipe schema generator</Link>.
           The field list is the{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link>. None
           of those scripts is a DuckDuckGo requirement.

@@ -124,7 +124,7 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         , a watch page can use the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>
         , and an event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -424,6 +424,25 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         The{" "}
         <Link href="/job-posting-schema-generator">Job posting schema generator</Link>{" "}
         writes one JobPosting from fields you type. It uploads nothing.
+      </p>
+
+      <h2>Recipe</h2>
+      <p>
+        Use Recipe on the page for one dish. Google’s{" "}
+        <a href="https://developers.google.com/search/docs/appearance/structured-data/recipe">
+          recipe documentation
+        </a>
+        , read on 21 October 2026, lists <code>image</code> and <code>name</code>{" "}
+        as required for the rich result. A host carousel also needs{" "}
+        <code>ItemList</code> on a summary page. <code>prepTime</code> and{" "}
+        <code>cookTime</code> are a pair. <code>totalTime</code> can stand
+        alone. <code>nutrition.calories</code> requires <code>recipeYield</code>.
+        Steps belong in <code>HowToStep</code>. A facial scrub or a party
+        plan is not a dish. A procedure that is not a dish still uses HowTo.
+        The{" "}
+        <Link href="/recipe-schema-generator">Recipe schema generator</Link>{" "}
+        writes one Recipe from fields you type. It does not write the
+        carousel, and it uploads nothing.
       </p>
 
       <h2>Questions about the markup</h2>

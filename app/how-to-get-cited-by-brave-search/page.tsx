@@ -46,6 +46,7 @@ export default function HowToGetCitedByBraveSearchPage() {
           { href: "/service-schema-generator", label: "Free Service schema generator" },
           { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/job-posting-schema-generator", label: "Free Job posting schema generator" },
+          { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/geo-audit", label: "$39 GEO audit" },

@@ -52,6 +52,19 @@ export function HowToGetCitedByPerplexityArticle() {
         <Link href="/how-to-get-cited-by-duckduckgo-ai">
           how to get cited by DuckDuckGo
         </Link>
+        , and{" "}
+        <Link href="/how-to-get-cited-by-perplexity-comet">
+          how to get cited by Perplexity Comet
+        </Link>
+        .
+      </p>
+      <p>
+        Comet is Perplexity’s browser. The assistant in that browser can read
+        a page a person already has open. That path is separate from the two
+        crawler tokens below. The note is{" "}
+        <Link href="/how-to-get-cited-by-perplexity-comet">
+          how to get cited by Perplexity Comet
+        </Link>
         .
       </p>
 

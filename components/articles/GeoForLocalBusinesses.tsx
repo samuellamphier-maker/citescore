@@ -104,7 +104,7 @@ export function GeoForLocalBusinessesArticle() {
           breadcrumb schema generator
         </Link>
         . A service that business offers, on its own page, can use the{" "}
-        <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>.
+        <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>.
       </p>
 
       <h2>Reviews of your own business</h2>

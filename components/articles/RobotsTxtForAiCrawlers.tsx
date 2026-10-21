@@ -64,6 +64,8 @@ export function RobotsTxtForAiCrawlersArticle() {
         DuckDuckGo publishes DuckAssistBot for AI-assisted answers and
         DuckDuckBot for search results. That note is{" "}
         <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
+        Comet does not add a robots.txt token on the pages Perplexity publishes for the browser assistant. That note is{" "}
+        <Link href="/how-to-get-cited-by-perplexity-comet">how to get cited by Perplexity Comet</Link>.
       </p>
       <div className="table-wrap">
         <table>

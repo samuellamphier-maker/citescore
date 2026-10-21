@@ -56,6 +56,10 @@ export function HowToGetCitedByCopilotArticle() {
         <Link href="/how-to-get-cited-by-duckduckgo-ai">
           how to get cited by DuckDuckGo
         </Link>
+        , and{" "}
+        <Link href="/how-to-get-cited-by-perplexity-comet">
+          how to get cited by Perplexity Comet
+        </Link>
         .
         The map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
