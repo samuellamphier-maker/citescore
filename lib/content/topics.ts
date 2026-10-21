@@ -243,6 +243,18 @@ export const topicPages: TopicPage[] = [
     minutes: 11,
   },
   {
+    path: "/ai-search-visibility-for-b2b-saas",
+    title: "AI search visibility for B2B SaaS",
+    description:
+      "How a B2B SaaS site can be fetched and quoted by ChatGPT, Perplexity, Google AI Overviews, and Claude: comparison pages, docs and pricing in HTML, llms.txt, schema, crawler access, and third-party mentions. No citation rate.",
+    kicker: "Guide",
+    card: "Comparison pages, public docs, crawler access, and the mentions you do not control.",
+    navLabel: "AI search visibility for B2B SaaS",
+    priority: 0.8,
+    publishedAt: "2026-10-21",
+    minutes: 11,
+  },
+  {
     path: "/google-ai-overviews-optimization",
     title: "Google AI Overviews optimization",
     description:
@@ -562,6 +574,18 @@ export const topicPages: TopicPage[] = [
     minutes: 7,
   },
   {
+    path: "/qa-page-schema-generator",
+    title: "Free QAPage schema generator",
+    description:
+      "Free, no-signup QAPage JSON-LD generator. Add one question, an accepted answer, suggested answers, authors, and dates already on the page. Copy the script. Nothing is uploaded. A site-written FAQ uses FAQPage.",
+    kicker: "QAPage schema",
+    card: "Copy QAPage JSON-LD from the question, the answers, the authors, and the dates already on the page.",
+    navLabel: "QAPage schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-21",
+    minutes: 8,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -693,6 +717,7 @@ const guideNavOrder = [
   "/google-ai-overviews-optimization",
   "/google-ai-mode-optimization",
   "/ai-search-readiness-checklist-for-saas",
+  "/ai-search-visibility-for-b2b-saas",
   "/geo-vs-seo",
   "/geo-for-local-businesses",
   "/ai-search-visibility-for-ecommerce",

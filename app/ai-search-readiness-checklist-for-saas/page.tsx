@@ -47,6 +47,8 @@ export default function AiSearchReadinessChecklistForSaasPage() {
         guidePath={topic.path}
         related={[
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
+          { href: "/ai-search-visibility-for-b2b-saas", label: "AI search visibility for B2B SaaS" },
+          { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ]}

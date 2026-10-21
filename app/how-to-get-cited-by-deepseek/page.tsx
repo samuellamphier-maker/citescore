@@ -45,6 +45,7 @@ export default function HowToGetCitedByDeepseekPage() {
           { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/job-posting-schema-generator", label: "Free Job posting schema generator" },
           { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
+          { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
           { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
