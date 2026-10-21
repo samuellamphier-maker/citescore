@@ -64,6 +64,10 @@ export function AiSearchVisibilityForEcommerceArticle() {
         <Link href="/ai-search-visibility-for-real-estate">
           AI search visibility for real estate
         </Link>
+        . A restaurant’s location, menu, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-restaurants">
+          AI search visibility for restaurants
+        </Link>
         .
       </p>
 

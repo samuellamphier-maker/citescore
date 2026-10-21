@@ -2807,3 +2807,129 @@ export function buildBookSchema(input: BookInput): string {
 
   return jsonLdScript(book);
 }
+
+export const PODCAST_TYPES = ["PodcastSeries", "PodcastEpisode"] as const;
+
+export type PodcastType = (typeof PODCAST_TYPES)[number];
+
+export type PodcastTimeInput = {
+  hours: string;
+  minutes: string;
+  seconds: string;
+};
+
+/**
+ * ISO 8601 duration from hours, minutes, and seconds.
+ * Empty when any filled field is invalid or the total is zero.
+ * 32 minutes and 15 seconds is PT32M15S.
+ */
+export function isoTimeDuration(parts: PodcastTimeInput): string {
+  const hours = durationPart(parts.hours);
+  const minutes = durationPart(parts.minutes);
+  const seconds = durationPart(parts.seconds);
+  if (hours === null || minutes === null || seconds === null) return "";
+  const h = hours ?? 0;
+  const m = minutes ?? 0;
+  const s = seconds ?? 0;
+  if (h + m + s === 0) return "";
+  let time = "";
+  if (h > 0) time += `${h}H`;
+  if (m > 0) time += `${m}M`;
+  if (s > 0) time += `${s}S`;
+  return `PT${time}`;
+}
+
+/**
+ * An episode number. A whole number is a JSON number. Any other visible label is text.
+ * Empty when the field is blank. A number that is not a safe integer stays text.
+ */
+export function episodeNumberValue(raw: string): number | string {
+  const value = plainLine(raw);
+  if (!value) return "";
+  if (/^(0|[1-9]\d*)$/.test(value)) {
+    const number = Number(value);
+    if (Number.isSafeInteger(number)) return number;
+  }
+  return value;
+}
+
+export type PodcastInput = {
+  type: string;
+  name: string;
+  description: string;
+  url: string;
+  imageUrl: string;
+  authorName: string;
+  authorKind: string;
+  authorUrl: string;
+  webFeed: string;
+  datePublished: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
+  episodeNumber: string;
+  audioUrl: string;
+  seriesName: string;
+  seriesUrl: string;
+  seriesWebFeed: string;
+};
+
+function podcastSeriesNode(nameRaw: string, urlRaw: string, feedRaw: string): Record<string, unknown> | null {
+  const seriesName = plainLine(nameRaw);
+  if (!seriesName) return null;
+  const series: Record<string, unknown> = { "@type": "PodcastSeries", name: seriesName };
+  const seriesUrl = httpUrl(urlRaw);
+  if (seriesUrl) series.url = seriesUrl;
+  const webFeed = httpUrl(feedRaw);
+  if (webFeed) series.webFeed = webFeed;
+  return series;
+}
+
+/**
+ * PodcastSeries or PodcastEpisode JSON-LD. Empty until the name is present and the type is one of those two.
+ * A series writes webFeed on the series. An episode writes it on partOfSeries, and only with a series name.
+ * A URL without a name is omitted. associatedMedia is an AudioObject, and only when the audio URL is http(s).
+ * duration is ISO 8601. schema.org’s PodcastEpisode JSON-LD example uses timeRequired for the same clock time.
+ * This form writes duration, which the Episode property table defines. It does not write timeRequired.
+ */
+export function buildPodcastSchema(input: PodcastInput): string {
+  const name = plainLine(input.name);
+  const type = (PODCAST_TYPES as readonly string[]).includes(input.type) ? input.type : "";
+  if (!name || !type) return "";
+
+  const node: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": type,
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) node.description = description;
+
+  const url = httpUrl(input.url);
+  if (url) node.url = url;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) node.image = image;
+
+  if (type === "PodcastSeries") {
+    const webFeed = httpUrl(input.webFeed);
+    if (webFeed) node.webFeed = webFeed;
+  } else {
+    const datePublished = isoDateTime(input.datePublished);
+    if (datePublished) node.datePublished = datePublished;
+    const duration = isoTimeDuration({ hours: input.hours, minutes: input.minutes, seconds: input.seconds });
+    if (duration) node.duration = duration;
+    const episodeNumber = episodeNumberValue(input.episodeNumber);
+    if (episodeNumber !== "") node.episodeNumber = episodeNumber;
+    const audio = httpUrl(input.audioUrl);
+    if (audio) node.associatedMedia = { "@type": "AudioObject", contentUrl: audio };
+    const series = podcastSeriesNode(input.seriesName, input.seriesUrl, input.seriesWebFeed);
+    if (series) node.partOfSeries = series;
+  }
+
+  const author = bookParty(input.authorName, input.authorKind, input.authorUrl);
+  if (author) node.author = author;
+
+  return jsonLdScript(node);
+}

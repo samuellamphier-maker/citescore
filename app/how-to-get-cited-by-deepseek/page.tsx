@@ -49,6 +49,7 @@ export default function HowToGetCitedByDeepseekPage() {
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
           { href: "/book-schema-generator", label: "Free Book schema generator" },
+          { href: "/podcast-schema-generator", label: "Free Podcast schema generator" },
           { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
           { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },

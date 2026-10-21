@@ -52,6 +52,7 @@ export default function AiSearchReadinessChecklistForSaasPage() {
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
           { href: "/book-schema-generator", label: "Free Book schema generator" },
+          { href: "/podcast-schema-generator", label: "Free Podcast schema generator" },
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ]}

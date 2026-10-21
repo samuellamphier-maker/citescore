@@ -49,7 +49,7 @@ export function AiSearchVisibilityForB2bSaasArticle() {
         firm’s office and practice pages are on{" "}
         <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic
         or health-tech site is on{" "}
-        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage, an agent, or a property manager is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>.
+        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage, an agent, or a property manager is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant’s location, menu, and hours are on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>.
       </p>
 
       <h2>Let the search crawler in</h2>

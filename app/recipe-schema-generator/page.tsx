@@ -55,6 +55,7 @@ const related = [
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
   { href: "/book-schema-generator", label: "Book schema generator" },
+  { href: "/podcast-schema-generator", label: "Podcast schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
@@ -119,7 +120,9 @@ export default function RecipeSchemaGeneratorPage() {
           that page recommends several high-resolution images, at least 50,000 pixels when width is multiplied by
           height, at 16:9, 4:3, and 1:1. This form cannot measure the file. It writes the URLs you enter. One URL is a
           string. More than one is an array. The same page says the <code>image</code> property does not choose the
-          image used in an ordinary text result.
+          image used in an ordinary text result. A restaurant menu is a different page. The location and the menu URL are
+          on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. Use this
+          script on a page that is a recipe, with ingredients and steps. Do not mark the whole menu up as one Recipe.
         </p>
         <p>
           The recommended properties are the ones a rich result can show when they are true. <code>author</code> is a
