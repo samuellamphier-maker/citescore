@@ -52,9 +52,11 @@ export default function AiSearchVisibilityForB2bSaasPage() {
           { href: "/organization-schema-generator", label: "Free Organization schema generator" },
           { href: "/faq-schema-generator", label: "Free FAQ schema generator" },
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
+          { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/how-to-check-if-chatgpt-mentions-your-brand", label: "How to check if ChatGPT mentions your brand" },
           { href: "/ai-search-visibility-for-ecommerce", label: "AI search visibility for ecommerce" },
+          { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >

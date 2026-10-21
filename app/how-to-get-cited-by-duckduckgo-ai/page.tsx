@@ -47,6 +47,7 @@ export default function HowToGetCitedByDuckDuckGoPage() {
           { href: "/job-posting-schema-generator", label: "Free Job posting schema generator" },
           { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
+          { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
