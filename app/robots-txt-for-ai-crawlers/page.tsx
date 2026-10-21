@@ -85,6 +85,7 @@ export default function RobotsTxtForAiCrawlersPage() {
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
           { href: "/book-schema-generator", label: "Free Book schema generator" },
+          { href: "/podcast-schema-generator", label: "Free Podcast schema generator" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}
       >

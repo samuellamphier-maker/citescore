@@ -46,6 +46,7 @@ export default function HowToGetCitedByAiAnswerEnginesPage() {
         { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
         { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
         { href: "/book-schema-generator", label: "Free Book schema generator" },
+        { href: "/podcast-schema-generator", label: "Free Podcast schema generator" },
         { href: "/google-ai-mode-optimization", label: "Google AI Mode optimization" },
         { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
         { href: "/aeo-checklist", label: "AEO checklist" },

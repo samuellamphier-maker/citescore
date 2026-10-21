@@ -658,6 +658,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/podcast-schema-generator",
+    title: "Free Podcast schema generator",
+    description:
+      "Free, no-signup PodcastSeries and PodcastEpisode JSON-LD generator. Add the show or episode name, the page URL, the RSS feed, and the audio file already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Podcast schema",
+    card: "Copy PodcastSeries or PodcastEpisode JSON-LD from the name, feed, and audio file already on the page.",
+    navLabel: "Podcast schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-21",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-restaurants",
+    title: "AI search visibility for restaurants",
+    description:
+      "How a restaurant site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Restaurant markup, a menu URL, hours, reviews, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Location pages, a menu URL, Restaurant markup, hours, and the crawler files a restaurant controls.",
+    navLabel: "AI search visibility for restaurants",
+    priority: 0.8,
+    publishedAt: "2026-10-21",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -796,6 +820,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-law-firms",
   "/ai-search-visibility-for-healthcare",
   "/ai-search-visibility-for-real-estate",
+  "/ai-search-visibility-for-restaurants",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

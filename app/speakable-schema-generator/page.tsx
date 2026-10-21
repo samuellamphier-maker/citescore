@@ -56,10 +56,12 @@ const related = [
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
   { href: "/book-schema-generator", label: "Book schema generator" },
+  { href: "/podcast-schema-generator", label: "Podcast schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
   { href: "/ai-search-visibility-for-real-estate", label: "AI search visibility for real estate" },
+  { href: "/ai-search-visibility-for-restaurants", label: "AI search visibility for restaurants" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -109,7 +111,7 @@ export default function SpeakableSchemaGeneratorPage() {
           <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic or
           health-tech site is on{" "}
           <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage
-          office is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A photo credit
+          office is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant location is on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. A photo credit
           uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>.
         </p>
         <p>
