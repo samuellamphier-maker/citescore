@@ -51,6 +51,7 @@ const related = [
   { href: "/recipe-schema-generator", label: "Recipe schema generator" },
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
+  { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
   { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },

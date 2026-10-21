@@ -94,7 +94,9 @@ export function AiSearchVisibilityForLawFirmsArticle() {
         <Link href="/google-ai-overviews-optimization">Google AI Overviews</Link>. A store’s price problem is on{" "}
         <Link href="/ai-search-visibility-for-ecommerce">AI search visibility for ecommerce</Link>. A software
         company’s comparison page is on{" "}
-        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>.
+        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A clinic or
+        health-tech site is on{" "}
+        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>.
       </p>
 
       <h2>One page per practice the firm actually does</h2>
@@ -156,7 +158,8 @@ export function AiSearchVisibilityForLawFirmsArticle() {
         different feature. Google’s speakable page is a beta for English news on Google Assistant, not a type for a
         firm. A news post the firm publishes can use the{" "}
         <Link href="/speakable-schema-generator">Speakable schema generator</Link> on that post. It does not make the
-        office page a citation.
+        office page a citation. A photo that shows a credit or a license uses the{" "}
+        <Link href="/image-object-schema-generator">ImageObject schema generator</Link>.
       </p>
 
       <h2>Practice-area pages</h2>

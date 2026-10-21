@@ -53,8 +53,10 @@ const related = [
   { href: "/recipe-schema-generator", label: "Recipe schema generator" },
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
+  { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
   { href: "/geo-for-local-businesses", label: "GEO for local businesses" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
+  { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
@@ -101,14 +103,16 @@ export default function LocalBusinessSchemaGeneratorPage() {
         <p>
           Choose the most specific type that fits, such as Restaurant, Dentist, or Bakery. Use LocalBusiness when none of those fit. The copy block is one <code>script</code> tag. Paste it into the HTML the server sends for that location. Answer engines often skip text that only appears after JavaScript runs. The{" "}
           <Link href="/geo-for-local-businesses">local business guide</Link> shows the same fields, including the limit on reviews of your own business. A law firm uses LegalService for the office. The practical page is{" "}
-          <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. The{" "}
+          <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic with a
+          public address uses MedicalClinic or Physician. That case is{" "}
+          <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. The{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link> covers Organization, Product, FAQ, and Article. The{" "}
           <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. A location URL at another path is outside that fetch. The{" "}
           <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. A visible trail uses the{" "}
           <Link href="/breadcrumb-schema-generator">breadcrumb schema generator</Link>. A homepage that identifies the publisher uses the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. A procedure uses the{" "}
           <Link href="/howto-schema-generator">HowTo schema generator</Link>. An app page uses the{" "}
-          <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>. A watch page uses the <Link href="/video-schema-generator">Video schema generator</Link>. An event page uses the <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>. A forum or support page where people can submit answers uses the <Link href="/qa-page-schema-generator">QAPage schema generator</Link>. A page that names a short passage for text-to-speech uses the <Link href="/speakable-schema-generator">Speakable schema generator</Link>.
+          <Link href="/software-application-schema-generator">Software application schema generator</Link>. An author profile uses the <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the <Link href="/website-schema-generator">WebSite schema generator</Link>. A watch page uses the <Link href="/video-schema-generator">Video schema generator</Link>. An event page uses the <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>. A forum or support page where people can submit answers uses the <Link href="/qa-page-schema-generator">QAPage schema generator</Link>. A page that names a short passage for text-to-speech uses the <Link href="/speakable-schema-generator">Speakable schema generator</Link>. An image with a visible credit, caption, or license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>.
         </p>
         <h2>How to install it</h2>
         <ol>

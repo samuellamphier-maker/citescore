@@ -2500,3 +2500,73 @@ export function buildSpeakableSchema(input: SpeakableInput): string {
 
   return jsonLdScript(page);
 }
+
+export const IMAGE_CREATOR_KINDS = ["Person", "Organization"] as const;
+
+export type ImageCreatorKind = (typeof IMAGE_CREATOR_KINDS)[number];
+
+export type ImageObjectInput = {
+  contentUrl: string;
+  name: string;
+  caption: string;
+  creatorName: string;
+  creatorKind: string;
+  creatorUrl: string;
+  license: string;
+  acquireLicensePage: string;
+  creditText: string;
+  copyrightNotice: string;
+};
+
+function imageCreator(input: ImageObjectInput): Record<string, unknown> | null {
+  const name = plainLine(input.creatorName);
+  if (!name) return null;
+  const creator: Record<string, unknown> = {
+    "@type": input.creatorKind === "Organization" ? "Organization" : "Person",
+    name,
+  };
+  const url = httpUrl(input.creatorUrl);
+  if (url) creator.url = url;
+  return creator;
+}
+
+/**
+ * ImageObject JSON-LD. Empty until contentUrl is an http(s) URL.
+ * name, caption, creditText, and copyrightNotice are included when they have text.
+ * creator is included only with a name. A URL without a name is omitted.
+ * license and acquireLicensePage are included only as http(s) URLs.
+ * The script writes contentUrl, not the url property, and it does not embed IPTC or C2PA.
+ */
+export function buildImageObjectSchema(input: ImageObjectInput): string {
+  const contentUrl = httpUrl(input.contentUrl);
+  if (!contentUrl) return "";
+
+  const image: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    contentUrl,
+  };
+
+  const name = plainLine(input.name);
+  if (name) image.name = name;
+
+  const caption = plainLine(input.caption);
+  if (caption) image.caption = caption;
+
+  const creator = imageCreator(input);
+  if (creator) image.creator = creator;
+
+  const license = httpUrl(input.license);
+  if (license) image.license = license;
+
+  const acquireLicensePage = httpUrl(input.acquireLicensePage);
+  if (acquireLicensePage) image.acquireLicensePage = acquireLicensePage;
+
+  const creditText = plainLine(input.creditText);
+  if (creditText) image.creditText = creditText;
+
+  const copyrightNotice = plainLine(input.copyrightNotice);
+  if (copyrightNotice) image.copyrightNotice = copyrightNotice;
+
+  return jsonLdScript(image);
+}

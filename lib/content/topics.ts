@@ -610,6 +610,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/image-object-schema-generator",
+    title: "Free ImageObject schema generator",
+    description:
+      "Free, no-signup ImageObject JSON-LD generator. Add the image URL, name, caption, creator, license, acquire-license page, credit line, and copyright notice already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "ImageObject schema",
+    card: "Copy ImageObject JSON-LD from the image URL, caption, credit, and license already on the page.",
+    navLabel: "ImageObject schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-21",
+    minutes: 7,
+  },
+  {
+    path: "/ai-search-visibility-for-healthcare",
+    title: "AI search visibility for healthcare",
+    description:
+      "How a clinic, practice, or health-tech site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: E-E-A-T, MedicalOrganization and Physician markup, reviewed-by credits, local signals, robots.txt, and llms.txt. No medical advice and no citation rate.",
+    kicker: "Guide",
+    card: "Reviewed-by credits, MedicalOrganization markup, local signals, and the crawler files a clinic or health-tech site controls.",
+    navLabel: "AI search visibility for healthcare",
+    priority: 0.8,
+    publishedAt: "2026-10-21",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -746,6 +770,7 @@ const guideNavOrder = [
   "/geo-for-local-businesses",
   "/ai-search-visibility-for-ecommerce",
   "/ai-search-visibility-for-law-firms",
+  "/ai-search-visibility-for-healthcare",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

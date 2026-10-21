@@ -56,6 +56,10 @@ export function AiSearchVisibilityForEcommerceArticle() {
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
         </Link>
+        . A clinic or health-tech site is on{" "}
+        <Link href="/ai-search-visibility-for-healthcare">
+          AI search visibility for healthcare
+        </Link>
         .
       </p>
 
