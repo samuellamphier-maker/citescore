@@ -50,9 +50,11 @@ const related = [
   { href: "/service-schema-generator", label: "Service schema generator" },
   { href: "/course-schema-generator", label: "Course schema generator" },
   { href: "/job-posting-schema-generator", label: "Job posting schema generator" },
+  { href: "/recipe-schema-generator", label: "Recipe schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
+  { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -103,6 +105,8 @@ export default function CourseSchemaGeneratorPage() {
           cited answers, is on <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
           DuckDuckGo’s Search Assist answers are on{" "}
           <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
+          Comet’s browser assistant is on{" "}
+          <Link href="/how-to-get-cited-by-perplexity-comet">how to get cited by Perplexity Comet</Link>.
         </p>
         <p>
           Google’s <a href={courseDocs}>course-list documentation</a>, read on 20 October 2026, lists <code>name</code>{" "}

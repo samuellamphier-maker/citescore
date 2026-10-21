@@ -38,6 +38,7 @@ const related = [
   { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
   { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
+  { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -179,6 +180,9 @@ export default function AiCrawlerUserAgentsPage() {
           DuckAssistBot is the token DuckDuckGo publishes for AI-assisted answers.
           DuckDuckBot is the search crawler. The note is{" "}
           <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
+          Comet is Perplexity’s browser assistant. Perplexity’s crawler page does not name a Comet user agent, and this
+          table does not add one. The note is{" "}
+          <Link href="/how-to-get-cited-by-perplexity-comet">how to get cited by Perplexity Comet</Link>.
         </p>
 
         <h2>Questions about the tokens</h2>

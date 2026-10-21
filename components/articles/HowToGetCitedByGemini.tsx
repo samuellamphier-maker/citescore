@@ -47,6 +47,8 @@ export function HowToGetCitedByGeminiArticle() {
         DuckDuckGo’s Search Assist page, which cites one or two sources and
         names DuckAssistBot for that crawl, is{" "}
         <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.
+        Comet, Perplexity’s browser assistant, reads the open page’s visible text. That note is{" "}
+        <Link href="/how-to-get-cited-by-perplexity-comet">how to get cited by Perplexity Comet</Link>.
         The others are linked from{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines

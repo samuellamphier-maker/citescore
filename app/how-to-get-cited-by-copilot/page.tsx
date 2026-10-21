@@ -26,6 +26,7 @@ export default function HowToGetCitedByCopilotPage() {
         { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
         { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
         { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
+        { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },
         { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
       ])}

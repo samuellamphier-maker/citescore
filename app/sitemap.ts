@@ -28,6 +28,8 @@ const addedGuidePaths = [
   "/geo-for-local-businesses",
   "/llms-txt-best-practices",
   "/ai-search-visibility-for-ecommerce",
+  "/recipe-schema-generator",
+  "/how-to-get-cited-by-perplexity-comet",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

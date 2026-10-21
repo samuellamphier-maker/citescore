@@ -54,7 +54,7 @@ export function HowToGetCitedByMistralArticle() {
         <Link href="/how-to-get-cited-by-deepseek">DeepSeek</Link>, and{" "}
         <Link href="/how-to-get-cited-by-brave-search">Brave Search</Link>, and{" "}
         <Link href="/how-to-get-cited-by-you-com">You.com</Link>, and{" "}
-        <Link href="/how-to-get-cited-by-duckduckgo-ai">DuckDuckGo</Link>. The short
+        <Link href="/how-to-get-cited-by-duckduckgo-ai">DuckDuckGo</Link>, and{" "}<Link href="/how-to-get-cited-by-perplexity-comet">Perplexity Comet</Link>. The short
         map is{" "}
         <Link href="/how-to-get-cited-by-ai-answer-engines">
           how to get cited by AI answer engines
@@ -228,7 +228,7 @@ export function HowToGetCitedByMistralArticle() {
         cite the page. A product or an app that already shows reviews can use
         the <Link href="/review-schema-generator">Review schema generator</Link>.
         A service page can use the{" "}
-        <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>.
+        <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>.
         The homepage can use the{" "}
         <Link href="/website-schema-generator">WebSite schema generator</Link>.
         The field list is the{" "}

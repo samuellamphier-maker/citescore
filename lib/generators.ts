@@ -2067,3 +2067,169 @@ export function buildJobPostingSchema(input: JobPostingInput): string {
 
   return jsonLdScript(job);
 }
+
+export const RECIPE_AUTHOR_KINDS = ["Person", "Organization"] as const;
+
+export type RecipeAuthorKind = (typeof RECIPE_AUTHOR_KINDS)[number];
+
+export type RecipeTimeInput = DurationParts;
+
+export type RecipeStepInput = {
+  name: string;
+  text: string;
+};
+
+export type RecipeInput = {
+  name: string;
+  description: string;
+  images: string[];
+  authorName: string;
+  authorKind: string;
+  authorUrl: string;
+  prep: RecipeTimeInput;
+  cook: RecipeTimeInput;
+  total: RecipeTimeInput;
+  recipeYield: string;
+  ingredients: string[];
+  steps: RecipeStepInput[];
+  calories: string;
+  ratingValue: string;
+  ratingCount: string;
+  bestRating: string;
+};
+
+/**
+ * A calorie string for NutritionInformation.
+ * A bare number becomes “120 calories”, matching Google’s recipe example.
+ * “120 kcal” is kept. Anything else is omitted.
+ */
+export function recipeCalories(raw: string): string {
+  const value = raw.trim().replace(/\s+/g, " ");
+  if (!value) return "";
+  const number = /^(\d+(?:\.\d+)?)(?:\s+(calories|kcal|cal))?$/i.exec(value);
+  if (!number) return "";
+  const unit = (number[2] || "calories").toLowerCase();
+  if (unit === "cal" || unit === "calories") return `${number[1]} calories`;
+  return `${number[1]} kcal`;
+}
+
+function recipeImages(urls: string[]): string | string[] | null {
+  const seen = new Set<string>();
+  const images: string[] = [];
+  for (const raw of urls) {
+    const url = httpUrl(raw);
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    images.push(url);
+  }
+  if (images.length === 0) return null;
+  if (images.length === 1) return images[0];
+  return images;
+}
+
+function recipeLines(values: string[]): string[] {
+  const lines: string[] = [];
+  for (const raw of values) {
+    const text = plainLine(raw);
+    if (text) lines.push(text);
+  }
+  return lines;
+}
+
+function recipeAuthor(input: RecipeInput): Record<string, unknown> | null {
+  const name = plainLine(input.authorName);
+  if (!name) return null;
+  const author: Record<string, unknown> = {
+    "@type": input.authorKind === "Organization" ? "Organization" : "Person",
+    name,
+  };
+  const url = httpUrl(input.authorUrl);
+  if (url) author.url = url;
+  return author;
+}
+
+/**
+ * AggregateRating for a recipe.
+ * Written only when ratingValue and ratingCount are valid.
+ * An omitted bestRating uses 5 as the ceiling, which is Google’s default.
+ */
+function recipeAggregateRating(input: RecipeInput): Record<string, unknown> | null {
+  const rating = ratingDecimal(input.ratingValue);
+  const count = reviewCountValue(input.ratingCount);
+  const bestRaw = input.bestRating.trim();
+  const best = bestRaw ? ratingDecimal(input.bestRating) : "";
+  if (!(rating && count && (!bestRaw || best))) return null;
+  const ceiling = best ? Number(best) : 5;
+  if (Number(rating) > ceiling) return null;
+  const aggregateRating: Record<string, unknown> = {
+    "@type": "AggregateRating",
+    ratingValue: rating,
+    ratingCount: count,
+  };
+  if (best) aggregateRating.bestRating = best;
+  return aggregateRating;
+}
+
+/**
+ * Recipe JSON-LD. Empty until the dish name is present.
+ * prepTime and cookTime are written only as a pair.
+ * totalTime can stand alone.
+ * nutrition.calories is written only when recipeYield is also present.
+ * aggregateRating is written only when the rating value and the rating count are valid.
+ */
+export function buildRecipeSchema(input: RecipeInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const recipe: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    name,
+  };
+
+  const image = recipeImages(input.images);
+  if (image) recipe.image = image;
+
+  const description = plainLine(input.description);
+  if (description) recipe.description = description;
+
+  const author = recipeAuthor(input);
+  if (author) recipe.author = author;
+
+  const prepTime = isoDuration(input.prep);
+  const cookTime = isoDuration(input.cook);
+  if (prepTime && cookTime) {
+    recipe.prepTime = prepTime;
+    recipe.cookTime = cookTime;
+  }
+
+  const totalTime = isoDuration(input.total);
+  if (totalTime) recipe.totalTime = totalTime;
+
+  const recipeYield = plainLine(input.recipeYield);
+  if (recipeYield) recipe.recipeYield = recipeYield;
+
+  const ingredients = recipeLines(input.ingredients);
+  if (ingredients.length > 0) recipe.recipeIngredient = ingredients;
+
+  const steps: Record<string, unknown>[] = [];
+  for (const step of input.steps) {
+    const text = plainLine(step.text);
+    if (!text) continue;
+    const item: Record<string, unknown> = { "@type": "HowToStep", text };
+    const stepName = plainLine(step.name);
+    if (stepName) item.name = stepName;
+    steps.push(item);
+  }
+  if (steps.length > 0) recipe.recipeInstructions = steps;
+
+  const calories = recipeCalories(input.calories);
+  if (calories && recipeYield) {
+    recipe.nutrition = { "@type": "NutritionInformation", calories };
+  }
+
+  const aggregateRating = recipeAggregateRating(input);
+  if (aggregateRating) recipe.aggregateRating = aggregateRating;
+
+  return jsonLdScript(recipe);
+}
