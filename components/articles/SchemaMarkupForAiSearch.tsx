@@ -124,7 +124,7 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         , a watch page can use the{" "}
         <Link href="/video-schema-generator">Video schema generator</Link>
         , and an event page can use the{" "}
-        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>. A forum or support page where people can submit answers uses the <Link href="/qa-page-schema-generator">QAPage schema generator</Link>. A page that names a short passage for text-to-speech uses the <Link href="/speakable-schema-generator">Speakable schema generator</Link>.
+        <Link href="/event-schema-generator">Event schema generator</Link>. A page that shows reviews of a product or an app uses the <Link href="/review-schema-generator">Review schema generator</Link>. A service page uses the <Link href="/service-schema-generator">Service schema generator</Link>. A course page uses the <Link href="/course-schema-generator">Course schema generator</Link>. A job page uses the <Link href="/job-posting-schema-generator">Job posting schema generator</Link>. A recipe page uses the <Link href="/recipe-schema-generator">Recipe schema generator</Link>. A forum or support page where people can submit answers uses the <Link href="/qa-page-schema-generator">QAPage schema generator</Link>. A page that names a short passage for text-to-speech uses the <Link href="/speakable-schema-generator">Speakable schema generator</Link>. An image with a visible credit, caption, or license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>.
         Each script is valid only when a person can read the same facts on that URL.
       </p>
       <p>
@@ -318,7 +318,10 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         hours and reviews of your own business is{" "}
         <Link href="/geo-for-local-businesses">GEO for local businesses</Link>. A law
         firm uses <code>LegalService</code> for the office. That case is{" "}
-        <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>.
+        <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic
+        or health-tech site uses MedicalClinic, Physician, or MedicalOrganization only when that is what the page is.
+        That case is{" "}
+        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>.
       </p>
 
       <h2>BreadcrumbList</h2>

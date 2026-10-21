@@ -55,6 +55,7 @@ export default function HowToGetCitedByMetaAiPage() {
           { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
+          { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         ])}
       >

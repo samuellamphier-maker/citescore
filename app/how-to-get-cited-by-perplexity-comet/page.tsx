@@ -46,6 +46,7 @@ export default function HowToGetCitedByPerplexityCometPage() {
           { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
+          { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/perplexity-citations", label: "Perplexity citations" },

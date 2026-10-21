@@ -54,8 +54,10 @@ const related = [
   { href: "/recipe-schema-generator", label: "Recipe schema generator" },
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
+  { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
+  { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -102,7 +104,10 @@ export default function SpeakableSchemaGeneratorPage() {
           <code>cssSelector</code> or <code>xpath</code>, or a URL that points at an element id. A parser can read the
           locator without guessing which paragraph was meant to be heard. The script does not create a citation, and it
           does not rank the page. A law firm’s office page is a different problem, on{" "}
-          <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>.
+          <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic or
+          health-tech site is on{" "}
+          <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A photo credit
+          uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>.
         </p>
         <p>
           Google’s <a href={speakableDocs}>speakable documentation</a>, read on 21 October 2026, says the feature is in

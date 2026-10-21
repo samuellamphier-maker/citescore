@@ -50,6 +50,7 @@ export default function AiSearchReadinessChecklistForSaasPage() {
           { href: "/ai-search-visibility-for-b2b-saas", label: "AI search visibility for B2B SaaS" },
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
+          { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ]}

@@ -47,7 +47,9 @@ export function AiSearchVisibilityForB2bSaasArticle() {
         <Link href="/how-to-get-cited-by-claude">Claude</Link>. A store’s markup problem is different, on{" "}
         <Link href="/ai-search-visibility-for-ecommerce">AI search visibility for ecommerce</Link>. A law
         firm’s office and practice pages are on{" "}
-        <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>.
+        <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic
+        or health-tech site is on{" "}
+        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>.
       </p>
 
       <h2>Let the search crawler in</h2>
