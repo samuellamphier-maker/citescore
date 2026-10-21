@@ -56,9 +56,11 @@ const related = [
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
   { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/image-object-schema-generator", label: "ImageObject schema generator" },
+  { href: "/book-schema-generator", label: "Book schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
+  { href: "/ai-search-visibility-for-real-estate", label: "AI search visibility for real estate" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -123,7 +125,8 @@ export default function ImageObjectSchemaGeneratorPage() {
           labeled fact: the credit and the license are in the HTML, next to the image, in words a person can read. A
           clinic photo and a practice page are a different problem, on{" "}
           <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A law firm’s
-          office page is on <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>.
+          office page is on <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A brokerage
+          office is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>.
         </p>
         <h2>What Google requires</h2>
         <p>

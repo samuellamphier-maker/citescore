@@ -96,7 +96,7 @@ export function AiSearchVisibilityForLawFirmsArticle() {
         company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A clinic or
         health-tech site is on{" "}
-        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>.
+        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage, an agent, or a property manager is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>.
       </p>
 
       <h2>One page per practice the firm actually does</h2>

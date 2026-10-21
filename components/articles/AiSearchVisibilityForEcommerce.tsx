@@ -60,6 +60,10 @@ export function AiSearchVisibilityForEcommerceArticle() {
         <Link href="/ai-search-visibility-for-healthcare">
           AI search visibility for healthcare
         </Link>
+        . A brokerage, an agent, or a property manager is on{" "}
+        <Link href="/ai-search-visibility-for-real-estate">
+          AI search visibility for real estate
+        </Link>
         .
       </p>
 

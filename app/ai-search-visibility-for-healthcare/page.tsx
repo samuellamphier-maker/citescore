@@ -51,6 +51,7 @@ export default function AiSearchVisibilityForHealthcarePage() {
           { href: "/person-schema-generator", label: "Free Person schema generator" },
           { href: "/service-schema-generator", label: "Free Service schema generator" },
           { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
+          { href: "/book-schema-generator", label: "Free Book schema generator" },
           { href: "/software-application-schema-generator", label: "Free Software application schema generator" },
           { href: "/faq-schema-generator", label: "Free FAQ schema generator" },
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },

@@ -2570,3 +2570,240 @@ export function buildImageObjectSchema(input: ImageObjectInput): string {
 
   return jsonLdScript(image);
 }
+
+/**
+ * schema.org BookFormatType values that are not deprecated.
+ * GraphicNovel is deprecated on schema.org because a graphic novel can be more than one format.
+ * Google’s book-actions edition list is these four URLs.
+ */
+export const BOOK_FORMATS = ["AudiobookFormat", "EBook", "Hardcover", "Paperback"] as const;
+
+export type BookFormat = (typeof BOOK_FORMATS)[number];
+
+export const BOOK_PARTY_KINDS = ["Person", "Organization"] as const;
+
+export type BookPartyKind = (typeof BOOK_PARTY_KINDS)[number];
+
+export type BookEditionInput = {
+  bookEdition: string;
+  bookFormat: string;
+  isbn: string;
+  inLanguage: string;
+  numberOfPages: string;
+  datePublished: string;
+  url: string;
+};
+
+export type BookInput = {
+  name: string;
+  authorName: string;
+  authorKind: string;
+  authorUrl: string;
+  isbn: string;
+  bookFormat: string;
+  numberOfPages: string;
+  datePublished: string;
+  bookEdition: string;
+  publisherName: string;
+  publisherKind: string;
+  publisherUrl: string;
+  inLanguage: string;
+  description: string;
+  imageUrl: string;
+  url: string;
+  editions: BookEditionInput[];
+};
+
+function isbnCompact(raw: string): string {
+  return raw
+    .trim()
+    .replace(/^isbn(?:-1[03])?:?\s*/i, "")
+    .replace(/[\s\u00a0\u2010\u2011\u2012\u2013\u2014-]/g, "")
+    .toUpperCase();
+}
+
+function isbn10CheckDigit(first9: string): string {
+  let sum = 0;
+  for (let i = 0; i < 9; i++) sum += Number(first9[i]) * (10 - i);
+  const check = (11 - (sum % 11)) % 11;
+  return check === 10 ? "X" : String(check);
+}
+
+function isbn13CheckDigit(first12: string): string {
+  let sum = 0;
+  for (let i = 0; i < 12; i++) sum += Number(first12[i]) * (i % 2 === 0 ? 1 : 3);
+  return String((10 - (sum % 10)) % 10);
+}
+
+/**
+ * ISBN-13 digits, or empty.
+ * Hyphens and a leading “ISBN” label are removed.
+ * A valid ISBN-10 is converted to ISBN-13 with the 978 prefix.
+ * A failed check digit is omitted.
+ */
+export function isbn13(raw: string): string {
+  const compact = isbnCompact(raw);
+  if (/^\d{13}$/.test(compact)) {
+    return compact[12] === isbn13CheckDigit(compact.slice(0, 12)) ? compact : "";
+  }
+  if (/^\d{9}[\dX]$/.test(compact)) {
+    if (compact[9] !== isbn10CheckDigit(compact.slice(0, 9))) return "";
+    const body = `978${compact.slice(0, 9)}`;
+    return `${body}${isbn13CheckDigit(body)}`;
+  }
+  return "";
+}
+
+/** True when the trimmed value is an ISBN-10 that isbn13 can convert. */
+export function isbn10Converted(raw: string): boolean {
+  const compact = isbnCompact(raw);
+  return /^\d{9}[\dX]$/.test(compact) && isbn13(raw) !== "";
+}
+
+/**
+ * A BCP 47 language tag this form will write: language, optional script, optional region.
+ * en-us becomes en-US. zh-hant-tw becomes zh-Hant-TW. Anything else is omitted.
+ */
+export function bcp47Language(raw: string): string {
+  const value = raw.trim().replace(/_/g, "-");
+  if (!value || value.length > 35) return "";
+  const parts = value.split("-").filter(Boolean);
+  if (parts.length === 0 || parts.length > 3) return "";
+  if (!/^[A-Za-z]{2,3}$/.test(parts[0])) return "";
+  let out = parts[0].toLowerCase();
+  let index = 1;
+  if (parts[index] && /^[A-Za-z]{4}$/.test(parts[index])) {
+    const script = parts[index];
+    out += `-${script[0].toUpperCase()}${script.slice(1).toLowerCase()}`;
+    index += 1;
+  }
+  if (index < parts.length) {
+    if (index !== parts.length - 1) return "";
+    const region = parts[index];
+    if (/^[A-Za-z]{2}$/.test(region)) out += `-${region.toUpperCase()}`;
+    else if (/^\d{3}$/.test(region)) out += `-${region}`;
+    else return "";
+  }
+  return out;
+}
+
+/** YYYY-MM-DD, or a four-digit year, or empty. Google’s book-actions edition date allows either. */
+export function bookDate(raw: string): string {
+  const value = raw.trim();
+  if (!value) return "";
+  const day = isoDay(value);
+  if (day) return day;
+  return /^[1-9]\d{3}$/.test(value) ? value : "";
+}
+
+/** A positive integer page count, or null. */
+export function bookPageCount(raw: string): number | null {
+  const value = reviewCountValue(raw);
+  if (!value) return null;
+  const number = Number(value);
+  if (!Number.isSafeInteger(number)) return null;
+  return number;
+}
+
+/** Full schema.org URL for a supported book format, or empty. */
+export function bookFormatUrl(raw: string): string {
+  return (BOOK_FORMATS as readonly string[]).includes(raw) ? `https://schema.org/${raw}` : "";
+}
+
+function bookParty(nameRaw: string, kindRaw: string, urlRaw: string): Record<string, unknown> | null {
+  const name = plainLine(nameRaw);
+  if (!name) return null;
+  const party: Record<string, unknown> = {
+    "@type": kindRaw === "Organization" ? "Organization" : "Person",
+    name,
+  };
+  const url = httpUrl(urlRaw);
+  if (url) party.url = url;
+  return party;
+}
+
+function bookEditionNode(input: BookEditionInput): Record<string, unknown> | null {
+  const edition: Record<string, unknown> = { "@type": "Book" };
+  const bookEdition = plainLine(input.bookEdition);
+  if (bookEdition) edition.bookEdition = bookEdition;
+  const format = bookFormatUrl(input.bookFormat);
+  if (format) edition.bookFormat = format;
+  const isbn = isbn13(input.isbn);
+  if (isbn) edition.isbn = isbn;
+  const language = bcp47Language(input.inLanguage);
+  if (language) edition.inLanguage = language;
+  const pages = bookPageCount(input.numberOfPages);
+  if (pages !== null) edition.numberOfPages = pages;
+  const datePublished = bookDate(input.datePublished);
+  if (datePublished) edition.datePublished = datePublished;
+  const url = httpUrl(input.url);
+  if (url) {
+    edition["@id"] = url;
+    edition.url = url;
+  }
+  return Object.keys(edition).length === 1 ? null : edition;
+}
+
+/**
+ * Book JSON-LD. Empty until the title is present.
+ * isbn is written as ISBN-13. A valid ISBN-10 is converted. A failed check digit is omitted.
+ * bookFormat is a schema.org BookFormatType URL. GraphicNovel is not written.
+ * numberOfPages is an integer. datePublished is YYYY-MM-DD or a four-digit year.
+ * author and publisher are written only with a name. A URL without a name is omitted.
+ * workExample is one Book, or an array when more than one edition row has a fact.
+ * The script does not write DataFeed, ReadAction, BorrowAction, or potentialAction.
+ */
+export function buildBookSchema(input: BookInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const book: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name,
+  };
+
+  const author = bookParty(input.authorName, input.authorKind, input.authorUrl);
+  if (author) book.author = author;
+
+  const isbn = isbn13(input.isbn);
+  if (isbn) book.isbn = isbn;
+
+  const format = bookFormatUrl(input.bookFormat);
+  if (format) book.bookFormat = format;
+
+  const pages = bookPageCount(input.numberOfPages);
+  if (pages !== null) book.numberOfPages = pages;
+
+  const datePublished = bookDate(input.datePublished);
+  if (datePublished) book.datePublished = datePublished;
+
+  const bookEdition = plainLine(input.bookEdition);
+  if (bookEdition) book.bookEdition = bookEdition;
+
+  const publisher = bookParty(input.publisherName, input.publisherKind, input.publisherUrl);
+  if (publisher) book.publisher = publisher;
+
+  const language = bcp47Language(input.inLanguage);
+  if (language) book.inLanguage = language;
+
+  const description = plainLine(input.description);
+  if (description) book.description = description;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) book.image = image;
+
+  const url = httpUrl(input.url);
+  if (url) {
+    book["@id"] = url;
+    book.url = url;
+  }
+
+  const editions = input.editions
+    .map((row) => bookEditionNode(row))
+    .filter((row): row is Record<string, unknown> => row !== null);
+  if (editions.length === 1) book.workExample = editions[0];
+  else if (editions.length > 1) book.workExample = editions;
+
+  return jsonLdScript(book);
+}
