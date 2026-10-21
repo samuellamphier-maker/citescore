@@ -2341,3 +2341,162 @@ export function buildQaPageSchema(input: QaPageInput): string {
     mainEntity: question,
   });
 }
+
+export const SPEAKABLE_LOCATORS = ["cssSelector", "xpath"] as const;
+
+export type SpeakableLocator = (typeof SPEAKABLE_LOCATORS)[number];
+
+/** schema.org names the property xpath. Google’s speakable page spells it xPath. */
+export const XPATH_KEYS = ["xpath", "xPath"] as const;
+
+export type XPathKey = (typeof XPATH_KEYS)[number];
+
+export type SpeakableInput = {
+  name: string;
+  url: string;
+  locator: string;
+  selectors: string[];
+  xpathKey: string;
+};
+
+const MAX_CSS_SELECTOR = 200;
+const MAX_XPATH = 400;
+
+function bracketsBalanced(value: string): boolean {
+  const openByClose: Record<string, string> = { ")": "(", "]": "[", "}": "{" };
+  const stack: string[] = [];
+  for (const char of value) {
+    if (char === "(" || char === "[" || char === "{") {
+      stack.push(char);
+      continue;
+    }
+    const expected = openByClose[char];
+    if (!expected) continue;
+    if (stack.pop() !== expected) return false;
+  }
+  return stack.length === 0;
+}
+
+function wholePageCss(value: string): boolean {
+  const token = value.toLowerCase();
+  return token === "*" || token === "html" || token === "body" || token === ":root";
+}
+
+function wholePageXPath(value: string): boolean {
+  const normalized = value.replace(/\/+$/, "");
+  return (
+    normalized === "/html" ||
+    normalized === "/html/body" ||
+    normalized === "//html" ||
+    normalized === "//body" ||
+    normalized === "/html/body/*" ||
+    normalized === "//*"
+  );
+}
+
+function uniqueAccepted(values: string[], accept: (raw: string) => string): string[] {
+  const seen = new Set<string>();
+  const lines: string[] = [];
+  for (const raw of values) {
+    const value = accept(raw);
+    if (!value || seen.has(value)) continue;
+    seen.add(value);
+    lines.push(value);
+  }
+  return lines;
+}
+
+/**
+ * One CSS selector, or empty.
+ * html, body, :root, and * are omitted because Google’s speakable page says not to mark the whole page.
+ */
+export function cssSelectorValue(raw: string): string {
+  const value = raw.trim();
+  if (!value || value.length > MAX_CSS_SELECTOR) return "";
+  if (/[<\r\n]/.test(value) || value.includes("/")) return "";
+  if (wholePageCss(value)) return "";
+  if (!bracketsBalanced(value)) return "";
+  if (!/[A-Za-z0-9_#.*]/.test(value)) return "";
+  return value;
+}
+
+/** Why a non-empty CSS row was left out, or empty when the row is blank or valid. */
+export function cssSelectorIssue(raw: string): string {
+  const value = raw.trim();
+  if (!value || cssSelectorValue(raw)) return "";
+  if (value.length > MAX_CSS_SELECTOR) return "Keep one selector under 200 characters.";
+  if (/[<\r\n]/.test(value)) return "A selector with < is left out.";
+  if (value.includes("/")) return "A path with / belongs under XPath.";
+  if (wholePageCss(value)) {
+    return "Google’s speakable page says to mark key points, not the whole page. html, body, :root, and * are left out.";
+  }
+  if (!bracketsBalanced(value)) return "This selector has an unmatched bracket, so it is left out.";
+  return "This selector is left out. Use one selector per row, such as .summary.";
+}
+
+/**
+ * One XPath, or empty.
+ * It has to start with /, ./, ../, or (.
+ * /html and /html/body are omitted because they mark the whole page.
+ */
+export function xpathValue(raw: string): string {
+  const value = raw.trim();
+  if (!value || value.length > MAX_XPATH) return "";
+  if (/[<>\r\n]/.test(value)) return "";
+  if (wholePageXPath(value)) return "";
+  if (!/^(\/|\.\/|\.\.\/|\()/.test(value)) return "";
+  if (!bracketsBalanced(value)) return "";
+  return value;
+}
+
+/** Why a non-empty XPath row was left out, or empty when the row is blank or valid. */
+export function xpathIssue(raw: string): string {
+  const value = raw.trim();
+  if (!value || xpathValue(raw)) return "";
+  if (value.length > MAX_XPATH) return "Keep one XPath under 400 characters.";
+  if (/[<>\r\n]/.test(value)) return "An XPath with < or > is left out.";
+  if (wholePageXPath(value)) {
+    return "Google’s speakable page says to mark key points, not the whole page. /html and /html/body are left out.";
+  }
+  if (!/^(\/|\.\/|\.\.\/|\()/.test(value)) {
+    return "An XPath starts with /, ./, ../, or (. A class selector belongs under CSS selectors.";
+  }
+  if (!bracketsBalanced(value)) return "This XPath has an unmatched bracket, so it is left out.";
+  return "This XPath is left out.";
+}
+
+function xpathProperty(raw: string): XPathKey {
+  return raw === "xPath" ? "xPath" : "xpath";
+}
+
+/**
+ * WebPage JSON-LD with one SpeakableSpecification.
+ * Empty until the page name and at least one valid locator are present.
+ * cssSelector and xpath are never written together.
+ * A single locator is still an array, matching the examples on schema.org and on Google’s speakable page.
+ * The XPath key is schema.org’s xpath unless xpathKey is xPath, which is the spelling on Google’s page.
+ */
+export function buildSpeakableSchema(input: SpeakableInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const locator: SpeakableLocator = input.locator === "xpath" ? "xpath" : "cssSelector";
+  const accept = locator === "xpath" ? xpathValue : cssSelectorValue;
+  const selectors = uniqueAccepted(input.selectors, accept);
+  if (selectors.length === 0) return "";
+
+  const speakable: Record<string, unknown> = { "@type": "SpeakableSpecification" };
+  speakable[locator === "xpath" ? xpathProperty(input.xpathKey) : "cssSelector"] = selectors;
+
+  const page: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    speakable,
+  };
+
+  const url = httpUrl(input.url);
+  if (url) page.url = url;
+
+  return jsonLdScript(page);
+}

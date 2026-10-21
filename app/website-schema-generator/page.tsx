@@ -48,6 +48,7 @@ const related = [
   { href: "/job-posting-schema-generator", label: "Job posting schema generator" },
   { href: "/recipe-schema-generator", label: "Recipe schema generator" },
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
+  { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
   { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },

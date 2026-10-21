@@ -48,7 +48,9 @@ const related = [
   { href: "/job-posting-schema-generator", label: "Job posting schema generator" },
   { href: "/recipe-schema-generator", label: "Recipe schema generator" },
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
+  { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
+  { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -100,7 +102,9 @@ export default function PersonSchemaGeneratorPage() {
           An answer engine that cites a page still has to attach the sentence to an entity. The script is one labeled
           copy of that person. It does not make ChatGPT, Perplexity, Claude, or Google AI Overviews cite the page, and
           it does not rank it. A team name is not a person. This site’s guides use Organization and the byline CiteScore
-          Team. The form’s sample name, Jane Example, is a placeholder. Replace it with the person the page names.
+          Team. The form’s sample name, Jane Example, is a placeholder. Replace it with the person the page names. A
+          page that names one lawyer is covered on{" "}
+          <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>.
         </p>
         <p>
           The copy block is one <code>script</code> tag. Paste it into the HTML the server sends, on the bio or the

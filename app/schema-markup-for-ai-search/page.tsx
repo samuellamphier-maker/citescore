@@ -57,7 +57,9 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/job-posting-schema-generator", label: "Free Job posting schema generator" },
           { href: "/recipe-schema-generator", label: "Free Recipe schema generator" },
           { href: "/ai-search-visibility-for-b2b-saas", label: "AI search visibility for B2B SaaS" },
+          { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
+          { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}

@@ -28,6 +28,7 @@ const related = [
   { href: "/job-posting-schema-generator", label: "Job posting schema generator" },
   { href: "/recipe-schema-generator", label: "Recipe schema generator" },
   { href: "/qa-page-schema-generator", label: "QAPage schema generator" },
+  { href: "/speakable-schema-generator", label: "Speakable schema generator" },
   { href: "/llms-txt", label: "llms.txt checker" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },

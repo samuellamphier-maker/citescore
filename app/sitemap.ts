@@ -32,6 +32,8 @@ const addedGuidePaths = [
   "/how-to-get-cited-by-perplexity-comet",
   "/qa-page-schema-generator",
   "/ai-search-visibility-for-b2b-saas",
+  "/speakable-schema-generator",
+  "/ai-search-visibility-for-law-firms",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -586,6 +586,30 @@ export const topicPages: TopicPage[] = [
     minutes: 8,
   },
   {
+    path: "/speakable-schema-generator",
+    title: "Free Speakable schema generator",
+    description:
+      "Free, no-signup SpeakableSpecification JSON-LD generator. Add a page name and the CSS selectors or XPath for a short passage already on the page. Copy the WebPage script. Nothing is uploaded.",
+    kicker: "Speakable schema",
+    card: "Copy WebPage JSON-LD that points speakable at a short passage already on the page.",
+    navLabel: "Speakable schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-21",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-law-firms",
+    title: "AI search visibility for law firms",
+    description:
+      "How a law firm site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: LegalService markup, practice-area pages, local signals, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Practice-area pages, LegalService markup, local signals, and the crawler files a firm actually controls.",
+    navLabel: "AI search visibility for law firms",
+    priority: 0.8,
+    publishedAt: "2026-10-21",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -721,6 +745,7 @@ const guideNavOrder = [
   "/geo-vs-seo",
   "/geo-for-local-businesses",
   "/ai-search-visibility-for-ecommerce",
+  "/ai-search-visibility-for-law-firms",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",
