@@ -72,6 +72,10 @@ export function AiSearchVisibilityForEcommerceArticle() {
         <Link href="/ai-search-visibility-for-accountants">
           AI search visibility for accountants
         </Link>
+        . A dental practice’s office, services, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-dentists">
+          AI search visibility for dentists
+        </Link>
         .
       </p>
 

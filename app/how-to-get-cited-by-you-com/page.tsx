@@ -51,6 +51,7 @@ export default function HowToGetCitedByYouComPage() {
           { href: "/book-schema-generator", label: "Free Book schema generator" },
           { href: "/podcast-schema-generator", label: "Free Podcast schema generator" },
           { href: "/movie-schema-generator", label: "Free Movie schema generator" },
+          { href: "/dataset-schema-generator", label: "Free Dataset schema generator" },
           { href: "/service-schema-generator", label: "Free Service schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },

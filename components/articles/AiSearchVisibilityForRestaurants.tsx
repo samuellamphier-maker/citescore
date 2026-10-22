@@ -97,7 +97,9 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         software company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. An accounting,
         CPA, or bookkeeping firm is on{" "}
-        <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>.
+        <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental
+        practice’s office, services, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -188,8 +190,9 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         or a license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>. A show
         the restaurant publishes, on its own URL, uses the{" "}
         <Link href="/podcast-schema-generator">Podcast schema generator</Link>. A film the restaurant publishes, on its own URL, uses the{" "}
-        <Link href="/movie-schema-generator">Movie schema generator</Link>. The show page is not the menu, and the film
-        page is not the menu.
+        <Link href="/movie-schema-generator">Movie schema generator</Link>. A dataset the restaurant publishes, on its own URL, uses the{" "}
+        <Link href="/dataset-schema-generator">Dataset schema generator</Link>. The show page is not the menu, the film
+        page is not the menu, and the dataset page is not the menu.
       </p>
 
       <h2>One URL for the menu</h2>

@@ -706,6 +706,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/dataset-schema-generator",
+    title: "Free Dataset schema generator",
+    description:
+      "Free, no-signup Dataset JSON-LD generator. Add the name, description, page URL, license, creator, keywords, temporal coverage, and download URL already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Dataset schema",
+    card: "Copy Dataset JSON-LD from the name, license, creator, and download URL already on the page.",
+    navLabel: "Dataset schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-22",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-dentists",
+    title: "AI search visibility for dentists",
+    description:
+      "How a dental practice site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Dentist markup, service pages, Google Business Profile, reviews, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Office pages, service URLs, Dentist markup, and the crawler files a practice controls.",
+    navLabel: "AI search visibility for dentists",
+    priority: 0.8,
+    publishedAt: "2026-10-22",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -846,6 +870,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-real-estate",
   "/ai-search-visibility-for-restaurants",
   "/ai-search-visibility-for-accountants",
+  "/ai-search-visibility-for-dentists",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",
