@@ -68,6 +68,10 @@ export function AiSearchVisibilityForEcommerceArticle() {
         <Link href="/ai-search-visibility-for-restaurants">
           AI search visibility for restaurants
         </Link>
+        . An accounting, CPA, or bookkeeping firm is on{" "}
+        <Link href="/ai-search-visibility-for-accountants">
+          AI search visibility for accountants
+        </Link>
         .
       </p>
 

@@ -2933,3 +2933,148 @@ export function buildPodcastSchema(input: PodcastInput): string {
 
   return jsonLdScript(node);
 }
+
+export const MOVIE_ACTOR_KINDS = ["Person", "PerformingGroup"] as const;
+
+export type MovieActorKind = (typeof MOVIE_ACTOR_KINDS)[number];
+
+export type MovieActorInput = {
+  name: string;
+  kind: string;
+  url: string;
+};
+
+export type MovieInput = {
+  name: string;
+  description: string;
+  directorName: string;
+  directorUrl: string;
+  actors: MovieActorInput[];
+  datePublished: string;
+  genres: string;
+  imageUrl: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
+  url: string;
+  ratingValue: string;
+  ratingCount: string;
+  bestRating: string;
+};
+
+/**
+ * YYYY-MM-DD, an ISO date-time, or a four-digit year.
+ * Empty when the value is none of those.
+ */
+export function movieDate(raw: string): string {
+  const value = raw.trim();
+  if (!value) return "";
+  const timed = isoDateTime(value);
+  if (timed) return timed;
+  return /^[1-9]\d{3}$/.test(value) ? value : "";
+}
+
+function movieActor(input: MovieActorInput): Record<string, unknown> | null {
+  const name = plainLine(input.name);
+  if (!name) return null;
+  const actor: Record<string, unknown> = {
+    "@type": input.kind === "PerformingGroup" ? "PerformingGroup" : "Person",
+    name,
+  };
+  const url = httpUrl(input.url);
+  if (url) actor.url = url;
+  return actor;
+}
+
+/** One genre string, an array when more than one, or null. Commas and newlines separate genres. */
+function movieGenres(raw: string): string | string[] | null {
+  const seen = new Set<string>();
+  const genres: string[] = [];
+  for (const part of raw.split(/[\n,]/)) {
+    const text = plainLine(part);
+    if (!text || seen.has(text)) continue;
+    seen.add(text);
+    const url = httpUrl(text);
+    genres.push(url ?? text);
+  }
+  if (genres.length === 0) return null;
+  if (genres.length === 1) return genres[0];
+  return genres;
+}
+
+/**
+ * AggregateRating for a movie.
+ * Written only when ratingValue and ratingCount are valid.
+ * An omitted bestRating uses 5 as the ceiling, which is Google’s default.
+ * This form writes ratingCount. It does not write reviewCount.
+ */
+function movieAggregateRating(input: MovieInput): Record<string, unknown> | null {
+  const rating = ratingDecimal(input.ratingValue);
+  const count = reviewCountValue(input.ratingCount);
+  const bestRaw = input.bestRating.trim();
+  const best = bestRaw ? ratingDecimal(input.bestRating) : "";
+  if (!(rating && count && (!bestRaw || best))) return null;
+  const ceiling = best ? Number(best) : 5;
+  if (Number(rating) > ceiling) return null;
+  const aggregateRating: Record<string, unknown> = {
+    "@type": "AggregateRating",
+    ratingValue: rating,
+    ratingCount: count,
+  };
+  if (best) aggregateRating.bestRating = best;
+  return aggregateRating;
+}
+
+/**
+ * Movie JSON-LD. Empty until the name is present.
+ * director is a Person, and only with a name. A URL without a name is omitted.
+ * actor is one Person or PerformingGroup, or an array when more than one row has a name.
+ * schema.org’s actor supersedes actors. This form writes actor.
+ * datePublished is YYYY-MM-DD, a date-time, or a four-digit year.
+ * Google’s movie carousel recommends dateCreated for the release date. This form does not write it.
+ * duration is ISO 8601. A zero or invalid length is omitted.
+ * aggregateRating is written only when the rating value and the rating count are valid.
+ * The script does not write ItemList, Review, actors, directors, or reviewCount.
+ */
+export function buildMovieSchema(input: MovieInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const movie: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Movie",
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) movie.description = description;
+
+  const director = movieActor({ name: input.directorName, kind: "Person", url: input.directorUrl });
+  if (director) movie.director = director;
+
+  const actors = input.actors
+    .map((row) => movieActor(row))
+    .filter((row): row is Record<string, unknown> => row !== null);
+  if (actors.length === 1) movie.actor = actors[0];
+  else if (actors.length > 1) movie.actor = actors;
+
+  const datePublished = movieDate(input.datePublished);
+  if (datePublished) movie.datePublished = datePublished;
+
+  const genre = movieGenres(input.genres);
+  if (genre) movie.genre = genre;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) movie.image = image;
+
+  const duration = isoTimeDuration({ hours: input.hours, minutes: input.minutes, seconds: input.seconds });
+  if (duration) movie.duration = duration;
+
+  const url = httpUrl(input.url);
+  if (url) movie.url = url;
+
+  const aggregateRating = movieAggregateRating(input);
+  if (aggregateRating) movie.aggregateRating = aggregateRating;
+
+  return jsonLdScript(movie);
+}

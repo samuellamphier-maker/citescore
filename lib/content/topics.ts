@@ -682,6 +682,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/movie-schema-generator",
+    title: "Free Movie schema generator",
+    description:
+      "Free, no-signup Movie JSON-LD generator. Add the title, description, director, actors, publication date, genre, image, duration, and an optional rating already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Movie schema",
+    card: "Copy Movie JSON-LD from the title, director, actors, and duration already on the page.",
+    navLabel: "Movie schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-22",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-accountants",
+    title: "AI search visibility for accountants",
+    description:
+      "How an accounting, CPA, or bookkeeping firm site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: AccountingService markup, service pages, local signals, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Office pages, service URLs, AccountingService markup, and the crawler files a firm controls.",
+    navLabel: "AI search visibility for accountants",
+    priority: 0.8,
+    publishedAt: "2026-10-22",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -821,6 +845,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-healthcare",
   "/ai-search-visibility-for-real-estate",
   "/ai-search-visibility-for-restaurants",
+  "/ai-search-visibility-for-accountants",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",
