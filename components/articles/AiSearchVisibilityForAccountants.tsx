@@ -114,7 +114,9 @@ export function AiSearchVisibilityForAccountantsArticle() {
         <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. A store’s price
         problem is on <Link href="/ai-search-visibility-for-ecommerce">AI search visibility for ecommerce</Link>. A
         software company’s comparison page is on{" "}
-        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>.
+        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A dental
+        practice’s office, services, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -195,9 +197,11 @@ export function AiSearchVisibilityForAccountantsArticle() {
         <Link href="/person-schema-generator">Person schema generator</Link> builds that script. This guide does not
         print a personal name. A group homepage that is not one office can use the{" "}
         <Link href="/organization-schema-generator">Organization schema generator</Link>. A photo that shows a credit
-        or a license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>. A film
+        or a license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>. A dataset
         the firm publishes, on its own URL, uses the{" "}
-        <Link href="/movie-schema-generator">Movie schema generator</Link>. The film page is not the office.
+        <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A film the firm publishes, on its own
+        URL, uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. The dataset page is not the
+        office, and the film page is not the office.
       </p>
 
       <h2>One URL per service</h2>

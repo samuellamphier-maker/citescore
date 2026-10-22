@@ -3078,3 +3078,185 @@ export function buildMovieSchema(input: MovieInput): string {
 
   return jsonLdScript(movie);
 }
+
+export const DATASET_CREATOR_KINDS = ["Organization", "Person"] as const;
+
+export type DatasetCreatorKind = (typeof DATASET_CREATOR_KINDS)[number];
+
+export type DatasetCreatorInput = {
+  name: string;
+  kind: string;
+  url: string;
+};
+
+export type DatasetDistributionInput = {
+  contentUrl: string;
+  encodingFormat: string;
+};
+
+export type DatasetInput = {
+  name: string;
+  description: string;
+  url: string;
+  license: string;
+  creators: DatasetCreatorInput[];
+  keywords: string;
+  temporalCoverage: string;
+  distributions: DatasetDistributionInput[];
+};
+
+/** The description written into the script. Tags are removed and whitespace is collapsed. */
+export function datasetDescription(raw: string): string {
+  return plainLine(raw);
+}
+
+/**
+ * A license URL.
+ * A missing scheme is treated as https when the value contains a slash, as in example.com/licenses/by/4.0.
+ * A bare token such as CC-BY-4.0 is empty, so the script does not invent a host.
+ */
+export function datasetLicenseUrl(raw: string): string {
+  const value = raw.trim();
+  if (!value) return "";
+  if (!/^https?:\/\//i.test(value) && !value.includes("/")) return "";
+  return httpUrl(value) ?? "";
+}
+
+/**
+ * encodingFormat as an http(s) URL, or as text of at most 100 characters.
+ * CSV and text/csv stay text. A host with a path, or a full URL, is normalized.
+ * Empty when the value is blank or longer than 100 characters.
+ */
+export function datasetEncodingFormat(raw: string): string {
+  const text = plainLine(raw);
+  if (!text || text.length > 100) return "";
+  if (/^https?:\/\//i.test(text) || /^[^/\s]+\.[^/\s]+\/.+/.test(text)) return httpUrl(text) ?? "";
+  return text;
+}
+
+function datasetTemporalPoint(raw: string): string {
+  const value = raw.trim();
+  if (!value) return "";
+  if (value === "..") return "..";
+  if (/^[1-9]\d{3}$/.test(value)) return value;
+  if (/^[1-9]\d{3}-(0[1-9]|1[0-2])$/.test(value)) return value;
+  return isoDateTime(value);
+}
+
+/**
+ * ISO 8601 coverage for a dataset: a year, YYYY-MM, a calendar date, a date-time, or a slash interval.
+ * Either side of an interval may be ".." for an open end. Both sides open is empty.
+ * A closed interval whose two sides have the same length is empty when the start is later than the end.
+ */
+export function datasetTemporalCoverage(raw: string): string {
+  const value = raw.trim();
+  if (!value) return "";
+  if (!value.includes("/")) {
+    const point = datasetTemporalPoint(value);
+    return point === ".." ? "" : point;
+  }
+  const parts = value.split("/");
+  if (parts.length !== 2) return "";
+  const left = datasetTemporalPoint(parts[0]);
+  const right = datasetTemporalPoint(parts[1]);
+  if (!left || !right || (left === ".." && right === "..")) return "";
+  if (left !== ".." && right !== ".." && left.length === right.length && left > right) return "";
+  return `${left}/${right}`;
+}
+
+function datasetCreator(input: DatasetCreatorInput): Record<string, unknown> | null {
+  const name = plainLine(input.name);
+  if (!name) return null;
+  const creator: Record<string, unknown> = {
+    "@type": input.kind === "Person" ? "Person" : "Organization",
+    name,
+  };
+  const url = httpUrl(input.url);
+  if (url) creator.url = url;
+  return creator;
+}
+
+/** One keyword string, an array when more than one, or null. Commas and newlines separate keywords. */
+function datasetKeywords(raw: string): string | string[] | null {
+  const seen = new Set<string>();
+  const keywords: string[] = [];
+  for (const part of raw.split(/[\n,]/)) {
+    const text = plainLine(part);
+    if (!text || seen.has(text)) continue;
+    seen.add(text);
+    const url = httpUrl(text);
+    keywords.push(url ?? text);
+  }
+  if (keywords.length === 0) return null;
+  if (keywords.length === 1) return keywords[0];
+  return keywords;
+}
+
+function datasetDistribution(input: DatasetDistributionInput): Record<string, unknown> | null {
+  const contentUrl = httpUrl(input.contentUrl);
+  if (!contentUrl) return null;
+  const distribution: Record<string, unknown> = { "@type": "DataDownload", contentUrl };
+  const encodingFormat = datasetEncodingFormat(input.encodingFormat);
+  if (encodingFormat) distribution.encodingFormat = encodingFormat;
+  return distribution;
+}
+
+/**
+ * Dataset JSON-LD. Empty until the name is present.
+ * description, url, license, creator, keywords, temporalCoverage, and distribution are included only when valid.
+ * creator is a Person or an Organization, and only with a name. A URL without a name is omitted.
+ * One creator is one object. Two become an array. An unknown kind is Organization.
+ * license is a URL. A license token without a slash is omitted.
+ * keywords are one string, or an array. A repeated keyword is written once.
+ * temporalCoverage is a year, YYYY-MM, a date, a date-time, or an ISO 8601 interval. ".." marks an open end.
+ * distribution is a DataDownload, and only when contentUrl is http(s). encodingFormat is text or a URL.
+ * One download is one object. Two become an array. A repeated contentUrl is written once.
+ * Google’s dataset page requires a description of 50 to 5000 characters. This form still writes a shorter or longer summary.
+ * The script does not write sameAs, identifier, citation, hasPart, spatialCoverage, variableMeasured, or includedInDataCatalog.
+ */
+export function buildDatasetSchema(input: DatasetInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const dataset: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name,
+  };
+
+  const description = datasetDescription(input.description);
+  if (description) dataset.description = description;
+
+  const url = httpUrl(input.url);
+  if (url) dataset.url = url;
+
+  const license = datasetLicenseUrl(input.license);
+  if (license) dataset.license = license;
+
+  const creators = input.creators
+    .map((row) => datasetCreator(row))
+    .filter((row): row is Record<string, unknown> => row !== null);
+  if (creators.length === 1) dataset.creator = creators[0];
+  else if (creators.length > 1) dataset.creator = creators;
+
+  const keywords = datasetKeywords(input.keywords);
+  if (keywords) dataset.keywords = keywords;
+
+  const temporalCoverage = datasetTemporalCoverage(input.temporalCoverage);
+  if (temporalCoverage) dataset.temporalCoverage = temporalCoverage;
+
+  const seenDownloads = new Set<string>();
+  const distributions: Record<string, unknown>[] = [];
+  for (const row of input.distributions) {
+    const distribution = datasetDistribution(row);
+    if (!distribution) continue;
+    const contentUrl = String(distribution.contentUrl);
+    if (seenDownloads.has(contentUrl)) continue;
+    seenDownloads.add(contentUrl);
+    distributions.push(distribution);
+  }
+  if (distributions.length === 1) dataset.distribution = distributions[0];
+  else if (distributions.length > 1) dataset.distribution = distributions;
+
+  return jsonLdScript(dataset);
+}

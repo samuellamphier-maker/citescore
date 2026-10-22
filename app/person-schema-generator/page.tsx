@@ -53,12 +53,14 @@ const related = [
   { href: "/book-schema-generator", label: "Book schema generator" },
   { href: "/podcast-schema-generator", label: "Podcast schema generator" },
   { href: "/movie-schema-generator", label: "Movie schema generator" },
+  { href: "/dataset-schema-generator", label: "Dataset schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
   { href: "/ai-search-visibility-for-real-estate", label: "AI search visibility for real estate" },
   { href: "/ai-search-visibility-for-restaurants", label: "AI search visibility for restaurants" },
   { href: "/ai-search-visibility-for-accountants", label: "AI search visibility for accountants" },
+  { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -119,7 +121,8 @@ export default function PersonSchemaGeneratorPage() {
           <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A
           restaurant’s public location page is covered on{" "}
           <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. A page that names one accountant is covered on{" "}
-          <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>.
+          <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A page that names one dentist is covered on{" "}
+          <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
         </p>
         <p>
           The copy block is one <code>script</code> tag. Paste it into the HTML the server sends, on the bio or the

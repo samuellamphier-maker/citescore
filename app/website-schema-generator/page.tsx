@@ -53,6 +53,7 @@ const related = [
   { href: "/book-schema-generator", label: "Book schema generator" },
   { href: "/podcast-schema-generator", label: "Podcast schema generator" },
   { href: "/movie-schema-generator", label: "Movie schema generator" },
+  { href: "/dataset-schema-generator", label: "Dataset schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
   { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },

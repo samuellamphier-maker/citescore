@@ -59,6 +59,7 @@ export default function HowToGetCitedByMetaAiPage() {
           { href: "/book-schema-generator", label: "Free Book schema generator" },
           { href: "/podcast-schema-generator", label: "Free Podcast schema generator" },
           { href: "/movie-schema-generator", label: "Free Movie schema generator" },
+          { href: "/dataset-schema-generator", label: "Free Dataset schema generator" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         ])}
       >
