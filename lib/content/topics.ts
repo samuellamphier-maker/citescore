@@ -730,6 +730,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/vehicle-schema-generator",
+    title: "Free Vehicle schema generator",
+    description:
+      "Free, no-signup Vehicle and Car JSON-LD generator. Add the name, brand, model, model date, odometer, fuel, color, VIN, price, image, and page URL already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Vehicle schema",
+    card: "Copy Car or Vehicle JSON-LD from the name, VIN, odometer, and price already on the page.",
+    navLabel: "Vehicle schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-22",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-plumbers",
+    title: "AI search visibility for plumbers",
+    description:
+      "How a plumbing business site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Plumber markup, service-area pages, reviews, NAP consistency, FAQ content, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Business pages, service-area URLs, Plumber markup, and the crawler files a plumbing business controls.",
+    navLabel: "AI search visibility for plumbers",
+    priority: 0.8,
+    publishedAt: "2026-10-22",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -871,6 +895,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-restaurants",
   "/ai-search-visibility-for-accountants",
   "/ai-search-visibility-for-dentists",
+  "/ai-search-visibility-for-plumbers",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

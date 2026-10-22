@@ -34,6 +34,7 @@ const related = [
   { href: "/podcast-schema-generator", label: "Podcast schema generator" },
   { href: "/movie-schema-generator", label: "Movie schema generator" },
   { href: "/dataset-schema-generator", label: "Dataset schema generator" },
+  { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
   { href: "/llms-txt", label: "llms.txt checker" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
