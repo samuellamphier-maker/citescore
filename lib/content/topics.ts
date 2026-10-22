@@ -778,6 +778,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/restaurant-schema-generator",
+    title: "Free Restaurant schema generator",
+    description:
+      "Free, no-signup Restaurant JSON-LD generator. Add the name, address, phone, cuisine, price range, opening hours, menu URL, acceptsReservations, and geo already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Restaurant schema",
+    card: "Copy Restaurant JSON-LD from the name, cuisine, hours, and menu URL already on the page.",
+    navLabel: "Restaurant schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-22",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-roofers",
+    title: "AI search visibility for roofers",
+    description:
+      "How a roofing contractor site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: RoofingContractor markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Business pages, service-area URLs, RoofingContractor markup, and the crawler files a roofing contractor controls.",
+    navLabel: "AI search visibility for roofers",
+    priority: 0.8,
+    publishedAt: "2026-10-22",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -921,6 +945,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-dentists",
   "/ai-search-visibility-for-plumbers",
   "/ai-search-visibility-for-hvac",
+  "/ai-search-visibility-for-roofers",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

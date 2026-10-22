@@ -61,6 +61,7 @@ const related = [
   { href: "/dataset-schema-generator", label: "Dataset schema generator" },
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
   { href: "/hotel-schema-generator", label: "Hotel schema generator" },
+  { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -70,6 +71,7 @@ const related = [
   { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
   { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
   { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
+  { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -119,7 +121,7 @@ export default function SpeakableSchemaGeneratorPage() {
           <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A clinic or
           health-tech site is on{" "}
           <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage
-          office is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant location is on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting office is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental office is on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A photo credit
+          office is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant location is on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting office is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental office is on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. A photo credit
           uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>.
         </p>
         <p>

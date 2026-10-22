@@ -3644,3 +3644,158 @@ export function buildHotelSchema(input: HotelInput): string {
 
   return jsonLdScript(hotel);
 }
+
+export type RestaurantInput = {
+  name: string;
+  description: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  latitude: string;
+  longitude: string;
+  telephone: string;
+  url: string;
+  imageUrl: string;
+  cuisines: string;
+  priceRange: string;
+  hours: OpeningHoursInput[];
+  menuUrl: string;
+  acceptsReservations: string;
+};
+
+/**
+ * Cuisine names, one per non-empty line.
+ * A line longer than 80 characters is left out. A repeated name is written once.
+ */
+export function restaurantCuisines(raw: string): string[] {
+  const seen = new Set<string>();
+  const items: string[] = [];
+  for (const line of raw.split(/\r?\n/)) {
+    const name = plainLine(line);
+    if (!name || name.length > 80 || seen.has(name)) continue;
+    seen.add(name);
+    items.push(name);
+  }
+  return items;
+}
+
+/**
+ * The price range text a restaurant page already shows, such as $$ or $10-15.
+ * Empty when blank or 100 characters or longer. Google’s local business page
+ * says a price range of 100 characters or longer is not shown.
+ */
+export function restaurantPriceRange(raw: string): string {
+  const text = plainLine(raw);
+  if (!text || text.length >= 100) return "";
+  return text;
+}
+
+/**
+ * acceptsReservations as a boolean or a reservation URL.
+ * yes and true are true. no and false are false. An http(s) URL is that URL.
+ * Other text, including a sentence, is left out.
+ */
+export function restaurantReservations(raw: string): boolean | string | null {
+  const text = raw.trim();
+  if (!text) return null;
+  if (/^(yes|true)$/i.test(text)) return true;
+  if (/^(no|false)$/i.test(text)) return false;
+  const looksLikeUrl = /^https?:\/\//i.test(text) || /^[^\s./]+\.[^\s]+/.test(text);
+  if (!looksLikeUrl) return null;
+  return httpUrl(text);
+}
+
+function openingHoursSpecs(hours: OpeningHoursInput[]): Record<string, unknown>[] {
+  const specs: Record<string, unknown>[] = [];
+  for (const row of hours) {
+    const days = WEEKDAYS.filter((day) => row.days.includes(day));
+    const opens = clockTime(row.opens);
+    const closes = clockTime(row.closes);
+    if (days.length === 0 || !opens || !closes) continue;
+    specs.push({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: days.length === 1 ? days[0] : [...days],
+      opens,
+      closes,
+    });
+  }
+  return specs;
+}
+
+/**
+ * Restaurant JSON-LD. Empty until the name is present.
+ * address is a PostalAddress, and only when at least one address field is present.
+ * geo is GeoCoordinates, and only when latitude and longitude are both in range.
+ * telephone is a phone string with 7–15 digits.
+ * image is an array of one http(s) URL. url and menu are http(s).
+ * servesCuisine is one text value, or an array when there are two or more.
+ * priceRange is text shorter than 100 characters.
+ * openingHoursSpecification is one object, or an array when there are two or more.
+ * acceptsReservations is a boolean or a URL.
+ * The script writes menu, the property Google’s local business page lists for a food establishment.
+ * It does not also write hasMenu, openingHours, review, aggregateRating, or starRating.
+ */
+export function buildRestaurantSchema(input: RestaurantInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const restaurant: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) restaurant.description = description;
+
+  const streetAddress = plainLine(input.streetAddress);
+  const addressLocality = plainLine(input.addressLocality);
+  const addressRegion = plainLine(input.addressRegion);
+  const postalCode = plainLine(input.postalCode);
+  const addressCountry = addressCountryValue(input.addressCountry);
+  if (streetAddress || addressLocality || addressRegion || postalCode || addressCountry) {
+    const address: Record<string, unknown> = { "@type": "PostalAddress" };
+    if (streetAddress) address.streetAddress = streetAddress;
+    if (addressLocality) address.addressLocality = addressLocality;
+    if (addressRegion) address.addressRegion = addressRegion;
+    if (postalCode) address.postalCode = postalCode;
+    if (addressCountry) address.addressCountry = addressCountry;
+    restaurant.address = address;
+  }
+
+  const latitude = geoNumber(input.latitude, -90, 90);
+  const longitude = geoNumber(input.longitude, -180, 180);
+  if (latitude !== null && longitude !== null && input.latitude.trim() && input.longitude.trim()) {
+    restaurant.geo = { "@type": "GeoCoordinates", latitude, longitude };
+  }
+
+  const telephone = telephoneValue(input.telephone);
+  if (telephone) restaurant.telephone = telephone;
+
+  const url = httpUrl(input.url);
+  if (url) restaurant.url = url;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) restaurant.image = [image];
+
+  const cuisines = restaurantCuisines(input.cuisines);
+  if (cuisines.length === 1) restaurant.servesCuisine = cuisines[0];
+  else if (cuisines.length > 1) restaurant.servesCuisine = cuisines;
+
+  const priceRange = restaurantPriceRange(input.priceRange);
+  if (priceRange) restaurant.priceRange = priceRange;
+
+  const specs = openingHoursSpecs(input.hours);
+  if (specs.length === 1) restaurant.openingHoursSpecification = specs[0];
+  else if (specs.length > 1) restaurant.openingHoursSpecification = specs;
+
+  const menu = httpUrl(input.menuUrl);
+  if (menu) restaurant.menu = menu;
+
+  const reservations = restaurantReservations(input.acceptsReservations);
+  if (reservations !== null) restaurant.acceptsReservations = reservations;
+
+  return jsonLdScript(restaurant);
+}

@@ -99,7 +99,7 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         CPA, or bookkeeping firm is on{" "}
         <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental
         practice’s office, services, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>.
+        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -169,9 +169,11 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         <Link href="/local-business-schema-generator">Local business schema generator</Link> already lists Restaurant
         and the other food subtypes. It copies the name, the address, the phone, the hours, and optional geo into one
         script in the browser. It does not emit <code>menu</code>, <code>servesCuisine</code>, <code>priceRange</code>,{" "}
-        <code>review</code>, or <code>aggregateRating</code>. Add the menu URL, the cuisine, and the price range by
-        hand, and only when the page shows them. The address in that script is this location. It is not the street of
-        a second cafe.
+        <code>acceptsReservations</code>, <code>review</code>, or <code>aggregateRating</code>. The{" "}
+        <Link href="/restaurant-schema-generator">Restaurant schema generator</Link> writes those food fields, and it
+        also writes the name, the address, the phone, the hours, and geo. It writes <code>menu</code> and does not also
+        write <code>hasMenu</code>. Do not paste both Restaurant scripts on one URL. Add a field only when the page
+        shows it. The address in that script is this location. It is not the street of a second cafe.
       </p>
       <p>
         <a href={hasMenu}>schema.org hasMenu</a> is the menu as a Menu, as text, or as a URL, and schema.org says it
@@ -193,7 +195,8 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         <Link href="/movie-schema-generator">Movie schema generator</Link>. A dataset the restaurant publishes, on its own URL, uses the{" "}
         <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A vehicle the restaurant publishes, on its own URL, uses the{" "}
         <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the restaurant publishes, on its own URL, uses the{" "}
-        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. The show page is not the menu, the film
+        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. The location itself uses the{" "}
+        <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. The show page is not the menu, the film
         page is not the menu, the dataset page is not the menu, the vehicle page is not the menu, and the hotel page is not the menu.
       </p>
 
