@@ -754,6 +754,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/hotel-schema-generator",
+    title: "Free Hotel schema generator",
+    description:
+      "Free, no-signup Hotel JSON-LD generator. Add the name, description, address, geo, phone, page URL, image, price range, official star rating, check-in and check-out times, amenities, and an optional guest rating already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Hotel schema",
+    card: "Copy Hotel JSON-LD from the name, address, star rating, and amenities already on the page.",
+    navLabel: "Hotel schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-22",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-hvac",
+    title: "AI search visibility for HVAC",
+    description:
+      "How an HVAC company site can be fetched and quoted by ChatGPT, Perplexity, Gemini, and Google AI Overviews: HVACBusiness markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Business pages, service-area URLs, HVACBusiness markup, and the crawler files an HVAC company controls.",
+    navLabel: "AI search visibility for HVAC",
+    priority: 0.8,
+    publishedAt: "2026-10-22",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -896,6 +920,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-accountants",
   "/ai-search-visibility-for-dentists",
   "/ai-search-visibility-for-plumbers",
+  "/ai-search-visibility-for-hvac",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

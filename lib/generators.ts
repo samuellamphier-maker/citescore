@@ -3460,3 +3460,187 @@ export function buildVehicleSchema(input: VehicleInput): string {
 
   return jsonLdScript(vehicle);
 }
+
+export type HotelInput = {
+  name: string;
+  description: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  latitude: string;
+  longitude: string;
+  telephone: string;
+  url: string;
+  imageUrl: string;
+  priceRange: string;
+  starRatingValue: string;
+  starBestRating: string;
+  starRatingAuthor: string;
+  checkinTime: string;
+  checkoutTime: string;
+  amenities: string;
+  ratingValue: string;
+  reviewCount: string;
+  bestRating: string;
+};
+
+/**
+ * The price range text a hotel page already shows, such as $$$ or $100 - $240.
+ * Empty when blank or longer than 80 characters.
+ */
+export function hotelPriceRange(raw: string): string {
+  const text = plainLine(raw);
+  if (!text || text.length > 80) return "";
+  return text;
+}
+
+/** One amenity line. A missing value means the feature is present. Empty when the line should be left out. */
+export function hotelAmenityFromLine(raw: string): Record<string, unknown> | null {
+  const trimmed = raw.trim();
+  if (!trimmed) return null;
+  const pipe = trimmed.indexOf("|");
+  const namePart = pipe === -1 ? trimmed : trimmed.slice(0, pipe);
+  const valuePart = pipe === -1 ? "" : trimmed.slice(pipe + 1);
+  const name = plainLine(namePart);
+  if (!name || name.length > 80) return null;
+  const valueText = plainLine(valuePart);
+  let value: boolean | number | string = true;
+  if (valueText) {
+    if (/^(true|yes)$/i.test(valueText)) value = true;
+    else if (/^(false|no)$/i.test(valueText)) value = false;
+    else if (/^-?\d+(\.\d+)?$/.test(valueText)) {
+      const number = Number(valueText);
+      if (!Number.isFinite(number)) return null;
+      value = number;
+    } else if (valueText.length > 80) {
+      return null;
+    } else {
+      value = valueText;
+    }
+  }
+  return { "@type": "LocationFeatureSpecification", name, value };
+}
+
+/**
+ * Amenity features, one per non-empty line.
+ * A line without a pipe is value true. After a pipe: true, yes, false, no, a number, or short text.
+ * A repeated name is written once. A name or a text value longer than 80 characters is left out.
+ */
+export function hotelAmenities(raw: string): Record<string, unknown>[] {
+  const seen = new Set<string>();
+  const features: Record<string, unknown>[] = [];
+  for (const line of raw.split(/\r?\n/)) {
+    const feature = hotelAmenityFromLine(line);
+    if (!feature) continue;
+    const name = String(feature.name);
+    if (seen.has(name)) continue;
+    seen.add(name);
+    features.push(feature);
+  }
+  return features;
+}
+
+/**
+ * Official star rating as a Rating.
+ * Empty when the value is missing, the best rating is filled but invalid, or the value is above the best rating.
+ * author is an Organization, and only with a name that is not a URL. A URL or a name longer than 80 characters is left off the rating.
+ */
+export function hotelStarRating(
+  ratingValue: string,
+  bestRating: string,
+  authorName: string,
+): Record<string, unknown> | null {
+  const rating = ratingDecimal(ratingValue);
+  if (!rating) return null;
+  const bestRaw = bestRating.trim();
+  const best = bestRaw ? ratingDecimal(bestRating) : "";
+  if (bestRaw && !best) return null;
+  if (best && Number(rating) > Number(best)) return null;
+  const node: Record<string, unknown> = { "@type": "Rating", ratingValue: rating };
+  if (best) node.bestRating = best;
+  const author = plainLine(authorName);
+  const authorIsUrl = /^https?:\/\//i.test(author) || /^[^/\s]+\.[^/\s]+\/.+/.test(author);
+  if (author && !authorIsUrl && author.length <= 80) {
+    node.author = { "@type": "Organization", name: author };
+  }
+  return node;
+}
+
+/**
+ * Hotel JSON-LD. Empty until the name is present.
+ * address is a PostalAddress, and only when at least one address field is present.
+ * geo is GeoCoordinates, and only when latitude and longitude are both in range.
+ * telephone is a phone string with 7–15 digits.
+ * image is an array of one http(s) URL. url is http(s).
+ * priceRange is short text. starRating is a Rating for an official classification, not a guest average.
+ * checkinTime and checkoutTime are 24-hour clock times. A sentence is left out.
+ * amenityFeature is one LocationFeatureSpecification, or an array when there are two or more.
+ * aggregateRating is written only when the rating value and the review count are both valid.
+ * The script does not write photo, makesOffer, identifier, HotelRoom, openingHoursSpecification, or review.
+ */
+export function buildHotelSchema(input: HotelInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const hotel: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) hotel.description = description;
+
+  const streetAddress = plainLine(input.streetAddress);
+  const addressLocality = plainLine(input.addressLocality);
+  const addressRegion = plainLine(input.addressRegion);
+  const postalCode = plainLine(input.postalCode);
+  const addressCountry = addressCountryValue(input.addressCountry);
+  if (streetAddress || addressLocality || addressRegion || postalCode || addressCountry) {
+    const address: Record<string, unknown> = { "@type": "PostalAddress" };
+    if (streetAddress) address.streetAddress = streetAddress;
+    if (addressLocality) address.addressLocality = addressLocality;
+    if (addressRegion) address.addressRegion = addressRegion;
+    if (postalCode) address.postalCode = postalCode;
+    if (addressCountry) address.addressCountry = addressCountry;
+    hotel.address = address;
+  }
+
+  const latitude = geoNumber(input.latitude, -90, 90);
+  const longitude = geoNumber(input.longitude, -180, 180);
+  if (latitude !== null && longitude !== null && input.latitude.trim() && input.longitude.trim()) {
+    hotel.geo = { "@type": "GeoCoordinates", latitude, longitude };
+  }
+
+  const telephone = telephoneValue(input.telephone);
+  if (telephone) hotel.telephone = telephone;
+
+  const url = httpUrl(input.url);
+  if (url) hotel.url = url;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) hotel.image = [image];
+
+  const priceRange = hotelPriceRange(input.priceRange);
+  if (priceRange) hotel.priceRange = priceRange;
+
+  const starRating = hotelStarRating(input.starRatingValue, input.starBestRating, input.starRatingAuthor);
+  if (starRating) hotel.starRating = starRating;
+
+  const checkinTime = clockTime(input.checkinTime);
+  if (checkinTime) hotel.checkinTime = checkinTime;
+
+  const checkoutTime = clockTime(input.checkoutTime);
+  if (checkoutTime) hotel.checkoutTime = checkoutTime;
+
+  const amenities = hotelAmenities(input.amenities);
+  if (amenities.length === 1) hotel.amenityFeature = amenities[0];
+  else if (amenities.length > 1) hotel.amenityFeature = amenities;
+
+  const aggregateRating = aggregateRatingBlock(input.ratingValue, input.reviewCount, input.bestRating);
+  if (aggregateRating) hotel.aggregateRating = aggregateRating;
+
+  return jsonLdScript(hotel);
+}

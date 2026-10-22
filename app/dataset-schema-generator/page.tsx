@@ -67,6 +67,7 @@ const related = [
   { href: "/movie-schema-generator", label: "Movie schema generator" },
   { href: "/dataset-schema-generator", label: "Dataset schema generator" },
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
+  { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -75,6 +76,7 @@ const related = [
   { href: "/ai-search-visibility-for-accountants", label: "AI search visibility for accountants" },
   { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
   { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
+  { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -137,11 +139,13 @@ export default function DatasetSchemaGeneratorPage() {
           day, lists Dataset and describes it as large data sets that appear in Google Dataset Search. Listing the
           feature is not a placement. This form writes one Dataset for one landing page. It does not write DCAT, and
           it does not write CSVW. A film page uses the <Link href="/movie-schema-generator">Movie schema generator</Link>.
-          A vehicle page uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>.
+          A vehicle page uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel page uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>.
           A dental office is a different page, on{" "}
           <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
           A plumbing business is on{" "}
           <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>.
+          An HVAC company is on{" "}
+          <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>.
         </p>
         <h2>What each field is</h2>
         <p>

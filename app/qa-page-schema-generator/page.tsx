@@ -60,6 +60,7 @@ const related = [
   { href: "/movie-schema-generator", label: "Movie schema generator" },
   { href: "/dataset-schema-generator", label: "Dataset schema generator" },
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
+  { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-b2b-saas", label: "AI search visibility for B2B SaaS" },
   { href: "/free-check", label: "Free AI visibility check" },

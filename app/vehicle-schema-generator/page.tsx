@@ -72,6 +72,7 @@ const related = [
   { href: "/movie-schema-generator", label: "Movie schema generator" },
   { href: "/dataset-schema-generator", label: "Dataset schema generator" },
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
+  { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -80,6 +81,7 @@ const related = [
   { href: "/ai-search-visibility-for-accountants", label: "AI search visibility for accountants" },
   { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
   { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
+  { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -150,7 +152,8 @@ export default function VehicleSchemaGeneratorPage() {
           A dataset page uses the <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A film page
           uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. A plumbing business is a
           different page, on{" "}
-          <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. A dental practice’s
+          <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company is on{" "}
+          <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A dental practice’s
           office is on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
         </p>
         <h2>What each field is</h2>

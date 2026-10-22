@@ -117,7 +117,9 @@ export function AiSearchVisibilityForPlumbersArticle() {
         <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A store’s price
         problem is on <Link href="/ai-search-visibility-for-ecommerce">AI search visibility for ecommerce</Link>. A
         software company’s comparison page is on{" "}
-        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>.
+        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. An HVAC company’s
+        office, service area, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -201,7 +203,8 @@ export function AiSearchVisibilityForPlumbersArticle() {
         <Link href="/organization-schema-generator">Organization schema generator</Link>. A photo that shows a credit
         or a license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>. A
         vehicle the business sells, on its own URL, uses the{" "}
-        <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. The vehicle page is not the business.
+        <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the business publishes, on its own URL, uses the{" "}
+        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. The vehicle page is not the business, and the hotel page is not the business.
       </p>
 
       <h2>Service-area pages</h2>
