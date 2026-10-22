@@ -80,6 +80,10 @@ export function AiSearchVisibilityForEcommerceArticle() {
         <Link href="/ai-search-visibility-for-plumbers">
           AI search visibility for plumbers
         </Link>
+        . An HVAC company’s office, service area, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-hvac">
+          AI search visibility for HVAC
+        </Link>
         .
       </p>
 

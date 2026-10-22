@@ -99,7 +99,7 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         CPA, or bookkeeping firm is on{" "}
         <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental
         practice’s office, services, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>.
+        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -192,8 +192,9 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         <Link href="/podcast-schema-generator">Podcast schema generator</Link>. A film the restaurant publishes, on its own URL, uses the{" "}
         <Link href="/movie-schema-generator">Movie schema generator</Link>. A dataset the restaurant publishes, on its own URL, uses the{" "}
         <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A vehicle the restaurant publishes, on its own URL, uses the{" "}
-        <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. The show page is not the menu, the film
-        page is not the menu, the dataset page is not the menu, and the vehicle page is not the menu.
+        <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the restaurant publishes, on its own URL, uses the{" "}
+        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. The show page is not the menu, the film
+        page is not the menu, the dataset page is not the menu, the vehicle page is not the menu, and the hotel page is not the menu.
       </p>
 
       <h2>One URL for the menu</h2>

@@ -57,6 +57,7 @@ export default function HowToGetCitedByMistralPage() {
           { href: "/movie-schema-generator", label: "Free Movie schema generator" },
           { href: "/dataset-schema-generator", label: "Free Dataset schema generator" },
           { href: "/vehicle-schema-generator", label: "Free Vehicle schema generator" },
+          { href: "/hotel-schema-generator", label: "Free Hotel schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/geo-audit", label: "$39 GEO audit" },

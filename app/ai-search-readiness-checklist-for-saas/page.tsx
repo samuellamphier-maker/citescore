@@ -56,6 +56,7 @@ export default function AiSearchReadinessChecklistForSaasPage() {
           { href: "/movie-schema-generator", label: "Free Movie schema generator" },
           { href: "/dataset-schema-generator", label: "Free Dataset schema generator" },
           { href: "/vehicle-schema-generator", label: "Free Vehicle schema generator" },
+          { href: "/hotel-schema-generator", label: "Free Hotel schema generator" },
           { href: "/free-check", label: "Free AI citation-readiness check" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ]}

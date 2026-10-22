@@ -59,6 +59,7 @@ export default function AiSearchVisibilityForB2bSaasPage() {
           { href: "/movie-schema-generator", label: "Free Movie schema generator" },
           { href: "/dataset-schema-generator", label: "Free Dataset schema generator" },
           { href: "/vehicle-schema-generator", label: "Free Vehicle schema generator" },
+          { href: "/hotel-schema-generator", label: "Free Hotel schema generator" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/how-to-check-if-chatgpt-mentions-your-brand", label: "How to check if ChatGPT mentions your brand" },
           { href: "/ai-search-visibility-for-ecommerce", label: "AI search visibility for ecommerce" },
@@ -69,6 +70,7 @@ export default function AiSearchVisibilityForB2bSaasPage() {
           { href: "/ai-search-visibility-for-accountants", label: "AI search visibility for accountants" },
           { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
           { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
+          { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >
