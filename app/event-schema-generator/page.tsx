@@ -56,6 +56,7 @@ const related = [
   { href: "/dataset-schema-generator", label: "Dataset schema generator" },
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
   { href: "/hotel-schema-generator", label: "Hotel schema generator" },
+  { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },

@@ -40,6 +40,7 @@ export default function AiSearchVisibilityForPlumbersPage() {
         related={guideLinks([
           { href: "/geo-for-local-businesses", label: "GEO for local businesses" },
           { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
+          { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
           { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
           { href: "/ai-search-visibility-for-accountants", label: "AI search visibility for accountants" },
           { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
@@ -63,6 +64,7 @@ export default function AiSearchVisibilityForPlumbersPage() {
           { href: "/dataset-schema-generator", label: "Free Dataset schema generator" },
           { href: "/vehicle-schema-generator", label: "Free Vehicle schema generator" },
           { href: "/hotel-schema-generator", label: "Free Hotel schema generator" },
+          { href: "/restaurant-schema-generator", label: "Free Restaurant schema generator" },
           { href: "/movie-schema-generator", label: "Free Movie schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },

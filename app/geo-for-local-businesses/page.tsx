@@ -34,6 +34,7 @@ export default function GeoForLocalBusinessesPage() {
         { href: "/dataset-schema-generator", label: "Dataset schema generator" },
         { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
         { href: "/hotel-schema-generator", label: "Hotel schema generator" },
+        { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
         { href: "/breadcrumb-schema-generator", label: "Breadcrumb schema generator" },
         { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
         { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
@@ -44,6 +45,7 @@ export default function GeoForLocalBusinessesPage() {
         { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
         { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
         { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
+        { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
         { href: "/google-ai-overviews-optimization", label: "Google AI Overviews optimization" },
         { href: "/how-to-get-cited-by-gemini", label: "How to get cited by Gemini" },
       ])}
