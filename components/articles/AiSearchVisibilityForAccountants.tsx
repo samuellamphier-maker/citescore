@@ -116,7 +116,7 @@ export function AiSearchVisibilityForAccountantsArticle() {
         software company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A dental
         practice’s office, services, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
+        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -200,8 +200,9 @@ export function AiSearchVisibilityForAccountantsArticle() {
         or a license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>. A dataset
         the firm publishes, on its own URL, uses the{" "}
         <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A film the firm publishes, on its own
-        URL, uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. The dataset page is not the
-        office, and the film page is not the office.
+        URL, uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. A vehicle the firm publishes, on its own
+        URL, uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. The dataset page is not the
+        office, the film page is not the office, and the vehicle page is not the office.
       </p>
 
       <h2>One URL per service</h2>

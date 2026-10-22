@@ -34,6 +34,7 @@ const related = [
   { href: "/podcast-schema-generator", label: "Podcast schema generator" },
   { href: "/movie-schema-generator", label: "Movie schema generator" },
   { href: "/dataset-schema-generator", label: "Dataset schema generator" },
+  { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
   { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
   { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
   { href: "/free-check", label: "Free AI visibility check" },

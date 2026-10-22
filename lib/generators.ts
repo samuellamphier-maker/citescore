@@ -3260,3 +3260,203 @@ export function buildDatasetSchema(input: DatasetInput): string {
 
   return jsonLdScript(dataset);
 }
+
+export const VEHICLE_TYPES = ["Car", "Vehicle"] as const;
+
+export type VehicleType = (typeof VEHICLE_TYPES)[number];
+
+export const ODOMETER_UNIT_CODES = ["SMI", "KMT"] as const;
+
+export type OdometerUnitCode = (typeof ODOMETER_UNIT_CODES)[number];
+
+export type VehicleInput = {
+  type: string;
+  name: string;
+  description: string;
+  brand: string;
+  model: string;
+  vehicleModelDate: string;
+  mileage: string;
+  mileageUnit: string;
+  fuelType: string;
+  color: string;
+  vin: string;
+  price: string;
+  currency: string;
+  imageUrl: string;
+  url: string;
+};
+
+/**
+ * The release date of a vehicle model.
+ * A four-digit year, YYYY-MM, a calendar date, or an ISO date-time.
+ * Empty when the value is none of those.
+ */
+export function vehicleModelDate(raw: string): string {
+  const value = raw.trim();
+  if (/^[1-9]\d{3}-(0[1-9]|1[0-2])$/.test(value)) return value;
+  return movieDate(value);
+}
+
+/**
+ * An odometer reading. Zero is kept. Thousands commas are removed.
+ * Empty when the value is negative, blank, or not a number with at most three decimal places.
+ */
+export function odometerReading(raw: string): number | null {
+  const value = stripThousands(raw);
+  if (!/^\d+(\.\d{1,3})?$/.test(value)) return null;
+  const number = Number(value);
+  if (!Number.isFinite(number) || number < 0) return null;
+  return number;
+}
+
+const VIN_TRANSLIT: Record<string, number> = {
+  A: 1,
+  B: 2,
+  C: 3,
+  D: 4,
+  E: 5,
+  F: 6,
+  G: 7,
+  H: 8,
+  J: 1,
+  K: 2,
+  L: 3,
+  M: 4,
+  N: 5,
+  P: 7,
+  R: 9,
+  S: 2,
+  T: 3,
+  U: 4,
+  V: 5,
+  W: 6,
+  X: 7,
+  Y: 8,
+  Z: 9,
+};
+
+const VIN_WEIGHTS = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2];
+
+/**
+ * A 17-character VIN with a matching check digit.
+ * Spaces and hyphens are removed. I, O, and Q are rejected.
+ * Empty when the check digit does not match, so a mistyped VIN is left out.
+ */
+export function vehicleVin(raw: string): string {
+  const value = raw.toUpperCase().replace(/[\s-]/g, "");
+  if (!/^[A-HJ-NPR-Z0-9]{17}$/.test(value)) return "";
+  let sum = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    const character = value[index];
+    const digit = /[0-9]/.test(character) ? Number(character) : VIN_TRANSLIT[character];
+    sum += digit * VIN_WEIGHTS[index];
+  }
+  const remainder = sum % 11;
+  const check = remainder === 10 ? "X" : String(remainder);
+  return value[8] === check ? value : "";
+}
+
+/** Fuel as an http(s) URL, or as text of at most 80 characters. Empty when longer. */
+export function vehicleFuelType(raw: string): string {
+  const text = plainLine(raw);
+  if (!text) return "";
+  if (/^https?:\/\//i.test(text) || /^[^/\s]+\.[^/\s]+\/.+/.test(text)) return httpUrl(text) ?? "";
+  return text.length > 80 ? "" : text;
+}
+
+/** Product color as text of at most 80 characters. A URL is still text. Empty when longer. */
+export function vehicleColor(raw: string): string {
+  const text = plainLine(raw);
+  if (!text || text.length > 80) return "";
+  return text;
+}
+
+/** Model text, or a ProductModel URL. A host with a path is normalized to https. */
+export function vehicleModelValue(raw: string): string {
+  const text = plainLine(raw);
+  if (!text) return "";
+  if (/^https?:\/\//i.test(text) || /^[^/\s]+\.[^/\s]+\/.+/.test(text)) return httpUrl(text) ?? "";
+  return text;
+}
+
+function vehicleBrand(raw: string): Record<string, unknown> | null {
+  const name = plainLine(raw);
+  if (!name) return null;
+  if (/^https?:\/\//i.test(name) || /^[^/\s]+\.[^/\s]+\/.+/.test(name)) return null;
+  return { "@type": "Brand", name };
+}
+
+/**
+ * Car or Vehicle JSON-LD. Empty until the name is present and the type is one of those two.
+ * brand is a Brand, and only with a name. A URL without a name is omitted.
+ * model is text or a ProductModel URL.
+ * vehicleModelDate is a year, YYYY-MM, a calendar date, or a date-time. modelDate is not written.
+ * mileageFromOdometer is a QuantitativeValue, and only when the reading and the unit code are both valid.
+ * SMI is statute miles. KMT is kilometers. Zero is kept.
+ * fuelType is text or a URL. color is text.
+ * vehicleIdentificationNumber is a 17-character VIN with a matching check digit.
+ * offers is an Offer, and only when the price is greater than zero and the currency is ISO 4217.
+ * image and url are http(s). One image is one URL, not an array.
+ * The script writes one @type. It does not write a Product array, modelDate, itemCondition, or availability.
+ */
+export function buildVehicleSchema(input: VehicleInput): string {
+  const name = plainLine(input.name);
+  const type = (VEHICLE_TYPES as readonly string[]).includes(input.type) ? input.type : "";
+  if (!name || !type) return "";
+
+  const vehicle: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": type,
+    name,
+  };
+
+  const description = plainLine(input.description);
+  if (description) vehicle.description = description;
+
+  const brand = vehicleBrand(input.brand);
+  if (brand) vehicle.brand = brand;
+
+  const model = vehicleModelValue(input.model);
+  if (model) vehicle.model = model;
+
+  const modelDate = vehicleModelDate(input.vehicleModelDate);
+  if (modelDate) vehicle.vehicleModelDate = modelDate;
+
+  const mileage = odometerReading(input.mileage);
+  const unitCode = (ODOMETER_UNIT_CODES as readonly string[]).includes(input.mileageUnit) ? input.mileageUnit : "";
+  if (mileage !== null && unitCode && input.mileage.trim()) {
+    vehicle.mileageFromOdometer = {
+      "@type": "QuantitativeValue",
+      value: mileage,
+      unitCode,
+    };
+  }
+
+  const fuelType = vehicleFuelType(input.fuelType);
+  if (fuelType) vehicle.fuelType = fuelType;
+
+  const color = vehicleColor(input.color);
+  if (color) vehicle.color = color;
+
+  const vin = vehicleVin(input.vin);
+  if (vin) vehicle.vehicleIdentificationNumber = vin;
+
+  const image = httpUrl(input.imageUrl);
+  if (image) vehicle.image = image;
+
+  const url = httpUrl(input.url);
+  if (url) vehicle.url = url;
+
+  const price = productPrice(input.price);
+  const currency = isoCurrency(input.currency);
+  if (price && currency) {
+    vehicle.offers = {
+      "@type": "Offer",
+      price,
+      priceCurrency: currency,
+    };
+  }
+
+  return jsonLdScript(vehicle);
+}
