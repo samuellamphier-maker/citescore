@@ -168,7 +168,9 @@ export function AiSearchVisibilityForDentistsArticle() {
         <a href={medicalBusiness}>MedicalBusiness</a>, a LocalBusiness, and a{" "}
         <a href={medicalOrganization}>MedicalOrganization</a>. MedicalBusiness is a physical or virtual business for
         medical purposes. Use Dentist for the page about one public office that is a dental practice. Use{" "}
-        <code>MedicalClinic</code> when the page is a clinic and Dentist does not fit. Use <code>Physician</code> for a
+        <code>MedicalClinic</code> when the page is a clinic and Dentist does not fit. Those clinic fields are the{" "}
+        <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. Do not paste both Dentist
+        and MedicalClinic scripts on a dental office. Use <code>Physician</code> for a
         physician or a physician’s office. Do not use it for a dental office. Use <code>Organization</code> or{" "}
         <code>MedicalOrganization</code> for a group homepage that is not one street address. Google’s{" "}
         <a href={localBusiness}>local business documentation</a>, read on 22 October 2026, says to use the most specific
@@ -212,7 +214,7 @@ export function AiSearchVisibilityForDentistsArticle() {
         <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A film the practice publishes, on its
         own URL, uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. A vehicle the practice publishes, on its
         own URL, uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the practice publishes, on its
-        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. The dataset page is not
+        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. The dataset page is not
         the office, the film page is not the office, the vehicle page is not the office, and the hotel page is not the office.
       </p>
 

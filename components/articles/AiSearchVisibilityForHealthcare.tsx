@@ -115,7 +115,7 @@ export function AiSearchVisibilityForHealthcareArticle() {
         <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>. A software
         company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A store’s price
-        problem is on <Link href="/ai-search-visibility-for-ecommerce">AI search visibility for ecommerce</Link>. A brokerage, an agent, or a property manager is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant’s location, menu, and hours are on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting, CPA, or bookkeeping firm is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental practice’s office, services, and hours are on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>.
+        problem is on <Link href="/ai-search-visibility-for-ecommerce">AI search visibility for ecommerce</Link>. A brokerage, an agent, or a property manager is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant’s location, menu, and hours are on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting, CPA, or bookkeeping firm is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental practice’s office, services, and hours are on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>.
       </p>
 
       <h2>One page per service the site actually offers</h2>
@@ -192,7 +192,11 @@ export function AiSearchVisibilityForHealthcareArticle() {
         MedicalClinic, Physician, Hospital, Dentist, and Pharmacy. Choose the one the page is. It copies the name, the
         address, the phone, the hours, and optional geo into one script in the browser. It does not emit{" "}
         <code>review</code> or <code>aggregateRating</code>. Google recommends those properties only for sites that
-        capture reviews about other businesses. A clinic marking up its own stars is outside that recommendation.
+        capture reviews about other businesses. A clinic marking up its own stars is outside that recommendation. The{" "}
+        <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link> writes MedicalClinic with{" "}
+        <code>medicalSpecialty</code>, <code>availableService</code>, the text property <code>openingHours</code>, a
+        logo, and <code>sameAs</code>. It does not write <code>openingHoursSpecification</code>. Do not paste both
+        MedicalClinic scripts on the same URL.
       </p>
       <p>
         Use <code>Physician</code> for the page about one office or one named practitioner. The name in the script is

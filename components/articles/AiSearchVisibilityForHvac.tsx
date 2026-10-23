@@ -125,7 +125,7 @@ export function AiSearchVisibilityForHvacArticle() {
         software company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A hotel page, which is
         a lodging business and not a trade, uses the{" "}
-        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>.
+        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -180,7 +180,9 @@ export function AiSearchVisibilityForHvacArticle() {
         be described as a provider of one or more services. Use HVACBusiness for the page about the heating and cooling
         business. Use <code>HomeAndConstructionBusiness</code> or <code>LocalBusiness</code> when the page is a
         home-services business and HVACBusiness does not fit. Do not use <code>Plumber</code>, <code>Electrician</code>,
-        or <code>RoofingContractor</code> for an HVAC company. A roofing contractor’s pages are on{" "}
+        or <code>RoofingContractor</code> for an HVAC company. An electrical contractor’s pages are on{" "}
+        <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A roofing
+        contractor’s pages are on{" "}
         <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. Use{" "}
         <code>Organization</code> for a homepage that is not
         one street address. Google’s <a href={localBusiness}>local business documentation</a>, read on 22 October 2026,

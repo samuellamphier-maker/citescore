@@ -3799,3 +3799,236 @@ export function buildRestaurantSchema(input: RestaurantInput): string {
 
   return jsonLdScript(restaurant);
 }
+
+const OPENING_HOUR_CODES = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"] as const;
+
+/**
+ * schema.org MedicalSpecialty enumeration, read 23 October 2026.
+ * The value written is the https://schema.org URL for that name.
+ */
+export const MEDICAL_SPECIALTIES = [
+  "Anesthesia",
+  "Audiology",
+  "Cardiovascular",
+  "CommunityHealth",
+  "Dentistry",
+  "Dermatology",
+  "DietNutrition",
+  "Emergency",
+  "Endocrine",
+  "Gastroenterologic",
+  "Genetic",
+  "Geriatric",
+  "Gynecologic",
+  "Hematologic",
+  "Infectious",
+  "LaboratoryScience",
+  "Midwifery",
+  "Musculoskeletal",
+  "Neurologic",
+  "Nursing",
+  "Obstetric",
+  "Oncologic",
+  "Ophthalmology",
+  "Optometric",
+  "Otolaryngologic",
+  "Pathology",
+  "Pediatric",
+  "PharmacySpecialty",
+  "Physiotherapy",
+  "PlasticSurgery",
+  "Podiatric",
+  "PrimaryCare",
+  "Psychiatric",
+  "PublicHealth",
+  "Pulmonary",
+  "Radiography",
+  "Renal",
+  "RespiratoryTherapy",
+  "Rheumatologic",
+  "SpeechPathology",
+  "Surgical",
+  "Toxicologic",
+  "Urologic",
+] as const;
+
+export const MEDICAL_SERVICE_TYPES = ["MedicalProcedure", "MedicalTest", "MedicalTherapy"] as const;
+
+export type ClinicService = {
+  "@type": (typeof MEDICAL_SERVICE_TYPES)[number];
+  name: string;
+};
+
+export type MedicalClinicInput = {
+  name: string;
+  url: string;
+  logoUrl: string;
+  telephone: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  latitude: string;
+  longitude: string;
+  hours: OpeningHoursInput[];
+  specialties: string;
+  services: string;
+  sameAs: string[];
+};
+
+/**
+ * MedicalSpecialty URLs, one per non-empty line.
+ * A line may be the enumeration name, such as PrimaryCare, or https://schema.org/PrimaryCare.
+ * Any other text is left out. A repeated specialty is written once.
+ */
+export function clinicSpecialties(raw: string): string[] {
+  const allowed = new Set<string>(MEDICAL_SPECIALTIES);
+  const seen = new Set<string>();
+  const items: string[] = [];
+  for (const line of raw.split(/\r?\n/)) {
+    const text = plainLine(line);
+    if (!text) continue;
+    const urlMatch = /^https?:\/\/schema\.org\/([A-Za-z]+)$/.exec(text);
+    const name = urlMatch ? urlMatch[1] : text;
+    if (!allowed.has(name) || seen.has(name)) continue;
+    seen.add(name);
+    items.push(`https://schema.org/${name}`);
+  }
+  return items;
+}
+
+/**
+ * availableService values, one per non-empty line.
+ * A line with no pipe is a MedicalProcedure. After a pipe, the type is
+ * MedicalProcedure, MedicalTest, or MedicalTherapy.
+ * A name longer than 80 characters, or any other type, is left out.
+ * A repeated type and name is written once.
+ */
+export function clinicServices(raw: string): ClinicService[] {
+  const allowed = new Set<string>(MEDICAL_SERVICE_TYPES);
+  const seen = new Set<string>();
+  const items: ClinicService[] = [];
+  for (const line of raw.split(/\r?\n/)) {
+    if (!line.trim()) continue;
+    const pipe = line.indexOf("|");
+    const name = plainLine(pipe === -1 ? line : line.slice(0, pipe));
+    const type = plainLine(pipe === -1 ? "MedicalProcedure" : line.slice(pipe + 1));
+    if (!name || name.length > 80 || !allowed.has(type)) continue;
+    const key = `${type}\n${name}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    items.push({ "@type": type as ClinicService["@type"], name });
+  }
+  return items;
+}
+
+/**
+ * schema.org openingHours text. Consecutive days become a range, such as Mo-Fr.
+ * A gap stays a comma, such as Mo,We,Fr. Days inside one row follow Monday-first order.
+ * A row without a day, an open time, or a close time is left out. A repeated line is written once.
+ */
+export function openingHoursLines(hours: OpeningHoursInput[]): string[] {
+  const lines: string[] = [];
+  const seen = new Set<string>();
+  for (const row of hours) {
+    const days = WEEKDAYS.filter((day) => row.days.includes(day));
+    const opens = clockTime(row.opens);
+    const closes = clockTime(row.closes);
+    if (days.length === 0 || !opens || !closes) continue;
+    const indexes = days.map((day) => WEEKDAYS.indexOf(day));
+    const parts: string[] = [];
+    let start = indexes[0];
+    let prev = indexes[0];
+    for (let index = 1; index <= indexes.length; index += 1) {
+      const current = indexes[index];
+      if (current === prev + 1) {
+        prev = current;
+        continue;
+      }
+      const from = OPENING_HOUR_CODES[start];
+      const to = OPENING_HOUR_CODES[prev];
+      parts.push(start === prev ? from : `${from}-${to}`);
+      start = current;
+      prev = current;
+    }
+    const line = `${parts.join(",")} ${opens}-${closes}`;
+    if (seen.has(line)) continue;
+    seen.add(line);
+    lines.push(line);
+  }
+  return lines;
+}
+
+function oneOrList<T>(items: T[]): T | T[] | undefined {
+  if (items.length === 1) return items[0];
+  if (items.length > 1) return items;
+  return undefined;
+}
+
+/**
+ * MedicalClinic JSON-LD. Empty until the name is present.
+ * address is a PostalAddress, and only when at least one address field is present.
+ * geo is GeoCoordinates, and only when latitude and longitude are both in range.
+ * telephone is a phone string with 7–15 digits.
+ * url, logo, and sameAs are http(s).
+ * openingHours is the schema.org text form: one string, or an array when there are two or more.
+ * medicalSpecialty is one schema.org MedicalSpecialty URL, or an array when there are two or more.
+ * availableService is one MedicalProcedure, MedicalTest, or MedicalTherapy, or an array when there are two or more.
+ * The script does not write openingHoursSpecification, image, review, aggregateRating, or description.
+ */
+export function buildMedicalClinicSchema(input: MedicalClinicInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const clinic: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    name,
+  };
+
+  const url = httpUrl(input.url);
+  if (url) clinic.url = url;
+
+  const logo = httpUrl(input.logoUrl);
+  if (logo) clinic.logo = logo;
+
+  const telephone = telephoneValue(input.telephone);
+  if (telephone) clinic.telephone = telephone;
+
+  const streetAddress = plainLine(input.streetAddress);
+  const addressLocality = plainLine(input.addressLocality);
+  const addressRegion = plainLine(input.addressRegion);
+  const postalCode = plainLine(input.postalCode);
+  const addressCountry = addressCountryValue(input.addressCountry);
+  if (streetAddress || addressLocality || addressRegion || postalCode || addressCountry) {
+    const address: Record<string, unknown> = { "@type": "PostalAddress" };
+    if (streetAddress) address.streetAddress = streetAddress;
+    if (addressLocality) address.addressLocality = addressLocality;
+    if (addressRegion) address.addressRegion = addressRegion;
+    if (postalCode) address.postalCode = postalCode;
+    if (addressCountry) address.addressCountry = addressCountry;
+    clinic.address = address;
+  }
+
+  const latitude = geoNumber(input.latitude, -90, 90);
+  const longitude = geoNumber(input.longitude, -180, 180);
+  if (latitude !== null && longitude !== null && input.latitude.trim() && input.longitude.trim()) {
+    clinic.geo = { "@type": "GeoCoordinates", latitude, longitude };
+  }
+
+  const hours = oneOrList(openingHoursLines(input.hours));
+  if (hours) clinic.openingHours = hours;
+
+  const specialties = oneOrList(clinicSpecialties(input.specialties));
+  if (specialties) clinic.medicalSpecialty = specialties;
+
+  const services = oneOrList(clinicServices(input.services));
+  if (services) clinic.availableService = services;
+
+  const sameAs = uniqueHttpUrls(input.sameAs);
+  const profiles = oneOrList(sameAs);
+  if (profiles) clinic.sameAs = profiles;
+
+  return jsonLdScript(clinic);
+}

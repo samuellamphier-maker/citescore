@@ -61,6 +61,7 @@ export default function HowToCheckIfChatgptMentionsYourBrandPage() {
           { href: "/vehicle-schema-generator", label: "Free Vehicle schema generator" },
           { href: "/hotel-schema-generator", label: "Free Hotel schema generator" },
           { href: "/restaurant-schema-generator", label: "Free Restaurant schema generator" },
+          { href: "/medical-clinic-schema-generator", label: "Free Medical clinic schema generator" },
           { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >

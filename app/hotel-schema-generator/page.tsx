@@ -73,6 +73,7 @@ const related = [
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
   { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
+  { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -83,6 +84,7 @@ const related = [
   { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
   { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
   { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
+  { href: "/ai-search-visibility-for-electricians", label: "AI search visibility for electricians" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -160,7 +162,7 @@ export default function HotelSchemaGeneratorPage() {
           <a href={vacationRental}>Vacation rental</a> is its own Search documentation and its own type. This form does
           not write <code>VacationRental</code>. A vehicle page uses the{" "}
           <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. An HVAC company is a different page, on{" "}
-          <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. A plumbing business is on{" "}
+          <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A plumbing business is on{" "}
           <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>.
         </p>
         <h2>What each field is</h2>
