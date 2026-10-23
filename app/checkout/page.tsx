@@ -5,6 +5,8 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { TrustLinks } from "@/components/TrustLinks";
 import {
   agencyKitLabel,
   agencyKitUrl,
@@ -12,6 +14,8 @@ import {
   checkoutUrl,
   doneForYouAuditLabel,
   doneForYouAuditUrl,
+  fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
   site,
   whiteLabelAuditUrl,
 } from "@/lib/site";
@@ -22,7 +26,7 @@ const whiteLabelCheckoutLabel =
 
 export const metadata: Metadata = pageMeta({
   title: "Checkout",
-  description: `Buy the ${site.priceLabel} CiteScore audit, the ${agencyKitLabel}, the ${doneForYouAuditLabel}, or the ${whiteLabelCheckoutLabel}.`,
+  description: `Request the ${fixPackIntroPriceLabel} AI Visibility Fix Pack, or buy the ${site.priceLabel} CiteScore audit, the ${agencyKitLabel}, the ${doneForYouAuditLabel}, or the ${whiteLabelCheckoutLabel}.`,
   path: "/checkout",
 });
 
@@ -94,6 +98,20 @@ export default async function CheckoutPage({
 
         <div className="mt-8 space-y-4">
           <Offer
+            title={`AI Visibility Fix Pack (${fixPackIntroPriceLabel})`}
+            description={`Introductory ${fixPackIntroPriceLabel}, list ${fixPackListPriceLabel}. Google Business Profile gaps, a review script, cited directories, LocalBusiness JSON-LD, and a 14-day re-check. There is no card checkout for this product yet.`}
+          >
+            <FixPackBuyLink className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep" />
+            <p className="mt-3 text-sm leading-6 text-ink-soft">
+              Full refund within 14 days if the Fix Pack is not useful.{" "}
+              <Link href="/fix-pack" className="text-forest underline">
+                What is in the pack
+              </Link>
+              .
+            </p>
+          </Offer>
+
+          <Offer
             title={`${site.priceLabel} GEO audit`}
             description="A self-serve PDF with a 0–100 score and about ten fixes, usually a few minutes after payment."
           >
@@ -163,20 +181,13 @@ export default async function CheckoutPage({
           <Link href="/privacy" className="text-forest underline">
             Privacy
           </Link>
-          . Refunds: 14 days if the file is missing, unreadable, or about the
-          wrong URL.
+          . Other paid files: refund within 14 days if the file is missing,
+          unreadable, or about the wrong URL. The Fix Pack: full refund
+          within 14 days if it is not useful.
         </p>
-        <p className="mt-3 text-sm leading-6 text-ink-soft">
-          Sold by CiteScore Team.{" "}
-          <Link href="/terms" className="text-forest underline">
-            Terms
-          </Link>{" "}
-          and{" "}
-          <Link href="/privacy" className="text-forest underline">
-            Privacy
-          </Link>
-          .
-        </p>
+        <div className="mt-3">
+          <TrustLinks />
+        </div>
       </main>
       <SiteFooter />
     </>

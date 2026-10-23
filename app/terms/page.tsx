@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = pageMeta({
   title: "Terms of Service",
   description:
-    "Terms for CiteScore digital audits and downloads sold by CiteScore Team through Stripe and Polar.",
+    "Terms for CiteScore digital audits, the Fix Pack, and downloads sold by CiteScore.",
   path: "/terms",
 });
 
@@ -28,13 +28,13 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="mt-4 text-sm text-ink-soft">
-          Effective 14 October 2026. Sold by CiteScore Team.
+          Effective 23 October 2026. Sold by CiteScore.
         </p>
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
           <p>
-            These terms cover the digital products CiteScore Team sells on
-            this site. Paying, or asking us to produce a file, means you
-            accept them. Questions and refund requests go to{" "}
+            These terms cover the digital products CiteScore sells on this
+            site. Paying, or asking us to produce a file, means you accept
+            them. Questions and refund requests go to{" "}
             <a
               href="mailto:citescore@mail.grokbot.com"
               className="text-forest underline"
@@ -50,9 +50,11 @@ export default function TermsPage() {
 
           <h2 className="font-serif text-2xl text-ink">Who sells</h2>
           <p>
-            The seller is CiteScore Team. Stripe and Polar process the card
-            payment. CiteScore Team does not see full card numbers. Stripe
-            handles the {site.priceLabel} audit. Polar handles the{" "}
+            The seller is CiteScore. Stripe and Polar process card payments
+            for the products that use them. CiteScore does not see full card
+            numbers. There is no card checkout for the Fix Pack until a
+            payment link is published. Stripe handles the {site.priceLabel}{" "}
+            audit. Polar handles the{" "}
             {templatePackLabel}, the {agencyKitLabel}, the{" "}
             {doneForYouAuditLabel}, and the {whiteLabelAuditLabel}.
           </p>
@@ -84,6 +86,14 @@ export default function TermsPage() {
               <strong className="text-ink">{templatePackLabel}.</strong> A
               separate digital download. Paid through Polar.
             </li>
+            <li>
+              <strong className="text-ink">AI Visibility Fix Pack.</strong>{" "}
+              One business. A Google Business Profile gap list, a review-gap
+              plan and script, the directories an AI answer cited, paste-ready
+              LocalBusiness and Service JSON-LD with install steps, and a
+              re-check 14 days later. Introductory price $49, list price $97.
+              Until a payment link is published, you request it by email.
+            </li>
           </ul>
           <p>
             Weekly rescans are not for sale. The free check is not a purchase
@@ -105,6 +115,11 @@ export default function TermsPage() {
             The {agencyKitLabel} and the {templatePackLabel} are digital
             downloads delivered when Polar confirms payment.
           </p>
+          <p>
+            The Fix Pack is delivered by email after you request it and, once
+            a payment link exists, after payment. The free AI Answer Snapshot
+            is not a purchase.
+          </p>
 
           <h2 className="font-serif text-2xl text-ink">Refunds</h2>
           <p>
@@ -118,7 +133,12 @@ export default function TermsPage() {
             within 14 days of payment if the file is missing, unreadable, or
             an audit is about the wrong URL. We refund that purchase. We do
             not refund because you dislike the score, disagree with a fix, or
-            choose not to use the file.
+            choose not to use the file. The Fix Pack is different: full
+            refund within 14 days of delivery if it is not useful. The{" "}
+            <Link href="/refunds" className="text-forest underline">
+              refunds
+            </Link>{" "}
+            page states both rules.
           </p>
 
           <h2 className="font-serif text-2xl text-ink">Acceptable use</h2>
@@ -132,7 +152,7 @@ export default function TermsPage() {
             A report describes public pages and on-page signals. It is not a
             live query of ChatGPT, Perplexity, Gemini, Copilot, or Google. Do
             not tell a client that it is. You may give the unbranded $149 PDF
-            to your own client. Do not present CiteScore Team as your staff,
+            to your own client. Do not present CiteScore as your staff,
             and do not resell the kit or the template pack as a competing
             product.
           </p>
@@ -143,7 +163,7 @@ export default function TermsPage() {
             not legal, financial, or ranking advice, and they are not a
             promise of citations, traffic, or revenue. Stripe and Polar are
             responsible for their own checkout. To the extent the law allows,
-            CiteScore Team’s liability for a purchase is limited to the amount
+            CiteScore’s liability for a purchase is limited to the amount
             you paid for that purchase.
           </p>
 

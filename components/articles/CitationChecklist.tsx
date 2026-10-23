@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 
 const items = [
   {
@@ -39,15 +40,14 @@ const items = [
     ),
   },
   {
-    title: "Add llms.txt if you have a canonical explainer",
+    title: "llms.txt is optional",
     body: (
       <>
-        llms.txt is a small Markdown map of the pages you want a model to
-        read. It is not magic. CiteScore only checks that{" "}
-        <code>/llms.txt</code> returned a non-empty body, and counts that as
-        a positive crawler-access signal. The{" "}
-        <Link href="/llms-txt">llms.txt page</Link> is the exact check,
-        including what a missing file does to the score.
+        llms.txt is a Markdown reading list. It is <LlmsTxtCaveat />. CiteScore
+        may note whether <code>/llms.txt</code> returned a non-empty body. A
+        missing file is not a failed citation check and does not change the
+        score. The <Link href="/llms-txt">llms.txt page</Link> is the exact
+        check.
       </>
     ),
   },

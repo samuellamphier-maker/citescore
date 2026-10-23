@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 
 export function GeoVsSeoArticle() {
   return (
@@ -196,9 +197,8 @@ export function GeoVsSeoArticle() {
       </p>
       <p>
         <code>llms.txt</code> is the other file people add when they hear
-        “AI search.” It is a curated reading list. It is not a ranking
-        factor we have ever seen an engine publish, and a missing file does
-        not zero a CiteScore audit. Ten live SaaS files, and the specific
+        “AI search.” It is a curated reading list. It is <LlmsTxtCaveat />.
+        A missing file does not change the CiteScore. Ten live SaaS files, and the specific
         choice each one gets right, are on the{" "}
         <Link href="/llms-txt-examples">llms.txt examples</Link> page. The
         files were fetched. The citations were not inferred from them.

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
 import { JsonLd } from "@/components/JsonLd";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
@@ -63,7 +64,13 @@ const clientSteps = [
   {
     n: "03",
     title: "Walk the rows",
-    body: "A disallow on GPTBot, PerplexityBot, or Google-Extended is a line in robots.txt you can open together. A missing llms.txt, sitemap, or JSON-LD block is the same kind of fact.",
+    body: (
+      <>
+        A disallow on GPTBot, PerplexityBot, or Google-Extended is a line in
+        robots.txt you can open together. A missing sitemap or JSON-LD block
+        is the same kind of fact. llms.txt is <LlmsTxtCaveat />.
+      </>
+    ),
   },
   {
     n: "04",
@@ -331,7 +338,24 @@ export default function ForAgenciesPage() {
                 Typical turnaround after payment is a few minutes. Refund
                 within 14 days if the file is missing, unreadable, or about
                 the wrong URL. Weekly rescans at {site.subscriptionPriceLabel}{" "}
-                are on the roadmap. They are not for sale on this page.
+                are on the roadmap. They are not for sale on this page. The
+                Fix Pack refund is separate: full refund within 14 days if it
+                is not useful.
+              </p>
+              <p className="mt-4 text-sm leading-6 text-ink-soft">
+                Sold by CiteScore.{" "}
+                <Link href="/terms" className="text-forest underline">
+                  Terms
+                </Link>
+                {" · "}
+                <Link href="/privacy" className="text-forest underline">
+                  Privacy
+                </Link>
+                {" · "}
+                <Link href="/refunds" className="text-forest underline">
+                  Refunds
+                </Link>
+                .
               </p>
               <p className="mt-4 text-sm leading-6 text-ink-soft">
                 Show the format first on the{" "}

@@ -9,9 +9,8 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-3 max-w-sm text-sm leading-6 text-ink-soft">
-            A one-time GEO audit for indie SaaS founders and small SEO
-            agencies. Built to get you cited — not to sell you another
-            dashboard.
+            A free AI Answer Snapshot for local service businesses, and a
+            $49 Fix Pack when you want the gaps fixed. Sold by CiteScore.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-soft">
@@ -64,6 +63,12 @@ export function SiteFooter() {
           <Link href="/alternatives/peec-ai" className="hover:text-ink">
             vs Peec AI
           </Link>
+          <Link href="/fix-pack" className="hover:text-ink">
+            Fix Pack
+          </Link>
+          <Link href="/free-check" className="hover:text-ink">
+            Free signal check
+          </Link>
           <Link href="/#pricing" className="hover:text-ink">
             Pricing
           </Link>
@@ -75,6 +80,9 @@ export function SiteFooter() {
           </Link>
           <Link href="/terms" className="hover:text-ink">
             Terms
+          </Link>
+          <Link href="/refunds" className="hover:text-ink">
+            Refunds
           </Link>
           <Link href="/checkout" className="hover:text-ink">
             Checkout

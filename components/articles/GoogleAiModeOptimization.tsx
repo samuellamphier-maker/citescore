@@ -13,6 +13,8 @@ const genAiReport =
   "https://support.google.com/webmasters/answer/16984139?hl=en";
 const googleExtended =
   "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers";
+const llmsTxtGoogle =
+  "https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264";
 
 export function GoogleAiModeOptimizationArticle() {
   return (
@@ -182,9 +184,11 @@ export function GoogleAiModeOptimizationArticle() {
             <tr>
               <th scope="row">llms.txt, chunking, a special schema type</th>
               <td>
-                Not required. Google says an <code>llms.txt</code> file
-                neither helps nor harms Google Search, and that there is no
-                special markup and no need to break a page into tiny pieces.
+                Not required. llms.txt is optional; Google says it ignores{" "}
+                <a href={llmsTxtGoogle}>llms.txt</a>. Google also says the
+                file neither helps nor harms Google Search, and that there is
+                no special markup and no need to break a page into tiny
+                pieces.
                 Structured data still has to match the visible text if you
                 use it. There is no AI Mode type to add.
               </td>

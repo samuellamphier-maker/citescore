@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { ScoreRing } from "@/components/ScoreRing";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
+import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
+import { TrustLinks } from "@/components/TrustLinks";
 import { topicPages } from "@/lib/content/topics";
 import { sampleReport } from "@/lib/sample-report";
-import { site } from "@/lib/site";
+import {
+  fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
+  site,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -16,18 +24,18 @@ export const metadata: Metadata = {
 const steps = [
   {
     n: "01",
-    title: "Check for free",
-    body: "We read public crawler access and citation-readiness signals — robots.txt, llms.txt, sitemap, schema, and the homepage. No signup. We do not query ChatGPT or Perplexity.",
+    title: "Request a free snapshot",
+    body: "Send the business name, city, service, and email. We ask logged-out ChatGPT and Perplexity who they name for that trade and city. No payment.",
   },
   {
     n: "02",
-    title: "See what's missing",
-    body: "The free check lists the basics that are in place and the issues that are not. A passing row means the signal is present. It is not a live answer from an AI search product.",
+    title: "See who was named",
+    body: "The one-page snapshot lists who is named, which sources are cited, and how your Google rating and review count compare. AI answers vary run to run. This is a snapshot, not a ranking.",
   },
   {
     n: "03",
-    title: "Get the $39 action plan",
-    body: "One URL, one PDF: a 0–100 CiteScore and about ten prioritized, page-specific fixes, estimated from those signals and the public HTML we fetched.",
+    title: `Fix Pack, ${fixPackIntroPriceLabel}`,
+    body: `Introductory price, ${fixPackListPriceLabel} list. A Google Business Profile gap list, a review-gap plan and script, the directories AI cited, paste-ready LocalBusiness and Service JSON-LD with install steps, and a re-check 14 days later.`,
   },
 ];
 
@@ -50,7 +58,7 @@ const faqs = [
   },
   {
     q: "Who is CiteScore for?",
-    a: "Indie SaaS founders who cannot staff a GEO practice, and small SEO agencies that need a client-ready artifact without building an AI-visibility practice from scratch. If you already have an in-house content ops team, you may not need this.",
+    a: "Local service businesses that want to know who ChatGPT names for their trade and city, and the small agencies that serve them. The older $39 signal audit is still available for a founder who wants a score of public files.",
   },
   {
     q: "What do I actually get for $39?",
@@ -58,7 +66,7 @@ const faqs = [
   },
   {
     q: "What’s your refund policy?",
-    a: "If the report is missing, unreadable, or clearly about the wrong URL, email us within 14 days and we refund the $39. We do not refund because you dislike the score or choose not to implement the fixes.",
+    a: "Full refund within 14 days if the Fix Pack is not useful. For the $39 audit, we refund within 14 days if the file is missing, unreadable, or about the wrong URL. The refunds page has both rules.",
   },
   {
     q: "You mention an LLM — what happens to my URL?",
@@ -66,7 +74,7 @@ const faqs = [
   },
   {
     q: "Do you actually query ChatGPT?",
-    a: "No. We do not log into ChatGPT, Perplexity, or Google AI Overviews on your behalf. The score and engine snapshot come from on-page GEO signals (definitions, entities, evidence, schema, freshness, crawler access) plus a language-model review of the public HTML we fetched. The report says so.",
+    a: "The free AI Answer Snapshot does. We ask logged-out ChatGPT and Perplexity a local recommendation prompt and record who they name. The free signal check and the $39 audit do not. Those read public files and, for the paid audit, the HTML we fetch. AI answers vary run to run.",
   },
   {
     q: "How long until I get the report?",
@@ -82,71 +90,53 @@ export default function HomePage() {
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:py-20">
             <div>
-              <p className="kicker">Free check · citation-readiness signals</p>
+              <p className="kicker">Free AI Answer Snapshot</p>
               <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] tracking-tight text-ink sm:text-5xl sm:leading-[1.1]">
-                Is your website ready to be cited by AI search?
+                When customers ask ChatGPT for a plumber (or your trade) in
+                your city, who does it name?
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-8 text-ink-soft">
-                Check your crawler access and AI citation-readiness signals
-                for free. See what&apos;s missing, then get a prioritized,
-                page-specific action plan for {site.priceLabel}.
+                Get a one-page snapshot of who is named, which sources are
+                cited, and how your Google reviews compare. Then the Fix
+                Pack, if you want the gaps closed.
               </p>
               <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/free-check"
+                  href="/#snapshot"
                   className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
                 >
-                  Check for free
+                  Get a free AI Answer Snapshot
                 </Link>
                 <Link
-                  href="/#audit"
+                  href="/fix-pack"
                   className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink"
                 >
-                  Get the {site.priceLabel} audit
+                  Fix Pack, {fixPackIntroPriceLabel}
                 </Link>
               </div>
               <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
-                The free check reads public files on your site. CiteScore does
-                not query live ChatGPT, Perplexity, or Google AI Overviews.
-              </p>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
-                <Link
-                  href="/done-for-you-audit"
-                  className="font-medium text-forest underline underline-offset-4 hover:underline"
-                >
-                  Done-For-You AI Search Audit ($99)
-                </Link>
-                . A written walkthrough, delivered within 3 business days.
+                AI answers vary run to run. This is a snapshot, not a ranking.
+                The{" "}
+                <Link href="/free-check" className="text-forest underline">
+                  free signal check
+                </Link>{" "}
+                is still available. It reads public files and does not ask
+                ChatGPT who it names.
               </p>
             </div>
 
             <aside className="report-sheet rounded-2xl border border-rule p-6">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="kicker text-copper">Sample · not a real customer</p>
-                  <p className="mt-2 font-serif text-2xl leading-tight">
-                    {sampleReport.product}
-                  </p>
-                  <p className="mt-1 text-sm text-ink-soft">
-                    {sampleReport.oneLiner}
-                  </p>
-                </div>
-                <ScoreRing score={sampleReport.overall} size={112} />
+              <p className="kicker text-copper">Free · no checkout</p>
+              <h2 className="mt-2 font-serif text-2xl leading-tight">
+                Request the snapshot
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-ink-soft">
+                Business name, city, service, and email. We reply with the
+                one-page snapshot.
+              </p>
+              <div className="mt-5">
+                <SnapshotRequestForm />
               </div>
-              <dl className="mt-6 space-y-3 border-t border-rule pt-5 text-sm">
-                {sampleReport.engines.map((engine) => (
-                  <div key={engine.engine} className="flex justify-between gap-4">
-                    <dt className="text-ink-soft">{engine.engine}</dt>
-                    <dd className="text-right font-medium">{engine.status}</dd>
-                  </div>
-                ))}
-              </dl>
-              <Link
-                href="/sample"
-                className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
-              >
-                Read the full sample report
-              </Link>
             </aside>
           </div>
         </section>
@@ -155,7 +145,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl px-5 py-14">
             <p className="kicker">How it works</p>
             <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-              Free check first. Then a page-specific plan.
+              Free snapshot first. Then the Fix Pack.
             </h2>
             <ol className="mt-10 grid gap-0 border-t border-rule sm:grid-cols-3">
               {steps.map((step) => (
@@ -179,13 +169,14 @@ export default function HomePage() {
             <div>
               <p className="kicker">What you get</p>
               <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-                A report you can hand to a founder without translating it.
+                A one-page snapshot, then the fixes a local business can use.
               </h2>
               <p className="mt-4 text-ink-soft leading-7">
-                Agencies use it as the first artifact in a GEO engagement.
-                Founders use it as a Monday punch list. Either way, it scores
-                citation-readiness signals — not a chatbot transcript, and not
-                a live ChatGPT or Perplexity result.
+                The snapshot records a real answer from that day. The Fix
+                Pack is the Google Business Profile, reviews, directories,
+                and LocalBusiness markup that match what those answers cite.
+                The {site.priceLabel} signal audit is still on this page,
+                further down. It does not ask ChatGPT who it names.
               </p>
             </div>
             <ul className="space-y-3">
@@ -256,21 +247,35 @@ export default function HomePage() {
             <div>
               <p className="kicker">Pricing</p>
               <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-                {site.priceLabel} once. Keep the PDF.
+                Fix Pack, {fixPackIntroPriceLabel}. List {fixPackListPriceLabel}.
               </h2>
               <p className="mt-4 max-w-xl text-ink-soft leading-7">
-                One URL, one audit, one report. No trial that becomes a card
-                on file. Weekly rescans at {site.subscriptionPriceLabel} are
-                on the roadmap for teams who want to watch the score move —
-                they are not required, and they are not for sale on this page.
+                One business, one city, one service. The snapshot is free.
+                The Fix Pack is the gap list, the review script, the cited
+                directories, the JSON-LD, and the 14-day re-check. Full
+                refund within 14 days if it is not useful.
               </p>
               <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-                <li>— Refund if we send the wrong URL or a broken file</li>
-                <li>— Built for one founder or one client engagement</li>
-                <li>— Payment link checkout (Stripe or Lemon Squeezy)</li>
+                <li>— Introductory {fixPackIntroPriceLabel}, list {fixPackListPriceLabel}</li>
+                <li>— No $49 checkout product yet: the button emails {site.name}</li>
+                <li>— The {site.priceLabel} signal audit remains available below</li>
               </ul>
-              <div id="audit" className="mt-8 max-w-xl">
-                <AuditForm id="pricing-audit" />
+              <div className="mt-6">
+                <TrustLinks />
+              </div>
+              <div id="audit" className="mt-8 max-w-xl rounded-2xl border border-rule bg-cream p-5">
+                <p className="kicker">Still available</p>
+                <h3 className="mt-2 font-serif text-2xl">
+                  {site.priceLabel} signal audit
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">
+                  One URL, one PDF, about ten fixes from public files. It
+                  does not ask ChatGPT who it names. Weekly rescans at{" "}
+                  {site.subscriptionPriceLabel} are not for sale.
+                </p>
+                <div className="mt-4">
+                  <AuditForm id="pricing-audit" />
+                </div>
                 <p className="mt-3 text-sm">
                   <a
                     href="/sample-audit.pdf"
@@ -282,22 +287,26 @@ export default function HomePage() {
               </div>
             </div>
             <div className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
-              <p className="kicker text-[#d7c7b0]">One-time audit</p>
+              <p className="kicker text-[#d7c7b0]">Introductory</p>
               <p className="mt-3 font-serif text-6xl tracking-tight">
-                {site.priceLabel}
+                {fixPackIntroPriceLabel}
               </p>
               <p className="mt-2 text-sm text-[#d7c7b0]">
-                PDF report · ~10 fixes · no account
+                <span className="line-through">{fixPackListPriceLabel}</span>{" "}
+                list · one business · 14-day re-check
               </p>
-              <Link
-                href="/#audit"
-                className="mt-6 flex h-12 items-center justify-center rounded-lg bg-cream text-ink hover:bg-paper"
-              >
-                Paste a URL to start
-              </Link>
+              <div className="mt-6">
+                <FixPackBuyLink className="flex h-12 items-center justify-center rounded-lg bg-cream text-ink hover:bg-paper" />
+              </div>
               <p className="mt-4 text-xs leading-5 text-[#d7c7b0]">
-                Coming later: {site.subscriptionPriceLabel} weekly rescans.
-                Mentioned so you know the roadmap — not so we upsell you today.
+                <Link href="/fix-pack" className="underline">
+                  See the Fix Pack
+                </Link>
+                , including the fictional sample snapshot.{" "}
+                <Link href="/refunds" className="underline">
+                  Refunds
+                </Link>
+                .
               </p>
             </div>
           </div>
@@ -323,21 +332,20 @@ export default function HomePage() {
               Editorial pages for founders searching GEO, ChatGPT citations,
               and Otterly-class alternatives. No invented testimonials.
             </p>
-            <Link
-              href="/checklist"
-              className="mt-8 block rounded-2xl border border-rule bg-cream p-5 hover:border-forest"
-            >
+            <div className="mt-8 rounded-2xl border border-rule bg-cream p-5">
               <p className="kicker">Free on this page</p>
               <h3 className="mt-3 font-serif text-2xl tracking-tight">
-                AI Citation Readiness Checklist
+                <Link href="/checklist" className="hover:text-forest">
+                  AI Citation Readiness Checklist
+                </Link>
               </h3>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-ink-soft">
-                40 checks across crawler access, llms.txt, structured data,
-                answer-ready content, evidence, and entity clarity. The full
-                list is on the page. No email. The {site.priceLabel} audit
-                scores one URL.
+                40 checks across crawler access, structured data,
+                answer-ready content, evidence, and entity clarity. llms.txt
+                is <LlmsTxtCaveat />. The full list is on the page. No email.
+                The {site.priceLabel} audit scores one URL.
               </p>
-            </Link>
+            </div>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
               <li className="rounded-2xl border border-rule bg-cream p-5">
                 <p className="kicker">Explainer</p>
@@ -464,6 +472,11 @@ export default function HomePage() {
                     {item.q.includes("LLM") ? (
                       <Link href="/privacy" className="text-forest underline">
                         Privacy
+                      </Link>
+                    ) : null}
+                    {item.q.includes("refund") ? (
+                      <Link href="/refunds" className="text-forest underline">
+                        Refunds
                       </Link>
                     ) : null}
                     {item.q.includes("actually query") ? (

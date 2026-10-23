@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { AuditCta } from "@/components/AuditCta";
 import { CitationReadinessChecklist } from "@/components/CitationReadinessChecklist";
 import { JsonLd } from "@/components/JsonLd";
@@ -11,7 +12,7 @@ import { publicOrigin, site } from "@/lib/site";
 const path = "/checklist";
 const title = "AI Citation Readiness Checklist";
 const description =
-  "Forty concrete checks for crawler access, llms.txt, structured data, answer-ready copy, evidence, and entity clarity. The full list is free on the page. The $39 audit scores one URL.";
+  "Forty concrete checks for crawler access, structured data, answer-ready copy, evidence, and entity clarity. llms.txt is optional; Google says it ignores llms.txt. The full list is free on the page. The $39 audit scores one URL.";
 
 export const metadata = pageMeta({
   title,
@@ -63,10 +64,10 @@ export default function ChecklistPage() {
           <p>
             The <Link href="/free-check">free check</Link> tests the public
             signals a crawler can see in seconds: homepage HTML, robots.txt
-            for GPTBot, PerplexityBot, and Google-Extended, a non-empty{" "}
-            <code>llms.txt</code>, a sitemap, and JSON-LD types.             It does not
-            query ChatGPT, Perplexity, or Google AI Overviews. Where a check
-            is outside that tool, the item says so.
+            for GPTBot, PerplexityBot, and Google-Extended, a sitemap, and
+            JSON-LD types. llms.txt is <LlmsTxtCaveat />. It does not query
+            ChatGPT, Perplexity, or Google AI Overviews. Where a check is
+            outside that tool, the item says so.
           </p>
           <p>
             The <Link href="/geo-audit">{site.priceLabel} audit</Link> scores

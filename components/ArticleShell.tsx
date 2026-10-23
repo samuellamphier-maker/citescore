@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { AuditCta } from "@/components/AuditCta";
+import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
+import { industrySnapshotLabel } from "@/lib/industry-snapshot";
 import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
 type Related = {
@@ -42,6 +44,7 @@ export function ArticleShell({
   guidePath,
   showAuditCta = true,
 }: Props) {
+  const industry = guidePath ? industrySnapshotLabel(guidePath) : null;
   return (
     <>
       <SiteHeader />
@@ -55,6 +58,11 @@ export function ArticleShell({
             {author ? ` · ${author}` : null}
             {minutes ? ` · ${minutes} min read` : null}
           </p>
+        ) : null}
+        {industry ? (
+          <div className="mt-8">
+            <IndustrySnapshotCta industry={industry} />
+          </div>
         ) : null}
         <div className="article-prose mt-10">{children}</div>
         {showAuditCta ? (

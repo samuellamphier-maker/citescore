@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { CheckLinks, preClass } from "@/components/articles/guide-links";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
+import { LLMS_TXT_GOOGLE_URL } from "@/lib/llms-txt-note";
 
 const spec = "https://llmstxt.org/";
 const changes = "https://llmstxt.org/changes.html";
@@ -31,8 +33,8 @@ export function LlmsTxtBestPracticesArticle() {
         site is and which links to open. Google’s{" "}
         <a href={aiGuide}>AI optimization guide</a> says a special Markdown
         file neither helps nor harms visibility in Google Search. OpenAI and
-        Perplexity do not list the file as a crawler control. CiteScore does
-        not log into an answer engine.
+        Perplexity do not list the file as a crawler control.         CiteScore does
+        not log into an answer engine. llms.txt is <LlmsTxtCaveat />.
       </p>
       <p>
         Ten live files, and the one choice each gets right, are on{" "}
@@ -184,6 +186,11 @@ export function LlmsTxtBestPracticesArticle() {
           </a>
           . Google’s statement that a special Markdown file is not required
           for Search.
+        </li>
+        <li>
+          <a href={LLMS_TXT_GOOGLE_URL}>Search Engine Land</a>. Google says
+          it ignores llms.txt: the file will not harm or help Search
+          rankings.
         </li>
       </ul>
     </>
