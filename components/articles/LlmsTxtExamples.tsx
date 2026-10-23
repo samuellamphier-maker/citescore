@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 
 const fetchedOn = "13 October 2026";
 
@@ -11,7 +12,8 @@ export function LlmsTxtExamplesArticle() {
         blockquote if there was one, and how the links are organized. A
         company can edit or remove the file tomorrow. Nothing here claims
         that publishing the file caused a citation. No answer engine has
-        published <code>llms.txt</code> as a ranking requirement.
+        published <code>llms.txt</code> as a ranking requirement. llms.txt is{" "}
+        <LlmsTxtCaveat />.
       </p>
       <p>
         The proposal at llmstxt.org asks for a Markdown file, usually at{" "}
@@ -417,9 +419,9 @@ export function LlmsTxtExamplesArticle() {
         Overviews, and it does not grade the writing inside the file.
       </p>
       <p>
-        The <Link href="/geo-audit">$39 audit</Link> scores one public URL. A
-        found <code>llms.txt</code> is a positive mark on the crawler
-        dimension only. The page the file points at still has to answer the
+        The <Link href="/geo-audit">$39 audit</Link> scores one public URL.
+        A found <code>llms.txt</code> is noted and then ignored by the score.
+        llms.txt is <LlmsTxtCaveat />. The page still has to answer the
         question. The{" "}
         <Link href="/checklist">AI Citation Readiness Checklist</Link> is the
         unpaid list of those checks, including the six that apply to the file

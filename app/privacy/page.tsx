@@ -3,11 +3,12 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
+import { contactEmail, sellerName } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Privacy",
   description:
-    "How CiteScore handles URLs, emails, and language-model processing.",
+    `How ${sellerName} handles URLs, snapshot requests, and language-model processing. Contact ${contactEmail}.`,
   path: "/privacy",
 });
 
@@ -20,6 +21,13 @@ export default function PrivacyPage() {
         <h1 className="mt-3 font-serif text-4xl tracking-tight">
           What we collect, and what an LLM may see.
         </h1>
+        <p className="mt-4 text-sm text-ink-soft">
+          Sold by {sellerName}. Questions:{" "}
+          <a href={`mailto:${contactEmail}`} className="text-forest underline">
+            {contactEmail}
+          </a>
+          .
+        </p>
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
           <p>
             CiteScore is a one-time audit product. We collect the minimum
@@ -49,6 +57,12 @@ export default function PrivacyPage() {
             a JSON file (or <code className="font-mono text-xs">/tmp</code> on
             Vercel). Waitlist rows use the same file-store pattern.
           </p>
+          <p>
+            The free AI Answer Snapshot form does not post to a server. It
+            opens your email app with a message to {contactEmail}. We receive
+            the business name, city, service, and email only if you send that
+            message.
+          </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>
           <p>
             Card data is handled by Stripe or Lemon Squeezy via a payment
@@ -56,12 +70,19 @@ export default function PrivacyPage() {
           </p>
           <h2 className="font-serif text-2xl text-ink">Contact</h2>
           <p>
-            Questions about a stored URL or a refund: start from the{" "}
-            <Link href="/#faq" className="text-forest underline">
-              FAQ
+            Questions about a stored URL or a refund: email{" "}
+            <a href={`mailto:${contactEmail}`} className="text-forest underline">
+              {contactEmail}
+            </a>
+            . The{" "}
+            <Link href="/refunds" className="text-forest underline">
+              refunds
             </Link>{" "}
-            and reply to the receipt or waitlist confirmation once email is
-            wired.
+            page and the{" "}
+            <Link href="/terms" className="text-forest underline">
+              terms
+            </Link>{" "}
+            page say what a refund covers.
           </p>
         </div>
       </main>

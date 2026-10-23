@@ -65,12 +65,12 @@ export const citationCheckGroups: CitationCheckGroup[] = [
     id: "llms-txt",
     title: "llms.txt",
     intro:
-      "llms.txt is a community proposal for a Markdown reading list, usually at /llms.txt. It is not an OpenAI standard, a Google ranking factor, or a Perplexity requirement.",
+      "llms.txt is a community proposal for a Markdown reading list, usually at /llms.txt. It is optional; Google says it ignores llms.txt (https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264). It is not an OpenAI standard or a Perplexity requirement.",
     items: [
       {
         id: "llms-nonempty",
         title: "/llms.txt returns a non-empty text body",
-        body: "Fetch /llms.txt. Found means a successful response and a body that is not empty and not an HTML document. That is the entire CiteScore check. A one-line placeholder counts as found. A missing file lowers the crawler dimension only. It does not zero the audit.",
+        body: "Fetch /llms.txt. Found means a successful response and a body that is not empty and not an HTML document. That is the entire CiteScore check. A one-line placeholder counts as found. A missing file does not lower the score. llms.txt is optional; Google says it ignores llms.txt.",
       },
       {
         id: "llms-h1",

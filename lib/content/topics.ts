@@ -246,7 +246,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-b2b-saas",
     title: "AI search visibility for B2B SaaS",
     description:
-      "How a B2B SaaS site can be fetched and quoted by ChatGPT, Perplexity, Google AI Overviews, and Claude: comparison pages, docs and pricing in HTML, llms.txt, schema, crawler access, and third-party mentions. No citation rate.",
+      "How a B2B SaaS site can be fetched and quoted by ChatGPT, Perplexity, Google AI Overviews, and Claude: comparison pages, docs and pricing in HTML, schema, crawler access, and third-party mentions. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Comparison pages, public docs, crawler access, and the mentions you do not control.",
     navLabel: "AI search visibility for B2B SaaS",
@@ -306,9 +306,9 @@ export const topicPages: TopicPage[] = [
     path: "/free-check",
     title: "Free AI citation-readiness check",
     description:
-      "Free, no-signup check of crawler access and citation-readiness signals: robots.txt, llms.txt, sitemap, JSON-LD, and the homepage. We do not query live ChatGPT or Perplexity.",
+      "Free, no-signup check of public files: robots.txt, sitemap, JSON-LD, and the homepage. llms.txt is optional; Google says it ignores llms.txt. We do not query live ChatGPT or Perplexity.",
     kicker: "Free tool",
-    card: "Instant signal check of llms.txt, robots.txt, sitemap, and schema. Not a live ChatGPT query.",
+    card: "Instant check of robots.txt, sitemap, and schema. llms.txt is optional; Google says it ignores llms.txt.",
     priority: 1.0,
     publishedAt: "2026-10-09",
     minutes: 4,
@@ -317,7 +317,7 @@ export const topicPages: TopicPage[] = [
     path: "/how-to-check-if-chatgpt-mentions-your-brand",
     title: "How to check if ChatGPT mentions your brand",
     description:
-      "A practical way to see whether ChatGPT and other assistants name or link your brand: the same prompts, a log over time, robots.txt, llms.txt, structured data, and pages you do not control.",
+      "A practical way to see whether ChatGPT and other assistants name or link your brand: the same prompts, a log over time, robots.txt, structured data, and pages you do not control. llms.txt is optional; Google says it ignores llms.txt.",
     kicker: "Guide",
     card: "The prompts to repeat, the log to keep, and the public files that are not a mention.",
     navLabel: "How to check if ChatGPT mentions your brand",
@@ -601,7 +601,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-law-firms",
     title: "AI search visibility for law firms",
     description:
-      "How a law firm site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: LegalService markup, practice-area pages, local signals, robots.txt, and llms.txt. No citation rate.",
+      "How a law firm site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: LegalService markup, practice-area pages, local signals, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Practice-area pages, LegalService markup, local signals, and the crawler files a firm actually controls.",
     navLabel: "AI search visibility for law firms",
@@ -625,7 +625,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-healthcare",
     title: "AI search visibility for healthcare",
     description:
-      "How a clinic, practice, or health-tech site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: E-E-A-T, MedicalOrganization and Physician markup, reviewed-by credits, local signals, robots.txt, and llms.txt. No medical advice and no citation rate.",
+      "How a clinic, practice, or health-tech site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: E-E-A-T, MedicalOrganization and Physician markup, reviewed-by credits, local signals, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No medical advice and no citation rate.",
     kicker: "Guide",
     card: "Reviewed-by credits, MedicalOrganization markup, local signals, and the crawler files a clinic or health-tech site controls.",
     navLabel: "AI search visibility for healthcare",
@@ -649,7 +649,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-real-estate",
     title: "AI search visibility for real estate",
     description:
-      "How a brokerage, agent, or property manager site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: RealEstateAgent markup, listing pages, local signals, reviews, robots.txt, and llms.txt. No citation rate.",
+      "How a brokerage, agent, or property manager site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: RealEstateAgent markup, listing pages, local signals, reviews, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Office pages, listing URLs, RealEstateAgent markup, and the crawler files a brokerage controls.",
     navLabel: "AI search visibility for real estate",
@@ -673,7 +673,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-restaurants",
     title: "AI search visibility for restaurants",
     description:
-      "How a restaurant site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Restaurant markup, a menu URL, hours, reviews, robots.txt, and llms.txt. No citation rate.",
+      "How a restaurant site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Restaurant markup, a menu URL, hours, reviews, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Location pages, a menu URL, Restaurant markup, hours, and the crawler files a restaurant controls.",
     navLabel: "AI search visibility for restaurants",
@@ -697,7 +697,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-accountants",
     title: "AI search visibility for accountants",
     description:
-      "How an accounting, CPA, or bookkeeping firm site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: AccountingService markup, service pages, local signals, robots.txt, and llms.txt. No citation rate.",
+      "How an accounting, CPA, or bookkeeping firm site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: AccountingService markup, service pages, local signals, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Office pages, service URLs, AccountingService markup, and the crawler files a firm controls.",
     navLabel: "AI search visibility for accountants",
@@ -721,7 +721,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-dentists",
     title: "AI search visibility for dentists",
     description:
-      "How a dental practice site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Dentist markup, service pages, Google Business Profile, reviews, robots.txt, and llms.txt. No citation rate.",
+      "How a dental practice site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Dentist markup, service pages, Google Business Profile, reviews, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Office pages, service URLs, Dentist markup, and the crawler files a practice controls.",
     navLabel: "AI search visibility for dentists",
@@ -745,7 +745,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-plumbers",
     title: "AI search visibility for plumbers",
     description:
-      "How a plumbing business site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Plumber markup, service-area pages, reviews, NAP consistency, FAQ content, robots.txt, and llms.txt. No citation rate.",
+      "How a plumbing business site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Plumber markup, service-area pages, reviews, NAP consistency, FAQ content, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Business pages, service-area URLs, Plumber markup, and the crawler files a plumbing business controls.",
     navLabel: "AI search visibility for plumbers",
@@ -769,7 +769,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-hvac",
     title: "AI search visibility for HVAC",
     description:
-      "How an HVAC company site can be fetched and quoted by ChatGPT, Perplexity, Gemini, and Google AI Overviews: HVACBusiness markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+      "How an HVAC company site can be fetched and quoted by ChatGPT, Perplexity, Gemini, and Google AI Overviews: HVACBusiness markup, service-area pages, reviews, FAQs, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Business pages, service-area URLs, HVACBusiness markup, and the crawler files an HVAC company controls.",
     navLabel: "AI search visibility for HVAC",
@@ -793,7 +793,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-roofers",
     title: "AI search visibility for roofers",
     description:
-      "How a roofing contractor site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: RoofingContractor markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+      "How a roofing contractor site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: RoofingContractor markup, service-area pages, reviews, FAQs, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Business pages, service-area URLs, RoofingContractor markup, and the crawler files a roofing contractor controls.",
     navLabel: "AI search visibility for roofers",
@@ -817,7 +817,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-electricians",
     title: "AI search visibility for electricians",
     description:
-      "How an electrical contractor site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Electrician markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+      "How an electrical contractor site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Electrician markup, service-area pages, reviews, FAQs, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Shop pages, service-area URLs, Electrician markup, and the crawler files an electrical contractor controls.",
     navLabel: "AI search visibility for electricians",
@@ -841,7 +841,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-landscapers",
     title: "AI search visibility for landscapers",
     description:
-      "How a landscaping business site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: HomeAndConstructionBusiness markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+      "How a landscaping business site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: HomeAndConstructionBusiness markup, service-area pages, reviews, FAQs, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Office pages, service-area URLs, HomeAndConstructionBusiness markup, and the crawler files a landscaping business controls.",
     navLabel: "AI search visibility for landscapers",
@@ -865,7 +865,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-auto-repair",
     title: "AI search visibility for auto repair",
     description:
-      "How an auto repair shop site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: AutoRepair markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+      "How an auto repair shop site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: AutoRepair markup, service-area pages, reviews, FAQs, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Shop pages, service-area URLs, AutoRepair markup, and the crawler files an auto repair shop controls.",
     navLabel: "AI search visibility for auto repair",
@@ -889,7 +889,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-chiropractors",
     title: "AI search visibility for chiropractors",
     description:
-      "How a chiropractic office site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: MedicalClinic markup, service pages, Google Business Profile, reviews, robots.txt, and llms.txt. No citation rate.",
+      "How a chiropractic office site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: MedicalClinic markup, service pages, Google Business Profile, reviews, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Office pages, service URLs, MedicalClinic markup, and the crawler files a chiropractic office controls.",
     navLabel: "AI search visibility for chiropractors",
@@ -913,7 +913,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-search-visibility-for-insurance-agents",
     title: "AI search visibility for insurance agents",
     description:
-      "How an insurance agency site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: InsuranceAgency markup, service pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+      "How an insurance agency site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: InsuranceAgency markup, service pages, reviews, FAQs, robots.txt. llms.txt is optional; Google says it ignores llms.txt. No citation rate.",
     kicker: "Guide",
     card: "Office pages, coverage URLs, InsuranceAgency markup, and the crawler files an insurance agency controls.",
     navLabel: "AI search visibility for insurance agents",
@@ -949,7 +949,7 @@ export const topicPages: TopicPage[] = [
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
-      "A practical AEO / GEO checklist for small sites: crawler access, answer-first copy, schema, evidence, llms.txt, and how to verify each item for free.",
+      "A practical AEO / GEO checklist for small sites: crawler access, answer-first copy, schema, evidence, and how to verify each item for free. llms.txt is optional; Google says it ignores llms.txt.",
     kicker: "Checklist",
     card: "Twelve checks for answer engine optimization, each with a free way to verify it.",
     priority: 0.8,
@@ -995,7 +995,7 @@ export const topicPages: TopicPage[] = [
     description:
       "What llms.txt is, the exact check CiteScore runs on /llms.txt, and why a missing file does not zero a $39 AI-visibility score.",
     kicker: "llms.txt",
-    card: "A non-empty /llms.txt is a crawler-access signal. It is not a citation guarantee.",
+    card: "llms.txt is optional; Google says it ignores llms.txt. A non-empty file is not a citation.",
     priority: 0.8,
     publishedAt: "2026-10-03",
     minutes: 7,

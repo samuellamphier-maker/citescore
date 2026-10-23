@@ -17,7 +17,8 @@ Honesty rules:
 - Do NOT claim you queried ChatGPT, Perplexity, Google AI Overviews, or any live AI UI.
 - Engine snapshots are inferred likelihoods from on-page signals. Status must be one of: Cited, Mentioned, Absent, Competitor cited.
 - Prefer "Mentioned" or "Absent" unless the HTML itself shows a third-party citation. Never invent "Cited" from marketing copy alone.
-- Fixes must be specific to THIS site (use real paths, product name, missing schema types, robots/llms.txt findings).
+- Fixes must be specific to THIS site (use real paths, product name, missing schema types, robots.txt findings).
+- llms.txt is optional; Google says it ignores llms.txt (https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264). Do not recommend adding it as a citation fix or claim it drives AI citations.
 - Do not invent customer quotes, traffic, or rankings.
 - Keep the editorial, citation-desk tone. No hype.
 

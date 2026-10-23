@@ -49,7 +49,6 @@ export function freeCheckAuditPitch(result: FreeCheckSnapshot): AuditPitch {
       `${joinList(blockedBots)} ${blockedBots.length === 1 ? "is" : "are"} blocked`,
     );
   }
-  if (!result.llmsTxt.found) issues.push("llms.txt is missing");
   if (!result.sitemap.found) issues.push("no sitemap");
   if (result.homepage.reachable && !result.schema.found) issues.push("no JSON-LD");
   if (result.homepage.reachable && !result.homepage.hasMetaDescription) {
@@ -102,7 +101,7 @@ export function freeCheckAuditPitch(result: FreeCheckSnapshot): AuditPitch {
 
   return {
     heading:
-      "Your site allows AI crawlers, and the six citation-readiness basics are in place.",
+      "Your site allows AI crawlers, and the five public-file basics are in place.",
     detail: `The free check still cannot show a live citation. Get a prioritized, page-specific action plan for $39. ${HONESTY}`,
   };
 }

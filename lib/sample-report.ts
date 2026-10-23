@@ -128,7 +128,7 @@ export const sampleReport = {
       name: "AI-crawler access",
       score: 36,
       weight: "Medium",
-      note: "No llms.txt. robots.txt is silent on GPTBot / PerplexityBot / Google-Extended.",
+      note: "llms.txt is optional; Google says it ignores llms.txt (https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264). robots.txt is silent on GPTBot / PerplexityBot / Google-Extended.",
     },
     {
       id: "share",
@@ -191,13 +191,13 @@ export const sampleReport = {
     },
     {
       rank: 6,
-      title: "Add llms.txt and a plain-language /ai page",
+      title: "Publish a plain-language /ai page",
       effort: "Half day",
       impact: "Medium",
-      where: "/llms.txt and /ai",
-      why: "Crawlers that honor machine-readable summaries currently get a JavaScript marketing shell.",
+      where: "/ai",
+      why: "A JavaScript marketing shell gives a reader little to quote. llms.txt is optional; Google says it ignores llms.txt (https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264).",
       doThis:
-        "llms.txt should list canonical URLs for product, method, compare pages, and research. /ai restates positioning without animation or cookie banners.",
+        "Write /ai as positioning in HTML, without animation or cookie banners. Do not add llms.txt in order to be cited.",
     },
     {
       rank: 7,

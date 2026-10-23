@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     google: "MC5jDg5-OJHO_BrY01y1P9p-7FEBLfKLy9U639OOvG4",
   },
   openGraph: {
-    title: `${site.name} — Get cited by AI search`,
+    title: `${site.name} — ${site.tagline}`,
     description: site.description,
     type: "website",
     siteName: site.name,

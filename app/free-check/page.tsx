@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArticleShell } from "@/components/ArticleShell";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { FreeCheckTool } from "@/components/FreeCheckTool";
 import { getTopic } from "@/lib/content/topics";
 import { pageMeta } from "@/lib/content/meta";
@@ -34,7 +35,7 @@ export default function FreeCheckPage() {
     >
         <FreeCheckTool />
         <h2>What this free check looks at</h2>
-        <p>Six public citation-readiness signals: homepage reachability, AI-crawler rules in robots.txt (GPTBot, PerplexityBot, Google-Extended), llms.txt, sitemap, JSON-LD schema, and a meta description. CiteScore reads those files. It does not query live ChatGPT, Perplexity, or Google AI Overviews.</p>
+        <p>Five public-file basics: homepage reachability, AI-crawler rules in robots.txt (GPTBot, PerplexityBot, Google-Extended), sitemap, JSON-LD schema, and a meta description. CiteScore reads those files. It does not query live ChatGPT, Perplexity, or Google AI Overviews. llms.txt is <LlmsTxtCaveat />. The checker may note whether a file is present. A missing file is not a failed check.</p>
         <p>Passing all six means the basics are in place. Whether an answer engine cites the page depends on the content itself — that is what the <Link href="/geo-audit">$39 audit</Link> turns into a prioritized, page-specific fix list.</p>
       <p><Link href="/free-check">Run the free check</Link></p>
     </ArticleShell>

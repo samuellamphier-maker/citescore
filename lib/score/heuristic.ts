@@ -123,7 +123,6 @@ export function heuristicDimensions(crawl: CrawlResult): Dimension[] {
   );
 
   let crawlerScore = 40;
-  if (crawl.llmsTxt.found) crawlerScore += 28;
   if (crawl.robots.gptBot === "allow") crawlerScore += 12;
   if (crawl.robots.perplexityBot === "allow") crawlerScore += 8;
   if (crawl.robots.googleExtended === "allow") crawlerScore += 8;
@@ -199,9 +198,9 @@ export function heuristicDimensions(crawl: CrawlResult): Dimension[] {
       "AI-crawler access",
       crawlerScore,
       "Medium",
-      crawl.llmsTxt.found
-        ? "llms.txt is present. Confirm GPTBot / PerplexityBot / Google-Extended are not blocked."
-        : "No llms.txt. robots.txt is silent or mixed on GPTBot / PerplexityBot / Google-Extended.",
+      `llms.txt is optional; Google says it ignores llms.txt (https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264). ${
+        crawl.llmsTxt.found ? "A file is present." : "No file is present."
+      } Confirm GPTBot / PerplexityBot / Google-Extended are not blocked.`,
     ),
     dimension(
       "share",
@@ -323,18 +322,6 @@ export function heuristicFixes(crawl: CrawlResult, product: string): Fix[] {
       where: crawl.finalHomepageUrl || host,
       why: "Without typed entities, the site looks like an untyped brochure.",
       doThis: `Mark the product name (${product}), category, URL, and pricing model. Keep it consistent with visible copy.`,
-    });
-  }
-
-  if (!crawl.llmsTxt.found) {
-    push({
-      title: "Add llms.txt and a plain-language /ai page",
-      effort: "Half day",
-      impact: "Medium",
-      where: `${host}/llms.txt and ${host}/ai`,
-      why: "Crawlers that honor machine-readable summaries currently get a marketing shell.",
-      doThis:
-        "llms.txt should list canonical URLs for product, method, compare, and research pages. /ai restates positioning without animation or cookie banners.",
     });
   }
 

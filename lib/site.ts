@@ -2,13 +2,36 @@ import { resolveHttpOrigin } from "@/lib/urls";
 
 export const site = {
   name: "CiteScore",
-  tagline: "GEO / AI-visibility audits",
+  tagline: "Who does ChatGPT name in your city?",
   price: 39,
   priceLabel: "$39",
   subscriptionPriceLabel: "$29/mo",
   description:
-    "Check crawler access and AI citation-readiness signals for free. The $39 audit is a prioritized, page-specific action plan from those signals — not a live ChatGPT or Perplexity query.",
+    "When customers ask ChatGPT for a plumber (or your trade) in your city, who does it name? Get a free AI Answer Snapshot. The AI Visibility Fix Pack is $49.",
 } as const;
+
+export const sellerName = "CiteScore";
+
+export const contactEmail = "citescore@mail.grokbot.com";
+
+export const fixPackIntroPriceLabel = "$49";
+export const fixPackListPriceLabel = "$97";
+
+/**
+ * Drop a payment link here when a $49 Fix Pack checkout product exists.
+ * Empty means the buy button stays a mailto request.
+ */
+export const FIX_PACK_CHECKOUT_URL = "";
+
+export function fixPackHref() {
+  const checkout = FIX_PACK_CHECKOUT_URL.trim();
+  if (checkout) return checkout;
+  return `mailto:${contactEmail}?subject=${encodeURIComponent("Fix Pack request")}`;
+}
+
+export function fixPackCtaLabel() {
+  return FIX_PACK_CHECKOUT_URL.trim() ? "Buy the Fix Pack" : "Request the Fix Pack";
+}
 
 /** Canonical public origin. Prefer an explicit env, then Vercel production. */
 export const productionOrigin = "https://citescore.vercel.app";

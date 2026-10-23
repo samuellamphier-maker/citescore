@@ -12,6 +12,8 @@ const googleExtended =
   "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers";
 const searchControl =
   "https://support.google.com/webmasters/answer/16908024?hl=en";
+const llmsTxtGoogle =
+  "https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264";
 
 export function GoogleAiOverviewsOptimizationArticle() {
   return (
@@ -184,8 +186,10 @@ Disallow: /`}</pre>
           machine-readable file, AI text file, markup, or Markdown file to
           appear in Google Search, including its generative features. An{" "}
           <code>llms.txt</code> file neither helps nor harms visibility or
-          rankings in Google Search, because Google Search ignores it.
-          Keeping one for some other system is fine.
+          rankings in Google Search, because Google Search ignores it. It is
+          optional; Google says it ignores{" "}
+          <a href={llmsTxtGoogle}>llms.txt</a>. Keeping one for some other
+          system is fine.
         </li>
         <li>
           <strong>Special schema.</strong> Structured data is not required

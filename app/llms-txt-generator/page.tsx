@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArticleShell } from "@/components/ArticleShell";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { LlmsTxtGenerator } from "@/components/LlmsTxtGenerator";
 import { ToolNextLinks } from "@/components/ToolNextLinks";
 import { getTopic } from "@/lib/content/topics";
@@ -68,7 +69,7 @@ export default function LlmsTxtGeneratorPage() {
       <LlmsTxtGenerator />
       <h2>What goes in the file</h2>
       <p>
-        The proposal at llmstxt.org is a Markdown file, usually at <code>/llms.txt</code>. The H1 is the site or product name. The blockquote is one or two sentences a model can quote as the definition. Each H2 is a list of absolute URLs: the link text is the page title, and an optional note comes after a colon. A section titled Optional is the conventional place for a changelog, a blog, or anything a model can skip.
+        The proposal at llmstxt.org is a Markdown file, usually at <code>/llms.txt</code>. It is <LlmsTxtCaveat />. The H1 is the site or product name. The blockquote is a short summary. Each H2 is a list of absolute URLs: the link text is the page title, and an optional note comes after a colon. A section titled Optional is the conventional place for a changelog or a blog. Publishing the file does not create a citation.
       </p>
       <p>
         CiteScore does not grade the writing inside the file. On a <Link href="/geo-audit">$39 audit</Link>, found means <code>/llms.txt</code> returned a non-empty body. A missing file does not zero the score. The page the file points at still has to answer the question. The <Link href="/llms-txt">llms.txt checker</Link> is the exact HTTP check.

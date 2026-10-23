@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArticleShell } from "@/components/ArticleShell";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { JsonLd } from "@/components/JsonLd";
 import { getTopic } from "@/lib/content/topics";
 import { pageMeta } from "@/lib/content/meta";
@@ -10,7 +11,7 @@ const topic = getTopic("/llms-txt");
 const faqs = [
   {
     q: "Does a missing llms.txt fail the audit?",
-    a: "No. Found means the response was successful and the body was not empty. Missing means that check is a negative on the AI-crawler dimension only. The other seven dimensions still score the page. Plenty of sites with no llms.txt can clear Mentioned on answer fitness and evidence.",
+    a: "No. Found means the response was successful and the body was not empty. llms.txt is optional; Google says it ignores llms.txt (https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264). A missing file does not lower the score.",
   },
   {
     q: "Do you grade the writing inside the file?",
@@ -79,6 +80,7 @@ export default function LlmsTxtPage() {
           making it guess from the homepage nav. It is not an OpenAI
           standard, a Google ranking factor, or a Perplexity requirement.
           Treating it as one of those is how the file turned into folklore.
+          llms.txt is <LlmsTxtCaveat />.
         </p>
         <p>
           CiteScore’s check is smaller than the folklore. During a{" "}
@@ -91,14 +93,13 @@ export default function LlmsTxtPage() {
           <code>/llms-full.txt</code>.
         </p>
 
-        <h2>How it moves the score</h2>
+        <h2>How it relates to the score</h2>
         <p>
-          Presence is a positive mark on one dimension: AI-crawler access,
-          alongside the <Link href="/ai-crawlers">robots.txt tokens</Link>.
-          It does not add points to answer fitness, evidence, or markup. A
-          beautiful <code>llms.txt</code> on a slogan homepage will not drag
-          the overall score into the “citation-ready” band by itself. A
-          missing file will not zero the audit.
+          It does not. llms.txt is <LlmsTxtCaveat />. CiteScore still records
+          whether <code>/llms.txt</code> returned a non-empty body, next to
+          the <Link href="/ai-crawlers">robots.txt tokens</Link>. A missing
+          file does not lower the score, and a present file does not raise
+          it. The citable object is still the page.
         </p>
         <p>
           That is deliberate. The file is a courtesy index. The citable

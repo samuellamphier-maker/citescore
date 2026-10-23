@@ -82,12 +82,24 @@ export const marketingPaths: MarketingPath[] = [
     priority: 0.8,
     lastModified: "2026-10-13",
   },
-  { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/privacy", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-10-23" },
   {
     path: "/terms",
     changeFrequency: "yearly",
     priority: 0.3,
-    lastModified: "2026-10-14",
+    lastModified: "2026-10-23",
+  },
+  {
+    path: "/refunds",
+    changeFrequency: "yearly",
+    priority: 0.3,
+    lastModified: "2026-10-23",
+  },
+  {
+    path: "/fix-pack",
+    changeFrequency: "monthly",
+    priority: 0.9,
+    lastModified: "2026-10-23",
   },
   ...blogPosts.map((post) => ({
     path: `/blog/${post.slug}`,
