@@ -79,6 +79,7 @@ const related = [
   { href: "/dentist-schema-generator", label: "Dentist schema generator" },
   { href: "/real-estate-agent-schema-generator", label: "Real estate agent schema generator" },
   { href: "/plumber-schema-generator", label: "Plumber schema generator" },
+  { href: "/electrician-schema-generator", label: "Electrician schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -94,6 +95,7 @@ const related = [
   { href: "/ai-search-visibility-for-auto-repair", label: "AI search visibility for auto repair" },
   { href: "/ai-search-visibility-for-chiropractors", label: "AI search visibility for chiropractors" },
   { href: "/ai-search-visibility-for-insurance-agents", label: "AI search visibility for insurance agents" },
+  { href: "/ai-search-visibility-for-veterinarians", label: "AI search visibility for veterinarians" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -150,9 +152,12 @@ export default function PlumberSchemaGeneratorPage() {
           repeat is the <Link href="/schema-markup-for-ai-search">schema guide</Link>. The practical page for a
           plumbing business is <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>.
           An electrical contractor is a different type, on{" "}
-          <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. An insurance
+          <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>, and the
+          script is the <Link href="/electrician-schema-generator">Electrician schema generator</Link>. An insurance
           agency is a different page, on{" "}
-          <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>.
+          <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>. A
+          veterinary clinic is a different page, on{" "}
+          <Link href="/ai-search-visibility-for-veterinarians">AI search visibility for veterinarians</Link>.
         </p>
         <p>
           <a href={plumber}>schema.org Plumber</a>, read on 23 October 2026, is a plumbing service. It is a{" "}

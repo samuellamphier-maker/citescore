@@ -60,6 +60,7 @@ export default function AiSearchVisibilityForInsuranceAgentsPage() {
           { href: "/google-ai-mode-optimization", label: "Google AI Mode optimization" },
           { href: "/local-business-schema-generator", label: "Free Local business schema generator" },
           { href: "/plumber-schema-generator", label: "Free Plumber schema generator" },
+          { href: "/electrician-schema-generator", label: "Free Electrician schema generator" },
           { href: "/real-estate-agent-schema-generator", label: "Free Real estate agent schema generator" },
           { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
           { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },

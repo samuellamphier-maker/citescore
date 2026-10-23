@@ -61,6 +61,7 @@ export default function AiSearchVisibilityForAutoRepairPage() {
           { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },
           { href: "/real-estate-agent-schema-generator", label: "Free Real estate agent schema generator" },
           { href: "/plumber-schema-generator", label: "Free Plumber schema generator" },
+          { href: "/electrician-schema-generator", label: "Free Electrician schema generator" },
           { href: "/medical-clinic-schema-generator", label: "Free Medical clinic schema generator" },
           { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
           { href: "/vehicle-schema-generator", label: "Free Vehicle schema generator" },

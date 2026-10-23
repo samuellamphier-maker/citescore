@@ -122,7 +122,7 @@ export function AiSearchVisibilityForLandscapersArticle() {
         area, and hours are on{" "}
         <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A
         chiropractic office’s office, services, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>.
+        <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>. A veterinary clinic’s office, services, and hours are on <Link href="/ai-search-visibility-for-veterinarians">AI search visibility for veterinarians</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>

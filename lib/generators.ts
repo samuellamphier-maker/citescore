@@ -4443,3 +4443,121 @@ export function buildPlumberSchema(input: PlumberInput): string {
 
   return jsonLdScript(business);
 }
+
+export type ElectricianInput = {
+  name: string;
+  url: string;
+  logoUrl: string;
+  telephone: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  latitude: string;
+  longitude: string;
+  hours: OpeningHoursInput[];
+  areasServed: string;
+  services: string;
+  licenseNumber: string;
+  priceRange: string;
+  sameAs: string[];
+};
+
+/**
+ * A license number the page already shows, as identifier.
+ * schema.org identifier is any kind of identifier, as PropertyValue, Text, or URL.
+ * A trade license is not taxID, vatID, leiCode, duns, or globalLocationNumber.
+ * hasCredential is a Credential, not the number by itself.
+ * This value is a PropertyValue. propertyID is the site-specific text "License number".
+ * A blank value, or a value longer than 80 characters, is left out.
+ */
+export function electricianIdentifier(raw: string): Record<string, unknown> | undefined {
+  const value = plainLine(raw);
+  if (!value || value.length > 80) return undefined;
+  return {
+    "@type": "PropertyValue",
+    propertyID: "License number",
+    value,
+  };
+}
+
+/**
+ * Electrician JSON-LD. Empty until the name is present.
+ * address is a PostalAddress, and only when at least one address field is present.
+ * geo is GeoCoordinates, and only when latitude and longitude are both in range.
+ * telephone is a phone string with 7–15 digits.
+ * url, logo, and sameAs are http(s).
+ * openingHours is the schema.org text form: one string, or an array when there are two or more.
+ * areaServed is one text value, or an array when there are two or more.
+ * hasOfferCatalog is one OfferCatalog. itemListElement is one Offer, or an array when there are two or more.
+ * identifier is one PropertyValue for the license number, and only when that number is present.
+ * priceRange is text shorter than 100 characters.
+ * The script does not write a catalog name, an offer price, openingHoursSpecification, image, review,
+ * aggregateRating, description, knowsAbout, availableService, hasCredential, taxID, or vatID.
+ */
+export function buildElectricianSchema(input: ElectricianInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const business: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    name,
+  };
+
+  const url = httpUrl(input.url);
+  if (url) business.url = url;
+
+  const logo = httpUrl(input.logoUrl);
+  if (logo) business.logo = logo;
+
+  const telephone = telephoneValue(input.telephone);
+  if (telephone) business.telephone = telephone;
+
+  const streetAddress = plainLine(input.streetAddress);
+  const addressLocality = plainLine(input.addressLocality);
+  const addressRegion = plainLine(input.addressRegion);
+  const postalCode = plainLine(input.postalCode);
+  const addressCountry = addressCountryValue(input.addressCountry);
+  if (streetAddress || addressLocality || addressRegion || postalCode || addressCountry) {
+    const address: Record<string, unknown> = { "@type": "PostalAddress" };
+    if (streetAddress) address.streetAddress = streetAddress;
+    if (addressLocality) address.addressLocality = addressLocality;
+    if (addressRegion) address.addressRegion = addressRegion;
+    if (postalCode) address.postalCode = postalCode;
+    if (addressCountry) address.addressCountry = addressCountry;
+    business.address = address;
+  }
+
+  const latitude = geoNumber(input.latitude, -90, 90);
+  const longitude = geoNumber(input.longitude, -180, 180);
+  if (latitude !== null && longitude !== null && input.latitude.trim() && input.longitude.trim()) {
+    business.geo = { "@type": "GeoCoordinates", latitude, longitude };
+  }
+
+  const hours = oneOrList(openingHoursLines(input.hours));
+  if (hours) business.openingHours = hours;
+
+  const areas = oneOrList(attorneyLines(input.areasServed));
+  if (areas) business.areaServed = areas;
+
+  const offers = oneOrList(plumberOffers(input.services));
+  if (offers) {
+    business.hasOfferCatalog = {
+      "@type": "OfferCatalog",
+      itemListElement: offers,
+    };
+  }
+
+  const license = electricianIdentifier(input.licenseNumber);
+  if (license) business.identifier = license;
+
+  const priceRange = restaurantPriceRange(input.priceRange);
+  if (priceRange) business.priceRange = priceRange;
+
+  const profiles = oneOrList(uniqueHttpUrls(input.sameAs));
+  if (profiles) business.sameAs = profiles;
+
+  return jsonLdScript(business);
+}

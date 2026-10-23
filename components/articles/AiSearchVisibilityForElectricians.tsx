@@ -113,7 +113,7 @@ export function AiSearchVisibilityForElectriciansArticle() {
         office, service area, and hours are on{" "}
         <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. A landscaping business’s
         office, service area, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>. A clinic’s name,
+        <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>. A veterinary clinic’s office, services, and hours are on <Link href="/ai-search-visibility-for-veterinarians">AI search visibility for veterinarians</Link>. A clinic’s name,
         specialty, and hours are on the{" "}
         <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>, and the longer healthcare
         note is <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>.
@@ -193,14 +193,22 @@ export function AiSearchVisibilityForElectriciansArticle() {
         That block is an example, not a business. <a href={sdPolicies}>Google’s structured data policies</a> say the
         markup has to describe content people can see. The{" "}
         <Link href="/local-business-schema-generator">Local business schema generator</Link> already lists Electrician.
-        It copies the name, the address, the phone, the hours, and optional geo into one script in the browser. It
-        does not emit <code>areaServed</code>, <code>review</code>, or <code>aggregateRating</code>. The address in
-        that script is the address the page shows. It is not a customer’s street, and it is not the street of a second
-        shop you left off the page.
+        It copies the name, the address, the phone, the hours as <code>openingHoursSpecification</code>, and optional
+        geo into one script in the browser. It does not write <code>areaServed</code>, <code>hasOfferCatalog</code>,{" "}
+        <code>priceRange</code>, <code>identifier</code>, or the text property <code>openingHours</code>. It does not
+        emit <code>review</code> or <code>aggregateRating</code>. The{" "}
+        <Link href="/electrician-schema-generator">Electrician schema generator</Link> writes those business fields,
+        including a license number as <code>identifier</code> when the page shows one, and it also writes the name, the
+        address, the phone, geo, a logo, and profile URLs. It does not write <code>openingHoursSpecification</code>,{" "}
+        <code>image</code>, <code>review</code>, <code>aggregateRating</code>, <code>hasCredential</code>,{" "}
+        <code>taxID</code>, or <code>vatID</code>. Do not paste both Electrician scripts on the same URL. The address
+        in either script is the business. It is not a customer’s street, and it is not the street of a second shop you
+        left off the page.
       </p>
       <p>
         <a href={areaServed}>schema.org areaServed</a> is the geographic area where a service or offered item is
-        provided. It supersedes <code>serviceArea</code>. Add it by hand on the Electrician script only when the page
+        provided. It supersedes <code>serviceArea</code>. The{" "}
+        <Link href="/electrician-schema-generator">Electrician schema generator</Link> writes it as text when the page
         names the places served. A list of every city you hope to rank for is not that property. A page that names one
         person the site already credits uses <code>Person</code>. The{" "}
         <Link href="/person-schema-generator">Person schema generator</Link> builds that script. This guide does not
@@ -264,7 +272,10 @@ export function AiSearchVisibilityForElectriciansArticle() {
         A license number, a permit note, or an insurance line helps a reader only when the page already shows it,
         including the jurisdiction. This guide does not say which license an electrical contractor must hold, and it
         does not say that a number in the footer makes an assistant prefer the page. Do not invent a number to fill a
-        field. Do not mark a customer’s permit as the contractor’s credential.
+        field. Do not mark a customer’s permit as the contractor’s credential. The{" "}
+        <Link href="/electrician-schema-generator">Electrician schema generator</Link> writes the number the page shows
+        as <code>identifier</code>, a PropertyValue whose <code>propertyID</code> is License number. It does not write
+        the jurisdiction, and it does not write <code>hasCredential</code>.
       </p>
       <p>
         Google’s local business page recommends <code>review</code> and <code>aggregateRating</code> only for sites
