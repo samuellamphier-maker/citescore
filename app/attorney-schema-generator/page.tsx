@@ -75,6 +75,7 @@ const related = [
   { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
   { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
   { href: "/attorney-schema-generator", label: "Attorney schema generator" },
+  { href: "/dentist-schema-generator", label: "Dentist schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -87,6 +88,7 @@ const related = [
   { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
   { href: "/ai-search-visibility-for-electricians", label: "AI search visibility for electricians" },
   { href: "/ai-search-visibility-for-landscapers", label: "AI search visibility for landscapers" },
+  { href: "/ai-search-visibility-for-auto-repair", label: "AI search visibility for auto repair" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -145,7 +147,7 @@ export default function AttorneySchemaGeneratorPage() {
           different type, on the{" "}
           <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A landscaping business
           is a different page, on{" "}
-          <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>.
+          <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair shop is a different page, on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>.
         </p>
         <p>
           <a href={legalService}>schema.org LegalService</a>, read on 23 October 2026, is a business that provides

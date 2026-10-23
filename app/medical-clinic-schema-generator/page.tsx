@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: "Where should the script go, and what should it leave out?",
-    a: "On the page for that clinic, in the HTML the server sends, where a person can already see the name and the other facts you mark up. Google’s structured data policies say not to mark up content that is not visible to readers of the page. The script is built in the browser. Nothing is sent to CiteScore. One script is one clinic. A second location is a second page. Leave out a specialty, a service, a phone, a coordinate, a logo, or a profile the page does not show. Leave out a patient’s name, a visit, a diagnosis, and an insurance member number. Dentist, Physician, and Hospital are different types. A dental office uses Dentist. This form writes MedicalClinic.",
+    a: "On the page for that clinic, in the HTML the server sends, where a person can already see the name and the other facts you mark up. Google’s structured data policies say not to mark up content that is not visible to readers of the page. The script is built in the browser. Nothing is sent to CiteScore. One script is one clinic. A second location is a second page. Leave out a specialty, a service, a phone, a coordinate, a logo, or a profile the page does not show. Leave out a patient’s name, a visit, a diagnosis, and an insurance member number. Dentist, Physician, and Hospital are different types. A dental office uses Dentist. The Dentist schema generator writes that type. This form writes MedicalClinic.",
   },
 ];
 
@@ -76,6 +76,7 @@ const related = [
   { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
   { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
   { href: "/attorney-schema-generator", label: "Attorney schema generator" },
+  { href: "/dentist-schema-generator", label: "Dentist schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -88,6 +89,7 @@ const related = [
   { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
   { href: "/ai-search-visibility-for-electricians", label: "AI search visibility for electricians" },
   { href: "/ai-search-visibility-for-landscapers", label: "AI search visibility for landscapers" },
+  { href: "/ai-search-visibility-for-auto-repair", label: "AI search visibility for auto repair" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -153,7 +155,8 @@ export default function MedicalClinicSchemaGeneratorPage() {
           previously limited to outpatients, and with evolution it may be open to inpatients as well. MedicalClinic is
           a <a href={medicalBusiness}>MedicalBusiness</a>, and MedicalBusiness is a LocalBusiness. MedicalClinic is also
           a <a href={medicalOrganization}>MedicalOrganization</a>. Use MedicalClinic when the page is a clinic. Dentist,
-          Physician, Hospital, Pharmacy, and Optician are different types. They are already in the{" "}
+          Physician, Hospital, Pharmacy, and Optician are different types. A dental office uses the{" "}
+          <Link href="/dentist-schema-generator">Dentist schema generator</Link>. They are already in the{" "}
           <Link href="/local-business-schema-generator">Local business schema generator</Link>, which also lists
           MedicalClinic. That form writes the name, the address, the phone, the hours as{" "}
           <code>openingHoursSpecification</code>, geo, a logo, an image, and profile URLs. It does not write{" "}
