@@ -122,7 +122,7 @@ export function AiSearchVisibilityForDentistsArticle() {
         software company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A chiropractic
         office’s clinic page, services, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>.
+        <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -220,7 +220,7 @@ export function AiSearchVisibilityForDentistsArticle() {
         <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A film the practice publishes, on its
         own URL, uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. A vehicle the practice publishes, on its
         own URL, uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the practice publishes, on its
-        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. A dental office page uses the <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An agent office page uses the <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. The dataset page is not
+        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. A dental office page uses the <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An agent office page uses the <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. A plumbing business page uses the <Link href="/plumber-schema-generator">Plumber schema generator</Link>. The dataset page is not
         the office, the film page is not the office, the vehicle page is not the office, and the hotel page is not the office.
       </p>
 

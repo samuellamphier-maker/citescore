@@ -119,7 +119,7 @@ export function AiSearchVisibilityForChiropractorsArticle() {
         brokerage, an agent, or a property manager is on{" "}
         <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>, and the office
         script is the{" "}
-        <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. An auto repair
+        <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. A plumbing business page uses the <Link href="/plumber-schema-generator">Plumber schema generator</Link>. An auto repair
         shop’s pages are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>.
       </p>
 
@@ -231,7 +231,7 @@ export function AiSearchVisibilityForChiropractorsArticle() {
         <Link href="/organization-schema-generator">Organization schema generator</Link>. A photo that shows a credit
         or a license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>. A
         dental office uses the <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An agent office
-        uses the <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. Those
+        uses the <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. A plumbing business page uses the <Link href="/plumber-schema-generator">Plumber schema generator</Link>. Those
         pages are not this office.
       </p>
 

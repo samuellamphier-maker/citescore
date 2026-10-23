@@ -179,7 +179,7 @@ export function AiSearchVisibilityForRoofersArticle() {
         electrical contractor’s pages are on{" "}
         <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping
         business’s pages are on{" "}
-        <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair shop’s pages are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s pages are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. Use{" "}
+        <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair shop’s pages are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s pages are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>. Use{" "}
         <code>Organization</code> for a homepage that is not one street address. Google’s{" "}
         <a href={localBusiness}>local business documentation</a>, read on 22 October 2026, says to use the most
         specific subtype. Its examples are Restaurant, DaySpa, and HealthClub. It does not name RoofingContractor. The

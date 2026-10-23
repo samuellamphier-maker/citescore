@@ -58,6 +58,8 @@ const addedGuidePaths = [
   "/ai-search-visibility-for-auto-repair",
   "/real-estate-agent-schema-generator",
   "/ai-search-visibility-for-chiropractors",
+  "/plumber-schema-generator",
+  "/ai-search-visibility-for-insurance-agents",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

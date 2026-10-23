@@ -65,6 +65,7 @@ const related = [
   { href: "/attorney-schema-generator", label: "Attorney schema generator" },
   { href: "/dentist-schema-generator", label: "Dentist schema generator" },
   { href: "/real-estate-agent-schema-generator", label: "Real estate agent schema generator" },
+  { href: "/plumber-schema-generator", label: "Plumber schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -79,6 +80,7 @@ const related = [
   { href: "/ai-search-visibility-for-landscapers", label: "AI search visibility for landscapers" },
   { href: "/ai-search-visibility-for-auto-repair", label: "AI search visibility for auto repair" },
   { href: "/ai-search-visibility-for-chiropractors", label: "AI search visibility for chiropractors" },
+  { href: "/ai-search-visibility-for-insurance-agents", label: "AI search visibility for insurance agents" },
   { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
   { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
@@ -153,7 +155,7 @@ export default function ServiceSchemaGeneratorPage() {
           restaurant location is the case on{" "}
           <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>.
           An accounting service page is the case on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>.
-          A dental service page is the case on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>.
+          A dental service page is the case on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>.
           The company itself, on
           the homepage, uses the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. A shipped product uses the{" "}

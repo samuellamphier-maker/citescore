@@ -62,6 +62,7 @@ export default function AiSearchVisibilityForChiropractorsPage() {
           { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },
           { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
           { href: "/real-estate-agent-schema-generator", label: "Free Real estate agent schema generator" },
+          { href: "/plumber-schema-generator", label: "Free Plumber schema generator" },
           { href: "/service-schema-generator", label: "Free Service schema generator" },
           { href: "/person-schema-generator", label: "Free Person schema generator" },
           { href: "/organization-schema-generator", label: "Free Organization schema generator" },
