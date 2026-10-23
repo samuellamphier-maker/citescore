@@ -850,6 +850,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/dentist-schema-generator",
+    title: "Free Dentist schema generator",
+    description:
+      "Free, no-signup Dentist JSON-LD generator. Add the name, page URL, logo, phone, address, geo, opening hours, medical specialty, whether the office is accepting new patients, price range, and profile URLs already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Dentist schema",
+    card: "Copy Dentist JSON-LD from the name, specialty, hours, and new-patient note already on the page.",
+    navLabel: "Dentist schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-23",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-auto-repair",
+    title: "AI search visibility for auto repair",
+    description:
+      "How an auto repair shop site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: AutoRepair markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Shop pages, service-area URLs, AutoRepair markup, and the crawler files an auto repair shop controls.",
+    navLabel: "AI search visibility for auto repair",
+    priority: 0.8,
+    publishedAt: "2026-10-23",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -996,6 +1020,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-roofers",
   "/ai-search-visibility-for-electricians",
   "/ai-search-visibility-for-landscapers",
+  "/ai-search-visibility-for-auto-repair",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

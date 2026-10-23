@@ -54,6 +54,7 @@ export default function HowToGetCitedByAiAnswerEnginesPage() {
         { href: "/restaurant-schema-generator", label: "Free Restaurant schema generator" },
         { href: "/medical-clinic-schema-generator", label: "Free Medical clinic schema generator" },
         { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
+        { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },
         { href: "/google-ai-mode-optimization", label: "Google AI Mode optimization" },
         { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
         { href: "/aeo-checklist", label: "AEO checklist" },

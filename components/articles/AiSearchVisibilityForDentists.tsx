@@ -199,10 +199,14 @@ export function AiSearchVisibilityForDentistsArticle() {
         That block is an example, not a practice. <a href={sdPolicies}>Google’s structured data policies</a> say the
         markup has to describe content people can see. The{" "}
         <Link href="/local-business-schema-generator">Local business schema generator</Link> already lists Dentist. It
-        copies the name, the address, the phone, the hours, and optional geo into one script in the browser. It does
-        not emit <code>medicalSpecialty</code>, <code>review</code>, or <code>aggregateRating</code>. Add the
-        specialty by hand only when the page shows it. The address in that script is this office. It is not the street
-        of a second office.
+        copies the name, the address, the phone, the hours as <code>openingHoursSpecification</code>, and optional geo
+        into one script in the browser. It does not emit <code>medicalSpecialty</code>,{" "}
+        <code>isAcceptingNewPatients</code>, <code>priceRange</code>, or the text property <code>openingHours</code>.
+        The <Link href="/dentist-schema-generator">Dentist schema generator</Link> writes those fields, and it also
+        writes the name, the address, the phone, geo, a logo, and profile URLs. It does not write{" "}
+        <code>availableService</code>, <code>review</code>, or <code>aggregateRating</code>. Do not paste both Dentist
+        scripts on the same URL. Add a specialty only when the page shows it. The address in either script is this
+        office. It is not the street of a second office.
       </p>
       <p>
         A page that names one person, such as the dentist the site already credits, uses <code>Person</code>. The{" "}
@@ -214,7 +218,7 @@ export function AiSearchVisibilityForDentistsArticle() {
         <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A film the practice publishes, on its
         own URL, uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. A vehicle the practice publishes, on its
         own URL, uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the practice publishes, on its
-        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. The dataset page is not
+        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. A dental office page uses the <Link href="/dentist-schema-generator">Dentist schema generator</Link>. The dataset page is not
         the office, the film page is not the office, the vehicle page is not the office, and the hotel page is not the office.
       </p>
 

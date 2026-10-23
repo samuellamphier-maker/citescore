@@ -4146,3 +4146,102 @@ export function buildAttorneySchema(input: AttorneyInput): string {
 
   return jsonLdScript(office);
 }
+
+export type DentistInput = {
+  name: string;
+  url: string;
+  logoUrl: string;
+  telephone: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  latitude: string;
+  longitude: string;
+  hours: OpeningHoursInput[];
+  specialties: string;
+  acceptingNewPatients: string;
+  priceRange: string;
+  sameAs: string[];
+};
+
+/**
+ * isAcceptingNewPatients. yes is true. no is false.
+ * Any other text, including a sentence, is left out.
+ */
+export function acceptingNewPatients(raw: string): boolean | null {
+  if (raw === "yes") return true;
+  if (raw === "no") return false;
+  return null;
+}
+
+/**
+ * Dentist JSON-LD. Empty until the name is present.
+ * address is a PostalAddress, and only when at least one address field is present.
+ * geo is GeoCoordinates, and only when latitude and longitude are both in range.
+ * telephone is a phone string with 7–15 digits.
+ * url, logo, and sameAs are http(s).
+ * openingHours is the schema.org text form: one string, or an array when there are two or more.
+ * medicalSpecialty is one schema.org MedicalSpecialty URL, or an array when there are two or more.
+ * isAcceptingNewPatients is true or false, and only for yes or no.
+ * priceRange is text shorter than 100 characters.
+ * The script does not write availableService, openingHoursSpecification, image, review, aggregateRating, or description.
+ */
+export function buildDentistSchema(input: DentistInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const office: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    name,
+  };
+
+  const url = httpUrl(input.url);
+  if (url) office.url = url;
+
+  const logo = httpUrl(input.logoUrl);
+  if (logo) office.logo = logo;
+
+  const telephone = telephoneValue(input.telephone);
+  if (telephone) office.telephone = telephone;
+
+  const streetAddress = plainLine(input.streetAddress);
+  const addressLocality = plainLine(input.addressLocality);
+  const addressRegion = plainLine(input.addressRegion);
+  const postalCode = plainLine(input.postalCode);
+  const addressCountry = addressCountryValue(input.addressCountry);
+  if (streetAddress || addressLocality || addressRegion || postalCode || addressCountry) {
+    const address: Record<string, unknown> = { "@type": "PostalAddress" };
+    if (streetAddress) address.streetAddress = streetAddress;
+    if (addressLocality) address.addressLocality = addressLocality;
+    if (addressRegion) address.addressRegion = addressRegion;
+    if (postalCode) address.postalCode = postalCode;
+    if (addressCountry) address.addressCountry = addressCountry;
+    office.address = address;
+  }
+
+  const latitude = geoNumber(input.latitude, -90, 90);
+  const longitude = geoNumber(input.longitude, -180, 180);
+  if (latitude !== null && longitude !== null && input.latitude.trim() && input.longitude.trim()) {
+    office.geo = { "@type": "GeoCoordinates", latitude, longitude };
+  }
+
+  const hours = oneOrList(openingHoursLines(input.hours));
+  if (hours) office.openingHours = hours;
+
+  const specialties = oneOrList(clinicSpecialties(input.specialties));
+  if (specialties) office.medicalSpecialty = specialties;
+
+  const accepting = acceptingNewPatients(input.acceptingNewPatients);
+  if (accepting !== null) office.isAcceptingNewPatients = accepting;
+
+  const priceRange = restaurantPriceRange(input.priceRange);
+  if (priceRange) office.priceRange = priceRange;
+
+  const profiles = oneOrList(uniqueHttpUrls(input.sameAs));
+  if (profiles) office.sameAs = profiles;
+
+  return jsonLdScript(office);
+}

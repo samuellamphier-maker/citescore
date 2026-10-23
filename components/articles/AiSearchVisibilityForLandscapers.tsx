@@ -117,6 +117,10 @@ export function AiSearchVisibilityForLandscapersArticle() {
         <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A law office’s name, places
         served, and hours are on the <Link href="/attorney-schema-generator">Attorney schema generator</Link>, and the
         longer firm note is <Link href="/ai-search-visibility-for-law-firms">AI search visibility for law firms</Link>.
+        A dental office’s specialty and hours are on the{" "}
+        <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An auto repair shop’s shop, service
+        area, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
