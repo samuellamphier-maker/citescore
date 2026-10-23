@@ -58,6 +58,7 @@ export default function HowToGetCitedByDeepseekPage() {
           { href: "/medical-clinic-schema-generator", label: "Free Medical clinic schema generator" },
           { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
           { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },
+          { href: "/real-estate-agent-schema-generator", label: "Free Real estate agent schema generator" },
           { href: "/how-to-get-cited-by-mistral", label: "How to get cited by Mistral" },
           { href: "/how-to-get-cited-by-brave-search", label: "How to get cited by Brave Search" },
           { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },

@@ -116,7 +116,7 @@ export function AiSearchVisibilityForRealEstateArticle() {
         <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A store’s price
         problem is on <Link href="/ai-search-visibility-for-ecommerce">AI search visibility for ecommerce</Link>. A
         software company’s comparison page is on{" "}
-        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A restaurant’s location, menu, and hours are on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting, CPA, or bookkeeping firm is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental practice’s office, services, and hours are on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>.
+        <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A restaurant’s location, menu, and hours are on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting, CPA, or bookkeeping firm is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental practice’s office, services, and hours are on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -179,9 +179,15 @@ export function AiSearchVisibilityForRealEstateArticle() {
         That block is an example, not a brokerage. <a href={sdPolicies}>Google’s structured data policies</a> say the
         markup has to describe content people can see. The{" "}
         <Link href="/local-business-schema-generator">Local business schema generator</Link> already lists
-        RealEstateAgent. It copies the name, the address, the phone, the hours, and optional geo into one script in
-        the browser. It does not emit <code>review</code> or <code>aggregateRating</code>. The address in that script
-        is the office. It is not the street of a listing.
+        RealEstateAgent. It copies the name, the address, the phone, the hours as{" "}
+        <code>openingHoursSpecification</code>, and optional geo into one script in the browser. It does not write{" "}
+        <code>areaServed</code>, <code>knowsAbout</code>, <code>priceRange</code>, or the text property{" "}
+        <code>openingHours</code>. It does not emit <code>review</code> or <code>aggregateRating</code>. The{" "}
+        <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link> writes those office
+        fields, and it also writes the name, the address, the phone, geo, a logo, and profile URLs. It does not write{" "}
+        <code>openingHoursSpecification</code>, <code>image</code>, <code>review</code>, or{" "}
+        <code>aggregateRating</code>. Do not paste both RealEstateAgent scripts on the same URL. The address in either
+        script is the office. It is not the street of a listing.
       </p>
       <p>
         A page that names one agent uses <code>Person</code>: the name, the job, the brokerage as{" "}

@@ -874,6 +874,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/real-estate-agent-schema-generator",
+    title: "Free Real estate agent schema generator",
+    description:
+      "Free, no-signup RealEstateAgent JSON-LD generator. Add the name, page URL, logo, phone, address, geo, opening hours, area served, topics, price range, and profile URLs already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Real estate agent schema",
+    card: "Copy RealEstateAgent JSON-LD from the name, area served, hours, and topics already on the page.",
+    navLabel: "Real estate agent schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-23",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-chiropractors",
+    title: "AI search visibility for chiropractors",
+    description:
+      "How a chiropractic office site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: MedicalClinic markup, service pages, Google Business Profile, reviews, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Office pages, service URLs, MedicalClinic markup, and the crawler files a chiropractic office controls.",
+    navLabel: "AI search visibility for chiropractors",
+    priority: 0.8,
+    publishedAt: "2026-10-23",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -1021,6 +1045,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-electricians",
   "/ai-search-visibility-for-landscapers",
   "/ai-search-visibility-for-auto-repair",
+  "/ai-search-visibility-for-chiropractors",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",
