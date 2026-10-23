@@ -67,6 +67,7 @@ export default function HowToGetCitedByMetaAiPage() {
           { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
           { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },
           { href: "/real-estate-agent-schema-generator", label: "Free Real estate agent schema generator" },
+          { href: "/plumber-schema-generator", label: "Free Plumber schema generator" },
           { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         ])}
       >

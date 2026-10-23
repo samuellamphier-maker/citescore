@@ -58,6 +58,7 @@ export default function HowToGetCitedByPerplexityCometPage() {
           { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
           { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },
           { href: "/real-estate-agent-schema-generator", label: "Free Real estate agent schema generator" },
+          { href: "/plumber-schema-generator", label: "Free Plumber schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/perplexity-citations", label: "Perplexity citations" },

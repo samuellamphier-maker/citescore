@@ -898,6 +898,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/plumber-schema-generator",
+    title: "Free Plumber schema generator",
+    description:
+      "Free, no-signup Plumber JSON-LD generator. Add the name, page URL, logo, phone, address, geo, opening hours, service area, services, price range, and profile URLs already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Plumber schema",
+    card: "Copy Plumber JSON-LD from the name, service area, hours, and services already on the page.",
+    navLabel: "Plumber schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-23",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-insurance-agents",
+    title: "AI search visibility for insurance agents",
+    description:
+      "How an insurance agency site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: InsuranceAgency markup, service pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Office pages, coverage URLs, InsuranceAgency markup, and the crawler files an insurance agency controls.",
+    navLabel: "AI search visibility for insurance agents",
+    priority: 0.8,
+    publishedAt: "2026-10-23",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -1046,6 +1070,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-landscapers",
   "/ai-search-visibility-for-auto-repair",
   "/ai-search-visibility-for-chiropractors",
+  "/ai-search-visibility-for-insurance-agents",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

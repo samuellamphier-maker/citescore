@@ -113,7 +113,7 @@ export function AiSearchVisibilityForElectriciansArticle() {
         office, service area, and hours are on{" "}
         <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. A landscaping business’s
         office, service area, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. A clinic’s name,
+        <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>. A clinic’s name,
         specialty, and hours are on the{" "}
         <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>, and the longer healthcare
         note is <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>.

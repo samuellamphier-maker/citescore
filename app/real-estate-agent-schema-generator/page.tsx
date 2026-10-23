@@ -77,6 +77,7 @@ const related = [
   { href: "/attorney-schema-generator", label: "Attorney schema generator" },
   { href: "/dentist-schema-generator", label: "Dentist schema generator" },
   { href: "/real-estate-agent-schema-generator", label: "Real estate agent schema generator" },
+  { href: "/plumber-schema-generator", label: "Plumber schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -91,6 +92,7 @@ const related = [
   { href: "/ai-search-visibility-for-landscapers", label: "AI search visibility for landscapers" },
   { href: "/ai-search-visibility-for-auto-repair", label: "AI search visibility for auto repair" },
   { href: "/ai-search-visibility-for-chiropractors", label: "AI search visibility for chiropractors" },
+  { href: "/ai-search-visibility-for-insurance-agents", label: "AI search visibility for insurance agents" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -149,7 +151,7 @@ export default function RealEstateAgentSchemaGeneratorPage() {
           <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A law office
           is a different type, on the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. A
           chiropractic office is a different page, on{" "}
-          <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>.
+          <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>.
         </p>
         <p>
           <a href={realEstateAgent}>schema.org RealEstateAgent</a>, read on 23 October 2026, is a real-estate agent. It

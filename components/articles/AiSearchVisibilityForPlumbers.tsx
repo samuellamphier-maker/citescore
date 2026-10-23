@@ -119,7 +119,7 @@ export function AiSearchVisibilityForPlumbersArticle() {
         software company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. An HVAC company’s
         office, service area, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>.
+        <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair business’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s office, services, and hours are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -172,7 +172,7 @@ export function AiSearchVisibilityForPlumbersArticle() {
         An electrical contractor’s pages are on{" "}
         <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A roofing
         contractor’s pages are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. A landscaping
-        business’s pages are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair shop’s pages are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s pages are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. Use{" "}
+        business’s pages are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. An auto repair shop’s pages are on <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A chiropractic office’s pages are on <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. An insurance agency’s office, lines of coverage, and hours are on <Link href="/ai-search-visibility-for-insurance-agents">AI search visibility for insurance agents</Link>. Use{" "}
         <code>Organization</code> for a homepage that is not one street address. Google’s{" "}
         <a href={localBusiness}>local business documentation</a>, read on 22 October 2026, says to use the most specific
         subtype. Its examples are Restaurant, DaySpa, and HealthClub. It does not name Plumber. The subtype still
@@ -192,15 +192,21 @@ export function AiSearchVisibilityForPlumbersArticle() {
         That block is an example, not a business. <a href={sdPolicies}>Google’s structured data policies</a> say the
         markup has to describe content people can see. The{" "}
         <Link href="/local-business-schema-generator">Local business schema generator</Link> already lists Plumber. It
-        copies the name, the address, the phone, the hours, and optional geo into one script in the browser. It does
-        not emit <code>areaServed</code>, <code>review</code>, or <code>aggregateRating</code>. The address in that
-        script is the address the page shows. It is not a customer’s street, and it is not the street of a second
-        shop you left off the page.
+        copies the name, the address, the phone, the hours as <code>openingHoursSpecification</code>, and optional geo
+        into one script in the browser. It does not write <code>areaServed</code>, <code>hasOfferCatalog</code>,{" "}
+        <code>priceRange</code>, or the text property <code>openingHours</code>. It does not emit <code>review</code>{" "}
+        or <code>aggregateRating</code>. The <Link href="/plumber-schema-generator">Plumber schema generator</Link>{" "}
+        writes those business fields, and it also writes the name, the address, the phone, geo, a logo, and profile
+        URLs. It does not write <code>openingHoursSpecification</code>, <code>image</code>, <code>review</code>, or{" "}
+        <code>aggregateRating</code>. Do not paste both Plumber scripts on the same URL. The address in either script
+        is the business. It is not a customer’s street, and it is not the street of a second shop you left off the
+        page.
       </p>
       <p>
         <a href={areaServed}>schema.org areaServed</a> is the geographic area where a service or offered item is
-        provided. It supersedes <code>serviceArea</code>. Add it by hand on the Plumber script only when the page
-        names the places served. A list of every city you hope to rank for is not that property. A page that names one
+        provided. It supersedes <code>serviceArea</code>. The{" "}
+        <Link href="/plumber-schema-generator">Plumber schema generator</Link> writes it as text when the page names
+        the places served. A list of every city you hope to rank for is not that property. A page that names one
         person the site already credits uses <code>Person</code>. The{" "}
         <Link href="/person-schema-generator">Person schema generator</Link> builds that script. This guide does not
         print a personal name. A group homepage that is not one office can use the{" "}
@@ -208,7 +214,7 @@ export function AiSearchVisibilityForPlumbersArticle() {
         or a license uses the <Link href="/image-object-schema-generator">ImageObject schema generator</Link>. A
         vehicle the business sells, on its own URL, uses the{" "}
         <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the business publishes, on its own URL, uses the{" "}
-        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. A dental office page uses the <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An agent office page uses the <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. The vehicle page is not the business, and the hotel page is not the business.
+        <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. A dental office page uses the <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An agent office page uses the <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. A plumbing business page uses the <Link href="/plumber-schema-generator">Plumber schema generator</Link>. The vehicle page is not the business, and the hotel page is not the business.
       </p>
 
       <h2>Service-area pages</h2>
