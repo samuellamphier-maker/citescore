@@ -65,6 +65,7 @@ const related = [
   { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
   { href: "/attorney-schema-generator", label: "Attorney schema generator" },
   { href: "/dentist-schema-generator", label: "Dentist schema generator" },
+  { href: "/real-estate-agent-schema-generator", label: "Real estate agent schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-b2b-saas", label: "AI search visibility for B2B SaaS" },
   { href: "/free-check", label: "Free AI visibility check" },

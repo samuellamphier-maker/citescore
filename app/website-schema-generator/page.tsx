@@ -60,6 +60,7 @@ const related = [
   { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
   { href: "/attorney-schema-generator", label: "Attorney schema generator" },
   { href: "/dentist-schema-generator", label: "Dentist schema generator" },
+  { href: "/real-estate-agent-schema-generator", label: "Real estate agent schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
   { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },

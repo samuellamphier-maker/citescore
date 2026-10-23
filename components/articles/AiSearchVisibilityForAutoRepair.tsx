@@ -122,7 +122,9 @@ export function AiSearchVisibilityForAutoRepairArticle() {
         <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. A dental
         office’s specialty and hours are on the{" "}
         <Link href="/dentist-schema-generator">Dentist schema generator</Link>, and the longer practice note is{" "}
-        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
+        <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A chiropractic
+        office’s office, services, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>
@@ -220,7 +222,8 @@ export function AiSearchVisibilityForAutoRepairArticle() {
         shop is offering, on its own URL, uses <a href={vehicleType}>Vehicle</a> or Car. The{" "}
         <Link href="/vehicle-schema-generator">Vehicle schema generator</Link> builds that script. A customer’s car, a
         plate, and a VIN are not that page. A dental office is not this script. A dental office uses the{" "}
-        <Link href="/dentist-schema-generator">Dentist schema generator</Link>.
+        <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An agent office uses the{" "}
+        <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>.
       </p>
 
       <h2>Service-area pages</h2>

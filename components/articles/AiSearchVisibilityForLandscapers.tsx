@@ -120,7 +120,9 @@ export function AiSearchVisibilityForLandscapersArticle() {
         A dental office’s specialty and hours are on the{" "}
         <Link href="/dentist-schema-generator">Dentist schema generator</Link>. An auto repair shop’s shop, service
         area, and hours are on{" "}
-        <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>.
+        <Link href="/ai-search-visibility-for-auto-repair">AI search visibility for auto repair</Link>. A
+        chiropractic office’s office, services, and hours are on{" "}
+        <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>.
       </p>
 
       <h2>How an assistant picks a source</h2>

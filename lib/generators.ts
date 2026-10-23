@@ -4245,3 +4245,91 @@ export function buildDentistSchema(input: DentistInput): string {
 
   return jsonLdScript(office);
 }
+
+export type RealEstateAgentInput = {
+  name: string;
+  url: string;
+  logoUrl: string;
+  telephone: string;
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  postalCode: string;
+  addressCountry: string;
+  latitude: string;
+  longitude: string;
+  hours: OpeningHoursInput[];
+  areasServed: string;
+  knowsAbout: string;
+  priceRange: string;
+  sameAs: string[];
+};
+
+/**
+ * RealEstateAgent JSON-LD. Empty until the name is present.
+ * address is a PostalAddress, and only when at least one address field is present.
+ * geo is GeoCoordinates, and only when latitude and longitude are both in range.
+ * telephone is a phone string with 7–15 digits.
+ * url, logo, and sameAs are http(s).
+ * openingHours is the schema.org text form: one string, or an array when there are two or more.
+ * areaServed and knowsAbout are one text value, or an array when there are two or more.
+ * priceRange is text shorter than 100 characters.
+ * The script does not write openingHoursSpecification, image, review, aggregateRating, description, or employee.
+ */
+export function buildRealEstateAgentSchema(input: RealEstateAgentInput): string {
+  const name = plainLine(input.name);
+  if (!name) return "";
+
+  const office: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    name,
+  };
+
+  const url = httpUrl(input.url);
+  if (url) office.url = url;
+
+  const logo = httpUrl(input.logoUrl);
+  if (logo) office.logo = logo;
+
+  const telephone = telephoneValue(input.telephone);
+  if (telephone) office.telephone = telephone;
+
+  const streetAddress = plainLine(input.streetAddress);
+  const addressLocality = plainLine(input.addressLocality);
+  const addressRegion = plainLine(input.addressRegion);
+  const postalCode = plainLine(input.postalCode);
+  const addressCountry = addressCountryValue(input.addressCountry);
+  if (streetAddress || addressLocality || addressRegion || postalCode || addressCountry) {
+    const address: Record<string, unknown> = { "@type": "PostalAddress" };
+    if (streetAddress) address.streetAddress = streetAddress;
+    if (addressLocality) address.addressLocality = addressLocality;
+    if (addressRegion) address.addressRegion = addressRegion;
+    if (postalCode) address.postalCode = postalCode;
+    if (addressCountry) address.addressCountry = addressCountry;
+    office.address = address;
+  }
+
+  const latitude = geoNumber(input.latitude, -90, 90);
+  const longitude = geoNumber(input.longitude, -180, 180);
+  if (latitude !== null && longitude !== null && input.latitude.trim() && input.longitude.trim()) {
+    office.geo = { "@type": "GeoCoordinates", latitude, longitude };
+  }
+
+  const hours = oneOrList(openingHoursLines(input.hours));
+  if (hours) office.openingHours = hours;
+
+  const areas = oneOrList(attorneyLines(input.areasServed));
+  if (areas) office.areaServed = areas;
+
+  const topics = oneOrList(attorneyLines(input.knowsAbout));
+  if (topics) office.knowsAbout = topics;
+
+  const priceRange = restaurantPriceRange(input.priceRange);
+  if (priceRange) office.priceRange = priceRange;
+
+  const profiles = oneOrList(uniqueHttpUrls(input.sameAs));
+  if (profiles) office.sameAs = profiles;
+
+  return jsonLdScript(office);
+}
