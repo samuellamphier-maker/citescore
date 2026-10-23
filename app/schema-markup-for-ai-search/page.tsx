@@ -66,6 +66,7 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
           { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
           { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
+          { href: "/ai-search-visibility-for-electricians", label: "AI search visibility for electricians" },
           { href: "/qa-page-schema-generator", label: "Free QAPage schema generator" },
           { href: "/speakable-schema-generator", label: "Free Speakable schema generator" },
           { href: "/image-object-schema-generator", label: "Free ImageObject schema generator" },
@@ -76,6 +77,7 @@ export default function SchemaMarkupForAiSearchPage() {
           { href: "/vehicle-schema-generator", label: "Free Vehicle schema generator" },
           { href: "/hotel-schema-generator", label: "Free Hotel schema generator" },
           { href: "/restaurant-schema-generator", label: "Free Restaurant schema generator" },
+          { href: "/medical-clinic-schema-generator", label: "Free Medical clinic schema generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}

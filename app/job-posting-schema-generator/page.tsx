@@ -61,6 +61,7 @@ const related = [
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
   { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
+  { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/how-to-get-cited-by-you-com", label: "How to get cited by You.com" },
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },

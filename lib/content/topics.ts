@@ -802,6 +802,30 @@ export const topicPages: TopicPage[] = [
     minutes: 12,
   },
   {
+    path: "/medical-clinic-schema-generator",
+    title: "Free Medical clinic schema generator",
+    description:
+      "Free, no-signup MedicalClinic JSON-LD generator. Add the name, page URL, logo, phone, address, geo, opening hours, medical specialty, available service, and profile URLs already on the page. Copy the script. Nothing is uploaded.",
+    kicker: "Medical clinic schema",
+    card: "Copy MedicalClinic JSON-LD from the name, specialty, hours, and services already on the page.",
+    navLabel: "Medical clinic schema generator",
+    priority: 0.9,
+    publishedAt: "2026-10-23",
+    minutes: 8,
+  },
+  {
+    path: "/ai-search-visibility-for-electricians",
+    title: "AI search visibility for electricians",
+    description:
+      "How an electrical contractor site can be fetched and quoted by ChatGPT, Perplexity, and Google AI Overviews: Electrician markup, service-area pages, reviews, FAQs, robots.txt, and llms.txt. No citation rate.",
+    kicker: "Guide",
+    card: "Shop pages, service-area URLs, Electrician markup, and the crawler files an electrical contractor controls.",
+    navLabel: "AI search visibility for electricians",
+    priority: 0.8,
+    publishedAt: "2026-10-23",
+    minutes: 12,
+  },
+  {
     path: "/aeo-checklist",
     title: "Answer engine optimization (AEO) checklist",
     description:
@@ -946,6 +970,7 @@ const guideNavOrder = [
   "/ai-search-visibility-for-plumbers",
   "/ai-search-visibility-for-hvac",
   "/ai-search-visibility-for-roofers",
+  "/ai-search-visibility-for-electricians",
   "/how-to-get-cited-by-ai-answer-engines",
   "/robots-txt-for-ai-crawlers",
   "/schema-markup-for-ai-search",

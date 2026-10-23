@@ -71,6 +71,7 @@ const related = [
   { href: "/vehicle-schema-generator", label: "Vehicle schema generator" },
   { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
+  { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -81,6 +82,7 @@ const related = [
   { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
   { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
   { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
+  { href: "/ai-search-visibility-for-electricians", label: "AI search visibility for electricians" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -146,11 +148,11 @@ export default function MovieSchemaGeneratorPage() {
           <Link href="/video-schema-generator">Video schema generator</Link>. A show page uses the{" "}
           <Link href="/podcast-schema-generator">Podcast schema generator</Link>. A dataset page uses the{" "}
           <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A vehicle page uses the{" "}
-          <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel page uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. An accounting firm’s office is a
+          <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel page uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. An accounting firm’s office is a
           different page, on{" "}
           <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental
           practice’s office is on{" "}
-          <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>.
+          <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>.
         </p>
         <h2>What each field is</h2>
         <p>
