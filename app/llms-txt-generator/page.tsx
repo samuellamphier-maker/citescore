@@ -42,6 +42,7 @@ const related = [
   { href: "/dentist-schema-generator", label: "Dentist schema generator" },
   { href: "/real-estate-agent-schema-generator", label: "Real estate agent schema generator" },
   { href: "/plumber-schema-generator", label: "Plumber schema generator" },
+  { href: "/electrician-schema-generator", label: "Electrician schema generator" },
   { href: "/llms-txt", label: "llms.txt checker" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },

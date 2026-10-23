@@ -115,7 +115,11 @@ export function AiSearchVisibilityForInsuranceAgentsArticle() {
         <Link href="/real-estate-agent-schema-generator">Real estate agent schema generator</Link>. A plumbing
         business’s office, service area, hours, and services are on the{" "}
         <Link href="/plumber-schema-generator">Plumber schema generator</Link>, and the longer note is{" "}
-        <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. A chiropractic
+        <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An electrical
+        contractor’s shop, service area, hours, and license number are on the{" "}
+        <Link href="/electrician-schema-generator">Electrician schema generator</Link>. A veterinary clinic is not an
+        insurance office. That case is{" "}
+        <Link href="/ai-search-visibility-for-veterinarians">AI search visibility for veterinarians</Link>. A chiropractic
         office’s pages are on{" "}
         <Link href="/ai-search-visibility-for-chiropractors">AI search visibility for chiropractors</Link>. A health
         insurance page is not a clinic. That case is{" "}
@@ -205,7 +209,8 @@ export function AiSearchVisibilityForInsuranceAgentsArticle() {
         property <code>openingHours</code>. It does not emit <code>review</code> or <code>aggregateRating</code>. The
         address in that script is the office. It is not a customer’s home, and it is not a carrier’s headquarters. A
         plumbing business is a different script, on the{" "}
-        <Link href="/plumber-schema-generator">Plumber schema generator</Link>.
+        <Link href="/plumber-schema-generator">Plumber schema generator</Link>. An electrical contractor is a different
+        script, on the <Link href="/electrician-schema-generator">Electrician schema generator</Link>.
       </p>
       <p>
         <a href={areaServed}>schema.org areaServed</a> is the geographic area where a service or offered item is

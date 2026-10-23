@@ -96,6 +96,7 @@ export default function RobotsTxtForAiCrawlersPage() {
           { href: "/dentist-schema-generator", label: "Free Dentist schema generator" },
           { href: "/real-estate-agent-schema-generator", label: "Free Real estate agent schema generator" },
           { href: "/plumber-schema-generator", label: "Free Plumber schema generator" },
+          { href: "/electrician-schema-generator", label: "Free Electrician schema generator" },
           { href: "/geo-vs-seo", label: "GEO vs SEO" },
         ]}
       >
