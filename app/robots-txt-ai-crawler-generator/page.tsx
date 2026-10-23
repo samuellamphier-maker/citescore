@@ -38,6 +38,7 @@ const related = [
   { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
   { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
+  { href: "/attorney-schema-generator", label: "Attorney schema generator" },
   { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
   { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
   { href: "/free-check", label: "Free AI visibility check" },

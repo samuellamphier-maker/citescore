@@ -64,7 +64,7 @@ export const lawFirmFaqs = [
   },
   {
     q: "Should the firm mark itself up as Attorney or as LegalService?",
-    a: "Use LegalService for the firm. schema.org’s Attorney page, read on 21 October 2026, says the type is deprecated and that LegalService is more inclusive and less ambiguous. LegalService is a LocalBusiness, so Google’s local business fields still apply: name and address are required for the rich result, and hours, geo, telephone, and the location URL are recommended when the page shows them. A page about one named lawyer is a Person. The local business generator still lists Attorney because the type exists. Prefer LegalService for the office.",
+    a: "Use LegalService for the firm. schema.org’s Attorney page, read on 21 October 2026, says the type is deprecated and that LegalService is more inclusive and less ambiguous. LegalService is a LocalBusiness, so Google’s local business fields still apply: name and address are required for the rich result, and hours, geo, telephone, and the location URL are recommended when the page shows them. A page about one named lawyer is a Person. The local business generator still lists Attorney because the type exists. The attorney schema generator writes LegalService or Attorney, plus areaServed, knowsAbout, priceRange, and openingHours text. It does not write openingHoursSpecification. Do not paste both scripts on the same URL. Prefer LegalService for the office.",
   },
   {
     q: "Does llms.txt put a law firm into ChatGPT or AI Overviews?",
@@ -96,7 +96,7 @@ export function AiSearchVisibilityForLawFirmsArticle() {
         company’s comparison page is on{" "}
         <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>. A clinic or
         health-tech site is on{" "}
-        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage, an agent, or a property manager is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant’s location, menu, and hours are on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting, CPA, or bookkeeping firm is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental practice’s office, services, and hours are on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>.
+        <Link href="/ai-search-visibility-for-healthcare">AI search visibility for healthcare</Link>. A brokerage, an agent, or a property manager is on <Link href="/ai-search-visibility-for-real-estate">AI search visibility for real estate</Link>. A restaurant’s location, menu, and hours are on <Link href="/ai-search-visibility-for-restaurants">AI search visibility for restaurants</Link>. An accounting, CPA, or bookkeeping firm is on <Link href="/ai-search-visibility-for-accountants">AI search visibility for accountants</Link>. A dental practice’s office, services, and hours are on <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>. A plumbing business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>. An HVAC company’s office, service area, and hours are on <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>.
       </p>
 
       <h2>One page per practice the firm actually does</h2>
@@ -144,8 +144,12 @@ export function AiSearchVisibilityForLawFirmsArticle() {
         That block is an example, not a firm. <a href={sdPolicies}>Google’s structured data policies</a> say the markup
         has to describe content people can see. The{" "}
         <Link href="/local-business-schema-generator">Local business schema generator</Link> includes LegalService and
-        still lists Attorney. Choose LegalService for the office. It copies the name, the address, the phone, the
-        hours, and optional geo into one script in the browser. It does not emit <code>review</code> or{" "}
+        still lists Attorney. It copies the name, the address, the phone, the hours as{" "}
+        <code>openingHoursSpecification</code>, and optional geo into one script in the browser. It does not write{" "}
+        <code>areaServed</code>, <code>knowsAbout</code>, <code>priceRange</code>, or the text property{" "}
+        <code>openingHours</code>. The <Link href="/attorney-schema-generator">Attorney schema generator</Link> writes
+        those fields, and it writes LegalService unless you choose the deprecated Attorney type. Do not paste both
+        scripts on the same URL. Choose LegalService for the office. Neither form emits <code>review</code> or{" "}
         <code>aggregateRating</code>. Google recommends those properties only for sites that capture reviews about
         other businesses. A firm marking up its own stars is outside that recommendation.
       </p>

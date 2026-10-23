@@ -177,7 +177,9 @@ export function AiSearchVisibilityForRoofersArticle() {
         <code>LocalBusiness</code> when the page is a home-services business and RoofingContractor does not fit. Do not
         use <code>Plumber</code>, <code>Electrician</code>, or <code>HVACBusiness</code> for a roofing contractor. An
         electrical contractor’s pages are on{" "}
-        <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. Use{" "}
+        <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping
+        business’s pages are on{" "}
+        <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>. Use{" "}
         <code>Organization</code> for a homepage that is not one street address. Google’s{" "}
         <a href={localBusiness}>local business documentation</a>, read on 22 October 2026, says to use the most
         specific subtype. Its examples are Restaurant, DaySpa, and HealthClub. It does not name RoofingContractor. The

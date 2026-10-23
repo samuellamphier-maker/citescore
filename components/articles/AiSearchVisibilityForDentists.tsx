@@ -214,7 +214,7 @@ export function AiSearchVisibilityForDentistsArticle() {
         <Link href="/dataset-schema-generator">Dataset schema generator</Link>. A film the practice publishes, on its
         own URL, uses the <Link href="/movie-schema-generator">Movie schema generator</Link>. A vehicle the practice publishes, on its
         own URL, uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel the practice publishes, on its
-        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. The dataset page is not
+        own URL, uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>. The dataset page is not
         the office, the film page is not the office, the vehicle page is not the office, and the hotel page is not the office.
       </p>
 
