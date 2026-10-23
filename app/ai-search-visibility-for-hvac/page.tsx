@@ -37,6 +37,7 @@ export default function AiSearchVisibilityForHvacPage() {
         related={guideLinks([
           { href: "/geo-for-local-businesses", label: "GEO for local businesses" },
           { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
+          { href: "/ai-search-visibility-for-landscapers", label: "AI search visibility for landscapers" },
           { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
           { href: "/ai-search-visibility-for-accountants", label: "AI search visibility for accountants" },
           { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
@@ -63,6 +64,7 @@ export default function AiSearchVisibilityForHvacPage() {
           { href: "/hotel-schema-generator", label: "Free Hotel schema generator" },
           { href: "/restaurant-schema-generator", label: "Free Restaurant schema generator" },
           { href: "/medical-clinic-schema-generator", label: "Free Medical clinic schema generator" },
+          { href: "/attorney-schema-generator", label: "Free Attorney schema generator" },
           { href: "/movie-schema-generator", label: "Free Movie schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },

@@ -70,6 +70,7 @@ const related = [
   { href: "/hotel-schema-generator", label: "Hotel schema generator" },
   { href: "/restaurant-schema-generator", label: "Restaurant schema generator" },
   { href: "/medical-clinic-schema-generator", label: "Medical clinic schema generator" },
+  { href: "/attorney-schema-generator", label: "Attorney schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-law-firms", label: "AI search visibility for law firms" },
   { href: "/ai-search-visibility-for-healthcare", label: "AI search visibility for healthcare" },
@@ -81,6 +82,7 @@ const related = [
   { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
   { href: "/ai-search-visibility-for-roofers", label: "AI search visibility for roofers" },
   { href: "/ai-search-visibility-for-electricians", label: "AI search visibility for electricians" },
+  { href: "/ai-search-visibility-for-landscapers", label: "AI search visibility for landscapers" },
   { href: "/free-check", label: "Free AI visibility check" },
   { href: "/geo-audit", label: "$39 GEO audit" },
 ];
@@ -143,13 +145,13 @@ export default function DatasetSchemaGeneratorPage() {
           day, lists Dataset and describes it as large data sets that appear in Google Dataset Search. Listing the
           feature is not a placement. This form writes one Dataset for one landing page. It does not write DCAT, and
           it does not write CSVW. A film page uses the <Link href="/movie-schema-generator">Movie schema generator</Link>.
-          A vehicle page uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel page uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>.
+          A vehicle page uses the <Link href="/vehicle-schema-generator">Vehicle schema generator</Link>. A hotel page uses the <Link href="/hotel-schema-generator">Hotel schema generator</Link>. A restaurant page uses the <Link href="/restaurant-schema-generator">Restaurant schema generator</Link>. A clinic page uses the <Link href="/medical-clinic-schema-generator">Medical clinic schema generator</Link>. A law office page uses the <Link href="/attorney-schema-generator">Attorney schema generator</Link>.
           A dental office is a different page, on{" "}
           <Link href="/ai-search-visibility-for-dentists">AI search visibility for dentists</Link>.
           A plumbing business is on{" "}
           <Link href="/ai-search-visibility-for-plumbers">AI search visibility for plumbers</Link>.
           An HVAC company is on{" "}
-          <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>.
+          <Link href="/ai-search-visibility-for-hvac">AI search visibility for HVAC</Link>. A roofing contractor’s office, service area, and hours are on <Link href="/ai-search-visibility-for-roofers">AI search visibility for roofers</Link>. An electrical contractor’s shop, service area, and hours are on <Link href="/ai-search-visibility-for-electricians">AI search visibility for electricians</Link>. A landscaping business’s office, service area, and hours are on <Link href="/ai-search-visibility-for-landscapers">AI search visibility for landscapers</Link>.
         </p>
         <h2>What each field is</h2>
         <p>
