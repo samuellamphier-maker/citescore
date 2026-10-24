@@ -113,6 +113,14 @@ export default function FixPackPage() {
             Get a free AI Answer Snapshot
           </Link>
         </div>
+        <p className="mt-4 text-sm leading-6">
+          <Link href="/sample-snapshot" className="font-medium text-forest underline">
+            See an example snapshot
+          </Link>
+          <span className="text-ink-soft">
+            . Fictional business, illustrative numbers.
+          </span>
+        </p>
         <p className="mt-4 text-sm leading-6 text-ink-soft">
           AI answers vary run to run. This is a snapshot, not a ranking. A
           published test of local ChatGPT answers found that only 40% of
@@ -167,59 +175,22 @@ export default function FixPackPage() {
           Example (fictional business)
         </h2>
         <p className="mt-4 text-sm leading-7 text-ink-soft">
-          Harbor &amp; Pine Plumbing is not a real company. The names,
-          ratings, review counts, and directory below were written to show
-          the layout. They are not a live ChatGPT or Perplexity answer, and
-          they are not a customer result.
+          The one-page example is{" "}
+          <Link href="/sample-snapshot" className="text-forest underline">
+            Example Plumbing Co. in Riverton, USA
+          </Link>
+          . The business, the competitors, the directories, and the ratings
+          on that page were written to show the layout. They are not a live
+          ChatGPT or Perplexity answer, and they are not a customer result.
         </p>
-        <div className="report-sheet mt-6 overflow-hidden rounded-2xl border border-rule">
-          <div className="border-b border-rule bg-paper-2/60 px-5 py-4">
-            <p className="kicker text-copper">Example (fictional business)</p>
-            <p className="mt-2 font-serif text-2xl">Harbor &amp; Pine Plumbing</p>
-            <p className="mt-1 text-sm text-ink-soft">
-              Portland, Oregon · prompt: “best plumber in Portland”
-            </p>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-rule text-xs uppercase tracking-wide text-ink-soft">
-                <tr>
-                  <th className="px-5 py-3 font-medium">Named in this example</th>
-                  <th className="px-5 py-3 font-medium">Example Google rating</th>
-                  <th className="px-5 py-3 font-medium">Example source</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-rule">
-                  <td className="px-5 py-3">Cedar Knob Plumbing</td>
-                  <td className="px-5 py-3">4.9 · 410 reviews</td>
-                  <td className="px-5 py-3">Fictional Portland Trades Directory</td>
-                </tr>
-                <tr className="border-b border-rule">
-                  <td className="px-5 py-3">Westline Drain Co.</td>
-                  <td className="px-5 py-3">4.7 · 260 reviews</td>
-                  <td className="px-5 py-3">Fictional Portland Trades Directory</td>
-                </tr>
-                <tr className="border-b border-rule">
-                  <td className="px-5 py-3">Maple Street Rooter</td>
-                  <td className="px-5 py-3">4.8 · 190 reviews</td>
-                  <td className="px-5 py-3">Fictional city magazine list</td>
-                </tr>
-                <tr>
-                  <td className="px-5 py-3 font-medium">Harbor &amp; Pine Plumbing</td>
-                  <td className="px-5 py-3">4.6 · 38 reviews</td>
-                  <td className="px-5 py-3">Not named in this example</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p className="border-t border-rule px-5 py-4 text-sm leading-6 text-ink-soft">
-            The gap this example would hand to the Fix Pack: fewer Google
-            reviews than the named businesses, missing from the fictional
-            directory the example says was cited, and no LocalBusiness script
-            on the site. None of those figures were looked up.
-          </p>
-        </div>
+        <p className="mt-4">
+          <Link
+            href="/sample-snapshot"
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+          >
+            See the example AI Answer Snapshot
+          </Link>
+        </p>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">Price</h2>
         <p className="mt-4 text-ink-soft leading-7">
