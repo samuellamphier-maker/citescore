@@ -50,7 +50,7 @@ export type MarketingPath = {
 };
 
 export const marketingPaths: MarketingPath[] = [
-  { path: "/", changeFrequency: "weekly", priority: 1 },
+  { path: "/", changeFrequency: "weekly", priority: 1, lastModified: "2026-10-24" },
   { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
   { path: "/geo-audit", changeFrequency: "monthly", priority: 0.9 },
   {
@@ -64,6 +64,12 @@ export const marketingPaths: MarketingPath[] = [
     priority: 0.8,
   },
   { path: "/sample", changeFrequency: "monthly", priority: 0.7 },
+  {
+    path: "/sample-snapshot",
+    changeFrequency: "monthly",
+    priority: 0.8,
+    lastModified: "2026-10-24",
+  },
   {
     path: "/checklist",
     changeFrequency: "monthly",
@@ -99,7 +105,7 @@ export const marketingPaths: MarketingPath[] = [
     path: "/fix-pack",
     changeFrequency: "monthly",
     priority: 0.9,
-    lastModified: "2026-10-23",
+    lastModified: "2026-10-24",
   },
   ...blogPosts.map((post) => ({
     path: `/blog/${post.slug}`,

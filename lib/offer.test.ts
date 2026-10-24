@@ -14,7 +14,13 @@ test("Fix Pack checkout URL is a single empty constant", () => {
 
 test("sitemap sources include the new offer and trust URLs", () => {
   const paths = new Set(marketingPaths.map((item) => item.path));
-  for (const path of ["/fix-pack", "/refunds", "/terms", "/privacy"]) {
+  for (const path of [
+    "/fix-pack",
+    "/refunds",
+    "/terms",
+    "/privacy",
+    "/sample-snapshot",
+  ]) {
     assert.equal(paths.has(path), true, path);
   }
 });

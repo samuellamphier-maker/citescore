@@ -114,6 +114,17 @@ export default function HomePage() {
                   Fix Pack, {fixPackIntroPriceLabel}
                 </Link>
               </div>
+              <p className="mt-4 text-sm leading-6">
+                <Link
+                  href="/sample-snapshot"
+                  className="font-medium text-forest underline underline-offset-4 hover:underline"
+                >
+                  See an example snapshot
+                </Link>
+                <span className="text-ink-soft">
+                  . Fictional business, illustrative numbers.
+                </span>
+              </p>
               <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
                 AI answers vary run to run. This is a snapshot, not a ranking.
                 The{" "}
@@ -212,7 +223,12 @@ export default function HomePage() {
             <p className="mt-4 max-w-2xl text-ink-soft leading-7">
               Fictional SaaS, real format. Score {sampleReport.overall}/100,
               eight dimensions, ten fixes. Labeled as a sample throughout —
-              not a disguised testimonial.
+              not a disguised testimonial. This preview is the older{" "}
+              {site.priceLabel} signal audit.{" "}
+              <Link href="/sample-snapshot" className="text-forest underline">
+                The example AI Answer Snapshot
+              </Link>{" "}
+              is the one-page snapshot.
             </p>
             <div className="mt-8 overflow-hidden rounded-2xl border border-rule report-sheet">
               <div className="grid gap-6 p-6 sm:grid-cols-[auto_1fr] sm:items-center">
@@ -302,7 +318,11 @@ export default function HomePage() {
                 <Link href="/fix-pack" className="underline">
                   See the Fix Pack
                 </Link>
-                , including the fictional sample snapshot.{" "}
+                .{" "}
+                <Link href="/sample-snapshot" className="underline">
+                  Example snapshot
+                </Link>{" "}
+                is a fictional business.{" "}
                 <Link href="/refunds" className="underline">
                   Refunds
                 </Link>

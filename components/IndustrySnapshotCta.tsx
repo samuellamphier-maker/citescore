@@ -18,6 +18,12 @@ export function IndustrySnapshotCta({ industry }: { industry: string }) {
       >
         Get a free AI Answer Snapshot
       </Link>
+      <Link
+        href="/sample-snapshot"
+        className="mt-3 block text-sm font-medium text-cream underline underline-offset-4"
+      >
+        See an example snapshot
+      </Link>
       <p className="mt-4 text-xs leading-5 text-[#d7c7b0]">
         llms.txt is <LlmsTxtCaveat className="underline" />.
       </p>

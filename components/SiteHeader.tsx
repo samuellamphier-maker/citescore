@@ -13,6 +13,9 @@ export function SiteHeader() {
           <Link href="/sample" className="hover:text-ink">
             Sample
           </Link>
+          <Link href="/sample-snapshot" className="hover:text-ink">
+            Example snapshot
+          </Link>
           <Link href="/blog" className="hover:text-ink">
             Guides
           </Link>
