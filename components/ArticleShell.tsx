@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
-import { industrySnapshotLabel } from "@/lib/industry-snapshot";
+import { snapshotOfferForPage } from "@/lib/industry-snapshot";
 import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
 type Related = {
@@ -44,7 +44,7 @@ export function ArticleShell({
   guidePath,
   showAuditCta = true,
 }: Props) {
-  const industry = guidePath ? industrySnapshotLabel(guidePath) : null;
+  const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
   return (
     <>
       <SiteHeader />
@@ -59,9 +59,9 @@ export function ArticleShell({
             {minutes ? ` · ${minutes} min read` : null}
           </p>
         ) : null}
-        {industry ? (
+        {snapshotOffer ? (
           <div className="mt-8">
-            <IndustrySnapshotCta industry={industry} />
+            <IndustrySnapshotCta industry={snapshotOffer.industry} />
           </div>
         ) : null}
         <div className="article-prose mt-10">{children}</div>
@@ -82,6 +82,11 @@ export function ArticleShell({
               ) : null
             }
           />
+        ) : null}
+        {snapshotOffer ? (
+          <div className="mt-12">
+            <IndustrySnapshotCta industry={snapshotOffer.industry} />
+          </div>
         ) : null}
         {guidePath ? <RelatedGuides current={guidePath} /> : null}
         {related.length > 0 ? (

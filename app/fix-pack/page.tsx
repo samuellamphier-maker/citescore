@@ -25,6 +25,10 @@ const faqs = [
     a: "Five pieces: a Google Business Profile gap list against the businesses AI names; a review-gap plan with a copy-paste review-request script; the directories and trade bodies those answers cited, and where you are missing; paste-ready LocalBusiness and Service JSON-LD with install steps for WordPress, Wix, Squarespace, and Shopify; and a re-check of the same prompts 14 days later.",
   },
   {
+    q: "When is the Fix Pack delivered?",
+    a: "We email the Fix Pack after you request it. When a payment link exists, we email it after payment. The re-check in the pack is the same prompts, run again 14 days later.",
+  },
+  {
     q: "Will ChatGPT name my business after this?",
     a: "No. The Fix Pack is the work that matches what local AI answers tend to cite: the Google Business Profile, reviews, the directories the answer used, and clear service markup. It is not a promise that any assistant will name you.",
   },

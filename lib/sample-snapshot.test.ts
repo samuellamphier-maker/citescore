@@ -11,6 +11,9 @@ const industryCta = readFileSync(
   new URL("../components/IndustrySnapshotCta.tsx", import.meta.url),
   "utf8",
 );
+const shell = readFileSync(new URL("../components/ArticleShell.tsx", import.meta.url), "utf8");
+const footer = readFileSync(new URL("../components/SiteFooter.tsx", import.meta.url), "utf8");
+const about = readFileSync(new URL("../app/about/page.tsx", import.meta.url), "utf8");
 
 test("example snapshot is fictional and labeled", () => {
   assert.match(page, /Example only: fictional business, fictional competitors, illustrative numbers\./);
@@ -32,8 +35,17 @@ test("snapshot example is linked from the conversion surfaces and the sitemap", 
   for (const source of [home, fixPack, header, industryCta]) {
     assert.match(source, /href="\/sample-snapshot"/);
   }
+  assert.match(industryCta, /href="\/fix-pack"/);
+  assert.match(industryCta, /Fix Pack,/);
+  assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
+  assert.match(fixPack, /When is the Fix Pack delivered\?/);
+  assert.match(footer, /href="\/about"/);
+  assert.match(about, /CiteScore Team/);
+  assert.match(about, /mailto:\$\{contactEmail\}/);
+  assert.doesNotMatch(about, /testimonial|customers served|star rating/i);
   assert.equal(
     marketingPaths.some((item) => item.path === "/sample-snapshot"),
     true,
   );
+  assert.equal(marketingPaths.some((item) => item.path === "/about"), true);
 });

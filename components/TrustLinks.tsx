@@ -9,6 +9,10 @@ export function TrustLinks({ className = "text-sm leading-6 text-ink-soft" }: { 
         {contactEmail}
       </a>
       {" · "}
+      <Link href="/about" className="text-forest underline">
+        About
+      </Link>
+      {" · "}
       <Link href="/terms" className="text-forest underline">
         Terms
       </Link>
