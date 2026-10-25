@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
+import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { JsonLd } from "@/components/JsonLd";
 import { ScoreRing } from "@/components/ScoreRing";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -9,6 +11,7 @@ import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { TrustLinks } from "@/components/TrustLinks";
 import { topicPages } from "@/lib/content/topics";
+import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
 import { sampleReport } from "@/lib/sample-report";
 import {
   fixPackIntroPriceLabel,
@@ -172,6 +175,21 @@ export default function HomePage() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        <section id="faq" className="border-b border-rule/80">
+          <div className="mx-auto max-w-5xl px-5 py-14">
+            <JsonLd data={faqPageJsonLd(snapshotOfferFaqs)} />
+            <p className="kicker">FAQ</p>
+            <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
+              Before you request a snapshot or the Fix Pack.
+            </h2>
+            <p className="mt-4 max-w-2xl leading-7 text-ink-soft">
+              What the one-page snapshot shows, what the {fixPackIntroPriceLabel}{" "}
+              Fix Pack includes, and how to ask.
+            </p>
+            <FaqList items={snapshotOfferFaqs} />
           </div>
         </section>
 
@@ -465,7 +483,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="faq">
+        <section id="more-faq">
           <div className="mx-auto max-w-5xl px-5 py-14">
             <p className="kicker">FAQ</p>
             <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">

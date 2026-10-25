@@ -38,7 +38,9 @@ test("snapshot example is linked from the conversion surfaces and the sitemap", 
   assert.match(industryCta, /href="\/fix-pack"/);
   assert.match(industryCta, /Fix Pack,/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
-  assert.match(fixPack, /When is the Fix Pack delivered\?/);
+  assert.match(fixPack, /fixPackFaqs\(\)/);
+  const offerFaq = readFileSync(new URL("./offer-faq.ts", import.meta.url), "utf8");
+  assert.match(offerFaq, /When is the Fix Pack delivered\?/);
   assert.match(footer, /href="\/about"/);
   assert.match(about, /CiteScore Team/);
   assert.match(about, /mailto:\$\{contactEmail\}/);
