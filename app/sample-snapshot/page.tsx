@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FaqList } from "@/components/FaqList";
+import { JsonLd } from "@/components/JsonLd";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
+import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
 import {
   contactEmail,
   fixPackIntroPriceLabel,
@@ -398,6 +401,16 @@ export default function SampleSnapshotPage() {
             </p>
           </section>
         </article>
+
+        <section id="faq" className="mt-12">
+          <JsonLd data={faqPageJsonLd(snapshotOfferFaqs)} />
+          <h2 className="font-serif text-3xl tracking-tight">FAQ</h2>
+          <p className="mt-4 text-sm leading-7 text-ink-soft">
+            A real snapshot uses the business, city, and service you email.
+            The example above is fictional.
+          </p>
+          <FaqList items={snapshotOfferFaqs} />
+        </section>
 
         <section className="mt-12 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8">
           <p className="kicker">Request</p>

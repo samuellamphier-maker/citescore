@@ -1,58 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
+import { faqPageJsonLd, fixPackFaqs, sonickStudyUrl } from "@/lib/offer-faq";
 import {
-  contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
-  sellerName,
 } from "@/lib/site";
-
-const sonickStudy = "https://sonickmarketing.com/blog/chatgpt-local-business-study/";
-
-const faqs = [
-  {
-    q: "What is a free AI Answer Snapshot?",
-    a: "For one business, we ask logged-out ChatGPT and Perplexity a local prompt such as “best {service} in {city},” plus one variant. The one-page snapshot records who is named, which sources are cited, and each named competitor’s Google rating and review count next to yours.",
-  },
-  {
-    q: "What does the Fix Pack include?",
-    a: "Five pieces: a Google Business Profile gap list against the businesses AI names; a review-gap plan with a copy-paste review-request script; the directories and trade bodies those answers cited, and where you are missing; paste-ready LocalBusiness and Service JSON-LD with install steps for WordPress, Wix, Squarespace, and Shopify; and a re-check of the same prompts 14 days later.",
-  },
-  {
-    q: "When is the Fix Pack delivered?",
-    a: "We email the Fix Pack after you request it. When a payment link exists, we email it after payment. The re-check in the pack is the same prompts, run again 14 days later.",
-  },
-  {
-    q: "Will ChatGPT name my business after this?",
-    a: "No. The Fix Pack is the work that matches what local AI answers tend to cite: the Google Business Profile, reviews, the directories the answer used, and clear service markup. It is not a promise that any assistant will name you.",
-  },
-  {
-    q: "Do the answers stay the same if you ask again?",
-    a: "No. AI answers vary run to run. This is a snapshot, not a ranking. A published UK test of local ChatGPT answers found that only 40% of businesses appeared in all three runs.",
-  },
-  {
-    q: "What if the Fix Pack is not useful?",
-    a: "Email us within 14 days of delivery and we refund the Fix Pack in full. You do not have to prove that you implemented anything.",
-  },
-  {
-    q: "Does llms.txt get a local business named?",
-    a: "No. llms.txt is optional; Google says it ignores llms.txt. The Fix Pack does not sell an llms.txt file as a citation tactic.",
-  },
-  {
-    q: "How do I pay?",
-    a: "There is no $49 checkout product yet. Request the Fix Pack by email. When a payment link exists, the same button goes to checkout.",
-  },
-  {
-    q: "Who sells this?",
-    a: `The seller is ${sellerName}. Questions and refunds go to ${contactEmail}.`,
-  },
-];
 
 export const metadata: Metadata = pageMeta({
   title: `AI Visibility Fix Pack, ${fixPackIntroPriceLabel}`,
@@ -86,17 +45,7 @@ const deliverables = [
 export default function FixPackPage() {
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((item) => ({
-            "@type": "Question",
-            name: item.q,
-            acceptedAnswer: { "@type": "Answer", text: item.a },
-          })),
-        }}
-      />
+      <JsonLd data={faqPageJsonLd(fixPackFaqs())} />
       <SiteHeader />
       <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">AI Visibility Fix Pack</p>
@@ -129,7 +78,7 @@ export default function FixPackPage() {
           AI answers vary run to run. This is a snapshot, not a ranking. A
           published test of local ChatGPT answers found that only 40% of
           businesses appeared in all three runs (
-          <a href={sonickStudy} className="text-forest underline">
+          <a href={sonickStudyUrl} className="text-forest underline">
             SoNick Marketing
           </a>
           ).
@@ -223,40 +172,14 @@ export default function FixPackPage() {
           page.
         </p>
 
-        <h2 className="mt-12 font-serif text-3xl tracking-tight">FAQ</h2>
-        <div className="mt-6 divide-y divide-rule border-y border-rule">
-          {faqs.map((item) => (
-            <details key={item.q} className="group py-4">
-              <summary className="cursor-pointer list-none font-medium leading-7 marker:content-none [&::-webkit-details-marker]:hidden">
-                <span className="flex items-start justify-between gap-6">
-                  {item.q}
-                  <span className="text-ink-soft group-open:rotate-45">+</span>
-                </span>
-              </summary>
-              <p className="mt-2 max-w-3xl text-sm leading-7 text-ink-soft">
-                {item.a}{" "}
-                {item.q.includes("llms.txt") ? (
-                  <a
-                    href="https://searchengineland.com/google-says-llms-txt-files-wont-harm-or-help-your-search-rankings-480264"
-                    className="text-forest underline"
-                  >
-                    Search Engine Land
-                  </a>
-                ) : null}
-                {item.q.startsWith("Do the answers") ? (
-                  <a href={sonickStudy} className="text-forest underline">
-                    SoNick Marketing
-                  </a>
-                ) : null}
-                {item.q.startsWith("What if") ? (
-                  <Link href="/refunds" className="text-forest underline">
-                    Refunds
-                  </Link>
-                ) : null}
-              </p>
-            </details>
-          ))}
-        </div>
+        <h2 id="faq" className="mt-12 font-serif text-3xl tracking-tight">
+          FAQ
+        </h2>
+        <p className="mt-4 text-sm leading-7 text-ink-soft">
+          What the snapshot shows, what you do with the Fix Pack, and how to
+          ask.
+        </p>
+        <FaqList items={fixPackFaqs()} />
       </main>
       <SiteFooter />
     </>
