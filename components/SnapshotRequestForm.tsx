@@ -1,30 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { EmailRequestFallback } from "@/components/EmailRequestFallback";
+import {
+  snapshotMailto,
+  snapshotRequestBody,
+  snapshotRequestClipboard,
+} from "@/lib/email-request";
 import { contactEmail } from "@/lib/site";
 
-const SUBJECT = "Free AI Answer Snapshot";
+function openMailto(href: string) {
+  window.location.assign(href);
+}
 
 export function SnapshotRequestForm() {
-  const [opened, setOpened] = useState(false);
+  const [business, setBusiness] = useState("");
+  const [city, setCity] = useState("");
+  const [service, setService] = useState("");
+  const [email, setEmail] = useState("");
+
+  const fields = {
+    business: business.trim(),
+    city: city.trim(),
+    service: service.trim(),
+    email: email.trim(),
+  };
+  const ready = Boolean(fields.business && fields.city && fields.service && fields.email);
+  const body = snapshotRequestBody(fields);
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const business = String(data.get("business") ?? "").trim();
-    const city = String(data.get("city") ?? "").trim();
-    const service = String(data.get("service") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const body = [
-      `Business name: ${business}`,
-      `City: ${city}`,
-      `Service: ${service}`,
-      `Email: ${email}`,
-      "",
-      "Please send a free AI Answer Snapshot.",
-    ].join("\n");
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(SUBJECT)}&body=${encodeURIComponent(body)}`;
-    setOpened(true);
+    openMailto(snapshotMailto(contactEmail, body));
   }
 
   return (
@@ -38,6 +44,8 @@ export function SnapshotRequestForm() {
           name="business"
           required
           autoComplete="organization"
+          value={business}
+          onChange={(event) => setBusiness(event.target.value)}
           className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none"
         />
       </div>
@@ -51,6 +59,8 @@ export function SnapshotRequestForm() {
             name="city"
             required
             autoComplete="address-level2"
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
             className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none"
           />
         </div>
@@ -63,6 +73,8 @@ export function SnapshotRequestForm() {
             name="service"
             required
             placeholder="Plumber"
+            value={service}
+            onChange={(event) => setService(event.target.value)}
             className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none placeholder:text-ink-soft/70"
           />
         </div>
@@ -77,6 +89,8 @@ export function SnapshotRequestForm() {
           type="email"
           required
           autoComplete="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none"
         />
       </div>
@@ -86,20 +100,15 @@ export function SnapshotRequestForm() {
       >
         Get a free AI Answer Snapshot
       </button>
+      <EmailRequestFallback
+        requestText={snapshotRequestClipboard(contactEmail, fields)}
+        requestReady={ready}
+      />
       <p className="text-xs leading-5 text-ink-soft">
         Opens your email app to {contactEmail}. No account and no paid
         checkout. AI answers vary run to run. This is a snapshot, not a
         ranking.
       </p>
-      {opened ? (
-        <p className="text-sm leading-6 text-ink" role="status">
-          If your email app did not open, send the same details to{" "}
-          <a className="text-forest underline" href={`mailto:${contactEmail}?subject=Free%20AI%20Answer%20Snapshot`}>
-            {contactEmail}
-          </a>
-          .
-        </p>
-      ) : null}
     </form>
   );
 }

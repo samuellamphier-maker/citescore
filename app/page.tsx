@@ -312,7 +312,10 @@ export default function HomePage() {
                 list · one business · 14-day re-check
               </p>
               <div className="mt-6">
-                <FixPackBuyLink className="flex h-12 items-center justify-center rounded-lg bg-cream text-ink hover:bg-paper" />
+                <FixPackBuyLink
+                  tone="dark"
+                  className="flex h-12 items-center justify-center rounded-lg bg-cream text-ink hover:bg-paper"
+                />
               </div>
               <p className="mt-4 text-xs leading-5 text-[#d7c7b0]">
                 <Link href="/fix-pack" className="underline">

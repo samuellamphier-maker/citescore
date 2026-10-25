@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { EmailRequestFallback } from "@/components/EmailRequestFallback";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
-import { fixPackIntroPriceLabel } from "@/lib/site";
+import { snapshotTemplateRequestText } from "@/lib/email-request";
+import { contactEmail, fixPackIntroPriceLabel } from "@/lib/site";
 
 export function IndustrySnapshotCta({ industry }: { industry?: string }) {
   return (
@@ -21,6 +23,11 @@ export function IndustrySnapshotCta({ industry }: { industry?: string }) {
       >
         Get a free AI Answer Snapshot
       </Link>
+      <EmailRequestFallback
+        tone="dark"
+        className="mt-4"
+        requestText={snapshotTemplateRequestText(contactEmail, industry ?? "")}
+      />
       <Link
         href="/sample-snapshot"
         className="mt-3 block text-sm font-medium text-cream underline underline-offset-4"
