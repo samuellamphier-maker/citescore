@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { marketingPaths } from "./content/blog.ts";
-import { industrySnapshotLabel } from "./industry-snapshot.ts";
+import { industrySnapshotLabel, snapshotOfferForPage } from "./industry-snapshot.ts";
 import { freeCheckAuditPitch } from "./free-check-pitch.ts";
 
 test("Fix Pack checkout URL is a single empty constant", () => {
@@ -15,6 +15,7 @@ test("Fix Pack checkout URL is a single empty constant", () => {
 test("sitemap sources include the new offer and trust URLs", () => {
   const paths = new Set(marketingPaths.map((item) => item.path));
   for (const path of [
+    "/about",
     "/fix-pack",
     "/refunds",
     "/terms",
@@ -34,8 +35,19 @@ test("every industry visibility path has a snapshot label", () => {
   assert.equal(industrySnapshotLabel("/ai-search-visibility-for-plumbers"), "plumber");
   assert.equal(industrySnapshotLabel("/ai-search-visibility-for-b2b-saas"), "B2B SaaS");
   assert.equal(industrySnapshotLabel("/ai-search-visibility-for-hvac"), "HVAC");
+  assert.equal(industrySnapshotLabel("/ai-search-visibility-for-veterinarians"), "veterinarian");
   assert.equal(industrySnapshotLabel("/geo-audit"), null);
   for (const path of industries) assert.ok(industrySnapshotLabel(path));
+  assert.deepEqual(
+    snapshotOfferForPage({ guidePath: "/ai-search-visibility-for-plumbers" }),
+    { industry: "plumber" },
+  );
+  assert.equal(snapshotOfferForPage({ guidePath: "/geo-for-local-businesses" }), null);
+  assert.deepEqual(snapshotOfferForPage({ ctaId: "plumber-schema-generator" }), {
+    industry: "plumber",
+  });
+  assert.deepEqual(snapshotOfferForPage({ ctaId: "faq-schema-generator" }), {});
+  assert.equal(snapshotOfferForPage({ ctaId: "llms-txt-generator" }), null);
 });
 
 test("a missing llms.txt is not pitched as a citation issue", () => {

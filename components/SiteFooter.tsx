@@ -78,6 +78,9 @@ export function SiteFooter() {
           <Link href="/#faq" className="hover:text-ink">
             FAQ
           </Link>
+          <Link href="/about" className="hover:text-ink">
+            About
+          </Link>
           <Link href="/privacy" className="hover:text-ink">
             Privacy
           </Link>

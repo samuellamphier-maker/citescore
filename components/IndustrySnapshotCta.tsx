@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
+import { fixPackIntroPriceLabel } from "@/lib/site";
 
-export function IndustrySnapshotCta({ industry }: { industry: string }) {
+export function IndustrySnapshotCta({ industry }: { industry?: string }) {
   return (
     <aside className="rounded-2xl border border-ink bg-ink px-5 py-6 text-cream">
       <p className="kicker text-[#d7c7b0]">Free</p>
       <h2 className="mt-2 font-serif text-2xl leading-snug tracking-tight text-cream">
-        Free AI Answer Snapshot for {industry} businesses in your city
+        {industry
+          ? `Free AI Answer Snapshot for ${industry} businesses in your city`
+          : "Free AI Answer Snapshot"}
       </h2>
       <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
         Tell us the business, the city, and the service. We ask who ChatGPT
@@ -23,6 +26,12 @@ export function IndustrySnapshotCta({ industry }: { industry: string }) {
         className="mt-3 block text-sm font-medium text-cream underline underline-offset-4"
       >
         See an example snapshot
+      </Link>
+      <Link
+        href="/fix-pack"
+        className="mt-2 block text-sm font-medium text-cream underline underline-offset-4"
+      >
+        Fix Pack, {fixPackIntroPriceLabel}
       </Link>
       <p className="mt-4 text-xs leading-5 text-[#d7c7b0]">
         llms.txt is <LlmsTxtCaveat className="underline" />.
