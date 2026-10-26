@@ -30,7 +30,7 @@ const steps = [
   {
     n: "01",
     title: "Request a free snapshot",
-    body: "Send the business name, city, service, and email. We ask logged-out ChatGPT and Perplexity who they name for that trade and city. No payment.",
+    body: "Send the business name, city, service, website, and email. We ask logged-out ChatGPT and Perplexity who they name for that trade and city. No payment.",
   },
   {
     n: "02",
@@ -107,7 +107,7 @@ export default function HomePage() {
               </p>
               <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/#snapshot"
+                  href="/free-snapshot"
                   className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep sm:w-auto"
                 >
                   Get a free AI Answer Snapshot
@@ -153,8 +153,12 @@ export default function HomePage() {
                 Request the snapshot
               </h2>
               <p className="mt-2 text-sm leading-6 text-ink-soft">
-                Business name, city, service, and email. We reply with the
-                one-page snapshot.
+                Business name, city, service, website, and email. We reply with
+                the one-page snapshot. Same request as the{" "}
+                <Link href="/free-snapshot" className="text-forest underline">
+                  free snapshot page
+                </Link>
+                .
               </p>
               <div className="mt-5">
                 <SnapshotRequestForm />

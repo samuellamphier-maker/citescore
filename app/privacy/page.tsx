@@ -60,7 +60,7 @@ export default function PrivacyPage() {
           <p>
             The free AI Answer Snapshot form does not post to a server. It
             opens your email app with a message to {contactEmail}. We receive
-            the business name, city, service, and email only if you send that
+            the business name, city, service, website, and email only if you send that
             message.
           </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>

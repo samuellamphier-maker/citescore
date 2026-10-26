@@ -40,7 +40,7 @@ export default function FixPackPage() {
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
-            href="/#snapshot"
+            href="/free-snapshot"
             className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
           >
             Get a free AI Answer Snapshot

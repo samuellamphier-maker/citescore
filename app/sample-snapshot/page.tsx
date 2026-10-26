@@ -165,7 +165,7 @@ function SnapshotCtas() {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
       <Link
-        href="#snapshot"
+        href="/free-snapshot"
         className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
       >
         Get a free AI Answer Snapshot
@@ -205,8 +205,12 @@ export default function SampleSnapshotPage() {
           <FixPackOfferFacts className="mt-4" />
         </div>
         <p className="mt-3 text-sm leading-6 text-ink-soft">
-          The request form on this page is the same one as the homepage. It
-          opens an email to{" "}
+          The button above opens the{" "}
+          <Link href="/free-snapshot" className="text-forest underline">
+            free snapshot request page
+          </Link>
+          . The form on this page is the same email request. It opens an email
+          to{" "}
           <a
             className="text-forest underline"
             href={`mailto:${contactEmail}?subject=${encodeURIComponent("Free AI Answer Snapshot")}`}
@@ -423,9 +427,9 @@ export default function SampleSnapshotPage() {
             Get a snapshot for a real business.
           </h2>
           <p className="mt-3 text-sm leading-6 text-ink-soft">
-            The example above stays fictional. This form is the homepage
-            request. It emails {contactEmail} with the business, city,
-            service, and your address. No checkout.
+            The example above stays fictional. This form is the same request
+            as the free snapshot page. It emails {contactEmail} with the
+            business, city, service, website, and your address. No checkout.
           </p>
           <div className="mt-5">
             <SnapshotRequestForm />

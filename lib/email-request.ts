@@ -10,12 +10,14 @@ export function snapshotRequestBody(input: {
   business: string;
   city: string;
   service: string;
+  website: string;
   email: string;
 }) {
   return [
     `Business name: ${input.business}`,
     `City: ${input.city}`,
     `Service: ${input.service}`,
+    `Website: ${input.website}`,
     `Email: ${input.email}`,
     "",
     "Please send a free AI Answer Snapshot.",
@@ -43,6 +45,7 @@ export function snapshotRequestClipboard(
     business: string;
     city: string;
     service: string;
+    website: string;
     email: string;
   },
 ) {
@@ -55,6 +58,7 @@ export function snapshotTemplateRequestText(inbox: string, service = "") {
     business: "",
     city: "",
     service,
+    website: "",
     email: "",
   });
 }

@@ -17,12 +17,14 @@ export function SnapshotRequestForm() {
   const [business, setBusiness] = useState("");
   const [city, setCity] = useState("");
   const [service, setService] = useState("");
+  const [website, setWebsite] = useState("");
   const [email, setEmail] = useState("");
 
   const fields = {
     business: business.trim(),
     city: city.trim(),
     service: service.trim(),
+    website: website.trim(),
     email: email.trim(),
   };
   const ready = Boolean(fields.business && fields.city && fields.service && fields.email);
@@ -78,6 +80,22 @@ export function SnapshotRequestForm() {
             className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none placeholder:text-ink-soft/70"
           />
         </div>
+      </div>
+      <div>
+        <label htmlFor="snapshot-website" className="text-sm font-medium">
+          Website
+        </label>
+        <input
+          id="snapshot-website"
+          name="website"
+          type="text"
+          inputMode="url"
+          autoComplete="url"
+          placeholder="https://"
+          value={website}
+          onChange={(event) => setWebsite(event.target.value)}
+          className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none placeholder:text-ink-soft/70"
+        />
       </div>
       <div>
         <label htmlFor="snapshot-email" className="text-sm font-medium">

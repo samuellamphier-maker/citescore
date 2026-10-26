@@ -24,6 +24,9 @@ export function SiteFooter() {
           <Link href="/sample" className="hover:text-ink">
             Sample report
           </Link>
+          <Link href="/free-snapshot" className="hover:text-ink">
+            Free snapshot
+          </Link>
           <Link href="/sample-snapshot" className="hover:text-ink">
             Example snapshot
           </Link>

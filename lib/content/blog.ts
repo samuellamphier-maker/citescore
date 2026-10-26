@@ -71,6 +71,12 @@ export const marketingPaths: MarketingPath[] = [
     lastModified: "2026-10-26",
   },
   {
+    path: "/free-snapshot",
+    changeFrequency: "monthly",
+    priority: 0.9,
+    lastModified: "2026-10-26",
+  },
+  {
     path: "/checklist",
     changeFrequency: "monthly",
     priority: 0.8,
@@ -89,7 +95,7 @@ export const marketingPaths: MarketingPath[] = [
     lastModified: "2026-10-13",
   },
   { path: "/about", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-10-26" },
-  { path: "/privacy", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-10-23" },
+  { path: "/privacy", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-10-26" },
   {
     path: "/terms",
     changeFrequency: "yearly",
