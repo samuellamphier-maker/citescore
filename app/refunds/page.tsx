@@ -65,8 +65,8 @@ export default function RefundsPage() {
             <a href={`mailto:${contactEmail}`} className="text-forest underline">
               {contactEmail}
             </a>
-            . Card payments, when a checkout link is in use, are returned
-            through the processor that took the payment. {sellerName} does
+            . Card payments are returned through the processor that took the
+            payment. {sellerName} does
             not see full card numbers.
           </p>
           <p>

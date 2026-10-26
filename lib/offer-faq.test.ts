@@ -31,7 +31,15 @@ test("snapshot FAQ uses only stated offer facts", () => {
   assert.match(offerFaq, /no account and no paid checkout/);
   assert.match(offerFaq, /does not post to a server/);
   assert.match(offerFaq, /passwords, cookies, or pages behind a login/);
-  assert.match(offerFaq, /There is no \$\{fixPackIntroPriceLabel\} checkout product yet/);
+  assert.match(offerFaq, /The Fix Pack is \$\{fixPackIntroPriceLabel\}/);
+  assert.match(offerFaq, /The buy button opens card checkout/);
+  assert.match(offerFaq, /The free snapshot comes first/);
+  assert.match(
+    offerFaq,
+    /within a few business days after payment, once we have the business name, city, service, and public site URL/,
+  );
+  assert.doesNotMatch(offerFaq, /checkout product yet/);
+  assert.doesNotMatch(offerFaq, /no card checkout/i);
   assert.match(offerFaq, /copy the request and email it/);
   assert.match(offerFaq, /refund the Fix Pack in full/);
   assert.match(offerFaq, /We reply with the one-page snapshot/);
@@ -41,7 +49,7 @@ test("snapshot FAQ uses only stated offer facts", () => {
   assert.match(offerFaq, /Search Engine Land/);
   assert.doesNotMatch(
     offerFaq,
-    /few minutes|business day|24 hours|48 hours|guarantee|testimonial|Payhip|customers served/i,
+    /few minutes|24 hours|48 hours|guarantee|testimonial|Payhip|customers served/i,
   );
   assert.doesNotMatch(offerFaq, /\b(John|Jane|Samuel|Lamphier)\b/);
 });
