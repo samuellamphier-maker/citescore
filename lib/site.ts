@@ -18,10 +18,9 @@ export const fixPackIntroPriceLabel = "$49";
 export const fixPackListPriceLabel = "$97";
 
 /**
- * Drop a payment link here when a $49 Fix Pack checkout product exists.
- * Empty means the buy button stays a mailto request.
+ * Live $49 Fix Pack card checkout. An empty string falls back to a mailto request.
  */
-export const FIX_PACK_CHECKOUT_URL = "";
+export const FIX_PACK_CHECKOUT_URL = "https://payhip.com/b/AjFxC";
 
 export function fixPackHref() {
   const checkout = FIX_PACK_CHECKOUT_URL.trim();
@@ -30,7 +29,9 @@ export function fixPackHref() {
 }
 
 export function fixPackCtaLabel() {
-  return FIX_PACK_CHECKOUT_URL.trim() ? "Buy the Fix Pack" : "Request the Fix Pack";
+  return FIX_PACK_CHECKOUT_URL.trim()
+    ? `Buy the Fix Pack · ${fixPackIntroPriceLabel}`
+    : "Request the Fix Pack";
 }
 
 /** Canonical public origin. Prefer an explicit env, then Vercel production. */

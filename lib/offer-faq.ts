@@ -18,8 +18,8 @@ export type FaqItem = {
 
 /**
  * Questions a local-business owner can already answer from this site.
- * No clock-time turnaround: the site does not publish one for the snapshot
- * or the Fix Pack email.
+ * The free snapshot has no clock-time turnaround. The Fix Pack is emailed
+ * within a few business days after payment and intake.
  */
 export const snapshotOfferFaqs: readonly FaqItem[] = [
   {
@@ -36,7 +36,7 @@ export const snapshotOfferFaqs: readonly FaqItem[] = [
   },
   {
     q: "When is the Fix Pack delivered?",
-    a: "We email the Fix Pack after you request it. When a payment link exists, we email it after payment. The re-check in the pack is the same prompts, run again 14 days later.",
+    a: "We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. The re-check in the pack is the same prompts, run again 14 days later.",
   },
   {
     q: "What is in the Fix Pack, and what do I do with it?",
@@ -52,7 +52,7 @@ export const snapshotOfferFaqs: readonly FaqItem[] = [
   },
   {
     q: "How do I request the snapshot or the Fix Pack?",
-    a: `The snapshot is free. Send the business name, city, service, and email. The button opens an email to ${contactEmail}. If no mail app opens, copy the request and email it to ${contactEmail} from any inbox. We reply with the one-page snapshot. There is no ${fixPackIntroPriceLabel} checkout product yet. Request the Fix Pack by email. When a payment link exists, the same button goes to checkout. The free snapshot comes first.`,
+    a: `The snapshot is free. Send the business name, city, service, and email. The button opens an email to ${contactEmail}. If no mail app opens, copy the request and email it to ${contactEmail} from any inbox. We reply with the one-page snapshot. The Fix Pack is ${fixPackIntroPriceLabel}. The buy button opens card checkout. The free snapshot comes first.`,
   },
   {
     q: "What if the Fix Pack is not useful?",

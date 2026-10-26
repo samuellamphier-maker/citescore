@@ -5,10 +5,14 @@ import { marketingPaths } from "./content/blog.ts";
 import { industrySnapshotLabel, snapshotOfferForPage } from "./industry-snapshot.ts";
 import { freeCheckAuditPitch } from "./free-check-pitch.ts";
 
-test("Fix Pack checkout URL is a single empty constant", () => {
+test("Fix Pack checkout URL is the live Payhip product", () => {
   const source = readFileSync(new URL("./site.ts", import.meta.url), "utf8");
-  assert.match(source, /export const FIX_PACK_CHECKOUT_URL = "";/);
-  assert.match(source, /Request the Fix Pack/);
+  assert.match(
+    source,
+    /export const FIX_PACK_CHECKOUT_URL = "https:\/\/payhip\.com\/b\/AjFxC";/,
+  );
+  assert.match(source, /Buy the Fix Pack/);
+  assert.match(source, /fixPackIntroPriceLabel/);
   assert.match(source, /mailto:\$\{contactEmail\}/);
 });
 

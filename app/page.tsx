@@ -291,7 +291,7 @@ export default function HomePage() {
               </p>
               <ul className="mt-6 space-y-2 text-sm text-ink-soft">
                 <li>— Introductory {fixPackIntroPriceLabel}, list {fixPackListPriceLabel}</li>
-                <li>— No $49 checkout product yet: the button emails {site.name}</li>
+                <li>— {fixPackIntroPriceLabel} card checkout on the buy button</li>
                 <li>— The {site.priceLabel} signal audit remains available below</li>
               </ul>
               <div className="mt-6">

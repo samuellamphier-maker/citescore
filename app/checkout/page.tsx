@@ -26,7 +26,7 @@ const whiteLabelCheckoutLabel =
 
 export const metadata: Metadata = pageMeta({
   title: "Checkout",
-  description: `Request the ${fixPackIntroPriceLabel} AI Visibility Fix Pack, or buy the ${site.priceLabel} CiteScore audit, the ${agencyKitLabel}, the ${doneForYouAuditLabel}, or the ${whiteLabelCheckoutLabel}.`,
+  description: `Buy the ${fixPackIntroPriceLabel} AI Visibility Fix Pack, or buy the ${site.priceLabel} CiteScore audit, the ${agencyKitLabel}, the ${doneForYouAuditLabel}, or the ${whiteLabelCheckoutLabel}.`,
   path: "/checkout",
 });
 
@@ -99,8 +99,15 @@ export default async function CheckoutPage({
         <div className="mt-8 space-y-4">
           <Offer
             title={`AI Visibility Fix Pack (${fixPackIntroPriceLabel})`}
-            description={`Introductory ${fixPackIntroPriceLabel}, list ${fixPackListPriceLabel}. Google Business Profile gaps, a review script, cited directories, LocalBusiness JSON-LD, and a 14-day re-check. There is no card checkout for this product yet.`}
+            description={`Introductory ${fixPackIntroPriceLabel}, list ${fixPackListPriceLabel}. Google Business Profile gaps, a review script, cited directories, LocalBusiness JSON-LD, and a 14-day re-check. Card checkout is ${fixPackIntroPriceLabel}. We email the pack within a few business days after payment, once we have the business name, city, service, and public site URL.`}
           >
+            <p className="mb-3 text-sm leading-6 text-ink-soft">
+              The free snapshot comes first.{" "}
+              <Link href="/#snapshot" className="text-forest underline">
+                Request it by email
+              </Link>
+              .
+            </p>
             <FixPackBuyLink className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep" />
             <p className="mt-3 text-sm leading-6 text-ink-soft">
               Full refund within 14 days if the Fix Pack is not useful.{" "}

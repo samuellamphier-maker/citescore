@@ -6,6 +6,7 @@ import { pageMeta } from "@/lib/content/meta";
 import {
   agencyKitLabel,
   doneForYouAuditLabel,
+  fixPackIntroPriceLabel,
   site,
   templatePackLabel,
   whiteLabelAuditLabel,
@@ -50,10 +51,9 @@ export default function TermsPage() {
 
           <h2 className="font-serif text-2xl text-ink">Who sells</h2>
           <p>
-            The seller is CiteScore. Stripe and Polar process card payments
-            for the products that use them. CiteScore does not see full card
-            numbers. There is no card checkout for the Fix Pack until a
-            payment link is published. Stripe handles the {site.priceLabel}{" "}
+            The seller is CiteScore. Stripe, Polar, and Payhip process card
+            payments for the products that use them. CiteScore does not see
+            full card numbers. Payhip handles the AI Visibility Fix Pack ({fixPackIntroPriceLabel}). Stripe handles the {site.priceLabel}{" "}
             audit. Polar handles the{" "}
             {templatePackLabel}, the {agencyKitLabel}, the{" "}
             {doneForYouAuditLabel}, and the {whiteLabelAuditLabel}.
@@ -92,7 +92,7 @@ export default function TermsPage() {
               plan and script, the directories an AI answer cited, paste-ready
               LocalBusiness and Service JSON-LD with install steps, and a
               re-check 14 days later. Introductory price $49, list price $97.
-              Until a payment link is published, you request it by email.
+              Paid through Payhip.
             </li>
           </ul>
           <p>
@@ -116,9 +116,9 @@ export default function TermsPage() {
             downloads delivered when Polar confirms payment.
           </p>
           <p>
-            The Fix Pack is delivered by email after you request it and, once
-            a payment link exists, after payment. The free AI Answer Snapshot
-            is not a purchase.
+            The Fix Pack is delivered by email within a few business days after
+            payment, once we have the business name, city, service, and public
+            site URL. The free AI Answer Snapshot is not a purchase.
           </p>
 
           <h2 className="font-serif text-2xl text-ink">Refunds</h2>

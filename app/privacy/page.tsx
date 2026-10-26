@@ -65,7 +65,7 @@ export default function PrivacyPage() {
           </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>
           <p>
-            Card data is handled by Stripe or Lemon Squeezy via a payment
+            Card data is handled by Stripe, Polar, or Payhip via a payment
             link. CiteScore never sees full card numbers.
           </p>
           <h2 className="font-serif text-2xl text-ink">Contact</h2>

@@ -52,8 +52,9 @@ export default function AboutPage() {
             plan and script, the directories those answers cited, paste-ready
             LocalBusiness and Service JSON-LD with install steps, and a
             re-check of the same prompts 14 days later. It is not a promise
-            that any assistant will name the business. Until a payment link
-            is published, you request it by email. An{" "}
+            that any assistant will name the business. The buy button opens{" "}
+            {fixPackIntroPriceLabel} card checkout. The free snapshot still
+            starts by email. An{" "}
             <Link href="/sample-snapshot" className="text-forest underline">
               example snapshot
             </Link>{" "}

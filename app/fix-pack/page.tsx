@@ -58,13 +58,13 @@ export default function FixPackPage() {
           {fixPackIntroPriceLabel}. List price {fixPackListPriceLabel}.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <FixPackBuyLink />
           <Link
             href="/#snapshot"
             className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
           >
             Get a free AI Answer Snapshot
           </Link>
+          <FixPackBuyLink />
         </div>
         <p className="mt-4 text-sm leading-6">
           <Link href="/sample-snapshot" className="font-medium text-forest underline">
@@ -155,7 +155,9 @@ export default function FixPackPage() {
             free signal check
           </Link>{" "}
           is still there if you only want a read of public files. It does not
-          ask ChatGPT who it names.
+          ask ChatGPT who it names. We email the Fix Pack within a few
+          business days after payment, once we have the business name, city,
+          service, and public site URL.
         </p>
         <div className="mt-6">
           <FixPackBuyLink />
