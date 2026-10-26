@@ -67,6 +67,11 @@ export default function FixPackPage() {
           <FixPackBuyLink />
         </div>
         <p className="mt-4 text-sm leading-6">
+          <Link href="/fix-pack/next-steps" className="font-medium text-forest underline">
+            What happens after you buy
+          </Link>
+        </p>
+        <p className="mt-4 text-sm leading-6">
           <Link href="/sample-snapshot" className="font-medium text-forest underline">
             See an example snapshot
           </Link>
@@ -162,6 +167,11 @@ export default function FixPackPage() {
         <div className="mt-6">
           <FixPackBuyLink />
         </div>
+        <p className="mt-3 text-sm leading-6">
+          <Link href="/fix-pack/next-steps" className="font-medium text-forest underline">
+            What happens after you buy
+          </Link>
+        </p>
         <div className="mt-4">
           <TrustLinks />
         </div>

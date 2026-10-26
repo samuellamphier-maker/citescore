@@ -24,6 +24,8 @@ test("example snapshot is fictional and labeled", () => {
   assert.match(page, /CiteScore Team/);
   assert.match(page, /Get a free AI Answer Snapshot/);
   assert.match(page, /Fix Pack,/);
+  assert.match(page, /FixPackBuyLink/);
+  assert.match(page, /fixPackGetCtaLabel\(\)/);
   assert.match(page, /href="#snapshot"/);
   assert.match(page, /href="\/fix-pack"/);
   assert.match(page, /mailto:\$\{contactEmail\}/);
@@ -37,6 +39,9 @@ test("snapshot example is linked from the conversion surfaces and the sitemap", 
   }
   assert.match(industryCta, /href="\/fix-pack"/);
   assert.match(industryCta, /Fix Pack,/);
+  assert.match(industryCta, /Get a free AI Answer Snapshot/);
+  assert.match(industryCta, /FixPackBuyLink/);
+  assert.match(industryCta, /fixPackGetCtaLabel\(\)/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
   assert.match(fixPack, /fixPackFaqs\(\)/);
   const offerFaq = readFileSync(new URL("./offer-faq.ts", import.meta.url), "utf8");

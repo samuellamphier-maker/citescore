@@ -2,6 +2,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
+  FIX_PACK_DETAILS_SUBJECT,
+  fixPackDetailsBody,
+  fixPackDetailsMailto,
+  fixPackDetailsRequestText,
   fixPackRequestText,
   mailtoHref,
   noMailAppInstruction,
@@ -61,6 +65,20 @@ test("fix pack and industry templates use the same inbox", () => {
   assert.match(fixPack, /Business name:\nCity:\nService:\nEmail:/);
   assert.match(snapshotTemplateRequestText(contactEmail, "plumber"), /Service: plumber/);
   assert.match(snapshotTemplateRequestText(contactEmail), /Service: \nEmail:/);
+  const details = fixPackDetailsBody();
+  assert.equal(
+    details,
+    ["Business name:", "City:", "Main service:", "Public site URL:"].join("\n"),
+  );
+  const detailsClip = fixPackDetailsRequestText(contactEmail);
+  assert.match(detailsClip, new RegExp(`^To: ${contactEmail}`));
+  assert.match(detailsClip, new RegExp(`Subject: ${FIX_PACK_DETAILS_SUBJECT}`));
+  assert.match(detailsClip, /Main service:/);
+  assert.match(detailsClip, /Public site URL:/);
+  const detailsHref = fixPackDetailsMailto(contactEmail);
+  assert.equal(detailsHref, mailtoHref(contactEmail, FIX_PACK_DETAILS_SUBJECT, details));
+  assert.match(detailsHref, /subject=/);
+  assert.match(detailsHref, /body=/);
 });
 
 test("snapshot, fix pack, and industry CTAs share one email fallback", () => {

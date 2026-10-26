@@ -34,6 +34,11 @@ export function fixPackCtaLabel() {
     : "Request the Fix Pack";
 }
 
+/** Direct Payhip purchase label used beside a free-snapshot CTA. */
+export function fixPackGetCtaLabel() {
+  return `Get the Fix Pack · ${fixPackIntroPriceLabel}`;
+}
+
 /** Canonical public origin. Prefer an explicit env, then Vercel production. */
 export const productionOrigin = "https://citescore.vercel.app";
 

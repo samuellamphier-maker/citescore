@@ -1,5 +1,6 @@
 export const SNAPSHOT_SUBJECT = "Free AI Answer Snapshot";
 export const FIX_PACK_SUBJECT = "Fix Pack request";
+export const FIX_PACK_DETAILS_SUBJECT = "Fix Pack details";
 
 export function noMailAppInstruction(inbox: string) {
   return `No mail app opened? Copy this and email it to ${inbox} from any inbox.`;
@@ -71,4 +72,22 @@ export function fixPackRequestText(inbox: string) {
       "Email:",
     ].join("\n"),
   );
+}
+
+/** Blank intake after a Fix Pack purchase. The buyer fills the four fields. */
+export function fixPackDetailsBody() {
+  return [
+    "Business name:",
+    "City:",
+    "Main service:",
+    "Public site URL:",
+  ].join("\n");
+}
+
+export function fixPackDetailsMailto(inbox: string) {
+  return mailtoHref(inbox, FIX_PACK_DETAILS_SUBJECT, fixPackDetailsBody());
+}
+
+export function fixPackDetailsRequestText(inbox: string) {
+  return requestClipboard(inbox, FIX_PACK_DETAILS_SUBJECT, fixPackDetailsBody());
 }

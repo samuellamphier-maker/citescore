@@ -109,6 +109,11 @@ export default async function CheckoutPage({
               .
             </p>
             <FixPackBuyLink className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep" />
+            <p className="mt-3 text-sm leading-6">
+              <Link href="/fix-pack/next-steps" className="text-forest underline">
+                What happens after you buy
+              </Link>
+            </p>
             <p className="mt-3 text-sm leading-6 text-ink-soft">
               Full refund within 14 days if the Fix Pack is not useful.{" "}
               <Link href="/fix-pack" className="text-forest underline">

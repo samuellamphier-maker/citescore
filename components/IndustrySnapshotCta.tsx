@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { EmailRequestFallback } from "@/components/EmailRequestFallback";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { snapshotTemplateRequestText } from "@/lib/email-request";
-import { contactEmail, fixPackIntroPriceLabel } from "@/lib/site";
+import { contactEmail, fixPackGetCtaLabel, fixPackIntroPriceLabel } from "@/lib/site";
 
 export function IndustrySnapshotCta({ industry }: { industry?: string }) {
   return (
@@ -17,12 +18,20 @@ export function IndustrySnapshotCta({ industry }: { industry?: string }) {
         Tell us the business, the city, and the service. We ask who ChatGPT
         names and send the one-page snapshot. AI answers vary run to run.
       </p>
-      <Link
-        href="/#snapshot"
-        className="mt-5 inline-flex h-11 items-center justify-center rounded-lg bg-cream px-4 text-sm font-medium text-ink hover:bg-paper"
-      >
-        Get a free AI Answer Snapshot
-      </Link>
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <Link
+          href="/#snapshot"
+          className="inline-flex h-11 items-center justify-center rounded-lg bg-cream px-4 text-sm font-medium text-ink hover:bg-paper"
+        >
+          Get a free AI Answer Snapshot
+        </Link>
+        <FixPackBuyLink
+          compact
+          tone="dark"
+          label={fixPackGetCtaLabel()}
+          className="inline-flex h-11 items-center justify-center rounded-lg bg-forest px-4 text-sm font-medium text-cream hover:bg-forest-deep"
+        />
+      </div>
       <EmailRequestFallback
         tone="dark"
         className="mt-4"
