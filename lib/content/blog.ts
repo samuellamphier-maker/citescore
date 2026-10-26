@@ -68,7 +68,7 @@ export const marketingPaths: MarketingPath[] = [
     path: "/sample-snapshot",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-10-24",
+    lastModified: "2026-10-26",
   },
   {
     path: "/checklist",
@@ -106,7 +106,7 @@ export const marketingPaths: MarketingPath[] = [
     path: "/fix-pack",
     changeFrequency: "monthly",
     priority: 0.9,
-    lastModified: "2026-10-25",
+    lastModified: "2026-10-26",
   },
   ...blogPosts.map((post) => ({
     path: `/blog/${post.slug}`,

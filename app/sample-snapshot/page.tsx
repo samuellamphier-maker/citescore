@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { JsonLd } from "@/components/JsonLd";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -9,6 +10,7 @@ import { pageMeta } from "@/lib/content/meta";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
 import {
   contactEmail,
+  fixPackGetCtaLabel,
   fixPackIntroPriceLabel,
   sellerName,
 } from "@/lib/site";
@@ -160,13 +162,14 @@ function ExampleBanner() {
 
 function SnapshotCtas() {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row">
+    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
       <Link
         href="#snapshot"
         className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
       >
         Get a free AI Answer Snapshot
       </Link>
+      <FixPackBuyLink compact label={fixPackGetCtaLabel()} />
       <Link
         href="/fix-pack"
         className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink"
@@ -425,7 +428,8 @@ export default function SampleSnapshotPage() {
           <div className="mt-5">
             <SnapshotRequestForm />
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <FixPackBuyLink compact label={fixPackGetCtaLabel()} />
             <Link
               href="/fix-pack"
               className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-paper px-5 text-base font-medium text-ink hover:border-ink"

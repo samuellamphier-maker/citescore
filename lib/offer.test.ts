@@ -16,6 +16,35 @@ test("Fix Pack checkout URL is the live Payhip product", () => {
   assert.match(source, /mailto:\$\{contactEmail\}/);
 });
 
+test("Fix Pack next steps stay off the sitemap and sit beside checkout", () => {
+  const next = readFileSync(
+    new URL("../app/fix-pack/next-steps/page.tsx", import.meta.url),
+    "utf8",
+  );
+  const checkout = readFileSync(new URL("../app/checkout/page.tsx", import.meta.url), "utf8");
+  const fixPack = readFileSync(new URL("../app/fix-pack/page.tsx", import.meta.url), "utf8");
+  const site = readFileSync(new URL("./site.ts", import.meta.url), "utf8");
+  assert.match(next, /robots: \{ index: false, follow: false \}/);
+  assert.match(next, /What happens after you buy/);
+  assert.match(next, /fixPackDetailsMailto\(contactEmail\)/);
+  assert.match(next, /EmailRequestFallback/);
+  assert.match(next, /fixPackDetailsRequestText\(contactEmail\)/);
+  assert.match(
+    next,
+    /within a few business days after payment, once\s+we have the business name, city, service, and public site URL/,
+  );
+  assert.match(next, /href="\/refunds"/);
+  assert.match(next, /within 14 days of delivery/);
+  assert.match(next, /Main service/);
+  assert.match(next, /Public site URL/);
+  assert.doesNotMatch(next, /Samuel|Lamphier|testimonial|customers served|Payhip/i);
+  assert.match(site, /Get the Fix Pack/);
+  assert.match(checkout, /href="\/fix-pack\/next-steps"/);
+  assert.match(checkout, /What happens after you buy/);
+  assert.equal((fixPack.match(/href="\/fix-pack\/next-steps"/g) ?? []).length, 2);
+  assert.equal(marketingPaths.some((item) => item.path === "/fix-pack/next-steps"), false);
+});
+
 test("sitemap sources include the new offer and trust URLs", () => {
   const paths = new Set(marketingPaths.map((item) => item.path));
   for (const path of [
