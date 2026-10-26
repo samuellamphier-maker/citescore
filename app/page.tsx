@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
 import { ScoreRing } from "@/components/ScoreRing";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -11,6 +12,7 @@ import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { TrustLinks } from "@/components/TrustLinks";
 import { topicPages } from "@/lib/content/topics";
+import { fixPackDeliverables } from "@/lib/fix-pack-offer";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
 import { sampleReport } from "@/lib/sample-report";
 import {
@@ -42,7 +44,7 @@ const steps = [
   },
 ];
 
-const deliverables = [
+const auditDeliverables = [
   "Overall CiteScore (0–100) and a plain-language grade",
   "Inferred snapshot for ChatGPT, Perplexity, and Google AI Overviews — not a live query",
   "Dimension scores — answers, entities, evidence, markup, freshness",
@@ -106,18 +108,23 @@ export default function HomePage() {
               <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
                 <Link
                   href="/#snapshot"
-                  className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
+                  className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep sm:w-auto"
                 >
                   Get a free AI Answer Snapshot
                 </Link>
-                <Link
-                  href="/fix-pack"
-                  className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink"
-                >
-                  Fix Pack, {fixPackIntroPriceLabel}
-                </Link>
+                <FixPackBuyLink
+                  compact
+                  className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink sm:w-auto"
+                />
               </div>
               <p className="mt-4 text-sm leading-6">
+                <Link
+                  href="/fix-pack"
+                  className="font-medium text-forest underline underline-offset-4 hover:underline"
+                >
+                  See what&apos;s in the Fix Pack
+                </Link>
+                <span className="text-ink-soft"> · </span>
                 <Link
                   href="/sample-snapshot"
                   className="font-medium text-forest underline underline-offset-4 hover:underline"
@@ -128,6 +135,7 @@ export default function HomePage() {
                   . Fictional business, illustrative numbers.
                 </span>
               </p>
+              <FixPackOfferFacts className="mt-4 max-w-xl" />
               <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
                 AI answers vary run to run. This is a snapshot, not a ranking.
                 The{" "}
@@ -201,24 +209,29 @@ export default function HomePage() {
                 A one-page snapshot, then the fixes a local business can use.
               </h2>
               <p className="mt-4 text-ink-soft leading-7">
-                The snapshot records a real answer from that day. The Fix
-                Pack is the Google Business Profile, reviews, directories,
-                and LocalBusiness markup that match what those answers cite.
-                The {site.priceLabel} signal audit is still on this page,
-                further down. It does not ask ChatGPT who it names.
+                The snapshot records a real answer from that day: who is
+                named, which sources are cited, and how your Google rating
+                and review count compare. The Fix Pack is the Google
+                Business Profile, reviews, directories, and LocalBusiness
+                markup that match what those answers cite. The{" "}
+                {site.priceLabel} signal audit is still on this page, further
+                down. It does not ask ChatGPT who it names.
               </p>
             </div>
-            <ul className="space-y-3">
-              {deliverables.map((item) => (
-                <li
-                  key={item}
-                  className="flex gap-3 rounded-xl border border-rule bg-cream px-4 py-3 text-sm leading-6"
-                >
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div>
+              <p className="kicker">In the Fix Pack</p>
+              <ul className="mt-4 space-y-3">
+                {fixPackDeliverables.map((item) => (
+                  <li
+                    key={item.title}
+                    className="rounded-xl border border-rule bg-cream px-4 py-3 text-sm leading-6"
+                  >
+                    <p className="font-medium text-ink">{item.title}</p>
+                    <p className="mt-1 text-ink-soft">{item.body}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -307,6 +320,11 @@ export default function HomePage() {
                   does not ask ChatGPT who it names. Weekly rescans at{" "}
                   {site.subscriptionPriceLabel} are not for sale.
                 </p>
+                <ul className="mt-4 space-y-2 text-sm leading-6 text-ink-soft">
+                  {auditDeliverables.map((item) => (
+                    <li key={item}>— {item}</li>
+                  ))}
+                </ul>
                 <div className="mt-4">
                   <AuditForm id="pricing-audit" />
                 </div>
@@ -335,20 +353,7 @@ export default function HomePage() {
                   className="flex h-12 items-center justify-center rounded-lg bg-cream text-ink hover:bg-paper"
                 />
               </div>
-              <p className="mt-4 text-xs leading-5 text-[#d7c7b0]">
-                <Link href="/fix-pack" className="underline">
-                  See the Fix Pack
-                </Link>
-                .{" "}
-                <Link href="/sample-snapshot" className="underline">
-                  Example snapshot
-                </Link>{" "}
-                is a fictional business.{" "}
-                <Link href="/refunds" className="underline">
-                  Refunds
-                </Link>
-                .
-              </p>
+              <FixPackOfferFacts tone="dark" className="mt-4" />
             </div>
           </div>
         </section>

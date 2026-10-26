@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -201,6 +202,7 @@ export default function SampleSnapshotPage() {
         </p>
         <div className="mt-8">
           <SnapshotCtas />
+          <FixPackOfferFacts className="mt-4" />
         </div>
         <p className="mt-3 text-sm leading-6 text-ink-soft">
           The request form on this page is the same one as the homepage. It
@@ -437,6 +439,7 @@ export default function SampleSnapshotPage() {
               Fix Pack, {fixPackIntroPriceLabel}
             </Link>
           </div>
+          <FixPackOfferFacts className="mt-4" />
         </section>
       </main>
       <SiteFooter />

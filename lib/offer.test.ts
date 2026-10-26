@@ -39,9 +39,15 @@ test("Fix Pack next steps stay off the sitemap and sit beside checkout", () => {
   assert.match(next, /Public site URL/);
   assert.doesNotMatch(next, /Samuel|Lamphier|testimonial|customers served|Payhip/i);
   assert.match(site, /Get the Fix Pack/);
-  assert.match(checkout, /href="\/fix-pack\/next-steps"/);
-  assert.match(checkout, /What happens after you buy/);
-  assert.equal((fixPack.match(/href="\/fix-pack\/next-steps"/g) ?? []).length, 2);
+  const facts = readFileSync(
+    new URL("../components/FixPackOfferFacts.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(facts, /\/fix-pack\/next-steps/);
+  assert.match(facts, /What happens after you buy/);
+  assert.match(checkout, /FixPackOfferFacts/);
+  assert.match(fixPack, /FixPackOfferFacts/);
+  assert.equal((fixPack.match(/<FixPackOfferFacts/g) ?? []).length, 2);
   assert.equal(marketingPaths.some((item) => item.path === "/fix-pack/next-steps"), false);
 });
 
