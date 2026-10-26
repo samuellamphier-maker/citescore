@@ -50,7 +50,7 @@ export type MarketingPath = {
 };
 
 export const marketingPaths: MarketingPath[] = [
-  { path: "/", changeFrequency: "weekly", priority: 1, lastModified: "2026-10-24" },
+  { path: "/", changeFrequency: "weekly", priority: 1, lastModified: "2026-10-26" },
   { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
   { path: "/geo-audit", changeFrequency: "monthly", priority: 0.9 },
   {
@@ -88,7 +88,7 @@ export const marketingPaths: MarketingPath[] = [
     priority: 0.8,
     lastModified: "2026-10-13",
   },
-  { path: "/about", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-10-25" },
+  { path: "/about", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-10-26" },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-10-23" },
   {
     path: "/terms",

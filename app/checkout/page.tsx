@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { TrustLinks } from "@/components/TrustLinks";
 import {
   agencyKitLabel,
@@ -50,23 +51,32 @@ function buyButton(href: string, label: string) {
 function Offer({
   title,
   description,
+  sampleHref = "/sample-audit.pdf",
+  sampleLabel = "See a sample report (PDF)",
   children,
 }: {
   title: string;
   description: string;
+  sampleHref?: string;
+  sampleLabel?: string;
   children: ReactNode;
 }) {
+  const sampleClass =
+    "mt-3 inline-flex text-sm font-medium text-forest underline underline-offset-4 hover:underline";
   return (
     <article className="rounded-2xl border border-rule bg-cream p-6">
       <h2 className="font-serif text-2xl tracking-tight">{title}</h2>
       <p className="mt-2 text-sm leading-6 text-ink-soft">{description}</p>
       <div className="mt-5">{children}</div>
-      <a
-        href="/sample-audit.pdf"
-        className="mt-3 inline-flex text-sm font-medium text-forest underline underline-offset-4 hover:underline"
-      >
-        See a sample report (PDF)
-      </a>
+      {sampleHref.endsWith(".pdf") ? (
+        <a href={sampleHref} className={sampleClass}>
+          {sampleLabel}
+        </a>
+      ) : (
+        <Link href={sampleHref} className={sampleClass}>
+          {sampleLabel}
+        </Link>
+      )}
     </article>
   );
 }
@@ -91,7 +101,9 @@ export default async function CheckoutPage({
           Choose a product
         </h1>
         <p className="mt-4 text-ink-soft leading-7">
-          The {site.priceLabel} audit is a self-serve PDF. The $99 and $149
+          The AI Visibility Fix Pack is {fixPackIntroPriceLabel} introductory
+          ({fixPackListPriceLabel} list), for one business. The{" "}
+          {site.priceLabel} audit is a self-serve PDF. The $99 and $149
           audits are written for one public URL and delivered within 3
           business days. The {agencyKitLabel} is the writing around an audit.
         </p>
@@ -99,7 +111,9 @@ export default async function CheckoutPage({
         <div className="mt-8 space-y-4">
           <Offer
             title={`AI Visibility Fix Pack (${fixPackIntroPriceLabel})`}
-            description={`Introductory ${fixPackIntroPriceLabel}, list ${fixPackListPriceLabel}. Google Business Profile gaps, a review script, cited directories, LocalBusiness JSON-LD, and a 14-day re-check. Card checkout is ${fixPackIntroPriceLabel}. We email the pack within a few business days after payment, once we have the business name, city, service, and public site URL.`}
+            description={`Introductory ${fixPackIntroPriceLabel}, list ${fixPackListPriceLabel}. One business, one city, one service. Card checkout is ${fixPackIntroPriceLabel}.`}
+            sampleHref="/sample-snapshot"
+            sampleLabel="See an example snapshot (fictional business)"
           >
             <p className="mb-3 text-sm leading-6 text-ink-soft">
               The free snapshot comes first.{" "}
@@ -109,17 +123,11 @@ export default async function CheckoutPage({
               .
             </p>
             <FixPackBuyLink className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep" />
+            <FixPackOfferFacts className="mt-4" />
             <p className="mt-3 text-sm leading-6">
-              <Link href="/fix-pack/next-steps" className="text-forest underline">
-                What happens after you buy
-              </Link>
-            </p>
-            <p className="mt-3 text-sm leading-6 text-ink-soft">
-              Full refund within 14 days if the Fix Pack is not useful.{" "}
               <Link href="/fix-pack" className="text-forest underline">
                 What is in the pack
               </Link>
-              .
             </p>
           </Offer>
 

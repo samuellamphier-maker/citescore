@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
+import { fixPackDeliverables, fixPackProductJsonLd } from "@/lib/fix-pack-offer";
 import { faqPageJsonLd, fixPackFaqs, sonickStudyUrl } from "@/lib/offer-faq";
 import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  publicOrigin,
 } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
@@ -19,33 +22,11 @@ export const metadata: Metadata = pageMeta({
   path: "/fix-pack",
 });
 
-const deliverables = [
-  {
-    title: "Google Business Profile gap list",
-    body: "Category, services, hours, photos, and Q&A, compared with the businesses the snapshot says AI named.",
-  },
-  {
-    title: "Review-gap plan and script",
-    body: "How your Google rating and review count compare, plus a copy-paste SMS and email you can send to ask for a review.",
-  },
-  {
-    title: "Directories the answer cited",
-    body: "The specific directories and trade bodies named in the snapshot for your trade and city, and where your business is missing.",
-  },
-  {
-    title: "Paste-ready LocalBusiness and Service JSON-LD",
-    body: "Markup for your site, plus install steps for WordPress, Wix, Squarespace, and Shopify. The script matches the name, phone, and address already on the page.",
-  },
-  {
-    title: "14-day re-check",
-    body: "The same prompts, run again 14 days later, with who is named the second time written next to the first snapshot.",
-  },
-];
-
 export default function FixPackPage() {
   return (
     <>
       <JsonLd data={faqPageJsonLd(fixPackFaqs())} />
+      <JsonLd data={fixPackProductJsonLd(publicOrigin())} />
       <SiteHeader />
       <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">AI Visibility Fix Pack</p>
@@ -66,11 +47,7 @@ export default function FixPackPage() {
           </Link>
           <FixPackBuyLink />
         </div>
-        <p className="mt-4 text-sm leading-6">
-          <Link href="/fix-pack/next-steps" className="font-medium text-forest underline">
-            What happens after you buy
-          </Link>
-        </p>
+        <FixPackOfferFacts className="mt-4" />
         <p className="mt-4 text-sm leading-6">
           <Link href="/sample-snapshot" className="font-medium text-forest underline">
             See an example snapshot
@@ -91,7 +68,7 @@ export default function FixPackPage() {
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What you get</h2>
         <ol className="mt-6 space-y-4">
-          {deliverables.map((item, index) => (
+          {fixPackDeliverables.map((item, index) => (
             <li key={item.title} className="rounded-2xl border border-rule bg-cream px-5 py-4">
               <p className="kicker text-copper">0{index + 1}</p>
               <h3 className="mt-2 font-serif text-2xl">{item.title}</h3>
@@ -167,22 +144,10 @@ export default function FixPackPage() {
         <div className="mt-6">
           <FixPackBuyLink />
         </div>
-        <p className="mt-3 text-sm leading-6">
-          <Link href="/fix-pack/next-steps" className="font-medium text-forest underline">
-            What happens after you buy
-          </Link>
-        </p>
+        <FixPackOfferFacts className="mt-4" />
         <div className="mt-4">
           <TrustLinks />
         </div>
-        <p className="mt-3 text-sm leading-6 text-ink-soft">
-          Full refund within 14 days if the Fix Pack is not useful. Details
-          are on the{" "}
-          <Link href="/refunds" className="text-forest underline">
-            refunds
-          </Link>{" "}
-          page.
-        </p>
 
         <h2 id="faq" className="mt-12 font-serif text-3xl tracking-tight">
           FAQ

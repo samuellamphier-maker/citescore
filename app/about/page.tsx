@@ -77,6 +77,15 @@ export default function AboutPage() {
             </Link>{" "}
             page.
           </p>
+          <h2 className="border-t border-rule pt-6 font-serif text-2xl text-ink">
+            Who runs this
+          </h2>
+          <p className="text-ink">CiteScore Team</p>
+          <p>
+            <a href={`mailto:${contactEmail}`} className="text-forest underline">
+              {contactEmail}
+            </a>
+          </p>
         </div>
       </main>
       <SiteFooter />

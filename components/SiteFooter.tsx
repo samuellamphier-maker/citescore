@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { agencyKitLabel, agencyKitUrl, templatePackLabel, templatePackUrl } from "@/lib/site";
+import {
+  agencyKitLabel,
+  agencyKitUrl,
+  fixPackIntroPriceLabel,
+  templatePackLabel,
+  templatePackUrl,
+} from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -9,8 +15,9 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-3 max-w-sm text-sm leading-6 text-ink-soft">
-            A free AI Answer Snapshot for local service businesses, and a
-            $49 Fix Pack when you want the gaps fixed. Sold by CiteScore.
+            A free AI Answer Snapshot for local service businesses, and a{" "}
+            {fixPackIntroPriceLabel} Fix Pack when you want the gaps fixed.
+            Sold by CiteScore.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-soft">
@@ -97,8 +104,8 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-rule/70">
         <p className="mx-auto max-w-5xl px-5 py-4 text-xs text-ink-soft">
-          © {new Date().getFullYear()} CiteScore. One-time GEO audits —
-          crawl, score, PDF, email.
+          © {new Date().getFullYear()} CiteScore. Free AI Answer Snapshot
+          and the {fixPackIntroPriceLabel} Fix Pack. Sold by CiteScore.
         </p>
       </div>
     </footer>
