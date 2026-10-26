@@ -28,7 +28,7 @@ export const snapshotOfferFaqs: readonly FaqItem[] = [
   },
   {
     q: "How is the snapshot produced?",
-    a: "We ask logged-out ChatGPT and Perplexity a local prompt such as “best {service} in {city},” plus one variant, and record who they name. The request form does not post to a server. It opens your email app. We receive the business name, city, service, and email only if you send that message.",
+    a: "We ask logged-out ChatGPT and Perplexity a local prompt such as “best {service} in {city},” plus one variant, and record who they name. The request form does not post to a server. It opens your email app. We receive the business name, city, service, website, and email only if you send that message.",
   },
   {
     q: "Do the answers stay the same if you ask again?",
@@ -48,11 +48,11 @@ export const snapshotOfferFaqs: readonly FaqItem[] = [
   },
   {
     q: "Do I need to give a login or site access?",
-    a: "No. The snapshot request has no account and no paid checkout. The form does not post to a server. It opens your email app with the business name, city, service, and email. We receive those only if you send that message. Do not send passwords, cookies, or pages behind a login. We email the Fix Pack. You paste the JSON-LD into the head of the public site and keep every field visible on the page. The review script is a copy-paste SMS and email you can send.",
+    a: "No. The snapshot request has no account and no paid checkout. The form does not post to a server. It opens your email app with the business name, city, service, website, and email. We receive those only if you send that message. Do not send passwords, cookies, or pages behind a login. We email the Fix Pack. You paste the JSON-LD into the head of the public site and keep every field visible on the page. The review script is a copy-paste SMS and email you can send.",
   },
   {
     q: "How do I request the snapshot or the Fix Pack?",
-    a: `The snapshot is free. Send the business name, city, service, and email. The button opens an email to ${contactEmail}. If no mail app opens, copy the request and email it to ${contactEmail} from any inbox. We reply with the one-page snapshot. The Fix Pack is ${fixPackIntroPriceLabel}. The buy button opens card checkout. The free snapshot comes first.`,
+    a: `The snapshot is free. Send the business name, city, service, website, and email. The button opens an email to ${contactEmail}. If no mail app opens, copy the request and email it to ${contactEmail} from any inbox. We reply with the one-page snapshot. The Fix Pack is ${fixPackIntroPriceLabel}. The buy button opens card checkout. The free snapshot comes first.`,
   },
   {
     q: "What if the Fix Pack is not useful?",
@@ -74,6 +74,23 @@ const fixPackOnlyFaqs: readonly FaqItem[] = [
 export function fixPackFaqs(): FaqItem[] {
   return [...snapshotOfferFaqs, ...fixPackOnlyFaqs];
 }
+
+/** Short request-page FAQ. Answers stay the ones already published above. */
+const freeSnapshotFaqQuestions = [
+  "What does the free AI Answer Snapshot show?",
+  "How is the snapshot produced?",
+  "How do I request the snapshot or the Fix Pack?",
+  "When is the Fix Pack delivered?",
+  "What if the Fix Pack is not useful?",
+] as const;
+
+export const freeSnapshotPageFaqs: readonly FaqItem[] = freeSnapshotFaqQuestions.map(
+  (question) => {
+    const item = snapshotOfferFaqs.find((faq) => faq.q === question);
+    if (!item) throw new Error(`Missing snapshot FAQ: ${question}`);
+    return item;
+  },
+);
 
 export function faqPageJsonLd(items: readonly FaqItem[]): Record<string, unknown> {
   return {

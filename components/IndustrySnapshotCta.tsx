@@ -15,12 +15,13 @@ export function IndustrySnapshotCta({ industry }: { industry?: string }) {
           : "Free AI Answer Snapshot"}
       </h2>
       <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
-        Tell us the business, the city, and the service. We ask who ChatGPT
-        names and send the one-page snapshot. AI answers vary run to run.
+        Tell us the business, the city, the service, and the website. We ask
+        who ChatGPT names and send the one-page snapshot. AI answers vary run
+        to run.
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <Link
-          href="/#snapshot"
+          href="/free-snapshot"
           className="inline-flex h-11 items-center justify-center rounded-lg bg-cream px-4 text-sm font-medium text-ink hover:bg-paper"
         >
           Get a free AI Answer Snapshot

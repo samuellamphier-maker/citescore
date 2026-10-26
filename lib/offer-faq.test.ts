@@ -60,6 +60,13 @@ test("homepage, example snapshot, and Fix Pack render the FAQ and schema", () =>
     assert.match(source, /faqPageJsonLd/);
     assert.match(source, /<FaqList/);
   }
+  const requestPage = readFileSync(
+    new URL("../app/free-snapshot/page.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(requestPage, /freeSnapshotPageFaqs/);
+  assert.match(requestPage, /faqPageJsonLd/);
+  assert.match(requestPage, /<FaqList/);
   assert.match(fixPack, /fixPackFaqs\(\)/);
   assert.match(fixPack, /faqPageJsonLd/);
   assert.match(fixPack, /<FaqList/);

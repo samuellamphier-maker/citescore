@@ -43,7 +43,7 @@ export function SiteHeader() {
             Fix Pack
           </Link>
           <Link
-            href="/#snapshot"
+            href="/free-snapshot"
             className="rounded-full bg-ink px-3.5 py-1.5 text-cream hover:bg-forest-deep"
           >
             Free snapshot

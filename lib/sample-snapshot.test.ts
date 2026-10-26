@@ -26,7 +26,7 @@ test("example snapshot is fictional and labeled", () => {
   assert.match(page, /Fix Pack,/);
   assert.match(page, /FixPackBuyLink/);
   assert.match(page, /fixPackGetCtaLabel\(\)/);
-  assert.match(page, /href="#snapshot"/);
+  assert.match(page, /href="\/free-snapshot"/);
   assert.match(page, /href="\/fix-pack"/);
   assert.match(page, /mailto:\$\{contactEmail\}/);
   assert.equal((page.match(/<ExampleBanner \/>/g) ?? []).length >= 3, true);

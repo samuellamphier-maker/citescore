@@ -22,6 +22,7 @@ test("snapshot request text carries the business fields", () => {
     business: "Example Plumbing Co.",
     city: "Riverton",
     service: "plumber",
+    website: "https://example-plumbing.example",
     email: "owner@example.com",
   });
   assert.equal(
@@ -30,6 +31,7 @@ test("snapshot request text carries the business fields", () => {
       "Business name: Example Plumbing Co.",
       "City: Riverton",
       "Service: plumber",
+      "Website: https://example-plumbing.example",
       "Email: owner@example.com",
       "",
       "Please send a free AI Answer Snapshot.",
@@ -39,6 +41,7 @@ test("snapshot request text carries the business fields", () => {
     business: "Example Plumbing Co.",
     city: "Riverton",
     service: "plumber",
+    website: "https://example-plumbing.example",
     email: "owner@example.com",
   });
   assert.match(clip, new RegExp(`^To: ${contactEmail}`));
@@ -64,7 +67,7 @@ test("fix pack and industry templates use the same inbox", () => {
   assert.match(fixPack, /Please send the AI Visibility Fix Pack\./);
   assert.match(fixPack, /Business name:\nCity:\nService:\nEmail:/);
   assert.match(snapshotTemplateRequestText(contactEmail, "plumber"), /Service: plumber/);
-  assert.match(snapshotTemplateRequestText(contactEmail), /Service: \nEmail:/);
+  assert.match(snapshotTemplateRequestText(contactEmail), /Service: \nWebsite: \nEmail:/);
   const details = fixPackDetailsBody();
   assert.equal(
     details,
