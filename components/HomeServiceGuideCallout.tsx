@@ -3,15 +3,14 @@ import { freeSnapshotPath, type HomeServiceTradeInfo } from "@/lib/home-service-
 
 export function HomeServiceGuideCallout({ trade }: { trade: HomeServiceTradeInfo }) {
   return (
-    <aside className="rounded-2xl border border-rule bg-cream px-5 py-5 sm:px-6">
-      <p className="kicker">Free</p>
-      <p className="mt-3 text-lg leading-7 text-ink">{trade.question}</p>
+    <aside className="rounded-2xl border border-rule bg-cream px-5 py-4 sm:px-6">
+      <p className="text-lg leading-7 text-ink">{trade.question}</p>
       <p className="mt-2 text-sm leading-6 text-ink-soft">
-        The free AI Answer Snapshot asks logged-out ChatGPT and Perplexity who
-        they name for that trade and city, and replies with one page. AI
-        answers vary run to run. This is a snapshot, not a ranking. No payment.
+        Free AI Answer Snapshot. We ask logged-out ChatGPT and Perplexity who
+        they name and reply with one page. AI answers vary run to run. No
+        payment.
       </p>
-      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href={freeSnapshotPath(trade.id)}
           className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep sm:w-auto"

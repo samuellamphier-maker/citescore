@@ -54,6 +54,11 @@ export function ArticleShell({
       <main className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
         <p className="kicker">{kicker}</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">{title}</h1>
+        {homeService ? (
+          <div className="mt-6">
+            <HomeServiceGuideCallout trade={homeService} />
+          </div>
+        ) : null}
         <p className="mt-4 text-lg leading-8 text-ink-soft">{dek}</p>
         {publishedAt ? (
           <p className="mt-3 text-sm text-ink-soft">
@@ -62,11 +67,7 @@ export function ArticleShell({
             {minutes ? ` · ${minutes} min read` : null}
           </p>
         ) : null}
-        {homeService ? (
-          <div className="mt-8">
-            <HomeServiceGuideCallout trade={homeService} />
-          </div>
-        ) : snapshotOffer ? (
+        {!homeService && snapshotOffer ? (
           <div className="mt-8">
             <IndustrySnapshotCta industry={snapshotOffer.industry} />
           </div>
