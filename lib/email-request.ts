@@ -30,8 +30,18 @@ export function mailtoHref(inbox: string, subject: string, body?: string) {
   return `mailto:${inbox}?${query.join("&")}`;
 }
 
-export function snapshotMailto(inbox: string, body: string) {
-  return mailtoHref(inbox, SNAPSHOT_SUBJECT, body);
+/**
+ * Default subject unless an allowlisted trade label is passed.
+ * An empty label keeps the subject identical to a request with no ?trade=.
+ */
+export function snapshotSubjectForTrade(service?: string | null) {
+  const label = service?.trim();
+  if (!label) return SNAPSHOT_SUBJECT;
+  return `${SNAPSHOT_SUBJECT} - ${label}`;
+}
+
+export function snapshotMailto(inbox: string, body: string, subject = SNAPSHOT_SUBJECT) {
+  return mailtoHref(inbox, subject, body);
 }
 
 /** Plain-text message a visitor can paste into any inbox. */
@@ -48,8 +58,9 @@ export function snapshotRequestClipboard(
     website: string;
     email: string;
   },
+  subject = SNAPSHOT_SUBJECT,
 ) {
-  return requestClipboard(inbox, SNAPSHOT_SUBJECT, snapshotRequestBody(input));
+  return requestClipboard(inbox, subject, snapshotRequestBody(input));
 }
 
 /** Blank snapshot request. Service is filled when the page is already about one trade. */

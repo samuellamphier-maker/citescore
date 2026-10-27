@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { AuditCta } from "@/components/AuditCta";
+import { HomeServiceGuideCallout } from "@/components/HomeServiceGuideCallout";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
+import { freeSnapshotPath, homeServiceTradeForGuide } from "@/lib/home-service-trade";
 import { snapshotOfferForPage } from "@/lib/industry-snapshot";
 import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
@@ -45,6 +47,7 @@ export function ArticleShell({
   showAuditCta = true,
 }: Props) {
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
+  const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
   return (
     <>
       <SiteHeader />
@@ -59,7 +62,11 @@ export function ArticleShell({
             {minutes ? ` · ${minutes} min read` : null}
           </p>
         ) : null}
-        {snapshotOffer ? (
+        {homeService ? (
+          <div className="mt-8">
+            <HomeServiceGuideCallout trade={homeService} />
+          </div>
+        ) : snapshotOffer ? (
           <div className="mt-8">
             <IndustrySnapshotCta industry={snapshotOffer.industry} />
           </div>
@@ -85,7 +92,10 @@ export function ArticleShell({
         ) : null}
         {snapshotOffer ? (
           <div className="mt-12">
-            <IndustrySnapshotCta industry={snapshotOffer.industry} />
+            <IndustrySnapshotCta
+              industry={snapshotOffer.industry}
+              snapshotHref={homeService ? freeSnapshotPath(homeService.id) : undefined}
+            />
           </div>
         ) : null}
         {guidePath ? <RelatedGuides current={guidePath} /> : null}
