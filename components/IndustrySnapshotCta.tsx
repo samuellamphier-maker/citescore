@@ -5,7 +5,14 @@ import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { snapshotTemplateRequestText } from "@/lib/email-request";
 import { contactEmail, fixPackGetCtaLabel, fixPackIntroPriceLabel } from "@/lib/site";
 
-export function IndustrySnapshotCta({ industry }: { industry?: string }) {
+export function IndustrySnapshotCta({
+  industry,
+  snapshotHref = "/free-snapshot",
+}: {
+  industry?: string;
+  /** Free-snapshot URL. Guides for one trade pass /free-snapshot?trade=… */
+  snapshotHref?: string;
+}) {
   return (
     <aside className="rounded-2xl border border-ink bg-ink px-5 py-6 text-cream">
       <p className="kicker text-[#d7c7b0]">Free</p>
@@ -21,7 +28,7 @@ export function IndustrySnapshotCta({ industry }: { industry?: string }) {
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <Link
-          href="/free-snapshot"
+          href={snapshotHref}
           className="inline-flex h-11 items-center justify-center rounded-lg bg-cream px-4 text-sm font-medium text-ink hover:bg-paper"
         >
           Get a free AI Answer Snapshot

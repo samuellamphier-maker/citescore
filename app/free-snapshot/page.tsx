@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
+import { FreeSnapshotLead } from "@/components/FreeSnapshotLead";
 import { JsonLd } from "@/components/JsonLd";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -34,14 +35,7 @@ export default function FreeSnapshotPage() {
       <SiteHeader />
       <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">Free · no checkout</p>
-        <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
-          Request a free AI Answer Snapshot.
-        </h1>
-        <p className="mt-4 text-lg leading-8 text-ink-soft">
-          When customers ask ChatGPT or Perplexity for a plumber (or your
-          trade) in your city, who do they name instead of the local
-          business?
-        </p>
+        <FreeSnapshotLead />
         <p className="mt-4 leading-7 text-ink-soft">
           CiteScore asks logged-out ChatGPT and Perplexity who they name for
           that trade and city. The business receives a one-page snapshot: who

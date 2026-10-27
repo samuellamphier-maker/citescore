@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { AuditCta } from "@/components/AuditCta";
+import { HomeServiceGuideCallout } from "@/components/HomeServiceGuideCallout";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
+import { freeSnapshotPath, homeServiceTradeForGuide } from "@/lib/home-service-trade";
 import { snapshotOfferForPage } from "@/lib/industry-snapshot";
 import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
@@ -45,12 +47,18 @@ export function ArticleShell({
   showAuditCta = true,
 }: Props) {
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
+  const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
   return (
     <>
       <SiteHeader />
       <main className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
         <p className="kicker">{kicker}</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">{title}</h1>
+        {homeService ? (
+          <div className="mt-6">
+            <HomeServiceGuideCallout trade={homeService} />
+          </div>
+        ) : null}
         <p className="mt-4 text-lg leading-8 text-ink-soft">{dek}</p>
         {publishedAt ? (
           <p className="mt-3 text-sm text-ink-soft">
@@ -59,7 +67,7 @@ export function ArticleShell({
             {minutes ? ` · ${minutes} min read` : null}
           </p>
         ) : null}
-        {snapshotOffer ? (
+        {!homeService && snapshotOffer ? (
           <div className="mt-8">
             <IndustrySnapshotCta industry={snapshotOffer.industry} />
           </div>
@@ -85,7 +93,10 @@ export function ArticleShell({
         ) : null}
         {snapshotOffer ? (
           <div className="mt-12">
-            <IndustrySnapshotCta industry={snapshotOffer.industry} />
+            <IndustrySnapshotCta
+              industry={snapshotOffer.industry}
+              snapshotHref={homeService ? freeSnapshotPath(homeService.id) : undefined}
+            />
           </div>
         ) : null}
         {guidePath ? <RelatedGuides current={guidePath} /> : null}

@@ -52,9 +52,11 @@ test("free snapshot page is the linkable request, with the existing email path",
 });
 
 test("main snapshot CTAs point at the free snapshot page", () => {
-  for (const source of [home, fixPack, sample, industry]) {
+  for (const source of [home, fixPack, sample]) {
     assert.match(source, /href="\/free-snapshot"/);
   }
+  assert.match(industry, /snapshotHref = "\/free-snapshot"/);
+  assert.match(industry, /href=\{snapshotHref\}/);
   assert.doesNotMatch(home, /href="\/#snapshot"/);
   assert.doesNotMatch(fixPack, /href="\/#snapshot"/);
   assert.doesNotMatch(sample, /href="#snapshot"/);
