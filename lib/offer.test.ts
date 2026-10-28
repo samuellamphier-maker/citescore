@@ -55,6 +55,7 @@ test("sitemap sources include the new offer and trust URLs", () => {
   const paths = new Set(marketingPaths.map((item) => item.path));
   for (const path of [
     "/about",
+    "/contact",
     "/fix-pack",
     "/refunds",
     "/terms",

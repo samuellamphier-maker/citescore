@@ -31,7 +31,11 @@ export default function AboutPage() {
           <a href={`mailto:${contactEmail}`} className="text-forest underline">
             {contactEmail}
           </a>
-          .
+          . The{" "}
+          <Link href="/contact" className="text-forest underline">
+            contact
+          </Link>{" "}
+          page says what to include in a message.
         </p>
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
           <p>
@@ -85,6 +89,11 @@ export default function AboutPage() {
             <a href={`mailto:${contactEmail}`} className="text-forest underline">
               {contactEmail}
             </a>
+          </p>
+          <p>
+            <Link href="/contact" className="text-forest underline">
+              Contact
+            </Link>
           </p>
         </div>
       </main>

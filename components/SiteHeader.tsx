@@ -42,6 +42,9 @@ export function SiteHeader() {
           <Link href="/fix-pack" className="hover:text-ink">
             Fix Pack
           </Link>
+          <Link href="/contact" className="hover:text-ink">
+            Contact
+          </Link>
           <Link
             href="/free-snapshot"
             className="rounded-full bg-ink px-3.5 py-1.5 text-cream hover:bg-forest-deep"

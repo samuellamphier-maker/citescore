@@ -9,7 +9,13 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
 import { fixPackDeliverables, fixPackProductJsonLd } from "@/lib/fix-pack-offer";
-import { faqPageJsonLd, fixPackFaqs, sonickStudyUrl } from "@/lib/offer-faq";
+import {
+  faqPageJsonLd,
+  fixPackFaqs,
+  fixPackMoreFaqs,
+  fixPackPurchaseFaqs,
+  sonickStudyUrl,
+} from "@/lib/offer-faq";
 import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
@@ -64,6 +70,11 @@ export default function FixPackPage() {
             SoNick Marketing
           </a>
           ).
+        </p>
+        <p className="mt-4 text-sm leading-6">
+          <Link href="/contact" className="font-medium text-forest underline">
+            Questions before you buy
+          </Link>
         </p>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What you get</h2>
@@ -153,10 +164,17 @@ export default function FixPackPage() {
           FAQ
         </h2>
         <p className="mt-4 text-sm leading-7 text-ink-soft">
+          What is included, what happens after you pay, what to send, and how
+          to ask.
+        </p>
+        <FaqList items={fixPackPurchaseFaqs} />
+
+        <h2 className="mt-12 font-serif text-3xl tracking-tight">More questions</h2>
+        <p className="mt-4 text-sm leading-7 text-ink-soft">
           What the snapshot shows, what you do with the Fix Pack, and how to
           ask.
         </p>
-        <FaqList items={fixPackFaqs()} />
+        <FaqList items={fixPackMoreFaqs()} />
       </main>
       <SiteFooter />
     </>
