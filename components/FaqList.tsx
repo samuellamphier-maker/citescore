@@ -9,6 +9,7 @@ import { contactEmail } from "@/lib/site";
 
 const phrases: { phrase: string; href: string; external?: boolean }[] = [
   { phrase: contactEmail, href: `mailto:${contactEmail}` },
+  { phrase: "contact page", href: "/contact" },
   { phrase: "About page", href: "/about" },
   { phrase: "refunds page", href: "/refunds" },
   { phrase: "SoNick Marketing", href: sonickStudyUrl, external: true },

@@ -78,6 +78,10 @@ export default function RefundsPage() {
             <Link href="/terms" className="text-forest underline">
               terms
             </Link>{" "}
+            page. Other questions go to the{" "}
+            <Link href="/contact" className="text-forest underline">
+              contact
+            </Link>{" "}
             page.
           </p>
         </div>

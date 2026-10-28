@@ -71,8 +71,43 @@ const fixPackOnlyFaqs: readonly FaqItem[] = [
   },
 ];
 
-export function fixPackFaqs(): FaqItem[] {
+/**
+ * Short pre-purchase answers. Every sentence is already on the Fix Pack,
+ * refunds, terms, free-snapshot, or next-steps page.
+ */
+export const fixPackPurchaseFaqs: readonly FaqItem[] = [
+  {
+    q: "What is included in the Fix Pack?",
+    a: `Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. One business, one city, one service. A Google Business Profile gap list, a review-gap plan and script, the directories an AI answer cited, paste-ready LocalBusiness and Service JSON-LD with install steps, and a re-check 14 days later. It is not a promise that any assistant will name the business.`,
+  },
+  {
+    q: "What happens after I purchase?",
+    a: "The buy button opens card checkout. After you pay, email the business name, city, service, and public site URL. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. Do not send passwords, cookies, or pages behind a login.",
+  },
+  {
+    q: "What do I need to provide?",
+    a: "After you pay, email the business name, city, main service, and public site URL. Do not send passwords, cookies, or pages behind a login. The free snapshot request asks for the business name, city, service, website, and email. The form does not post to a server. We receive those only if you send that message. No account and no paid checkout.",
+  },
+  {
+    q: "What is the refund policy?",
+    a: `If the AI Visibility Fix Pack (${fixPackIntroPriceLabel} introductory) is not useful, email ${contactEmail} within 14 days of delivery and ${sellerName} refunds that purchase in full. You do not need to show that you installed the markup or sent the review script. The 14 days start when the Fix Pack is delivered, not when you request the free snapshot. The free AI Answer Snapshot has no charge, so there is nothing to refund on it. Details are on the refunds page.`,
+  },
+  {
+    q: "What is the difference between the free snapshot and the Fix Pack?",
+    a: `The snapshot is free. The Fix Pack is the done-for-you work after you have seen who was named. Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. The free snapshot is a one-page reply: who is named, which sources are cited, and how the Google rating and review count compare. No payment. AI answers vary run to run. This is a snapshot, not a ranking. The Fix Pack is one business, one city, one service: a Google Business Profile gap list, a review-gap plan and script, the directories those answers cited, paste-ready LocalBusiness and Service JSON-LD with install steps, and a re-check of the same prompts 14 days later. It is not a promise that any assistant will name the business. The free snapshot comes first. The free AI Answer Snapshot has no charge, so there is nothing to refund on it.`,
+  },
+  {
+    q: "How do I contact you?",
+    a: `Questions go to ${contactEmail}. Use the contact page. CiteScore is operated by the CiteScore Team. The seller name on this site is ${sellerName}.`,
+  },
+];
+
+export function fixPackMoreFaqs(): FaqItem[] {
   return [...snapshotOfferFaqs, ...fixPackOnlyFaqs];
+}
+
+export function fixPackFaqs(): FaqItem[] {
+  return [...fixPackPurchaseFaqs, ...fixPackMoreFaqs()];
 }
 
 /** Short request-page FAQ. Answers stay the ones already published above. */
