@@ -210,7 +210,7 @@ export default function SampleSnapshotPage() {
             free snapshot request page
           </Link>
           . The form on this page is the same request. It sends the business
-          name, city, service, website, and email through FormSubmit to{" "}
+          name, city, service, website, and email through FlowForm to{" "}
           <a
             className="text-forest underline"
             href={`mailto:${contactEmail}?subject=${encodeURIComponent("Free AI Answer Snapshot")}`}
@@ -430,7 +430,7 @@ export default function SampleSnapshotPage() {
           <p className="mt-3 text-sm leading-6 text-ink-soft">
             The example above stays fictional. This form is the same request
             as the free snapshot page. It sends the business name, city,
-            service, website, and email through FormSubmit to {contactEmail}.
+            service, website, and email through FlowForm to {contactEmail}.
             No checkout.
           </p>
           <div className="mt-5">

@@ -59,17 +59,16 @@ export default function PrivacyPage() {
           </p>
           <p>
             The free AI Answer Snapshot form sends the business name, city,
-            service, website, and email through FormSubmit to {contactEmail}.
-            The browser posts that form directly to FormSubmit. The subject
+            service, website, and email through FlowForm to {contactEmail}.
+            The browser posts that form directly to FlowForm. The subject
             is “Free AI Answer Snapshot.” The same email is set as the
-            reply-to address. FormSubmit’s captcha is turned off so the
-            request sends in one click, and the form includes an empty
-            honeypot field named _honey so automated junk can be dropped.
-            After FormSubmit accepts the post, it can send the visitor back
+            reply-to address. A hidden honeypot field is checked in the
+            browser and is left out of the post when it is empty. After
+            FlowForm accepts the post, it can send the visitor back
             to this site. If the post fails, the email button on the form
             opens your email app with those same fields, or you can copy the
             address and the request text. We receive the request when
-            FormSubmit delivers it, or when you send the email yourself.
+            FlowForm delivers it, or when you send the email yourself.
           </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>
           <p>

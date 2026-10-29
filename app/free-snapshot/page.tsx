@@ -61,7 +61,7 @@ export default function FreeSnapshotPage() {
           </h2>
           <p className="mt-3 text-sm leading-6 text-ink-soft">
             The button sends the business name, city, service, website, and email
-            to {contactEmail} through FormSubmit. The subject is “Free AI Answer
+            to {contactEmail} through FlowForm. The subject is “Free AI Answer
             Snapshot.” No account and no paid checkout. If that send fails, the
             email button, the address, and the copy buttons stay on this page.
           </p>
@@ -76,7 +76,7 @@ export default function FreeSnapshotPage() {
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What happens next</h2>
         <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
           <li>
-            You submit the form. FormSubmit delivers the business name, city,
+            You submit the form. FlowForm delivers the business name, city,
             service, website, and email. No account and no paid checkout.
           </li>
           <li>

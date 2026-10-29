@@ -28,7 +28,7 @@ export const snapshotOfferFaqs: readonly FaqItem[] = [
   },
   {
     q: "How is the snapshot produced?",
-    a: `We ask logged-out ChatGPT and Perplexity a local prompt such as “best {service} in {city},” plus one variant, and record who they name. The request form sends the business name, city, service, website, and email through FormSubmit to ${contactEmail}. If that send fails, the form can open your email app, or you can copy the request and email it from any inbox.`,
+    a: `We ask logged-out ChatGPT and Perplexity a local prompt such as “best {service} in {city},” plus one variant, and record who they name. The request form sends the business name, city, service, website, and email through FlowForm to ${contactEmail}. If that send fails, the form can open your email app, or you can copy the request and email it from any inbox.`,
   },
   {
     q: "Do the answers stay the same if you ask again?",
@@ -48,11 +48,11 @@ export const snapshotOfferFaqs: readonly FaqItem[] = [
   },
   {
     q: "Do I need to give a login or site access?",
-    a: `No. The snapshot request has no account and no paid checkout. The form sends the business name, city, service, website, and email through FormSubmit to ${contactEmail}. If that send fails, you can email those same fields. Do not send passwords, cookies, or pages behind a login. We email the Fix Pack. You paste the JSON-LD into the head of the public site and keep every field visible on the page. The review script is a copy-paste SMS and email you can send.`,
+    a: `No. The snapshot request has no account and no paid checkout. The form sends the business name, city, service, website, and email through FlowForm to ${contactEmail}. If that send fails, you can email those same fields. Do not send passwords, cookies, or pages behind a login. We email the Fix Pack. You paste the JSON-LD into the head of the public site and keep every field visible on the page. The review script is a copy-paste SMS and email you can send.`,
   },
   {
     q: "How do I request the snapshot or the Fix Pack?",
-    a: `The snapshot is free. Submit the business name, city, service, website, and email. The button sends that request through FormSubmit to ${contactEmail}. If the send fails, use the email button or copy the request and email it to ${contactEmail} from any inbox. We reply with the one-page snapshot. The Fix Pack is ${fixPackIntroPriceLabel}. The buy button opens card checkout. The free snapshot comes first.`,
+    a: `The snapshot is free. Submit the business name, city, service, website, and email. The button sends that request through FlowForm to ${contactEmail}. If the send fails, use the email button or copy the request and email it to ${contactEmail} from any inbox. We reply with the one-page snapshot. The Fix Pack is ${fixPackIntroPriceLabel}. The buy button opens card checkout. The free snapshot comes first.`,
   },
   {
     q: "What if the Fix Pack is not useful?",
@@ -86,7 +86,7 @@ export const fixPackPurchaseFaqs: readonly FaqItem[] = [
   },
   {
     q: "What do I need to provide?",
-    a: `After you pay, email the business name, city, main service, and public site URL. Do not send passwords, cookies, or pages behind a login. The free snapshot request asks for the business name, city, service, website, and email. The form sends those fields through FormSubmit to ${contactEmail}. No account and no paid checkout.`,
+    a: `After you pay, email the business name, city, main service, and public site URL. Do not send passwords, cookies, or pages behind a login. The free snapshot request asks for the business name, city, service, website, and email. The form sends those fields through FlowForm to ${contactEmail}. No account and no paid checkout.`,
   },
   {
     q: "What is the refund policy?",

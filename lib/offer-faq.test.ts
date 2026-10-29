@@ -29,7 +29,7 @@ test("snapshot FAQ uses only stated offer facts", () => {
   assert.match(offerFaq, /About page/);
   assert.match(offerFaq, /\$\{contactEmail\}/);
   assert.match(offerFaq, /no account and no paid checkout/);
-  assert.match(offerFaq, /through FormSubmit to \$\{contactEmail\}/);
+  assert.match(offerFaq, /through FlowForm to \$\{contactEmail\}/);
   assert.doesNotMatch(offerFaq, /does not post to a server/);
   assert.match(offerFaq, /passwords, cookies, or pages behind a login/);
   assert.match(offerFaq, /The Fix Pack is \$\{fixPackIntroPriceLabel\}/);
