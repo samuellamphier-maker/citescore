@@ -30,7 +30,7 @@ const steps = [
   {
     n: "01",
     title: "Request a free snapshot",
-    body: "Send the business name, city, service, website, and email. We ask logged-out ChatGPT and Perplexity who they name for that trade and city. No payment.",
+    body: "Submit the business name, city, service, website, and email. We ask logged-out ChatGPT and Perplexity who they name for that trade and city. No payment.",
   },
   {
     n: "02",

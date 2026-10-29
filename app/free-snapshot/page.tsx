@@ -57,15 +57,13 @@ export default function FreeSnapshotPage() {
         <section className="mt-10 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8">
           <p className="kicker">Request</p>
           <h2 className="mt-2 font-serif text-3xl tracking-tight">
-            Email the business, the city, the service, and the website.
+            Submit the business, the city, the service, and the website.
           </h2>
           <p className="mt-3 text-sm leading-6 text-ink-soft">
-            The button opens your email app to {contactEmail} with the
-            subject “Free AI Answer Snapshot.” The message asks for the
-            business name, city, service, website, and email. The form does
-            not post to a server. We receive those only if you send that
-            message. If no mail app opens, the address and the copy buttons
-            stay on this page.
+            The button sends the business name, city, service, website, and email
+            to {contactEmail} through FormSubmit. The subject is “Free AI Answer
+            Snapshot.” No account and no paid checkout. If that send fails, the
+            email button, the address, and the copy buttons stay on this page.
           </p>
           <div className="mt-5">
             <SnapshotRequestForm />
@@ -77,7 +75,10 @@ export default function FreeSnapshotPage() {
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What happens next</h2>
         <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
-          <li>You send the email. No account and no paid checkout.</li>
+          <li>
+            You submit the form. FormSubmit delivers the business name, city,
+            service, website, and email. No account and no paid checkout.
+          </li>
           <li>
             We ask logged-out ChatGPT and Perplexity who they name for that
             trade and city, and record who is named.

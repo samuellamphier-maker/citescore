@@ -58,10 +58,16 @@ export default function PrivacyPage() {
             Vercel). Waitlist rows use the same file-store pattern.
           </p>
           <p>
-            The free AI Answer Snapshot form does not post to a server. It
-            opens your email app with a message to {contactEmail}. We receive
-            the business name, city, service, website, and email only if you send that
-            message.
+            The free AI Answer Snapshot form sends the business name, city,
+            service, website, and email through FormSubmit to {contactEmail}.
+            The subject is “Free AI Answer Snapshot.” The same email is set
+            as the reply-to address. FormSubmit’s captcha is turned off so
+            the request sends in one click, and the form includes an empty
+            honeypot field named _honey so automated junk can be dropped. If
+            that send fails, the form can open your email app with those same
+            fields, or you can copy the address and the request text. We
+            receive the request when FormSubmit delivers it, or when you send
+            the email yourself.
           </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>
           <p>

@@ -16,6 +16,7 @@ import {
   type FaqItem,
 } from "@/lib/offer-faq";
 import {
+  contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   sellerName,
@@ -109,11 +110,10 @@ export default function PricingPage() {
             </p>
             <h3 className="mt-6 font-medium">How delivery works</h3>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
-              You send the email. The form does not post to a server. We
-              receive the business name, city, service, website, and email
-              only if you send that message. We reply with the one-page
-              snapshot. The free AI Answer Snapshot has no charge, so there
-              is nothing to refund on it.
+              The form sends the business name, city, service, website, and
+              email to {contactEmail} through FormSubmit. We reply with the
+              one-page snapshot. The free AI Answer Snapshot has no charge, so
+              there is nothing to refund on it.
             </p>
             <div className="mt-6">
               <Link

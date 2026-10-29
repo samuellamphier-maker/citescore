@@ -17,7 +17,7 @@ import {
 export const metadata: Metadata = {
   ...pageMeta({
     title: "How it works",
-    description: `Request a free AI Answer Snapshot by email. CiteScore asks logged-out ChatGPT and Perplexity who they name, then replies with a one-page snapshot. The ${fixPackIntroPriceLabel} Fix Pack is optional.`,
+    description: `Request a free AI Answer Snapshot. CiteScore asks logged-out ChatGPT and Perplexity who they name, then replies with a one-page snapshot by email. The ${fixPackIntroPriceLabel} Fix Pack is optional.`,
     path: "/how-it-works",
   }),
   authors: [{ name: "CiteScore Team" }],
@@ -54,17 +54,15 @@ export default function HowItWorksPage() {
               Request a free AI Answer Snapshot
             </h2>
             <p className="mt-3 text-sm leading-7 text-ink-soft">
-              You send the email. No account and no paid checkout. The button
+              You submit the form. No account and no paid checkout. The button
               on the{" "}
               <Link href="/free-snapshot" className="text-forest underline">
                 free snapshot
               </Link>{" "}
-              page opens your email app to {contactEmail} with the subject
-              “Free AI Answer Snapshot.” The message asks for the business
-              name, city, service, website, and email. The form does not post
-              to a server. We receive those only if you send that message. If
-              no mail app opens, the address and the copy buttons stay on that
-              page.
+              page sends the business name, city, service, website, and email
+              to {contactEmail} through FormSubmit. The subject is “Free AI
+              Answer Snapshot.” If that send fails, the email button, the
+              address, and the copy buttons stay on that page.
             </p>
             <p className="mt-4">
               <Link

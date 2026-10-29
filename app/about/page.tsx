@@ -57,8 +57,9 @@ export default function AboutPage() {
             LocalBusiness and Service JSON-LD with install steps, and a
             re-check of the same prompts 14 days later. It is not a promise
             that any assistant will name the business. The buy button opens{" "}
-            {fixPackIntroPriceLabel} card checkout. The free snapshot still
-            starts by email. An{" "}
+            {fixPackIntroPriceLabel} card checkout. The free snapshot form
+            sends the business name, city, service, website, and email
+            through FormSubmit. An{" "}
             <Link href="/sample-snapshot" className="text-forest underline">
               example snapshot
             </Link>{" "}
