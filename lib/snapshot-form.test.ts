@@ -5,7 +5,6 @@ import { SNAPSHOT_SUBJECT } from "./email-request.ts";
 import {
   snapshotFieldsComplete,
   snapshotFormEncoded,
-  snapshotFormEndpoint,
   snapshotFormPageEndpoint,
   snapshotFormPayload,
   snapshotFormProvider,
@@ -22,31 +21,24 @@ const fields = {
   email: " citescore@mail.grokbot.com ",
 };
 
-test("snapshot payload posts the visitor fields through FormSubmit", () => {
-  assert.equal(snapshotFormProvider, "FormSubmit");
+test("snapshot payload posts the visitor fields through FlowForm", () => {
+  assert.equal(snapshotFormProvider, "FlowForm");
   assert.equal(SNAPSHOT_SUBJECT, "Free AI Answer Snapshot");
   assert.equal(
-    snapshotFormEndpoint,
-    "https://formsubmit.co/ajax/citescore@mail.grokbot.com",
-  );
-  assert.equal(
     snapshotFormPageEndpoint,
-    "https://formsubmit.co/citescore@mail.grokbot.com",
+    "https://flowform.to/citescore@mail.grokbot.com",
   );
   const payload = snapshotFormPayload(fields);
   assert.equal(payload._subject, "Free AI Answer Snapshot");
-  assert.equal(payload._captcha, "false");
-  assert.equal(payload._honey, "");
   assert.equal(payload._replyto, "citescore@mail.grokbot.com");
   assert.equal(payload["Business name"], "CiteScore Team activation test");
   assert.equal(payload.City, "Riverton");
   assert.equal(payload.Service, "plumber");
   assert.equal(payload.Website, "https://example-plumbing.example");
   assert.equal(payload.Email, "citescore@mail.grokbot.com");
-  const encoded = snapshotFormEncoded(fields, "bot");
+  const encoded = snapshotFormEncoded(fields);
   assert.match(encoded, /_subject=Free\+AI\+Answer\+Snapshot/);
-  assert.match(encoded, /_captcha=false/);
-  assert.match(encoded, /_honey=bot/);
+  assert.doesNotMatch(encoded, /_honey/);
   assert.equal(snapshotFieldsComplete(fields), true);
   assert.equal(
     snapshotFieldsComplete({ ...fields, website: "  " }),
@@ -70,12 +62,13 @@ test("snapshot payload posts the visitor fields through FormSubmit", () => {
   assert.match(snapshotSendErrorMessage, /email button/);
 });
 
-test("privacy names FormSubmit and the fields that are sent", () => {
+test("privacy names FlowForm and the fields that are sent", () => {
   const privacy = readFileSync(new URL("../app/privacy/page.tsx", import.meta.url), "utf8");
-  assert.match(privacy, /through FormSubmit to \{contactEmail\}/);
+  assert.match(privacy, /through FlowForm to \{contactEmail\}/);
   assert.match(privacy, /business name, city,\s+service, website, and email/);
-  assert.match(privacy, /_honey/);
-  assert.match(privacy, /captcha is turned off/);
+  assert.match(privacy, /honeypot/);
+  assert.match(privacy, /reply-to address/);
+  assert.doesNotMatch(privacy, /captcha is turned off/);
   assert.doesNotMatch(privacy, /does not post to a server/);
 });
 
@@ -90,8 +83,8 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /snapshotMailto/);
   assert.match(form, /Email this request instead/);
   assert.match(form, /name="_honey"/);
-  assert.match(form, /name="_captcha"/);
   assert.match(form, /name="_subject"/);
+  assert.doesNotMatch(form, /name="_captcha"/);
   assert.match(form, /name="Website"/);
   assert.match(form, /required/);
   assert.match(form, /snapshotSentMessage/);

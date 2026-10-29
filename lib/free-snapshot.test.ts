@@ -33,9 +33,9 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /We reply with the one-page snapshot/);
   assert.match(page, /within a few\s+business days after payment/);
   assert.match(page, /business name, city, service, website, and email/);
-  assert.match(page, /through FormSubmit/);
+  assert.match(page, /through FlowForm/);
   assert.doesNotMatch(page, /does not post to a server/);
-  assert.match(form, /through FormSubmit/);
+  assert.match(form, /through FlowForm/);
   assert.match(form, /snapshotSentMessage/);
   assert.doesNotMatch(page, /Samuel|Lamphier|testimonial|customers served|guarantee/i);
   assert.doesNotMatch(page, /few minutes|24 hours|48 hours/);

@@ -27,7 +27,7 @@ test("pricing page compares the free snapshot and the Fix Pack", () => {
   assert.match(pricing, /<FixPackBuyLink/);
   assert.match(pricing, /fixPackDeliverables/);
   assert.match(pricing, /within a few\s+business days after payment/);
-  assert.match(pricing, /through FormSubmit/);
+  assert.match(pricing, /through FlowForm/);
   assert.match(pricing, /business name, city, service, website, and/);
   assert.doesNotMatch(pricing, /does not post to a server/);
   assert.match(
@@ -48,7 +48,7 @@ test("how it works explains request, findings, and the optional Fix Pack", () =>
   assert.match(howItWorks, /href="\/pricing"/);
   assert.match(howItWorks, /<FixPackBuyLink/);
   assert.match(howItWorks, /No account and no paid checkout/);
-  assert.match(howItWorks, /through FormSubmit/);
+  assert.match(howItWorks, /through FlowForm/);
   assert.doesNotMatch(howItWorks, /does not post to a server/);
   assert.match(howItWorks, /We reply with the\s+one-page snapshot/);
   assert.match(howItWorks, /Fictional business, illustrative numbers/);

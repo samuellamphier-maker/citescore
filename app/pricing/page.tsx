@@ -111,7 +111,7 @@ export default function PricingPage() {
             <h3 className="mt-6 font-medium">How delivery works</h3>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
               The form sends the business name, city, service, website, and
-              email to {contactEmail} through FormSubmit. We reply with the
+              email to {contactEmail} through FlowForm. We reply with the
               one-page snapshot. The free AI Answer Snapshot has no charge, so
               there is nothing to refund on it.
             </p>

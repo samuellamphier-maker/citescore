@@ -60,7 +60,7 @@ export default function HowItWorksPage() {
                 free snapshot
               </Link>{" "}
               page sends the business name, city, service, website, and email
-              to {contactEmail} through FormSubmit. The subject is “Free AI
+              to {contactEmail} through FlowForm. The subject is “Free AI
               Answer Snapshot.” If that send fails, the email button, the
               address, and the copy buttons stay on that page.
             </p>

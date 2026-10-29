@@ -68,13 +68,15 @@ export function SnapshotRequestForm() {
       return;
     }
 
-    const honey = String(new FormData(form).get("_honey") ?? "");
+    const honeyInput = form.elements.namedItem("_honey");
+    const honey = honeyInput instanceof HTMLInputElement ? honeyInput.value : "";
     if (honey.trim()) {
       submitLock.current = true;
       setValidationMessage("");
       setPhase("sent");
       return;
     }
+    if (honeyInput instanceof HTMLInputElement) honeyInput.disabled = true;
 
     submitLock.current = true;
     setValidationMessage("");
@@ -176,7 +178,6 @@ export function SnapshotRequestForm() {
         />
       </div>
       <input type="hidden" name="_subject" value={SNAPSHOT_SUBJECT} />
-      <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_next" value="https://citescore.vercel.app/free-snapshot?sent=1" />
       <input type="hidden" name="_replyto" value={fields.email} />
       <input
@@ -228,7 +229,7 @@ export function SnapshotRequestForm() {
       />
       <p className="text-xs leading-5 text-ink-soft">
         Sends the business name, city, service, website, and email to{" "}
-        {contactEmail} through FormSubmit. No account and no paid checkout.
+        {contactEmail} through FlowForm. No account and no paid checkout.
         If that send fails, use the email button or the copy buttons. AI
         answers vary run to run. This is a snapshot, not a ranking.
       </p>

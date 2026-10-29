@@ -59,7 +59,7 @@ export default function AboutPage() {
             that any assistant will name the business. The buy button opens{" "}
             {fixPackIntroPriceLabel} card checkout. The free snapshot form
             sends the business name, city, service, website, and email
-            through FormSubmit. An{" "}
+            through FlowForm. An{" "}
             <Link href="/sample-snapshot" className="text-forest underline">
               example snapshot
             </Link>{" "}
