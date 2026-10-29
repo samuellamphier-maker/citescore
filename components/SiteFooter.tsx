@@ -82,7 +82,10 @@ export function SiteFooter() {
           <Link href="/free-check" className="hover:text-ink">
             Free signal check
           </Link>
-          <Link href="/#pricing" className="hover:text-ink">
+          <Link href="/how-it-works" className="hover:text-ink">
+            How it works
+          </Link>
+          <Link href="/pricing" className="hover:text-ink">
             Pricing
           </Link>
           <Link href="/#faq" className="hover:text-ink">

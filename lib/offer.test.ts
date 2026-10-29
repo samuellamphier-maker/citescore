@@ -56,6 +56,8 @@ test("sitemap sources include the new offer and trust URLs", () => {
   for (const path of [
     "/about",
     "/contact",
+    "/pricing",
+    "/how-it-works",
     "/fix-pack",
     "/refunds",
     "/terms",
