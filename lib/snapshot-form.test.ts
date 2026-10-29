@@ -6,6 +6,7 @@ import {
   snapshotFieldsComplete,
   snapshotFormEncoded,
   snapshotFormEndpoint,
+  snapshotFormPageEndpoint,
   snapshotFormPayload,
   snapshotFormProvider,
   snapshotSendErrorMessage,
@@ -27,6 +28,10 @@ test("snapshot payload posts the visitor fields through FormSubmit", () => {
   assert.equal(
     snapshotFormEndpoint,
     "https://formsubmit.co/ajax/citescore@mail.grokbot.com",
+  );
+  assert.equal(
+    snapshotFormPageEndpoint,
+    "https://formsubmit.co/citescore@mail.grokbot.com",
   );
   const payload = snapshotFormPayload(fields);
   assert.equal(payload._subject, "Free AI Answer Snapshot");
@@ -79,8 +84,9 @@ test("the request form posts, keeps mailto, and requires the website", () => {
     new URL("../components/SnapshotRequestForm.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(form, /snapshotFormEndpoint/);
-  assert.match(form, /snapshotFormEncoded/);
+  assert.match(form, /snapshotFormPageEndpoint/);
+  assert.match(form, /name="_next"/);
+  assert.match(form, /form\.submit\(\)/);
   assert.match(form, /snapshotMailto/);
   assert.match(form, /Email this request instead/);
   assert.match(form, /name="_honey"/);

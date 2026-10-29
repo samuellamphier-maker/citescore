@@ -10,6 +10,10 @@ export const snapshotFormProvider = "FormSubmit";
 export const snapshotFormEndpoint =
   "https://formsubmit.co/ajax/citescore@mail.grokbot.com";
 
+/** Document POST. Used when the AJAX response is unreadable (no CORS header). */
+export const snapshotFormPageEndpoint =
+  "https://formsubmit.co/citescore@mail.grokbot.com";
+
 const snapshotSubject = "Free AI Answer Snapshot";
 
 export const snapshotSentMessage =

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 import { EmailRequestFallback } from "@/components/EmailRequestFallback";
 import { useHomeServiceTradeParam } from "@/components/useHomeServiceTrade";
 import {
@@ -13,13 +13,23 @@ import {
 import { contactEmail } from "@/lib/site";
 import {
   snapshotFieldsComplete,
-  snapshotFormEncoded,
-  snapshotFormEndpoint,
+  snapshotFormPageEndpoint,
   snapshotSendErrorMessage,
   snapshotSentMessage,
-  snapshotSubmitSucceeded,
   snapshotValidationMessage,
 } from "@/lib/snapshot-form";
+
+function subscribeSent() {
+  return () => {};
+}
+
+function sentFromRedirect() {
+  return new URLSearchParams(window.location.search).get("sent") === "1";
+}
+
+function sentOnServer() {
+  return false;
+}
 
 export function SnapshotRequestForm() {
   const [business, setBusiness] = useState("");
@@ -31,6 +41,7 @@ export function SnapshotRequestForm() {
   const [phase, setPhase] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [validationMessage, setValidationMessage] = useState("");
   const submitLock = useRef(false);
+  const returned = useSyncExternalStore(subscribeSent, sentFromRedirect, sentOnServer);
   const trade = useHomeServiceTradeParam();
   const serviceValue = service ?? trade?.service ?? "";
 
@@ -45,9 +56,9 @@ export function SnapshotRequestForm() {
   const subject = snapshotSubjectForTrade(trade?.service);
   const mailto = snapshotMailto(contactEmail, snapshotRequestBody(fields), subject);
 
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (submitLock.current || phase === "sent") return;
+    if (submitLock.current || phase === "sent" || returned) return;
 
     const form = event.currentTarget;
     if (!form.checkValidity() || !snapshotFieldsComplete(fields)) {
@@ -68,30 +79,26 @@ export function SnapshotRequestForm() {
     submitLock.current = true;
     setValidationMessage("");
     setPhase("sending");
-    try {
-      const response = await fetch(snapshotFormEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Accept: "application/json",
-        },
-        body: snapshotFormEncoded(fields),
-      });
-      const body = await response.json().catch(() => null);
-      if (!snapshotSubmitSucceeded(response.status, body)) {
-        submitLock.current = false;
-        setPhase("error");
-        return;
-      }
-      setPhase("sent");
-    } catch {
-      submitLock.current = false;
-      setPhase("error");
+    const next = form.elements.namedItem("_next");
+    if (next instanceof HTMLInputElement) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("sent", "1");
+      next.value = url.toString();
     }
+    form.submit();
   }
 
+  const sent = phase === "sent" || returned;
+
   return (
-    <form id="snapshot" onSubmit={onSubmit} className="scroll-mt-24 space-y-3" noValidate>
+    <form
+      id="snapshot"
+      action={snapshotFormPageEndpoint}
+      method="POST"
+      onSubmit={onSubmit}
+      className="scroll-mt-24 space-y-3"
+      noValidate
+    >
       <div>
         <label htmlFor="snapshot-business" className="text-sm font-medium">
           Business name
@@ -170,6 +177,7 @@ export function SnapshotRequestForm() {
       </div>
       <input type="hidden" name="_subject" value={SNAPSHOT_SUBJECT} />
       <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://citescore.vercel.app/free-snapshot?sent=1" />
       <input type="hidden" name="_replyto" value={fields.email} />
       <input
         type="text"
@@ -182,12 +190,12 @@ export function SnapshotRequestForm() {
       />
       <button
         type="submit"
-        disabled={phase === "sending" || phase === "sent"}
+        disabled={phase === "sending" || sent}
         className="flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep disabled:cursor-not-allowed disabled:opacity-60"
       >
         {phase === "sending"
           ? "Sending…"
-          : phase === "sent"
+          : sent
             ? "Request sent"
             : "Get a free AI Answer Snapshot"}
       </button>
@@ -196,7 +204,7 @@ export function SnapshotRequestForm() {
           {validationMessage}
         </p>
       ) : null}
-      {phase === "sent" ? (
+      {sent ? (
         <p role="status" aria-live="polite" className="text-sm font-medium leading-6 text-forest">
           {snapshotSentMessage}
         </p>
