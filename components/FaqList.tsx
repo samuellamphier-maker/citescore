@@ -12,6 +12,9 @@ const phrases: { phrase: string; href: string; external?: boolean }[] = [
   { phrase: "contact page", href: "/contact" },
   { phrase: "About page", href: "/about" },
   { phrase: "refunds page", href: "/refunds" },
+  { phrase: "privacy page", href: "/privacy" },
+  { phrase: "free snapshot page", href: "/free-snapshot" },
+  { phrase: "Fix Pack page", href: "/fix-pack" },
   { phrase: "SoNick Marketing", href: sonickStudyUrl, external: true },
   { phrase: "Search Engine Land", href: llmsTxtSourceUrl, external: true },
 ];

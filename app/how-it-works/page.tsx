@@ -44,6 +44,10 @@ export default function HowItWorksPage() {
           <Link href="/pricing" className="text-forest underline">
             pricing
           </Link>
+          . Questions are on the{" "}
+          <Link href="/faq" className="text-forest underline">
+            FAQ
+          </Link>
           .
         </p>
 

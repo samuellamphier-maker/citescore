@@ -88,7 +88,7 @@ export function SiteFooter() {
           <Link href="/pricing" className="hover:text-ink">
             Pricing
           </Link>
-          <Link href="/#faq" className="hover:text-ink">
+          <Link href="/faq" className="hover:text-ink">
             FAQ
           </Link>
           <Link href="/contact" className="hover:text-ink">

@@ -39,7 +39,7 @@ export function SiteHeader() {
           <Link href="/pricing" className="hidden hover:text-ink sm:inline">
             Pricing
           </Link>
-          <Link href="/#faq" className="hidden hover:text-ink sm:inline">
+          <Link href="/faq" className="hidden hover:text-ink sm:inline">
             FAQ
           </Link>
           <Link href="/fix-pack" className="hover:text-ink">

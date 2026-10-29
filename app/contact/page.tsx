@@ -19,6 +19,7 @@ const pages = [
   { href: "/sample-snapshot", label: "Example snapshot" },
   { href: "/refunds", label: "Refunds" },
   { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
 ] as const;
 
 export default function ContactPage() {

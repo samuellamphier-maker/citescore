@@ -69,6 +69,10 @@ export default function PricingPage() {
           <Link href="/how-it-works" className="text-forest underline">
             how it works
           </Link>
+          . Questions are on the{" "}
+          <Link href="/faq" className="text-forest underline">
+            FAQ
+          </Link>
           .
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">

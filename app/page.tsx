@@ -199,7 +199,11 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 max-w-2xl leading-7 text-ink-soft">
               What the one-page snapshot shows, what the {fixPackIntroPriceLabel}{" "}
-              Fix Pack includes, and how to ask.
+              Fix Pack includes, and how to ask. More questions are on the{" "}
+              <Link href="/faq" className="text-forest underline">
+                FAQ
+              </Link>{" "}
+              page.
             </p>
             <FaqList items={snapshotOfferFaqs} />
           </div>
