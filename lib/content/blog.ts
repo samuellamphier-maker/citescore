@@ -95,6 +95,18 @@ export const marketingPaths: MarketingPath[] = [
     lastModified: "2026-10-13",
   },
   { path: "/about", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-10-26" },
+  {
+    path: "/pricing",
+    changeFrequency: "monthly",
+    priority: 0.8,
+    lastModified: "2026-10-29",
+  },
+  {
+    path: "/how-it-works",
+    changeFrequency: "monthly",
+    priority: 0.7,
+    lastModified: "2026-10-29",
+  },
   { path: "/contact", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-10-28" },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-10-26" },
   {

@@ -33,7 +33,10 @@ export function SiteHeader() {
           >
             {templatePackLabel}
           </a>
-          <Link href="/#pricing" className="hidden hover:text-ink sm:inline">
+          <Link href="/how-it-works" className="hidden hover:text-ink sm:inline">
+            How it works
+          </Link>
+          <Link href="/pricing" className="hidden hover:text-ink sm:inline">
             Pricing
           </Link>
           <Link href="/#faq" className="hidden hover:text-ink sm:inline">
