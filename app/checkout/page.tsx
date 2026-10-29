@@ -118,7 +118,7 @@ export default async function CheckoutPage({
             <p className="mb-3 text-sm leading-6 text-ink-soft">
               The free snapshot comes first.{" "}
               <Link href="/free-snapshot" className="text-forest underline">
-                Request it by email
+                Request the free snapshot
               </Link>
               .
             </p>

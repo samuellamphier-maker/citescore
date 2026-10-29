@@ -209,15 +209,16 @@ export default function SampleSnapshotPage() {
           <Link href="/free-snapshot" className="text-forest underline">
             free snapshot request page
           </Link>
-          . The form on this page is the same email request. It opens an email
-          to{" "}
+          . The form on this page is the same request. It sends the business
+          name, city, service, website, and email through FormSubmit to{" "}
           <a
             className="text-forest underline"
             href={`mailto:${contactEmail}?subject=${encodeURIComponent("Free AI Answer Snapshot")}`}
           >
             {contactEmail}
           </a>
-          .
+          . If that send fails, the email button on the form opens a message
+          to that address.
         </p>
 
         <article className="report-sheet mt-10 overflow-hidden rounded-2xl border border-rule">
@@ -415,7 +416,7 @@ export default function SampleSnapshotPage() {
           <JsonLd data={faqPageJsonLd(snapshotOfferFaqs)} />
           <h2 className="font-serif text-3xl tracking-tight">FAQ</h2>
           <p className="mt-4 text-sm leading-7 text-ink-soft">
-            A real snapshot uses the business, city, and service you email.
+            A real snapshot uses the business, city, and service you submit.
             The example above is fictional.
           </p>
           <FaqList items={snapshotOfferFaqs} />
@@ -428,8 +429,9 @@ export default function SampleSnapshotPage() {
           </h2>
           <p className="mt-3 text-sm leading-6 text-ink-soft">
             The example above stays fictional. This form is the same request
-            as the free snapshot page. It emails {contactEmail} with the
-            business, city, service, website, and your address. No checkout.
+            as the free snapshot page. It sends the business name, city,
+            service, website, and email through FormSubmit to {contactEmail}.
+            No checkout.
           </p>
           <div className="mt-5">
             <SnapshotRequestForm />
