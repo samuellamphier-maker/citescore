@@ -4,6 +4,7 @@ import { test } from "node:test";
 import { marketingPaths } from "./content/blog.ts";
 
 const page = readFileSync(new URL("../app/free-snapshot/page.tsx", import.meta.url), "utf8");
+const nextConfig = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
 const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
 const fixPack = readFileSync(new URL("../app/fix-pack/page.tsx", import.meta.url), "utf8");
 const sample = readFileSync(new URL("../app/sample-snapshot/page.tsx", import.meta.url), "utf8");
@@ -67,4 +68,12 @@ test("main snapshot CTAs point at the free snapshot page", () => {
   assert.doesNotMatch(industry, /href="\/#snapshot"/);
   assert.match(industry, /EmailRequestFallback/);
   assert.match(sample, /<SnapshotRequestForm \/>/);
+});
+
+test("/snapshot permanently redirects to the free snapshot page", () => {
+  assert.match(
+    nextConfig,
+    /source:\s*"\/snapshot",\s*destination:\s*"\/free-snapshot",\s*permanent:\s*true/,
+  );
+  assert.doesNotMatch(nextConfig, /source:\s*"\/free-snapshot"/);
 });
