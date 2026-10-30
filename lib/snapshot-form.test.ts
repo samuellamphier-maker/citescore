@@ -79,6 +79,8 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   );
   assert.match(form, /snapshotFormPageEndpoint/);
   assert.match(form, /name="_next"/);
+  assert.match(form, /\/free-snapshot\/thanks/);
+  assert.doesNotMatch(form, /free-snapshot\?sent=1/);
   assert.match(form, /form\.submit\(\)/);
   assert.match(form, /snapshotMailto/);
   assert.match(form, /Email this request instead/);
