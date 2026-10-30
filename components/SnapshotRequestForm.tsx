@@ -83,9 +83,7 @@ export function SnapshotRequestForm() {
     setPhase("sending");
     const next = form.elements.namedItem("_next");
     if (next instanceof HTMLInputElement) {
-      const url = new URL(window.location.href);
-      url.searchParams.set("sent", "1");
-      next.value = url.toString();
+      next.value = new URL("/free-snapshot/thanks", window.location.origin).toString();
     }
     form.submit();
   }
@@ -178,7 +176,7 @@ export function SnapshotRequestForm() {
         />
       </div>
       <input type="hidden" name="_subject" value={SNAPSHOT_SUBJECT} />
-      <input type="hidden" name="_next" value="https://citescore.vercel.app/free-snapshot?sent=1" />
+      <input type="hidden" name="_next" value="https://citescore.vercel.app/free-snapshot/thanks" />
       <input type="hidden" name="_replyto" value={fields.email} />
       <input
         type="text"

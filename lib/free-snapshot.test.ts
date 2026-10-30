@@ -70,6 +70,29 @@ test("main snapshot CTAs point at the free snapshot page", () => {
   assert.match(sample, /<SnapshotRequestForm \/>/);
 });
 
+test("free snapshot thanks page confirms the request and stays out of the index", () => {
+  const thanks = readFileSync(
+    new URL("../app/free-snapshot/thanks/page.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(thanks, /robots: \{ index: false, follow: false \}/);
+  assert.match(thanks, /Request received\. We reply with your one-page snapshot by email\./);
+  assert.match(thanks, /href="\/sample-snapshot"/);
+  assert.match(thanks, /Fictional business, illustrative numbers/);
+  assert.match(thanks, /href="\/fix-pack"/);
+  assert.match(thanks, /within a few business\s+days after payment/);
+  assert.match(thanks, /CiteScore Team/);
+  assert.match(thanks, /Sold by \{sellerName\}/);
+  assert.doesNotMatch(thanks, /Samuel|Lamphier|testimonial|customers served|guarantee/i);
+  assert.doesNotMatch(thanks, /few minutes|24 hours|48 hours|Payment received/);
+  assert.equal(
+    marketingPaths.some((item) => item.path === "/free-snapshot/thanks"),
+    false,
+  );
+  assert.match(form, /\/free-snapshot\/thanks/);
+  assert.doesNotMatch(form, /free-snapshot\?sent=1/);
+});
+
 test("/snapshot permanently redirects to the free snapshot page", () => {
   assert.match(
     nextConfig,
