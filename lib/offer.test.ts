@@ -2,7 +2,16 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { marketingPaths } from "./content/blog.ts";
-import { industrySnapshotLabel, snapshotOfferForPage } from "./industry-snapshot.ts";
+import {
+  HOME_SERVICE_TRADE_IDS,
+  freeSnapshotPath,
+  parseHomeServiceTrade,
+} from "./home-service-trade.ts";
+import {
+  industrySnapshotLabel,
+  snapshotOfferForPage,
+  tradeGuideStickySnapshotHref,
+} from "./industry-snapshot.ts";
 import { freeCheckAuditPitch } from "./free-check-pitch.ts";
 
 test("Fix Pack checkout URL is the live Payhip product", () => {
@@ -92,6 +101,69 @@ test("every industry visibility path has a snapshot label", () => {
   });
   assert.deepEqual(snapshotOfferForPage({ ctaId: "faq-schema-generator" }), {});
   assert.equal(snapshotOfferForPage({ ctaId: "llms-txt-generator" }), null);
+});
+
+test("mobile sticky snapshot link follows the inline callout prefill", () => {
+  for (const id of HOME_SERVICE_TRADE_IDS) {
+    const trade = parseHomeServiceTrade(id);
+    assert.ok(trade);
+    assert.equal(tradeGuideStickySnapshotHref(trade.guidePath), freeSnapshotPath(id));
+  }
+  assert.equal(
+    tradeGuideStickySnapshotHref("/ai-search-visibility-for-plumbers"),
+    "/free-snapshot?trade=plumber",
+  );
+  assert.equal(
+    tradeGuideStickySnapshotHref("/ai-search-visibility-for-electricians"),
+    "/free-snapshot?trade=electrician",
+  );
+  assert.equal(
+    tradeGuideStickySnapshotHref("/ai-search-visibility-for-dentists"),
+    "/free-snapshot",
+  );
+  assert.equal(
+    tradeGuideStickySnapshotHref("/ai-search-visibility-for-landscapers"),
+    "/free-snapshot",
+  );
+  for (const path of [
+    "/free-snapshot",
+    "/free-snapshot/thanks",
+    "/checkout",
+    "/thanks",
+    "/geo-for-local-businesses",
+    "/plumber-schema-generator",
+    "/fix-pack",
+  ]) {
+    assert.equal(tradeGuideStickySnapshotHref(path), null, path);
+  }
+
+  const shell = readFileSync(new URL("../components/ArticleShell.tsx", import.meta.url), "utf8");
+  const sticky = readFileSync(
+    new URL("../components/TradeGuideStickyCta.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(shell, /tradeGuideStickySnapshotHref\(guidePath\)/);
+  assert.match(shell, /<TradeGuideStickyCta href=\{stickyHref\} \/>/);
+  assert.match(sticky, /md:hidden/);
+  assert.match(sticky, /aria-label=\{label\}/);
+  assert.match(sticky, /aria-label="Dismiss free snapshot offer"/);
+  assert.match(
+    sticky,
+    /Free AI Answer Snapshot: see who ChatGPT recommends instead of you/,
+  );
+  assert.match(sticky, /safe-area-inset-bottom/);
+  assert.match(sticky, /from "next\/link"/);
+  assert.doesNotMatch(sticky, /guarantee|testimonial|customers served|% of|Samuel|Lamphier/i);
+
+  for (const rel of [
+    "../app/free-snapshot/page.tsx",
+    "../app/free-snapshot/thanks/page.tsx",
+    "../app/checkout/page.tsx",
+    "../app/thanks/page.tsx",
+  ]) {
+    const source = readFileSync(new URL(rel, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /TradeGuideStickyCta/);
+  }
 });
 
 test("a missing llms.txt is not pitched as a citation issue", () => {

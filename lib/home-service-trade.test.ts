@@ -115,6 +115,8 @@ test("guides render the short callout and the snapshot page reads trade on the c
 
   assert.match(shell, /HomeServiceGuideCallout/);
   assert.match(shell, /homeServiceTradeForGuide/);
+  assert.match(shell, /TradeGuideStickyCta/);
+  assert.match(shell, /stickyHref \? <TradeGuideStickyCta href=\{stickyHref\} \/> : null/);
   assert.match(callout, /freeSnapshotPath\(trade\.id\)/);
   assert.match(callout, /href="\/sample-snapshot"/);
   assert.match(callout, /Get a free AI Answer Snapshot/);
