@@ -66,3 +66,22 @@ export function snapshotOfferForPage(input: {
   const industry = schemaIndustries[ctaId];
   return industry ? { industry } : {};
 }
+
+/** Guide paths whose inline snapshot callout already prefills ?trade=. */
+const homeServiceTradeQuery: Record<string, string> = {
+  "/ai-search-visibility-for-plumbers": "plumber",
+  "/ai-search-visibility-for-hvac": "hvac",
+  "/ai-search-visibility-for-roofers": "roofer",
+  "/ai-search-visibility-for-electricians": "electrician",
+};
+
+/**
+ * Mobile sticky CTA on industry guides only.
+ * Home-service guides keep the same ?trade= prefill as the inline callout.
+ * Other pages, including the snapshot request and checkout, get nothing.
+ */
+export function tradeGuideStickySnapshotHref(path: string): string | null {
+  if (!industrySnapshotLabel(path)) return null;
+  const trade = homeServiceTradeQuery[path];
+  return trade ? `/free-snapshot?trade=${trade}` : "/free-snapshot";
+}

@@ -6,10 +6,11 @@ import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { TradeGuideStickyCta } from "@/components/TradeGuideStickyCta";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
 import { freeSnapshotPath, homeServiceTradeForGuide } from "@/lib/home-service-trade";
-import { snapshotOfferForPage } from "@/lib/industry-snapshot";
+import { snapshotOfferForPage, tradeGuideStickySnapshotHref } from "@/lib/industry-snapshot";
 import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
 type Related = {
@@ -48,6 +49,7 @@ export function ArticleShell({
 }: Props) {
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
   const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
+  const stickyHref = guidePath ? tradeGuideStickySnapshotHref(guidePath) : null;
   return (
     <>
       <SiteHeader />
@@ -119,6 +121,7 @@ export function ArticleShell({
         ) : null}
       </main>
       <SiteFooter />
+      {stickyHref ? <TradeGuideStickyCta href={stickyHref} /> : null}
     </>
   );
 }
