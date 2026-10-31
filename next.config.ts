@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
         destination: "/free-snapshot",
         permanent: true,
       },
+      {
+        source: "/refund",
+        destination: "/refunds",
+        permanent: true,
+      },
+      {
+        source: "/refund-policy",
+        destination: "/refunds",
+        permanent: true,
+      },
     ];
   },
 };
