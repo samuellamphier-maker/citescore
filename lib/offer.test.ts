@@ -8,7 +8,9 @@ import {
   parseHomeServiceTrade,
 } from "./home-service-trade.ts";
 import {
+  guideSnapshotCalloutPaths,
   industrySnapshotLabel,
+  showsGuideSnapshotCallout,
   snapshotOfferForPage,
   tradeGuideStickySnapshotHref,
 } from "./industry-snapshot.ts";
@@ -164,6 +166,58 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
     const source = readFileSync(new URL(rel, import.meta.url), "utf8");
     assert.doesNotMatch(source, /TradeGuideStickyCta/);
   }
+});
+
+test("blog posts and general guides get one in-body snapshot callout", () => {
+  assert.equal(guideSnapshotCalloutPaths.length, 13);
+  for (const path of guideSnapshotCalloutPaths) {
+    assert.equal(snapshotOfferForPage({ guidePath: path }), null, path);
+    assert.equal(tradeGuideStickySnapshotHref(path), null, path);
+    assert.equal(showsGuideSnapshotCallout({ guidePath: path }), true, path);
+  }
+  assert.equal(showsGuideSnapshotCallout({ ctaId: "blog-what-is-geo" }), true);
+  assert.equal(
+    showsGuideSnapshotCallout({ ctaId: "blog-chatgpt-citation-checklist" }),
+    true,
+  );
+  assert.equal(
+    showsGuideSnapshotCallout({ ctaId: "blog-citescore-vs-enterprise-geo-tools" }),
+    true,
+  );
+  assert.equal(showsGuideSnapshotCallout({ ctaId: "aeo" }), true);
+  assert.equal(showsGuideSnapshotCallout({ ctaId: "chatgpt-citation-check" }), true);
+  assert.equal(showsGuideSnapshotCallout({ ctaId: "aeo-checklist" }), true);
+  assert.equal(showsGuideSnapshotCallout({ ctaId: "ai-overviews" }), true);
+  assert.equal(showsGuideSnapshotCallout({ ctaId: "perplexity-citations" }), true);
+  assert.equal(
+    showsGuideSnapshotCallout({
+      guidePath: "/ai-search-visibility-for-plumbers",
+      ctaId: "aeo",
+    }),
+    false,
+  );
+  assert.equal(showsGuideSnapshotCallout({ ctaId: "llms-txt" }), false);
+  assert.equal(showsGuideSnapshotCallout({ guidePath: "/geo-audit" }), false);
+  assert.equal(showsGuideSnapshotCallout({}), false);
+
+  const shell = readFileSync(new URL("../components/ArticleShell.tsx", import.meta.url), "utf8");
+  const cta = readFileSync(
+    new URL("../components/IndustrySnapshotCta.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(shell, /showsGuideSnapshotCallout\(\{ guidePath, ctaId \}\)/);
+  assert.match(shell, /variant=\{generalSnapshot \? "general" : "industry"\}/);
+  assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
+  assert.match(shell, /\{snapshotOffer \? \(/);
+  assert.match(cta, /See which local competitors ChatGPT and Perplexity name instead of the business/);
+  assert.match(cta, /We ask logged-out ChatGPT and Perplexity who they name/);
+  assert.match(cta, /href=\{snapshotHref\}/);
+  assert.match(cta, /href="\/fix-pack"/);
+  assert.match(cta, /Fix Pack,/);
+  assert.doesNotMatch(
+    cta,
+    /guarantee|testimonial|customers served|% of|Samuel|Lamphier/i,
+  );
 });
 
 test("a missing llms.txt is not pitched as a citation issue", () => {

@@ -5,26 +5,34 @@ import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { snapshotTemplateRequestText } from "@/lib/email-request";
 import { contactEmail, fixPackGetCtaLabel, fixPackIntroPriceLabel } from "@/lib/site";
 
+const industryLead =
+  "Tell us the business, the city, the service, and the website. We ask who ChatGPT names and send the one-page snapshot. AI answers vary run to run.";
+
+const generalLead =
+  "See which local competitors ChatGPT and Perplexity name instead of the business. Tell us the business, the city, the service, and the website. We ask logged-out ChatGPT and Perplexity who they name and send the one-page snapshot. AI answers vary run to run. No payment.";
+
 export function IndustrySnapshotCta({
   industry,
   snapshotHref = "/free-snapshot",
+  variant = "industry",
 }: {
   industry?: string;
   /** Free-snapshot URL. Guides for one trade pass /free-snapshot?trade=… */
   snapshotHref?: string;
+  /** General guides use the local-competitor invitation. Trade guides keep the industry line. */
+  variant?: "industry" | "general";
 }) {
+  const general = variant === "general";
   return (
     <aside className="rounded-2xl border border-ink bg-ink px-5 py-6 text-cream">
       <p className="kicker text-[#d7c7b0]">Free</p>
       <h2 className="mt-2 font-serif text-2xl leading-snug tracking-tight text-cream">
-        {industry
+        {!general && industry
           ? `Free AI Answer Snapshot for ${industry} businesses in your city`
           : "Free AI Answer Snapshot"}
       </h2>
       <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
-        Tell us the business, the city, the service, and the website. We ask
-        who ChatGPT names and send the one-page snapshot. AI answers vary run
-        to run.
+        {general ? generalLead : industryLead}
       </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <Link

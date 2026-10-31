@@ -67,6 +67,50 @@ export function snapshotOfferForPage(input: {
   return industry ? { industry } : {};
 }
 
+/**
+ * Blog posts and general guides that should show one in-body snapshot
+ * callout. Trade guides already get IndustrySnapshotCta from snapshotOfferForPage.
+ */
+export const guideSnapshotCalloutPaths = [
+  "/blog/what-is-geo",
+  "/blog/chatgpt-citation-checklist",
+  "/blog/citescore-vs-enterprise-geo-tools",
+  "/geo-for-local-businesses",
+  "/how-to-check-if-chatgpt-mentions-your-brand",
+  "/chatgpt-citation-check",
+  "/answer-engine-optimization",
+  "/perplexity-citations",
+  "/ai-overviews",
+  "/google-ai-overviews-optimization",
+  "/google-ai-mode-optimization",
+  "/geo-vs-seo",
+  "/aeo-checklist",
+] as const;
+
+const guideSnapshotCalloutPathSet = new Set<string>(guideSnapshotCalloutPaths);
+
+/** ArticleShell ctaIds that are not the path with the leading slash removed. */
+const guideSnapshotCalloutCtaAliases: Record<string, string> = {
+  "blog-what-is-geo": "/blog/what-is-geo",
+  "blog-chatgpt-citation-checklist": "/blog/chatgpt-citation-checklist",
+  "blog-citescore-vs-enterprise-geo-tools": "/blog/citescore-vs-enterprise-geo-tools",
+  aeo: "/answer-engine-optimization",
+};
+
+/**
+ * True when this shell should render one general snapshot callout after the intro.
+ * A guidePath wins, so a trade guide cannot pick up another page's ctaId.
+ */
+export function showsGuideSnapshotCallout(input: {
+  guidePath?: string;
+  ctaId?: string;
+}): boolean {
+  if (input.guidePath) return guideSnapshotCalloutPathSet.has(input.guidePath);
+  if (!input.ctaId) return false;
+  const path = guideSnapshotCalloutCtaAliases[input.ctaId] ?? `/${input.ctaId}`;
+  return guideSnapshotCalloutPathSet.has(path);
+}
+
 /** Guide paths whose inline snapshot callout already prefills ?trade=. */
 const homeServiceTradeQuery: Record<string, string> = {
   "/ai-search-visibility-for-plumbers": "plumber",
