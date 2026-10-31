@@ -1,6 +1,41 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 
+/** Default card served by `app/opengraph-image.tsx`. */
+export const socialImagePath = "/opengraph-image";
+
+export const socialImageSize = {
+  width: 1200,
+  height: 630,
+} as const;
+
+export const socialImageAlt = `${site.name} — ${site.tagline}`;
+
+export const socialImage = {
+  url: socialImagePath,
+  width: socialImageSize.width,
+  height: socialImageSize.height,
+  alt: socialImageAlt,
+};
+
+const rootTitle = `${site.name} — ${site.tagline}`;
+
+export const rootOpenGraph = {
+  title: rootTitle,
+  description: site.description,
+  type: "website" as const,
+  siteName: site.name,
+  locale: "en_US",
+  images: [socialImage],
+};
+
+export const rootTwitter = {
+  card: "summary_large_image" as const,
+  title: rootTitle,
+  description: site.description,
+  images: [socialImagePath],
+};
+
 type PageMetaInput = {
   title: string;
   description: string;
@@ -28,12 +63,14 @@ export function pageMeta({
       url: path,
       siteName: site.name,
       locale: "en_US",
+      images: [socialImage],
       ...(publishedTime ? { publishedTime } : {}),
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: ogTitle,
       description,
+      images: [socialImagePath],
     },
   };
 }

@@ -76,6 +76,7 @@ test("sitemap sources include the new offer and trust URLs", () => {
     "/sample-snapshot",
     "/free-snapshot",
     "/faq",
+    "/methodology",
   ]) {
     assert.equal(paths.has(path), true, path);
   }

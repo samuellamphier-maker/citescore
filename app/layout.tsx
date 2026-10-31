@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { rootOpenGraph, rootTwitter } from "@/lib/content/meta";
 import { publicOrigin, site } from "@/lib/site";
 import "./globals.css";
 
@@ -31,18 +32,8 @@ export const metadata: Metadata = {
   verification: {
     google: "MC5jDg5-OJHO_BrY01y1P9p-7FEBLfKLy9U639OOvG4",
   },
-  openGraph: {
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
-    type: "website",
-    siteName: site.name,
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary",
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
-  },
+  openGraph: rootOpenGraph,
+  twitter: rootTwitter,
 };
 
 export default function RootLayout({

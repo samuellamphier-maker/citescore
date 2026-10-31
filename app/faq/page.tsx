@@ -23,6 +23,7 @@ const elsewhere = [
   { href: "/refunds", label: "Refunds" },
   { href: "/privacy", label: "Privacy" },
   { href: "/how-it-works", label: "How it works" },
+  { href: "/methodology", label: "Methodology" },
 ] as const;
 
 export const metadata: Metadata = {
@@ -52,7 +53,12 @@ export default function FaqPage() {
         </p>
         <p className="mt-4 text-sm leading-6 text-ink-soft">
           Prepared by the CiteScore Team. Sold by {sellerName}. AI answers
-          vary run to run. This is a snapshot, not a ranking.
+          vary run to run. This is a snapshot, not a ranking. How the snapshot
+          and the Fix Pack are produced is on{" "}
+          <Link href="/methodology" className="text-forest underline">
+            methodology
+          </Link>
+          .
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <Link

@@ -40,7 +40,12 @@ export default function HowItWorksPage() {
           who was named.
         </p>
         <p className="mt-4 text-sm leading-6 text-ink-soft">
-          Prepared by the CiteScore Team. Sold by {sellerName}. Prices are on{" "}
+          Prepared by the CiteScore Team. Sold by {sellerName}. How a snapshot
+          is produced is on{" "}
+          <Link href="/methodology" className="text-forest underline">
+            methodology
+          </Link>
+          . Prices are on{" "}
           <Link href="/pricing" className="text-forest underline">
             pricing
           </Link>
