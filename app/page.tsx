@@ -11,6 +11,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { TrustLinks } from "@/components/TrustLinks";
+import { rootOpenGraph, rootTwitter } from "@/lib/content/meta";
 import { topicPages } from "@/lib/content/topics";
 import { fixPackDeliverables } from "@/lib/fix-pack-offer";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
@@ -23,7 +24,8 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
+  openGraph: { ...rootOpenGraph, url: "/" },
+  twitter: rootTwitter,
 };
 
 const steps = [

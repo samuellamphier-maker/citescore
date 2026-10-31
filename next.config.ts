@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/ai-answer-snapshot",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/free-ai-answer-snapshot",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
         source: "/refund",
         destination: "/refunds",
         permanent: true,

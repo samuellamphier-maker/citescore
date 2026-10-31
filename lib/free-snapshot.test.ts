@@ -98,5 +98,13 @@ test("/snapshot permanently redirects to the free snapshot page", () => {
     nextConfig,
     /source:\s*"\/snapshot",\s*destination:\s*"\/free-snapshot",\s*permanent:\s*true/,
   );
+  assert.match(
+    nextConfig,
+    /source:\s*"\/ai-answer-snapshot",\s*destination:\s*"\/free-snapshot",\s*permanent:\s*true/,
+  );
+  assert.match(
+    nextConfig,
+    /source:\s*"\/free-ai-answer-snapshot",\s*destination:\s*"\/free-snapshot",\s*permanent:\s*true/,
+  );
   assert.doesNotMatch(nextConfig, /source:\s*"\/free-snapshot"/);
 });

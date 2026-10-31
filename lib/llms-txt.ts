@@ -73,6 +73,11 @@ export const llmsTxtSections: { heading: string; links: LlmsLink[] }[] = [
         note: `Request a free AI Answer Snapshot. CiteScore asks logged-out ChatGPT and Perplexity who they name, then replies with a one-page snapshot by email. The ${fixPackIntroPriceLabel} Fix Pack is optional.`,
       },
       {
+        title: "Methodology",
+        path: "/methodology",
+        note: `Methodology for the free AI Answer Snapshot. We ask logged-out ChatGPT and Perplexity a local prompt such as “best {service} in {city},” plus one variant, and record who they name. The ${fixPackIntroPriceLabel} Fix Pack is optional.`,
+      },
+      {
         title: "Pricing",
         path: "/pricing",
         note: `The AI Answer Snapshot is free. The AI Visibility Fix Pack is ${fixPackIntroPriceLabel} introductory (${fixPackListPriceLabel} list) for one business, one city, and one service, emailed within a few business days after payment.`,
