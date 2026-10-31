@@ -146,5 +146,8 @@ test("/llms.txt is served as text/plain and the missing refund URLs redirect", (
     nextConfig,
     /source:\s*"\/refund-policy",\s*destination:\s*"\/refunds",\s*permanent:\s*true/,
   );
-  assert.doesNotMatch(nextConfig, /\/guarantee/);
+  assert.match(
+    nextConfig,
+    /source:\s*"\/guarantee",\s*destination:\s*"\/refunds",\s*permanent:\s*true/,
+  );
 });

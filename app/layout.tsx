@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
-import { rootOpenGraph, rootTwitter } from "@/lib/content/meta";
+import { rootOpenGraph, rootTwitter, rssFeedAlternate } from "@/lib/content/meta";
 import { publicOrigin, site } from "@/lib/site";
 import "./globals.css";
 
@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   },
   openGraph: rootOpenGraph,
   twitter: rootTwitter,
+  alternates: rssFeedAlternate,
 };
 
 export default function RootLayout({
