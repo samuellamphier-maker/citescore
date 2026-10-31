@@ -30,6 +30,21 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/guarantee",
+        destination: "/refunds",
+        permanent: true,
+      },
+      {
+        source: "/site.webmanifest",
+        destination: "/manifest.webmanifest",
+        permanent: true,
+      },
+      {
+        source: "/feed.xml",
+        destination: "/rss.xml",
+        permanent: true,
+      },
+      {
         source: "/example-snapshot",
         destination: "/sample-snapshot",
         permanent: true,

@@ -41,6 +41,10 @@ export function getPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
 }
 
+/** Description already published on /blog. */
+export const blogIndexDescription =
+  "Short explainers on generative engine optimization, ChatGPT citations, and when a $39 audit is enough versus an Otterly- or Profound-class platform.";
+
 export type MarketingPath = {
   path: string;
   changeFrequency: "weekly" | "monthly" | "yearly";
@@ -52,6 +56,12 @@ export type MarketingPath = {
 export const marketingPaths: MarketingPath[] = [
   { path: "/", changeFrequency: "weekly", priority: 1, lastModified: "2026-10-26" },
   { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
+  {
+    path: "/guides",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    lastModified: "2026-10-31",
+  },
   { path: "/geo-audit", changeFrequency: "monthly", priority: 0.9 },
   {
     path: "/alternatives",

@@ -1109,16 +1109,20 @@ export function getTopic(path: string) {
   return topic;
 }
 
+function byGuideNavOrder(a: TopicPage, b: TopicPage) {
+  const ai = guideNavOrder.indexOf(a.path);
+  const bi = guideNavOrder.indexOf(b.path);
+  const aRank = ai === -1 ? guideNavOrder.length : ai;
+  const bRank = bi === -1 ? guideNavOrder.length : bi;
+  return aRank - bRank;
+}
+
+/** Every page with the Guide kicker, in the related-guides reading order. */
+export function orderedGuidePages() {
+  return topicPages.filter((page) => page.kicker === "Guide").slice().sort(byGuideNavOrder);
+}
+
 /** Other pages with the Guide kicker, in a stable reading order. */
 export function relatedGuidePages(current: string) {
-  return topicPages
-    .filter((page) => page.kicker === "Guide" && page.path !== current)
-    .slice()
-    .sort((a, b) => {
-      const ai = guideNavOrder.indexOf(a.path);
-      const bi = guideNavOrder.indexOf(b.path);
-      const aRank = ai === -1 ? guideNavOrder.length : ai;
-      const bRank = bi === -1 ? guideNavOrder.length : bi;
-      return aRank - bRank;
-    });
+  return orderedGuidePages().filter((page) => page.path !== current);
 }

@@ -11,7 +11,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { TrustLinks } from "@/components/TrustLinks";
-import { rootOpenGraph, rootTwitter } from "@/lib/content/meta";
+import { rootOpenGraph, rootTwitter, rssFeedAlternate } from "@/lib/content/meta";
 import { topicPages } from "@/lib/content/topics";
 import { fixPackDeliverables } from "@/lib/fix-pack-offer";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
@@ -23,7 +23,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", ...rssFeedAlternate },
   openGraph: { ...rootOpenGraph, url: "/" },
   twitter: rootTwitter,
 };
@@ -378,7 +378,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <Link
-                href="/blog"
+                href="/guides"
                 className="text-sm font-medium text-forest underline-offset-4 hover:underline"
               >
                 All guides

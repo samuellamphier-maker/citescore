@@ -3,13 +3,12 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { blogPosts } from "@/lib/content/blog";
+import { blogIndexDescription, blogPosts } from "@/lib/content/blog";
 import { topicPages } from "@/lib/content/topics";
 import { formatDisplayDate, pageMeta } from "@/lib/content/meta";
 import { publicOrigin, site } from "@/lib/site";
 
-const description =
-  "Short explainers on generative engine optimization, ChatGPT citations, and when a $39 audit is enough versus an Otterly- or Profound-class platform.";
+const description = blogIndexDescription;
 
 export const metadata: Metadata = pageMeta({
   title: "GEO guides",
@@ -57,9 +56,13 @@ export default function BlogIndexPage() {
           GEO, written so a founder can finish the page.
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-          Editorial notes on generative engine optimization. No fake
-          customer stories. No “we logged into ChatGPT for you.” If you
-          already know you want the audit,{" "}
+          Editorial notes on generative engine optimization. The answer-engine,
+          industry, and general guides are on the{" "}
+          <Link href="/guides" className="text-forest underline">
+            guides
+          </Link>{" "}
+          page. No fake customer stories. No “we logged into ChatGPT for you.”
+          If you already know you want the audit,{" "}
           <Link href="/#audit" className="text-forest underline">
             paste a URL
           </Link>

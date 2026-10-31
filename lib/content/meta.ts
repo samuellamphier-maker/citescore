@@ -11,6 +11,15 @@ export const socialImageSize = {
 
 export const socialImageAlt = `${site.name} — ${site.tagline}`;
 
+/** RSS autodiscovery. Relative to metadataBase. */
+export const rssFeedPath = "/rss.xml";
+
+export const rssFeedAlternate = {
+  types: {
+    "application/rss+xml": rssFeedPath,
+  },
+} as const;
+
 export const socialImage = {
   url: socialImagePath,
   width: socialImageSize.width,
@@ -55,7 +64,7 @@ export function pageMeta({
   return {
     title,
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: path, ...rssFeedAlternate },
     openGraph: {
       title: ogTitle,
       description,
