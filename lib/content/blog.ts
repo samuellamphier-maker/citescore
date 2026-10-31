@@ -128,6 +128,12 @@ export const marketingPaths: MarketingPath[] = [
     lastModified: "2026-10-23",
   },
   {
+    path: "/llms.txt",
+    changeFrequency: "monthly",
+    priority: 0.4,
+    lastModified: "2026-10-31",
+  },
+  {
     path: "/fix-pack",
     changeFrequency: "monthly",
     priority: 0.9,
