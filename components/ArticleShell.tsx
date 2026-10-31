@@ -10,7 +10,11 @@ import { TradeGuideStickyCta } from "@/components/TradeGuideStickyCta";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
 import { freeSnapshotPath, homeServiceTradeForGuide } from "@/lib/home-service-trade";
-import { snapshotOfferForPage, tradeGuideStickySnapshotHref } from "@/lib/industry-snapshot";
+import {
+  showsGuideSnapshotCallout,
+  snapshotOfferForPage,
+  tradeGuideStickySnapshotHref,
+} from "@/lib/industry-snapshot";
 import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
 type Related = {
@@ -50,6 +54,10 @@ export function ArticleShell({
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
   const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
   const stickyHref = guidePath ? tradeGuideStickySnapshotHref(guidePath) : null;
+  const generalSnapshot =
+    !snapshotOffer &&
+    !homeService &&
+    showsGuideSnapshotCallout({ guidePath, ctaId });
   return (
     <>
       <SiteHeader />
@@ -69,9 +77,12 @@ export function ArticleShell({
             {minutes ? ` · ${minutes} min read` : null}
           </p>
         ) : null}
-        {!homeService && snapshotOffer ? (
+        {!homeService && (snapshotOffer || generalSnapshot) ? (
           <div className="mt-8">
-            <IndustrySnapshotCta industry={snapshotOffer.industry} />
+            <IndustrySnapshotCta
+              industry={snapshotOffer?.industry}
+              variant={generalSnapshot ? "general" : "industry"}
+            />
           </div>
         ) : null}
         <div className="article-prose mt-10">{children}</div>
