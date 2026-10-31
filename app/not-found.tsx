@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { fixPackIntroPriceLabel } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (
@@ -13,6 +20,31 @@ export default function NotFound() {
         </h1>
         <p className="mt-4 text-ink-soft leading-7">
           The URL you opened is not part of this site.
+        </p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <Link
+            href="/free-snapshot"
+            className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
+          >
+            Get a free AI Answer Snapshot
+          </Link>
+          <Link
+            href="/fix-pack"
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink"
+          >
+            Fix Pack, {fixPackIntroPriceLabel}
+          </Link>
+        </div>
+        <p className="mt-4 text-sm leading-6">
+          <Link
+            href="/sample-snapshot"
+            className="font-medium text-forest underline underline-offset-4 hover:underline"
+          >
+            See an example snapshot
+          </Link>
+          <span className="text-ink-soft">
+            . Fictional business, illustrative numbers.
+          </span>
         </p>
         <div className="mt-8 flex flex-wrap gap-4 text-sm">
           <Link href="/" className="text-forest underline">
