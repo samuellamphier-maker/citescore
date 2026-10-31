@@ -69,6 +69,26 @@ const nextConfig: NextConfig = {
         destination: "/sample-snapshot",
         permanent: true,
       },
+      {
+        source: "/support",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/help",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/agencies",
+        destination: "/for-agencies",
+        permanent: true,
+      },
+      {
+        source: "/compare",
+        destination: "/alternatives",
+        permanent: true,
+      },
     ];
   },
 };
