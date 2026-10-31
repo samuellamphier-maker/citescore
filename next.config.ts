@@ -29,6 +29,31 @@ const nextConfig: NextConfig = {
         destination: "/refunds",
         permanent: true,
       },
+      {
+        source: "/example-snapshot",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/snapshot-example",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/sample-report",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/example-report",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/demo",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
     ];
   },
 };
