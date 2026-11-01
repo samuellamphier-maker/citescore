@@ -78,7 +78,13 @@ export const marketingPaths: MarketingPath[] = [
     path: "/sample-snapshot",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-10-26",
+    lastModified: "2026-11-01",
+  },
+  {
+    path: "/sample-fix-pack",
+    changeFrequency: "monthly",
+    priority: 0.8,
+    lastModified: "2026-11-01",
   },
   {
     path: "/free-snapshot",
@@ -109,7 +115,7 @@ export const marketingPaths: MarketingPath[] = [
     path: "/pricing",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-10-29",
+    lastModified: "2026-11-01",
   },
   {
     path: "/how-it-works",
@@ -147,13 +153,13 @@ export const marketingPaths: MarketingPath[] = [
     path: "/llms.txt",
     changeFrequency: "monthly",
     priority: 0.4,
-    lastModified: "2026-10-31",
+    lastModified: "2026-11-01",
   },
   {
     path: "/fix-pack",
     changeFrequency: "monthly",
     priority: 0.9,
-    lastModified: "2026-10-28",
+    lastModified: "2026-11-01",
   },
   ...blogPosts.map((post) => ({
     path: `/blog/${post.slug}`,

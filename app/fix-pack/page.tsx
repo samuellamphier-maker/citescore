@@ -53,6 +53,14 @@ export default function FixPackPage() {
           </Link>
           <FixPackBuyLink />
         </div>
+        <p className="mt-4 text-sm leading-6">
+          <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+            See a sample Fix Pack
+          </Link>
+          <span className="text-ink-soft">
+            . Illustrative example content, not a real client or real results.
+          </span>
+        </p>
         <FixPackOfferFacts className="mt-4" />
         <p className="mt-4 text-sm leading-6">
           <Link href="/sample-snapshot" className="font-medium text-forest underline">
@@ -155,6 +163,14 @@ export default function FixPackPage() {
         <div className="mt-6">
           <FixPackBuyLink />
         </div>
+        <p className="mt-4 text-sm leading-6">
+          <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+            See a sample Fix Pack
+          </Link>
+          <span className="text-ink-soft">
+            . Illustrative example content, not a real client or real results.
+          </span>
+        </p>
         <FixPackOfferFacts className="mt-4" />
         <div className="mt-4">
           <TrustLinks />

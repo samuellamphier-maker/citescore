@@ -177,6 +177,11 @@ export default function PricingPage() {
                 See what&apos;s in the Fix Pack
               </Link>
             </p>
+            <p className="mt-2 text-sm leading-6">
+              <Link href="/sample-fix-pack" className="font-medium text-cream underline">
+                See a sample Fix Pack
+              </Link>
+            </p>
           </article>
         </div>
 

@@ -58,6 +58,11 @@ export const llmsTxtSections: { heading: string; links: LlmsLink[] }[] = [
         note: "Example only: a fictional AI Answer Snapshot for Example Plumbing Co. in Riverton, USA. Illustrative prompts, names, sources, and review counts. Not a customer result.",
       },
       {
+        title: "Sample Fix Pack",
+        path: "/sample-fix-pack",
+        note: `An illustrative example of the ${fixPackIntroPriceLabel} AI Visibility Fix Pack before you pay: Google Business Profile gaps, a review-gap plan and script, the directories an AI answer cited, placeholder LocalBusiness and Service JSON-LD with install steps, and a 14-day re-check for a fictional plumber. Not a real client or real results.`,
+      },
+      {
         title: "AI Visibility Fix Pack",
         path: "/fix-pack",
         note: `The AI Visibility Fix Pack is ${fixPackIntroPriceLabel} introductory (${fixPackListPriceLabel} list): Google Business Profile gaps, a review plan, cited directories, LocalBusiness JSON-LD, and a 14-day re-check.`,

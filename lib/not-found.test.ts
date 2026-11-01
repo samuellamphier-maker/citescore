@@ -64,6 +64,8 @@ const purchaseAndTrustAliases = [
   { source: "/checkout-fix-pack", destination: "/fix-pack" },
   { source: "/order-fix-pack", destination: "/fix-pack" },
   { source: "/buy-fix-pack", destination: "/fix-pack" },
+  { source: "/fix-pack/sample", destination: "/sample-fix-pack" },
+  { source: "/what-you-get", destination: "/sample-fix-pack" },
   { source: "/get-started", destination: "/free-snapshot" },
   { source: "/start", destination: "/free-snapshot" },
   { source: "/case-studies", destination: "/sample-snapshot" },

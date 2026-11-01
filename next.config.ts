@@ -120,6 +120,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/fix-pack/sample",
+        destination: "/sample-fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/what-you-get",
+        destination: "/sample-fix-pack",
+        permanent: true,
+      },
+      {
         source: "/get-started",
         destination: "/free-snapshot",
         permanent: true,

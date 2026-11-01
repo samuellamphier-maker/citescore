@@ -83,6 +83,7 @@ test("sitemap sources include the new offer and trust URLs", () => {
     "/terms",
     "/privacy",
     "/sample-snapshot",
+    "/sample-fix-pack",
     "/free-snapshot",
     "/faq",
     "/methodology",
@@ -262,7 +263,7 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     }),
     "/free-snapshot?trade=plumber",
   );
-  for (const path of ["/", "/free-snapshot", "/fix-pack", "/checkout", "/pricing", "/privacy", "/terms", "/refunds"]) {
+  for (const path of ["/", "/free-snapshot", "/fix-pack", "/sample-fix-pack", "/checkout", "/pricing", "/privacy", "/terms", "/refunds"]) {
     assert.equal(isStickySnapshotContentPath(path), false, path);
     assert.equal(contentStickySnapshotHref({ guidePath: path }), null, path);
   }
