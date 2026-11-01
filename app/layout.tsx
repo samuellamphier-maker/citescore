@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
 import { rootOpenGraph, rootTwitter, rssFeedAlternate } from "@/lib/content/meta";
 import { publicOrigin, site } from "@/lib/site";
+import { citeScoreOrganizationJsonLd, citeScoreWebsiteJsonLd } from "@/lib/site-schema";
 import { stickySnapshotHeadScript } from "@/lib/sticky-snapshot";
 import "./globals.css";
 
@@ -54,6 +56,8 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: stickySnapshotHeadScript() }} />
       </head>
       <body className="min-h-full flex flex-col">
+        <JsonLd data={citeScoreOrganizationJsonLd(publicOrigin())} />
+        <JsonLd data={citeScoreWebsiteJsonLd(publicOrigin())} />
         {children}
         <Analytics />
       </body>

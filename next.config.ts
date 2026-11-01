@@ -164,6 +164,11 @@ const nextConfig: NextConfig = {
         destination: "/alternatives",
         permanent: true,
       },
+      {
+        source: "/ai-visibility-checklist",
+        destination: "/checklist",
+        permanent: true,
+      },
     ];
   },
 };
