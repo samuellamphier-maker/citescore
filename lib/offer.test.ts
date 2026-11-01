@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { marketingPaths } from "./content/blog.ts";
+import { blogPosts, marketingPaths } from "./content/blog.ts";
+import { topicPages } from "./content/topics.ts";
 import {
   HOME_SERVICE_TRADE_IDS,
   freeSnapshotPath,
@@ -11,9 +12,17 @@ import {
   guideSnapshotCalloutPaths,
   industrySnapshotLabel,
   showsGuideSnapshotCallout,
+  contentStickySnapshotHref,
+  isStickySnapshotContentPath,
   snapshotOfferForPage,
   tradeGuideStickySnapshotHref,
 } from "./industry-snapshot.ts";
+import {
+  STICKY_SNAPSHOT_DISMISS_DAYS,
+  STICKY_SNAPSHOT_DISMISS_KEY,
+  stickySnapshotDismissed,
+  stickySnapshotHeadScript,
+} from "./sticky-snapshot.ts";
 import { freeCheckAuditPitch } from "./free-check-pitch.ts";
 
 test("Fix Pack checkout URL is the live Payhip product", () => {
@@ -145,18 +154,42 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
     new URL("../components/TradeGuideStickyCta.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(shell, /tradeGuideStickySnapshotHref\(guidePath\)/);
+  assert.match(shell, /contentStickySnapshotHref\(\{ guidePath, ctaId \}\)/);
   assert.match(shell, /<TradeGuideStickyCta href=\{stickyHref\} \/>/);
-  assert.match(sticky, /md:hidden/);
+  assert.doesNotMatch(sticky, /md:hidden/);
   assert.match(sticky, /aria-label=\{label\}/);
   assert.match(sticky, /aria-label="Dismiss free snapshot offer"/);
   assert.match(
     sticky,
     /Free AI Answer Snapshot: see who ChatGPT recommends instead of you/,
   );
+  assert.match(sticky, /href="\/sample-snapshot"/);
+  assert.match(sticky, /See an example snapshot/);
   assert.match(sticky, /safe-area-inset-bottom/);
   assert.match(sticky, /from "next\/link"/);
+  assert.match(sticky, /sticky-snapshot-offer/);
+  assert.match(sticky, /motion-reduce:transition-none/);
+  assert.match(sticky, /useLayoutEffect/);
+  assert.match(sticky, /localStorage\.setItem/);
+  assert.match(sticky, /STICKY_SNAPSHOT_DISMISS_KEY/);
+  assert.equal(STICKY_SNAPSHOT_DISMISS_DAYS, 14);
+  assert.equal(STICKY_SNAPSHOT_DISMISS_KEY, "citescore-sticky-snapshot-dismissed");
+  assert.equal(stickySnapshotDismissed(null), false);
+  assert.equal(stickySnapshotDismissed("nope", 1_000), false);
+  assert.equal(stickySnapshotDismissed(String(5_000), 1_000), true);
+  assert.equal(stickySnapshotDismissed(String(500), 1_000), false);
+  assert.match(stickySnapshotHeadScript(), new RegExp(STICKY_SNAPSHOT_DISMISS_KEY));
+  assert.match(stickySnapshotHeadScript(), /data-sticky-snapshot","off"/);
   assert.doesNotMatch(sticky, /guarantee|testimonial|customers served|% of|Samuel|Lamphier/i);
+
+  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /html\[data-sticky-snapshot="off"\] \.sticky-snapshot-offer/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /\.sticky-snapshot-offer \* \{\s*animation: none !important;/);
+  const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  assert.match(layout, /stickySnapshotHeadScript/);
+  assert.match(layout, /data-sticky-snapshot="on"/);
+  assert.match(layout, /suppressHydrationWarning/);
 
   for (const rel of [
     "../app/free-snapshot/page.tsx",
@@ -200,6 +233,62 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
   assert.equal(showsGuideSnapshotCallout({ ctaId: "llms-txt" }), false);
   assert.equal(showsGuideSnapshotCallout({ guidePath: "/geo-audit" }), false);
   assert.equal(showsGuideSnapshotCallout({}), false);
+
+  for (const post of blogPosts) {
+    assert.equal(
+      contentStickySnapshotHref({ ctaId: `blog-${post.slug}` }),
+      "/free-snapshot",
+      post.slug,
+    );
+    assert.equal(tradeGuideStickySnapshotHref(`/blog/${post.slug}`), null);
+  }
+  assert.equal(contentStickySnapshotHref({ ctaId: "llms-txt-generator" }), "/free-snapshot");
+  assert.equal(
+    contentStickySnapshotHref({ ctaId: "robots-txt-ai-crawler-generator" }),
+    "/free-snapshot",
+  );
+  assert.equal(
+    contentStickySnapshotHref({ ctaId: "faq-schema-generator" }),
+    "/free-snapshot",
+  );
+  assert.equal(
+    contentStickySnapshotHref({ guidePath: "/how-to-get-cited-by-chatgpt" }),
+    "/free-snapshot",
+  );
+  assert.equal(
+    contentStickySnapshotHref({
+      guidePath: "/ai-search-visibility-for-plumbers",
+      ctaId: "faq-schema-generator",
+    }),
+    "/free-snapshot?trade=plumber",
+  );
+  for (const path of ["/", "/free-snapshot", "/fix-pack", "/checkout", "/pricing", "/privacy", "/terms", "/refunds"]) {
+    assert.equal(isStickySnapshotContentPath(path), false, path);
+    assert.equal(contentStickySnapshotHref({ guidePath: path }), null, path);
+  }
+  assert.equal(contentStickySnapshotHref({ ctaId: "free-check" }), null);
+  assert.equal(contentStickySnapshotHref({ ctaId: "llms-txt" }), null);
+  assert.equal(contentStickySnapshotHref({ guidePath: "/geo-for-local-businesses" }), null);
+  assert.equal(contentStickySnapshotHref({ guidePath: "/llms-txt-best-practices" }), null);
+  assert.equal(contentStickySnapshotHref({}), null);
+
+  let stickyTopics = 0;
+  for (const topic of topicPages) {
+    const href = contentStickySnapshotHref({ guidePath: topic.path });
+    const want =
+      topic.path.startsWith("/ai-search-visibility-for-") ||
+      topic.path.startsWith("/how-to-get-cited-by-") ||
+      topic.path.endsWith("-schema-generator") ||
+      topic.path === "/llms-txt-generator" ||
+      topic.path === "/robots-txt-ai-crawler-generator";
+    if (want) {
+      stickyTopics += 1;
+      assert.ok(href?.startsWith("/free-snapshot"), topic.path);
+    } else {
+      assert.equal(href, null, topic.path);
+    }
+  }
+  assert.ok(stickyTopics >= 40);
 
   const shell = readFileSync(new URL("../components/ArticleShell.tsx", import.meta.url), "utf8");
   const cta = readFileSync(

@@ -120,12 +120,87 @@ const homeServiceTradeQuery: Record<string, string> = {
 };
 
 /**
- * Mobile sticky CTA on industry guides only.
+ * Free-snapshot URL for an industry visibility guide.
  * Home-service guides keep the same ?trade= prefill as the inline callout.
- * Other pages, including the snapshot request and checkout, get nothing.
+ * Other paths return null. The wider sticky decision lives in sticky-snapshot.
  */
 export function tradeGuideStickySnapshotHref(path: string): string | null {
   if (!industrySnapshotLabel(path)) return null;
   const trade = homeServiceTradeQuery[path];
   return trade ? `/free-snapshot?trade=${trade}` : "/free-snapshot";
+}
+
+/**
+ * Offer, checkout, pricing, legal, and the home page. The home page already
+ * leads with the free snapshot, so a second bar would repeat that CTA.
+ */
+const stickyExcludedPaths = new Set([
+  "/",
+  "/free-snapshot",
+  "/free-snapshot/thanks",
+  "/fix-pack",
+  "/fix-pack/next-steps",
+  "/checkout",
+  "/pricing",
+  "/privacy",
+  "/terms",
+  "/refunds",
+  "/thanks",
+]);
+
+/**
+ * Path the shell would be showing. guidePath wins so a trade guide cannot
+ * pick up another page's ctaId. Blog posts pass ctaId `blog-${slug}`.
+ */
+export function stickySnapshotContentPath(input: {
+  guidePath?: string;
+  ctaId?: string;
+}): string | null {
+  if (input.guidePath) return input.guidePath;
+  const ctaId = input.ctaId;
+  if (!ctaId) return null;
+  if (ctaId.startsWith("blog-")) return `/blog/${ctaId.slice("blog-".length)}`;
+  return `/${ctaId}`;
+}
+
+/**
+ * Long SEO pages and the generator tools, where the offer otherwise sits
+ * inline and can scroll off a phone screen. Other shells stay quiet.
+ */
+export function isStickySnapshotContentPath(path: string): boolean {
+  if (stickyExcludedPaths.has(path)) return false;
+  if (
+    path.startsWith("/ai-search-visibility-for-") &&
+    path.length > "/ai-search-visibility-for-".length
+  ) {
+    return true;
+  }
+  if (
+    path.startsWith("/how-to-get-cited-by-") &&
+    path.length > "/how-to-get-cited-by-".length
+  ) {
+    return true;
+  }
+  if (path.startsWith("/blog/") && path.length > "/blog/".length) return true;
+  if (path.endsWith("-schema-generator")) return true;
+  if (path === "/llms-txt-generator" || path === "/robots-txt-ai-crawler-generator") {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Primary sticky URL. Industry guides keep the ?trade= prefill. Every other
+ * content or tool page goes to the plain free snapshot.
+ */
+export function contentStickySnapshotHref(input: {
+  guidePath?: string;
+  ctaId?: string;
+}): string | null {
+  const path = stickySnapshotContentPath(input);
+  if (!path || !isStickySnapshotContentPath(path)) return null;
+  if (input.guidePath) {
+    return tradeGuideStickySnapshotHref(input.guidePath) ?? "/free-snapshot";
+  }
+  return "/free-snapshot";
 }
