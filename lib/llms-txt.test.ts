@@ -28,6 +28,10 @@ const pageSources: Record<string, string> = {
     new URL("../app/sample-snapshot/page.tsx", import.meta.url),
     "utf8",
   ),
+  "/sample-fix-pack": readFileSync(
+    new URL("../app/sample-fix-pack/page.tsx", import.meta.url),
+    "utf8",
+  ),
   "/fix-pack": readFileSync(new URL("../app/fix-pack/page.tsx", import.meta.url), "utf8"),
   "/how-it-works": readFileSync(new URL("../app/how-it-works/page.tsx", import.meta.url), "utf8"),
   "/methodology": readFileSync(new URL("../app/methodology/page.tsx", import.meta.url), "utf8"),
@@ -76,6 +80,7 @@ test("llms.txt follows the llmstxt.org section order and only restates published
   for (const path of [
     "/free-snapshot",
     "/sample-snapshot",
+    "/sample-fix-pack",
     "/fix-pack",
     "/how-it-works",
     "/methodology",

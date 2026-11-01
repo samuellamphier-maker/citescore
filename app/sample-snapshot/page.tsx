@@ -202,6 +202,14 @@ export default function SampleSnapshotPage() {
         </p>
         <div className="mt-8">
           <SnapshotCtas />
+          <p className="mt-4 text-sm leading-6">
+            <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+              See a sample Fix Pack
+            </Link>
+            <span className="text-ink-soft">
+              . Illustrative example content, not a real client or real results.
+            </span>
+          </p>
           <FixPackOfferFacts className="mt-4" />
         </div>
         <p className="mt-3 text-sm leading-6 text-ink-soft">
@@ -445,6 +453,14 @@ export default function SampleSnapshotPage() {
               Fix Pack, {fixPackIntroPriceLabel}
             </Link>
           </div>
+          <p className="mt-4 text-sm leading-6">
+            <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+              See a sample Fix Pack
+            </Link>
+            <span className="text-ink-soft">
+              . Illustrative example content, not a real client or real results.
+            </span>
+          </p>
           <FixPackOfferFacts className="mt-4" />
         </section>
       </main>
