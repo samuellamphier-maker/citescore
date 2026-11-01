@@ -30,12 +30,23 @@ export type SnapshotFields = {
   email: string;
 };
 
+/**
+ * Bare domains are accepted. FlowForm and the email fallback both need a
+ * scheme, and a URL input rejects a value that has none.
+ */
+export function snapshotWebsiteValue(value: string) {
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  return `https://${trimmed}`;
+}
+
 export function snapshotFieldsComplete(fields: SnapshotFields) {
   return (
     fields.business.trim() !== "" &&
     fields.city.trim() !== "" &&
     fields.service.trim() !== "" &&
-    fields.website.trim() !== "" &&
+    snapshotWebsiteValue(fields.website) !== "" &&
     EMAIL_RE.test(fields.email.trim())
   );
 }
@@ -52,7 +63,7 @@ export function snapshotFormPayload(fields: SnapshotFields) {
     "Business name": fields.business.trim(),
     City: fields.city.trim(),
     Service: fields.service.trim(),
-    Website: fields.website.trim(),
+    Website: snapshotWebsiteValue(fields.website),
     Email: fields.email.trim(),
   };
 }

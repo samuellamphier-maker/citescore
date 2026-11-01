@@ -11,6 +11,7 @@ import {
   snapshotSendErrorMessage,
   snapshotSentMessage,
   snapshotSubmitSucceeded,
+  snapshotWebsiteValue,
 } from "./snapshot-form.ts";
 
 const fields = {
@@ -40,6 +41,9 @@ test("snapshot payload posts the visitor fields through FlowForm", () => {
   assert.match(encoded, /_subject=Free\+AI\+Answer\+Snapshot/);
   assert.doesNotMatch(encoded, /_honey/);
   assert.equal(snapshotFieldsComplete(fields), true);
+  assert.equal(snapshotWebsiteValue(" example.com "), "https://example.com");
+  assert.equal(snapshotWebsiteValue("http://example.com"), "http://example.com");
+  assert.equal(snapshotWebsiteValue("  "), "");
   assert.equal(
     snapshotFieldsComplete({ ...fields, website: "  " }),
     false,
@@ -88,6 +92,19 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /name="_subject"/);
   assert.doesNotMatch(form, /name="_captcha"/);
   assert.match(form, /name="Website"/);
+  assert.match(form, /type="url"/);
+  assert.match(form, /type="email"/);
+  assert.match(form, /autoComplete="organization"/);
+  assert.match(form, /autoComplete="address-level2"/);
+  assert.match(form, /autoComplete="url"/);
+  assert.match(form, /autoComplete="email"/);
+  assert.match(form, /htmlFor="snapshot-business"/);
+  assert.match(form, /htmlFor="snapshot-website"/);
+  assert.match(form, /htmlFor="snapshot-email"/);
+  assert.match(form, /href="\/privacy"/);
+  assert.match(form, /We do not sell emails/);
+  assert.match(form, /snapshotWebsiteValue/);
+  assert.doesNotMatch(form, /noValidate/);
   assert.match(form, /required/);
   assert.match(form, /snapshotSentMessage/);
   assert.match(form, /snapshotSendErrorMessage/);
