@@ -73,6 +73,7 @@ const purchaseAndTrustAliases = [
   { source: "/reviews", destination: "/sample-snapshot" },
   { source: "/security", destination: "/.well-known/security.txt" },
   { source: "/vs", destination: "/alternatives" },
+  { source: "/ai-visibility-checklist", destination: "/checklist" },
 ] as const;
 
 function escapeRegExp(value: string) {

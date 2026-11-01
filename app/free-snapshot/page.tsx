@@ -15,8 +15,10 @@ import {
   contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  publicOrigin,
   sellerName,
 } from "@/lib/site";
+import { freeSnapshotServiceJsonLd } from "@/lib/site-schema";
 
 export const metadata: Metadata = {
   ...pageMeta({
@@ -32,6 +34,7 @@ export default function FreeSnapshotPage() {
   return (
     <>
       <JsonLd data={faqPageJsonLd(freeSnapshotPageFaqs)} />
+      <JsonLd data={freeSnapshotServiceJsonLd(publicOrigin())} />
       <SiteHeader />
       <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">Free · no checkout</p>

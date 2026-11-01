@@ -1,6 +1,6 @@
+import { organizationRef } from "@/lib/site-schema";
 import {
   FIX_PACK_CHECKOUT_URL,
-  contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   sellerName,
@@ -51,12 +51,7 @@ export function fixPackProductJsonLd(origin: string): Record<string, unknown> {
     price: fixPackIntroPriceLabel.replace(/^\$/, ""),
     priceCurrency: "USD",
     url: `${origin}/fix-pack`,
-    seller: {
-      "@type": "Organization",
-      name: sellerName,
-      url: origin,
-      email: contactEmail,
-    },
+    seller: organizationRef(origin),
   };
   // The $39 audit omits availability because its checkout is optional per deploy.
   // The Fix Pack buy link is a fixed product URL, so in-stock matches that page.

@@ -8,6 +8,7 @@ register("./alias-hook.mjs", import.meta.url);
 const { contactEmail, fixPackIntroPriceLabel, fixPackListPriceLabel } = await import(
   "./site.ts"
 );
+const { citeScoreOrganizationJsonLd, organizationId } = await import("./site-schema.ts");
 const {
   fixPackDeliverables,
   fixPackHowDeliveryWorks,
@@ -30,10 +31,14 @@ test("Fix Pack product JSON-LD states the charged price and no ratings", () => {
   assert.equal(offers.availability, "https://schema.org/InStock");
   assert.equal(offers.url, `${origin}/fix-pack`);
   const seller = offers.seller as Record<string, unknown>;
-  assert.equal(seller["@type"], "Organization");
-  assert.equal(seller.name, "CiteScore");
-  assert.equal(seller.email, contactEmail);
+  assert.deepEqual(seller, { "@id": organizationId(origin) });
+  const organization = citeScoreOrganizationJsonLd(origin);
+  assert.equal(organization["@type"], "Organization");
+  assert.equal(organization["@id"], organizationId(origin));
+  assert.equal(organization.name, "CiteScore");
+  assert.equal(organization.email, contactEmail);
   const json = JSON.stringify(data);
+  assert.doesNotMatch(json, /"@type":"Organization"/);
   assert.match(json, /\$49|49/);
   assert.match(json, new RegExp(fixPackListPriceLabel.replace("$", "\\$")));
   assert.match(json, /few business days/);
