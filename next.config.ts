@@ -89,6 +89,71 @@ const nextConfig: NextConfig = {
         destination: "/alternatives",
         permanent: true,
       },
+      {
+        source: "/buy",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/order",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/purchase",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/checkout-fix-pack",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/order-fix-pack",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/buy-fix-pack",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/get-started",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/start",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/case-studies",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/testimonials",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/reviews",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/security",
+        destination: "/.well-known/security.txt",
+        permanent: true,
+      },
+      {
+        source: "/vs",
+        destination: "/alternatives",
+        permanent: true,
+      },
     ];
   },
 };
