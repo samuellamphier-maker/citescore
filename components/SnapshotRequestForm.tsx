@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useSyncExternalStore } from "react";
+import Link from "next/link";
 import { EmailRequestFallback } from "@/components/EmailRequestFallback";
 import { useHomeServiceTradeParam } from "@/components/useHomeServiceTrade";
 import {
@@ -10,13 +11,14 @@ import {
   snapshotRequestClipboard,
   snapshotSubjectForTrade,
 } from "@/lib/email-request";
-import { contactEmail } from "@/lib/site";
+import { contactEmail, productionOrigin } from "@/lib/site";
 import {
   snapshotFieldsComplete,
   snapshotFormPageEndpoint,
   snapshotSendErrorMessage,
   snapshotSentMessage,
   snapshotValidationMessage,
+  snapshotWebsiteValue,
 } from "@/lib/snapshot-form";
 
 function subscribeSent() {
@@ -49,19 +51,36 @@ export function SnapshotRequestForm() {
     business: business.trim(),
     city: city.trim(),
     service: serviceValue.trim(),
-    website: website.trim(),
+    website: snapshotWebsiteValue(website),
     email: email.trim(),
   };
   const ready = snapshotFieldsComplete(fields);
   const subject = snapshotSubjectForTrade(trade?.service);
   const mailto = snapshotMailto(contactEmail, snapshotRequestBody(fields), subject);
 
+  function writeWebsite(form: HTMLFormElement) {
+    const input = form.elements.namedItem("Website");
+    if (!(input instanceof HTMLInputElement)) return "";
+    const next = snapshotWebsiteValue(input.value);
+    if (next !== input.value) input.value = next;
+    if (next !== website) setWebsite(next);
+    return next;
+  }
+
+  function onSubmitClick(event: React.MouseEvent<HTMLButtonElement>) {
+    const form = event.currentTarget.form;
+    if (!form) return;
+    writeWebsite(form);
+  }
+
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitLock.current || phase === "sent" || returned) return;
 
     const form = event.currentTarget;
-    if (!form.checkValidity() || !snapshotFieldsComplete(fields)) {
+    const websiteValue = writeWebsite(form);
+    const posted = { ...fields, website: websiteValue };
+    if (!form.checkValidity() || !snapshotFieldsComplete(posted)) {
       setValidationMessage(snapshotValidationMessage);
       setPhase("idle");
       form.reportValidity();
@@ -85,7 +104,12 @@ export function SnapshotRequestForm() {
     if (next instanceof HTMLInputElement) {
       next.value = new URL("/free-snapshot/thanks", window.location.origin).toString();
     }
-    form.submit();
+    try {
+      form.submit();
+    } catch {
+      submitLock.current = false;
+      setPhase("error");
+    }
   }
 
   const sent = phase === "sent" || returned;
@@ -97,7 +121,6 @@ export function SnapshotRequestForm() {
       method="POST"
       onSubmit={onSubmit}
       className="scroll-mt-24 space-y-3"
-      noValidate
     >
       <div>
         <label htmlFor="snapshot-business" className="text-sm font-medium">
@@ -150,7 +173,7 @@ export function SnapshotRequestForm() {
         <input
           id="snapshot-website"
           name="Website"
-          type="text"
+          type="url"
           inputMode="url"
           required
           autoComplete="url"
@@ -176,7 +199,11 @@ export function SnapshotRequestForm() {
         />
       </div>
       <input type="hidden" name="_subject" value={SNAPSHOT_SUBJECT} />
-      <input type="hidden" name="_next" value="https://citescore.vercel.app/free-snapshot/thanks" />
+      <input
+        type="hidden"
+        name="_next"
+        value={`${productionOrigin}/free-snapshot/thanks`}
+      />
       <input type="hidden" name="_replyto" value={fields.email} />
       <input
         type="text"
@@ -187,8 +214,17 @@ export function SnapshotRequestForm() {
         aria-hidden="true"
         style={{ display: "none" }}
       />
+      <p id="snapshot-privacy" className="text-xs leading-5 text-ink-soft">
+        We email the snapshot to this address. We do not sell emails.{" "}
+        <Link href="/privacy" className="text-forest underline">
+          Privacy
+        </Link>
+        .
+      </p>
       <button
         type="submit"
+        aria-describedby="snapshot-privacy"
+        onClick={onSubmitClick}
         disabled={phase === "sending" || sent}
         className="flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep disabled:cursor-not-allowed disabled:opacity-60"
       >

@@ -77,10 +77,16 @@ test("free snapshot thanks page confirms the request and stays out of the index"
   );
   assert.match(thanks, /robots: \{ index: false, follow: false \}/);
   assert.match(thanks, /Request received\. We reply with your one-page snapshot by email\./);
+  assert.match(thanks, /The CiteScore Team prepares the one-page snapshot and emails it\./);
+  assert.match(thanks, /There is no set delivery time\./);
   assert.match(thanks, /href="\/sample-snapshot"/);
   assert.match(thanks, /Fictional business, illustrative numbers/);
+  assert.match(thanks, /href="\/sample-fix-pack"/);
+  assert.match(thanks, /Illustrative example content, not a real client or real results/);
   assert.match(thanks, /href="\/fix-pack"/);
+  assert.match(thanks, /<FixPackBuyLink \/>/);
   assert.match(thanks, /within a few business\s+days after payment/);
+  assert.match(thanks, /href="\/privacy"/);
   assert.match(thanks, /CiteScore Team/);
   assert.match(thanks, /Sold by \{sellerName\}/);
   assert.doesNotMatch(thanks, /Samuel|Lamphier|testimonial|customers served|guarantee/i);

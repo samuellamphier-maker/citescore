@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   ...pageMeta({
     title: "Free snapshot request received",
     description:
-      "We received your free AI Answer Snapshot request. We ask logged-out ChatGPT and Perplexity who they name, then reply with a one-page snapshot by email. No payment.",
+      "We received your free AI Answer Snapshot request. The CiteScore Team prepares the one-page snapshot and emails it. There is no set delivery time. No payment.",
     path: "/free-snapshot/thanks",
   }),
   robots: { index: false, follow: false },
@@ -29,11 +30,9 @@ export default function FreeSnapshotThanksPage() {
           Request received. We reply with your one-page snapshot by email.
         </h1>
         <p className="mt-4 leading-7 text-ink-soft">
-          You submitted the form. FlowForm delivers the business name, city,
-          service, website, and email. No account and no paid checkout. We ask
-          logged-out ChatGPT and Perplexity who they name for that trade and
-          city, and record who is named. We reply with the one-page snapshot
-          by email.
+          The CiteScore Team prepares the one-page snapshot and emails it.
+          There is no set delivery time. FlowForm delivers the business name,
+          city, service, website, and email. No account and no paid checkout.
         </p>
         <p className="mt-4 leading-7 text-ink-soft">
           The one-page snapshot records who is named, which sources are cited,
@@ -46,14 +45,17 @@ export default function FreeSnapshotThanksPage() {
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What happens next</h2>
         <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
           <li>
-            You submit the form. FlowForm delivers the business name, city,
-            service, website, and email. No account and no paid checkout.
+            FlowForm delivers the business name, city, service, website, and
+            email. No account and no paid checkout.
           </li>
           <li>
-            We ask logged-out ChatGPT and Perplexity who they name for that
-            trade and city, and record who is named.
+            The CiteScore Team asks logged-out ChatGPT and Perplexity who they
+            name for that trade and city, and records who is named.
           </li>
-          <li>We reply with the one-page snapshot by email.</li>
+          <li>
+            The CiteScore Team emails the one-page snapshot. There is no set
+            delivery time.
+          </li>
         </ol>
         <p className="mt-4 text-sm leading-7 text-ink-soft">
           AI answers vary run to run. This is a snapshot, not a ranking.
@@ -66,6 +68,14 @@ export default function FreeSnapshotThanksPage() {
           <span className="text-ink-soft">
             . Fictional business, illustrative numbers. Not a customer result,
             and not a live ChatGPT or Perplexity answer.
+          </span>
+        </p>
+        <p className="mt-3 text-sm leading-6">
+          <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+            See a sample Fix Pack
+          </Link>
+          <span className="text-ink-soft">
+            . Illustrative example content, not a real client or real results.
           </span>
         </p>
 
@@ -84,7 +94,24 @@ export default function FreeSnapshotThanksPage() {
           and public site URL. It is not a promise that any assistant will name
           the business.
         </p>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <FixPackBuyLink />
+          <Link
+            href="/fix-pack"
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+          >
+            See what&apos;s in the Fix Pack
+          </Link>
+        </div>
         <p className="mt-6 text-sm leading-6 text-ink-soft">
+          We email the snapshot to the address you submitted. We do not sell
+          emails.{" "}
+          <Link href="/privacy" className="text-forest underline">
+            Privacy
+          </Link>
+          .
+        </p>
+        <p className="mt-4 text-sm leading-6 text-ink-soft">
           Prepared by the CiteScore Team. Sold by {sellerName}.
         </p>
         <p className="mt-8 text-sm leading-6">
