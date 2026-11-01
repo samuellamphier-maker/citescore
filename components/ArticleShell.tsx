@@ -11,9 +11,9 @@ import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
 import { freeSnapshotPath, homeServiceTradeForGuide } from "@/lib/home-service-trade";
 import {
+  contentStickySnapshotHref,
   showsGuideSnapshotCallout,
   snapshotOfferForPage,
-  tradeGuideStickySnapshotHref,
 } from "@/lib/industry-snapshot";
 import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
@@ -53,7 +53,7 @@ export function ArticleShell({
 }: Props) {
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
   const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
-  const stickyHref = guidePath ? tradeGuideStickySnapshotHref(guidePath) : null;
+  const stickyHref = contentStickySnapshotHref({ guidePath, ctaId });
   const generalSnapshot =
     !snapshotOffer &&
     !homeService &&

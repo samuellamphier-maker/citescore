@@ -27,9 +27,19 @@ html {
   scroll-behavior: smooth;
 }
 
+html[data-sticky-snapshot="off"] .sticky-snapshot-offer {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .sticky-snapshot-offer,
+  .sticky-snapshot-offer * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 

@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import { rootOpenGraph, rootTwitter, rssFeedAlternate } from "@/lib/content/meta";
 import { publicOrigin, site } from "@/lib/site";
+import { stickySnapshotHeadScript } from "@/lib/sticky-snapshot";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,7 +47,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} h-full antialiased`}
+      data-sticky-snapshot="on"
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: stickySnapshotHeadScript() }} />
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
         <Analytics />
