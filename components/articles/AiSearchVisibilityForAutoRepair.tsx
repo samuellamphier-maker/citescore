@@ -386,8 +386,7 @@ export function AiSearchVisibilityForAutoRepairArticle() {
           <>
             Run the <Link href="/free-check">free check</Link> on the public host. It reads the homepage, GPTBot,
             PerplexityBot, Google-Extended, <code>llms.txt</code>, a sitemap, and homepage JSON-LD. It does not read
-            OAI-SearchBot, and it does not query an answer engine. For a shop or service URL, use the{" "}
-            <Link href="/geo-audit">$39 GEO audit</Link>. The homepage check does not open that path.
+            OAI-SearchBot, and it does not query an answer engine. For a shop or service URL, start with the <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The <Link href="/geo-audit">$39 GEO audit</Link> still scores one public URL. The homepage check does not open that path.
           </>
         }
       />

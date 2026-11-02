@@ -5,11 +5,12 @@ export function VsEnterpriseArticle() {
   return (
     <>
       <p>
-        CiteScore is a {site.priceLabel} one-off. Profound- and Otterly-class
-        tools are subscriptions that watch live prompts across answer
-        engines, often with seats, APIs, and a CSM. Those are not the same
-        job. If a vendor blurs them, they are selling you a dashboard you
-        will forget to open.
+        For a local business, CiteScore starts with the free AI Answer
+        Snapshot. The {site.priceLabel} audit is still a one-off PDF.
+        Profound- and Otterly-class tools are subscriptions that watch live
+        prompts across answer engines, often with seats, APIs, and a CSM.
+        Those are not the same job. If a vendor blurs them, they are selling
+        you a dashboard you will forget to open.
       </p>
       <p>
         Public pricing moves. The figures below are what those products
@@ -70,7 +71,11 @@ export function VsEnterpriseArticle() {
 
       <h2>When the $39 audit is enough</h2>
       <p>
-        You have a public SaaS homepage, you suspect it reads like a tagline,
+        Local businesses start with the{" "}
+        <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The{" "}
+        <Link href="/fix-pack">Fix Pack</Link> is the paid next step. The $39
+        audit is the scored PDF when that is the job. You have a public SaaS
+        homepage, you suspect it reads like a tagline,
         and you want a short list you can finish this week. You do not have
         fifteen branded prompts to babysit. You do not want another login.
         That is CiteScore: crawl, score, PDF, email.{" "}

@@ -2,8 +2,10 @@
 
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { freeCheckAuditPitch } from "@/lib/free-check-pitch";
+import { fixPackGetCtaLabel } from "@/lib/site";
 
 type Result = {
   origin: string;
@@ -47,15 +49,35 @@ function AuditUpsell({
 }) {
   return (
     <aside className="mt-8 rounded-2xl border border-rule bg-cream p-6">
-      <p className="kicker text-copper">$39 audit</p>
+      <p className="kicker text-copper">Free snapshot</p>
       <h2 className="mt-2 font-serif text-2xl">{pitch.heading}</h2>
       <p className="mt-2 text-sm leading-6 text-ink-soft">{pitch.detail}</p>
-      <Link
-        href={`/geo-audit?url=${encodeURIComponent(origin)}`}
-        className="mt-4 inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 font-medium text-cream hover:bg-forest-deep"
+      <div
+        data-funnel-cta
+        className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
       >
-        Get the $39 audit
-      </Link>
+        <Link
+          href="/free-snapshot"
+          className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 font-medium text-cream hover:bg-forest-deep"
+        >
+          Get a free AI Answer Snapshot
+        </Link>
+        <FixPackBuyLink
+          compact
+          label={fixPackGetCtaLabel()}
+          className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-sm font-medium text-ink hover:border-ink"
+        />
+      </div>
+      <p className="mt-4 text-sm leading-6 text-ink-soft">
+        The{" "}
+        <Link
+          href={`/geo-audit?url=${encodeURIComponent(origin)}`}
+          className="font-medium text-forest underline underline-offset-4"
+        >
+          $39 GEO audit
+        </Link>{" "}
+        is still available for this URL if you want the scored PDF.
+      </p>
     </aside>
   );
 }

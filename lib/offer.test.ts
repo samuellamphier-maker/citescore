@@ -316,7 +316,7 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
   assert.match(shell, /showsGuideSnapshotCallout\(\{ guidePath, ctaId \}\)/);
   assert.match(shell, /variant=\{generalSnapshot \? "general" : "industry"\}/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
-  assert.match(shell, /\{snapshotOffer \? \(/);
+  assert.match(shell, /snapshotOffer \|\| generalSnapshot/);
   assert.match(cta, /See which local competitors ChatGPT and Perplexity name instead of the business/);
   assert.match(cta, /We ask logged-out ChatGPT and Perplexity who they name/);
   assert.match(cta, /href=\{snapshotHref\}/);

@@ -5,6 +5,7 @@ import { PrintButton } from "@/components/PrintButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
+import { fixPackIntroPriceLabel } from "@/lib/site";
 import { sampleReport } from "@/lib/sample-report";
 
 export const metadata: Metadata = pageMeta({
@@ -25,10 +26,22 @@ export default function SampleReportPage() {
           </p>
           <div className="flex gap-3">
             <Link
-              href="/#audit"
+              href="/free-snapshot"
               className="rounded-lg bg-forest px-4 py-2 text-sm text-cream hover:bg-forest-deep"
             >
-              Audit your URL · $39
+              Get a free AI Answer Snapshot
+            </Link>
+            <Link
+              href="/fix-pack"
+              className="rounded-lg border border-rule bg-cream px-4 py-2 text-sm hover:border-ink/30"
+            >
+              Fix Pack, {fixPackIntroPriceLabel}
+            </Link>
+            <Link
+              href="/geo-audit"
+              className="rounded-lg border border-rule bg-cream px-4 py-2 text-sm hover:border-ink/30"
+            >
+              $39 GEO audit
             </Link>
             <a
               href="/api/reports/sample/pdf"

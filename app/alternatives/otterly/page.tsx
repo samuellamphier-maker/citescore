@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AuditCta } from "@/components/AuditCta";
+import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
+import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -160,10 +161,10 @@ export default function OtterlyAlternativePage() {
           </p>
         </div>
 
-        <AuditCta
-          id="otterly-audit"
-          title={`Skip the monitor until the page is citable — ${site.priceLabel}`}
-        />
+        <div className="mt-12">
+          <IndustrySnapshotCta variant="general" />
+        </div>
+        <AuditSecondaryNote />
 
         <p className="mt-8 text-sm text-ink-soft">
           More comparisons:{" "}

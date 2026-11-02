@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { AuditCta } from "@/components/AuditCta";
+import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
+import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -185,10 +186,10 @@ export default function ProfoundAlternativePage() {
           </p>
         </div>
 
-        <AuditCta
-          id="profound-audit"
-          title={`Fix the page before you buy citation share — ${site.priceLabel}`}
-        />
+        <div className="mt-12">
+          <IndustrySnapshotCta variant="general" />
+        </div>
+        <AuditSecondaryNote />
 
         <p className="mt-8 text-sm text-ink-soft">
           More comparisons:{" "}

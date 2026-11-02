@@ -288,7 +288,14 @@ Disallow: /`}</pre>
         </div>
       ))}
 
-      <h2>Free check, then the $39 audit</h2>
+      <h2>Free AI Answer Snapshot, then the Fix Pack</h2>
+      <p>
+        The <Link href="/free-snapshot">free AI Answer Snapshot</Link> asks
+        logged-out ChatGPT and Perplexity who they name for a local business
+        and sends one page. AI answers vary run to run. No payment. The{" "}
+        <Link href="/fix-pack">Fix Pack</Link> is the done-for-you work after
+        you have seen who was named.
+      </p>
       <p>
         Run the <Link href="/free-check">free check</Link> first. It looks
         at one host and reports whether the homepage responded, whether

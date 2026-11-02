@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { AuditCta } from "@/components/AuditCta";
+import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
 import { HomeServiceGuideCallout } from "@/components/HomeServiceGuideCallout";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { RelatedGuides } from "@/components/RelatedGuides";
@@ -15,7 +15,7 @@ import {
   showsGuideSnapshotCallout,
   snapshotOfferForPage,
 } from "@/lib/industry-snapshot";
-import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
+import { fixPackIntroPriceLabel } from "@/lib/site";
 
 type Related = {
   href: string;
@@ -34,7 +34,7 @@ type Props = {
   ctaId?: string;
   /** When set, render the shared Related guides list for this path. */
   guidePath?: string;
-  /** Paid audit box. Guides that only link the free check and checkout set this false. */
+  /** Smaller $39 mention under the snapshot close. Guides that already link the audit set this false. */
   showAuditCta?: boolean;
 };
 
@@ -57,7 +57,22 @@ export function ArticleShell({
   const generalSnapshot =
     !snapshotOffer &&
     !homeService &&
-    showsGuideSnapshotCallout({ guidePath, ctaId });
+    (showsGuideSnapshotCallout({ guidePath, ctaId }) ||
+      showAuditCta ||
+      Boolean(guidePath));
+  const listed =
+    related.length === 0
+      ? related
+      : [
+          { href: "/free-snapshot", label: "Free AI Answer Snapshot" },
+          {
+            href: "/fix-pack",
+            label: `Fix Pack (${fixPackIntroPriceLabel})`,
+          },
+          ...related.filter(
+            (item) => item.href !== "/free-snapshot" && item.href !== "/fix-pack",
+          ),
+        ];
   return (
     <>
       <SiteHeader />
@@ -86,38 +101,24 @@ export function ArticleShell({
           </div>
         ) : null}
         <div className="article-prose mt-10">{children}</div>
-        {showAuditCta ? (
-          <AuditCta
-            id={ctaId}
-            footer={
-              guidePath ? (
-                <p className="text-sm leading-6 text-ink-soft">
-                  <Link
-                    href={doneForYouAuditPath}
-                    className="font-medium text-forest underline underline-offset-4"
-                  >
-                    {doneForYouAuditLabel}
-                  </Link>
-                  . A written walkthrough, delivered within 3 business days.
-                </p>
-              ) : null
-            }
-          />
-        ) : null}
-        {snapshotOffer ? (
+        {snapshotOffer || generalSnapshot ? (
           <div className="mt-12">
             <IndustrySnapshotCta
-              industry={snapshotOffer.industry}
+              industry={snapshotOffer?.industry}
               snapshotHref={homeService ? freeSnapshotPath(homeService.id) : undefined}
+              variant={generalSnapshot ? "general" : "industry"}
             />
           </div>
+        ) : null}
+        {showAuditCta ? (
+          <AuditSecondaryNote includeDoneForYou={Boolean(guidePath)} />
         ) : null}
         {guidePath ? <RelatedGuides current={guidePath} /> : null}
         {related.length > 0 ? (
           <nav className="mt-10 border-t border-rule pt-6" aria-label="Related">
             <p className="kicker">Keep reading</p>
             <ul className="mt-3 space-y-2">
-              {related.map((item) => (
+              {listed.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

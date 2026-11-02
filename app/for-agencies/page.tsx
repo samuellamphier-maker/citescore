@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AuditForm } from "@/components/AuditForm";
+import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -9,6 +9,7 @@ import { pageMeta } from "@/lib/content/meta";
 import {
   agencyKitLabel,
   agencyKitUrl,
+  fixPackIntroPriceLabel,
   publicOrigin,
   site,
   whiteLabelAuditLabel,
@@ -18,7 +19,7 @@ import {
 const path = "/for-agencies";
 const title = "GEO audits for SEO agencies";
 const description =
-  "How an SEO agency uses the free CiteScore check, the $39 audit, the $149 white-label PDF, and the $29 GEO Agency Kit. The check reads public files. It does not query ChatGPT.";
+  "How an SEO agency starts a local client with the free AI Answer Snapshot and the $49 Fix Pack. The free check, the $39 audit, the $149 white-label PDF, and the $29 GEO Agency Kit are still separate. The check reads public files. It does not query ChatGPT.";
 
 export const metadata: Metadata = pageMeta({
   title,
@@ -75,7 +76,7 @@ const clientSteps = [
   {
     n: "04",
     title: "Say what a pass means",
-    body: "A passing row means that signal is present on the public file. It is the start of the conversation. The citation itself is what the $39 audit turns into a punch list.",
+    body: "A passing row means that signal is present on the public file. It is the start of the conversation. Who an answer engine names is what the free AI Answer Snapshot shows. The $39 audit is the scored PDF when a client wants that punch list.",
   },
 ];
 
@@ -135,41 +136,28 @@ export default function ForAgenciesPage() {
             <div>
               <p className="kicker">For SEO agencies</p>
               <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] tracking-tight text-ink sm:text-5xl sm:leading-[1.1]">
-                Sell an AI-search audit with a page you can show on the call.
+                Show a local client who ChatGPT names before you sell an audit.
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-8 text-ink-soft">
-                The free check reads a client&apos;s public files. The{" "}
-                {site.priceLabel} audit is the PDF. The {agencyKitLabel} is
-                the proposal, the pricing, and the 30-day delivery around
-                that PDF.
+                The free AI Answer Snapshot asks logged-out ChatGPT and
+                Perplexity who they name and sends one page. AI answers vary
+                run to run. No payment. The Fix Pack is {fixPackIntroPriceLabel}{" "}
+                for the done-for-you work after that. The {site.priceLabel}{" "}
+                GEO audit, the white-label PDF, and the {agencyKitLabel} stay
+                available as separate purchases.
               </p>
-              <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/free-check"
-                  className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
-                >
-                  Run the free check
-                </Link>
-                <a
-                  href={agencyKitUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink"
-                >
-                  Get the kit — $29
-                </a>
+              <div className="mt-8 max-w-xl">
+                <IndustrySnapshotCta variant="general" />
               </div>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
-                CiteScore fetches public HTML. It does not log into ChatGPT,
-                Perplexity, or Google AI Overviews.
-              </p>
             </div>
             <aside className="report-sheet rounded-2xl border border-rule p-6">
-              <p className="kicker text-copper">Two purchases, two jobs</p>
+              <p className="kicker">Still for sale</p>
               <dl className="mt-4 space-y-5 text-sm leading-6">
                 <div>
                   <dt className="font-medium text-ink">
-                    {site.priceLabel} GEO audit
+                    <Link href="/geo-audit" className="text-forest underline">
+                      {site.priceLabel} GEO audit
+                    </Link>
                   </dt>
                   <dd className="mt-1 text-ink-soft">
                     One client URL. A score and about ten fixes, as a PDF you
@@ -189,6 +177,12 @@ export default function ForAgenciesPage() {
                 className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
               >
                 Sample report — fictional, labeled
+              </Link>
+              <Link
+                href="/free-check"
+                className="mt-3 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
+              >
+                Run the free check
               </Link>
             </aside>
           </div>
@@ -261,10 +255,12 @@ export default function ForAgenciesPage() {
                 </Link>
               </div>
               <div className="rounded-2xl border border-rule p-6">
-                <p className="kicker">{site.priceLabel} · one URL</p>
-                <h3 className="mt-3 font-serif text-2xl">The audit</h3>
+                <p className="kicker">{site.priceLabel} · still available</p>
+                <h3 className="mt-3 font-serif text-2xl">The scored PDF</h3>
                 <p className="mt-3 text-sm leading-6 text-ink-soft">
-                  We fetch the URL you submit and a few same-host pages, such
+                  The free snapshot comes first. The audit is the PDF when a
+                  client wants a score. We fetch the URL you submit and a few
+                  same-host pages, such
                   as /about, /pricing, and /faq, plus robots.txt, llms.txt,
                   and the sitemap. When a language-model key is configured,
                   that review uses the HTML we fetched.{" "}
@@ -327,23 +323,29 @@ export default function ForAgenciesPage() {
         </section>
 
         <section id="audit" className="border-b border-rule/80">
-          <div className="mx-auto grid max-w-5xl gap-10 px-5 py-14 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.9fr)]">
-            <div>
-              <p className="kicker">The {site.priceLabel} audit</p>
-              <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-                One client URL. One PDF you can send.
-              </h2>
-              <p className="mt-4 max-w-xl text-ink-soft leading-7">
-                Submit the public page you are allowed to have processed.
-                Typical turnaround after payment is a few minutes. Refund
-                within 14 days if the file is missing, unreadable, or about
-                the wrong URL. Weekly rescans at {site.subscriptionPriceLabel}{" "}
-                are on the roadmap. They are not for sale on this page. The
-                Fix Pack refund is separate: full refund within 14 days if it
-                is not useful.
-              </p>
-              <p className="mt-4 text-sm leading-6 text-ink-soft">
-                Sold by CiteScore.{" "}
+          <div className="mx-auto max-w-5xl px-5 py-14">
+            <p className="kicker">Still available</p>
+            <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
+              The {site.priceLabel} audit, when a client wants the scored PDF.
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-ink-soft">
+              One public URL. A 0–100 CiteScore and about ten fixes, as a PDF,
+              usually a few minutes after payment. Refund within 14 days if
+              the file is missing, unreadable, or about the wrong URL. Weekly
+              rescans at {site.subscriptionPriceLabel} are on the roadmap.
+              They are not for sale on this page. The Fix Pack refund is
+              separate: full refund within 14 days if it is not useful.
+            </p>
+            <p className="mt-4 text-sm leading-6">
+              <Link href="/geo-audit" className="font-medium text-forest underline">
+                Open the {site.priceLabel} GEO audit
+              </Link>
+              <span className="text-ink-soft">
+                . Checkout is on that page. The company on the{" "}
+                <Link href="/sample" className="text-forest underline">
+                  sample report
+                </Link>{" "}
+                is fictional, and the page says so.{" "}
                 <Link href="/terms" className="text-forest underline">
                   Terms
                 </Link>
@@ -356,31 +358,8 @@ export default function ForAgenciesPage() {
                   Refunds
                 </Link>
                 .
-              </p>
-              <p className="mt-4 text-sm leading-6 text-ink-soft">
-                Show the format first on the{" "}
-                <Link href="/sample" className="text-forest underline">
-                  sample report
-                </Link>
-                . The company on that page is fictional, and the page says so.
-              </p>
-              <div className="mt-8 max-w-xl">
-                <AuditForm id="agencies-audit" />
-              </div>
-            </div>
-            <div className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
-              <p className="kicker on-ink">Client audit</p>
-              <p className="mt-3 font-serif text-5xl tracking-tight">
-                {site.priceLabel}
-              </p>
-              <p className="mt-2 text-sm text-[#d7c7b0]">
-                One URL · PDF · about ten fixes
-              </p>
-              <p className="mt-6 text-sm leading-6 text-[#d7c7b0]">
-                Paste the client URL in the form. Checkout is a one-time
-                payment. The PDF is the file you forward.
-              </p>
-            </div>
+              </span>
+            </p>
           </div>
         </section>
 

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
-import { site } from "@/lib/site";
+import { fixPackIntroPriceLabel, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "CiteScore alternatives",
@@ -13,6 +14,16 @@ export const metadata: Metadata = pageMeta({
 });
 
 const links = [
+  {
+    href: "/free-snapshot",
+    title: "Free AI Answer Snapshot",
+    dek: "Who ChatGPT and Perplexity name for a local business. One page. No payment.",
+  },
+  {
+    href: "/fix-pack",
+    title: `Fix Pack (${fixPackIntroPriceLabel})`,
+    dek: "The done-for-you work after you have seen who was named.",
+  },
   {
     href: "/alternatives/otterly",
     title: "CiteScore vs Otterly",
@@ -36,7 +47,7 @@ const links = [
   {
     href: "/geo-audit",
     title: `The ${site.priceLabel} GEO audit`,
-    dek: "If you already know you want the punch-list PDF, start here.",
+    dek: "Still available: one public URL, a 0–100 score, and about ten fixes, as a PDF.",
   },
 ];
 
@@ -53,8 +64,12 @@ export default function AlternativesIndexPage() {
           CiteScore is not trying to replace a mention-tracking suite. These
           pages exist so a founder searching “Otterly alternative,”
           “Profound vs …,” or “Peec AI alternative” can see the honest
-          split: {site.priceLabel} once versus a monthly monitor.
+          split: {site.priceLabel} once versus a monthly monitor. Local
+          businesses start with the free snapshot.
         </p>
+        <div className="mt-8">
+          <IndustrySnapshotCta variant="general" />
+        </div>
         <ul className="mt-10 divide-y divide-rule border-y border-rule">
           {links.map((item) => (
             <li key={item.href} className="py-5">

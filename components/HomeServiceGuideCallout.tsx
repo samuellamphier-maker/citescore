@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { freeSnapshotPath, type HomeServiceTradeInfo } from "@/lib/home-service-trade";
+import { fixPackIntroPriceLabel } from "@/lib/site";
 
 export function HomeServiceGuideCallout({ trade }: { trade: HomeServiceTradeInfo }) {
   return (
@@ -22,6 +23,12 @@ export function HomeServiceGuideCallout({ trade }: { trade: HomeServiceTradeInfo
           className="text-sm font-medium text-forest underline underline-offset-4 hover:underline"
         >
           See an example snapshot
+        </Link>
+        <Link
+          href="/fix-pack"
+          className="text-sm font-medium text-forest underline underline-offset-4 hover:underline"
+        >
+          Fix Pack, {fixPackIntroPriceLabel}
         </Link>
       </div>
     </aside>
