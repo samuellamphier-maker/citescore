@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/thanks",
+        destination: "/thank-you",
+        permanent: true,
+      },
+      {
+        source: "/confirmation",
+        destination: "/thank-you",
+        permanent: true,
+      },
+      {
         source: "/refund",
         destination: "/refunds",
         permanent: true,

@@ -40,7 +40,7 @@ Requires Node 20+.
 | `/robots.txt` | Generated from `app/robots.ts` |
 | `/api/reports/sample/pdf` | Same sample, as a PDF |
 | `/checkout` | Payment-link CTA, or waitlist form if the link is unset |
-| `/thanks` | Post-payment “we’re crawling it” page (set this as the Payment Link success URL) |
+| `/thank-you` | Free snapshot request received (noindex). `/thanks` and `/confirmation` permanently redirect here. |
 | `/privacy` | URL + LLM disclosure |
 | `/r/[token]` | Buyer web copy of a paid report |
 | `/admin` | Job queue (gated by `ADMIN_TOKEN`) |
@@ -81,7 +81,7 @@ If `STRIPE_SECRET_KEY` is set, the webhook re-fetches the session before extract
 1. Create a **$39 one-time** [Payment Link](https://dashboard.stripe.com/payment-links).
 2. Collect customer email.
 3. Optional: add a custom text field keyed `site_url` labeled “Site URL” as a backup if someone opens the raw link without our query string.
-4. After completion → redirect to `https://YOUR_DOMAIN/thanks`.
+4. After completion → redirect to `https://YOUR_DOMAIN/thank-you`. `/thanks` permanently redirects there.
 5. Set `NEXT_PUBLIC_CHECKOUT_URL` to the Payment Link and redeploy (it is inlined at **build** time).
 
 Do **not** rely on `?site_url=` surviving onto the session by itself. Stripe ignores unknown query params. `client_reference_id` is the reliable hook.
@@ -168,7 +168,7 @@ The crawler skips private/loopback IPs, caps HTML size (~1.5 MB), and times out 
 3. Add the Stripe webhook to `https://YOUR_DOMAIN/api/stripe/webhook`.
 4. Verify a Resend domain and set `EMAIL_FROM`.
 5. Run `supabase/schema.sql` and set the Supabase keys.
-6. Set Payment Link success URL to `https://YOUR_DOMAIN/thanks`.
+6. Set Payment Link success URL to `https://YOUR_DOMAIN/thank-you`. `/thanks` permanently redirects there.
 
 ### Timeouts
 

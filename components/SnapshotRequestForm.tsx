@@ -89,7 +89,7 @@ export function SnapshotRequestForm() {
     setPhase("sending");
     const next = form.elements.namedItem("_next");
     if (next instanceof HTMLInputElement) {
-      next.value = new URL("/free-snapshot/thanks", window.location.origin).toString();
+      next.value = new URL("/thank-you", window.location.origin).toString();
     }
     try {
       form.submit();
@@ -189,7 +189,7 @@ export function SnapshotRequestForm() {
       <input
         type="hidden"
         name="_next"
-        value={`${productionOrigin}/free-snapshot/thanks`}
+        value={`${productionOrigin}/thank-you`}
       />
       <input type="hidden" name="_replyto" value={fields.email} />
       <input

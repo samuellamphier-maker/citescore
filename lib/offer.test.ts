@@ -142,6 +142,7 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
   for (const path of [
     "/free-snapshot",
     "/free-snapshot/thanks",
+    "/thank-you",
     "/checkout",
     "/thanks",
     "/geo-for-local-businesses",
@@ -211,6 +212,7 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
   for (const rel of [
     "../app/free-snapshot/page.tsx",
     "../app/free-snapshot/thanks/page.tsx",
+    "../app/thank-you/page.tsx",
     "../app/checkout/page.tsx",
     "../app/thanks/page.tsx",
   ]) {
@@ -279,7 +281,7 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     }),
     "/free-snapshot?trade=plumber",
   );
-  for (const path of ["/", "/free-snapshot", "/fix-pack", "/sample-fix-pack", "/checkout", "/pricing", "/privacy", "/terms", "/refunds"]) {
+  for (const path of ["/", "/free-snapshot", "/free-snapshot/thanks", "/thank-you", "/fix-pack", "/sample-fix-pack", "/checkout", "/pricing", "/privacy", "/terms", "/refunds"]) {
     assert.equal(isStickySnapshotContentPath(path), false, path);
     assert.equal(contentStickySnapshotHref({ guidePath: path }), null, path);
   }

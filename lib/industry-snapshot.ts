@@ -138,6 +138,7 @@ const stickyExcludedPaths = new Set([
   "/",
   "/free-snapshot",
   "/free-snapshot/thanks",
+  "/thank-you",
   "/fix-pack",
   "/fix-pack/next-steps",
   "/sample-fix-pack",
