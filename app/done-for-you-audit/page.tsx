@@ -78,7 +78,7 @@ export default function DoneForYouAuditPage() {
         }}
       />
       <SiteHeader />
-      <main>
+      <main id="main">
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.75fr)] lg:items-center lg:py-20">
             <div>
@@ -121,7 +121,7 @@ export default function DoneForYouAuditPage() {
               </p>
             </div>
             <aside className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
-              <p className="kicker text-[#d7c7b0]">One URL</p>
+              <p className="kicker on-ink">One URL</p>
               <p className="mt-3 font-serif text-6xl tracking-tight">$99</p>
               <p className="mt-2 text-sm text-[#d7c7b0]">
                 Written walkthrough · 3 business days

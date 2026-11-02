@@ -185,7 +185,7 @@ export default function SampleSnapshotPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <ExampleBanner />
         <p className="kicker mt-8">Example AI Answer Snapshot</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -275,9 +275,9 @@ export default function SampleSnapshotPage() {
                 </caption>
                 <thead className="border-b border-rule text-xs uppercase tracking-wide text-ink-soft">
                   <tr>
-                    <th className="py-3 pr-4 font-medium">Engine</th>
-                    <th className="py-3 pr-4 font-medium">Example prompt</th>
-                    <th className="py-3 font-medium">Example date</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Engine</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Example prompt</th>
+                    <th scope="col" className="py-3 font-medium">Example date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -359,11 +359,11 @@ export default function SampleSnapshotPage() {
                 </caption>
                 <thead className="border-b border-rule text-xs uppercase tracking-wide text-ink-soft">
                   <tr>
-                    <th className="py-3 pr-4 font-medium">Fictional business</th>
-                    <th className="py-3 pr-4 font-medium">Named in this example</th>
-                    <th className="py-3 pr-4 font-medium">Illustrative Google rating</th>
-                    <th className="py-3 pr-4 font-medium">Illustrative reviews</th>
-                    <th className="py-3 font-medium">Vs Example Plumbing Co.</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Fictional business</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Named in this example</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Illustrative Google rating</th>
+                    <th scope="col" className="py-3 pr-4 font-medium">Illustrative reviews</th>
+                    <th scope="col" className="py-3 font-medium">Vs Example Plumbing Co.</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -12,7 +12,7 @@ export default function AdminPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-14">
         <p className="kicker">Operations</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">Audit queue</h1>
         <p className="mt-4 max-w-2xl text-ink-soft leading-7">

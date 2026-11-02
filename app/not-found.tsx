@@ -13,7 +13,7 @@ export default function NotFound() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-xl flex-1 px-5 py-20">
+      <main id="main" className="mx-auto w-full max-w-xl flex-1 px-5 py-20">
         <p className="kicker">404</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">
           That page is not in the report.

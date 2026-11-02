@@ -41,7 +41,7 @@ export default function FaqPage() {
     <>
       <JsonLd data={faqPageJsonLd(trustFaqs)} />
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">FAQ</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
           Questions before the free snapshot or the {fixPackIntroPriceLabel} Fix Pack.

@@ -61,8 +61,8 @@ export function FaqList({ items }: { items: readonly FaqItem[] }) {
   return (
     <div className="mt-6 divide-y divide-rule border-y border-rule">
       {items.map((item) => (
-        <details key={item.q} className="group py-4">
-          <summary className="cursor-pointer list-none font-medium leading-7 marker:content-none [&::-webkit-details-marker]:hidden">
+        <details key={item.q} className="group py-2">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center font-medium leading-7 marker:content-none [&::-webkit-details-marker]:hidden">
             <span className="flex items-start justify-between gap-6">
               {item.q}
               <span className="text-ink-soft group-open:rotate-45">+</span>

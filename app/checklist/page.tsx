@@ -50,7 +50,7 @@ export default function ChecklistPage() {
         }}
       />
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">Checklist · free</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">{title}</h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">{description}</p>

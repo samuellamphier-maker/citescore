@@ -69,15 +69,41 @@ body {
   color: var(--color-ink-soft);
 }
 
+/* .kicker sets color outside a layer, so a text color utility cannot override it. */
+.kicker.on-ink {
+  color: #d7c7b0;
+}
+
 .hairline {
   border-color: var(--color-rule);
 }
 
-.report-sheet {
-  background: var(--color-cream);
-  box-shadow:
-    0 1px 0 rgba(27, 24, 20, 0.04),
-    0 24px 60px -28px rgba(27, 24, 20, 0.28);
+/* Component layer so a utility such as bg-ink can paint a dark card.
+   An unlayered background shorthand was covering bg-ink and leaving
+   cream text on a cream sheet. */
+@layer components {
+  .report-sheet {
+    background: var(--color-cream);
+    box-shadow:
+      0 1px 0 rgba(27, 24, 20, 0.04),
+      0 24px 60px -28px rgba(27, 24, 20, 0.28);
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+.bg-ink :is(a, button, input, textarea, select, summary):focus-visible,
+.bg-forest :is(a, button, input, textarea, select, summary):focus-visible,
+.sticky-snapshot-offer :is(a, button):focus-visible {
+  outline-color: var(--color-cream);
 }
 
 .article-prose {

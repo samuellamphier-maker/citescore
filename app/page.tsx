@@ -93,7 +93,7 @@ export default function HomePage() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main">
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:py-20">
             <div>
@@ -349,7 +349,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
-              <p className="kicker text-[#d7c7b0]">Introductory</p>
+              <p className="kicker on-ink">Introductory</p>
               <p className="mt-3 font-serif text-6xl tracking-tight">
                 {fixPackIntroPriceLabel}
               </p>
@@ -506,8 +506,8 @@ export default function HomePage() {
             </h2>
             <div className="mt-8 divide-y divide-rule border-y border-rule">
               {faqs.map((item) => (
-                <details key={item.q} className="group py-4">
-                  <summary className="cursor-pointer list-none font-medium leading-7 marker:content-none [&::-webkit-details-marker]:hidden">
+                <details key={item.q} className="group py-2">
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center font-medium leading-7 marker:content-none [&::-webkit-details-marker]:hidden">
                     <span className="flex items-start justify-between gap-6">
                       {item.q}
                       <span className="text-ink-soft group-open:rotate-45">

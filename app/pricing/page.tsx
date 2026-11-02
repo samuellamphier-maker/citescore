@@ -52,7 +52,7 @@ export default function PricingPage() {
     <>
       <JsonLd data={faqPageJsonLd(pricingFaqs)} />
       <SiteHeader />
-      <main className="mx-auto w-full max-w-5xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-14">
         <p className="kicker">Pricing</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
           The snapshot is free. The Fix Pack is {fixPackIntroPriceLabel}.
@@ -138,7 +138,7 @@ export default function PricingPage() {
           </article>
 
           <article className="rounded-2xl border border-ink bg-ink px-5 py-6 text-cream sm:px-6">
-            <p className="kicker text-[#d7c7b0]">Introductory</p>
+            <p className="kicker on-ink">Introductory</p>
             <h2 className="mt-2 font-serif text-3xl tracking-tight">
               AI Visibility Fix Pack
             </h2>

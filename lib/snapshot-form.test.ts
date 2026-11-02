@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { SNAPSHOT_SUBJECT } from "./email-request.ts";
 import {
+  snapshotFieldErrors,
   snapshotFieldsComplete,
   snapshotFormEncoded,
   snapshotFormPageEndpoint,
@@ -52,6 +53,23 @@ test("snapshot payload posts the visitor fields through FlowForm", () => {
     snapshotFieldsComplete({ ...fields, email: "not-an-email" }),
     false,
   );
+  assert.deepEqual(snapshotFieldErrors(fields), {});
+  assert.deepEqual(
+    snapshotFieldErrors({
+      business: " ",
+      city: "",
+      service: "",
+      website: " ",
+      email: "not-an-email",
+    }),
+    {
+      business: "Enter a business name.",
+      city: "Enter a city.",
+      service: "Enter a service.",
+      website: "Enter a website.",
+      email: "Enter an email address.",
+    },
+  );
   assert.equal(snapshotSubmitSucceeded(200, { success: "true" }), true);
   assert.equal(snapshotSubmitSucceeded(200, { success: true }), true);
   assert.equal(
@@ -95,6 +113,9 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /name="Website"/);
   assert.match(form, /type="url"/);
   assert.match(form, /type="email"/);
+  assert.match(form, /inputMode="email"/);
+  assert.match(form, /aria-invalid=\{fieldErrors\.email \? true : undefined\}/);
+  assert.match(form, /snapshotFieldErrors/);
   assert.match(form, /autoComplete="organization"/);
   assert.match(form, /autoComplete="address-level2"/);
   assert.match(form, /autoComplete="url"/);
