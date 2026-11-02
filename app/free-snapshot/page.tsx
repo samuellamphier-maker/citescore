@@ -36,7 +36,7 @@ export default function FreeSnapshotPage() {
       <JsonLd data={faqPageJsonLd(freeSnapshotPageFaqs)} />
       <JsonLd data={freeSnapshotServiceJsonLd(publicOrigin())} />
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">Free · no checkout</p>
         <FreeSnapshotLead />
         <p className="mt-4 leading-7 text-ink-soft">

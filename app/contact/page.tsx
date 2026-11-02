@@ -26,7 +26,7 @@ export default function ContactPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
         <p className="kicker">Contact</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">Contact</h1>
         <p className="mt-4 text-sm text-ink-soft">

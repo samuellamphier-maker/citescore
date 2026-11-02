@@ -25,7 +25,7 @@ export function IndustrySnapshotCta({
   const general = variant === "general";
   return (
     <aside className="rounded-2xl border border-ink bg-ink px-5 py-6 text-cream">
-      <p className="kicker text-[#d7c7b0]">Free</p>
+      <p className="kicker on-ink">Free</p>
       <h2 className="mt-2 font-serif text-2xl leading-snug tracking-tight text-cream">
         {!general && industry
           ? `Free AI Answer Snapshot for ${industry} businesses in your city`

@@ -34,7 +34,7 @@ export default function FixPackPage() {
       <JsonLd data={faqPageJsonLd(fixPackFaqs())} />
       <JsonLd data={fixPackProductJsonLd(publicOrigin())} />
       <SiteHeader />
-      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">AI Visibility Fix Pack</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
           Who AI recommends instead of you, and the fixes.

@@ -10,20 +10,24 @@ export function WaitlistForm({ defaultUrl = "" }: { defaultUrl?: string }) {
     "idle",
   );
   const [message, setMessage] = useState("");
+  const [invalidField, setInvalidField] = useState<"email" | "url" | null>(null);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const cleanUrl = normalizeSiteUrl(url);
     if (!isValidEmail(email)) {
       setStatus("error");
+      setInvalidField("email");
       setMessage("Use a real email so we can reach you when checkout is live.");
       return;
     }
     if (!cleanUrl) {
       setStatus("error");
+      setInvalidField("url");
       setMessage("Enter the site URL you want audited.");
       return;
     }
+    setInvalidField(null);
 
     setStatus("saving");
     setMessage("");
@@ -60,19 +64,29 @@ export function WaitlistForm({ defaultUrl = "" }: { defaultUrl?: string }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} className="space-y-4" noValidate>
       <div>
         <label htmlFor="waitlist-email" className="kicker">
           Email
         </label>
         <input
           id="waitlist-email"
+          name="email"
           type="email"
+          inputMode="email"
           autoComplete="email"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
           required
+          aria-invalid={invalidField === "email" ? true : undefined}
+          aria-describedby={invalidField === "email" ? "waitlist-error" : "waitlist-note"}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="mt-2 h-12 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none focus:border-forest"
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (invalidField === "email") setInvalidField(null);
+          }}
+          className="mt-2 h-12 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft"
           placeholder="you@company.com"
         />
       </div>
@@ -82,13 +96,22 @@ export function WaitlistForm({ defaultUrl = "" }: { defaultUrl?: string }) {
         </label>
         <input
           id="waitlist-url"
-          type="text"
+          name="url"
+          type="url"
           inputMode="url"
           autoComplete="url"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
           required
+          aria-invalid={invalidField === "url" ? true : undefined}
+          aria-describedby={invalidField === "url" ? "waitlist-error" : "waitlist-note"}
           value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          className="mt-2 h-12 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none focus:border-forest"
+          onChange={(e) => {
+            setUrl(e.target.value);
+            if (invalidField === "url") setInvalidField(null);
+          }}
+          className="mt-2 h-12 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft"
           placeholder="https://yourproduct.com"
         />
       </div>
@@ -100,11 +123,11 @@ export function WaitlistForm({ defaultUrl = "" }: { defaultUrl?: string }) {
         {status === "saving" ? "Saving…" : "Notify me when checkout is live"}
       </button>
       {message ? (
-        <p className="text-sm text-copper" role="alert">
+        <p id="waitlist-error" className="text-sm text-ink" role="alert">
           {message}
         </p>
       ) : (
-        <p className="text-sm text-ink-soft">
+        <p id="waitlist-note" className="text-sm text-ink-soft">
           We store email + URL so we can open checkout with your site already
           attached. No marketing list.
         </p>

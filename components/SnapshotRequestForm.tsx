@@ -13,6 +13,7 @@ import {
 } from "@/lib/email-request";
 import { contactEmail, productionOrigin } from "@/lib/site";
 import {
+  snapshotFieldErrors,
   snapshotFieldsComplete,
   snapshotFormPageEndpoint,
   snapshotSendErrorMessage,
@@ -20,6 +21,19 @@ import {
   snapshotValidationMessage,
   snapshotWebsiteValue,
 } from "@/lib/snapshot-form";
+
+const fieldClass =
+  "mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft";
+
+type FieldKey = "business" | "city" | "service" | "website" | "email";
+
+const fieldIds: Record<FieldKey, string> = {
+  business: "snapshot-business",
+  city: "snapshot-city",
+  service: "snapshot-service",
+  website: "snapshot-website",
+  email: "snapshot-email",
+};
 
 export function SnapshotRequestForm() {
   const [business, setBusiness] = useState("");
@@ -30,6 +44,7 @@ export function SnapshotRequestForm() {
   const [email, setEmail] = useState("");
   const [phase, setPhase] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [validationMessage, setValidationMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldKey, string>>>({});
   const submitLock = useRef(false);
   const trade = useHomeServiceTradeParam();
   const serviceValue = service ?? trade?.service ?? "";
@@ -54,10 +69,32 @@ export function SnapshotRequestForm() {
     return next;
   }
 
+  function clearFieldError(key: FieldKey) {
+    setFieldErrors((current) => {
+      if (!current[key]) return current;
+      const next = { ...current };
+      delete next[key];
+      return next;
+    });
+  }
+
+  function revealErrors(websiteValue: string) {
+    const errors = snapshotFieldErrors({ ...fields, website: websiteValue });
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) setValidationMessage(snapshotValidationMessage);
+    return errors;
+  }
+
+  function onInvalid(event: React.FormEvent<HTMLInputElement>) {
+    const form = event.currentTarget.form;
+    const websiteValue = form ? writeWebsite(form) : snapshotWebsiteValue(website);
+    revealErrors(websiteValue);
+  }
+
   function onSubmitClick(event: React.MouseEvent<HTMLButtonElement>) {
     const form = event.currentTarget.form;
     if (!form) return;
-    writeWebsite(form);
+    revealErrors(writeWebsite(form));
   }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -67,12 +104,20 @@ export function SnapshotRequestForm() {
     const form = event.currentTarget;
     const websiteValue = writeWebsite(form);
     const posted = { ...fields, website: websiteValue };
-    if (!form.checkValidity() || !snapshotFieldsComplete(posted)) {
+    const errors = snapshotFieldErrors(posted);
+    if (!form.checkValidity() || Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
       setValidationMessage(snapshotValidationMessage);
       setPhase("idle");
+      const first = (Object.keys(fieldIds) as FieldKey[]).find((key) => errors[key]);
+      if (first) {
+        const invalid = document.getElementById(fieldIds[first]);
+        if (invalid instanceof HTMLInputElement) invalid.focus();
+      }
       form.reportValidity();
       return;
     }
+    setFieldErrors({});
 
     const honeyInput = form.elements.namedItem("_honey");
     const honey = honeyInput instanceof HTMLInputElement ? honeyInput.value : "";
@@ -118,10 +163,21 @@ export function SnapshotRequestForm() {
           name="Business name"
           required
           autoComplete="organization"
+          onInvalid={onInvalid}
+          aria-invalid={fieldErrors.business ? true : undefined}
+          aria-describedby={fieldErrors.business ? "snapshot-business-error" : undefined}
           value={business}
-          onChange={(event) => setBusiness(event.target.value)}
-          className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none"
+          onChange={(event) => {
+            setBusiness(event.target.value);
+            clearFieldError("business");
+          }}
+          className={fieldClass}
         />
+        {fieldErrors.business ? (
+          <p id="snapshot-business-error" className="mt-1 text-sm leading-6 text-ink">
+            {fieldErrors.business}
+          </p>
+        ) : null}
       </div>
       <div className="grid gap-3 sm:grid-cols-2">
         <div>
@@ -133,10 +189,21 @@ export function SnapshotRequestForm() {
             name="City"
             required
             autoComplete="address-level2"
+            onInvalid={onInvalid}
+            aria-invalid={fieldErrors.city ? true : undefined}
+            aria-describedby={fieldErrors.city ? "snapshot-city-error" : undefined}
             value={city}
-            onChange={(event) => setCity(event.target.value)}
-            className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none"
+            onChange={(event) => {
+              setCity(event.target.value);
+              clearFieldError("city");
+            }}
+            className={fieldClass}
           />
+          {fieldErrors.city ? (
+            <p id="snapshot-city-error" className="mt-1 text-sm leading-6 text-ink">
+              {fieldErrors.city}
+            </p>
+          ) : null}
         </div>
         <div>
           <label htmlFor="snapshot-service" className="text-sm font-medium">
@@ -146,11 +213,23 @@ export function SnapshotRequestForm() {
             id="snapshot-service"
             name="Service"
             required
+            autoComplete="off"
+            onInvalid={onInvalid}
             placeholder="Plumber"
+            aria-invalid={fieldErrors.service ? true : undefined}
+            aria-describedby={fieldErrors.service ? "snapshot-service-error" : undefined}
             value={serviceValue}
-            onChange={(event) => setService(event.target.value)}
-            className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none placeholder:text-ink-soft/70"
+            onChange={(event) => {
+              setService(event.target.value);
+              clearFieldError("service");
+            }}
+            className={fieldClass}
           />
+          {fieldErrors.service ? (
+            <p id="snapshot-service-error" className="mt-1 text-sm leading-6 text-ink">
+              {fieldErrors.service}
+            </p>
+          ) : null}
         </div>
       </div>
       <div>
@@ -164,11 +243,25 @@ export function SnapshotRequestForm() {
           inputMode="url"
           required
           autoComplete="url"
+          onInvalid={onInvalid}
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
           placeholder="https://"
+          aria-invalid={fieldErrors.website ? true : undefined}
+          aria-describedby={fieldErrors.website ? "snapshot-website-error" : undefined}
           value={website}
-          onChange={(event) => setWebsite(event.target.value)}
-          className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none placeholder:text-ink-soft/70"
+          onChange={(event) => {
+            setWebsite(event.target.value);
+            clearFieldError("website");
+          }}
+          className={fieldClass}
         />
+        {fieldErrors.website ? (
+          <p id="snapshot-website-error" className="mt-1 text-sm leading-6 text-ink">
+            {fieldErrors.website}
+          </p>
+        ) : null}
       </div>
       <div>
         <label htmlFor="snapshot-email" className="text-sm font-medium">
@@ -178,12 +271,27 @@ export function SnapshotRequestForm() {
           id="snapshot-email"
           name="Email"
           type="email"
+          inputMode="email"
           required
           autoComplete="email"
+          onInvalid={onInvalid}
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
+          aria-invalid={fieldErrors.email ? true : undefined}
+          aria-describedby={fieldErrors.email ? "snapshot-email-error" : undefined}
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          className="mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink outline-none"
+          onChange={(event) => {
+            setEmail(event.target.value);
+            clearFieldError("email");
+          }}
+          className={fieldClass}
         />
+        {fieldErrors.email ? (
+          <p id="snapshot-email-error" className="mt-1 text-sm leading-6 text-ink">
+            {fieldErrors.email}
+          </p>
+        ) : null}
       </div>
       <input type="hidden" name="_subject" value={SNAPSHOT_SUBJECT} />
       <input

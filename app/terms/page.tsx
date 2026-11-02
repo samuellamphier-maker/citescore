@@ -23,7 +23,7 @@ export default function TermsPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
         <p className="kicker">Terms</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">
           Terms of Service

@@ -14,7 +14,7 @@ export default function ThanksPage() {
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-xl flex-1 px-5 py-14">
         <p className="kicker">Checkout</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">
           Payment received. The crawl is starting.

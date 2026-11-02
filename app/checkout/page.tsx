@@ -44,6 +44,7 @@ function buyButton(href: string, label: string) {
       className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep"
     >
       {label}
+      <span className="sr-only"> (opens in a new tab)</span>
     </a>
   );
 }
@@ -62,7 +63,7 @@ function Offer({
   children: ReactNode;
 }) {
   const sampleClass =
-    "mt-3 inline-flex text-sm font-medium text-forest underline underline-offset-4 hover:underline";
+    "mt-3 inline-flex min-h-11 items-center text-sm font-medium text-forest underline underline-offset-4 hover:underline";
   return (
     <article className="rounded-2xl border border-rule bg-cream p-6">
       <h2 className="font-serif text-2xl tracking-tight">{title}</h2>
@@ -95,7 +96,7 @@ export default async function CheckoutPage({
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
         <p className="kicker">Checkout</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">
           Choose a product

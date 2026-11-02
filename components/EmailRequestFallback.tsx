@@ -126,8 +126,8 @@ export function EmailRequestFallback({
   }
 
   const buttonClass = dark
-    ? "rounded-lg border border-cream/40 px-3 py-1.5 text-xs font-medium text-cream hover:border-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream disabled:cursor-not-allowed disabled:opacity-50"
-    : "rounded-lg border border-ink/25 bg-cream px-3 py-1.5 text-xs font-medium text-ink hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-50";
+    ? "inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-cream/40 px-3 text-xs font-medium text-cream hover:border-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream disabled:cursor-not-allowed disabled:opacity-50"
+    : "inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-ink/25 bg-cream px-3 text-xs font-medium text-ink hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-50";
 
   return (
     <div className={className}>

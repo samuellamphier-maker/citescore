@@ -129,7 +129,7 @@ export default function ForAgenciesPage() {
         }}
       />
       <SiteHeader />
-      <main>
+      <main id="main">
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:py-20">
             <div>
@@ -197,7 +197,7 @@ export default function ForAgenciesPage() {
         <section id="white-label" className="border-b border-rule/80 bg-ink text-cream">
           <div className="mx-auto grid max-w-5xl gap-10 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.7fr)] lg:items-center">
             <div>
-              <p className="kicker text-[#d7c7b0]">For client delivery</p>
+              <p className="kicker on-ink">For client delivery</p>
               <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-5xl sm:leading-[1.1]">
                 {whiteLabelAuditLabel}
               </h2>
@@ -369,7 +369,7 @@ export default function ForAgenciesPage() {
               </div>
             </div>
             <div className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
-              <p className="kicker text-[#d7c7b0]">Client audit</p>
+              <p className="kicker on-ink">Client audit</p>
               <p className="mt-3 font-serif text-5xl tracking-tight">
                 {site.priceLabel}
               </p>

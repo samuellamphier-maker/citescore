@@ -26,7 +26,7 @@ export default async function LiveReportPage({
   return (
     <>
       <SiteHeader />
-      <main className="px-4 py-8 sm:px-6 sm:py-12">
+      <main id="main" className="px-4 py-8 sm:px-6 sm:py-12">
         <div className="no-print mx-auto mb-6 flex max-w-[52rem] flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-ink-soft">
             Paid audit for {job.siteUrl}. Engine statuses are inferred — not live

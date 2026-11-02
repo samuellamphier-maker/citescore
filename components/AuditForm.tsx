@@ -20,6 +20,8 @@ export function AuditForm({ id, size = "hero", defaultUrl = "" }: Props) {
     const url = normalizeSiteUrl(value);
     if (!url) {
       setError("Enter a full site URL, like https://yourproduct.com");
+      const input = event.currentTarget.elements.namedItem("url");
+      if (input instanceof HTMLInputElement) input.focus();
       return;
     }
     setError("");
@@ -27,30 +29,38 @@ export function AuditForm({ id, size = "hero", defaultUrl = "" }: Props) {
   }
 
   const hero = size === "hero";
+  const inputId = id ? `${id}-url` : "audit-url";
+  const hintId = id ? `${id}-hint` : "audit-hint";
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full">
+    <form id={id} onSubmit={onSubmit} className="w-full" noValidate>
       <div
         className={`flex w-full flex-col gap-2 rounded-xl border border-rule bg-cream p-2 shadow-[0_1px_0_rgba(27,24,20,0.04)] sm:flex-row sm:items-stretch ${
           hero ? "sm:p-2" : ""
         }`}
       >
-        <label className="sr-only" htmlFor={id ? `${id}-url` : "audit-url"}>
+        <label className="sr-only" htmlFor={inputId}>
           Site URL
         </label>
         <input
-          id={id ? `${id}-url` : "audit-url"}
+          id={inputId}
           name="url"
-          type="text"
+          type="url"
           inputMode="url"
           autoComplete="url"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
+          required
           placeholder="https://yourproduct.com"
+          aria-invalid={error ? true : undefined}
+          aria-describedby={hintId}
           value={value}
           onChange={(e) => {
             setValue(e.target.value);
             if (error) setError("");
           }}
-          className={`min-w-0 flex-1 rounded-lg bg-transparent px-3 text-ink outline-none placeholder:text-ink-soft/70 ${
+          className={`min-w-0 flex-1 rounded-lg bg-transparent px-3 text-ink placeholder:text-ink-soft ${
             hero ? "h-12 text-base" : "h-11 text-sm"
           }`}
         />
@@ -63,15 +73,9 @@ export function AuditForm({ id, size = "hero", defaultUrl = "" }: Props) {
           Get the $39 audit
         </button>
       </div>
-      {error ? (
-        <p className="mt-2 text-sm text-copper" role="alert">
-          {error}
-        </p>
-      ) : (
-        <p className="mt-2 text-sm text-ink-soft">
-          One-time PDF report. No login. No subscription required.
-        </p>
-      )}
+      <p id={hintId} className={`mt-2 text-sm ${error ? "text-ink" : "text-ink-soft"}`} role={error ? "alert" : undefined}>
+        {error || "One-time PDF report. No login. No subscription required."}
+      </p>
     </form>
   );
 }

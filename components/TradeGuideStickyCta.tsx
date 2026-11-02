@@ -83,13 +83,13 @@ export function TradeGuideStickyCta({ href }: { href: string }) {
             <Link
               href={href}
               aria-label={label}
-              className="inline-block py-2 font-medium text-cream underline decoration-cream underline-offset-2 hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+              className="inline-flex min-h-11 items-center font-medium text-cream underline decoration-cream underline-offset-2 hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
             >
               {label}
             </Link>
             <Link
               href="/sample-snapshot"
-              className="inline-block py-1 text-cream underline decoration-cream underline-offset-2 hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream sm:py-2"
+              className="inline-flex min-h-11 items-center text-cream underline decoration-cream underline-offset-2 hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
             >
               See an example snapshot
             </Link>

@@ -82,7 +82,7 @@ export default async function GeoAuditPage({
         }}
       />
       <SiteHeader />
-      <main>
+      <main id="main">
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(16rem,0.9fr)] lg:py-20">
             <div>

@@ -30,6 +30,7 @@ export function FixPackBuyLink({
         {...(checkout ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {label ?? fixPackCtaLabel()}
+        {checkout ? <span className="sr-only"> (opens in a new tab)</span> : null}
       </a>
       {checkout ? null : (
         <EmailRequestFallback tone={tone} requestText={fixPackRequestText(contactEmail)} />

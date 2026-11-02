@@ -42,13 +42,18 @@ export function snapshotWebsiteValue(value: string) {
 }
 
 export function snapshotFieldsComplete(fields: SnapshotFields) {
-  return (
-    fields.business.trim() !== "" &&
-    fields.city.trim() !== "" &&
-    fields.service.trim() !== "" &&
-    snapshotWebsiteValue(fields.website) !== "" &&
-    EMAIL_RE.test(fields.email.trim())
-  );
+  return Object.keys(snapshotFieldErrors(fields)).length === 0;
+}
+
+/** Field messages shown after a failed check. Empty fields are omitted. */
+export function snapshotFieldErrors(fields: SnapshotFields) {
+  const errors: Partial<Record<keyof SnapshotFields, string>> = {};
+  if (fields.business.trim() === "") errors.business = "Enter a business name.";
+  if (fields.city.trim() === "") errors.city = "Enter a city.";
+  if (fields.service.trim() === "") errors.service = "Enter a service.";
+  if (snapshotWebsiteValue(fields.website) === "") errors.website = "Enter a website.";
+  if (!EMAIL_RE.test(fields.email.trim())) errors.email = "Enter an email address.";
+  return errors;
 }
 
 /**
