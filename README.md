@@ -40,7 +40,7 @@ Requires Node 20+.
 | `/robots.txt` | Generated from `app/robots.ts` |
 | `/api/reports/sample/pdf` | Same sample, as a PDF |
 | `/checkout` | Payment-link CTA, or waitlist form if the link is unset |
-| `/thank-you` | Free snapshot request received (noindex). `/thanks` and `/confirmation` permanently redirect here. |
+| `/thank-you` | Free snapshot request received (noindex). `/thanks`, `/confirmation`, and `/free-snapshot/thanks` permanently redirect here. |
 | `/privacy` | URL + LLM disclosure |
 | `/r/[token]` | Buyer web copy of a paid report |
 | `/admin` | Job queue (gated by `ADMIN_TOKEN`) |

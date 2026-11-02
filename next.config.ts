@@ -30,6 +30,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/free-snapshot/thanks",
+        destination: "/thank-you",
+        permanent: true,
+      },
+      {
         source: "/refund",
         destination: "/refunds",
         permanent: true,

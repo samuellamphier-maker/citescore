@@ -211,7 +211,6 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
 
   for (const rel of [
     "../app/free-snapshot/page.tsx",
-    "../app/free-snapshot/thanks/page.tsx",
     "../app/thank-you/page.tsx",
     "../app/checkout/page.tsx",
     "../app/thanks/page.tsx",

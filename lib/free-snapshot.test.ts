@@ -71,31 +71,26 @@ test("main snapshot CTAs point at the free snapshot page", () => {
   assert.match(sample, /<SnapshotRequestForm \/>/);
 });
 
-test("free snapshot thanks page confirms the request and stays out of the index", () => {
-  const thanks = readFileSync(
-    new URL("../app/free-snapshot/thanks/page.tsx", import.meta.url),
-    "utf8",
+test("/free-snapshot/thanks permanently redirects to /thank-you and stays out of the index", () => {
+  assert.equal(
+    existsSync(new URL("../app/free-snapshot/thanks/page.tsx", import.meta.url)),
+    false,
   );
-  assert.match(thanks, /robots: \{ index: false, follow: false \}/);
-  assert.match(thanks, /Request received\. We reply with your one-page snapshot by email\./);
-  assert.match(thanks, /The CiteScore Team prepares the one-page snapshot and emails it\./);
-  assert.match(thanks, /There is no set delivery time\./);
-  assert.match(thanks, /href="\/sample-snapshot"/);
-  assert.match(thanks, /Fictional business, illustrative numbers/);
-  assert.match(thanks, /href="\/sample-fix-pack"/);
-  assert.match(thanks, /Illustrative example content, not a real client or real results/);
-  assert.match(thanks, /href="\/fix-pack"/);
-  assert.match(thanks, /<FixPackBuyLink \/>/);
-  assert.match(thanks, /within a few business\s+days after payment/);
-  assert.match(thanks, /href="\/privacy"/);
-  assert.match(thanks, /CiteScore Team/);
-  assert.match(thanks, /Sold by \{sellerName\}/);
-  assert.doesNotMatch(thanks, /Samuel|Lamphier|testimonial|customers served|guarantee/i);
-  assert.doesNotMatch(thanks, /few minutes|24 hours|48 hours|Payment received/);
+  assert.equal(
+    existsSync(new URL("../app/free-snapshot/thanks/route.ts", import.meta.url)),
+    false,
+  );
+  assert.match(
+    nextConfig,
+    /source:\s*"\/free-snapshot\/thanks",\s*destination:\s*"\/thank-you",\s*permanent:\s*true/,
+  );
   assert.equal(
     marketingPaths.some((item) => item.path === "/free-snapshot/thanks"),
     false,
   );
+  const sitemap = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(sitemap, /free-snapshot\/thanks/);
+  assert.doesNotMatch(sitemap, /\/thank-you/);
   assert.match(form, /\/thank-you/);
   assert.doesNotMatch(form, /free-snapshot\/thanks/);
   assert.doesNotMatch(form, /free-snapshot\?sent=1/);
@@ -113,6 +108,8 @@ test("/thank-you confirms the snapshot request, stays out of the index, and alia
   assert.match(thankYou, /What happens next/);
   assert.match(thankYou, /href="\/sample-snapshot"/);
   assert.match(thankYou, /Fictional business, illustrative numbers/);
+  assert.match(thankYou, /href="\/sample-fix-pack"/);
+  assert.match(thankYou, /Illustrative example content, not a real client or real results/);
   assert.match(thankYou, /href="\/fix-pack"/);
   assert.match(thankYou, /<FixPackBuyLink \/>/);
   assert.match(thankYou, /within a few business\s+days after payment/);
@@ -132,6 +129,10 @@ test("/thank-you confirms the snapshot request, stays out of the index, and alia
   assert.match(
     nextConfig,
     /source:\s*"\/confirmation",\s*destination:\s*"\/thank-you",\s*permanent:\s*true/,
+  );
+  assert.match(
+    nextConfig,
+    /source:\s*"\/free-snapshot\/thanks",\s*destination:\s*"\/thank-you",\s*permanent:\s*true/,
   );
   assert.equal(
     existsSync(new URL("../app/confirmation/page.tsx", import.meta.url)),
@@ -156,5 +157,5 @@ test("/snapshot permanently redirects to the free snapshot page", () => {
     nextConfig,
     /source:\s*"\/free-ai-answer-snapshot",\s*destination:\s*"\/free-snapshot",\s*permanent:\s*true/,
   );
-  assert.doesNotMatch(nextConfig, /source:\s*"\/free-snapshot"/);
+  assert.doesNotMatch(nextConfig, /source:\s*"\/free-snapshot"\s*,/);
 });
