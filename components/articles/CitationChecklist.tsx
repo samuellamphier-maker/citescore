@@ -82,8 +82,11 @@ export function CitationChecklistArticle() {
       <p>
         If you want the longer definition of the category, start with{" "}
         <Link href="/blog/what-is-geo">what GEO is</Link>. If you want the
-        scored version of this list on your URL, that is the{" "}
-        <Link href="/geo-audit">{`$39 GEO audit`}</Link> — also described as a{" "}
+        scored version of this list on your URL, start with the{" "}
+        <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The{" "}
+        <Link href="/fix-pack">Fix Pack</Link> is the paid next step. The{" "}
+        <Link href="/geo-audit">{`$39 GEO audit`}</Link> is still the scored
+        PDF — also described as a{" "}
         <Link href="/chatgpt-citation-check">ChatGPT citation check</Link> for
         the search that asks for one.
       </p>

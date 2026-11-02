@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
+import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -83,6 +84,16 @@ export default async function GeoAuditPage({
       />
       <SiteHeader />
       <main id="main">
+        <section className="border-b border-rule/80 bg-paper-2/50">
+          <div className="mx-auto max-w-3xl px-5 py-10">
+            <IndustrySnapshotCta variant="general" />
+            <p className="mt-4 text-sm leading-6 text-ink-soft">
+              Local businesses: start with the free snapshot. This page is
+              still the {site.priceLabel} self-serve PDF if you want one
+              public URL scored.
+            </p>
+          </div>
+        </section>
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(16rem,0.9fr)] lg:py-20">
             <div>

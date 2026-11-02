@@ -229,7 +229,7 @@ export function AiSearchVisibilityForB2bSaasArticle() {
             Run the <Link href="/free-check">free check</Link> on the marketing host. It reads the homepage, GPTBot,
             PerplexityBot, Google-Extended, <code>llms.txt</code>, a sitemap, and homepage JSON-LD. It does not read
             OAI-SearchBot or Claude-SearchBot, and it does not query an answer engine. For a pricing or comparison URL,
-            use the <Link href="/geo-audit">$39 GEO audit</Link>. The homepage check does not open that path.
+            start with the <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The <Link href="/geo-audit">$39 GEO audit</Link> still scores one public URL. The homepage check does not open that path.
           </>
         }
       />

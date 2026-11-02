@@ -16,7 +16,8 @@ export type AuditPitch = {
   detail: string;
 };
 
-const OFFER = "Get a prioritized page-level fix list for $39.";
+const OFFER =
+  "See who ChatGPT and Perplexity name with a free AI Answer Snapshot. The Fix Pack is the paid next step.";
 const HONESTY =
   "CiteScore checks citation-readiness signals and does not query live ChatGPT or Perplexity.";
 
@@ -102,6 +103,6 @@ export function freeCheckAuditPitch(result: FreeCheckSnapshot): AuditPitch {
   return {
     heading:
       "Your site allows AI crawlers, and the five public-file basics are in place.",
-    detail: `The free check still cannot show a live citation. Get a prioritized, page-specific action plan for $39. ${HONESTY}`,
+    detail: `The free check still cannot show a live citation. ${OFFER} ${HONESTY}`,
   };
 }

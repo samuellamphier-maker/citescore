@@ -103,7 +103,11 @@ export function WhatIsGeoArticle() {
 
       <h2>What CiteScore measures — and what it does not</h2>
       <p>
-        CiteScore is a{" "}
+        For a local business, the first step is the{" "}
+        <Link href="/free-snapshot">free AI Answer Snapshot</Link>: who
+        ChatGPT and Perplexity name. The{" "}
+        <Link href="/fix-pack">Fix Pack</Link> is the done-for-you work after
+        that. CiteScore also sells a{" "}
         <Link href="/geo-audit">one-time GEO audit</Link> for one public URL.
         We fetch what a polite crawler can see, score on-page signals
         (definitions, entities, evidence, schema, freshness, crawler access),

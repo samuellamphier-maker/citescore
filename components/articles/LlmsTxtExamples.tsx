@@ -409,7 +409,14 @@ export function LlmsTxtExamplesArticle() {
         edit. It does not upload anything.
       </p>
 
-      <h2>Check the file, then score the page</h2>
+      <h2>Check the file, then see who gets named</h2>
+      <p>
+        The <Link href="/free-snapshot">free AI Answer Snapshot</Link> asks
+        logged-out ChatGPT and Perplexity who they name for a local business
+        and sends one page. AI answers vary run to run. No payment. The{" "}
+        <Link href="/fix-pack">Fix Pack</Link> is the done-for-you work after
+        you have seen who was named.
+      </p>
       <p>
         The <Link href="/free-check">free check</Link> fetches{" "}
         <code>/llms.txt</code> on the host you enter and reports whether the

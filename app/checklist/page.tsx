@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
+import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
-import { AuditCta } from "@/components/AuditCta";
 import { CitationReadinessChecklist } from "@/components/CitationReadinessChecklist";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -12,7 +13,7 @@ import { publicOrigin, site } from "@/lib/site";
 const path = "/checklist";
 const title = "AI Citation Readiness Checklist";
 const description =
-  "Forty concrete checks for crawler access, structured data, answer-ready copy, evidence, and entity clarity. llms.txt is optional; Google says it ignores llms.txt. The full list is free on the page. The $39 audit scores one URL.";
+  "Forty concrete checks for crawler access, structured data, answer-ready copy, evidence, and entity clarity. llms.txt is optional; Google says it ignores llms.txt. The full list is free on the page. Local businesses start with the free AI Answer Snapshot. The $39 audit still scores one URL.";
 
 export const metadata = pageMeta({
   title,
@@ -70,20 +71,20 @@ export default function ChecklistPage() {
             outside that tool, the item says so.
           </p>
           <p>
-            The <Link href="/geo-audit">{site.priceLabel} audit</Link> scores
-            one public URL and returns about ten prioritized fixes. Use the
-            list first. Pay for the score when you want the punch list for a
-            specific page.
+            Local businesses start with the{" "}
+            <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The{" "}
+            <Link href="/fix-pack">Fix Pack</Link> is the paid next step. The{" "}
+            <Link href="/geo-audit">{site.priceLabel} audit</Link> still scores
+            one public URL and returns about ten prioritized fixes.
           </p>
         </div>
         <div className="mt-10">
           <CitationReadinessChecklist />
         </div>
-        <AuditCta
-          id="checklist-audit"
-          title={`Score one URL for ${site.priceLabel}`}
-          body="The checklist is the unpaid version. The audit is one public URL, a 0–100 CiteScore, and about ten fixes from the HTML we fetched. We do not log into ChatGPT, Perplexity, or Google AI Overviews."
-        />
+        <div className="mt-12">
+          <IndustrySnapshotCta variant="general" />
+        </div>
+        <AuditSecondaryNote />
         <nav className="mt-10 border-t border-rule pt-6" aria-label="Related">
           <p className="kicker">Keep reading</p>
           <ul className="mt-3 space-y-2">

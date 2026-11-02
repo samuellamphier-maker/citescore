@@ -82,7 +82,9 @@ export default function ChatgptCitationCheckPage() {
           a prompt and screenshot the reply.
         </p>
         <p>
-          CiteScore is that check, sold as a{" "}
+          For a local business, start with the{" "}
+          <Link href="/free-snapshot">free AI Answer Snapshot</Link>: who
+          ChatGPT and Perplexity name. The scored PDF is still the{" "}
           <Link href="/geo-audit">$39 GEO audit</Link> of one URL. You get a
           0–100 score, a per-engine snapshot that includes a ChatGPT line, and
           about ten fixes in a PDF. When a language-model key is configured,
