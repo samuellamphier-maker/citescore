@@ -10,7 +10,7 @@ export function HomeServiceGuideCallout({ trade }: { trade: HomeServiceTradeInfo
         they name and reply with one page. AI answers vary run to run. No
         payment.
       </p>
-      <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div data-funnel-cta className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href={freeSnapshotPath(trade.id)}
           className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep sm:w-auto"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useSyncExternalStore } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { EmailRequestFallback } from "@/components/EmailRequestFallback";
 import { useHomeServiceTradeParam } from "@/components/useHomeServiceTrade";
@@ -21,18 +21,6 @@ import {
   snapshotWebsiteValue,
 } from "@/lib/snapshot-form";
 
-function subscribeSent() {
-  return () => {};
-}
-
-function sentFromRedirect() {
-  return new URLSearchParams(window.location.search).get("sent") === "1";
-}
-
-function sentOnServer() {
-  return false;
-}
-
 export function SnapshotRequestForm() {
   const [business, setBusiness] = useState("");
   const [city, setCity] = useState("");
@@ -43,7 +31,6 @@ export function SnapshotRequestForm() {
   const [phase, setPhase] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [validationMessage, setValidationMessage] = useState("");
   const submitLock = useRef(false);
-  const returned = useSyncExternalStore(subscribeSent, sentFromRedirect, sentOnServer);
   const trade = useHomeServiceTradeParam();
   const serviceValue = service ?? trade?.service ?? "";
 
@@ -75,7 +62,7 @@ export function SnapshotRequestForm() {
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (submitLock.current || phase === "sent" || returned) return;
+    if (submitLock.current || phase === "sent") return;
 
     const form = event.currentTarget;
     const websiteValue = writeWebsite(form);
@@ -112,7 +99,7 @@ export function SnapshotRequestForm() {
     }
   }
 
-  const sent = phase === "sent" || returned;
+  const sent = phase === "sent";
 
   return (
     <form
