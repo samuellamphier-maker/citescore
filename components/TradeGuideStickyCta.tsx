@@ -1,10 +1,11 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   STICKY_SNAPSHOT_DISMISS_KEY,
   STICKY_SNAPSHOT_DISMISS_MS,
+  funnelCtaIsInView,
   readStickySnapshotDismissed,
 } from "@/lib/sticky-snapshot";
 
@@ -29,10 +30,37 @@ function rememberDismissal() {
  */
 export function TradeGuideStickyCta({ href }: { href: string }) {
   const [open, setOpen] = useState(true);
+  const [yieldToPageCta, setYieldToPageCta] = useState(false);
+  const asideRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    if (!readStickySnapshotDismissed()) return;
-    document.documentElement.setAttribute("data-sticky-snapshot", "off");
+    if (readStickySnapshotDismissed()) {
+      document.documentElement.setAttribute("data-sticky-snapshot", "off");
+      return;
+    }
+
+    function update() {
+      const aside = asideRef.current;
+      const nodes = document.querySelectorAll("[data-funnel-cta]");
+      let visible = false;
+      for (const node of nodes) {
+        if (!(node instanceof HTMLElement)) continue;
+        if (aside?.contains(node)) continue;
+        if (funnelCtaIsInView(node.getBoundingClientRect(), window.innerHeight)) {
+          visible = true;
+          break;
+        }
+      }
+      setYieldToPageCta(visible);
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   if (!open) return null;
@@ -44,7 +72,10 @@ export function TradeGuideStickyCta({ href }: { href: string }) {
         className="h-[calc(10rem+env(safe-area-inset-bottom,0px))] sm:h-[calc(7.5rem+env(safe-area-inset-bottom,0px))]"
       />
       <aside
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-forest-deep bg-forest pb-[env(safe-area-inset-bottom,0px)] text-cream motion-reduce:animate-none motion-reduce:transition-none"
+        ref={asideRef}
+        inert={yieldToPageCta ? true : undefined}
+        aria-hidden={yieldToPageCta || undefined}
+        className={`fixed inset-x-0 bottom-0 z-40 border-t border-forest-deep bg-forest pb-[env(safe-area-inset-bottom,0px)] text-cream motion-reduce:animate-none motion-reduce:transition-none${yieldToPageCta ? " invisible pointer-events-none" : ""}`}
         aria-label="Free AI Answer Snapshot"
       >
         <div className="mx-auto flex max-w-3xl items-center gap-2 px-4 py-2">

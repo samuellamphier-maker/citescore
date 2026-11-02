@@ -20,6 +20,7 @@ import {
 import {
   STICKY_SNAPSHOT_DISMISS_DAYS,
   STICKY_SNAPSHOT_DISMISS_KEY,
+  funnelCtaIsInView,
   stickySnapshotDismissed,
   stickySnapshotHeadScript,
 } from "./sticky-snapshot.ts";
@@ -173,6 +174,21 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
   assert.match(sticky, /useLayoutEffect/);
   assert.match(sticky, /localStorage\.setItem/);
   assert.match(sticky, /STICKY_SNAPSHOT_DISMISS_KEY/);
+  assert.match(sticky, /funnelCtaIsInView/);
+  assert.match(sticky, /data-funnel-cta/);
+  assert.match(sticky, /invisible pointer-events-none/);
+  assert.match(
+    readFileSync(new URL("../components/IndustrySnapshotCta.tsx", import.meta.url), "utf8"),
+    /data-funnel-cta/,
+  );
+  assert.match(
+    readFileSync(new URL("../components/HomeServiceGuideCallout.tsx", import.meta.url), "utf8"),
+    /data-funnel-cta/,
+  );
+  const inView = { top: 760, bottom: 820, width: 300, height: 60 };
+  assert.equal(funnelCtaIsInView(inView, 844), true);
+  assert.equal(funnelCtaIsInView({ top: 900, bottom: 960, width: 300, height: 60 }, 844), false);
+  assert.equal(funnelCtaIsInView({ top: 830, bottom: 850, width: 300, height: 20 }, 844), false);
   assert.equal(STICKY_SNAPSHOT_DISMISS_DAYS, 14);
   assert.equal(STICKY_SNAPSHOT_DISMISS_KEY, "citescore-sticky-snapshot-dismissed");
   assert.equal(stickySnapshotDismissed(null), false);

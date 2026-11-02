@@ -13,6 +13,23 @@ export function stickySnapshotDismissed(raw: string | null, now = Date.now()): b
   return Number.isFinite(until) && until > now;
 }
 
+type ViewportRect = {
+  top: number;
+  bottom: number;
+  width: number;
+  height: number;
+};
+
+/**
+ * True when a page CTA is already on screen, so the fixed bar would stack
+ * on top of it. A sliver (under 24px) does not count.
+ */
+export function funnelCtaIsInView(rect: ViewportRect, viewportHeight: number): boolean {
+  if (rect.width < 8 || rect.height < 8 || viewportHeight <= 0) return false;
+  const visible = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+  return visible >= 24;
+}
+
 /** True when this browser still has an unexpired dismissal. */
 export function readStickySnapshotDismissed(): boolean {
   if (typeof window === "undefined") return false;

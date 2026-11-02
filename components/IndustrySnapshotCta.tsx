@@ -34,7 +34,10 @@ export function IndustrySnapshotCta({
       <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
         {general ? generalLead : industryLead}
       </p>
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+      <div
+        data-funnel-cta
+        className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+      >
         <Link
           href={snapshotHref}
           className="inline-flex h-11 items-center justify-center rounded-lg bg-cream px-4 text-sm font-medium text-ink hover:bg-paper"
