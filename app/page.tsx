@@ -390,6 +390,12 @@ export default function HomePage() {
                 >
                   All guides
                 </Link>
+                <Link
+                  href="/tools"
+                  className="text-sm font-medium text-forest underline-offset-4 hover:underline"
+                >
+                  Tools
+                </Link>
               </div>
             </div>
             <p className="mt-4 max-w-2xl text-ink-soft leading-7">

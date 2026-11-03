@@ -39,6 +39,9 @@ export function SiteFooter() {
           <Link href="/industries" className={footerLink}>
             Industries
           </Link>
+          <Link href="/tools" className={footerLink}>
+            Tools
+          </Link>
           <Link href="/blog" className={footerLink}>
             Blog
           </Link>
