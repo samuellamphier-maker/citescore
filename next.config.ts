@@ -244,6 +244,61 @@ const nextConfig: NextConfig = {
         destination: "/sample-snapshot",
         permanent: true,
       },
+      {
+        source: "/resources",
+        destination: "/guides",
+        permanent: true,
+      },
+      {
+        source: "/glossary",
+        destination: "/guides",
+        permanent: true,
+      },
+      {
+        source: "/chatgpt-visibility",
+        destination: "/how-to-get-cited-by-chatgpt",
+        permanent: true,
+      },
+      {
+        source: "/perplexity",
+        destination: "/how-to-get-cited-by-perplexity",
+        permanent: true,
+      },
+      {
+        source: "/ai-search",
+        destination: "/answer-engine-optimization",
+        permanent: true,
+      },
+      {
+        source: "/local-seo",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/team",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/press",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/changelog",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/status",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/partners",
+        destination: "/for-agencies",
+        permanent: true,
+      },
     ];
   },
 };
