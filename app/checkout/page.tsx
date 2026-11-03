@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { WaitlistForm } from "@/components/WaitlistForm";
+import { AuditCheckout } from "@/components/AuditCheckout";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
@@ -11,8 +11,6 @@ import { TrustLinks } from "@/components/TrustLinks";
 import {
   agencyKitLabel,
   agencyKitUrl,
-  buildPaymentHref,
-  checkoutUrl,
   doneForYouAuditLabel,
   doneForYouAuditUrl,
   fixPackIntroPriceLabel,
@@ -41,7 +39,7 @@ function buyButton(href: string, label: string) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep"
+      className="flex h-12 items-center justify-center rounded-lg border border-ink/30 bg-cream text-ink hover:border-ink hover:bg-paper-2"
     >
       {label}
       <span className="sr-only"> (opens in a new tab)</span>
@@ -54,20 +52,56 @@ function Offer({
   description,
   sampleHref = "/sample-audit.pdf",
   sampleLabel = "See a sample report (PDF)",
+  emphasis = "secondary",
   children,
 }: {
   title: string;
   description: string;
   sampleHref?: string;
   sampleLabel?: string;
+  emphasis?: "primary" | "secondary";
   children: ReactNode;
 }) {
-  const sampleClass =
-    "mt-3 inline-flex min-h-11 items-center text-sm font-medium text-forest underline underline-offset-4 hover:underline";
+  const primary = emphasis === "primary";
+  const Heading = primary ? "h2" : "h3";
+  const sampleClass = primary
+    ? "mt-3 inline-flex min-h-11 items-center text-sm font-medium text-cream underline underline-offset-4 hover:underline"
+    : "mt-3 inline-flex min-h-11 items-center text-sm font-medium text-forest underline underline-offset-4 hover:underline";
   return (
-    <article className="rounded-2xl border border-rule bg-cream p-6">
-      <h2 className="font-serif text-2xl tracking-tight">{title}</h2>
-      <p className="mt-2 text-sm leading-6 text-ink-soft">{description}</p>
+    <article
+      className={
+        primary
+          ? "rounded-2xl border border-ink bg-ink p-6 text-cream shadow-[0_24px_60px_-32px_rgba(27,24,20,0.55)] sm:p-8"
+          : "rounded-2xl border border-rule bg-cream p-6"
+      }
+    >
+      {primary ? <p className="kicker on-ink">Start here</p> : null}
+      <Heading
+        className={
+          primary
+            ? "mt-3 font-serif text-3xl tracking-tight sm:text-4xl"
+            : "font-serif text-2xl tracking-tight"
+        }
+      >
+        {title}
+      </Heading>
+      {primary ? (
+        <p className="mt-4 font-serif text-5xl tracking-tight">
+          {fixPackIntroPriceLabel}
+          <span className="ml-3 align-middle font-sans text-base font-normal tracking-normal text-[#d7c7b0]">
+            <span className="line-through">{fixPackListPriceLabel}</span> list
+          </span>
+        </p>
+      ) : null}
+      <p
+        className={
+          primary
+            ? "mt-3 text-sm leading-6 text-[#d7c7b0]"
+            : "mt-2 text-sm leading-6 text-ink-soft"
+        }
+      >
+        {description}
+      </p>
       <div className="mt-5">{children}</div>
       {sampleHref.endsWith(".pdf") ? (
         <a href={sampleHref} className={sampleClass}>
@@ -90,8 +124,6 @@ export default async function CheckoutPage({
   const params = await searchParams;
   const requested = firstString(params.url) ?? "";
   const siteUrl = normalizeSiteUrl(requested) ?? "";
-  const paymentHref = buildPaymentHref(siteUrl || undefined);
-  const paymentsLive = Boolean(checkoutUrl);
 
   return (
     <>
@@ -99,101 +131,80 @@ export default async function CheckoutPage({
       <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
         <p className="kicker">Checkout</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">
-          Choose a product
+          Free snapshot, then the Fix Pack
         </h1>
         <p className="mt-4 text-ink-soft leading-7">
-          The AI Visibility Fix Pack is {fixPackIntroPriceLabel} introductory
-          ({fixPackListPriceLabel} list), for one business. The{" "}
-          {site.priceLabel} audit is a self-serve PDF. The $99 and $149
-          audits are written for one public URL and delivered within 3
-          business days. The {agencyKitLabel} is the writing around an audit.
+          See who ChatGPT names for your trade and city. The AI Visibility
+          Fix Pack is {fixPackIntroPriceLabel} introductory (
+          {fixPackListPriceLabel} list), for one business. Other products
+          are below.
         </p>
 
-        <div className="mt-8 space-y-4">
+        <div className="mt-8">
           <Offer
+            emphasis="primary"
             title={`AI Visibility Fix Pack (${fixPackIntroPriceLabel})`}
-            description={`Introductory ${fixPackIntroPriceLabel}, list ${fixPackListPriceLabel}. One business, one city, one service. Card checkout is ${fixPackIntroPriceLabel}.`}
+            description={`One business, one city, one service. The free snapshot comes first. Card checkout is ${fixPackIntroPriceLabel}.`}
             sampleHref="/sample-snapshot"
             sampleLabel="See an example snapshot (fictional business)"
           >
-            <p className="mb-3 text-sm leading-6 text-ink-soft">
-              The free snapshot comes first.{" "}
-              <Link href="/free-snapshot" className="text-forest underline">
+            <div className="flex flex-col gap-3">
+              <Link
+                href="/free-snapshot"
+                className="flex h-12 items-center justify-center rounded-lg bg-cream font-medium text-ink hover:bg-paper"
+              >
                 Request the free snapshot
               </Link>
-              .
-            </p>
-            <FixPackBuyLink className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep" />
-            <FixPackOfferFacts className="mt-4" />
+              <FixPackBuyLink
+                tone="dark"
+                className="flex h-12 items-center justify-center rounded-lg border border-cream/50 bg-forest font-medium text-cream hover:bg-forest-deep"
+              />
+            </div>
+            <FixPackOfferFacts tone="dark" className="mt-5" />
             <p className="mt-3 text-sm leading-6">
-              <Link href="/fix-pack" className="text-forest underline">
+              <Link href="/fix-pack" className="text-cream underline">
                 What is in the pack
               </Link>
             </p>
           </Offer>
+        </div>
 
-          <Offer
-            title={`${site.priceLabel} GEO audit`}
-            description="A self-serve PDF with a 0–100 score and about ten fixes, usually a few minutes after payment."
-          >
-            <p className="kicker">Site to audit</p>
-            <p className="mt-2 break-all font-mono text-sm">
-              {siteUrl || "No URL attached yet"}
-            </p>
-            {!siteUrl ? (
-              <p className="mt-2 text-sm text-ink-soft">
-                You can still continue.{" "}
-                <Link href="/#audit" className="text-forest underline">
-                  Paste a URL on the homepage
-                </Link>{" "}
-                if you have one.
-              </p>
-            ) : null}
-            <div className="mt-5">
-              {paymentsLive ? (
-                <div className="space-y-4">
-                  <a
-                    href={paymentHref}
-                    className="flex h-12 items-center justify-center rounded-lg bg-forest text-cream hover:bg-forest-deep"
-                  >
-                    Continue to payment · {site.priceLabel}
-                  </a>
-                  <p className="text-sm leading-6 text-ink-soft">
-                    The Payment Link receives{" "}
-                    <code className="font-mono text-xs">
-                      client_reference_id
-                    </code>{" "}
-                    (the site URL, first 200 characters) so the webhook can
-                    attach the right URL to the session. We also pass{" "}
-                    <code className="font-mono text-xs">site_url</code>.
-                  </p>
-                </div>
-              ) : (
-                <WaitlistForm defaultUrl={siteUrl} />
-              )}
-            </div>
-          </Offer>
+        <div className="mt-12 border-t border-rule pt-10">
+          <h2 className="font-serif text-2xl tracking-tight">Other products</h2>
+          <p className="mt-2 text-sm leading-6 text-ink-soft">
+            The {site.priceLabel} audit is a self-serve PDF. The $99 and $149
+            audits are written for one public URL and delivered within 3
+            business days. The {agencyKitLabel} is the writing around an audit.
+          </p>
+          <div className="mt-5 space-y-4">
+            <Offer
+              title={`${site.priceLabel} GEO audit`}
+              description="A self-serve PDF with a 0–100 score and about ten fixes, usually a few minutes after payment."
+            >
+              <AuditCheckout defaultUrl={siteUrl} />
+            </Offer>
 
-          <Offer
-            title={agencyKitLabel}
-            description="Client report template, pitch email sequence, pricing tiers, a one-pager, and a 30-day delivery SOP."
-          >
-            {buyButton(agencyKitUrl, "Buy the GEO Agency Kit")}
-          </Offer>
+            <Offer
+              title={agencyKitLabel}
+              description="Client report template, pitch email sequence, pricing tiers, a one-pager, and a 30-day delivery SOP."
+            >
+              {buyButton(agencyKitUrl, "Buy the GEO Agency Kit")}
+            </Offer>
 
-          <Offer
-            title={doneForYouAuditLabel}
-            description="A written walkthrough of one public URL, delivered within 3 business days."
-          >
-            {buyButton(doneForYouAuditUrl, "Buy the $99 audit")}
-          </Offer>
+            <Offer
+              title={doneForYouAuditLabel}
+              description="A written walkthrough of one public URL, delivered within 3 business days."
+            >
+              {buyButton(doneForYouAuditUrl, "Buy the $99 audit")}
+            </Offer>
 
-          <Offer
-            title={whiteLabelCheckoutLabel}
-            description="An unbranded PDF of one public URL, delivered within 3 business days, with no CiteScore branding."
-          >
-            {buyButton(whiteLabelAuditUrl, "Buy the white-label audit")}
-          </Offer>
+            <Offer
+              title={whiteLabelCheckoutLabel}
+              description="An unbranded PDF of one public URL, delivered within 3 business days, with no CiteScore branding."
+            >
+              {buyButton(whiteLabelAuditUrl, "Buy the white-label audit")}
+            </Offer>
+          </div>
         </div>
 
         <p className="mt-8 text-sm leading-6 text-ink-soft">
