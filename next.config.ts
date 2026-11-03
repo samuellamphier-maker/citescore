@@ -184,6 +184,46 @@ const nextConfig: NextConfig = {
         destination: "/checklist",
         permanent: true,
       },
+      {
+        source: "/free-audit",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/get-snapshot",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/start-here",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/ai-answer-snapshot-sample",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/book",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/audit",
+        destination: "/geo-audit",
+        permanent: true,
+      },
+      {
+        source: "/audit-39",
+        destination: "/geo-audit",
+        permanent: true,
+      },
+      {
+        source: "/ai-visibility-audit",
+        destination: "/geo-audit",
+        permanent: true,
+      },
     ];
   },
 };
