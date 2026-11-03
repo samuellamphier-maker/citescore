@@ -33,6 +33,9 @@ export function SiteHeader() {
           <Link href="/guides" className={navLink}>
             Guides
           </Link>
+          <Link href="/industries" className={navLink}>
+            Industries
+          </Link>
           <Link href="/checklist" className={navLink}>
             Checklist
           </Link>

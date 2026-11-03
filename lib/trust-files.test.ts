@@ -66,6 +66,8 @@ const sampleAliases = [
   "/sample-report",
   "/example-report",
   "/demo",
+  "/examples",
+  "/example",
 ];
 
 test("sample snapshot guesses permanently redirect and are not existing pages", () => {

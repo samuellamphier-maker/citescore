@@ -113,6 +113,13 @@ export default function GuidesPage() {
           <section key={group.id} id={group.id} className="mt-12">
             <h2 className="font-serif text-3xl tracking-tight">{group.title}</h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-ink-soft">{group.intro}</p>
+            {group.id === "industries" ? (
+              <p className="mt-3 text-sm leading-6">
+                <Link href="/industries" className="font-medium text-forest underline">
+                  All industry and local-business pages
+                </Link>
+              </p>
+            ) : null}
             <ul className="mt-4 divide-y divide-rule border-y border-rule">
               {group.pages.map((page) => (
                 <li key={page.path} className="py-4">
