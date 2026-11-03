@@ -62,6 +62,12 @@ export const marketingPaths: MarketingPath[] = [
     priority: 0.8,
     lastModified: "2026-10-31",
   },
+  {
+    path: "/industries",
+    changeFrequency: "weekly",
+    priority: 0.8,
+    lastModified: "2026-11-03",
+  },
   { path: "/geo-audit", changeFrequency: "monthly", priority: 0.9 },
   {
     path: "/alternatives",

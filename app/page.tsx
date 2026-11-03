@@ -377,12 +377,20 @@ export default function HomePage() {
                   Read the category before you buy another dashboard.
                 </h2>
               </div>
-              <Link
-                href="/guides"
-                className="text-sm font-medium text-forest underline-offset-4 hover:underline"
-              >
-                All guides
-              </Link>
+              <div className="flex flex-wrap gap-x-5 gap-y-2">
+                <Link
+                  href="/industries"
+                  className="text-sm font-medium text-forest underline-offset-4 hover:underline"
+                >
+                  Industries
+                </Link>
+                <Link
+                  href="/guides"
+                  className="text-sm font-medium text-forest underline-offset-4 hover:underline"
+                >
+                  All guides
+                </Link>
+              </div>
             </div>
             <p className="mt-4 max-w-2xl text-ink-soft leading-7">
               Editorial pages for founders searching GEO, ChatGPT citations,

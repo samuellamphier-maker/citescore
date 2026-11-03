@@ -36,6 +36,11 @@ const schemaIndustries: Record<string, string> = {
   "restaurant-schema-generator": "restaurant",
 };
 
+/** Schema generators that are already about one local business or trade. */
+export function industrySchemaGeneratorPaths() {
+  return Object.keys(schemaIndustries).map((id) => `/${id}`);
+}
+
 /** Trade phrase for the industry-page snapshot CTA, or null on other paths. */
 export function industrySnapshotLabel(path: string) {
   if (!path.startsWith(PREFIX)) return null;

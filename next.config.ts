@@ -85,6 +85,21 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/examples",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/example",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/industry",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
         source: "/support",
         destination: "/contact",
         permanent: true,
