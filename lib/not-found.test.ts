@@ -74,6 +74,14 @@ const purchaseAndTrustAliases = [
   { source: "/security", destination: "/.well-known/security.txt" },
   { source: "/vs", destination: "/alternatives" },
   { source: "/ai-visibility-checklist", destination: "/checklist" },
+  { source: "/free-audit", destination: "/free-snapshot" },
+  { source: "/get-snapshot", destination: "/free-snapshot" },
+  { source: "/start-here", destination: "/free-snapshot" },
+  { source: "/ai-answer-snapshot-sample", destination: "/sample-snapshot" },
+  { source: "/book", destination: "/contact" },
+  { source: "/audit", destination: "/geo-audit" },
+  { source: "/audit-39", destination: "/geo-audit" },
+  { source: "/ai-visibility-audit", destination: "/geo-audit" },
 ] as const;
 
 function escapeRegExp(value: string) {
