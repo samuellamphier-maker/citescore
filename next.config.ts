@@ -299,6 +299,41 @@ const nextConfig: NextConfig = {
         destination: "/for-agencies",
         permanent: true,
       },
+      {
+        source: "/services",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/fixpack",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/fix",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/pricing/fix-pack",
+        destination: "/fix-pack",
+        permanent: true,
+      },
+      {
+        source: "/signup",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/sign-up",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/plans",
+        destination: "/pricing",
+        permanent: true,
+      },
     ];
   },
 };

@@ -87,6 +87,13 @@ const purchaseAndTrustAliases = [
   { source: "/audit-39", destination: "/geo-audit" },
   { source: "/ai-visibility-audit", destination: "/geo-audit" },
   { source: "/results", destination: "/sample-snapshot" },
+  { source: "/services", destination: "/fix-pack" },
+  { source: "/fixpack", destination: "/fix-pack" },
+  { source: "/fix", destination: "/fix-pack" },
+  { source: "/pricing/fix-pack", destination: "/fix-pack" },
+  { source: "/signup", destination: "/free-snapshot" },
+  { source: "/sign-up", destination: "/free-snapshot" },
+  { source: "/plans", destination: "/pricing" },
 ] as const;
 
 function escapeRegExp(value: string) {
