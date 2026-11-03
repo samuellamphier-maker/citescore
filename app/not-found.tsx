@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+const usefulLinks = [
+  { href: "/sample-snapshot", label: "Example snapshot" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/ai-search-visibility-for-plumbers", label: "AI search visibility for plumbers" },
+  { href: "/ai-search-visibility-for-hvac", label: "AI search visibility for HVAC" },
+  { href: "/ai-search-visibility-for-dentists", label: "AI search visibility for dentists" },
+] as const;
+
 export default function NotFound() {
   return (
     <>
@@ -35,6 +44,11 @@ export default function NotFound() {
             Fix Pack, {fixPackIntroPriceLabel}
           </Link>
         </div>
+        <p className="mt-4 leading-7 text-ink-soft">
+          The free AI Answer Snapshot asks logged-out ChatGPT and Perplexity
+          who they name for one local business. No payment. The Fix Pack is{" "}
+          {fixPackIntroPriceLabel} introductory, and it is optional.
+        </p>
         <p className="mt-4 text-sm leading-6">
           <Link
             href="/sample-snapshot"
@@ -46,26 +60,20 @@ export default function NotFound() {
             . Fictional business, illustrative numbers.
           </span>
         </p>
-        <div className="mt-8 flex flex-wrap gap-4 text-sm">
-          <Link href="/" className="text-forest underline">
-            Home
-          </Link>
-          <Link href="/blog" className="text-forest underline">
-            Guides
-          </Link>
-          <Link href="/geo-audit" className="text-forest underline">
-            GEO audit
-          </Link>
-          <Link href="/chatgpt-citation-check" className="text-forest underline">
-            ChatGPT citation check
-          </Link>
-          <Link href="/ai-overviews" className="text-forest underline">
-            AI Overviews
-          </Link>
-          <Link href="/sample" className="text-forest underline">
-            Sample report
-          </Link>
-        </div>
+        <h2 className="mt-10 font-serif text-2xl tracking-tight">Useful pages</h2>
+        <ul className="mt-3 divide-y divide-rule border-y border-rule text-sm">
+          {usefulLinks.map((link) => (
+            <li key={link.href} className="py-3">
+              <Link
+                href={link.href}
+                className="font-medium text-forest underline-offset-4 hover:underline"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-8 border-t border-rule pt-6 text-sm text-ink">CiteScore Team</p>
       </main>
       <SiteFooter />
     </>

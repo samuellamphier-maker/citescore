@@ -26,15 +26,19 @@ test("404 keeps the report copy, offers the snapshot and Fix Pack, and is noinde
   assert.match(notFound, /href="\/sample-snapshot"/);
   assert.match(notFound, /See an example snapshot/);
   assert.match(notFound, /Fictional business, illustrative numbers/);
+  assert.match(notFound, /logged-out ChatGPT and Perplexity/);
+  assert.match(notFound, /No payment/);
+  assert.match(notFound, /CiteScore Team/);
   for (const href of [
-    "/",
-    "/blog",
-    "/geo-audit",
-    "/chatgpt-citation-check",
-    "/ai-overviews",
-    "/sample",
+    "/sample-snapshot",
+    "/how-it-works",
+    "/faq",
+    "/ai-search-visibility-for-plumbers",
+    "/ai-search-visibility-for-hvac",
+    "/ai-search-visibility-for-dentists",
   ]) {
-    assert.match(notFound, new RegExp(`href="${href}"`));
+    assert.match(notFound, new RegExp(`href: "${href}"`));
+    assert.equal(existsSync(new URL(`../app${href}/page.tsx`, import.meta.url)), true, href);
   }
   assert.match(notFound, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false\s*\}/);
   assert.doesNotMatch(notFound, invented);
@@ -82,6 +86,7 @@ const purchaseAndTrustAliases = [
   { source: "/audit", destination: "/geo-audit" },
   { source: "/audit-39", destination: "/geo-audit" },
   { source: "/ai-visibility-audit", destination: "/geo-audit" },
+  { source: "/results", destination: "/sample-snapshot" },
 ] as const;
 
 function escapeRegExp(value: string) {

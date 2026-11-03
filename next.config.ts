@@ -224,6 +224,11 @@ const nextConfig: NextConfig = {
         destination: "/geo-audit",
         permanent: true,
       },
+      {
+        source: "/results",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
     ];
   },
 };
