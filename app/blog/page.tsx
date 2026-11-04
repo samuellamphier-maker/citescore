@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { blogIndexDescription, blogPosts } from "@/lib/content/blog";
 import { topicPages } from "@/lib/content/topics";
@@ -142,6 +143,7 @@ export default function BlogIndexPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/blog" />
     </>
   );
 }

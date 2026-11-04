@@ -3,6 +3,7 @@ import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getTopic } from "@/lib/content/topics";
 import { pageMeta } from "@/lib/content/meta";
@@ -151,6 +152,7 @@ export default function PeecAlternativePage() {
         </p>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/alternatives/peec-ai" />
     </>
   );
 }

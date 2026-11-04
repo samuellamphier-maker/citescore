@@ -5,6 +5,7 @@ import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
@@ -356,6 +357,7 @@ export default function SampleFixPackPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/sample-fix-pack" />
     </>
   );
 }

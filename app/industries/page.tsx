@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { industryGroups, industryPageLabel } from "@/lib/content/industries";
 import { pageMeta } from "@/lib/content/meta";
@@ -177,6 +178,7 @@ export default function IndustriesPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/industries" />
     </>
   );
 }

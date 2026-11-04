@@ -4,6 +4,7 @@ import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { blogPosts } from "@/lib/content/blog";
 import { guideGroups } from "@/lib/content/guides";
@@ -183,6 +184,7 @@ export default function GuidesPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/guides" />
     </>
   );
 }
