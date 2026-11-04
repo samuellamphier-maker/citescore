@@ -11,6 +11,20 @@ import {
 const footerLink =
   "inline-flex min-h-11 min-w-11 items-center px-1 hover:text-ink";
 
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link href={href} prefetch={false} className={footerLink}>
+      {children}
+    </Link>
+  );
+}
+
 export function SiteFooter() {
   return (
     <footer className="no-print mt-auto border-t border-rule/80">
@@ -24,30 +38,14 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-soft">
-          <Link href="/sample" className={footerLink}>
-            Sample report
-          </Link>
-          <Link href="/free-snapshot" className={footerLink}>
-            Free snapshot
-          </Link>
-          <Link href="/sample-snapshot" className={footerLink}>
-            Example snapshot
-          </Link>
-          <Link href="/guides" className={footerLink}>
-            Guides
-          </Link>
-          <Link href="/industries" className={footerLink}>
-            Industries
-          </Link>
-          <Link href="/tools" className={footerLink}>
-            Tools
-          </Link>
-          <Link href="/blog" className={footerLink}>
-            Blog
-          </Link>
-          <Link href="/checklist" className={footerLink}>
-            Checklist
-          </Link>
+          <FooterLink href="/sample">Sample report</FooterLink>
+          <FooterLink href="/free-snapshot">Free snapshot</FooterLink>
+          <FooterLink href="/sample-snapshot">Example snapshot</FooterLink>
+          <FooterLink href="/guides">Guides</FooterLink>
+          <FooterLink href="/industries">Industries</FooterLink>
+          <FooterLink href="/tools">Tools</FooterLink>
+          <FooterLink href="/blog">Blog</FooterLink>
+          <FooterLink href="/checklist">Checklist</FooterLink>
           <a
             href={templatePackUrl}
             className={footerLink}
@@ -57,9 +55,7 @@ export function SiteFooter() {
             {templatePackLabel}
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
-          <Link href="/for-agencies" className={footerLink}>
-            For agencies
-          </Link>
+          <FooterLink href="/for-agencies">For agencies</FooterLink>
           <a
             href={agencyKitUrl}
             className={footerLink}
@@ -69,63 +65,25 @@ export function SiteFooter() {
             {agencyKitLabel}
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
-          <Link href="/geo-audit" className={footerLink}>
-            GEO audit
-          </Link>
-          <Link href="/chatgpt-citation-check" className={footerLink}>
-            ChatGPT check
-          </Link>
-          <Link href="/ai-overviews" className={footerLink}>
-            AI Overviews
-          </Link>
-          <Link href="/answer-engine-optimization" className={footerLink}>
-            AEO
-          </Link>
-          <Link href="/alternatives/otterly" className={footerLink}>
-            vs Otterly
-          </Link>
-          <Link href="/alternatives/profound" className={footerLink}>
-            vs Profound
-          </Link>
-          <Link href="/alternatives/peec-ai" className={footerLink}>
-            vs Peec AI
-          </Link>
-          <Link href="/fix-pack" className={footerLink}>
-            Fix Pack
-          </Link>
-          <Link href="/free-check" className={footerLink}>
-            Free signal check
-          </Link>
-          <Link href="/how-it-works" className={footerLink}>
-            How it works
-          </Link>
-          <Link href="/methodology" className={footerLink}>
-            Methodology
-          </Link>
-          <Link href="/pricing" className={footerLink}>
-            Pricing
-          </Link>
-          <Link href="/faq" className={footerLink}>
-            FAQ
-          </Link>
-          <Link href="/contact" className={footerLink}>
-            Contact
-          </Link>
-          <Link href="/about" className={footerLink}>
-            About
-          </Link>
-          <Link href="/privacy" className={footerLink}>
-            Privacy
-          </Link>
-          <Link href="/terms" className={footerLink}>
-            Terms
-          </Link>
-          <Link href="/refunds" className={footerLink}>
-            Refunds
-          </Link>
-          <Link href="/checkout" className={footerLink}>
-            Checkout
-          </Link>
+          <FooterLink href="/geo-audit">GEO audit</FooterLink>
+          <FooterLink href="/chatgpt-citation-check">ChatGPT check</FooterLink>
+          <FooterLink href="/ai-overviews">AI Overviews</FooterLink>
+          <FooterLink href="/answer-engine-optimization">AEO</FooterLink>
+          <FooterLink href="/alternatives/otterly">vs Otterly</FooterLink>
+          <FooterLink href="/alternatives/profound">vs Profound</FooterLink>
+          <FooterLink href="/alternatives/peec-ai">vs Peec AI</FooterLink>
+          <FooterLink href="/fix-pack">Fix Pack</FooterLink>
+          <FooterLink href="/free-check">Free signal check</FooterLink>
+          <FooterLink href="/how-it-works">How it works</FooterLink>
+          <FooterLink href="/methodology">Methodology</FooterLink>
+          <FooterLink href="/pricing">Pricing</FooterLink>
+          <FooterLink href="/faq">FAQ</FooterLink>
+          <FooterLink href="/contact">Contact</FooterLink>
+          <FooterLink href="/about">About</FooterLink>
+          <FooterLink href="/privacy">Privacy</FooterLink>
+          <FooterLink href="/terms">Terms</FooterLink>
+          <FooterLink href="/refunds">Refunds</FooterLink>
+          <FooterLink href="/checkout">Checkout</FooterLink>
         </div>
       </div>
       <div className="border-t border-rule/70">

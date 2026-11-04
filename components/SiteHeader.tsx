@@ -6,6 +6,26 @@ const navItem =
   "min-h-11 min-w-11 items-center justify-center px-2 hover:text-ink";
 const navLink = `inline-flex ${navItem}`;
 
+function NavLink({
+  href,
+  className,
+  children,
+  prefetch = false,
+  "aria-label": ariaLabel,
+}: {
+  href: string;
+  className: string;
+  children: React.ReactNode;
+  prefetch?: boolean;
+  "aria-label"?: string;
+}) {
+  return (
+    <Link href={href} prefetch={prefetch} className={className} aria-label={ariaLabel}>
+      {children}
+    </Link>
+  );
+}
+
 export function SiteHeader() {
   return (
     <header className="no-print border-b border-rule/80">
@@ -16,35 +36,35 @@ export function SiteHeader() {
         Skip to content
       </a>
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-2">
-        <Link
+        <NavLink
           href="/"
           className="inline-flex min-h-11 shrink-0 items-center"
           aria-label="CiteScore home"
         >
           <Logo />
-        </Link>
+        </NavLink>
         <nav className="flex flex-wrap items-center justify-end gap-x-2 gap-y-1 text-sm text-ink-soft sm:gap-x-3">
-          <Link href="/sample" className={navLink}>
+          <NavLink href="/sample" className={navLink}>
             Sample
-          </Link>
-          <Link href="/sample-snapshot" className={navLink}>
+          </NavLink>
+          <NavLink href="/sample-snapshot" className={navLink}>
             Example snapshot
-          </Link>
-          <Link href="/guides" className={navLink}>
+          </NavLink>
+          <NavLink href="/guides" className={navLink}>
             Guides
-          </Link>
-          <Link href="/industries" className={navLink}>
+          </NavLink>
+          <NavLink href="/industries" className={navLink}>
             Industries
-          </Link>
-          <Link href="/tools" className={navLink}>
+          </NavLink>
+          <NavLink href="/tools" className={navLink}>
             Tools
-          </Link>
-          <Link href="/checklist" className={navLink}>
+          </NavLink>
+          <NavLink href="/checklist" className={navLink}>
             Checklist
-          </Link>
-          <Link href="/for-agencies" className={navLink}>
+          </NavLink>
+          <NavLink href="/for-agencies" className={navLink}>
             For agencies
-          </Link>
+          </NavLink>
           <a
             href={templatePackUrl}
             className={navLink}
@@ -54,27 +74,28 @@ export function SiteHeader() {
             {templatePackLabel}
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
-          <Link href="/how-it-works" className={`hidden sm:inline-flex ${navItem}`}>
+          <NavLink href="/how-it-works" className={`hidden sm:inline-flex ${navItem}`}>
             How it works
-          </Link>
-          <Link href="/pricing" className={`hidden sm:inline-flex ${navItem}`}>
+          </NavLink>
+          <NavLink href="/pricing" className={`hidden sm:inline-flex ${navItem}`}>
             Pricing
-          </Link>
-          <Link href="/faq" className={`hidden sm:inline-flex ${navItem}`}>
+          </NavLink>
+          <NavLink href="/faq" className={`hidden sm:inline-flex ${navItem}`}>
             FAQ
-          </Link>
-          <Link href="/fix-pack" className={navLink}>
+          </NavLink>
+          <NavLink href="/fix-pack" className={navLink}>
             Fix Pack
-          </Link>
-          <Link href="/contact" className={navLink}>
+          </NavLink>
+          <NavLink href="/contact" className={navLink}>
             Contact
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             href="/free-snapshot"
+            prefetch
             className="inline-flex min-h-11 items-center justify-center rounded-full bg-ink px-4 text-cream hover:bg-forest-deep"
           >
             Free snapshot
-          </Link>
+          </NavLink>
         </nav>
       </div>
     </header>

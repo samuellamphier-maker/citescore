@@ -1,7 +1,30 @@
 import type { NextConfig } from "next";
+import path from "node:path";
+
+const modernPolyfill = path.join(process.cwd(), "lib/modern-browser-polyfill.js");
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["pdfkit"],
+  turbopack: {
+    resolveAlias: {
+      "next/dist/build/polyfills/polyfill-module": "./lib/modern-browser-polyfill.js",
+      "next/dist/build/polyfills/polyfill-module.js": "./lib/modern-browser-polyfill.js",
+    },
+    rules: {
+      "*": {
+        condition: { path: /next\/dist\/build\/polyfills\/polyfill-module\.js$/ },
+        loaders: [path.join(process.cwd(), "lib/modern-browser-polyfill-loader.cjs")],
+        as: "*.js",
+      },
+    },
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.alias["next/dist/build/polyfills/polyfill-module"] = modernPolyfill;
+      config.resolve.alias["next/dist/build/polyfills/polyfill-module.js"] = modernPolyfill;
+    }
+    return config;
+  },
   async redirects() {
     return [
       {
