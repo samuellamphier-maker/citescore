@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { applySearchSnippet } from "@/lib/content/search-snippets";
 import { site } from "@/lib/site";
 
 /** Default card served by `app/opengraph-image.tsx`. */
@@ -60,14 +61,14 @@ export function pageMeta({
   type = "website",
   publishedTime,
 }: PageMetaInput): Metadata {
-  const ogTitle = `${title} · ${site.name}`;
+  const snippet = applySearchSnippet(path, title, description);
   return {
-    title,
-    description,
+    title: snippet.absolute ? { absolute: snippet.title } : snippet.title,
+    description: snippet.description,
     alternates: { canonical: path, ...rssFeedAlternate },
     openGraph: {
-      title: ogTitle,
-      description,
+      title: snippet.renderedTitle,
+      description: snippet.description,
       type,
       url: path,
       siteName: site.name,
@@ -77,8 +78,8 @@ export function pageMeta({
     },
     twitter: {
       card: "summary_large_image",
-      title: ogTitle,
-      description,
+      title: snippet.renderedTitle,
+      description: snippet.description,
       images: [socialImagePath],
     },
   };
