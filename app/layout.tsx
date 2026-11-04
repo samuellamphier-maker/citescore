@@ -11,17 +11,34 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: true,
 });
 
+// Headlines are the LCP text. Preload only the roman cut so the italic file
+// does not compete with it on a slow mobile connection.
 const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  style: "normal",
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
+});
+
+const newsreaderItalic = Newsreader({
+  variable: "--font-newsreader-italic",
+  subsets: ["latin"],
+  style: "italic",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -48,7 +65,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} ${newsreaderItalic.variable} h-full antialiased`}
       data-sticky-snapshot="on"
       suppressHydrationWarning
     >
@@ -59,7 +76,7 @@ export default function RootLayout({
         <JsonLd data={citeScoreOrganizationJsonLd(publicOrigin())} />
         <JsonLd data={citeScoreWebsiteJsonLd(publicOrigin())} />
         {children}
-        <Analytics />
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );

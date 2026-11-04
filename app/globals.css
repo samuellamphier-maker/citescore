@@ -61,6 +61,12 @@ body {
   font-family: var(--font-serif);
 }
 
+/* Real italic cut, loaded only when emphasized text is on the page. */
+em,
+i {
+  font-family: var(--font-newsreader-italic), var(--font-serif);
+}
+
 .kicker {
   font-family: var(--font-mono);
   font-size: 0.7rem;

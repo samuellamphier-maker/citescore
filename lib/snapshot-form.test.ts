@@ -123,8 +123,20 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /autoComplete="url"/);
   assert.match(form, /autoComplete="email"/);
   assert.match(form, /htmlFor="snapshot-business"/);
+  assert.match(form, /htmlFor="snapshot-city"/);
+  assert.match(form, /htmlFor="snapshot-service"/);
   assert.match(form, /htmlFor="snapshot-website"/);
   assert.match(form, /htmlFor="snapshot-email"/);
+  for (const id of [
+    "snapshot-business",
+    "snapshot-city",
+    "snapshot-service",
+    "snapshot-website",
+    "snapshot-email",
+  ]) {
+    assert.match(form, new RegExp(`htmlFor="${id}"`));
+    assert.match(form, new RegExp(`id="${id}"`));
+  }
   assert.match(form, /href="\/privacy"/);
   assert.match(form, /We do not sell emails/);
   assert.match(form, /snapshotWebsiteValue/);
