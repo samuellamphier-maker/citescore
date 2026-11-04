@@ -220,7 +220,7 @@ export function HowToGetCitedByYouComArticle() {
         The free check reports GPTBot, PerplexityBot, and Google-Extended. It
         does not look for a You.com token, and the pages read here do not
         publish one to look for. A clear row on that check is not a You.com
-        citation. The <Link href="/geo-audit">$39 GEO audit</Link> scores one
+        citation. The <Link href="/geo-audit">GEO audit</Link> scores one
         public URL from the HTML we fetch and returns about ten fixes. It
         does not open You.com.
       </CheckLinks>

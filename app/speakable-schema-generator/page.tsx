@@ -85,7 +85,6 @@ const related = [
   { href: "/ai-search-visibility-for-insurance-agents", label: "AI search visibility for insurance agents" },
   { href: "/ai-search-visibility-for-veterinarians", label: "AI search visibility for veterinarians" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -200,7 +199,7 @@ export default function SpeakableSchemaGeneratorPage() {
           content. The copy block is one <code>script</code> tag. Paste it into the HTML the server sends for that
           page. Answer engines often skip text that only appears after JavaScript runs. The{" "}
           <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. A
-          news URL at another path is outside that fetch. The <Link href="/geo-audit">$39 audit</Link> looks for markup
+          news URL at another path is outside that fetch. The <Link href="/geo-audit">GEO audit</Link> looks for markup
           that matches the copy. The longer note on which facts to repeat is the{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link>.
         </p>

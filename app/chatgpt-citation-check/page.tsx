@@ -69,7 +69,6 @@ export default function ChatgptCitationCheckPage() {
           { href: "/ai-overviews", label: "Google AI Overviews visibility" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
           { href: "/how-to-check-if-chatgpt-mentions-your-brand", label: "How to check if ChatGPT mentions your brand" },
-          { href: "/geo-audit", label: "GEO audit — the same $39 PDF" },
           { href: "/sample", label: "Sample report (fictional company)" },
         ]}
       >
@@ -85,7 +84,7 @@ export default function ChatgptCitationCheckPage() {
           For a local business, start with the{" "}
           <Link href="/free-snapshot">free AI Answer Snapshot</Link>: who
           ChatGPT and Perplexity name. The scored PDF is still the{" "}
-          <Link href="/geo-audit">$39 GEO audit</Link> of one URL. You get a
+          <Link href="/geo-audit">GEO audit</Link> of one URL. You get a
           0–100 score, a per-engine snapshot that includes a ChatGPT line, and
           about ten fixes in a PDF. When a language-model key is configured,
           the model rewrites the summary and the fix list from the HTML we

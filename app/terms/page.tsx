@@ -7,7 +7,6 @@ import {
   agencyKitLabel,
   doneForYouAuditLabel,
   fixPackIntroPriceLabel,
-  site,
   templatePackLabel,
   whiteLabelAuditLabel,
 } from "@/lib/site";
@@ -53,8 +52,11 @@ export default function TermsPage() {
           <p>
             The seller is CiteScore. Stripe, Polar, and Payhip process card
             payments for the products that use them. CiteScore does not see
-            full card numbers. Payhip handles the AI Visibility Fix Pack ({fixPackIntroPriceLabel}). Stripe handles the {site.priceLabel}{" "}
-            audit. Polar handles the{" "}
+            full card numbers. Payhip handles the AI Visibility Fix Pack ({fixPackIntroPriceLabel}). Stripe handles the{" "}
+            <Link href="/geo-audit" className="text-forest underline">
+              GEO audit
+            </Link>
+            . Polar handles the{" "}
             {templatePackLabel}, the {agencyKitLabel}, the{" "}
             {doneForYouAuditLabel}, and the {whiteLabelAuditLabel}.
           </p>
@@ -63,9 +65,14 @@ export default function TermsPage() {
           <p>Each product is a digital file, not a subscription and not a seat.</p>
           <ul className="list-disc space-y-2 pl-5">
             <li>
-              <strong className="text-ink">{site.priceLabel} GEO audit.</strong>{" "}
+              <strong className="text-ink">
+                <Link href="/geo-audit" className="text-forest underline">
+                  GEO audit
+                </Link>
+                .
+              </strong>{" "}
               One public URL. A 0–100 CiteScore and about ten fixes, as a PDF.
-              Paid through Stripe.
+              Paid through Stripe. The price is the price on that page.
             </li>
             <li>
               <strong className="text-ink">{doneForYouAuditLabel}.</strong> A
@@ -102,7 +109,7 @@ export default function TermsPage() {
 
           <h2 className="font-serif text-2xl text-ink">Delivery</h2>
           <p>
-            The {site.priceLabel} audit is instant. After Stripe confirms
+            The GEO audit is instant. After Stripe confirms
             payment, the self-serve PDF is produced automatically, usually
             within a few minutes. It is not held for a later business day.
           </p>

@@ -80,7 +80,6 @@ const related = [
   { href: "/ai-search-visibility-for-insurance-agents", label: "AI search visibility for insurance agents" },
   { href: "/ai-search-visibility-for-veterinarians", label: "AI search visibility for veterinarians" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -152,8 +151,7 @@ export default function PersonSchemaGeneratorPage() {
           can point an article’s author at a Person or an Organization. The publisher uses the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. The{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link> shows the Article this site publishes. The{" "}
-          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The{" "}
-          <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy.
+          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. Markup still has to match the copy a person can read.
         </p>
         <h2>What to leave out</h2>
         <ul>

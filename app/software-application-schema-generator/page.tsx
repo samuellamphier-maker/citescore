@@ -65,7 +65,6 @@ const related = [
   { href: "/electrician-schema-generator", label: "Electrician schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -115,8 +114,7 @@ export default function SoftwareApplicationSchemaGeneratorPage() {
         </p>
         <p>
           <code>aggregateRating</code> is written only when the rating value and the review count are both filled in, and the rating is not higher than the best rating. schema.org treats a missing best rating as 5. This generator does not emit a review. The{" "}
-          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The{" "}
-          <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. The publisher uses the{" "}
+          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. Markup still has to match the copy a person can read. The publisher uses the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. A procedure uses the{" "}
           <Link href="/howto-schema-generator">HowTo schema generator</Link>. An author profile uses the{" "}
           <Link href="/person-schema-generator">Person schema generator</Link>. The homepage uses the{" "}

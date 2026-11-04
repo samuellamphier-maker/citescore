@@ -37,7 +37,7 @@ type Props = {
   ctaId?: string;
   /** When set, render the shared Related guides list for this path. */
   guidePath?: string;
-  /** Smaller $39 mention under the snapshot close. Guides that already link the audit set this false. */
+  /** Quiet GEO audit link under the snapshot close. Guides that already link the audit set this false. */
   showAuditCta?: boolean;
 };
 

@@ -65,7 +65,6 @@ export default function HowToGetCitedByDuckDuckGoPage() {
           { href: "/course-schema-generator", label: "Free Course schema generator" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >
         <HowToGetCitedByDuckDuckGoArticle />

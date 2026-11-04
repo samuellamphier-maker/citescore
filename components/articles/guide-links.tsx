@@ -43,10 +43,8 @@ export function CheckLinks({ children }: { children: ReactNode }) {
         Run the <Link href="/free-check">free check</Link> on the host. It
         reads the homepage, robots.txt for GPTBot, PerplexityBot, and
         Google-Extended, <code>/llms.txt</code>, a sitemap, and JSON-LD on
-        the homepage. It does not log into an answer engine. The{" "}
-        <Link href="/geo-audit">$39 GEO audit</Link> is still available for
-        one public URL. Paid files are listed at{" "}
-        <Link href="/checkout">checkout</Link>.
+        the homepage. It does not log into an answer engine. Paid files are
+        listed at <Link href="/checkout">checkout</Link>.
       </p>
     </>
   );

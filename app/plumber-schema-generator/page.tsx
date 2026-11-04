@@ -97,7 +97,6 @@ const related = [
   { href: "/ai-search-visibility-for-insurance-agents", label: "AI search visibility for insurance agents" },
   { href: "/ai-search-visibility-for-veterinarians", label: "AI search visibility for veterinarians" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -273,8 +272,7 @@ export default function PlumberSchemaGeneratorPage() {
           property. A business marking up stars it collected about itself is outside that recommendation. The copy
           block is one <code>script</code> tag. Paste it into the HTML the server sends. Answer engines often skip text
           that only appears after JavaScript runs. The <Link href="/free-check">free check</Link> lists the JSON-LD{" "}
-          <code>@type</code> values on the homepage. A shop URL at another path is outside that fetch. The{" "}
-          <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy.
+          <code>@type</code> values on the homepage. A shop URL at another path is outside that fetch. Markup still has to match the copy a person can read.
         </p>
         <h2>How to install it</h2>
         <ol>

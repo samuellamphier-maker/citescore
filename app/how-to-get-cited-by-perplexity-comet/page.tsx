@@ -63,7 +63,6 @@ export default function HowToGetCitedByPerplexityCometPage() {
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >
         <HowToGetCitedByPerplexityCometArticle />

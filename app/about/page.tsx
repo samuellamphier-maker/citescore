@@ -10,7 +10,6 @@ import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   sellerName,
-  site,
 } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
@@ -68,8 +67,12 @@ export default function AboutPage() {
             uses a fictional business.
           </p>
           <p>
-            The {site.priceLabel} GEO audit is a separate product: one public
-            URL, a 0–100 score, and about ten fixes, as a PDF. Other digital
+            The{" "}
+            <Link href="/geo-audit" className="text-forest underline">
+              GEO audit
+            </Link>{" "}
+            is a separate product: one public URL, a 0–100 score, and about
+            ten fixes, as a PDF. Other digital
             files are listed on the{" "}
             <Link href="/terms" className="text-forest underline">
               terms

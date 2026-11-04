@@ -65,7 +65,6 @@ const related = [
   { href: "/electrician-schema-generator", label: "Electrician schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -138,8 +137,7 @@ export default function VideoSchemaGeneratorPage() {
           an organization. Google’s recommended property for who made the video is <code>creator</code> or{" "}
           <code>author</code>. This generator writes <code>publisher</code>. It does not emit <code>Clip</code>,{" "}
           <code>SeekToAction</code>, or <code>BroadcastEvent</code>. The <Link href="/free-check">free check</Link>{" "}
-          lists the JSON-LD <code>@type</code> values on the homepage. The <Link href="/geo-audit">$39 audit</Link>{" "}
-          looks for markup that matches the copy. A procedure uses the{" "}
+          lists the JSON-LD <code>@type</code> values on the homepage. Markup still has to match the copy a person can read. A procedure uses the{" "}
           <Link href="/howto-schema-generator">HowTo schema generator</Link>. An article uses the{" "}
           <Link href="/article-schema-generator">Article schema generator</Link>. The publisher’s logo and profiles use
           the <Link href="/organization-schema-generator">Organization schema generator</Link>. The homepage uses the{" "}

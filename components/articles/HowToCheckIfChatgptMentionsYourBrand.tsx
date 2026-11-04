@@ -13,8 +13,8 @@ export const mentionCheckFaqs = [
     a: "No. A mention means the brand name appeared in the answer. A citation, for this check, means the answer linked or quoted a URL on your domain. An answer can name you and link a competitor, or link you without using the product name in the sentence. Record those as separate columns. Do not collapse them into one score.",
   },
   {
-    q: "Will the free check or the $39 audit open ChatGPT and search the brand?",
-    a: "No. The free check reads public files on one host: the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, llms.txt, a sitemap, and JSON-LD on the homepage. It does not read OAI-SearchBot, and it does not query ChatGPT. The $39 audit scores one public URL from those signals and the HTML we fetch. The ChatGPT row is an inference. The report says so.",
+    q: "Will the free check open ChatGPT and search the brand?",
+    a: "No. The free check reads public files on one host: the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, llms.txt, a sitemap, and JSON-LD on the homepage. It does not read OAI-SearchBot, and it does not query ChatGPT.",
   },
   {
     q: "Does blocking GPTBot stop ChatGPT from mentioning the brand?",

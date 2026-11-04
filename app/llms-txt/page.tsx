@@ -84,7 +84,7 @@ export default function LlmsTxtPage() {
         </p>
         <p>
           CiteScore’s check is smaller than the folklore. During a{" "}
-          <Link href="/geo-audit">$39 audit</Link> we request{" "}
+          <Link href="/geo-audit">GEO audit</Link> we request{" "}
           <code>/llms.txt</code> on the host of the URL you submitted. Found
           means the response succeeded and the body, after trimming, was not
           empty. Anything else — 404, an empty 200, a network failure — is

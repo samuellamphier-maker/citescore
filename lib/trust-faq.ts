@@ -4,7 +4,6 @@ import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   sellerName,
-  site,
 } from "@/lib/site";
 
 /**
@@ -39,7 +38,7 @@ export const snapshotTrustFaqs: readonly FaqItem[] = [
 export const fixPackTrustFaqs: readonly FaqItem[] = [
   {
     q: "Who are the free snapshot and the Fix Pack for?",
-    a: `The free AI Answer Snapshot is for one local business. CiteScore is for local service businesses that want to know who ChatGPT names for their trade and city, and the small agencies that serve them. The Fix Pack is the done-for-you work after you have seen who was named. One business, one city, one service. Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. It is not a promise that any assistant will name the business. The ${site.priceLabel} GEO audit is a separate product: one public URL, a 0–100 score, and about ten fixes, as a PDF.`,
+    a: `The free AI Answer Snapshot is for one local business. CiteScore is for local service businesses that want to know who ChatGPT names for their trade and city, and the small agencies that serve them. The Fix Pack is the done-for-you work after you have seen who was named. One business, one city, one service. Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. It is not a promise that any assistant will name the business.`,
   },
   {
     q: "Which pieces are in the AI Visibility Fix Pack?",

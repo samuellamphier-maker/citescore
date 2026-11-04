@@ -18,7 +18,7 @@ export function GeoVsSeoArticle() {
         top of a search results page. There is no public, stable formula for
         which source they pick. CiteScore does not log into those products.
         The <Link href="/free-check">free check</Link> reads public files.
-        The <Link href="/geo-audit">$39 audit</Link> scores the HTML we can
+        The <Link href="/geo-audit">GEO audit</Link> scores the HTML we can
         fetch. This page is the comparison. A shorter definition of the
         category is <Link href="/blog/what-is-geo">what GEO is</Link>.
       </p>
@@ -271,20 +271,10 @@ export function GeoVsSeoArticle() {
         not a live answer from ChatGPT or Perplexity.
       </p>
       <p>
-        The <Link href="/geo-audit">$39 GEO audit</Link> is one public URL,
-        a 0–100 CiteScore, and about ten prioritized fixes, as a PDF. The
-        score comes from on-page signals — definitions, entities, evidence,
-        schema, freshness, crawler access — and, when a language-model key
-        is configured, a review of the HTML we fetched. We do not log into
-        ChatGPT, Perplexity, or Google AI Overviews. The per-engine snapshot
-        is an inference, and the report says so.
-      </p>
-      <p>
         A practical order: the free AI Answer Snapshot for who gets named,
         the free check for the public files, the{" "}
-        <Link href="/checklist">40-point checklist</Link> for the page. The
-        $39 audit is still there when you want that page scored. Weekly
-        rescans are on the roadmap. They are not this product.
+        <Link href="/checklist">40-point checklist</Link> for the page.
+        Weekly rescans are on the roadmap. They are not this product.
       </p>
     </>
   );

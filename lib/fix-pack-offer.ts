@@ -53,7 +53,7 @@ export function fixPackProductJsonLd(origin: string): Record<string, unknown> {
     url: `${origin}/fix-pack`,
     seller: organizationRef(origin),
   };
-  // The $39 audit omits availability because its checkout is optional per deploy.
+  // The GEO audit omits availability because its checkout is optional per deploy.
   // The Fix Pack buy link is a fixed product URL, so in-stock matches that page.
   if (FIX_PACK_CHECKOUT_URL.trim()) {
     offer.availability = "https://schema.org/InStock";

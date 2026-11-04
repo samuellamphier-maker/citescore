@@ -159,7 +159,7 @@ Allow: /`}</pre>
         through the WAF rule above. The{" "}
         <Link href="/robots-txt-for-ai-crawlers">robots.txt guide</Link>{" "}
         covers how this token sits next to GPTBot and Google-Extended. What
-        the $39 report infers about Perplexity, without a Perplexity login,
+        a scored PDF infers about Perplexity, without a Perplexity login,
         is on <Link href="/perplexity-citations">Perplexity citations</Link>.
       </p>
 

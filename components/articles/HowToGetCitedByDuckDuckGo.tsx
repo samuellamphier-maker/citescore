@@ -250,7 +250,7 @@ export function HowToGetCitedByDuckDuckGoArticle() {
         The free check reports GPTBot, PerplexityBot, and Google-Extended. It
         does not look for DuckAssistBot or DuckDuckBot. A clear row on that
         check is not a DuckDuckGo citation. The{" "}
-        <Link href="/geo-audit">$39 GEO audit</Link> scores one public URL
+        <Link href="/geo-audit">GEO audit</Link> scores one public URL
         from the HTML we fetch and returns about ten fixes. It does not open
         DuckDuckGo or Duck.ai.
       </CheckLinks>

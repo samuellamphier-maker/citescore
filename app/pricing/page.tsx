@@ -22,7 +22,6 @@ import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   sellerName,
-  site,
 } from "@/lib/site";
 
 const pricingFaqQuestions = [
@@ -205,9 +204,11 @@ export default function PricingPage() {
             free signal check
           </Link>{" "}
           is still there if you only want a read of public files. It does not
-          ask ChatGPT who it names. The {site.priceLabel} GEO audit is a
-          separate product: one public URL, a 0–100 score, and about ten
-          fixes, as a PDF. It is listed on{" "}
+          ask ChatGPT who it names. A separate{" "}
+          <Link href="/geo-audit" className="text-forest underline">
+            GEO audit
+          </Link>{" "}
+          PDF for one public URL is listed on{" "}
           <Link href="/checkout" className="text-forest underline">
             checkout
           </Link>

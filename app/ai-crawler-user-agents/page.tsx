@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Which of these tokens does the free check read?",
-    a: "The free check reads GPTBot, PerplexityBot, and Google-Extended. The $39 audit scores that same trio. The robots.txt generator writes OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, ClaudeBot, and Google-Extended. This table is wider than both. A token that is not in the check can still be allow, disallow, or unspecified in your file.",
+    a: "The free check reads GPTBot, PerplexityBot, and Google-Extended. The robots.txt generator writes OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, ClaudeBot, and Google-Extended. This table is wider than both. A token that is not in the check can still be allow, disallow, or unspecified in your file.",
   },
   {
     q: "What should I do when the operator has not documented the token?",
@@ -40,7 +40,6 @@ const related = [
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
   { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -94,7 +93,7 @@ export default function AiCrawlerUserAgentsPage() {
           <Link href="/free-check">free check</Link>, which reads GPTBot, PerplexityBot, and Google-Extended on the live
           file. The <Link href="/robots-txt-ai-crawler-generator">robots.txt generator</Link> writes allow or block
           groups for OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, ClaudeBot, and Google-Extended. The{" "}
-          <Link href="/geo-audit">$39 audit</Link> scores that same three-token crawler dimension. It does not log into
+          <Link href="/geo-audit">GEO audit</Link> scores that same three-token crawler dimension. It does not log into
           ChatGPT, Claude, Perplexity, or Google.
         </p>
 

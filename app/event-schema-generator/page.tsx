@@ -65,7 +65,6 @@ const related = [
   { href: "/electrician-schema-generator", label: "Electrician schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -147,8 +146,7 @@ export default function EventSchemaGeneratorPage() {
           This generator writes the digits you typed, so <code>39.00</code> is not shortened. Availability is one of{" "}
           <code>InStock</code>, <code>SoldOut</code>, or <code>PreOrder</code>. This generator does not emit{" "}
           <code>performer</code>, <code>previousStartDate</code>, or <code>validFrom</code>. The{" "}
-          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The{" "}
-          <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. A venue that is a business
+          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. Markup still has to match the copy a person can read. A venue that is a business
           uses the <Link href="/local-business-schema-generator">Local business schema generator</Link>. A ticket that
           is a product uses the <Link href="/product-schema-generator">Product schema generator</Link>. A watch page
           uses the <Link href="/video-schema-generator">Video schema generator</Link>. The longer note on which facts

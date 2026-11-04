@@ -54,7 +54,7 @@ export const topicPages: TopicPage[] = [
     path: "/geo-vs-seo",
     title: "GEO vs SEO: what changes when AI answers the question",
     description:
-      "GEO and SEO answer different questions. What changes when the result is a quoted answer, what stays the same, and what a free check or a $39 audit can see.",
+      "GEO and SEO answer different questions. What changes when the result is a quoted answer, what stays the same, and what a free snapshot can see.",
     kicker: "Guide",
     card: "What changes when the result is a quoted answer, and what a rank report still does not say.",
     navLabel: "GEO vs SEO",
@@ -971,7 +971,7 @@ export const topicPages: TopicPage[] = [
     path: "/ai-overviews",
     title: "Google AI Overviews visibility",
     description:
-      "How a $39 audit estimates Google AI Overviews visibility from answer-shaped copy and FAQ markup. Not a live Google Search scrape.",
+      "How answer-shaped copy and FAQ markup relate to Google AI Overviews. Not a live Google Search scrape. Start with a free AI Answer Snapshot.",
     kicker: "AI Overviews",
     card: "What the AI Overviews row uses, and what Google-Extended does not control.",
     priority: 0.9,
@@ -982,7 +982,7 @@ export const topicPages: TopicPage[] = [
     path: "/perplexity-citations",
     title: "Perplexity citations",
     description:
-      "Why a Perplexity footnote often goes to a competitor, and what a $39 audit infers from public HTML. We do not log into Perplexity.",
+      "Why a Perplexity footnote often goes to a competitor, and what public HTML can show. We do not log into Perplexity.",
     kicker: "Perplexity",
     card: "How the Perplexity snapshot is inferred, including PerplexityBot in robots.txt.",
     priority: 0.8,
@@ -993,7 +993,7 @@ export const topicPages: TopicPage[] = [
     path: "/llms-txt",
     title: "llms.txt checker",
     description:
-      "What llms.txt is, the exact check CiteScore runs on /llms.txt, and why a missing file does not zero a $39 AI-visibility score.",
+      "What llms.txt is, the exact check CiteScore runs on /llms.txt, and why a missing file is not a citation. Google says it ignores llms.txt.",
     kicker: "llms.txt",
     card: "llms.txt is optional; Google says it ignores llms.txt. A non-empty file is not a citation.",
     priority: 0.8,
@@ -1027,9 +1027,9 @@ export const topicPages: TopicPage[] = [
     path: "/answer-engine-optimization",
     title: "Answer engine optimization (AEO)",
     description:
-      "Answer engine optimization, GEO, and an AI-visibility audit are overlapping labels. CiteScore is the $39 version: one URL, one PDF, no live prompt tracker.",
+      "Answer engine optimization, GEO, and an AI-visibility audit are overlapping labels. Start with the free AI Answer Snapshot. The Fix Pack is the paid next step.",
     kicker: "AEO",
-    card: "AEO, GEO, and LLMO are labels. This page says which label the $39 PDF matches.",
+    card: "AEO, GEO, and LLMO are labels. This page maps those labels onto the free snapshot and the Fix Pack.",
     priority: 0.8,
     publishedAt: "2026-10-03",
     minutes: 7,
@@ -1038,7 +1038,7 @@ export const topicPages: TopicPage[] = [
     path: "/alternatives/profound",
     title: "CiteScore vs Profound",
     description:
-      "CiteScore is a $39 one-off GEO audit of one URL. Profound is an enterprise AI-visibility platform with citation share, seats, and custom pricing.",
+      "The free AI Answer Snapshot and the Fix Pack are CiteScore. Profound is an enterprise AI-visibility platform with citation share, seats, and custom pricing.",
     kicker: "Comparison",
     card: "A punch-list PDF versus a Profound-class citation dashboard.",
     priority: 0.8,
@@ -1049,7 +1049,7 @@ export const topicPages: TopicPage[] = [
     path: "/alternatives/peec-ai",
     title: "CiteScore vs Peec AI",
     description:
-      "CiteScore is a $39 one-time GEO audit of one URL. Peec AI is ongoing AI-search analytics for marketing teams: prompts, visibility, position, and sentiment. Different jobs.",
+      "The free AI Answer Snapshot shows who is named. Peec AI is ongoing AI-search analytics for marketing teams: prompts, visibility, position, and sentiment.",
     kicker: "Comparison",
     card: "A one-time punch-list PDF versus Peec AI’s ongoing AI-search analytics.",
     navLabel: "CiteScore vs Peec AI",

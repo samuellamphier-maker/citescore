@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getTopic } from "@/lib/content/topics";
-import { productionOrigin } from "@/lib/site";
+import { fixPackIntroPriceLabel, productionOrigin } from "@/lib/site";
 
 const preClass =
   "overflow-x-auto rounded-xl border border-rule bg-cream p-4 font-mono text-[13px] leading-6 text-ink";
@@ -39,18 +39,19 @@ export function productExample() {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "CiteScore GEO audit",
+    name: "AI Visibility Fix Pack",
     description:
-      "A one-time audit of one public URL: a 0–100 CiteScore and about ten prioritized fixes, delivered as a PDF.",
+      "One business, one city, one service. A Google Business Profile gap list, a review-gap plan and script, the directories an AI answer cited, paste-ready LocalBusiness and Service JSON-LD, and a re-check 14 days later.",
     brand: {
       "@type": "Brand",
       name: "CiteScore",
     },
     offers: {
       "@type": "Offer",
-      price: "39",
+      price: "49",
       priceCurrency: "USD",
-      url: `${productionOrigin}/geo-audit`,
+      availability: "https://schema.org/InStock",
+      url: `${productionOrigin}/fix-pack`,
     },
   };
 }
@@ -131,8 +132,8 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         None of them is a ranking file, and none of them makes ChatGPT,
         Perplexity, Claude, or Google AI Overviews cite you. The{" "}
         <Link href="/free-check">free check</Link> lists the JSON-LD types
-        on the homepage. The <Link href="/geo-audit">$39 audit</Link> looks
-        for markup that matches the copy. We do not log into those products.
+        on the homepage. Markup still has to match the copy a person can
+        read. We do not log into those products.
         A shorter comparison of what schema changes, and what a rank report
         still does not say, is <Link href="/geo-vs-seo">GEO vs SEO</Link>.
       </p>
@@ -206,19 +207,18 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
       <h2>Product</h2>
       <p>
         Use Product on the page that sells the thing, with an Offer for the
-        price that page shows. This example is the CiteScore audit: one
-        public URL, a 0–100 score, about ten fixes, delivered as a PDF for
-        $39. The price is the number on the{" "}
-        <Link href="/geo-audit">audit page</Link>. There is no availability
-        field, because a checkout that is not configured on a given deploy
-        should not be marked in stock by a template. There is no rating.
+        price that page shows. This example is the AI Visibility Fix Pack:
+        one business, one city, one service, at the introductory price of{" "}
+        {fixPackIntroPriceLabel}. The price is the number on the{" "}
+        <Link href="/fix-pack">Fix Pack page</Link>. Availability is in stock
+        because the buy link is a fixed product URL. There is no rating.
       </p>
       <pre className={preClass}>{script(productExample())}</pre>
       <p>
         Put this block on the URL in <code>offers.url</code>, not on every
         guide. A guide that mentions a price is not the product page.{" "}
         <code>price</code> is a string so a decimal such as{" "}
-        <code>39.00</code> survives. <code>priceCurrency</code> is the ISO
+        <code>49.00</code> survives. <code>priceCurrency</code> is the ISO
         code, here <code>USD</code>. Change both if your price is different.
         Do not invent a <code>sku</code>, a <code>gtin</code>, or a review
         count to look complete. The{" "}
@@ -483,15 +483,6 @@ export function SchemaMarkupForAiSearchArticle({ origin }: { origin: string }) {
         <code>@type</code> values appear on the homepage. A passing schema
         row means the homepage has JSON-LD. It does not mean the types match
         the copy, and it is not a live answer from ChatGPT or Perplexity.
-      </p>
-      <p>
-        The <Link href="/geo-audit">$39 GEO audit</Link> is one public URL,
-        a 0–100 CiteScore, and about ten prioritized fixes, as a PDF. The
-        score comes from on-page signals — definitions, entities, evidence,
-        schema, freshness, crawler access — and, when a language-model key
-        is configured, a review of the HTML we fetched. We do not log into
-        ChatGPT, Perplexity, Claude, or Google AI Overviews. The per-engine
-        snapshot is an inference, and the report says so.
       </p>
       <p>
         Who is allowed to fetch the page is the other half. Copy-paste

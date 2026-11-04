@@ -65,7 +65,6 @@ export default function AiSearchReadinessChecklistForSaasPage() {
           { href: "/plumber-schema-generator", label: "Free Plumber schema generator" },
           { href: "/electrician-schema-generator", label: "Free Electrician schema generator" },
           { href: "/free-check", label: "Free AI citation-readiness check" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
         ]}
       >
         <AiSearchReadinessChecklistForSaasArticle />

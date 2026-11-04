@@ -47,7 +47,6 @@ export default function HowToGetCitedByChatgptPage() {
         guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/how-to-check-if-chatgpt-mentions-your-brand", label: "How to check if ChatGPT mentions your brand" },
           { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
           { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },

@@ -268,7 +268,7 @@ Disallow: /`}</pre>
         Google-Extended, along with GPTBot and PerplexityBot. Google-Extended
         is not the AI Mode control in the table above. The check does not
         read the Search Console generative AI setting, and it does not query
-        AI Mode. The <Link href="/geo-audit">$39 GEO audit</Link> scores one
+        AI Mode. The <Link href="/geo-audit">GEO audit</Link> scores one
         public URL from the HTML we fetch. It does not open AI Mode.
       </CheckLinks>
 

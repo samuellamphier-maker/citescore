@@ -45,8 +45,8 @@ export default async function LiveReportPage({
         <AuditReport report={job.report} />
         <p className="no-print mx-auto mt-6 max-w-[52rem] text-center text-sm text-ink-soft">
           Need another URL?{" "}
-          <Link href="/#audit" className="text-forest underline">
-            Start a new {job.report.sample ? "sample" : "$39"} audit
+          <Link href="/geo-audit" className="text-forest underline">
+            Start a new audit
           </Link>
           .
         </p>

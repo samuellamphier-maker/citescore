@@ -41,7 +41,6 @@ export default function LlmsTxtExamplesPage() {
         guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/llms-txt", label: "What the llms.txt check actually measures" },
           { href: "/llms-txt-generator", label: "Free llms.txt generator" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },

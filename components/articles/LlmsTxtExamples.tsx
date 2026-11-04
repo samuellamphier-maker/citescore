@@ -24,7 +24,7 @@ export function LlmsTxtExamplesArticle() {
         export, and it is not in the proposal. CiteScore’s own check is
         smaller than either idea. The{" "}
         <Link href="/free-check">free check</Link> and the{" "}
-        <Link href="/geo-audit">$39 audit</Link> only ask whether{" "}
+        <Link href="/geo-audit">GEO audit</Link> only ask whether{" "}
         <code>/llms.txt</code> returned a non-empty text body.
       </p>
 
@@ -426,7 +426,7 @@ export function LlmsTxtExamplesArticle() {
         Overviews, and it does not grade the writing inside the file.
       </p>
       <p>
-        The <Link href="/geo-audit">$39 audit</Link> scores one public URL.
+        The <Link href="/geo-audit">GEO audit</Link> scores one public URL.
         A found <code>llms.txt</code> is noted and then ignored by the score.
         llms.txt is <LlmsTxtCaveat />. The page still has to answer the
         question. The{" "}

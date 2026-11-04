@@ -61,7 +61,6 @@ export default function RobotsTxtForAiCrawlersPage() {
         guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
           { href: "/robots-txt-ai-crawler-generator", label: "Free robots.txt AI crawler generator" },
           { href: "/ai-crawlers", label: "GPTBot, PerplexityBot, and Google-Extended" },

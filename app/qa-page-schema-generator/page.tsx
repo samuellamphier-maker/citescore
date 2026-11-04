@@ -71,7 +71,6 @@ const related = [
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/ai-search-visibility-for-b2b-saas", label: "AI search visibility for B2B SaaS" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -180,7 +179,7 @@ export default function QaPageSchemaGeneratorPage() {
           block is one <code>script</code> tag. Paste it into the HTML the server sends for that thread. Answer engines
           often skip text that only appears after JavaScript runs. The <Link href="/free-check">free check</Link> lists
           the JSON-LD <code>@type</code> values on the homepage. A support URL at another path is outside that fetch.
-          The <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. The longer note on which
+          Markup still has to match the copy a person can read. The longer note on which
           facts to repeat is the <Link href="/schema-markup-for-ai-search">schema guide</Link>.
         </p>
         <h2>How to install it</h2>

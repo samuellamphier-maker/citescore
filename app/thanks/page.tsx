@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Payment received",
-  description: `Thanks — your ${site.priceLabel} CiteScore audit is in the queue.`,
+  description: "Thanks — your CiteScore audit is in the queue.",
   robots: { index: false, follow: false },
 };
 

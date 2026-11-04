@@ -241,7 +241,7 @@ Disallow: /private/`}</pre>
         The free check reports GPTBot, PerplexityBot, and Google-Extended.
         It does not read meta-webindexer, meta-externalagent, or
         FacebookBot. A clear row on that check is not a Meta AI citation.
-        The <Link href="/geo-audit">$39 GEO audit</Link> scores one public
+        The <Link href="/geo-audit">GEO audit</Link> scores one public
         URL from the HTML we fetch and returns about ten fixes. It does not
         open WhatsApp, Instagram, Facebook, or meta.ai.
       </CheckLinks>

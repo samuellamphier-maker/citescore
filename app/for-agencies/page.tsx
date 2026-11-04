@@ -8,10 +8,12 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
+import { fixPackDeliverables } from "@/lib/fix-pack-offer";
 import {
   agencyKitLabel,
   agencyKitUrl,
   fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
   publicOrigin,
   site,
   whiteLabelAuditLabel,
@@ -21,7 +23,7 @@ import {
 const path = "/for-agencies";
 const title = "GEO audits for SEO agencies";
 const description =
-  "How an SEO agency starts a local client with the free AI Answer Snapshot and the $49 Fix Pack. The free check, the $39 audit, the $149 white-label PDF, and the $29 GEO Agency Kit are still separate. The check reads public files. It does not query ChatGPT.";
+  "How an SEO agency starts a local client with the free AI Answer Snapshot and the $49 Fix Pack. The free check, the white-label PDF, and the $29 GEO Agency Kit are separate. The check reads public files. It does not query ChatGPT.";
 
 export const metadata: Metadata = pageMeta({
   title,
@@ -35,14 +37,6 @@ const freeSignals = [
   "llms.txt: a non-empty text file at /llms.txt, or none",
   "Sitemap: a sitemap on the host, or a Sitemap line in robots.txt",
   "JSON-LD: the types found on the homepage",
-];
-
-const auditIncludes = [
-  "A 0–100 CiteScore and a plain-language grade for one public URL",
-  "Dimension scores for answers, entities, evidence, markup, freshness, and crawler access",
-  "An inferred snapshot for ChatGPT, Perplexity, and Google AI Overviews",
-  "About ten prioritized fixes, with effort, impact, and the page to change",
-  "A PDF by email, and a web copy of the same report",
 ];
 
 const kitContents = [
@@ -78,7 +72,7 @@ const clientSteps = [
   {
     n: "04",
     title: "Say what a pass means",
-    body: "A passing row means that signal is present on the public file. It is the start of the conversation. Who an answer engine names is what the free AI Answer Snapshot shows. The $39 audit is the scored PDF when a client wants that punch list.",
+    body: "A passing row means that signal is present on the public file. It is the start of the conversation. Who an answer engine names is what the free AI Answer Snapshot shows. The Fix Pack is the done-for-you work after that.",
   },
 ];
 
@@ -88,12 +82,12 @@ const faqs = [
     a: "No. It reads public files on the host: the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, llms.txt, a sitemap, and JSON-LD on the homepage. It does not log into ChatGPT, Perplexity, or Google AI Overviews.",
   },
   {
-    q: "What do I hand over from the $39 audit?",
-    a: "One PDF for one URL, plus a web copy of the same report. It has a 0–100 CiteScore, dimension scores, an inferred engine snapshot, and about ten prioritized fixes. The snapshot is an inference from the HTML we fetched. The report says so.",
+    q: "What do I hand over from the free snapshot?",
+    a: "One page: who is named, which sources are cited, and how the Google rating and review count compare. AI answers vary run to run. This is a snapshot, not a ranking. The Fix Pack is the done-for-you work after the client has seen who was named.",
   },
   {
     q: "What is the white-label audit?",
-    a: "An unbranded PDF of the AI search audit, for $149, delivered within 3 business days. It is a separate purchase from the $39 self-serve audit and the $29 kit.",
+    a: "An unbranded PDF of the AI search audit, for $149, delivered within 3 business days. It is a separate purchase from the Fix Pack and the $29 kit.",
   },
   {
     q: "What is in the $29 kit?",
@@ -144,9 +138,8 @@ export default function ForAgenciesPage() {
                 The free AI Answer Snapshot asks logged-out ChatGPT and
                 Perplexity who they name and sends one page. AI answers vary
                 run to run. No payment. The Fix Pack is {fixPackIntroPriceLabel}{" "}
-                for the done-for-you work after that. The {site.priceLabel}{" "}
-                GEO audit, the white-label PDF, and the {agencyKitLabel} stay
-                available as separate purchases.
+                for the done-for-you work after that. The white-label PDF and
+                the {agencyKitLabel} stay available as separate purchases.
               </p>
               <div className="mt-8 max-w-xl">
                 <IndustrySnapshotCta variant="general" />
@@ -157,13 +150,13 @@ export default function ForAgenciesPage() {
               <dl className="mt-4 space-y-5 text-sm leading-6">
                 <div>
                   <dt className="font-medium text-ink">
-                    <Link href="/geo-audit" className="text-forest underline">
-                      {site.priceLabel} GEO audit
+                    <Link href="/fix-pack" className="text-forest underline">
+                      Fix Pack ({fixPackIntroPriceLabel})
                     </Link>
                   </dt>
                   <dd className="mt-1 text-ink-soft">
-                    One client URL. A score and about ten fixes, as a PDF you
-                    can forward.
+                    The done-for-you work after the client has seen who was
+                    named. One business, one city, one service.
                   </dd>
                 </div>
                 <div className="border-t border-rule pt-5">
@@ -257,33 +250,30 @@ export default function ForAgenciesPage() {
                 </Link>
               </div>
               <div className="rounded-2xl border border-rule p-6">
-                <p className="kicker">{site.priceLabel} · still available</p>
-                <h3 className="mt-3 font-serif text-2xl">The scored PDF</h3>
+                <p className="kicker">After the snapshot</p>
+                <h3 className="mt-3 font-serif text-2xl">The Fix Pack</h3>
                 <p className="mt-3 text-sm leading-6 text-ink-soft">
-                  The free snapshot comes first. The audit is the PDF when a
-                  client wants a score. We fetch the URL you submit and a few
-                  same-host pages, such
-                  as /about, /pricing, and /faq, plus robots.txt, llms.txt,
-                  and the sitemap. When a language-model key is configured,
-                  that review uses the HTML we fetched.{" "}
-                  <Link href="/privacy" className="text-forest underline">
-                    Privacy
-                  </Link>{" "}
-                  covers what may be sent.
+                  The free snapshot comes first. The Fix Pack is{" "}
+                  {fixPackIntroPriceLabel} introductory (
+                  {fixPackListPriceLabel} list): a Google Business Profile gap
+                  list, a review-gap plan and script, the directories an AI
+                  answer cited, paste-ready LocalBusiness and Service JSON-LD,
+                  and a re-check 14 days later. It is not a promise that any
+                  assistant will name the business.
                 </p>
                 <ul className="mt-5 space-y-3">
-                  {auditIncludes.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-6">
+                  {fixPackDeliverables.map((item) => (
+                    <li key={item.title} className="flex gap-3 text-sm leading-6">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
-                      {item}
+                      {item.title}
                     </li>
                   ))}
                 </ul>
                 <Link
-                  href="/geo-audit"
+                  href="/fix-pack"
                   className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
                 >
-                  GEO audit methodology
+                  What is in the Fix Pack
                 </Link>
               </div>
             </div>
@@ -324,43 +314,26 @@ export default function ForAgenciesPage() {
           </div>
         </section>
 
-        <section id="audit" className="border-b border-rule/80">
-          <div className="mx-auto max-w-5xl px-5 py-14">
-            <p className="kicker">Still available</p>
-            <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-              The {site.priceLabel} audit, when a client wants the scored PDF.
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-ink-soft">
-              One public URL. A 0–100 CiteScore and about ten fixes, as a PDF,
-              usually a few minutes after payment. Refund within 14 days if
-              the file is missing, unreadable, or about the wrong URL. Weekly
-              rescans at {site.subscriptionPriceLabel} are on the roadmap.
-              They are not for sale on this page. The Fix Pack refund is
-              separate: full refund within 14 days if it is not useful.
-            </p>
-            <p className="mt-4 text-sm leading-6">
-              <Link href="/geo-audit" className="font-medium text-forest underline">
-                Open the {site.priceLabel} GEO audit
+        <section className="border-b border-rule/80">
+          <div className="mx-auto max-w-5xl px-5 py-10">
+            <p className="max-w-2xl text-sm leading-7 text-ink-soft">
+              A separate{" "}
+              <Link href="/geo-audit" className="text-forest underline">
+                GEO audit
+              </Link>{" "}
+              PDF for one public URL is still for sale. The company on the{" "}
+              <Link href="/sample" className="text-forest underline">
+                sample report
+              </Link>{" "}
+              is fictional, and the page says so.{" "}
+              <Link href="/terms" className="text-forest underline">
+                Terms
               </Link>
-              <span className="text-ink-soft">
-                . Checkout is on that page. The company on the{" "}
-                <Link href="/sample" className="text-forest underline">
-                  sample report
-                </Link>{" "}
-                is fictional, and the page says so.{" "}
-                <Link href="/terms" className="text-forest underline">
-                  Terms
-                </Link>
-                {" · "}
-                <Link href="/privacy" className="text-forest underline">
-                  Privacy
-                </Link>
-                {" · "}
-                <Link href="/refunds" className="text-forest underline">
-                  Refunds
-                </Link>
-                .
-              </span>
+              {" · "}
+              <Link href="/refunds" className="text-forest underline">
+                Refunds
+              </Link>
+              .
             </p>
           </div>
         </section>
@@ -373,8 +346,8 @@ export default function ForAgenciesPage() {
                 {agencyKitLabel}
               </h2>
               <p className="mt-4 max-w-xl text-ink-soft leading-7">
-                The kit is the delivery around the audit. Buy it once. Each
-                URL you score is still a separate {site.priceLabel} audit.
+                The kit is the writing around a client delivery. Buy it once.
+                It is separate from the Fix Pack.
               </p>
               <ul className="mt-6 space-y-3">
                 {kitContents.map((item) => (

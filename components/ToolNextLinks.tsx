@@ -9,8 +9,6 @@ export function ToolNextLinks({ className = "" }: { className?: string }) {
       <Link href="/fix-pack">Fix Pack, {fixPackIntroPriceLabel}</Link>
       {" · "}
       <Link href="/free-check">Run the free check</Link>
-      {" · "}
-      <Link href="/geo-audit">$39 GEO audit</Link>
     </p>
   );
 }

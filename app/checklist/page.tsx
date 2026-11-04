@@ -15,7 +15,7 @@ import { publicOrigin, site } from "@/lib/site";
 const path = "/checklist";
 const title = "AI Citation Readiness Checklist";
 const description =
-  "Forty concrete checks for crawler access, structured data, answer-ready copy, evidence, and entity clarity. llms.txt is optional; Google says it ignores llms.txt. The full list is free on the page. Local businesses start with the free AI Answer Snapshot. The $39 audit still scores one URL.";
+  "Forty concrete checks for crawler access, structured data, answer-ready copy, evidence, and entity clarity. llms.txt is optional; Google says it ignores llms.txt. The full list is free on the page. Local businesses start with the free AI Answer Snapshot.";
 
 export const metadata = pageMeta({
   title,
@@ -75,9 +75,7 @@ export default function ChecklistPage() {
           <p>
             Local businesses start with the{" "}
             <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The{" "}
-            <Link href="/fix-pack">Fix Pack</Link> is the paid next step. The{" "}
-            <Link href="/geo-audit">{site.priceLabel} audit</Link> still scores
-            one public URL and returns about ten prioritized fixes.
+            <Link href="/fix-pack">Fix Pack</Link> is the paid next step.
           </p>
         </div>
         <div className="mt-10">
@@ -103,7 +101,7 @@ export default function ChecklistPage() {
                 href="/geo-audit"
                 className="text-sm font-medium text-forest underline-offset-4 hover:underline"
               >
-                $39 GEO audit
+                GEO audit
               </Link>
             </li>
             <li>

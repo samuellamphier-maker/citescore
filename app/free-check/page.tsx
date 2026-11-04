@@ -30,13 +30,12 @@ export default function FreeCheckPage() {
         { href: "/ai-crawler-robots-txt-checker", label: "AI crawler robots.txt checker" },
         { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         { href: "/aeo-checklist", label: "AEO checklist" },
-        { href: "/geo-audit", label: "$39 GEO audit" },
       ].filter((r) => r.href !== topic.path)}
     >
         <FreeCheckTool />
         <h2>What this free check looks at</h2>
         <p>Five public-file basics: homepage reachability, AI-crawler rules in robots.txt (GPTBot, PerplexityBot, Google-Extended), sitemap, JSON-LD schema, and a meta description. CiteScore reads those files. It does not query live ChatGPT, Perplexity, or Google AI Overviews. llms.txt is <LlmsTxtCaveat />. The checker may note whether a file is present. A missing file is not a failed check.</p>
-        <p>Passing all six means the basics are in place. Who an answer engine names is what the <Link href="/free-snapshot">free AI Answer Snapshot</Link> shows. The <Link href="/fix-pack">Fix Pack</Link> is the done-for-you work after that. The <Link href="/geo-audit">$39 audit</Link> still turns one public URL into a prioritized, page-specific fix list.</p>
+        <p>Passing all six means the basics are in place. Who an answer engine names is what the <Link href="/free-snapshot">free AI Answer Snapshot</Link> shows. The <Link href="/fix-pack">Fix Pack</Link> is the done-for-you work after that. The <Link href="/geo-audit">GEO audit</Link> still turns one public URL into a prioritized, page-specific fix list.</p>
       <p><Link href="/free-check">Run the free check</Link></p>
     </ArticleShell>
   );

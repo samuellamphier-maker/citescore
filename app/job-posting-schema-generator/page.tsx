@@ -72,7 +72,6 @@ const related = [
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
   { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -183,7 +182,7 @@ export default function JobPostingSchemaGeneratorPage() {
           <code>validThrough</code> date in the past. The copy block is one <code>script</code> tag. Paste it into the
           HTML the server sends for that job. Answer engines often skip text that only appears after JavaScript runs.
           The <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. A
-          job URL at another path is outside that fetch. The <Link href="/geo-audit">$39 audit</Link> looks for markup
+          job URL at another path is outside that fetch. The <Link href="/geo-audit">GEO audit</Link> looks for markup
           that matches the copy. The longer note on which facts to repeat is the{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link>. The company itself, on the homepage, uses the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. A course page uses the{" "}

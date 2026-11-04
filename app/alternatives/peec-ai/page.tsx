@@ -7,20 +7,20 @@ import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getTopic } from "@/lib/content/topics";
 import { pageMeta } from "@/lib/content/meta";
-import { publicOrigin, site } from "@/lib/site";
+import { fixPackIntroPriceLabel, publicOrigin, site } from "@/lib/site";
 
 const topic = getTopic("/alternatives/peec-ai");
 
 const rows = [
-  ["Job", "One scored PDF, about ten fixes, one URL", "Ongoing AI-search analytics for a marketing team"],
+  ["Job", "Free AI Answer Snapshot, then the Fix Pack", "Ongoing AI-search analytics for a marketing team"],
   [
     "Live engine queries",
-    "No. On-page signals plus an optional LLM review of fetched HTML",
+    "Yes for the snapshot: logged-out ChatGPT and Perplexity. Answers vary run to run",
     "Yes. Prompts tracked on the engines included in the plan",
   ],
   [
     "Public price (15 Oct 2026)",
-    `${site.priceLabel} once`,
+    `Free, then ${fixPackIntroPriceLabel}`,
     "Starter, Pro, Advanced, and Enterprise on peec.ai/pricing, plus a free trial. This page does not quote a dollar amount",
   ],
   [
@@ -65,11 +65,11 @@ export default function PeecAlternativePage() {
         <p className="kicker">Comparison</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">CiteScore vs Peec AI</h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">
-          Peec AI is AI search analytics for marketing teams. Its homepage says it tracks brand performance across ChatGPT, Perplexity, and Gemini: visibility, competitors, and how the brand shows up in AI search. CiteScore is a {site.priceLabel} one-time{" "}
-          <Link href="/geo-audit" className="text-forest underline">
-            GEO audit
+          Peec AI is AI search analytics for marketing teams. Its homepage says it tracks brand performance across ChatGPT, Perplexity, and Gemini: visibility, competitors, and how the brand shows up in AI search. CiteScore starts with a free{" "}
+          <Link href="/free-snapshot" className="text-forest underline">
+            AI Answer Snapshot
           </Link>{" "}
-          of one public URL. The audit explains what to change on the page. Peec measures whether engines mention the brand after that work exists.
+          and an optional {fixPackIntroPriceLabel} Fix Pack. The snapshot shows who is named. Peec measures whether engines mention the brand over time.
         </p>
         <p className="mt-3 text-sm text-ink-soft">
           We are not affiliated with Peec AI, and we do not have affiliate links. Details below are what peec.ai and peec.ai/pricing showed on 15 October 2026. Their homepage says the product is trusted by 3,500+ brands and agencies, and the site footer says it is rated 4.7/5 on G2. Confirm the current plans before you budget.

@@ -218,7 +218,7 @@ export function HowToGetCitedByPerplexityCometArticle() {
         The free check reports GPTBot, PerplexityBot, and Google-Extended. It
         does not open Comet, and it does not look for a Comet token. A clear
         PerplexityBot row is not a Comet citation. The{" "}
-        <Link href="/geo-audit">$39 GEO audit</Link> scores one public URL
+        <Link href="/geo-audit">GEO audit</Link> scores one public URL
         from the HTML we fetch and returns about ten fixes. It does not open
         Comet or Perplexity.
       </CheckLinks>

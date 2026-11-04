@@ -87,7 +87,7 @@ export const autoRepairFaqs = [
   },
   {
     q: "Does the free check query ChatGPT, Perplexity, or Google AI Overviews, or open a customer file?",
-    a: "No. The free check reads the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, a non-empty llms.txt, a sitemap, and JSON-LD types on the homepage. It does not read OAI-SearchBot, it does not log into an answer engine or Search Console, and it does not open estimates, repair orders, or a scheduling login. The $39 audit scores one public URL from the HTML we fetch. The per-engine snapshot is an inference, and the report says so. A shop URL or a service URL is outside the homepage check. CiteScore does not give repair, diagnostic, or vehicle-safety advice.",
+    a: "No. The free check reads the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, a non-empty llms.txt, a sitemap, and JSON-LD types on the homepage. It does not read OAI-SearchBot, it does not log into an answer engine or Search Console, and it does not open estimates, repair orders, or a scheduling login. A shop URL or a service URL is outside the homepage check. CiteScore does not give repair, diagnostic, or vehicle-safety advice.",
   },
 ];
 
@@ -386,7 +386,7 @@ export function AiSearchVisibilityForAutoRepairArticle() {
           <>
             Run the <Link href="/free-check">free check</Link> on the public host. It reads the homepage, GPTBot,
             PerplexityBot, Google-Extended, <code>llms.txt</code>, a sitemap, and homepage JSON-LD. It does not read
-            OAI-SearchBot, and it does not query an answer engine. For a shop or service URL, start with the <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The <Link href="/geo-audit">$39 GEO audit</Link> still scores one public URL. The homepage check does not open that path.
+            OAI-SearchBot, and it does not query an answer engine. For a shop or service URL, start with the <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The <Link href="/fix-pack">Fix Pack</Link> is the done-for-you work after you have seen who was named. The homepage check does not open that path.
           </>
         }
       />

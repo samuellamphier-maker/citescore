@@ -7,27 +7,27 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
-import { publicOrigin, site } from "@/lib/site";
+import { fixPackIntroPriceLabel, publicOrigin, site } from "@/lib/site";
 
 const description =
-  "Honest comparison: CiteScore is a $39 one-off GEO audit of one URL. Otterly is a subscription that tracks live prompts across ChatGPT, Google AI Overviews, Perplexity, and Copilot.";
+  "CiteScore starts with a free AI Answer Snapshot and an optional Fix Pack. Otterly tracks live prompts on ChatGPT, AI Overviews, Perplexity, and Copilot.";
 
 export const metadata: Metadata = pageMeta({
-  title: "CiteScore vs Otterly — $39 audit vs AI-search monitoring",
+  title: "CiteScore vs Otterly",
   description,
   path: "/alternatives/otterly",
 });
 
 const rows = [
-  ["Job", "One scored PDF, ~10 fixes", "Ongoing AI-search visibility"],
+  ["Job", "Free AI Answer Snapshot, then the Fix Pack", "Ongoing AI-search visibility"],
   [
     "Live engine queries",
-    "No — inferred from on-page signals + LLM review",
+    "Yes for the snapshot: logged-out ChatGPT and Perplexity. Answers vary run to run",
     "Yes — for the prompts on your plan",
   ],
   [
     "Public price (2026)",
-    `${site.priceLabel} once`,
+    `Free, then ${fixPackIntroPriceLabel}`,
     "Lite ~$29/mo · Standard $189/mo · Premium $489/mo",
   ],
   ["Seats / workspaces", "None. No account.", "Team and workspace features"],
@@ -62,11 +62,11 @@ export default function OtterlyAlternativePage() {
           Different products. Otterly (OtterlyAI) is an AI-search monitoring
           platform: pick prompts, watch ChatGPT, Google AI Overviews,
           Perplexity, and Microsoft Copilot, and see whether you are
-          mentioned. CiteScore is a {site.priceLabel} one-time{" "}
-          <Link href="/geo-audit" className="text-forest underline">
-            GEO audit
+          mentioned. CiteScore starts with a free{" "}
+          <Link href="/free-snapshot" className="text-forest underline">
+            AI Answer Snapshot
           </Link>{" "}
-          of one public URL.
+          and an optional {fixPackIntroPriceLabel} Fix Pack.
         </p>
         <p className="mt-3 text-sm text-ink-soft">
           We are not affiliated with Otterly. Prices below are what Otterly
@@ -114,8 +114,7 @@ export default function OtterlyAlternativePage() {
             measurement product for people who will look at it every week.
           </p>
           <p>
-            Lite at about $29/month is the closest sticker to CiteScore’s{" "}
-            {site.priceLabel}. It is still a subscription, and 15 prompts is
+            Lite at about $29/month is still a subscription, and 15 prompts is
             a small sample. If your actual problem is a metaphorical H1, you
             do not need fifteen prompts yet.
           </p>
@@ -157,8 +156,8 @@ export default function OtterlyAlternativePage() {
             <Link href="/blog/citescore-vs-enterprise-geo-tools">
               enterprise comparison
             </Link>
-            . The honest summary: they are not competing with a{" "}
-            {site.priceLabel} PDF.
+            . The honest summary: they are not competing with a free
+            snapshot or the {fixPackIntroPriceLabel} Fix Pack.
           </p>
         </div>
 
