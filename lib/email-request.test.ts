@@ -52,6 +52,16 @@ test("snapshot request text carries the business fields", () => {
   assert.match(href, new RegExp(`^mailto:${contactEmail.replaceAll(".", "\\.")}\\?`));
   assert.match(href, /subject=/);
   assert.match(href, /body=/);
+  const sourced = snapshotRequestBody({
+    business: "Example Plumbing Co.",
+    city: "Riverton",
+    service: "plumber",
+    website: "https://example-plumbing.example",
+    email: "owner@example.com",
+    source: "/ai-search-visibility-for-plumbers",
+  });
+  assert.match(sourced, /Source: \/ai-search-visibility-for-plumbers/);
+  assert.match(sourced, /Please send a free AI Answer Snapshot\./);
   assert.equal(
     noMailAppInstruction(contactEmail),
     `No mail app opened? Copy this and email it to ${contactEmail} from any inbox.`,

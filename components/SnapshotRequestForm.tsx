@@ -18,6 +18,7 @@ import {
   snapshotFormPageEndpoint,
   snapshotSendErrorMessage,
   snapshotSentMessage,
+  snapshotSourceValue,
   snapshotValidationMessage,
   snapshotWebsiteValue,
 } from "@/lib/snapshot-form";
@@ -35,10 +36,18 @@ const fieldIds: Record<FieldKey, string> = {
   email: "snapshot-email",
 };
 
-export function SnapshotRequestForm() {
+export function SnapshotRequestForm({
+  defaultService,
+  source,
+}: {
+  /** Prefills Service when the page is already about one trade. */
+  defaultService?: string;
+  /** Page path posted as a hidden source field. */
+  source?: string;
+} = {}) {
   const [business, setBusiness] = useState("");
   const [city, setCity] = useState("");
-  // null means the visitor has not edited service, so an allowlisted ?trade= can fill it.
+  // null means the visitor has not edited service, so the page trade or ?trade= can fill it.
   const [service, setService] = useState<string | null>(null);
   const [website, setWebsite] = useState("");
   const [email, setEmail] = useState("");
@@ -47,7 +56,10 @@ export function SnapshotRequestForm() {
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldKey, string>>>({});
   const submitLock = useRef(false);
   const trade = useHomeServiceTradeParam();
-  const serviceValue = service ?? trade?.service ?? "";
+  const pageService = defaultService?.trim() ?? "";
+  const sourceValue = snapshotSourceValue(source);
+  // The page trade wins over ?trade=. A citation guide has neither until the URL has one.
+  const serviceValue = service ?? (pageService || trade?.service || "");
 
   const fields = {
     business: business.trim(),
@@ -57,8 +69,9 @@ export function SnapshotRequestForm() {
     email: email.trim(),
   };
   const ready = snapshotFieldsComplete(fields);
-  const subject = snapshotSubjectForTrade(trade?.service);
-  const mailto = snapshotMailto(contactEmail, snapshotRequestBody(fields), subject);
+  const subject = snapshotSubjectForTrade(pageService || trade?.service);
+  const requestFields = sourceValue ? { ...fields, source: sourceValue } : fields;
+  const mailto = snapshotMailto(contactEmail, snapshotRequestBody(requestFields), subject);
 
   function writeWebsite(form: HTMLFormElement) {
     const input = form.elements.namedItem("Website");
@@ -293,6 +306,7 @@ export function SnapshotRequestForm() {
           </p>
         ) : null}
       </div>
+      {sourceValue ? <input type="hidden" name="source" value={sourceValue} /> : null}
       <input type="hidden" name="_subject" value={SNAPSHOT_SUBJECT} />
       <input
         type="hidden"
@@ -353,14 +367,16 @@ export function SnapshotRequestForm() {
         Email this request instead
       </a>
       <EmailRequestFallback
-        requestText={snapshotRequestClipboard(contactEmail, fields, subject)}
+        requestText={snapshotRequestClipboard(contactEmail, requestFields, subject)}
         requestReady={ready}
       />
       <p className="text-xs leading-5 text-ink-soft">
         Sends the business name, city, service, website, and email to{" "}
-        {contactEmail} through FlowForm. No account and no paid checkout.
-        If that send fails, use the email button or the copy buttons. AI
-        answers vary run to run. This is a snapshot, not a ranking.
+        {contactEmail} through FlowForm.
+        {sourceValue ? " This page path is included." : ""} No account and no
+        paid checkout. If that send fails, use the email button or the copy
+        buttons. AI answers vary run to run. This is a snapshot, not a
+        ranking, and not a promise that any assistant will name the business.
       </p>
     </form>
   );

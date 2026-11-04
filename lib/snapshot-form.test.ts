@@ -11,6 +11,7 @@ import {
   snapshotFormProvider,
   snapshotSendErrorMessage,
   snapshotSentMessage,
+  snapshotSourceValue,
   snapshotSubmitSucceeded,
   snapshotWebsiteValue,
 } from "./snapshot-form.ts";
@@ -88,6 +89,7 @@ test("privacy names FlowForm and the fields that are sent", () => {
   const privacy = readFileSync(new URL("../app/privacy/page.tsx", import.meta.url), "utf8");
   assert.match(privacy, /through FlowForm to \{contactEmail\}/);
   assert.match(privacy, /business name, city,\s+service, website, and email/);
+  assert.match(privacy, /page path/);
   assert.match(privacy, /honeypot/);
   assert.match(privacy, /reply-to address/);
   assert.doesNotMatch(privacy, /captcha is turned off/);
@@ -132,4 +134,31 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /snapshotSendErrorMessage/);
   assert.match(form, /EmailRequestFallback/);
   assert.doesNotMatch(form, /useSearchParams|useEffect/);
+  assert.match(form, /name="source"/);
+  assert.match(form, /defaultService/);
+  assert.match(form, /snapshotSourceValue/);
+  assert.match(form, /pageService \|\| trade\?\.service/);
+});
+
+test("a guide form can post its page path and drops unsafe source values", () => {
+  assert.equal(
+    snapshotSourceValue("/ai-search-visibility-for-plumbers"),
+    "/ai-search-visibility-for-plumbers",
+  );
+  assert.equal(snapshotSourceValue("/how-to-get-cited-by-chatgpt"), "/how-to-get-cited-by-chatgpt");
+  assert.equal(snapshotSourceValue(" https://evil.example/path "), "");
+  assert.equal(snapshotSourceValue("/free-snapshot?trade=plumber"), "");
+  assert.equal(snapshotSourceValue("//evil.example"), "");
+  assert.equal(snapshotSourceValue("plumber"), "");
+  assert.equal(snapshotSourceValue(undefined), "");
+  const withSource = snapshotFormPayload(fields, "/ai-search-visibility-for-plumbers");
+  assert.equal(withSource.source, "/ai-search-visibility-for-plumbers");
+  assert.equal(withSource.Service, "plumber");
+  assert.equal(snapshotFormPayload(fields).source, undefined);
+  assert.match(
+    snapshotFormEncoded(fields, "/how-to-get-cited-by-chatgpt"),
+    /source=%2Fhow-to-get-cited-by-chatgpt/,
+  );
+  assert.doesNotMatch(snapshotFormEncoded(fields), /source=/);
+  assert.doesNotMatch(snapshotFormEncoded(fields, "https://evil.example"), /source=/);
 });

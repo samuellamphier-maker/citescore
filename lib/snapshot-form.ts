@@ -34,6 +34,17 @@ export type SnapshotFields = {
  * Bare domains are accepted. FlowForm and the email fallback both need a
  * scheme, and a URL input rejects a value that has none.
  */
+/**
+ * Page path posted with a guide form. Only a same-site path is kept.
+ * Query strings, hashes, and off-site values are dropped.
+ */
+export function snapshotSourceValue(value: string | null | undefined) {
+  const trimmed = value?.trim() ?? "";
+  if (!/^\/[a-z0-9/-]+$/.test(trimmed)) return "";
+  if (trimmed.includes("//") || trimmed.length > 120) return "";
+  return trimmed;
+}
+
 export function snapshotWebsiteValue(value: string) {
   const trimmed = value.trim();
   if (!trimmed) return "";
@@ -61,7 +72,8 @@ export function snapshotFieldErrors(fields: SnapshotFields) {
  * _subject stays the fixed snapshot subject even when ?trade= changes the mailto subject.
  * An empty honeypot is checked in the browser and is not posted.
  */
-export function snapshotFormPayload(fields: SnapshotFields) {
+export function snapshotFormPayload(fields: SnapshotFields, source?: string) {
+  const page = snapshotSourceValue(source);
   return {
     _subject: snapshotSubject,
     _replyto: fields.email.trim(),
@@ -70,11 +82,12 @@ export function snapshotFormPayload(fields: SnapshotFields) {
     Service: fields.service.trim(),
     Website: snapshotWebsiteValue(fields.website),
     Email: fields.email.trim(),
+    ...(page ? { source: page } : {}),
   };
 }
 
-export function snapshotFormEncoded(fields: SnapshotFields) {
-  return new URLSearchParams(snapshotFormPayload(fields)).toString();
+export function snapshotFormEncoded(fields: SnapshotFields, source?: string) {
+  return new URLSearchParams(snapshotFormPayload(fields, source)).toString();
 }
 
 export function snapshotSubmitSucceeded(status: number, body: unknown) {
