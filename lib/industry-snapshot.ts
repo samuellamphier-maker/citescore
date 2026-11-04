@@ -49,8 +49,46 @@ export type InlineSnapshotRequest = {
 };
 
 /**
- * Inline snapshot form for a trade guide or a how-to-get-cited guide.
- * Other paths stay link-only. The service prefill is that page's trade.
+ * Pages that post the same snapshot form, with no service prefill.
+ * Trade guides, citation guides, blog posts, and schema generators are
+ * matched separately.
+ */
+export const inlineSnapshotPaths = [
+  "/fix-pack",
+  "/pricing",
+  "/how-it-works",
+  "/faq",
+  "/sample",
+  "/sample-fix-pack",
+  "/methodology",
+  "/about",
+  "/checklist",
+  "/for-agencies",
+  "/done-for-you-audit",
+  "/geo-audit",
+  "/free-check",
+  "/chatgpt-citation-check",
+  "/geo-for-local-businesses",
+  "/how-to-check-if-chatgpt-mentions-your-brand",
+  "/answer-engine-optimization",
+  "/aeo-checklist",
+  "/ai-overviews",
+  "/perplexity-citations",
+  "/google-ai-mode-optimization",
+  "/google-ai-overviews-optimization",
+  "/geo-vs-seo",
+  "/blog",
+  "/guides",
+  "/industries",
+  "/tools",
+] as const;
+
+const inlineSnapshotPathSet = new Set<string>(inlineSnapshotPaths);
+
+/**
+ * Inline snapshot form. Trade guides prefill Service. A schema generator
+ * prefills Service only when that page is already about one trade.
+ * "local" is a category, not a service someone would type.
  */
 export function inlineSnapshotRequestForPath(
   path: string | null | undefined,
@@ -67,6 +105,13 @@ export function inlineSnapshotRequestForPath(
   if (path.startsWith(citationPrefix) && path.length > citationPrefix.length) {
     return { source: path };
   }
+  if (/^\/blog\/[a-z0-9-]+$/.test(path)) return { source: path };
+  if (/^\/[a-z0-9-]+-schema-generator$/.test(path)) {
+    const service = schemaIndustries[path.slice(1)];
+    if (service && service !== "local") return { source: path, service };
+    return { source: path };
+  }
+  if (inlineSnapshotPathSet.has(path)) return { source: path };
   return null;
 }
 
@@ -239,4 +284,19 @@ export function contentStickySnapshotHref(input: {
     return tradeGuideStickySnapshotHref(input.guidePath) ?? "/free-snapshot";
   }
   return "/free-snapshot";
+}
+
+/**
+ * Path an ArticleShell is showing. guidePath wins, so a trade guide cannot
+ * pick up another page's ctaId. Known aliases such as "aeo" resolve before
+ * the blog- prefix rule.
+ */
+export function shellContentPath(input: {
+  guidePath?: string;
+  ctaId?: string;
+}): string | null {
+  if (input.guidePath) return input.guidePath;
+  const ctaId = input.ctaId;
+  if (!ctaId) return null;
+  return guideSnapshotCalloutCtaAliases[ctaId] ?? stickySnapshotContentPath({ ctaId });
 }

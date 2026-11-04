@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CopySnippet } from "@/components/CopySnippet";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
@@ -349,6 +350,9 @@ export default function SampleFixPackPage() {
         <FixPackOfferFacts className="mt-4" />
         <div className="mt-4">
           <TrustLinks />
+        </div>
+        <div className="max-w-2xl">
+          <InlineSnapshotRequest source="/sample-fix-pack" />
         </div>
       </main>
       <SiteFooter />

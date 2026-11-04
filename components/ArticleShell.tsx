@@ -2,11 +2,11 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
 import { HomeServiceGuideCallout } from "@/components/HomeServiceGuideCallout";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { TradeGuideStickyCta } from "@/components/TradeGuideStickyCta";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
@@ -14,6 +14,7 @@ import { freeSnapshotPath, homeServiceTradeForGuide } from "@/lib/home-service-t
 import {
   contentStickySnapshotHref,
   inlineSnapshotRequestForPath,
+  shellContentPath,
   showsGuideSnapshotCallout,
   snapshotOfferForPage,
 } from "@/lib/industry-snapshot";
@@ -55,7 +56,9 @@ export function ArticleShell({
 }: Props) {
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
   const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
-  const inlineSnapshot = inlineSnapshotRequestForPath(guidePath);
+  const inlineSnapshot = inlineSnapshotRequestForPath(
+    shellContentPath({ guidePath, ctaId }),
+  );
   const stickyHref = contentStickySnapshotHref({ guidePath, ctaId });
   const generalSnapshot =
     !snapshotOffer &&
@@ -114,31 +117,11 @@ export function ArticleShell({
           </div>
         ) : null}
         {inlineSnapshot ? (
-          <section className="mt-12" aria-labelledby="guide-snapshot-request" data-funnel-cta>
-            <h2 id="guide-snapshot-request" className="font-serif text-2xl tracking-tight">
-              Request a free AI Answer Snapshot
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-ink-soft">
-              Same request as the{" "}
-              <Link
-                href={homeService ? freeSnapshotPath(homeService.id) : "/free-snapshot"}
-                className="text-forest underline"
-              >
-                free snapshot page
-              </Link>
-              . AI answers vary run to run. This is a snapshot, not a ranking,
-              and not a promise that any assistant will name the business.
-            </p>
-            <div className="mt-5">
-              <SnapshotRequestForm
-                defaultService={inlineSnapshot.service}
-                source={inlineSnapshot.source}
-              />
-            </div>
-            <p className="mt-4 text-sm leading-6 text-ink-soft">
-              Prepared by the CiteScore Team.
-            </p>
-          </section>
+          <InlineSnapshotRequest
+            source={inlineSnapshot.source}
+            defaultService={inlineSnapshot.service}
+            snapshotHref={homeService ? freeSnapshotPath(homeService.id) : "/free-snapshot"}
+          />
         ) : null}
         {showAuditCta ? (
           <AuditSecondaryNote includeDoneForYou={Boolean(guidePath)} />

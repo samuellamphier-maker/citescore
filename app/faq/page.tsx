@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -83,7 +84,7 @@ export default function FaqPage() {
           </span>
         </p>
 
-        <section id="snapshot" className="mt-12">
+        <section id="snapshot-faq" className="mt-12">
           <h2 className="font-serif text-3xl tracking-tight">
             Free AI Answer Snapshot
           </h2>
@@ -92,6 +93,7 @@ export default function FaqPage() {
             you submit the form, and how that request is handled.
           </p>
           <FaqList items={snapshotTrustFaqs} />
+          <InlineSnapshotRequest source="/faq" />
         </section>
 
         <section id="fix-pack" className="mt-12">

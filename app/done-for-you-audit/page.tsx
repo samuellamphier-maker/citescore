@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -234,6 +235,9 @@ export default function DoneForYouAuditPage() {
             </a>
           </div>
         </section>
+        <div className="mx-auto w-full max-w-2xl px-5 pb-14">
+          <InlineSnapshotRequest source="/done-for-you-audit" />
+        </div>
       </main>
       <SiteFooter />
     </>

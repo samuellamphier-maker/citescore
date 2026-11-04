@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -233,6 +234,9 @@ export default function MethodologyPage() {
         </div>
         <div className="mt-6">
           <TrustLinks />
+        </div>
+        <div className="max-w-2xl">
+          <InlineSnapshotRequest source="/methodology" />
         </div>
       </main>
       <SiteFooter />
