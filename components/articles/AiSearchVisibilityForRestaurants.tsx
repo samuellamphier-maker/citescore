@@ -68,7 +68,7 @@ export const restaurantFaqs = [
   },
   {
     q: "Does the free check query ChatGPT, Perplexity, or Google AI Overviews, or open the menu URL?",
-    a: "No. The free check reads the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, a non-empty llms.txt, a sitemap, and JSON-LD types on the homepage. It does not read OAI-SearchBot, and it does not log into an answer engine or Search Console. The $39 audit scores one public URL from the HTML we fetch. The per-engine snapshot is an inference, and the report says so. A location URL or a menu URL is outside the homepage check.",
+    a: "No. The free check reads the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, a non-empty llms.txt, a sitemap, and JSON-LD types on the homepage. It does not read OAI-SearchBot, and it does not log into an answer engine or Search Console. A location URL or a menu URL is outside the homepage check.",
   },
 ];
 
@@ -325,7 +325,7 @@ export function AiSearchVisibilityForRestaurantsArticle() {
           <>
             Run the <Link href="/free-check">free check</Link> on the public host. It reads the homepage, GPTBot,
             PerplexityBot, Google-Extended, <code>llms.txt</code>, a sitemap, and homepage JSON-LD. It does not read
-            OAI-SearchBot, and it does not query an answer engine. For a location or menu URL, start with the <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The <Link href="/geo-audit">$39 GEO audit</Link> still scores one public URL. The homepage check does not open that path.
+            OAI-SearchBot, and it does not query an answer engine. For a location or menu URL, start with the <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The <Link href="/fix-pack">Fix Pack</Link> is the done-for-you work after you have seen who was named. The homepage check does not open that path.
           </>
         }
       />

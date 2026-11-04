@@ -7,7 +7,6 @@ import {
   contactEmail,
   fixPackIntroPriceLabel,
   sellerName,
-  site,
 } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
@@ -46,7 +45,11 @@ export default function RefundsPage() {
 
           <h2 className="font-serif text-2xl text-ink">Other digital files</h2>
           <p>
-            For the {site.priceLabel} audit and the other paid files listed
+            For the{" "}
+            <Link href="/geo-audit" className="text-forest underline">
+              GEO audit
+            </Link>{" "}
+            and the other paid files listed
             on the{" "}
             <Link href="/terms" className="text-forest underline">
               terms

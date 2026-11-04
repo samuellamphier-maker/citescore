@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { doneForYouAuditLabel, doneForYouAuditPath, site } from "@/lib/site";
+import { doneForYouAuditLabel, doneForYouAuditPath } from "@/lib/site";
 
 /** Smaller mention of the self-serve PDF. The snapshot and Fix Pack stay the lead. */
 export function AuditSecondaryNote({
@@ -11,15 +11,14 @@ export function AuditSecondaryNote({
 }) {
   return (
     <p className={className}>
-      The{" "}
+      A separate{" "}
       <Link
         href="/geo-audit"
         className="font-medium text-forest underline underline-offset-4"
       >
-        {site.priceLabel} GEO audit
+        GEO audit
       </Link>{" "}
-      is still available: one public URL, a 0–100 CiteScore, and about ten
-      fixes, as a PDF.
+      PDF covers one public URL.
       {includeDoneForYou ? (
         <>
           {" "}

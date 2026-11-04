@@ -35,7 +35,7 @@ export function RobotsTxtForAiCrawlersArticle() {
         Googlebot group, or private paths, merge these groups in. Replacing
         the whole file can drop a rule you still want. The{" "}
         <Link href="/free-check">free check</Link> reads the live file. The{" "}
-        <Link href="/geo-audit">$39 audit</Link> scores the HTML a crawler
+        <Link href="/geo-audit">GEO audit</Link> scores the HTML a crawler
         would fetch. Neither one logs into ChatGPT, Claude, Perplexity, or
         Google.
       </p>
@@ -307,7 +307,7 @@ Disallow: /`}</pre>
         not a live answer from ChatGPT or Perplexity.
       </p>
       <p>
-        The <Link href="/geo-audit">$39 GEO audit</Link> is one public URL,
+        The <Link href="/geo-audit">GEO audit</Link> is one public URL,
         a 0–100 CiteScore, and about ten prioritized fixes, as a PDF. The
         score comes from on-page signals — definitions, entities, evidence,
         schema, freshness, crawler access — and, when a language-model key

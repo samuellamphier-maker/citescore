@@ -37,7 +37,6 @@ export default function SchemaMarkupForAiSearchPage() {
         guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/robots-txt-for-ai-crawlers", label: "robots.txt for AI crawlers" },
           { href: "/faq-schema-generator", label: "Free FAQ schema generator" },
           { href: "/organization-schema-generator", label: "Free Organization schema generator" },

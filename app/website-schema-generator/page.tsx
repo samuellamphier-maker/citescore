@@ -72,7 +72,6 @@ const related = [
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
   { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -136,8 +135,7 @@ export default function WebsiteSchemaGeneratorPage() {
           when it differs from the site name. A search template is included only when it is an http(s) URL containing{" "}
           <code>{"{search_term_string}"}</code>. A publisher is included only when it has a name. A URL without a name
           is omitted, so the script does not invent an organization. The <Link href="/free-check">free check</Link>{" "}
-          lists the JSON-LD <code>@type</code> values on the homepage. The <Link href="/geo-audit">$39 audit</Link>{" "}
-          looks for markup that matches the copy. The publisher’s logo and profiles use the{" "}
+          lists the JSON-LD <code>@type</code> values on the homepage. Markup still has to match the copy a person can read. The publisher’s logo and profiles use the{" "}
           <Link href="/organization-schema-generator">Organization schema generator</Link>. The longer note on which
           facts to repeat is the <Link href="/schema-markup-for-ai-search">schema guide</Link>. Meta’s published
           crawlers, which do not require this script, are on{" "}

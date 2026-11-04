@@ -5,12 +5,12 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
-import { fixPackIntroPriceLabel, site } from "@/lib/site";
+import { fixPackIntroPriceLabel } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "CiteScore alternatives",
   description:
-    "How a $39 one-off GEO audit compares with Otterly, Profound, and Peec AI — ongoing AI-visibility monitors — and when to buy which.",
+    "How the free AI Answer Snapshot and the Fix Pack compare with Otterly, Profound, and Peec AI — ongoing AI-visibility monitors — and when to buy which.",
   path: "/alternatives",
 });
 
@@ -33,7 +33,7 @@ const links = [
   {
     href: "/alternatives/profound",
     title: "CiteScore vs Profound",
-    dek: "Profound is the enterprise citation-share platform. CiteScore is still the $39 punch-list PDF.",
+    dek: "Profound is the enterprise citation-share platform. CiteScore starts with a free snapshot and the Fix Pack.",
   },
   {
     href: "/alternatives/peec-ai",
@@ -47,8 +47,8 @@ const links = [
   },
   {
     href: "/geo-audit",
-    title: `The ${site.priceLabel} GEO audit`,
-    dek: "Still available: one public URL, a 0–100 score, and about ten fixes, as a PDF.",
+    title: "GEO audit",
+    dek: "A separate PDF for one public URL, with a 0–100 score and about ten fixes.",
   },
 ];
 
@@ -65,8 +65,9 @@ export default function AlternativesIndexPage() {
           CiteScore is not trying to replace a mention-tracking suite. These
           pages exist so a founder searching “Otterly alternative,”
           “Profound vs …,” or “Peec AI alternative” can see the honest
-          split: {site.priceLabel} once versus a monthly monitor. Local
-          businesses start with the free snapshot.
+          split: a free snapshot and the {fixPackIntroPriceLabel} Fix Pack
+          versus a monthly monitor. Local businesses start with the free
+          snapshot.
         </p>
         <div className="mt-8">
           <IndustrySnapshotCta variant="general" />

@@ -262,7 +262,7 @@ export function HowToGetCitedByDeepseekArticle() {
         The free check reports GPTBot, PerplexityBot, and Google-Extended. It
         does not look for a DeepSeek token, because DeepSeek has not
         published one for it to read. A clear row on that check is not a
-        DeepSeek citation. The <Link href="/geo-audit">$39 GEO audit</Link>{" "}
+        DeepSeek citation. The <Link href="/geo-audit">GEO audit</Link>{" "}
         scores one public URL from the HTML we fetch and returns about ten
         fixes. It does not call the DeepSeek API or open the chat product.
       </CheckLinks>

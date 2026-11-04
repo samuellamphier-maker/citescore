@@ -248,7 +248,7 @@ export function HowToGetCitedByBraveSearchArticle() {
         The free check reports GPTBot, PerplexityBot, and Google-Extended. It
         does not look for a Brave token, and the crawler page does not
         publish one to look for. A clear row on that check is not an AI
-        Answer citation. The <Link href="/geo-audit">$39 GEO audit</Link>{" "}
+        Answer citation. The <Link href="/geo-audit">GEO audit</Link>{" "}
         scores one public URL from the HTML we fetch and returns about ten
         fixes. It does not open Brave Search.
       </CheckLinks>

@@ -3,7 +3,7 @@ import { ArticleShell } from "@/components/ArticleShell";
 import { JsonLd } from "@/components/JsonLd";
 import { getTopic } from "@/lib/content/topics";
 import { pageMeta } from "@/lib/content/meta";
-import { publicOrigin, site } from "@/lib/site";
+import { fixPackIntroPriceLabel, publicOrigin, site } from "@/lib/site";
 
 const topic = getTopic("/answer-engine-optimization");
 
@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "Is this an AEO rank tracker?",
-    a: "No. Trackers watch a prompt list over time and charge monthly. This is one URL, a 0–100 score, and about ten fixes, for $39. Live ChatGPT, Perplexity, and Google AI Overviews sessions are not included.",
+    a: "No. Trackers watch a prompt list over time and charge monthly. CiteScore starts with a free AI Answer Snapshot: logged-out ChatGPT and Perplexity, one page, no payment. AI answers vary run to run. The Fix Pack is the done-for-you work after that.",
   },
   {
     q: "What should I read if I want the long definition?",
@@ -62,7 +62,6 @@ export default function AnswerEngineOptimizationPage() {
         ctaId="aeo"
         related={[
           { href: "/blog/what-is-geo", label: "What is GEO? — the longer definition" },
-          { href: "/geo-audit", label: "GEO audit — what the $39 buys" },
           { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
           { href: "/ai-overviews", label: "Google AI Overviews visibility" },
           {
@@ -85,10 +84,10 @@ export default function AnswerEngineOptimizationPage() {
           labels. They are not four methods with four toolchains.
         </p>
         <p>
-          CiteScore picked GEO because the product is a generative-engine
-          audit: one public URL, a 0–100 score, about ten fixes, {site.priceLabel}{" "}
-          once. If you searched “AEO audit” and landed here, the deliverable
-          is that PDF. The <Link href="/blog/what-is-geo">GEO explainer</Link>{" "}
+          CiteScore starts with a free AI Answer Snapshot and the{" "}
+          {fixPackIntroPriceLabel} Fix Pack. If you searched “AEO audit” and
+          landed here, that is the offer. The{" "}
+          <Link href="/blog/what-is-geo">GEO explainer</Link>{" "}
           is the longer definition of the work. This page exists so the AEO
           wording is not a dead end.
         </p>
@@ -178,8 +177,8 @@ export default function AnswerEngineOptimizationPage() {
         <p>
           If those four are already in good shape, you do not need another
           acronym. You may need a monitor, later, once there is something
-          worth counting. If they are not, a {site.priceLabel} punch list is
-          the whole AEO engagement a small team can finish.
+          worth counting. If they are not, the free snapshot and the Fix
+          Pack are the whole AEO engagement a small team can finish.
         </p>
 
         <h2>Who the label is for</h2>

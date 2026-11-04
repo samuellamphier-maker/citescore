@@ -29,8 +29,9 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
     description: `A ${site.priceLabel} GEO audit of one URL: on-page signals, an LLM review of public HTML, a 0-100 score, and about ten fixes in a PDF. Not a live ChatGPT login.`,
   },
   "/alternatives/otterly": {
-    title: `CiteScore vs Otterly: ${site.priceLabel} audit`,
-    description: `A ${site.priceLabel} one-off GEO audit of one URL. Otterly is a subscription that tracks live prompts on ChatGPT, Google AI Overviews, Perplexity, and Copilot.`,
+    title: "CiteScore vs Otterly: free snapshot",
+    description:
+      "Free AI Answer Snapshot shows who is named. The $49 Fix Pack is optional. Otterly tracks live prompts on ChatGPT, AI Overviews, Perplexity, and Copilot.",
   },
   "/sample-snapshot": {
     description:
@@ -43,10 +44,12 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
     description: `Request a free AI Answer Snapshot. Logged-out ChatGPT and Perplexity are asked who they name for that trade and city. The ${fixPackIntroPriceLabel} Fix Pack is optional.`,
   },
   "/checklist": {
-    description: `Forty checks for crawlers, schema, copy, evidence, and entities. llms.txt is optional. Start with a free AI Answer Snapshot, or the ${site.priceLabel} audit of one URL.`,
+    description:
+      "Forty checks for crawlers, schema, copy, evidence, and entities. llms.txt is optional. Start with a free AI Answer Snapshot. The $49 Fix Pack is optional.",
   },
   "/for-agencies": {
-    description: `Agencies start a local client with the free AI Answer Snapshot and the ${fixPackIntroPriceLabel} Fix Pack. The check, ${site.priceLabel} audit, $149 white-label PDF, and $29 kit are separate.`,
+    description:
+      "Agencies start a local client with the free AI Answer Snapshot and the $49 Fix Pack. The free check reads public files and does not query ChatGPT.",
   },
   "/done-for-you-audit": {
     description:
@@ -69,7 +72,7 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
   },
   "/blog/what-is-geo": {
     description:
-      `Generative engine optimization, in plain language: how it differs from classic SEO, what answer engines cite, and what a ${site.priceLabel} audit can and cannot tell you.`,
+      "Generative engine optimization, in plain language: how it differs from classic SEO, what answer engines cite, and what the free snapshot shows.",
   },
   "/blog/chatgpt-citation-checklist": {
     description:
@@ -77,7 +80,7 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
   },
   "/blog/citescore-vs-enterprise-geo-tools": {
     description:
-      `A ${site.priceLabel} one-off GEO audit compared with Otterly- and Profound-class platforms: live prompt tracking, seats, and monthly dashboards versus a punch-list PDF.`,
+      "The free AI Answer Snapshot and the $49 Fix Pack compared with Otterly- and Profound-class platforms: live prompt tracking, seats, and monthly dashboards.",
   },
   "/robots-txt-for-ai-crawlers": {
     title: "robots.txt for GPTBot, ClaudeBot, PerplexityBot",
@@ -157,7 +160,8 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
       "Table of AI crawler user-agent tokens: operator, purpose, whether docs say they honor robots.txt, and a copyable group. Unconfirmed cells say so.",
   },
   "/alternatives/peec-ai": {
-    description: `CiteScore is a ${site.priceLabel} one-time GEO audit of one URL. Peec AI is ongoing AI-search analytics: prompts, visibility, position, and sentiment. Different jobs.`,
+    description:
+      "The free AI Answer Snapshot shows who is named. The $49 Fix Pack is the next step. Peec AI tracks prompts, visibility, position, and sentiment.",
   },
   "/how-to-get-cited-by-meta-ai": {
     description:

@@ -72,7 +72,6 @@ export default async function BlogPostPage({
     blogPosts.filter((item) => item.slug !== post.slug),
     [
       ...(topicRelated[post.slug as keyof typeof topicRelated] ?? []),
-      { href: "/geo-audit", label: "GEO audit — what you get for $39" },
       { href: "/alternatives/otterly", label: "CiteScore vs Otterly" },
       { href: "/sample", label: "Sample report" },
     ],

@@ -41,7 +41,6 @@ export default function GeoVsSeoPage() {
         guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/checklist", label: "AI Citation Readiness Checklist" },
           { href: "/blog/what-is-geo", label: "What is GEO?" },
           { href: "/llms-txt-examples", label: "llms.txt examples from 10 SaaS sites" },

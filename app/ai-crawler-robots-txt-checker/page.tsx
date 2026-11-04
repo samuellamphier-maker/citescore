@@ -29,7 +29,6 @@ export default function AiCrawlerRobotsTxtCheckerPage() {
         { href: "/ai-crawler-user-agents", label: "AI crawler user agents" },
         { href: "/robots-txt-ai-crawler-generator", label: "robots.txt AI crawler generator" },
         { href: "/aeo-checklist", label: "AEO checklist" },
-        { href: "/geo-audit", label: "$39 GEO audit" },
       ].filter((r) => r.href !== topic.path)}
     >
         <div dangerouslySetInnerHTML={{ __html: html }} />

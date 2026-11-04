@@ -117,9 +117,13 @@ test("buying path pages render the facts beside Fix Pack buy buttons", () => {
   assert.match(about, /Who runs this/);
   assert.match(about, /CiteScore Team/);
   assert.match(about, /mailto:\$\{contactEmail\}/);
-  const still = home.indexOf("Still available");
-  const auditList = home.indexOf("{auditDeliverables.map");
   const packList = home.indexOf("{fixPackDeliverables.map");
-  assert.ok(still !== -1 && auditList > still);
-  assert.ok(packList !== -1 && packList < still);
+  assert.ok(packList !== -1);
+  assert.doesNotMatch(home, /\$39/);
+  assert.doesNotMatch(home, /priceLabel/);
+  assert.doesNotMatch(home, /AuditForm/);
+  assert.doesNotMatch(home, /Still available/);
+  const geoAudit = readFileSync(new URL("../app/geo-audit/page.tsx", import.meta.url), "utf8");
+  assert.match(geoAudit, /<AuditForm/);
+  assert.match(geoAudit, /priceLabel/);
 });

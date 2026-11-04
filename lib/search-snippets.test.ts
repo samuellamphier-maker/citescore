@@ -54,7 +54,7 @@ const marketingInput: Record<string, { title: string; description: string }> = {
   "/alternatives": {
     title: "CiteScore alternatives",
     description:
-      "How a $39 one-off GEO audit compares with Otterly, Profound, and Peec AI — ongoing AI-visibility monitors — and when to buy which.",
+      "How the free AI Answer Snapshot and the Fix Pack compare with Otterly, Profound, and Peec AI — ongoing AI-visibility monitors — and when to buy which.",
   },
   "/sample": {
     title: "Sample report — Northbound",
@@ -89,7 +89,7 @@ const marketingInput: Record<string, { title: string; description: string }> = {
     description: "x",
   },
   "/alternatives/otterly": {
-    title: "CiteScore vs Otterly — $39 audit vs AI-search monitoring",
+    title: "CiteScore vs Otterly",
     description: "x",
   },
   "/sample-snapshot": { title: "Example AI Answer Snapshot", description: "x" },

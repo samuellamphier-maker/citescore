@@ -43,8 +43,8 @@ const faqs = [
     a: "No. CiteScore does not log into ChatGPT, Perplexity, or Google AI Overviews. The walkthrough is written from the public page.",
   },
   {
-    q: "How is this different from the $39 audit?",
-    a: "The $39 audit is the self-serve PDF: a 0–100 CiteScore and about ten fixes, usually ready a few minutes after payment. This $99 audit is a written walkthrough, delivered within 3 business days.",
+    q: "How is this different from the GEO audit?",
+    a: "The GEO audit is the self-serve PDF: a 0–100 CiteScore and about ten fixes, usually ready a few minutes after payment. This $99 audit is a written walkthrough, delivered within 3 business days.",
   },
 ];
 
@@ -181,7 +181,7 @@ export default function DoneForYouAuditPage() {
             <p className="mt-8 max-w-2xl text-sm leading-7 text-ink-soft">
               The self-serve version is the{" "}
               <Link href="/geo-audit" className="text-forest underline">
-                {site.priceLabel} GEO audit
+                GEO audit
               </Link>
               : a 0–100 CiteScore and about ten fixes, as a PDF, usually a
               few minutes after payment. Agencies who need an unbranded file

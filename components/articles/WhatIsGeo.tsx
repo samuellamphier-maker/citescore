@@ -152,10 +152,10 @@ export function WhatIsGeoArticle() {
         Spend the day if buyers already ask answer engines “best X for Y”
         and your homepage currently opens with a metaphor. Write the
         definition. Put the entity in markup. Add two FAQs you can stand
-        behind. Leave GPTBot unblocked. That is GEO. It is unglamorous, and
-        it is the part a{" "}
-        <Link href="/#audit">$39 CiteScore report</Link> is designed to
-        sequence for you.
+        behind. Leave GPTBot unblocked. That is GEO. It is unglamorous. The{" "}
+        <Link href="/free-snapshot">free AI Answer Snapshot</Link> shows who
+        is named. The <Link href="/fix-pack">Fix Pack</Link> is the
+        done-for-you work after that.
       </p>
     </>
   );

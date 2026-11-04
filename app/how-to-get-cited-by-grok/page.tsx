@@ -19,7 +19,6 @@ export default function HowToGetCitedByGrokPage() {
     <GuideDocument
       topic={topic}
       related={guideLinks([
-        { href: "/geo-audit", label: "$39 GEO audit" },
         { href: "/how-to-get-cited-by-chatgpt", label: "How to get cited by ChatGPT" },
         { href: "/how-to-get-cited-by-perplexity", label: "How to get cited by Perplexity" },
         { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },

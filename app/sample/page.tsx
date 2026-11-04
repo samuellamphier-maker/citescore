@@ -43,7 +43,7 @@ export default function SampleReportPage() {
               href="/geo-audit"
               className="rounded-lg border border-rule bg-cream px-4 py-2 text-sm hover:border-ink/30"
             >
-              $39 GEO audit
+              GEO audit
             </Link>
             <a
               href="/api/reports/sample/pdf"

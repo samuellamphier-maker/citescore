@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { fixPackIntroPriceLabel, site } from "@/lib/site";
 
 export function VsEnterpriseArticle() {
   return (
     <>
       <p>
         For a local business, CiteScore starts with the free AI Answer
-        Snapshot. The {site.priceLabel} audit is still a one-off PDF.
-        Profound- and Otterly-class tools are subscriptions that watch live
+        Snapshot. The Fix Pack is {fixPackIntroPriceLabel}. Profound- and
+        Otterly-class tools are subscriptions that watch live
         prompts across answer engines, often with seats, APIs, and a CSM.
         Those are not the same job. If a vendor blurs them, they are selling
         you a dashboard you will forget to open.
@@ -32,19 +32,19 @@ export function VsEnterpriseArticle() {
           <tbody>
             <tr>
               <th scope="row">What you buy</th>
-              <td>One scored PDF on one URL</td>
+              <td>Free AI Answer Snapshot, then the Fix Pack</td>
               <td>Daily prompt / mention monitoring</td>
               <td>Citation share, teams, enterprise controls</td>
             </tr>
             <tr>
               <th scope="row">Queries ChatGPT live?</th>
-              <td>No. On-page signals + LLM review of fetched HTML</td>
+              <td>Yes for the snapshot: logged-out ChatGPT and Perplexity. Answers vary run to run</td>
               <td>Yes, for the prompts you track</td>
               <td>Yes, across the engines on your plan</td>
             </tr>
             <tr>
               <th scope="row">Public price (2026)</th>
-              <td>{site.priceLabel} once</td>
+              <td>Free, then {fixPackIntroPriceLabel}</td>
               <td>
                 Lite about $29/mo; Standard $189/mo; Premium $489/mo
               </td>
@@ -63,24 +63,21 @@ export function VsEnterpriseArticle() {
               <th scope="row">What you should not expect</th>
               <td>A time series, competitor share, or Slack alerts</td>
               <td>A cheap substitute for rewriting the homepage</td>
-              <td>A $39 education on whether your H1 is a slogan</td>
+              <td>A lesson on whether your H1 is a slogan</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2>When the $39 audit is enough</h2>
+      <h2>When the free snapshot and the Fix Pack are enough</h2>
       <p>
         Local businesses start with the{" "}
         <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The{" "}
-        <Link href="/fix-pack">Fix Pack</Link> is the paid next step. The $39
-        audit is the scored PDF when that is the job. You have a public SaaS
-        homepage, you suspect it reads like a tagline,
-        and you want a short list you can finish this week. You do not have
-        fifteen branded prompts to babysit. You do not want another login.
-        That is CiteScore: crawl, score, PDF, email.{" "}
-        <Link href="/geo-audit">The GEO audit page</Link> spells out the
-        deliverable.
+        <Link href="/fix-pack">Fix Pack</Link> is the paid next step. You
+        have a public page, you suspect it reads like a tagline, and you
+        want to know who an answer engine names before you buy a monitor.
+        You do not have fifteen branded prompts to babysit. You do not want
+        another login.
       </p>
       <p>
         Weekly rescans at {site.subscriptionPriceLabel} are on our roadmap.
@@ -139,8 +136,8 @@ export function VsEnterpriseArticle() {
 
       <h2>You can use both, in order</h2>
       <p>
-        A sane sequence for a small team: fix the page (checklist or a{" "}
-        <Link href="/#audit">CiteScore report</Link>), ship the copy,{" "}
+        A sane sequence for a small team: see who is named with the{" "}
+        <Link href="/free-snapshot">free snapshot</Link>, ship the copy,{" "}
         <em>then</em> decide whether live tracking is worth $29–$399 a
         month. Measuring a slogan you have not rewritten yet is how GEO
         budgets evaporate.

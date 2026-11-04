@@ -14,7 +14,6 @@ import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   sellerName,
-  site,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -80,8 +79,12 @@ export default function MethodologyPage() {
               free signal check
             </Link>{" "}
             is separate. It reads public files and does not ask ChatGPT who
-            it names. The {site.priceLabel} GEO audit is a separate product:
-            one public URL, a 0–100 score, and about ten fixes, as a PDF.
+            it names. The{" "}
+            <Link href="/geo-audit" className="text-forest underline">
+              GEO audit
+            </Link>{" "}
+            is a separate product: one public URL, a 0–100 score, and about
+            ten fixes, as a PDF.
           </p>
         </section>
 

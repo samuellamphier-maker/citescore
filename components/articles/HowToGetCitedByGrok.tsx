@@ -222,7 +222,7 @@ export function HowToGetCitedByGrokArticle() {
         The free check reports GPTBot, PerplexityBot, and Google-Extended. It
         does not look for a Grok token, because xAI has not published one for
         it to read. A clear row on that check is not a Grok citation. The{" "}
-        <Link href="/geo-audit">$39 GEO audit</Link> scores one public URL
+        <Link href="/geo-audit">GEO audit</Link> scores one public URL
         from the HTML we fetch and returns about ten fixes. It does not call
         the xAI API or open grok.com.
       </CheckLinks>

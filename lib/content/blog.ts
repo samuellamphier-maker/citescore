@@ -12,7 +12,7 @@ export const blogPosts: BlogPost[] = [
     slug: "what-is-geo",
     title: "What is GEO (generative engine optimization)?",
     description:
-      "A plain-language definition of generative engine optimization: how it differs from classic SEO, what answer engines actually cite, and what a $39 audit can and cannot tell you.",
+      "A plain-language definition of generative engine optimization: how it differs from classic SEO, what answer engines actually cite, and what a free snapshot can show.",
     kicker: "Explainer",
     publishedAt: "2026-09-14",
     minutes: 8,
@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     slug: "citescore-vs-enterprise-geo-tools",
     title: "CiteScore vs enterprise GEO tools",
     description:
-      "An honest comparison of a $39 one-off GEO audit against Otterly- and Profound-class platforms: live prompt tracking, seats, and monthly dashboards versus a punch-list PDF.",
+      "An honest comparison of the free AI Answer Snapshot and the Fix Pack with Otterly- and Profound-class platforms: live prompt tracking versus a one-time pack.",
     kicker: "Comparison",
     publishedAt: "2026-09-14",
     minutes: 7,
@@ -43,7 +43,7 @@ export function getPost(slug: string) {
 
 /** Description already published on /blog. */
 export const blogIndexDescription =
-  "Short explainers on generative engine optimization, ChatGPT citations, and when a $39 audit is enough versus an Otterly- or Profound-class platform.";
+  "Short explainers on generative engine optimization, ChatGPT citations, and when the free snapshot and the Fix Pack are enough versus a monitoring platform.";
 
 export type MarketingPath = {
   path: string;

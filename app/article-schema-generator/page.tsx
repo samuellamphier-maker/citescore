@@ -65,7 +65,6 @@ const related = [
   { href: "/electrician-schema-generator", label: "Electrician schema generator" },
   { href: "/schema-markup-for-ai-search", label: "Schema markup for AI search" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -109,8 +108,7 @@ export default function ArticleSchemaGeneratorPage() {
         <p>
           Choose Article or BlogPosting. The copy block is one <code>script</code> tag. Paste it into the HTML the server sends. Dates are the calendar day you enter, which is valid ISO 8601. Google recommends a timezone as well, and this generator does not invent one. The{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link> shows the Article this site publishes, with the byline CiteScore Team as an Organization. The{" "}
-          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. The{" "}
-          <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy. A product page uses the{" "}
+          <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. Markup still has to match the copy a person can read. A product page uses the{" "}
           <Link href="/product-schema-generator">Product schema generator</Link>. A location page uses the{" "}
           <Link href="/local-business-schema-generator">Local business schema generator</Link>. A visible trail uses the{" "}
           <Link href="/breadcrumb-schema-generator">Breadcrumb schema generator</Link>. A procedure uses the{" "}

@@ -37,7 +37,7 @@ export const citationCheckGroups: CitationCheckGroup[] = [
       {
         id: "oai-searchbot",
         title: "OAI-SearchBot can fetch pages you want in ChatGPT search",
-        body: "If ChatGPT search is a surface you care about, search the robots file for OAI-SearchBot and confirm it is not disallowed. The free check and the $39 audit do not parse this token. They parse GPTBot. You still have to read this one yourself.",
+        body: "If ChatGPT search is a surface you care about, search the robots file for OAI-SearchBot and confirm it is not disallowed. The free check and the GEO audit do not parse this token. They parse GPTBot. You still have to read this one yourself.",
       },
       {
         id: "chatgpt-user",

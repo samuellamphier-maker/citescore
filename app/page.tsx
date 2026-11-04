@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AuditForm } from "@/components/AuditForm";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
@@ -19,7 +18,6 @@ import { sampleReport } from "@/lib/sample-report";
 import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
-  site,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -46,14 +44,6 @@ const steps = [
   },
 ];
 
-const auditDeliverables = [
-  "Overall CiteScore (0–100) and a plain-language grade",
-  "Inferred snapshot for ChatGPT, Perplexity, and Google AI Overviews — not a live query",
-  "Dimension scores — answers, entities, evidence, markup, freshness",
-  "Ten prioritized fixes with effort, impact, and the exact page to change",
-  "A print-ready PDF you can send to a founder or a client",
-];
-
 const faqs = [
   {
     q: "What is GEO?",
@@ -65,15 +55,11 @@ const faqs = [
   },
   {
     q: "Who is CiteScore for?",
-    a: "Local service businesses that want to know who ChatGPT names for their trade and city, and the small agencies that serve them. The older $39 signal audit is still available for a founder who wants a score of public files.",
-  },
-  {
-    q: "What do I actually get for $39?",
-    a: "One scored report on one URL, delivered as a PDF (and a web view). About ten concrete fixes, ranked. No login, no seat, no monthly minimum. Weekly rescans at $29/mo are planned; they are not this product.",
+    a: "Local service businesses that want to know who ChatGPT names for their trade and city, and the small agencies that serve them.",
   },
   {
     q: "What’s your refund policy?",
-    a: "Full refund within 14 days if the Fix Pack is not useful. For the $39 audit, we refund within 14 days if the file is missing, unreadable, or about the wrong URL. The refunds page has both rules.",
+    a: "Full refund within 14 days if the Fix Pack is not useful. You do not need to show that you installed the markup or sent the review script. The 14 days start when the Fix Pack is delivered, not when you request the free snapshot. The free AI Answer Snapshot has no charge. The refunds page has the rules.",
   },
   {
     q: "You mention an LLM — what happens to my URL?",
@@ -81,11 +67,11 @@ const faqs = [
   },
   {
     q: "Do you actually query ChatGPT?",
-    a: "The free AI Answer Snapshot does. We ask logged-out ChatGPT and Perplexity a local recommendation prompt and record who they name. The free signal check and the $39 audit do not. Those read public files and, for the paid audit, the HTML we fetch. AI answers vary run to run.",
+    a: "The free AI Answer Snapshot does. We ask logged-out ChatGPT and Perplexity a local recommendation prompt and record who they name. The free signal check does not. That check reads public files. AI answers vary run to run.",
   },
   {
-    q: "How long until I get the report?",
-    a: "After payment, typical turnaround is a few minutes. You get a PDF by email and a web copy of the same report. There is no account to babysit.",
+    q: "When is the Fix Pack delivered?",
+    a: "We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL.",
   },
 ];
 
@@ -223,9 +209,7 @@ export default function HomePage() {
                 named, which sources are cited, and how your Google rating
                 and review count compare. The Fix Pack is the Google
                 Business Profile, reviews, directories, and LocalBusiness
-                markup that match what those answers cite. The{" "}
-                {site.priceLabel} signal audit is still on this page, further
-                down. It does not ask ChatGPT who it names.
+                markup that match what those answers cite.
               </p>
             </div>
             <div>
@@ -264,8 +248,7 @@ export default function HomePage() {
             <p className="mt-4 max-w-2xl text-ink-soft leading-7">
               Fictional SaaS, real format. Score {sampleReport.overall}/100,
               eight dimensions, ten fixes. Labeled as a sample throughout —
-              not a disguised testimonial. This preview is the older{" "}
-              {site.priceLabel} signal audit.{" "}
+              not a disguised testimonial.{" "}
               <Link href="/sample-snapshot" className="text-forest underline">
                 The example AI Answer Snapshot
               </Link>{" "}
@@ -315,37 +298,10 @@ export default function HomePage() {
               <ul className="mt-6 space-y-2 text-sm text-ink-soft">
                 <li>— Introductory {fixPackIntroPriceLabel}, list {fixPackListPriceLabel}</li>
                 <li>— {fixPackIntroPriceLabel} card checkout on the buy button</li>
-                <li>— The {site.priceLabel} signal audit remains available below</li>
+                <li>— Full refund within 14 days if the Fix Pack is not useful</li>
               </ul>
               <div className="mt-6">
                 <TrustLinks />
-              </div>
-              <div id="audit" className="mt-8 max-w-xl rounded-2xl border border-rule bg-cream p-5">
-                <p className="kicker">Still available</p>
-                <h3 className="mt-2 font-serif text-2xl">
-                  {site.priceLabel} signal audit
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-ink-soft">
-                  One URL, one PDF, about ten fixes from public files. It
-                  does not ask ChatGPT who it names. Weekly rescans at{" "}
-                  {site.subscriptionPriceLabel} are not for sale.
-                </p>
-                <ul className="mt-4 space-y-2 text-sm leading-6 text-ink-soft">
-                  {auditDeliverables.map((item) => (
-                    <li key={item}>— {item}</li>
-                  ))}
-                </ul>
-                <div className="mt-4">
-                  <AuditForm id="pricing-audit" />
-                </div>
-                <p className="mt-3 text-sm">
-                  <a
-                    href="/sample-audit.pdf"
-                    className="font-medium text-forest underline underline-offset-4 hover:underline"
-                  >
-                    See a sample report (PDF)
-                  </a>
-                </p>
               </div>
             </div>
             <div className="report-sheet rounded-2xl border border-ink bg-ink px-6 py-7 text-cream">
@@ -413,7 +369,6 @@ export default function HomePage() {
                 40 checks across crawler access, structured data,
                 answer-ready content, evidence, and entity clarity. llms.txt
                 is <LlmsTxtCaveat />. The full list is on the page. No email.
-                The {site.priceLabel} audit scores one URL.
               </p>
             </div>
             <ul className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -454,8 +409,8 @@ export default function HomePage() {
                   </Link>
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-ink-soft">
-                  {site.priceLabel} once versus Otterly-, Profound-, and
-                  Peec-class monitors.{" "}
+                  The free snapshot and the {fixPackIntroPriceLabel} Fix Pack,
+                  set next to Otterly-, Profound-, and Peec-class monitors.{" "}
                   <Link
                     href="/alternatives/otterly"
                     className="text-forest underline"
@@ -488,8 +443,8 @@ export default function HomePage() {
             <p className="mt-4 max-w-2xl text-ink-soft leading-7">
               Separate URLs for a ChatGPT citation check, AI Overviews
               visibility, Perplexity footnotes, llms.txt, crawler tokens, AEO,
-              Profound, and Peec AI. Same {site.priceLabel} audit. No second product
-              hiding behind the headline.
+              Profound, and Peec AI. The free snapshot and the Fix Pack are
+              the offer on each of them.
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {topicPages.map((page) => (

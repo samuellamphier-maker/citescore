@@ -72,7 +72,6 @@ const related = [
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
   { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -172,7 +171,7 @@ export default function ReviewSchemaGeneratorPage() {
           written as the digits you typed, so <code>4.60</code> is not shortened. A best or worst rating is written only
           when you enter it. A URL that is not http(s) is left out. The <Link href="/free-check">free check</Link> lists
           the JSON-LD <code>@type</code> values on the homepage. A product URL at another path is outside that fetch.
-          The <Link href="/geo-audit">$39 audit</Link> looks for markup that matches the copy.
+          Markup still has to match the copy a person can read.
         </p>
         <h2>How to install it</h2>
         <ol>

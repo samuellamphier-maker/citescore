@@ -65,7 +65,6 @@ export default function AiOverviewsPage() {
           { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
           { href: "/blog/what-is-geo", label: "What is GEO?" },
-          { href: "/geo-audit", label: "The $39 GEO audit" },
           { href: "/sample", label: "Sample report" },
         ]}
       >
@@ -81,7 +80,7 @@ export default function AiOverviewsPage() {
         </p>
         <p>
           CiteScore’s AI Overviews line is that inspection, priced as the
-          same <Link href="/geo-audit">$39 audit</Link> as the ChatGPT and
+          same <Link href="/geo-audit">GEO audit</Link> as the ChatGPT and
           Perplexity lines. We fetch public HTML. We do not run your query
           through Google.
         </p>
@@ -188,7 +187,7 @@ export default function AiOverviewsPage() {
           For the category language — GEO, AEO, “AI visibility” — start with{" "}
           <Link href="/blog/what-is-geo">what GEO is</Link> or the{" "}
           <Link href="/answer-engine-optimization">AEO page</Link>. They
-          describe the same $39 deliverable. This page is only the Overview
+          describe the same category. This page is only the Overview
           slice.
         </p>
 

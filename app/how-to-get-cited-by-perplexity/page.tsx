@@ -47,7 +47,6 @@ export default function HowToGetCitedByPerplexityPage() {
         guidePath={topic.path}
         related={[
           { href: "/free-check", label: "Free AI citation-readiness check" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
           { href: "/how-to-get-cited-by-meta-ai", label: "How to get cited by Meta AI" },
           { href: "/how-to-get-cited-by-deepseek", label: "How to get cited by DeepSeek" },

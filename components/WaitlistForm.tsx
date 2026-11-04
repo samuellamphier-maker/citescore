@@ -44,7 +44,7 @@ export function WaitlistForm({ defaultUrl = "" }: { defaultUrl?: string }) {
       }
       setStatus("done");
       setMessage(
-        "You're on the list. We'll email you when the $39 checkout is online.",
+        "You're on the list. We'll email you when checkout is online.",
       );
     } catch (error) {
       setStatus("error");

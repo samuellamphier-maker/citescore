@@ -7,20 +7,20 @@ import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getTopic } from "@/lib/content/topics";
 import { pageMeta } from "@/lib/content/meta";
-import { publicOrigin, site } from "@/lib/site";
+import { fixPackIntroPriceLabel, publicOrigin, site } from "@/lib/site";
 
 const topic = getTopic("/alternatives/profound");
 
 const rows = [
-  ["Job", "One scored PDF, about ten fixes, one URL", "Ongoing AI-visibility platform"],
+  ["Job", "Free AI Answer Snapshot, then the Fix Pack", "Ongoing AI-visibility platform"],
   [
     "Live engine queries",
-    "No. On-page signals plus an optional LLM review of fetched HTML",
+    "Yes for the snapshot: logged-out ChatGPT and Perplexity. Answers vary run to run",
     "Yes. Prompt and citation tracking across the engines on the plan",
   ],
   [
     "Public price (2026)",
-    `${site.priceLabel} once`,
+    `Free, then ${fixPackIntroPriceLabel}`,
     "Self-serve reported from about $99/mo; Growth about $399/mo; Enterprise quoted",
   ],
   [
@@ -69,12 +69,13 @@ export default function ProfoundAlternativePage() {
         <p className="mt-4 text-lg leading-8 text-ink-soft">
           Profound is an enterprise AI-visibility platform: prompt tracking,
           citation share, and the security review a larger team expects.
-          CiteScore is a {site.priceLabel} one-time{" "}
-          <Link href="/geo-audit" className="text-forest underline">
-            GEO audit
+          CiteScore starts with a free{" "}
+          <Link href="/free-snapshot" className="text-forest underline">
+            AI Answer Snapshot
           </Link>{" "}
-          of one public URL. Buying the platform before the page has a
-          definition is how the dashboard fills up with “not cited.”
+          and an optional {fixPackIntroPriceLabel} Fix Pack. Buying the
+          platform before you know who is named is how the dashboard fills
+          up with “not cited.”
         </p>
         <p className="mt-3 text-sm text-ink-soft">
           We are not affiliated with Profound, and we do not have affiliate

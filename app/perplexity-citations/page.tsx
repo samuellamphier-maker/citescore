@@ -81,10 +81,11 @@ export default function PerplexityCitationsPage() {
           footnote, and we cannot show you today’s Perplexity thread.
         </p>
         <p>
-          That score is a line in the{" "}
-          <Link href="/geo-audit">$39 CiteScore PDF</Link>, next to ChatGPT
-          and Google AI Overviews. The crawl is public HTML from the URL you
-          submit, plus a few same-host pages such as <code>/about</code>,{" "}
+          To see who Perplexity names, start with the{" "}
+          <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The
+          score described on this page is an inference from public HTML, not
+          that snapshot. The crawl is public HTML from the URL you submit,
+          plus a few same-host pages such as <code>/about</code>,{" "}
           <code>/pricing</code>, and <code>/faq</code> when we can find them.
           An optional language-model pass rewrites the summary from those
           extracts. Nobody logs into Perplexity.

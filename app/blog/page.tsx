@@ -22,7 +22,7 @@ const extras = [
   {
     href: "/geo-audit",
     title: "GEO audit",
-    dek: `The ${site.priceLabel} product page: what you get, how we score, and the checkout path.`,
+    dek: "What the GEO audit includes, how it is scored, and where checkout starts.",
   },
   {
     href: "/alternatives/otterly",

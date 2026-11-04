@@ -71,7 +71,6 @@ const related = [
   { href: "/how-to-get-cited-by-perplexity-comet", label: "How to get cited by Perplexity Comet" },
   { href: "/how-to-get-cited-by-duckduckgo-ai", label: "How to get cited by DuckDuckGo" },
   { href: "/free-check", label: "Free AI visibility check" },
-  { href: "/geo-audit", label: "$39 GEO audit" },
 ];
 
 export const metadata = pageMeta({
@@ -188,7 +187,7 @@ export default function RecipeSchemaGeneratorPage() {
           uses structured data will show. The copy block is one <code>script</code> tag. Paste it into the HTML the
           server sends for that recipe. Answer engines often skip text that only appears after JavaScript runs. The{" "}
           <Link href="/free-check">free check</Link> lists the JSON-LD <code>@type</code> values on the homepage. A
-          recipe URL at another path is outside that fetch. The <Link href="/geo-audit">$39 audit</Link> looks for
+          recipe URL at another path is outside that fetch. The <Link href="/geo-audit">GEO audit</Link> looks for
           markup that matches the copy. The longer note on which facts to repeat is the{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link>.
         </p>

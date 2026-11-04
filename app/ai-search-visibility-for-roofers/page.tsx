@@ -81,7 +81,6 @@ export default function AiSearchVisibilityForRoofersPage() {
           { href: "/llms-txt-best-practices", label: "llms.txt best practices" },
           { href: "/llms-txt-generator", label: "Free llms.txt generator" },
           { href: "/llms-txt-examples", label: "llms.txt examples" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >
         <AiSearchVisibilityForRoofersArticle />

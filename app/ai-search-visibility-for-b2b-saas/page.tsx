@@ -85,7 +85,6 @@ export default function AiSearchVisibilityForB2bSaasPage() {
           { href: "/ai-search-visibility-for-chiropractors", label: "AI search visibility for chiropractors" },
           { href: "/ai-search-visibility-for-insurance-agents", label: "AI search visibility for insurance agents" },
           { href: "/ai-search-visibility-for-veterinarians", label: "AI search visibility for veterinarians" },
-          { href: "/geo-audit", label: "$39 GEO audit" },
         ])}
       >
         <AiSearchVisibilityForB2bSaasArticle />

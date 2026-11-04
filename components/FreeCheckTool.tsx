@@ -41,10 +41,8 @@ function Row({
 const botLabel = (v: string) => (v === "disallow" ? "blocked" : v === "allow" ? "allowed" : "not mentioned (falls back to *)");
 
 function AuditUpsell({
-  origin,
   pitch,
 }: {
-  origin: string;
   pitch: ReturnType<typeof freeCheckAuditPitch>;
 }) {
   return (
@@ -69,14 +67,8 @@ function AuditUpsell({
         />
       </div>
       <p className="mt-4 text-sm leading-6 text-ink-soft">
-        The{" "}
-        <Link
-          href={`/geo-audit?url=${encodeURIComponent(origin)}`}
-          className="font-medium text-forest underline underline-offset-4"
-        >
-          $39 GEO audit
-        </Link>{" "}
-        is still available for this URL if you want the scored PDF.
+        The free snapshot shows who is named. The Fix Pack is the done-for-you
+        work after that.
       </p>
     </aside>
   );
@@ -156,7 +148,7 @@ export function FreeCheckTool() {
             <Row ok={result.homepage.reachable && result.schema.found} label="Structured data (JSON-LD)" detail={!result.homepage.reachable ? "Not checked — the homepage did not load." : result.schema.found ? result.schema.types.join(", ") : "No JSON-LD on the homepage. FAQ or Organization schema is a citation-readiness signal."} />
             <Row ok={result.homepage.reachable && result.homepage.hasMetaDescription} label="Meta description" detail={!result.homepage.reachable ? "Not checked — the homepage did not load." : result.homepage.hasMetaDescription ? "Present." : "Missing. Answer engines often quote a meta description when one is present."} />
           </ul>
-          <AuditUpsell origin={result.origin} pitch={freeCheckAuditPitch(result)} />
+          <AuditUpsell pitch={freeCheckAuditPitch(result)} />
         </div>
       )}
     </div>
