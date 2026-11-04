@@ -12,16 +12,19 @@ export function snapshotRequestBody(input: {
   service: string;
   website: string;
   email: string;
+  source?: string;
 }) {
-  return [
+  const lines = [
     `Business name: ${input.business}`,
     `City: ${input.city}`,
     `Service: ${input.service}`,
     `Website: ${input.website}`,
     `Email: ${input.email}`,
-    "",
-    "Please send a free AI Answer Snapshot.",
-  ].join("\n");
+  ];
+  const source = input.source?.trim();
+  if (source) lines.push(`Source: ${source}`);
+  lines.push("", "Please send a free AI Answer Snapshot.");
+  return lines.join("\n");
 }
 
 export function mailtoHref(inbox: string, subject: string, body?: string) {
@@ -57,6 +60,7 @@ export function snapshotRequestClipboard(
     service: string;
     website: string;
     email: string;
+    source?: string;
   },
   subject = SNAPSHOT_SUBJECT,
 ) {

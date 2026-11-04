@@ -41,6 +41,35 @@ export function industrySchemaGeneratorPaths() {
   return Object.keys(schemaIndustries).map((id) => `/${id}`);
 }
 
+export type InlineSnapshotRequest = {
+  /** Posted as a hidden source field so the request shows which page it came from. */
+  source: string;
+  /** Service field prefill. Citation guides omit it. */
+  service?: string;
+};
+
+/**
+ * Inline snapshot form for a trade guide or a how-to-get-cited guide.
+ * Other paths stay link-only. The service prefill is that page's trade.
+ */
+export function inlineSnapshotRequestForPath(
+  path: string | null | undefined,
+): InlineSnapshotRequest | null {
+  if (!path) return null;
+  if (
+    path.startsWith(PREFIX) &&
+    path.length > PREFIX.length &&
+    industrySnapshotLabel(path)
+  ) {
+    return { source: path, service: industrySnapshotLabel(path) ?? undefined };
+  }
+  const citationPrefix = "/how-to-get-cited-by-";
+  if (path.startsWith(citationPrefix) && path.length > citationPrefix.length) {
+    return { source: path };
+  }
+  return null;
+}
+
 /** Trade phrase for the industry-page snapshot CTA, or null on other paths. */
 export function industrySnapshotLabel(path: string) {
   if (!path.startsWith(PREFIX)) return null;

@@ -11,6 +11,7 @@ import {
 import {
   guideSnapshotCalloutPaths,
   industrySnapshotLabel,
+  inlineSnapshotRequestForPath,
   showsGuideSnapshotCallout,
   contentStickySnapshotHref,
   isStickySnapshotContentPath,
@@ -115,6 +116,44 @@ test("every industry visibility path has a snapshot label", () => {
   });
   assert.deepEqual(snapshotOfferForPage({ ctaId: "faq-schema-generator" }), {});
   assert.equal(snapshotOfferForPage({ ctaId: "llms-txt-generator" }), null);
+
+  assert.deepEqual(inlineSnapshotRequestForPath("/ai-search-visibility-for-plumbers"), {
+    source: "/ai-search-visibility-for-plumbers",
+    service: "plumber",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/ai-search-visibility-for-dentists"), {
+    source: "/ai-search-visibility-for-dentists",
+    service: "dental",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/ai-search-visibility-for-hvac"), {
+    source: "/ai-search-visibility-for-hvac",
+    service: "HVAC",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/how-to-get-cited-by-chatgpt"), {
+    source: "/how-to-get-cited-by-chatgpt",
+  });
+  assert.equal(inlineSnapshotRequestForPath("/how-to-get-cited-by-"), null);
+  assert.equal(inlineSnapshotRequestForPath("/ai-search-visibility-for-"), null);
+  assert.equal(inlineSnapshotRequestForPath("/geo-for-local-businesses"), null);
+  assert.equal(inlineSnapshotRequestForPath("/plumber-schema-generator"), null);
+  assert.equal(inlineSnapshotRequestForPath("/free-snapshot"), null);
+  assert.equal(inlineSnapshotRequestForPath(undefined), null);
+
+  let inlineGuides = 0;
+  for (const topic of topicPages) {
+    const request = inlineSnapshotRequestForPath(topic.path);
+    const trade = topic.path.startsWith("/ai-search-visibility-for-");
+    const citation = topic.path.startsWith("/how-to-get-cited-by-");
+    if (trade || citation) {
+      inlineGuides += 1;
+      assert.equal(request?.source, topic.path, topic.path);
+      if (trade) assert.equal(request?.service, industrySnapshotLabel(topic.path), topic.path);
+      else assert.equal(request?.service, undefined, topic.path);
+    } else {
+      assert.equal(request, null, topic.path);
+    }
+  }
+  assert.ok(inlineGuides >= 30);
 });
 
 test("mobile sticky snapshot link follows the inline callout prefill", () => {
@@ -317,6 +356,12 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
   assert.match(shell, /variant=\{generalSnapshot \? "general" : "industry"\}/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
   assert.match(shell, /snapshotOffer \|\| generalSnapshot/);
+  assert.match(shell, /inlineSnapshotRequestForPath\(guidePath\)/);
+  assert.match(shell, /<SnapshotRequestForm/);
+  assert.match(shell, /defaultService=\{inlineSnapshot\.service\}/);
+  assert.match(shell, /source=\{inlineSnapshot\.source\}/);
+  assert.match(shell, /not a promise that any assistant will name the business/);
+  assert.doesNotMatch(shell, /Samuel|Lamphier|testimonial|customers served|% of|guarantee/i);
   assert.match(cta, /See which local competitors ChatGPT and Perplexity name instead of the business/);
   assert.match(cta, /We ask logged-out ChatGPT and Perplexity who they name/);
   assert.match(cta, /href=\{snapshotHref\}/);

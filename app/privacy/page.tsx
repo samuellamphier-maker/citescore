@@ -68,7 +68,9 @@ export default function PrivacyPage() {
             to this site. If the post fails, the email button on the form
             opens your email app with those same fields, or you can copy the
             address and the request text. We receive the request when
-            FlowForm delivers it, or when you send the email yourself.
+            FlowForm delivers it, or when you send the email yourself. On a
+            trade guide or a how-to-get-cited guide, the form also sends that
+            page path so the request shows where it was submitted.
           </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>
           <p>
