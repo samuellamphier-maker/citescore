@@ -4,6 +4,7 @@ import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
@@ -240,6 +241,7 @@ export default function MethodologyPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/methodology" />
     </>
   );
 }

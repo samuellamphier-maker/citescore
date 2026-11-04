@@ -3,6 +3,7 @@ import Link from "next/link";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import { toolGroups, toolPageLabel } from "@/lib/content/tools";
@@ -180,6 +181,7 @@ export default function ToolsPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/tools" />
     </>
   );
 }

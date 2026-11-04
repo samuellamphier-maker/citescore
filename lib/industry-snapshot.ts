@@ -210,24 +210,85 @@ export function tradeGuideStickySnapshotHref(path: string): string | null {
 }
 
 /**
- * Offer, checkout, pricing, legal, and the home page. The home page already
- * leads with the free snapshot, so a second bar would repeat that CTA.
+ * The home page and /free-snapshot already lead with the request form, so a
+ * second bar would repeat it. Checkout, confirmation, legal, and utility
+ * pages stay quiet.
  */
 const stickyExcludedPaths = new Set([
   "/",
   "/free-snapshot",
   "/free-snapshot/thanks",
   "/thank-you",
-  "/fix-pack",
   "/fix-pack/next-steps",
-  "/sample-fix-pack",
   "/checkout",
-  "/pricing",
   "/privacy",
   "/terms",
   "/refunds",
   "/thanks",
+  "/contact",
+  "/llms.txt",
 ]);
+
+/**
+ * Product, hub, alternatives, and explainer pages that are not already
+ * covered by the guide and generator patterns below.
+ */
+export const highIntentStickyPaths = [
+  "/pricing",
+  "/fix-pack",
+  "/sample",
+  "/sample-snapshot",
+  "/sample-fix-pack",
+  "/how-it-works",
+  "/methodology",
+  "/faq",
+  "/about",
+  "/for-agencies",
+  "/done-for-you-audit",
+  "/geo-audit",
+  "/checklist",
+  "/free-check",
+  "/blog",
+  "/guides",
+  "/industries",
+  "/tools",
+  "/alternatives",
+  "/alternatives/otterly",
+  "/alternatives/profound",
+  "/alternatives/peec-ai",
+  "/robots-txt-for-ai-crawlers",
+  "/schema-markup-for-ai-search",
+  "/llms-txt-examples",
+  "/geo-vs-seo",
+  "/google-ai-overviews-optimization",
+  "/ai-search-readiness-checklist-for-saas",
+  "/ai-crawler-robots-txt-checker",
+  "/aeo-checklist",
+  "/chatgpt-citation-check",
+  "/ai-overviews",
+  "/perplexity-citations",
+  "/llms-txt",
+  "/ai-crawlers",
+  "/ai-crawler-user-agents",
+  "/answer-engine-optimization",
+  "/how-to-check-if-chatgpt-mentions-your-brand",
+  "/google-ai-mode-optimization",
+  "/geo-for-local-businesses",
+  "/llms-txt-best-practices",
+] as const;
+
+const highIntentStickyPathSet = new Set<string>(highIntentStickyPaths);
+
+/**
+ * True when this newly included page already renders the snapshot form.
+ * The bar then scrolls to #snapshot instead of leaving the page.
+ * /sample-snapshot renders SnapshotRequestForm directly.
+ */
+function stickySnapshotUsesOnPageForm(path: string): boolean {
+  if (!highIntentStickyPathSet.has(path)) return false;
+  if (path === "/sample-snapshot") return true;
+  return inlineSnapshotRequestForPath(path) !== null;
+}
 
 /**
  * Path the shell would be showing. guidePath wins so a trade guide cannot
@@ -250,6 +311,7 @@ export function stickySnapshotContentPath(input: {
  */
 export function isStickySnapshotContentPath(path: string): boolean {
   if (stickyExcludedPaths.has(path)) return false;
+  if (highIntentStickyPathSet.has(path)) return true;
   if (
     path.startsWith("/ai-search-visibility-for-") &&
     path.length > "/ai-search-visibility-for-".length
@@ -271,18 +333,21 @@ export function isStickySnapshotContentPath(path: string): boolean {
 }
 
 /**
- * Primary sticky URL. Industry guides keep the ?trade= prefill. Every other
+ * Primary sticky URL. Industry guides keep the ?trade= prefill. A high-intent
+ * page that already shows the request form scrolls to that form. Every other
  * content or tool page goes to the plain free snapshot.
  */
 export function contentStickySnapshotHref(input: {
   guidePath?: string;
   ctaId?: string;
 }): string | null {
-  const path = stickySnapshotContentPath(input);
+  const path = shellContentPath(input);
   if (!path || !isStickySnapshotContentPath(path)) return null;
   if (input.guidePath) {
-    return tradeGuideStickySnapshotHref(input.guidePath) ?? "/free-snapshot";
+    const trade = tradeGuideStickySnapshotHref(input.guidePath);
+    if (trade) return trade;
   }
+  if (stickySnapshotUsesOnPageForm(path)) return "#snapshot";
   return "/free-snapshot";
 }
 

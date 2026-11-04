@@ -4,6 +4,7 @@ import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import {
@@ -240,6 +241,7 @@ export default function DoneForYouAuditPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/done-for-you-audit" />
     </>
   );
 }

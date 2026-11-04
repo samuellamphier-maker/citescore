@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import {
@@ -101,6 +102,7 @@ export default function AboutPage() {
         <InlineSnapshotRequest source="/about" />
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/about" />
     </>
   );
 }

@@ -4,6 +4,7 @@ import { AuditReport } from "@/components/AuditReport";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { PrintButton } from "@/components/PrintButton";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import { fixPackIntroPriceLabel } from "@/lib/site";
@@ -59,6 +60,7 @@ export default function SampleReportPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/sample" />
     </>
   );
 }

@@ -6,6 +6,7 @@ import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { CitationReadinessChecklist } from "@/components/CitationReadinessChecklist";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { citationChecks } from "@/lib/content/citation-checklist";
 import { pageMeta } from "@/lib/content/meta";
@@ -128,6 +129,7 @@ export default function ChecklistPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/checklist" />
     </>
   );
 }

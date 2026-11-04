@@ -6,6 +6,7 @@ import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
@@ -430,7 +431,10 @@ export default function SampleSnapshotPage() {
           <FaqList items={snapshotOfferFaqs} />
         </section>
 
-        <section className="mt-12 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8">
+        <section
+          className="mt-12 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8"
+          data-funnel-cta
+        >
           <p className="kicker">Request</p>
           <h2 className="mt-2 font-serif text-3xl tracking-tight">
             Get a snapshot for a real business.
@@ -465,6 +469,7 @@ export default function SampleSnapshotPage() {
         </section>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/sample-snapshot" />
     </>
   );
 }

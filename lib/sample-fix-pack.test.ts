@@ -82,14 +82,14 @@ test("sample Fix Pack is a labeled fictional preview with placeholder JSON-LD", 
   assert.match(page, /within a few business days after\s+payment/);
   assert.doesNotMatch(page, /payhip\.com/);
   assert.doesNotMatch(page, /FIX_PACK_CHECKOUT_URL/);
-  assert.doesNotMatch(page, /TradeGuideStickyCta/);
+  assert.match(page, /<StickySnapshotOffer path="\/sample-fix-pack" \/>/);
   assert.doesNotMatch(page, /application\/ld\+json/);
   assert.doesNotMatch(page, invented);
   assert.doesNotMatch(example.replace(/JSON\.stringify\(data, null, 2\)/, ""), /\d/);
   assert.doesNotMatch(example, invented);
   assertPlaceholderJsonLd(sampleLocalBusinessJsonLd, "LocalBusiness");
   assertPlaceholderJsonLd(sampleServiceJsonLd, "Service");
-  assert.equal(isStickySnapshotContentPath("/sample-fix-pack"), false);
+  assert.equal(isStickySnapshotContentPath("/sample-fix-pack"), true);
   assert.match(industry, /"\/sample-fix-pack"/);
 });
 

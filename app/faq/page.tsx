@@ -4,6 +4,7 @@ import { FaqList } from "@/components/FaqList";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
@@ -146,6 +147,7 @@ export default function FaqPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/faq" />
     </>
   );
 }

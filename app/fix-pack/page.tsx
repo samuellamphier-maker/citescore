@@ -6,6 +6,7 @@ import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
@@ -197,6 +198,7 @@ export default function FixPackPage() {
         </div>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/fix-pack" />
     </>
   );
 }

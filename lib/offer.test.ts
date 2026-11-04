@@ -16,6 +16,7 @@ import {
   shellContentPath,
   showsGuideSnapshotCallout,
   contentStickySnapshotHref,
+  highIntentStickyPaths,
   isStickySnapshotContentPath,
   snapshotOfferForPage,
   tradeGuideStickySnapshotHref,
@@ -351,28 +352,35 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     }),
     "/free-snapshot?trade=plumber",
   );
-  for (const path of ["/", "/free-snapshot", "/free-snapshot/thanks", "/thank-you", "/fix-pack", "/sample-fix-pack", "/checkout", "/pricing", "/privacy", "/terms", "/refunds"]) {
+  for (const path of ["/", "/free-snapshot", "/free-snapshot/thanks", "/thank-you", "/checkout", "/privacy", "/terms", "/refunds", "/contact", "/llms.txt"]) {
     assert.equal(isStickySnapshotContentPath(path), false, path);
     assert.equal(contentStickySnapshotHref({ guidePath: path }), null, path);
   }
-  assert.equal(contentStickySnapshotHref({ ctaId: "free-check" }), null);
-  assert.equal(contentStickySnapshotHref({ ctaId: "llms-txt" }), null);
-  assert.equal(contentStickySnapshotHref({ guidePath: "/geo-for-local-businesses" }), null);
-  assert.equal(contentStickySnapshotHref({ guidePath: "/llms-txt-best-practices" }), null);
+  assert.equal(contentStickySnapshotHref({ ctaId: "free-check" }), "#snapshot");
+  assert.equal(contentStickySnapshotHref({ ctaId: "llms-txt" }), "/free-snapshot");
+  assert.equal(contentStickySnapshotHref({ guidePath: "/geo-for-local-businesses" }), "#snapshot");
+  assert.equal(contentStickySnapshotHref({ guidePath: "/llms-txt-best-practices" }), "/free-snapshot");
+  assert.equal(contentStickySnapshotHref({ ctaId: "aeo" }), "#snapshot");
   assert.equal(contentStickySnapshotHref({}), null);
 
   let stickyTopics = 0;
   for (const topic of topicPages) {
     const href = contentStickySnapshotHref({ guidePath: topic.path });
-    const want =
+    const legacy =
       topic.path.startsWith("/ai-search-visibility-for-") ||
       topic.path.startsWith("/how-to-get-cited-by-") ||
       topic.path.endsWith("-schema-generator") ||
       topic.path === "/llms-txt-generator" ||
       topic.path === "/robots-txt-ai-crawler-generator";
-    if (want) {
+    const highIntent = (highIntentStickyPaths as readonly string[]).includes(topic.path);
+    if (legacy) {
       stickyTopics += 1;
       assert.ok(href?.startsWith("/free-snapshot"), topic.path);
+    } else if (highIntent) {
+      stickyTopics += 1;
+      const anchored =
+        inlineSnapshotRequestForPath(topic.path) !== null || topic.path === "/sample-snapshot";
+      assert.equal(href, anchored ? "#snapshot" : "/free-snapshot", topic.path);
     } else {
       assert.equal(href, null, topic.path);
     }
@@ -453,6 +461,101 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     cta,
     /guarantee|testimonial|customers served|% of|Samuel|Lamphier/i,
   );
+});
+
+test("the sticky snapshot bar is on high-intent pages and off legal pages", () => {
+  assert.equal(highIntentStickyPaths.length, 41);
+  const shellPages = new Set([
+    "/free-check",
+    "/robots-txt-for-ai-crawlers",
+    "/schema-markup-for-ai-search",
+    "/llms-txt-examples",
+    "/geo-vs-seo",
+    "/google-ai-overviews-optimization",
+    "/ai-search-readiness-checklist-for-saas",
+    "/ai-crawler-robots-txt-checker",
+    "/aeo-checklist",
+    "/chatgpt-citation-check",
+    "/ai-overviews",
+    "/perplexity-citations",
+    "/llms-txt",
+    "/ai-crawlers",
+    "/ai-crawler-user-agents",
+    "/answer-engine-optimization",
+    "/how-to-check-if-chatgpt-mentions-your-brand",
+    "/google-ai-mode-optimization",
+    "/geo-for-local-businesses",
+    "/llms-txt-best-practices",
+  ]);
+  const representative = [
+    "/pricing",
+    "/fix-pack",
+    "/sample",
+    "/sample-snapshot",
+    "/blog",
+    "/guides",
+    "/alternatives",
+    "/alternatives/otterly",
+    "/geo-vs-seo",
+    "/llms-txt",
+    "/free-check",
+    "/checklist",
+    "/faq",
+    "/about",
+  ];
+  for (const path of representative) {
+    assert.equal(
+      (highIntentStickyPaths as readonly string[]).includes(path),
+      true,
+      path,
+    );
+  }
+  const offer = readFileSync(
+    new URL("../components/StickySnapshotOffer.tsx", import.meta.url),
+    "utf8",
+  );
+  const shell = readFileSync(new URL("../components/ArticleShell.tsx", import.meta.url), "utf8");
+  assert.match(offer, /TradeGuideStickyCta/);
+  assert.match(offer, /contentStickySnapshotHref\(\{ guidePath: path \}\)/);
+  assert.match(shell, /<TradeGuideStickyCta href=\{stickyHref\} \/>/);
+  assert.match(shell, /stickyHref \? <TradeGuideStickyCta href=\{stickyHref\} \/> : null/);
+  assert.match(
+    readFileSync(new URL("../components/TradeGuideStickyCta.tsx", import.meta.url), "utf8"),
+    /className="sticky-snapshot-offer no-print/,
+  );
+
+  for (const path of highIntentStickyPaths) {
+    assert.equal(isStickySnapshotContentPath(path), true, path);
+    const href = contentStickySnapshotHref({ guidePath: path });
+    const anchored =
+      path === "/sample-snapshot" || inlineSnapshotRequestForPath(path) !== null;
+    assert.equal(href, anchored ? "#snapshot" : "/free-snapshot", path);
+    if (shellPages.has(path)) continue;
+    const file = readFileSync(new URL(`../app${path}/page.tsx`, import.meta.url), "utf8");
+    assert.match(file, new RegExp(`<StickySnapshotOffer path="${path}" />`), path);
+  }
+
+  for (const rel of [
+    "../app/page.tsx",
+    "../app/free-snapshot/page.tsx",
+    "../app/privacy/page.tsx",
+    "../app/terms/page.tsx",
+    "../app/refunds/page.tsx",
+    "../app/contact/page.tsx",
+    "../app/checkout/page.tsx",
+  ]) {
+    const file = readFileSync(new URL(rel, import.meta.url), "utf8");
+    assert.doesNotMatch(file, /StickySnapshotOffer|TradeGuideStickyCta/, rel);
+  }
+  const llmsTxt = readFileSync(new URL("../app/llms.txt/route.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(llmsTxt, /StickySnapshotOffer|sticky-snapshot-offer/);
+  assert.equal(isStickySnapshotContentPath("/privacy"), false);
+  assert.equal(isStickySnapshotContentPath("/terms"), false);
+  assert.equal(isStickySnapshotContentPath("/refunds"), false);
+  assert.equal(isStickySnapshotContentPath("/contact"), false);
+  assert.equal(isStickySnapshotContentPath("/llms.txt"), false);
+  assert.equal(contentStickySnapshotHref({ guidePath: "/" }), null);
+  assert.equal(contentStickySnapshotHref({ guidePath: "/free-snapshot" }), null);
 });
 
 test("a missing llms.txt is not pitched as a citation issue", () => {

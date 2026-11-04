@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { SiteFooter } from "@/components/SiteFooter";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import { fixPackIntroPriceLabel, site } from "@/lib/site";
@@ -86,6 +87,7 @@ export default function AlternativesIndexPage() {
         </ul>
       </main>
       <SiteFooter />
+      <StickySnapshotOffer path="/alternatives" />
     </>
   );
 }
