@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
@@ -229,6 +230,9 @@ export default function PricingPage() {
           </p>
           <FaqList items={pricingFaqs} />
         </section>
+        <div className="max-w-2xl">
+          <InlineSnapshotRequest source="/pricing" />
+        </div>
       </main>
       <SiteFooter />
     </>

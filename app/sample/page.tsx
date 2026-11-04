@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuditReport } from "@/components/AuditReport";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { PrintButton } from "@/components/PrintButton";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -53,6 +54,9 @@ export default function SampleReportPage() {
           </div>
         </div>
         <AuditReport report={sampleReport} />
+        <div className="mx-auto w-full max-w-2xl">
+          <InlineSnapshotRequest source="/sample" />
+        </div>
       </main>
       <SiteFooter />
     </>

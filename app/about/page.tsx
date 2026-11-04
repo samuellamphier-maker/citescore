@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
@@ -97,6 +98,7 @@ export default function AboutPage() {
             </Link>
           </p>
         </div>
+        <InlineSnapshotRequest source="/about" />
       </main>
       <SiteFooter />
     </>

@@ -11,7 +11,9 @@ import {
 import {
   guideSnapshotCalloutPaths,
   industrySnapshotLabel,
+  inlineSnapshotPaths,
   inlineSnapshotRequestForPath,
+  shellContentPath,
   showsGuideSnapshotCallout,
   contentStickySnapshotHref,
   isStickySnapshotContentPath,
@@ -134,21 +136,51 @@ test("every industry visibility path has a snapshot label", () => {
   });
   assert.equal(inlineSnapshotRequestForPath("/how-to-get-cited-by-"), null);
   assert.equal(inlineSnapshotRequestForPath("/ai-search-visibility-for-"), null);
-  assert.equal(inlineSnapshotRequestForPath("/geo-for-local-businesses"), null);
-  assert.equal(inlineSnapshotRequestForPath("/plumber-schema-generator"), null);
+  assert.deepEqual(inlineSnapshotRequestForPath("/geo-for-local-businesses"), {
+    source: "/geo-for-local-businesses",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/plumber-schema-generator"), {
+    source: "/plumber-schema-generator",
+    service: "plumber",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/faq-schema-generator"), {
+    source: "/faq-schema-generator",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/local-business-schema-generator"), {
+    source: "/local-business-schema-generator",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/blog/what-is-geo"), {
+    source: "/blog/what-is-geo",
+  });
+  assert.deepEqual(inlineSnapshotRequestForPath("/blog"), { source: "/blog" });
   assert.equal(inlineSnapshotRequestForPath("/free-snapshot"), null);
+  assert.equal(inlineSnapshotRequestForPath("/llms-txt"), null);
+  assert.equal(inlineSnapshotRequestForPath("/privacy"), null);
+  assert.equal(inlineSnapshotRequestForPath("/terms"), null);
+  assert.equal(inlineSnapshotRequestForPath("/refunds"), null);
+  assert.equal(inlineSnapshotRequestForPath("/contact"), null);
   assert.equal(inlineSnapshotRequestForPath(undefined), null);
+  assert.equal(shellContentPath({ ctaId: "aeo" }), "/answer-engine-optimization");
+  assert.equal(shellContentPath({ ctaId: "blog-what-is-geo" }), "/blog/what-is-geo");
+  assert.equal(
+    shellContentPath({ guidePath: "/geo-vs-seo", ctaId: "aeo" }),
+    "/geo-vs-seo",
+  );
+  assert.equal(shellContentPath({ ctaId: "llms-txt" }), "/llms-txt");
+  assert.equal(inlineSnapshotRequestForPath(shellContentPath({ ctaId: "llms-txt" })), null);
 
   let inlineGuides = 0;
   for (const topic of topicPages) {
     const request = inlineSnapshotRequestForPath(topic.path);
     const trade = topic.path.startsWith("/ai-search-visibility-for-");
     const citation = topic.path.startsWith("/how-to-get-cited-by-");
-    if (trade || citation) {
+    const schema = topic.path.endsWith("-schema-generator");
+    const listed = inlineSnapshotPaths.includes(topic.path as (typeof inlineSnapshotPaths)[number]);
+    if (trade || citation || schema || listed) {
       inlineGuides += 1;
       assert.equal(request?.source, topic.path, topic.path);
       if (trade) assert.equal(request?.service, industrySnapshotLabel(topic.path), topic.path);
-      else assert.equal(request?.service, undefined, topic.path);
+      else if (!schema) assert.equal(request?.service, undefined, topic.path);
     } else {
       assert.equal(request, null, topic.path);
     }
@@ -356,12 +388,62 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
   assert.match(shell, /variant=\{generalSnapshot \? "general" : "industry"\}/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
   assert.match(shell, /snapshotOffer \|\| generalSnapshot/);
-  assert.match(shell, /inlineSnapshotRequestForPath\(guidePath\)/);
-  assert.match(shell, /<SnapshotRequestForm/);
+  assert.match(shell, /inlineSnapshotRequestForPath\(\s*shellContentPath\(\{ guidePath, ctaId \}\),\s*\)/);
+  assert.match(shell, /<InlineSnapshotRequest/);
   assert.match(shell, /defaultService=\{inlineSnapshot\.service\}/);
   assert.match(shell, /source=\{inlineSnapshot\.source\}/);
-  assert.match(shell, /not a promise that any assistant will name the business/);
+  const requestSection = readFileSync(
+    new URL("../components/InlineSnapshotRequest.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(requestSection, /<SnapshotRequestForm/);
+  assert.match(requestSection, /defaultService=\{defaultService\}/);
+  assert.match(requestSection, /source=\{source\}/);
+  assert.match(requestSection, /Request a free AI Answer Snapshot/);
+  assert.match(requestSection, /Prepared by the CiteScore Team/);
+  assert.match(requestSection, /not a promise that any assistant will name the business/);
+  assert.match(requestSection, /data-funnel-cta/);
+  assert.doesNotMatch(requestSection, /Samuel|Lamphier|testimonial|customers served|% of|guarantee/i);
   assert.doesNotMatch(shell, /Samuel|Lamphier|testimonial|customers served|% of|guarantee/i);
+  for (const post of blogPosts) {
+    assert.deepEqual(
+      inlineSnapshotRequestForPath(shellContentPath({ ctaId: `blog-${post.slug}` })),
+      { source: `/blog/${post.slug}` },
+    );
+  }
+  const placed = [
+    ["../app/fix-pack/page.tsx", "/fix-pack"],
+    ["../app/pricing/page.tsx", "/pricing"],
+    ["../app/how-it-works/page.tsx", "/how-it-works"],
+    ["../app/faq/page.tsx", "/faq"],
+    ["../app/sample/page.tsx", "/sample"],
+    ["../app/sample-fix-pack/page.tsx", "/sample-fix-pack"],
+    ["../app/methodology/page.tsx", "/methodology"],
+    ["../app/about/page.tsx", "/about"],
+    ["../app/checklist/page.tsx", "/checklist"],
+    ["../app/for-agencies/page.tsx", "/for-agencies"],
+    ["../app/done-for-you-audit/page.tsx", "/done-for-you-audit"],
+    ["../app/geo-audit/page.tsx", "/geo-audit"],
+    ["../app/blog/page.tsx", "/blog"],
+    ["../app/guides/page.tsx", "/guides"],
+    ["../app/industries/page.tsx", "/industries"],
+    ["../app/tools/page.tsx", "/tools"],
+  ] as const;
+  for (const [rel, source] of placed) {
+    const file = readFileSync(new URL(rel, import.meta.url), "utf8");
+    assert.match(file, new RegExp(`<InlineSnapshotRequest source="${source}"`));
+    assert.doesNotMatch(file, /defaultService=/);
+  }
+  for (const rel of [
+    "../app/privacy/page.tsx",
+    "../app/terms/page.tsx",
+    "../app/refunds/page.tsx",
+    "../app/contact/page.tsx",
+    "../app/llms-txt/page.tsx",
+  ]) {
+    const file = readFileSync(new URL(rel, import.meta.url), "utf8");
+    assert.doesNotMatch(file, /InlineSnapshotRequest|SnapshotRequestForm/);
+  }
   assert.match(cta, /See which local competitors ChatGPT and Perplexity name instead of the business/);
   assert.match(cta, /We ask logged-out ChatGPT and Perplexity who they name/);
   assert.match(cta, /href=\{snapshotHref\}/);

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -171,6 +172,9 @@ export default function IndustriesPage() {
             <IndustryCtas />
           </div>
         </section>
+        <div className="max-w-2xl">
+          <InlineSnapshotRequest source="/industries" />
+        </div>
       </main>
       <SiteFooter />
     </>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
@@ -430,6 +431,9 @@ export default function ForAgenciesPage() {
             </div>
           </div>
         </section>
+        <div className="mx-auto w-full max-w-2xl px-5 pb-14">
+          <InlineSnapshotRequest source="/for-agencies" />
+        </div>
       </main>
       <SiteFooter />
     </>

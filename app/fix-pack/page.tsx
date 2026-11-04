@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
@@ -191,6 +192,9 @@ export default function FixPackPage() {
           ask.
         </p>
         <FaqList items={fixPackMoreFaqs()} />
+        <div className="max-w-2xl">
+          <InlineSnapshotRequest source="/fix-pack" />
+        </div>
       </main>
       <SiteFooter />
     </>

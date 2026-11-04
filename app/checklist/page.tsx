@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { CitationReadinessChecklist } from "@/components/CitationReadinessChecklist";
@@ -122,6 +123,9 @@ export default function ChecklistPage() {
             </li>
           </ul>
         </nav>
+        <div className="max-w-2xl">
+          <InlineSnapshotRequest source="/checklist" />
+        </div>
       </main>
       <SiteFooter />
     </>

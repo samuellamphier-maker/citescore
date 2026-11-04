@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -157,6 +158,9 @@ export default function HowItWorksPage() {
         <FixPackOfferFacts className="mt-8" />
         <div className="mt-4">
           <TrustLinks />
+        </div>
+        <div className="max-w-2xl">
+          <InlineSnapshotRequest source="/how-it-works" />
         </div>
       </main>
       <SiteFooter />
