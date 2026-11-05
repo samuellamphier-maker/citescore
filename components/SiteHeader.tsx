@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { templatePackLabel, templatePackUrl } from "@/lib/site";
 
 const navItem =
   "min-h-11 min-w-11 items-center justify-center px-2 hover:text-ink";
@@ -65,15 +64,6 @@ export function SiteHeader() {
           <NavLink href="/for-agencies" className={navLink}>
             For agencies
           </NavLink>
-          <a
-            href={templatePackUrl}
-            className={navLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {templatePackLabel}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
           <NavLink href="/how-it-works" className={`hidden sm:inline-flex ${navItem}`}>
             How it works
           </NavLink>

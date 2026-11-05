@@ -18,10 +18,14 @@ import {
   type FaqItem,
 } from "@/lib/offer-faq";
 import {
+  agencyKitLabel,
+  agencyKitUrl,
   contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   sellerName,
+  templatePackLabel,
+  templatePackUrl,
 } from "@/lib/site";
 
 const pricingFaqQuestions = [
@@ -235,6 +239,50 @@ export default function PricingPage() {
         <div className="max-w-2xl">
           <InlineSnapshotRequest source="/pricing" />
         </div>
+
+        <details className="group mt-12 border-t border-rule">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 py-3 marker:content-none [&::-webkit-details-marker]:hidden">
+            <span className="min-w-0">
+              <span className="block font-medium text-ink">
+                Other digital products
+              </span>
+              <span className="mt-0.5 block text-sm font-normal leading-6 text-ink-soft">
+                Also available. Separate from the free snapshot and the Fix
+                Pack.
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              className="ml-auto text-xl leading-none text-ink-soft group-open:rotate-45"
+            >
+              +
+            </span>
+          </summary>
+          <ul className="space-y-1 pb-2 text-sm">
+            <li>
+              <a
+                href={templatePackUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center text-forest underline"
+              >
+                {templatePackLabel}
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={agencyKitUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center text-forest underline"
+              >
+                {agencyKitLabel}
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
+        </details>
       </main>
       <SiteFooter />
       <StickySnapshotOffer path="/pricing" />
