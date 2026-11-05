@@ -25,6 +25,26 @@ function FooterLink({
   );
 }
 
+function ExternalProductLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      className={footerLink}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {children}
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  );
+}
+
 export function SiteFooter() {
   return (
     <footer className="no-print mt-auto border-t border-rule/80">
@@ -46,25 +66,7 @@ export function SiteFooter() {
           <FooterLink href="/tools">Tools</FooterLink>
           <FooterLink href="/blog">Blog</FooterLink>
           <FooterLink href="/checklist">Checklist</FooterLink>
-          <a
-            href={templatePackUrl}
-            className={footerLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {templatePackLabel}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
           <FooterLink href="/for-agencies">For agencies</FooterLink>
-          <a
-            href={agencyKitUrl}
-            className={footerLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {agencyKitLabel}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
           <FooterLink href="/geo-audit">GEO audit</FooterLink>
           <FooterLink href="/chatgpt-citation-check">ChatGPT check</FooterLink>
           <FooterLink href="/ai-overviews">AI Overviews</FooterLink>
@@ -86,6 +88,34 @@ export function SiteFooter() {
           <FooterLink href="/refunds">Refunds</FooterLink>
           <FooterLink href="/checkout">Checkout</FooterLink>
         </div>
+      </div>
+      <div className="mx-auto max-w-5xl px-5">
+        <details className="group border-t border-rule/70">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 py-3 marker:content-none [&::-webkit-details-marker]:hidden">
+            <span className="min-w-0">
+              <span className="block text-sm font-medium text-ink">
+                Other digital products
+              </span>
+              <span className="mt-0.5 block text-sm font-normal leading-6 text-ink-soft">
+                Also available
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              className="ml-auto text-xl leading-none text-ink-soft group-open:rotate-45"
+            >
+              +
+            </span>
+          </summary>
+          <div className="flex flex-wrap gap-x-5 gap-y-1 pb-4 text-sm text-ink-soft">
+            <ExternalProductLink href={templatePackUrl}>
+              {templatePackLabel}
+            </ExternalProductLink>
+            <ExternalProductLink href={agencyKitUrl}>
+              {agencyKitLabel}
+            </ExternalProductLink>
+          </div>
+        </details>
       </div>
       <div className="border-t border-rule/70">
         <p className="mx-auto max-w-5xl px-5 py-4 text-xs text-ink-soft">
