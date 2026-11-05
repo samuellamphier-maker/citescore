@@ -15,6 +15,7 @@ import {
   doneForYouAuditUrl,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  sellerName,
   site,
   whiteLabelAuditUrl,
 } from "@/lib/site";
@@ -24,8 +25,8 @@ const whiteLabelCheckoutLabel =
   "White-Label AI Search Audit for Agencies ($149)";
 
 export const metadata: Metadata = pageMeta({
-  title: "Checkout",
-  description: `Buy the ${fixPackIntroPriceLabel} AI Visibility Fix Pack, or buy the ${site.priceLabel} CiteScore audit, the ${agencyKitLabel}, the ${doneForYouAuditLabel}, or the ${whiteLabelCheckoutLabel}.`,
+  title: `Free snapshot and ${fixPackIntroPriceLabel} Fix Pack`,
+  description: `Request a free AI Answer Snapshot, then buy the ${fixPackIntroPriceLabel} AI Visibility Fix Pack (${fixPackListPriceLabel} list) for one business. Sold by ${sellerName}.`,
   path: "/checkout",
 });
 
@@ -71,7 +72,7 @@ function Offer({
     <article
       className={
         primary
-          ? "rounded-2xl border border-ink bg-ink p-6 text-cream shadow-[0_24px_60px_-32px_rgba(27,24,20,0.55)] sm:p-8"
+          ? "rounded-2xl border border-ink bg-ink p-5 text-cream shadow-[0_24px_60px_-32px_rgba(27,24,20,0.55)] sm:p-8"
           : "rounded-2xl border border-rule bg-cream p-6"
       }
     >
@@ -79,14 +80,14 @@ function Offer({
       <Heading
         className={
           primary
-            ? "mt-3 font-serif text-3xl tracking-tight sm:text-4xl"
+            ? "mt-2 font-serif text-2xl leading-tight tracking-tight sm:mt-3 sm:text-4xl"
             : "font-serif text-2xl tracking-tight"
         }
       >
         {title}
       </Heading>
       {primary ? (
-        <p className="mt-4 font-serif text-5xl tracking-tight">
+        <p className="mt-2 font-serif text-4xl tracking-tight sm:mt-4 sm:text-5xl">
           {fixPackIntroPriceLabel}
           <span className="ml-3 align-middle font-sans text-base font-normal tracking-normal text-[#d7c7b0]">
             <span className="line-through">{fixPackListPriceLabel}</span> list
@@ -96,7 +97,7 @@ function Offer({
       <p
         className={
           primary
-            ? "mt-3 text-sm leading-6 text-[#d7c7b0]"
+            ? "mt-2 text-sm leading-6 text-[#d7c7b0]"
             : "mt-2 text-sm leading-6 text-ink-soft"
         }
       >
@@ -128,23 +129,21 @@ export default async function CheckoutPage({
   return (
     <>
       <SiteHeader />
-      <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-5 pb-10 pt-4 sm:py-10">
         <p className="kicker">Checkout</p>
-        <h1 className="mt-3 font-serif text-4xl tracking-tight">
+        <h1 className="mt-2 font-serif text-3xl tracking-tight sm:mt-3 sm:text-4xl">
           Free snapshot, then the Fix Pack
         </h1>
-        <p className="mt-4 text-ink-soft leading-7">
-          See who ChatGPT names for your trade and city. The AI Visibility
-          Fix Pack is {fixPackIntroPriceLabel} introductory (
-          {fixPackListPriceLabel} list), for one business. Other products
-          are below.
+        <p className="mt-2 text-ink-soft leading-6 sm:leading-7">
+          See who ChatGPT names for your trade and city. The free snapshot
+          comes first.
         </p>
 
-        <div className="mt-8">
+        <div className="mt-4 sm:mt-6">
           <Offer
             emphasis="primary"
             title={`AI Visibility Fix Pack (${fixPackIntroPriceLabel})`}
-            description={`One business, one city, one service. The free snapshot comes first. Card checkout is ${fixPackIntroPriceLabel}.`}
+            description="One business, one city, one service."
             sampleHref="/sample-snapshot"
             sampleLabel="See an example snapshot (fictional business)"
           >
@@ -169,14 +168,33 @@ export default async function CheckoutPage({
           </Offer>
         </div>
 
-        <div className="mt-12 border-t border-rule pt-10">
-          <h2 className="font-serif text-2xl tracking-tight">Other products</h2>
+        <div className="mt-5">
+          <TrustLinks />
+        </div>
+
+        <details className="group mt-8 border-t border-rule">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 py-3 marker:content-none [&::-webkit-details-marker]:hidden">
+            <span className="min-w-0">
+              <span className="block font-medium text-ink">
+                Other CiteScore products
+              </span>
+              <span className="mt-0.5 block text-sm font-normal leading-6 text-ink-soft">
+                Looking for the older audit products?
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              className="ml-auto text-xl leading-none text-ink-soft group-open:rotate-45"
+            >
+              +
+            </span>
+          </summary>
           <p className="mt-2 text-sm leading-6 text-ink-soft">
             The {site.priceLabel} audit is a self-serve PDF. The $99 and $149
             audits are written for one public URL and delivered within 3
             business days. The {agencyKitLabel} is the writing around an audit.
           </p>
-          <div className="mt-5 space-y-4">
+          <div className="mt-5 space-y-4 pb-2">
             <Offer
               title={`${site.priceLabel} GEO audit`}
               description="A self-serve PDF with a 0–100 score and about ten fixes, usually a few minutes after payment."
@@ -205,7 +223,7 @@ export default async function CheckoutPage({
               {buyButton(whiteLabelAuditUrl, "Buy the white-label audit")}
             </Offer>
           </div>
-        </div>
+        </details>
 
         <p className="mt-8 text-sm leading-6 text-ink-soft">
           By continuing you agree that the public URL may be fetched and sent
@@ -217,9 +235,6 @@ export default async function CheckoutPage({
           unreadable, or about the wrong URL. The Fix Pack: full refund
           within 14 days if it is not useful.
         </p>
-        <div className="mt-3">
-          <TrustLinks />
-        </div>
       </main>
       <SiteFooter />
     </>
