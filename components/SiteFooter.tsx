@@ -80,6 +80,7 @@ export function SiteFooter() {
           <FooterLink href="/faq">FAQ</FooterLink>
           <FooterLink href="/contact">Contact</FooterLink>
           <FooterLink href="/about">About</FooterLink>
+          <FooterLink href="/trust">Trust</FooterLink>
           <FooterLink href="/privacy">Privacy</FooterLink>
           <FooterLink href="/terms">Terms</FooterLink>
           <FooterLink href="/refunds">Refunds</FooterLink>

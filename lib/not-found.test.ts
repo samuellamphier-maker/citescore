@@ -71,6 +71,7 @@ const purchaseAndTrustAliases = [
   { source: "/fix-pack/sample", destination: "/sample-fix-pack" },
   { source: "/what-you-get", destination: "/sample-fix-pack" },
   { source: "/get-started", destination: "/free-snapshot" },
+  { source: "/offer", destination: "/free-snapshot" },
   { source: "/start", destination: "/free-snapshot" },
   { source: "/case-studies", destination: "/sample-snapshot" },
   { source: "/testimonials", destination: "/sample-snapshot" },

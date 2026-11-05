@@ -98,6 +98,11 @@ export const llmsTxtSections: { heading: string; links: LlmsLink[] }[] = [
         note: aboutSummary,
       },
       {
+        title: "Trust",
+        path: "/trust",
+        note: `Who sells CiteScore: the free AI Answer Snapshot and the ${fixPackIntroPriceLabel} Fix Pack, sold by ${sellerName}. Operated by the CiteScore Team. Contact ${contactEmail}.`,
+      },
+      {
         title: "Contact",
         path: "/contact",
         note: `Questions about CiteScore: email ${contactEmail}. Include the business name, website, and city or trade.`,

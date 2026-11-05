@@ -238,6 +238,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/offer",
+        destination: "/free-snapshot",
+        permanent: true,
+      },
+      {
         source: "/ai-answer-snapshot-sample",
         destination: "/sample-snapshot",
         permanent: true,
