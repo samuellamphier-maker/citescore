@@ -86,6 +86,9 @@ export function SiteHeader() {
           <NavLink href="/fix-pack" className={navLink}>
             Fix Pack
           </NavLink>
+          <NavLink href="/trust" className={navLink}>
+            Trust
+          </NavLink>
           <NavLink href="/contact" className={navLink}>
             Contact
           </NavLink>

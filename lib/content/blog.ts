@@ -123,6 +123,7 @@ export const marketingPaths: MarketingPath[] = [
     lastModified: "2026-10-13",
   },
   { path: "/about", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-10-26" },
+  { path: "/trust", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-11-05" },
   {
     path: "/pricing",
     changeFrequency: "monthly",
