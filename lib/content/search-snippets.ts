@@ -26,7 +26,7 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
     description: `Free AI Answer Snapshot and the ${fixPackIntroPriceLabel} Fix Pack, plus free schema generators, an llms.txt generator, and a robots.txt checker on CiteScore.`,
   },
   "/geo-audit": {
-    description: `A ${site.priceLabel} GEO audit of one URL: on-page signals, an LLM review of public HTML, a 0-100 score, and about ten fixes in a PDF. Not a live ChatGPT login.`,
+    description: `Request a free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} AI Visibility Fix Pack for one business. The older self-serve PDF stays on this page.`,
   },
   "/alternatives/otterly": {
     title: "CiteScore vs Otterly: free snapshot",
@@ -52,8 +52,7 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
       "Agencies start a local client with the free AI Answer Snapshot and the $49 Fix Pack. The free check reads public files and does not query ChatGPT.",
   },
   "/done-for-you-audit": {
-    description:
-      "A $99 Done-For-You AI Search Audit: a written walkthrough of one public URL, within 3 business days. No live ChatGPT, Perplexity, or AI Overviews query.",
+    description: `Start with a free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} AI Visibility Fix Pack. One business, one city, one service. The older written audit stays below.`,
   },
   "/pricing": {
     description: `The AI Answer Snapshot is free. The Fix Pack is ${fixPackIntroPriceLabel} introductory (${fixPackListPriceLabel} list) for one business, one city, and one service, emailed in a few business days.`,

@@ -74,7 +74,12 @@ export const marketingPaths: MarketingPath[] = [
     priority: 0.8,
     lastModified: "2026-11-03",
   },
-  { path: "/geo-audit", changeFrequency: "monthly", priority: 0.9 },
+  {
+    path: "/geo-audit",
+    changeFrequency: "monthly",
+    priority: 0.9,
+    lastModified: "2026-11-06",
+  },
   {
     path: "/alternatives",
     changeFrequency: "monthly",
@@ -120,7 +125,7 @@ export const marketingPaths: MarketingPath[] = [
     path: "/done-for-you-audit",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-10-13",
+    lastModified: "2026-11-06",
   },
   { path: "/about", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-10-26" },
   { path: "/trust", changeFrequency: "yearly", priority: 0.4, lastModified: "2026-11-05" },
