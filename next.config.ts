@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { industryGuideRedirects } from "./lib/industry-redirects";
 
 const modernPolyfill = path.join(process.cwd(), "lib/modern-browser-polyfill.js");
 
@@ -407,6 +408,7 @@ const nextConfig: NextConfig = {
         destination: "/blog/what-is-geo",
         permanent: true,
       },
+      ...industryGuideRedirects(),
     ];
   },
 };

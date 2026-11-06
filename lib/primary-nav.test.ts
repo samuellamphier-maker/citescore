@@ -76,6 +76,19 @@ test("footer and pricing keep the $19 and $29 products in a closed disclosure", 
   assert.match(footerProducts, new RegExp(`href=\\{agencyKitUrl\\}`));
   assert.match(footerProducts, /\{templatePackLabel\}/);
   assert.match(footerProducts, /\{agencyKitLabel\}/);
+  assert.match(
+    footerProducts,
+    /href="\/geo-audit">Free AI Answer Snapshot and Fix Pack</,
+  );
+  assert.match(footerProducts, /href="\/free-check">Free AI Answer Snapshot</);
+  assert.doesNotMatch(footerProducts, /Free signal check|>\s*GEO audit\s*</);
+
+  const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+  assert.match(home, /href="\/free-check"/);
+  assert.match(home, /href="\/geo-audit"/);
+  assert.match(home, />\s*free AI Answer Snapshot\s*</);
+  assert.match(home, />\s*Free AI Answer Snapshot\s*</);
+  assert.doesNotMatch(home, /free signal check|Free signal check|GEO audit/);
 
   const pricingBody = pricing.slice(pricing.indexOf("<main"));
   const pricingProducts = closedDisclosure(pricingBody, "pricing");

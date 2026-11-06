@@ -105,8 +105,8 @@ export function SiteFooter() {
             </span>
           </summary>
           <div className="flex flex-wrap gap-x-5 gap-y-1 pb-4 text-sm text-ink-soft">
-            <FooterLink href="/geo-audit">GEO audit</FooterLink>
-            <FooterLink href="/free-check">Free signal check</FooterLink>
+            <FooterLink href="/geo-audit">Free AI Answer Snapshot and Fix Pack</FooterLink>
+            <FooterLink href="/free-check">Free AI Answer Snapshot</FooterLink>
             <ExternalProductLink href={templatePackUrl}>
               {templatePackLabel}
             </ExternalProductLink>
