@@ -89,7 +89,7 @@ const marketingInput: Record<string, { title: string; description: string }> = {
   "/industries": { title: "Industries", description: "x" },
   "/tools": { title: "Tools", description: "x" },
   "/geo-audit": {
-    title: "GEO audit for SaaS — $39 AI-visibility report",
+    title: `Free AI Answer Snapshot and Fix Pack, ${fixPackIntroPriceLabel}`,
     description: "x",
   },
   "/alternatives/otterly": {
@@ -104,7 +104,10 @@ const marketingInput: Record<string, { title: string; description: string }> = {
   "/free-snapshot": { title: "Free AI Answer Snapshot", description: "x" },
   "/checklist": { title: "AI Citation Readiness Checklist", description: "x" },
   "/for-agencies": { title: "GEO audits for SEO agencies", description: "x" },
-  "/done-for-you-audit": { title: "Done-For-You AI Search Audit", description: "x" },
+  "/done-for-you-audit": {
+    title: `Free snapshot first, then the Fix Pack, ${fixPackIntroPriceLabel}`,
+    description: "x",
+  },
   "/pricing": { title: "Pricing", description: "x" },
   "/how-it-works": { title: "How it works", description: "x" },
   "/methodology": { title: "Methodology", description: "x" },

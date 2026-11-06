@@ -1,47 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuditForm } from "@/components/AuditForm";
+import { FaqList } from "@/components/FaqList";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
-import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { JsonLd } from "@/components/JsonLd";
+import { OlderAudits } from "@/components/OlderAudits";
 import { SiteFooter } from "@/components/SiteFooter";
-import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
+import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
-import { publicOrigin, site } from "@/lib/site";
+import { fixPackProductJsonLd } from "@/lib/fix-pack-offer";
+import { faqPageJsonLd, freeSnapshotPageFaqs } from "@/lib/offer-faq";
+import {
+  fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
+  publicOrigin,
+  sellerName,
+  site,
+} from "@/lib/site";
 import { normalizeSiteUrl } from "@/lib/urls";
 
-const description =
+const path = "/geo-audit";
+const title = `Free AI Answer Snapshot and Fix Pack, ${fixPackIntroPriceLabel}`;
+const description = `Request a free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} AI Visibility Fix Pack for one business. The older self-serve PDF stays on this page.`;
+const legacyDescription =
   "A one-time generative engine optimization audit. On-page GEO signals plus an LLM review of public HTML — not a live ChatGPT login. PDF with a 0–100 score and about ten fixes.";
 
-export const metadata: Metadata = pageMeta({
-  title: "GEO audit for SaaS — $39 AI-visibility report",
-  description,
-  path: "/geo-audit",
-});
-
-const included = [
-  "Overall CiteScore (0–100) and a plain-language grade",
-  "Inferred snapshot for ChatGPT, Perplexity, and Google AI Overviews",
-  "Dimension scores: answers, entities, evidence, markup, freshness, crawlers",
-  "About ten prioritized fixes with effort, impact, and the page to change",
-  "A print-ready PDF, emailed, plus a web copy of the same report",
-];
-
-const faqs = [
-  {
-    q: "Do you query ChatGPT?",
-    a: "No. We do not log into ChatGPT, Perplexity, or Google AI Overviews. The engine snapshot is inferred from on-page signals and, when configured, a language-model review of the HTML we fetched. The report says so.",
-  },
-  {
-    q: "What URL should I submit?",
-    a: "The public page you want cited — usually the homepage. Docs or a landing URL you send to buyers also work. Do not submit anything behind a login.",
-  },
-  {
-    q: "How is this different from Otterly or Profound?",
-    a: "Those products monitor live prompts over time and charge a monthly seat. CiteScore is a one-off punch list for $39. If you need a mention dashboard, buy a monitor after you fix the page.",
-  },
-];
+export const metadata: Metadata = {
+  ...pageMeta({
+    title,
+    description,
+    path,
+  }),
+  authors: [{ name: "CiteScore Team" }],
+  creator: sellerName,
+};
 
 function firstString(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
@@ -58,222 +54,159 @@ export default async function GeoAuditPage({
 
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((item) => ({
-            "@type": "Question",
-            name: item.q,
-            acceptedAnswer: { "@type": "Answer", text: item.a },
-          })),
-        }}
-      />
+      <JsonLd data={faqPageJsonLd(freeSnapshotPageFaqs)} />
+      <JsonLd data={fixPackProductJsonLd(origin)} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "Service",
           name: `${site.name} GEO audit`,
           provider: { "@type": "Organization", name: site.name, url: origin },
-          description,
+          description: legacyDescription,
           offers: {
             "@type": "Offer",
             price: String(site.price),
             priceCurrency: "USD",
-            url: `${origin}/#audit`,
+            url: `${origin}/checkout`,
           },
         }}
       />
       <SiteHeader />
-      <main id="main">
-        <section className="border-b border-rule/80 bg-paper-2/50">
-          <div className="mx-auto max-w-3xl px-5 py-10">
-            <IndustrySnapshotCta variant="general" />
-            <p className="mt-4 text-sm leading-6 text-ink-soft">
-              Local businesses: start with the free snapshot. This page is
-              still the {site.priceLabel} self-serve PDF if you want one
-              public URL scored.
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+        <p className="kicker">Free AI Answer Snapshot</p>
+        <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
+          See who AI names, then get the Fix Pack.
+        </h1>
+        <p className="mt-4 text-lg leading-8 text-ink-soft">
+          This page used to open with a self-serve PDF. The path now is a
+          free AI Answer Snapshot, then the AI Visibility Fix Pack if you
+          want the gaps closed. Introductory price {fixPackIntroPriceLabel}.
+          List price {fixPackListPriceLabel}. One business, one city, one
+          service.
+        </p>
+        <p className="mt-4 text-sm leading-6 text-ink-soft">
+          CiteScore asks logged-out ChatGPT and Perplexity who they name for
+          that trade and city. AI answers vary run to run. This is a
+          snapshot, not a ranking. It is not a promise that any assistant
+          will name the business.
+        </p>
+        <p className="mt-4 text-sm leading-6 text-ink-soft">
+          Prepared by the CiteScore Team. Sold by {sellerName}.
+        </p>
+        <div
+          data-funnel-cta
+          className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+        >
+          <Link
+            href="/free-snapshot"
+            className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep"
+          >
+            Get a free AI Answer Snapshot
+          </Link>
+          <FixPackBuyLink
+            compact
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+          />
+        </div>
+        <p className="mt-4 text-sm leading-6">
+          <Link href="/fix-pack" className="font-medium text-forest underline">
+            See what&apos;s in the Fix Pack
+          </Link>
+          <span className="text-ink-soft"> · </span>
+          <Link href="/sample-snapshot" className="font-medium text-forest underline">
+            See an example snapshot
+          </Link>
+          <span className="text-ink-soft">
+            . Fictional business, illustrative numbers.
+          </span>
+        </p>
+        <p className="mt-3 text-sm leading-6">
+          <Link href="/checkout" className="font-medium text-forest underline">
+            Open checkout
+          </Link>
+          <span className="text-ink-soft">
+            . The {fixPackIntroPriceLabel} Fix Pack is on that page.
+          </span>
+        </p>
+        <FixPackOfferFacts className="mt-6" />
+        <div className="mt-4">
+          <TrustLinks />
+        </div>
+
+        <OlderAudits>
+          <article className="rounded-2xl border border-rule bg-cream p-6">
+            <p className="font-serif text-2xl tracking-tight text-ink">
+              {site.priceLabel} GEO audit
             </p>
-          </div>
-        </section>
-        <section className="border-b border-rule/80">
-          <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(16rem,0.9fr)] lg:py-20">
-            <div>
-              <p className="kicker">GEO audit</p>
-              <h1 className="mt-4 font-serif text-[2.2rem] leading-[1.12] tracking-tight text-ink sm:text-5xl sm:leading-[1.1]">
-                A {site.priceLabel} generative engine optimization audit —
-                one URL, one PDF.
-              </h1>
-              <p className="mt-5 max-w-xl text-lg leading-8 text-ink-soft">
-                Built for indie SaaS founders and small SEO shops who need
-                to know whether ChatGPT <em>could</em> cite the page, and
-                what to change this week. Not a live login. Not a monthly
-                dashboard.
-              </p>
-              <div id="audit" className="mt-8 max-w-xl">
-                <AuditForm id="geo-audit-form" defaultUrl={siteUrl} />
-              </div>
-            </div>
-            <aside className="report-sheet rounded-2xl border border-rule p-6">
-              <p className="kicker text-copper">Methodology</p>
-              <h2 className="mt-3 font-serif text-2xl">
-                On-page signals + an LLM review.
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-ink-soft">
-                We fetch publicly available HTML (and a few same-host
-                pages such as /about, /pricing, /faq). We score definitions,
-                entities, evidence, schema, freshness, and crawler access
-                (GPTBot, PerplexityBot, Google-Extended, llms.txt). A
-                language model, when configured, rewrites the summary and
-                the fix list from those extracts.
-              </p>
-              <p className="mt-3 text-sm leading-6 text-ink-soft">
-                We do not claim a screenshot of ChatGPT, Perplexity, or
-                Google AI Overviews.{" "}
-                <Link href="/privacy" className="text-forest underline">
-                  Privacy
-                </Link>{" "}
-                covers what an LLM may see.
-              </p>
-            </aside>
-          </div>
-        </section>
-
-        <section className="border-b border-rule/80 bg-paper-2/50">
-          <div className="mx-auto grid max-w-5xl gap-10 px-5 py-14 lg:grid-cols-2">
-            <div>
-              <p className="kicker">Deliverable</p>
-              <h2 className="mt-3 font-serif text-3xl tracking-tight">
-                The same artifact as the homepage — scored, ranked, emailed.
-              </h2>
-              <p className="mt-4 text-ink-soft leading-7">
-                Typical turnaround after payment is a few minutes. Refund
-                within 14 days if the file is missing, unreadable, or about
-                the wrong URL — not if you dislike the score.
-              </p>
-              <p className="mt-4 text-sm leading-6 text-ink-soft">
-                Preview the format on the{" "}
-                <Link href="/sample" className="text-forest underline">
-                  Northbound sample
-                </Link>{" "}
-                (fictional company, labeled throughout).
-              </p>
-            </div>
-            <ul className="space-y-3">
-              {included.map((item) => (
-                <li
-                  key={item}
-                  className="flex gap-3 rounded-xl border border-rule bg-cream px-4 py-3 text-sm leading-6"
-                >
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="border-b border-rule/80">
-          <div className="mx-auto max-w-5xl px-5 py-14">
-            <p className="kicker">Who this is for</p>
-            <div className="mt-6 grid gap-8 sm:grid-cols-2">
-              <div>
-                <h2 className="font-serif text-2xl">Buy this if</h2>
-                <p className="mt-3 text-sm leading-7 text-ink-soft">
-                  You own a public SaaS page, you cannot staff a GEO
-                  practice, and you want a Monday list — not another login.
-                  Agencies use it as the first artifact in a client
-                  engagement.
-                </p>
-              </div>
-              <div>
-                <h2 className="font-serif text-2xl">Skip this if</h2>
-                <p className="mt-3 text-sm leading-7 text-ink-soft">
-                  You need daily prompt tracking, competitor citation share,
-                  or SSO. That is{" "}
-                  <Link
-                    href="/alternatives/otterly"
-                    className="text-forest underline"
-                  >
-                    Otterly
-                  </Link>
-                  ,{" "}
-                  <Link
-                    href="/alternatives/peec-ai"
-                    className="text-forest underline"
-                  >
-                    Peec AI
-                  </Link>
-                  , or a{" "}
-                  <Link
-                    href="/blog/citescore-vs-enterprise-geo-tools"
-                    className="text-forest underline"
-                  >
-                    Profound-class suite
-                  </Link>
-                  . Fix the page first; measure later.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div className="mx-auto max-w-5xl px-5 py-14">
-            <p className="kicker">FAQ</p>
-            <h2 className="mt-3 font-serif text-3xl tracking-tight">
-              The uncomfortable answers, again.
-            </h2>
-            <div className="mt-8 divide-y divide-rule border-y border-rule">
-              {faqs.map((item) => (
-                <details key={item.q} className="group py-4">
-                  <summary className="cursor-pointer list-none font-medium leading-7 marker:content-none [&::-webkit-details-marker]:hidden">
-                    {item.q}
-                  </summary>
-                  <p className="mt-2 max-w-3xl text-sm leading-7 text-ink-soft">
-                    {item.a}
-                  </p>
-                </details>
-              ))}
-            </div>
-            <p className="mt-8 text-sm text-ink-soft">
-              Further reading:{" "}
-              <Link href="/blog/what-is-geo" className="text-forest underline">
-                What is GEO?
-              </Link>
-              {" · "}
-              <Link
-                href="/answer-engine-optimization"
-                className="text-forest underline"
-              >
-                AEO
-              </Link>
-              {" · "}
-              <Link
-                href="/chatgpt-citation-check"
-                className="text-forest underline"
-              >
-                ChatGPT citation check
-              </Link>
-              {" · "}
-              <Link href="/ai-overviews" className="text-forest underline">
-                AI Overviews
-              </Link>
-              {" · "}
-              <Link
-                href="/blog/chatgpt-citation-checklist"
-                className="text-forest underline"
-              >
-                Citation checklist
-              </Link>
-              {" · "}
-              <Link href="/blog" className="text-forest underline">
-                All guides
-              </Link>
+            <p className="mt-2 text-sm leading-6 text-ink-soft">
+              A self-serve PDF with a 0–100 score and about ten fixes, usually
+              a few minutes after payment. We fetch publicly available HTML
+              and score definitions, entities, evidence, schema, freshness,
+              and crawler access. A language model, when configured, rewrites
+              the summary and the fix list. This PDF does not claim a
+              screenshot of ChatGPT, Perplexity, or Google AI Overviews.
             </p>
-          </div>
+            <div id="audit" className="mt-5">
+              <AuditForm id="geo-audit-form" defaultUrl={siteUrl} size="compact" />
+            </div>
+            <p className="mt-4 text-sm leading-6">
+              <Link href="/sample" className="font-medium text-forest underline">
+                Northbound sample
+              </Link>
+              <span className="text-ink-soft">
+                . Fictional company, labeled throughout.
+              </span>
+            </p>
+            <p className="mt-2 text-sm leading-6 text-ink-soft">
+              Refund within 14 days if the file is missing, unreadable, or
+              about the wrong URL — not if you dislike the score. The{" "}
+              <Link href="/refunds" className="text-forest underline">
+                refunds
+              </Link>{" "}
+              page has the rules.
+            </p>
+          </article>
+        </OlderAudits>
+
+        <section id="faq" className="mt-12">
+          <h2 className="font-serif text-3xl tracking-tight">FAQ</h2>
+          <p className="mt-4 text-sm leading-7 text-ink-soft">
+            What the one-page snapshot shows, how to ask, and when the{" "}
+            {fixPackIntroPriceLabel} Fix Pack is emailed.
+          </p>
+          <FaqList items={freeSnapshotPageFaqs} />
         </section>
-        <div className="mx-auto w-full max-w-2xl px-5 pb-14">
+        <p className="mt-8 text-sm text-ink-soft">
+          Further reading:{" "}
+          <Link href="/pricing" className="text-forest underline">
+            Pricing
+          </Link>
+          {" · "}
+          <Link href="/how-it-works" className="text-forest underline">
+            How it works
+          </Link>
+          {" · "}
+          <Link href="/blog/what-is-geo" className="text-forest underline">
+            What is GEO?
+          </Link>
+          {" · "}
+          <Link href="/answer-engine-optimization" className="text-forest underline">
+            AEO
+          </Link>
+          {" · "}
+          <Link href="/chatgpt-citation-check" className="text-forest underline">
+            ChatGPT citation check
+          </Link>
+          {" · "}
+          <Link href="/ai-overviews" className="text-forest underline">
+            AI Overviews
+          </Link>
+          {" · "}
+          <Link href="/blog/chatgpt-citation-checklist" className="text-forest underline">
+            Citation checklist
+          </Link>
+        </p>
+        <div className="max-w-2xl">
           <InlineSnapshotRequest source="/geo-audit" />
         </div>
       </main>
