@@ -73,9 +73,11 @@ export function VsEnterpriseArticle() {
       <p>
         Local businesses start with the{" "}
         <Link href="/free-snapshot">free AI Answer Snapshot</Link>. The{" "}
-        <Link href="/fix-pack">Fix Pack</Link> is the paid next step. You
-        have a public page, you suspect it reads like a tagline, and you
-        want to know who an answer engine names before you buy a monitor.
+        <Link href="/fix-pack">Fix Pack</Link> is the paid next step. The
+        free <Link href="/free-check">signal check</Link> reads public files
+        and does not query ChatGPT. The snapshot does. You have a public
+        page, and you want to know who an answer engine names before you buy
+        a monitor.
         You do not have fifteen branded prompts to babysit. You do not want
         another login.
       </p>

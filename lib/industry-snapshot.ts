@@ -244,6 +244,7 @@ export const highIntentStickyPaths = [
   "/faq",
   "/about",
   "/for-agencies",
+  "/vs-agency",
   "/done-for-you-audit",
   "/geo-audit",
   "/checklist",

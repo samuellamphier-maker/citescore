@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AuditSecondaryNote } from "@/components/AuditSecondaryNote";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
@@ -28,7 +29,7 @@ const links = [
   {
     href: "/alternatives/otterly",
     title: "CiteScore vs Otterly",
-    dek: "Otterly monitors live prompts across ChatGPT, AI Overviews, Perplexity, and Copilot. CiteScore is a one-time page audit.",
+    dek: "Otterly monitors live prompts across ChatGPT, AI Overviews, Perplexity, and Copilot. CiteScore starts with a free snapshot and the Fix Pack.",
   },
   {
     href: "/alternatives/profound",
@@ -38,17 +39,17 @@ const links = [
   {
     href: "/alternatives/peec-ai",
     title: "CiteScore vs Peec AI",
-    dek: "Peec AI is ongoing AI-search analytics for marketing teams. CiteScore is the one-time page audit.",
+    dek: "Peec AI is ongoing AI-search analytics for marketing teams. CiteScore starts with a free snapshot and the Fix Pack.",
   },
   {
     href: "/blog/citescore-vs-enterprise-geo-tools",
     title: "CiteScore vs enterprise GEO tools",
-    dek: "The longer comparison, including Profound-class citation dashboards and who each tool is actually for.",
+    dek: "The longer comparison: the free snapshot and the Fix Pack versus Profound-class citation dashboards.",
   },
   {
-    href: "/geo-audit",
-    title: "GEO audit",
-    dek: "A separate PDF for one public URL, with a 0–100 score and about ten fixes.",
+    href: "/vs-agency",
+    title: "Fix Pack vs hiring an agency",
+    dek: `The ${fixPackIntroPriceLabel} Fix Pack is one purchase for one local business. An agency retainer is monthly. This page does not invent a retainer price.`,
   },
 ];
 
@@ -86,6 +87,14 @@ export default function AlternativesIndexPage() {
             </li>
           ))}
         </ul>
+        <AuditSecondaryNote />
+        <p className="mt-3 text-sm leading-6 text-ink-soft">
+          The <Link href="/free-check" className="text-forest underline">
+            free signal check
+          </Link>{" "}
+          reads public files. It does not query ChatGPT. The free snapshot
+          does.
+        </p>
       </main>
       <SiteFooter />
       <StickySnapshotOffer path="/alternatives" />

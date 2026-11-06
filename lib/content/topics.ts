@@ -1040,7 +1040,7 @@ export const topicPages: TopicPage[] = [
     description:
       "The free AI Answer Snapshot and the Fix Pack are CiteScore. Profound is an enterprise AI-visibility platform with citation share, seats, and custom pricing.",
     kicker: "Comparison",
-    card: "A punch-list PDF versus a Profound-class citation dashboard.",
+    card: "The free AI Answer Snapshot and the $49 Fix Pack versus a Profound-class citation dashboard.",
     priority: 0.8,
     publishedAt: "2026-10-03",
     minutes: 7,
@@ -1051,7 +1051,7 @@ export const topicPages: TopicPage[] = [
     description:
       "The free AI Answer Snapshot shows who is named. Peec AI is ongoing AI-search analytics for marketing teams: prompts, visibility, position, and sentiment.",
     kicker: "Comparison",
-    card: "A one-time punch-list PDF versus Peec AI’s ongoing AI-search analytics.",
+    card: "The free AI Answer Snapshot and the $49 Fix Pack versus Peec AI’s ongoing AI-search analytics.",
     navLabel: "CiteScore vs Peec AI",
     priority: 0.8,
     publishedAt: "2026-10-15",

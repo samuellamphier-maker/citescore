@@ -15,21 +15,25 @@ import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   publicOrigin,
+  sellerName,
   site,
   whiteLabelAuditLabel,
   whiteLabelAuditUrl,
 } from "@/lib/site";
 
 const path = "/for-agencies";
-const title = "GEO audits for SEO agencies";
-const description =
-  "How an SEO agency starts a local client with the free AI Answer Snapshot and the $49 Fix Pack. The free check, the white-label PDF, and the $29 GEO Agency Kit are separate. The check reads public files. It does not query ChatGPT.";
+const title = "Free snapshot and Fix Pack for agencies";
+const description = `Agencies start each local client with the free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} Fix Pack. The file check does not query ChatGPT. The snapshot does.`;
 
-export const metadata: Metadata = pageMeta({
-  title,
-  description,
-  path,
-});
+export const metadata: Metadata = {
+  ...pageMeta({
+    title,
+    description,
+    path,
+  }),
+  authors: [{ name: "CiteScore Team" }],
+  creator: sellerName,
+};
 
 const freeSignals = [
   "Homepage: whether it responded, plus the title and whether a meta description is present",
@@ -50,52 +54,50 @@ const kitContents = [
 const clientSteps = [
   {
     n: "01",
-    title: "Ask for a public host",
-    body: "The page they want cited, usually the homepage. Skip anything behind a login. You do not need a CiteScore account, and neither do they.",
+    title: "Request the free snapshot",
+    body: "Ask for the business name, the city, the main service, and the public site. The form is on the free snapshot page. No CiteScore account, and no payment.",
   },
   {
     n: "02",
-    title: "Run the free check live",
-    body: "Paste the host on the free-check page during a call, or before you write the proposal. The result stays in that browser. There is no saved link to forward.",
+    title: "Walk who was named",
+    body: "One page: who is named, which sources are cited, and how the Google rating and review count compare. AI answers vary run to run. This is a snapshot, not a ranking.",
   },
   {
     n: "03",
-    title: "Walk the rows",
-    body: (
-      <>
-        A disallow on GPTBot, PerplexityBot, or Google-Extended is a line in
-        robots.txt you can open together. A missing sitemap or JSON-LD block
-        is the same kind of fact. llms.txt is <LlmsTxtCaveat />.
-      </>
-    ),
+    title: "Sell the Fix Pack",
+    body: `The Fix Pack is ${fixPackIntroPriceLabel} introductory (${fixPackListPriceLabel} list), for one business, one city, and one service. Sell that pack, or pass those deliverables to the client under the engagement you already run. Do not present CiteScore as your staff.`,
   },
   {
     n: "04",
-    title: "Say what a pass means",
-    body: "A passing row means that signal is present on the public file. It is the start of the conversation. Who an answer engine names is what the free AI Answer Snapshot shows. The Fix Pack is the done-for-you work after that.",
+    title: "Keep the file check separate",
+    body: "The free signal check reads public files. It does not query ChatGPT. Use it when you want those rows. Do not hand a client the check and call it the snapshot.",
   },
 ];
 
 const faqs = [
   {
-    q: "Does the free check query ChatGPT for the client?",
-    a: "No. It reads public files on the host: the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, llms.txt, a sitemap, and JSON-LD on the homepage. It does not log into ChatGPT, Perplexity, or Google AI Overviews.",
+    q: "How does an agency start a local client?",
+    a: `Request the free AI Answer Snapshot for the business, the city, the service, and the public site. It asks logged-out ChatGPT and Perplexity who they name and sends one page. Then sell the ${fixPackIntroPriceLabel} Fix Pack, or pass those deliverables to the client under the engagement you already run. AI answers vary run to run. This is a snapshot, not a ranking.`,
   },
   {
-    q: "What do I hand over from the free snapshot?",
-    a: "One page: who is named, which sources are cited, and how the Google rating and review count compare. AI answers vary run to run. This is a snapshot, not a ranking. The Fix Pack is the done-for-you work after the client has seen who was named.",
+    q: "Does the free snapshot query ChatGPT?",
+    a: "Yes. It asks logged-out ChatGPT and Perplexity who they name for that trade and city. AI answers vary run to run. It is a snapshot, not a ranking, and not a promise that any assistant will name the business.",
   },
   {
-    q: "What is the white-label audit?",
-    a: "An unbranded PDF of the AI search audit, for $149, delivered within 3 business days. It is a separate purchase from the Fix Pack and the $29 kit.",
+    q: "Does the free signal check query ChatGPT?",
+    a: "No. The free check reads public files: the homepage, robots.txt for GPTBot, PerplexityBot, and Google-Extended, llms.txt, a sitemap, and JSON-LD on the homepage. It does not log into ChatGPT, Perplexity, or Google AI Overviews. Do not hand a client the file check and call it the snapshot.",
   },
   {
-    q: "What is in the $29 kit?",
-    a: "A client report template, a pitch email sequence, pricing tiers, a one-pager, and a 30-day delivery SOP. The kit is separate from the audit. The score still comes from running CiteScore on a URL.",
+    q: "What is in the Fix Pack?",
+    a: `Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. One business, one city, one service. A Google Business Profile gap list, a review-gap plan and script, the directories an AI answer cited, paste-ready LocalBusiness and Service JSON-LD, and a re-check 14 days later. It is not a promise that any assistant will name the business. The Fix Pack email comes from CiteScore. It is not an unbranded file.`,
   },
   {
-    q: "Can I show the report format before a client pays?",
-    a: "Yes. The sample report is a fictional company, labeled as a sample on the page. It shows the layout. It is not a customer result.",
+    q: "Can I show the format before a client pays?",
+    a: "Yes. The example snapshot and the sample Fix Pack are fictional and the pages say so. They show the layout. They are not customer results.",
+  },
+  {
+    q: "Are the white-label audit and the kit still for sale?",
+    a: `Yes, as separate older files, not as the way to start a client. The ${whiteLabelAuditLabel} is an unbranded PDF, delivered within 3 business days. The ${agencyKitLabel} is a client report template, a pitch email sequence, pricing tiers, a one-pager, and a 30-day delivery SOP. Checkout for both stays in the closed section on this page.`,
   },
 ];
 
@@ -130,25 +132,44 @@ export default function ForAgenciesPage() {
         <section className="border-b border-rule/80">
           <div className="mx-auto grid max-w-5xl gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] lg:py-20">
             <div>
-              <p className="kicker">For SEO agencies</p>
+              <p className="kicker">For SEO and GEO agencies</p>
               <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.12] tracking-tight text-ink sm:text-5xl sm:leading-[1.1]">
-                Show a local client who ChatGPT names before you sell an audit.
+                Start every local client with a free AI Answer Snapshot.
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-8 text-ink-soft">
-                The free AI Answer Snapshot asks logged-out ChatGPT and
-                Perplexity who they name and sends one page. AI answers vary
-                run to run. No payment. The Fix Pack is {fixPackIntroPriceLabel}{" "}
-                for the done-for-you work after that. The white-label PDF and
-                the {agencyKitLabel} stay available as separate purchases.
+                Then sell the Fix Pack ({fixPackIntroPriceLabel} introductory,{" "}
+                {fixPackListPriceLabel} list), or pass those deliverables to
+                the client under the engagement you already run. The snapshot
+                asks logged-out ChatGPT and Perplexity who they name. The free
+                file check does not.
               </p>
               <div className="mt-8 max-w-xl">
                 <IndustrySnapshotCta variant="general" />
               </div>
+              <p className="mt-4 text-sm leading-6 text-ink-soft">
+                Prepared by the CiteScore Team. If you own the business, the
+                comparison with hiring an agency is on{" "}
+                <Link href="/vs-agency" className="text-forest underline">
+                  Fix Pack vs an agency retainer
+                </Link>
+                .
+              </p>
             </div>
             <aside className="report-sheet rounded-2xl border border-rule p-6">
-              <p className="kicker">Still for sale</p>
+              <p className="kicker">The client path</p>
               <dl className="mt-4 space-y-5 text-sm leading-6">
                 <div>
+                  <dt className="font-medium text-ink">
+                    <Link href="/free-snapshot" className="text-forest underline">
+                      Free AI Answer Snapshot
+                    </Link>
+                  </dt>
+                  <dd className="mt-1 text-ink-soft">
+                    Who is named, which sources are cited, and how the Google
+                    rating and review count compare. No payment.
+                  </dd>
+                </div>
+                <div className="border-t border-rule pt-5">
                   <dt className="font-medium text-ink">
                     <Link href="/fix-pack" className="text-forest underline">
                       Fix Pack ({fixPackIntroPriceLabel})
@@ -159,107 +180,55 @@ export default function ForAgenciesPage() {
                     named. One business, one city, one service.
                   </dd>
                 </div>
-                <div className="border-t border-rule pt-5">
-                  <dt className="font-medium text-ink">{agencyKitLabel}</dt>
-                  <dd className="mt-1 text-ink-soft">
-                    The writing around the audit: report template, pitch
-                    emails, pricing tiers, a one-pager, and a 30-day SOP.
-                  </dd>
-                </div>
               </dl>
               <Link
-                href="/sample"
+                href="/sample-snapshot"
                 className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
               >
-                Sample report — fictional, labeled
+                Example snapshot — fictional, labeled
               </Link>
               <Link
-                href="/free-check"
+                href="/sample-fix-pack"
                 className="mt-3 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
               >
-                Run the free check
+                Sample Fix Pack — illustrative, not a client
               </Link>
             </aside>
           </div>
         </section>
 
-        <section id="white-label" className="border-b border-rule/80 bg-ink text-cream">
-          <div className="mx-auto grid max-w-5xl gap-10 px-5 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.7fr)] lg:items-center">
-            <div>
-              <p className="kicker on-ink">For client delivery</p>
-              <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-5xl sm:leading-[1.1]">
-                {whiteLabelAuditLabel}
-              </h2>
-              <p className="mt-4 max-w-xl text-lg leading-8 text-[#d7c7b0]">
-                An unbranded PDF. Delivered within 3 business days. You send
-                one public URL. The file you get back has no CiteScore
-                branding, so you can hand it to a client under your own name.
-              </p>
-            </div>
-            <div>
-              <p className="font-serif text-6xl tracking-tight">$149</p>
-              <p className="mt-2 text-sm leading-6 text-[#d7c7b0]">
-                Unbranded PDF · 3 business days
-              </p>
-              <a
-                href={whiteLabelAuditUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 flex h-12 items-center justify-center rounded-lg bg-cream text-ink hover:bg-paper"
-              >
-                Buy the white-label audit
-              </a>
-              <a
-                href="/sample-audit.pdf"
-                className="mt-4 inline-flex text-sm font-medium text-[#d7c7b0] underline underline-offset-4 hover:text-cream"
-              >
-                See a sample report (PDF)
-              </a>
-            </div>
-          </div>
-        </section>
-
         <section className="border-b border-rule/80">
           <div className="mx-auto max-w-5xl px-5 py-14">
-            <p className="kicker">What CiteScore checks</p>
+            <p className="kicker">What you sell next</p>
             <h2 className="mt-3 max-w-2xl font-serif text-3xl tracking-tight sm:text-4xl">
-              Public files first. A scored page when the client wants the list.
+              The snapshot shows who was named. The Fix Pack is the work after that.
             </h2>
             <div className="mt-10 grid gap-8 lg:grid-cols-2">
               <div className="rounded-2xl border border-rule bg-cream p-6">
-                <p className="kicker">Free · no signup</p>
-                <h3 className="mt-3 font-serif text-2xl">The free check</h3>
+                <p className="kicker">Free · no payment</p>
+                <h3 className="mt-3 font-serif text-2xl">The AI Answer Snapshot</h3>
                 <p className="mt-3 text-sm leading-6 text-ink-soft">
-                  One host. Six signals from files a crawler can request.
-                  OAI-SearchBot is not one of them. You still read that group
-                  in robots.txt yourself if ChatGPT search is in the pitch.
+                  CiteScore asks logged-out ChatGPT and Perplexity who they
+                  name for that trade and city. The client gets one page. AI
+                  answers vary run to run. This is a snapshot, not a ranking.
                 </p>
-                <ul className="mt-5 space-y-3">
-                  {freeSignals.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm leading-6">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
                 <Link
-                  href="/free-check"
+                  href="/free-snapshot"
                   className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
                 >
-                  Open the free check
+                  Request a free snapshot
                 </Link>
               </div>
               <div className="rounded-2xl border border-rule p-6">
                 <p className="kicker">After the snapshot</p>
-                <h3 className="mt-3 font-serif text-2xl">The Fix Pack</h3>
+                <h3 className="mt-3 font-serif text-2xl">
+                  The Fix Pack ({fixPackIntroPriceLabel})
+                </h3>
                 <p className="mt-3 text-sm leading-6 text-ink-soft">
-                  The free snapshot comes first. The Fix Pack is{" "}
-                  {fixPackIntroPriceLabel} introductory (
-                  {fixPackListPriceLabel} list): a Google Business Profile gap
-                  list, a review-gap plan and script, the directories an AI
-                  answer cited, paste-ready LocalBusiness and Service JSON-LD,
-                  and a re-check 14 days later. It is not a promise that any
-                  assistant will name the business.
+                  Introductory price {fixPackIntroPriceLabel}. List price{" "}
+                  {fixPackListPriceLabel}. One business, one city, one
+                  service. It is not a promise that any assistant will name
+                  the business.
                 </p>
                 <ul className="mt-5 space-y-3">
                   {fixPackDeliverables.map((item) => (
@@ -284,7 +253,7 @@ export default function ForAgenciesPage() {
           <div className="mx-auto max-w-5xl px-5 py-14">
             <p className="kicker">With a client</p>
             <h2 className="mt-3 max-w-2xl font-serif text-3xl tracking-tight sm:text-4xl">
-              Use the free check as the first screen, not as the deliverable.
+              Snapshot first. Fix Pack second.
             </h2>
             <ol className="mt-10 grid gap-4 sm:grid-cols-2">
               {clientSteps.map((step) => (
@@ -300,7 +269,7 @@ export default function ForAgenciesPage() {
                 </li>
               ))}
             </ol>
-            <p className="mt-2 max-w-2xl text-sm leading-6 text-ink-soft">
+            <p className="mt-6 max-w-2xl text-sm leading-6 text-ink-soft">
               The longer on-page list you can leave with them, unpaid, is the{" "}
               <Link href="/checklist" className="text-forest underline">
                 40-point checklist
@@ -315,68 +284,122 @@ export default function ForAgenciesPage() {
         </section>
 
         <section className="border-b border-rule/80">
-          <div className="mx-auto max-w-5xl px-5 py-10">
-            <p className="max-w-2xl text-sm leading-7 text-ink-soft">
-              A separate{" "}
-              <Link href="/geo-audit" className="text-forest underline">
-                GEO audit
-              </Link>{" "}
-              PDF for one public URL is still for sale. The company on the{" "}
-              <Link href="/sample" className="text-forest underline">
-                sample report
-              </Link>{" "}
-              is fictional, and the page says so.{" "}
-              <Link href="/terms" className="text-forest underline">
-                Terms
-              </Link>
-              {" · "}
-              <Link href="/refunds" className="text-forest underline">
-                Refunds
-              </Link>
-              .
+          <div className="mx-auto max-w-5xl px-5 py-14">
+            <p className="kicker">A different tool</p>
+            <h2 className="mt-3 max-w-2xl font-serif text-3xl tracking-tight sm:text-4xl">
+              The free signal check does not query ChatGPT.
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-ink-soft">
+              The snapshot does. The check reads public files on the host. Use
+              it when you want those rows on a call. Do not hand a client the
+              check and call it the snapshot. llms.txt is <LlmsTxtCaveat />.
             </p>
+            <ul className="mt-6 max-w-2xl space-y-3">
+              {freeSignals.map((item) => (
+                <li key={item} className="flex gap-3 text-sm leading-6">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/free-check"
+              className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
+            >
+              Open the free signal check
+            </Link>
           </div>
         </section>
 
-        <section className="border-b border-rule/80 bg-paper-2/50">
-          <div className="mx-auto grid max-w-5xl gap-10 px-5 py-14 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.8fr)]">
-            <div>
-              <p className="kicker">The kit · $29</p>
-              <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-                {agencyKitLabel}
-              </h2>
-              <p className="mt-4 max-w-xl text-ink-soft leading-7">
-                The kit is the writing around a client delivery. Buy it once.
-                It is separate from the Fix Pack.
-              </p>
-              <ul className="mt-6 space-y-3">
-                {kitContents.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 rounded-xl border border-rule bg-cream px-4 py-3 text-sm leading-6"
+        <section className="border-b border-rule/80">
+          <div className="mx-auto max-w-5xl px-5 py-6">
+            <details id="white-label" className="group border-t border-rule">
+              <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 py-3 marker:content-none [&::-webkit-details-marker]:hidden">
+                <span className="min-w-0">
+                  <span className="block font-medium text-ink">
+                    Older agency files
+                  </span>
+                  <span className="mt-0.5 block text-sm font-normal leading-6 text-ink-soft">
+                    The {whiteLabelAuditLabel} and the {agencyKitLabel}. Separate
+                    from the snapshot and the Fix Pack.
+                  </span>
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="ml-auto text-xl leading-none text-ink-soft group-open:rotate-45"
+                >
+                  +
+                </span>
+              </summary>
+              <div className="grid gap-4 pb-6 lg:grid-cols-2">
+                <article className="rounded-2xl border border-rule bg-cream p-6">
+                  <p className="font-serif text-2xl tracking-tight text-ink">
+                    {whiteLabelAuditLabel}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-ink-soft">
+                    An unbranded PDF of one public URL, delivered within 3
+                    business days, with no CiteScore branding, so you can hand
+                    it to a client. This is not the Fix Pack.
+                  </p>
+                  <a
+                    href={whiteLabelAuditUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 flex h-12 items-center justify-center rounded-lg border border-ink/30 bg-cream text-ink hover:border-ink hover:bg-paper-2"
                   >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <aside className="rounded-2xl border border-rule bg-cream p-6">
-              <p className="kicker text-copper">Separate purchase</p>
-              <p className="mt-3 font-serif text-5xl tracking-tight">$29</p>
-              <p className="mt-2 text-sm leading-6 text-ink-soft">
-                Template, pitch sequence, pricing tiers, one-pager, and a
-                30-day SOP.
+                    Buy the white-label audit
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                  <a
+                    href="/sample-audit.pdf"
+                    className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-forest underline underline-offset-4"
+                  >
+                    See a sample report (PDF)
+                  </a>
+                </article>
+                <article className="rounded-2xl border border-rule bg-cream p-6">
+                  <p className="font-serif text-2xl tracking-tight text-ink">
+                    {agencyKitLabel}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-ink-soft">
+                    The writing around a client delivery. Buy it once. It is
+                    not a scored URL, and it is separate from the Fix Pack.
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {kitContents.map((item) => (
+                      <li key={item} className="flex gap-3 text-sm leading-6">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={agencyKitUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 flex h-12 items-center justify-center rounded-lg border border-ink/30 bg-cream text-ink hover:border-ink hover:bg-paper-2"
+                  >
+                    Buy the GEO Agency Kit
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </article>
+              </div>
+              <p className="pb-4 text-sm leading-6 text-ink-soft">
+                The company on the{" "}
+                <Link href="/sample" className="text-forest underline">
+                  sample report
+                </Link>{" "}
+                is fictional, and the page says so.{" "}
+                <Link href="/terms" className="text-forest underline">
+                  Terms
+                </Link>
+                {" · "}
+                <Link href="/refunds" className="text-forest underline">
+                  Refunds
+                </Link>
+                .
               </p>
-              <a
-                href={agencyKitUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 flex h-12 items-center justify-center rounded-lg bg-ink text-cream hover:bg-forest-deep"
-              >
-                Buy the GEO Agency Kit
-              </a>
-            </aside>
+            </details>
           </div>
         </section>
 

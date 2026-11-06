@@ -7,7 +7,12 @@ import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getTopic } from "@/lib/content/topics";
 import { pageMeta } from "@/lib/content/meta";
-import { fixPackIntroPriceLabel, publicOrigin, site } from "@/lib/site";
+import {
+  fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
+  publicOrigin,
+  site,
+} from "@/lib/site";
 
 const topic = getTopic("/alternatives/profound");
 
@@ -35,7 +40,7 @@ const rows = [
   ],
   [
     "Best first purchase",
-    "The homepage still reads like a slogan",
+    "Who is named, then the Fix Pack",
     "A team that will review citation share every week",
   ],
 ];
@@ -96,9 +101,10 @@ export default function ProfoundAlternativePage() {
           <p>
             If procurement needs SSO, SOC 2, an API, and a time series of who
             ChatGPT and AI Overviews cite, talk to Profound (or another
-            suite in that class). If you need to know why a model would skip
-            this homepage, and what to rewrite by Friday, buy CiteScore.
-            Those are sequential jobs. They are not substitutes.
+            suite in that class). If you need to know who is named for this
+            business and city, start with the free snapshot, then the{" "}
+            {fixPackIntroPriceLabel} Fix Pack. Those are sequential jobs.
+            They are not substitutes.
           </p>
 
           <div className="table-wrap">
@@ -140,36 +146,38 @@ export default function ProfoundAlternativePage() {
 
           <h2>What CiteScore is for</h2>
           <p>
-            We crawl the URL you paid for, score on-page GEO signals
-            (definitions, entities, evidence, schema, freshness, crawler
-            access), and email a PDF with about ten fixes. The engine
-            snapshot — ChatGPT, Perplexity, Google AI Overviews — is inferred.
-            An LLM may rewrite the summary from the public HTML. We never
-            claim a live login.{" "}
-            <Link href="/privacy">Privacy</Link> says what that model may
-            see. The <Link href="/sample">sample report</Link> is a fictional
-            company in the real format.
+            Local businesses start with the free{" "}
+            <Link href="/free-snapshot">AI Answer Snapshot</Link>. CiteScore
+            asks logged-out ChatGPT and Perplexity who they name for that
+            trade and city and sends one page: who is named, which sources
+            are cited, and how the Google rating and review count compare.
+            AI answers vary run to run. This is a snapshot, not a ranking.
+            No payment. The{" "}
+            <Link href="/free-check">free signal check</Link> reads public
+            files. It does not query ChatGPT.
           </p>
           <p>
-            There is no workspace and no card on file after the charge.
-            Weekly rescans at {site.subscriptionPriceLabel} are planned, not
-            sold. The <Link href="/chatgpt-citation-check">ChatGPT</Link>,{" "}
-            <Link href="/ai-overviews">AI Overviews</Link>, and{" "}
-            <Link href="/perplexity-citations">Perplexity</Link> pages
-            explain each row.{" "}
-            <Link href="/answer-engine-optimization">
-              Answer engine optimization
-            </Link>{" "}
-            is the same audit under the other common label.
+            The <Link href="/fix-pack">Fix Pack</Link> is{" "}
+            {fixPackIntroPriceLabel} introductory ({fixPackListPriceLabel}{" "}
+            list): a Google Business Profile gap list, a review-gap plan and
+            script, the directories an AI answer cited, paste-ready
+            LocalBusiness and Service JSON-LD, and a re-check 14 days later.
+            One business, one city, one service. It is not a promise that any
+            assistant will name the business. There is no seat and no card on
+            file after the one charge. Weekly rescans at{" "}
+            {site.subscriptionPriceLabel} are planned, not sold. The{" "}
+            <Link href="/sample-snapshot">example snapshot</Link> and the{" "}
+            <Link href="/sample-fix-pack">sample Fix Pack</Link> are fictional
+            and labeled that way.
           </p>
 
           <h2>Use them in order, if you use both</h2>
           <p>
-            Rewrite the page from the{" "}
-            <Link href="/blog/chatgpt-citation-checklist">checklist</Link> or
-            from a CiteScore report. Then, if you have a prompt list and a
-            budget that starts near $99 a month, turn on a monitor and see
-            whether citations move. The{" "}
+            See who is named with the free snapshot, then ship the Fix Pack
+            or rewrite from the{" "}
+            <Link href="/blog/chatgpt-citation-checklist">checklist</Link>.
+            Then, if you have a prompt list and a budget that starts near $99
+            a month, turn on a monitor and see whether citations move. The{" "}
             <Link href="/alternatives/otterly">Otterly comparison</Link> is
             the same argument against a lighter monitoring plan.{" "}
             <Link href="/alternatives/peec-ai">Peec AI</Link> is the same

@@ -464,7 +464,7 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
 });
 
 test("the sticky snapshot bar is on high-intent pages and off legal pages", () => {
-  assert.equal(highIntentStickyPaths.length, 41);
+  assert.equal(highIntentStickyPaths.length, 42);
   const shellPages = new Set([
     "/free-check",
     "/robots-txt-for-ai-crawlers",
