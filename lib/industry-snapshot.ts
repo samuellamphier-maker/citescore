@@ -68,6 +68,7 @@ export const inlineSnapshotPaths = [
   "/geo-audit",
   "/free-check",
   "/chatgpt-citation-check",
+  "/llms-txt",
   "/geo-for-local-businesses",
   "/how-to-check-if-chatgpt-mentions-your-brand",
   "/answer-engine-optimization",

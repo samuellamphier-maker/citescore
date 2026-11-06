@@ -150,8 +150,13 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
       "An AEO and GEO checklist: crawler access, answer-first copy, schema, and evidence, with a free way to verify each item. Free AI Answer Snapshot to start.",
   },
   "/chatgpt-citation-check": {
-    description:
-      "A ChatGPT citation check for one public URL: a 0-100 score and about ten fixes from on-page signals and an optional HTML review. Not a live ChatGPT login.",
+    description: `The ChatGPT citation check is a free AI Answer Snapshot: who ChatGPT and Perplexity name. The ${fixPackIntroPriceLabel} Fix Pack is next. A signal check does not query them.`,
+  },
+  "/answer-engine-optimization": {
+    description: `Answer engine optimization, in plain language: who an AI answer recommends. Start with a free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} Fix Pack.`,
+  },
+  "/llms-txt": {
+    description: `llms.txt is optional; Google says it ignores llms.txt. For AI recommendations, start with a free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} Fix Pack.`,
   },
   "/ai-crawler-user-agents": {
     title: "AI crawler user-agent tokens",

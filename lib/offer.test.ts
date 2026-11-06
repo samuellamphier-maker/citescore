@@ -155,7 +155,9 @@ test("every industry visibility path has a snapshot label", () => {
   });
   assert.deepEqual(inlineSnapshotRequestForPath("/blog"), { source: "/blog" });
   assert.equal(inlineSnapshotRequestForPath("/free-snapshot"), null);
-  assert.equal(inlineSnapshotRequestForPath("/llms-txt"), null);
+  assert.deepEqual(inlineSnapshotRequestForPath("/llms-txt"), {
+    source: "/llms-txt",
+  });
   assert.equal(inlineSnapshotRequestForPath("/privacy"), null);
   assert.equal(inlineSnapshotRequestForPath("/terms"), null);
   assert.equal(inlineSnapshotRequestForPath("/refunds"), null);
@@ -168,7 +170,9 @@ test("every industry visibility path has a snapshot label", () => {
     "/geo-vs-seo",
   );
   assert.equal(shellContentPath({ ctaId: "llms-txt" }), "/llms-txt");
-  assert.equal(inlineSnapshotRequestForPath(shellContentPath({ ctaId: "llms-txt" })), null);
+  assert.deepEqual(inlineSnapshotRequestForPath(shellContentPath({ ctaId: "llms-txt" })), {
+    source: "/llms-txt",
+  });
 
   let inlineGuides = 0;
   for (const topic of topicPages) {
@@ -357,7 +361,7 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     assert.equal(contentStickySnapshotHref({ guidePath: path }), null, path);
   }
   assert.equal(contentStickySnapshotHref({ ctaId: "free-check" }), "#snapshot");
-  assert.equal(contentStickySnapshotHref({ ctaId: "llms-txt" }), "/free-snapshot");
+  assert.equal(contentStickySnapshotHref({ ctaId: "llms-txt" }), "#snapshot");
   assert.equal(contentStickySnapshotHref({ guidePath: "/geo-for-local-businesses" }), "#snapshot");
   assert.equal(contentStickySnapshotHref({ guidePath: "/llms-txt-best-practices" }), "/free-snapshot");
   assert.equal(contentStickySnapshotHref({ ctaId: "aeo" }), "#snapshot");
@@ -438,6 +442,9 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     ["../app/tools/page.tsx", "/tools"],
     ["../app/contact/page.tsx", "/contact"],
     ["../app/free-check/page.tsx", "/free-check"],
+    ["../app/chatgpt-citation-check/page.tsx", "/chatgpt-citation-check"],
+    ["../app/answer-engine-optimization/page.tsx", "/answer-engine-optimization"],
+    ["../app/llms-txt/page.tsx", "/llms-txt"],
   ] as const;
   for (const [rel, source] of placed) {
     const file = readFileSync(new URL(rel, import.meta.url), "utf8");
@@ -455,11 +462,37 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
   assert.match(signalCheck, /\{topic\.kicker\}/);
   assert.match(signalCheck, /\{topic\.title\}/);
   assert.match(signalCheck, /\{topic\.description\}/);
+  const retargeted = [
+    ["../app/chatgpt-citation-check/page.tsx", /never opens ChatGPT/],
+    ["../app/answer-engine-optimization/page.tsx", /The PDF is a GEO audit/],
+    ["../app/llms-txt/page.tsx", /The audit only checks that the map exists/],
+  ] as const;
+  for (const [rel, retiredHero] of retargeted) {
+    const file = readFileSync(new URL(rel, import.meta.url), "utf8");
+    assert.doesNotMatch(file, retiredHero);
+    assert.match(file, /fixPackIntroPriceLabel/);
+    assert.match(file, /Get a free AI Answer Snapshot/);
+    assert.match(file, /href="\/sample-snapshot"/);
+    assert.match(file, /href="\/sample-fix-pack"/);
+    assert.match(file, /<OtherDigitalProducts \/>/);
+    assert.match(file, /<StickySnapshotOffer path="/);
+    assert.match(file, /Prepared by the CiteScore Team/);
+    assert.doesNotMatch(file, /\$39|\$99|\$149|Samuel|Lamphier/);
+    const disclosure = readFileSync(
+      new URL("../components/OtherDigitalProducts.tsx", import.meta.url),
+      "utf8",
+    );
+    const openTag = disclosure.match(/<details\b[^>]*>/);
+    assert.ok(openTag);
+    assert.doesNotMatch(openTag[0], /\bopen\b/);
+    assert.match(disclosure, /Other digital products/);
+    assert.match(disclosure, /href="\/geo-audit"/);
+    assert.match(disclosure, /href="\/done-for-you-audit"/);
+  }
   for (const rel of [
     "../app/privacy/page.tsx",
     "../app/terms/page.tsx",
     "../app/refunds/page.tsx",
-    "../app/llms-txt/page.tsx",
   ]) {
     const file = readFileSync(new URL(rel, import.meta.url), "utf8");
     assert.doesNotMatch(file, /InlineSnapshotRequest|SnapshotRequestForm/);
