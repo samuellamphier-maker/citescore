@@ -304,11 +304,11 @@ export const topicPages: TopicPage[] = [
   },
   {
     path: "/free-check",
-    title: "Free AI citation-readiness check",
+    title: "Free AI Answer Snapshot",
     description:
-      "Free, no-signup check of public files: robots.txt, sitemap, JSON-LD, and the homepage. llms.txt is optional; Google says it ignores llms.txt. We do not query live ChatGPT or Perplexity.",
-    kicker: "Free tool",
-    card: "Instant check of robots.txt, sitemap, and schema. llms.txt is optional; Google says it ignores llms.txt.",
+      "Request a free AI Answer Snapshot: who ChatGPT and Perplexity name for one local business. The $49 Fix Pack is the paid next step. A public-file signal check sits below. It reads robots.txt, the sitemap, JSON-LD, and the homepage, and it does not query those assistants.",
+    kicker: "Free · no checkout",
+    card: "Who ChatGPT and Perplexity name. The $49 Fix Pack is next. The signal check reads public files and does not query those assistants.",
     priority: 1.0,
     publishedAt: "2026-10-09",
     minutes: 4,

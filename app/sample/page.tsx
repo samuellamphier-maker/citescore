@@ -22,6 +22,21 @@ export default function SampleReportPage() {
     <>
       <SiteHeader />
       <main id="main" className="px-4 py-8 sm:px-6 sm:py-12">
+        <aside className="no-print mx-auto mb-6 max-w-[52rem] rounded-2xl border border-ink bg-ink px-5 py-5 text-cream">
+          <p className="kicker on-ink">Current examples</p>
+          <p className="mt-2 text-sm leading-6">
+            The current examples are the{" "}
+            <Link href="/sample-snapshot" className="font-medium text-cream underline">
+              AI Answer Snapshot
+            </Link>{" "}
+            and the{" "}
+            <Link href="/sample-fix-pack" className="font-medium text-cream underline">
+              {fixPackIntroPriceLabel} Fix Pack
+            </Link>
+            . Northbound, below, is an older illustrative audit-style sample.
+            It is a fictional company, not a customer.
+          </p>
+        </aside>
         <div className="no-print mx-auto mb-6 flex max-w-[52rem] flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-ink-soft">
             Fictional company. Illustrative scores. Not a customer story.

@@ -99,7 +99,7 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
   },
   "/free-check": {
     description:
-      "Free, no-signup check of robots.txt, sitemap, and JSON-LD. llms.txt is optional; Google says it ignores it. No live ChatGPT or Perplexity query.",
+      "Request a free AI Answer Snapshot: who ChatGPT and Perplexity name for one local business. The $49 Fix Pack is next. The file check does not query them.",
   },
   "/how-to-get-cited-by-chatgpt": {
     description:

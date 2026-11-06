@@ -105,7 +105,7 @@ export const llmsTxtSections: { heading: string; links: LlmsLink[] }[] = [
       {
         title: "Contact",
         path: "/contact",
-        note: `Questions about CiteScore: email ${contactEmail}. Include the business name, website, and city or trade.`,
+        note: `Request a free AI Answer Snapshot. Email ${contactEmail}. The ${fixPackIntroPriceLabel} Fix Pack is optional. Include the business name, website, and city or trade.`,
       },
     ],
   },

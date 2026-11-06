@@ -120,7 +120,7 @@ export function FreeCheckTool() {
           required
         />
         <button className="rounded-lg bg-ink px-5 py-3 text-cream disabled:opacity-60" disabled={loading}>
-          {loading ? "Checking…" : "Run free check"}
+          {loading ? "Checking…" : "Run signal check"}
         </button>
       </form>
       <p className="mt-2 text-xs text-ink-soft">

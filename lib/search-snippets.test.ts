@@ -70,8 +70,8 @@ const marketingInput: Record<string, { title: string; description: string }> = {
     description: `Who sells CiteScore: the free AI Answer Snapshot and the ${fixPackIntroPriceLabel} Fix Pack, sold by ${sellerName}. Operated by the CiteScore Team. Contact ${contactEmail}.`,
   },
   "/contact": {
-    title: "Contact",
-    description: `Questions about CiteScore: email ${contactEmail}. Include the business name, website, and city or trade.`,
+    title: "Request a free AI Answer Snapshot",
+    description: `Request a free AI Answer Snapshot. Email ${contactEmail}. The ${fixPackIntroPriceLabel} Fix Pack is optional. Include the business name, website, and city or trade.`,
   },
   "/privacy": {
     title: "Privacy",

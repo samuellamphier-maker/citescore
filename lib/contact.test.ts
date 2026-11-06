@@ -13,7 +13,9 @@ const fixPack = readFileSync(new URL("../app/fix-pack/page.tsx", import.meta.url
 
 test("contact page gives the email, what to include, and the offer links", () => {
   assert.match(page, /path: "\/contact"/);
-  assert.match(page, /title: "Contact"/);
+  assert.match(page, /title: "Request a free AI Answer Snapshot"/);
+  assert.match(page, /<InlineSnapshotRequest source="\/contact"/);
+  assert.match(page, /Fix Pack/);
   assert.match(page, /mailto:\$\{contactEmail\}/);
   assert.match(page, /Business name/);
   assert.match(page, /Website/);
