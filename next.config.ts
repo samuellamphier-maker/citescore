@@ -143,6 +143,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/what-happens-after-you-buy",
+        destination: "/fix-pack/next-steps",
+        permanent: true,
+      },
+      {
         source: "/buy",
         destination: "/fix-pack",
         permanent: true,

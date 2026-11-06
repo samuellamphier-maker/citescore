@@ -7,7 +7,12 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
-import { fixPackIntroPriceLabel, publicOrigin, site } from "@/lib/site";
+import {
+  fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
+  publicOrigin,
+  site,
+} from "@/lib/site";
 
 const description =
   "CiteScore starts with a free AI Answer Snapshot and an optional Fix Pack. Otterly tracks live prompts on ChatGPT, AI Overviews, Perplexity, and Copilot.";
@@ -33,7 +38,7 @@ const rows = [
   ["Seats / workspaces", "None. No account.", "Team and workspace features"],
   [
     "Best first purchase",
-    "Homepage still reads like a slogan",
+    "Who is named, then the Fix Pack",
     "Pages are already citable; you need a time series",
   ],
 ];
@@ -78,9 +83,10 @@ export default function OtterlyAlternativePage() {
           <p>
             If you need to know “does ChatGPT mention us for these 40
             prompts this month?”, buy Otterly (or another monitor). If you
-            need to know “why would a model skip this homepage, and what do
-            I change by Friday?”, buy CiteScore. Doing the first job before
-            the second is how GEO retainers get wasted.
+            need to know who is named for this business and city, start with
+            the free snapshot, then the {fixPackIntroPriceLabel} Fix Pack.
+            Doing the first job before the second is how GEO retainers get
+            wasted.
           </p>
 
           <div className="table-wrap">
@@ -119,34 +125,43 @@ export default function OtterlyAlternativePage() {
             do not need fifteen prompts yet.
           </p>
 
-          <h2>What CiteScore is good at</h2>
+          <h2>What CiteScore is for</h2>
           <p>
-            We crawl the URL you paid for, score{" "}
-            <Link href="/blog/what-is-geo">GEO</Link> signals (definitions,
-            entities, evidence, schema, freshness, crawler access), and
-            email a PDF with about ten fixes. An LLM may rewrite the summary
-            from the public HTML — disclosed on{" "}
-            <Link href="/privacy">Privacy</Link>. We never claim a live
-            ChatGPT session.
+            Local businesses start with the free{" "}
+            <Link href="/free-snapshot">AI Answer Snapshot</Link>. CiteScore
+            asks logged-out ChatGPT and Perplexity who they name for that
+            trade and city and sends one page: who is named, which sources
+            are cited, and how the Google rating and review count compare.
+            AI answers vary run to run. This is a snapshot, not a ranking.
+            No payment. The{" "}
+            <Link href="/free-check">free signal check</Link> reads public
+            files. It does not query ChatGPT.
           </p>
           <p>
-            There is no seat, no prompt pack, and no card-on-file after the
-            one charge. Weekly rescans at {site.subscriptionPriceLabel} are
-            planned, not sold. See the{" "}
-            <Link href="/sample">sample report</Link> for the artifact
-            (fictional company).
+            The <Link href="/fix-pack">Fix Pack</Link> is{" "}
+            {fixPackIntroPriceLabel} introductory ({fixPackListPriceLabel}{" "}
+            list): a Google Business Profile gap list, a review-gap plan and
+            script, the directories an AI answer cited, paste-ready
+            LocalBusiness and Service JSON-LD, and a re-check 14 days later.
+            One business, one city, one service. It is not a promise that any
+            assistant will name the business. There is no seat and no card on
+            file after the one charge. Weekly rescans at{" "}
+            {site.subscriptionPriceLabel} are planned, not sold. The{" "}
+            <Link href="/sample-snapshot">example snapshot</Link> and the{" "}
+            <Link href="/sample-fix-pack">sample Fix Pack</Link> are fictional
+            and labeled that way.
           </p>
 
           <h2>Can you use both?</h2>
           <p>
-            Yes, in order. Rewrite the page using the{" "}
+            Yes, in order. See who is named with the free snapshot, then
+            ship the Fix Pack or the{" "}
             <Link href="/blog/chatgpt-citation-checklist">
               citation checklist
-            </Link>{" "}
-            or a CiteScore report. Then, if you have budget and a prompt
-            list, turn on Otterly to see whether mentions move. Measuring a
-            slogan you have not replaced will produce a very clean graph of
-            “absent.”
+            </Link>
+            . Then, if you have budget and a prompt list, turn on Otterly to
+            see whether mentions move. Measuring a page you have not changed
+            will produce a very clean graph of “absent.”
           </p>
           <p>
             For Profound-class enterprise suites (citation share, SSO, SOC

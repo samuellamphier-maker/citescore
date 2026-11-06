@@ -62,6 +62,7 @@ test("missing common URLs permanently redirect to pages that exist", () => {
 });
 
 const purchaseAndTrustAliases = [
+  { source: "/what-happens-after-you-buy", destination: "/fix-pack/next-steps" },
   { source: "/buy", destination: "/fix-pack" },
   { source: "/order", destination: "/fix-pack" },
   { source: "/purchase", destination: "/fix-pack" },

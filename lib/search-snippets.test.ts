@@ -103,7 +103,11 @@ const marketingInput: Record<string, { title: string; description: string }> = {
   },
   "/free-snapshot": { title: "Free AI Answer Snapshot", description: "x" },
   "/checklist": { title: "AI Citation Readiness Checklist", description: "x" },
-  "/for-agencies": { title: "GEO audits for SEO agencies", description: "x" },
+  "/for-agencies": { title: "Free snapshot and Fix Pack for agencies", description: "x" },
+  "/vs-agency": {
+    title: "Fix Pack vs an agency retainer",
+    description: `The Fix Pack is ${fixPackIntroPriceLabel} once, for one business, one city, and one service. An agency retainer is monthly. This page does not publish that fee.`,
+  },
   "/done-for-you-audit": {
     title: `Free snapshot first, then the Fix Pack, ${fixPackIntroPriceLabel}`,
     description: "x",
@@ -158,7 +162,7 @@ function headFromMetadata(metadata: Metadata) {
 test("sitemap titles stay within 65 characters and descriptions within 160", () => {
   assert.match(layout, /template:\s*`%s · \$\{site\.name\}`/);
   const paths = sitemapPaths();
-  assert.equal(paths.length, 118);
+  assert.equal(paths.length, 119);
 
   const homeTitle = `${site.name} — ${site.tagline}`;
   assert.ok(homeTitle.length <= TITLE_LIMIT, `/: title ${homeTitle.length}`);

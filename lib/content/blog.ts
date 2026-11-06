@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     slug: "citescore-vs-enterprise-geo-tools",
     title: "CiteScore vs enterprise GEO tools",
     description:
-      "An honest comparison of the free AI Answer Snapshot and the Fix Pack with Otterly- and Profound-class platforms: live prompt tracking versus a one-time pack.",
+      "The free AI Answer Snapshot and the $49 Fix Pack, compared with Otterly- and Profound-class platforms that track live prompts.",
     kicker: "Comparison",
     publishedAt: "2026-09-14",
     minutes: 7,
@@ -119,7 +119,13 @@ export const marketingPaths: MarketingPath[] = [
     path: "/for-agencies",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-10-13",
+    lastModified: "2026-11-06",
+  },
+  {
+    path: "/vs-agency",
+    changeFrequency: "monthly",
+    priority: 0.7,
+    lastModified: "2026-11-06",
   },
   {
     path: "/done-for-you-audit",

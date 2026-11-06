@@ -58,8 +58,9 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-soft">
-          <FooterLink href="/sample">Sample report</FooterLink>
           <FooterLink href="/free-snapshot">Free snapshot</FooterLink>
+          <FooterLink href="/fix-pack">Fix Pack</FooterLink>
+          <FooterLink href="/sample">Sample report</FooterLink>
           <FooterLink href="/sample-snapshot">Example snapshot</FooterLink>
           <FooterLink href="/guides">Guides</FooterLink>
           <FooterLink href="/industries">Industries</FooterLink>
@@ -67,15 +68,12 @@ export function SiteFooter() {
           <FooterLink href="/blog">Blog</FooterLink>
           <FooterLink href="/checklist">Checklist</FooterLink>
           <FooterLink href="/for-agencies">For agencies</FooterLink>
-          <FooterLink href="/geo-audit">GEO audit</FooterLink>
           <FooterLink href="/chatgpt-citation-check">ChatGPT check</FooterLink>
           <FooterLink href="/ai-overviews">AI Overviews</FooterLink>
           <FooterLink href="/answer-engine-optimization">AEO</FooterLink>
           <FooterLink href="/alternatives/otterly">vs Otterly</FooterLink>
           <FooterLink href="/alternatives/profound">vs Profound</FooterLink>
           <FooterLink href="/alternatives/peec-ai">vs Peec AI</FooterLink>
-          <FooterLink href="/fix-pack">Fix Pack</FooterLink>
-          <FooterLink href="/free-check">Free signal check</FooterLink>
           <FooterLink href="/how-it-works">How it works</FooterLink>
           <FooterLink href="/methodology">Methodology</FooterLink>
           <FooterLink href="/pricing">Pricing</FooterLink>
@@ -108,6 +106,8 @@ export function SiteFooter() {
             </span>
           </summary>
           <div className="flex flex-wrap gap-x-5 gap-y-1 pb-4 text-sm text-ink-soft">
+            <FooterLink href="/geo-audit">GEO audit</FooterLink>
+            <FooterLink href="/free-check">Free signal check</FooterLink>
             <ExternalProductLink href={templatePackUrl}>
               {templatePackLabel}
             </ExternalProductLink>

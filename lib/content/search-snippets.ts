@@ -49,7 +49,7 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
   },
   "/for-agencies": {
     description:
-      "Agencies start a local client with the free AI Answer Snapshot and the $49 Fix Pack. The free check reads public files and does not query ChatGPT.",
+      `Agencies start each local client with the free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} Fix Pack. The file check does not query ChatGPT. The snapshot does.`,
   },
   "/done-for-you-audit": {
     description: `Start with a free AI Answer Snapshot, then the ${fixPackIntroPriceLabel} AI Visibility Fix Pack. One business, one city, one service. The older written audit stays below.`,
