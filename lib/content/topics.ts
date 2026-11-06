@@ -958,11 +958,11 @@ export const topicPages: TopicPage[] = [
   },
   {
     path: "/chatgpt-citation-check",
-    title: "ChatGPT citation check",
+    title: "Free ChatGPT check, then $49 Fix Pack",
     description:
-      "A ChatGPT citation check for one public URL: a 0–100 score and about ten fixes. On-page signals plus an optional LLM review of the HTML — not a live ChatGPT login.",
+      "The ChatGPT citation check is a free AI Answer Snapshot: who ChatGPT and Perplexity name. The $49 Fix Pack is next. A signal check does not query them.",
     kicker: "Citation check",
-    card: "What the ChatGPT row in the report means, and the three things it cannot see.",
+    card: "Who ChatGPT and Perplexity name, in a free AI Answer Snapshot. The $49 Fix Pack is next. A signal check does not query them.",
     priority: 0.9,
     publishedAt: "2026-10-03",
     minutes: 8,
@@ -991,11 +991,11 @@ export const topicPages: TopicPage[] = [
   },
   {
     path: "/llms-txt",
-    title: "llms.txt checker",
+    title: "llms.txt: free snapshot, then $49 Fix Pack",
     description:
-      "What llms.txt is, the exact check CiteScore runs on /llms.txt, and why a missing file is not a citation. Google says it ignores llms.txt.",
+      "llms.txt is optional; Google says it ignores llms.txt. For AI recommendations, start with a free AI Answer Snapshot, then the $49 Fix Pack.",
     kicker: "llms.txt",
-    card: "llms.txt is optional; Google says it ignores llms.txt. A non-empty file is not a citation.",
+    card: "llms.txt is optional; Google says it ignores it. Start with a free AI Answer Snapshot, then the $49 Fix Pack.",
     priority: 0.8,
     publishedAt: "2026-10-03",
     minutes: 7,
@@ -1025,11 +1025,11 @@ export const topicPages: TopicPage[] = [
   },
   {
     path: "/answer-engine-optimization",
-    title: "Answer engine optimization (AEO)",
+    title: "AEO: free snapshot, then $49 Fix Pack",
     description:
-      "Answer engine optimization, GEO, and an AI-visibility audit are overlapping labels. Start with the free AI Answer Snapshot. The Fix Pack is the paid next step.",
+      "Answer engine optimization, in plain language: who an AI answer recommends. Start with a free AI Answer Snapshot, then the $49 Fix Pack.",
     kicker: "AEO",
-    card: "AEO, GEO, and LLMO are labels. This page maps those labels onto the free snapshot and the Fix Pack.",
+    card: "AEO in plain language. The next step is a free AI Answer Snapshot, then the $49 Fix Pack.",
     priority: 0.8,
     publishedAt: "2026-10-03",
     minutes: 7,

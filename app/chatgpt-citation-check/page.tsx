@@ -1,32 +1,66 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArticleShell } from "@/components/ArticleShell";
+import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { JsonLd } from "@/components/JsonLd";
-import { getTopic } from "@/lib/content/topics";
+import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
+import { OtherDigitalProducts } from "@/components/OtherDigitalProducts";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
+import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
-import { publicOrigin } from "@/lib/site";
+import { getTopic } from "@/lib/content/topics";
+import {
+  fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
+  publicOrigin,
+  sellerName,
+} from "@/lib/site";
 
 const topic = getTopic("/chatgpt-citation-check");
 
 const faqs = [
   {
-    q: "Do you open ChatGPT and search my brand?",
-    a: "No. The ChatGPT row is inferred from on-page signals — definitions, entities, evidence, schema, freshness, and crawler access — plus an optional language-model review of the public HTML we fetched. The report says so.",
+    q: "Do you ask ChatGPT who it names?",
+    a: "Yes. The free AI Answer Snapshot asks logged-out ChatGPT and Perplexity a local prompt such as “best {service} in {city},” plus one variant, and records who they name. AI answers vary run to run. This is a snapshot, not a ranking, and not a promise that any assistant will name the business.",
   },
   {
-    q: "Can the status say Cited?",
-    a: "The status set is Cited, Mentioned, Absent, or Competitor cited. We prefer Mentioned or Absent. Cited is reserved for when the HTML itself shows a third-party citation. Marketing copy alone does not count.",
+    q: "Does the signal check query ChatGPT?",
+    a: "No. The public-file signal check reads the homepage, robots.txt, a sitemap, JSON-LD, and whether /llms.txt returned a non-empty body. It does not query ChatGPT, Perplexity, or Google AI Overviews.",
   },
   {
-    q: "How is this different from the citation checklist?",
-    a: "The checklist is twelve things you can inspect yourself. This check is the scored PDF: a 0–100 CiteScore, a ChatGPT snapshot, and about ten ranked fixes for the URL you paid for.",
+    q: "What is the paid next step?",
+    a: `The Fix Pack is ${fixPackIntroPriceLabel} introductory (${fixPackListPriceLabel} list) for one business, one city, and one service. It is the done-for-you work after you have seen who was named. The refunds page has the rules.`,
   },
 ];
 
-export const metadata = pageMeta({
-  title: topic.title,
-  description: topic.description,
-  path: topic.path,
-});
+const related = [
+  { href: "/free-snapshot", label: "Free AI Answer Snapshot" },
+  { href: "/fix-pack", label: `Fix Pack (${fixPackIntroPriceLabel})` },
+  { href: "/sample-snapshot", label: "Example snapshot" },
+  { href: "/sample-fix-pack", label: "Example Fix Pack" },
+  { href: "/free-check", label: "Public-file signal check" },
+  { href: "/methodology", label: "How the snapshot is produced" },
+  {
+    href: "/how-to-check-if-chatgpt-mentions-your-brand",
+    label: "How to check if ChatGPT mentions your brand",
+  },
+  {
+    href: "/blog/chatgpt-citation-checklist",
+    label: "ChatGPT citation checklist",
+  },
+] as const;
+
+export const metadata: Metadata = {
+  ...pageMeta({
+    title: topic.title,
+    description: topic.description,
+    path: topic.path,
+  }),
+  authors: [{ name: "CiteScore Team" }],
+  creator: sellerName,
+};
 
 export default function ChatgptCitationCheckPage() {
   const origin = publicOrigin();
@@ -53,152 +87,168 @@ export default function ChatgptCitationCheckPage() {
           url: `${origin}${topic.path}`,
         }}
       />
-      <ArticleShell
-        kicker={topic.kicker}
-        title="A ChatGPT citation check that never opens ChatGPT"
-        dek={topic.description}
-        publishedAt={topic.publishedAt}
-        minutes={topic.minutes}
-        ctaId="chatgpt-citation-check"
-        related={[
-          {
-            href: "/blog/chatgpt-citation-checklist",
-            label: "ChatGPT citation checklist — twelve on-page checks",
-          },
-          { href: "/ai-crawlers", label: "GPTBot, PerplexityBot, and Google-Extended" },
-          { href: "/ai-overviews", label: "Google AI Overviews visibility" },
-          { href: "/perplexity-citations", label: "Perplexity citations" },
-          { href: "/how-to-check-if-chatgpt-mentions-your-brand", label: "How to check if ChatGPT mentions your brand" },
-          { href: "/sample", label: "Sample report (fictional company)" },
-        ]}
-      >
-        <p>
-          People search “ChatGPT citation check” when a buyer’s answer named
-          a competitor and skipped the product. The honest version of that
-          check is narrow. It asks whether the public page gives a model a
-          definition, a name, and a fact it can lift — and whether the bots
-          that fetch pages for training are blocked. It does not ask ChatGPT
-          a prompt and screenshot the reply.
-        </p>
-        <p>
-          For a local business, start with the{" "}
-          <Link href="/free-snapshot">free AI Answer Snapshot</Link>: who
-          ChatGPT and Perplexity name. The scored PDF is still the{" "}
-          <Link href="/geo-audit">GEO audit</Link> of one URL. You get a
-          0–100 score, a per-engine snapshot that includes a ChatGPT line, and
-          about ten fixes in a PDF. When a language-model key is configured,
-          the model rewrites the summary and the fix list from the HTML we
-          fetched. That review is optional infrastructure, disclosed on{" "}
-          <Link href="/privacy">Privacy</Link>. It is not a ChatGPT account
-          with your URL typed into the box.
-        </p>
-
-        <h2>What the ChatGPT row is allowed to say</h2>
-        <p>
-          The snapshot status is one of four words: Cited, Mentioned, Absent,
-          or Competitor cited. For ChatGPT, the baseline is conservative.
-          Poor AI-crawler access lands on Absent. A page with a definitional
-          lead and something quotable — a number, a year, a named method —
-          can move to Mentioned. We do not mint Cited because the homepage
-          says the product is “loved by teams.” Cited is for when the HTML
-          itself shows a third-party citation. The language-model pass may
-          adjust wording and scores within a tight band. It is instructed not
-          to invent a live citation.
-        </p>
-        <p>
-          The fictional{" "}
-          <Link href="/sample">Northbound sample</Link> shows the shape:
-          ChatGPT “Mentioned,” with a sentence that the product shows up as a
-          category example and almost never as the source. Northbound is not
-          a customer. The format is the one you buy.
-        </p>
-
-        <h2>The signals behind that row</h2>
-        <p>
-          The score is weighted across eight dimensions. Three of them do
-          most of the work for the ChatGPT line:
-        </p>
-        <ul>
-          <li>
-            <strong>Answer fitness.</strong> A self-contained “X is a Y that
-            helps Z” in the first screen, plus question-shaped headings. A
-            slogan under eight words with no period is treated as a weak lead.
-          </li>
-          <li>
-            <strong>Citable evidence.</strong> Dates, counts, and research
-            language. A comparison or alternatives URL on the same host helps.
-            Off-site mention share is not crawled — the “mention share”
-            dimension only sees comparison language on the site you submitted.
-          </li>
-          <li>
-            <strong>AI-crawler access.</strong> We fetch <code>robots.txt</code>{" "}
-            and record allow, disallow, or unspecified for GPTBot,
-            PerplexityBot, and Google-Extended. We also fetch{" "}
-            <code>/llms.txt</code>. Detail lives on the{" "}
-            <Link href="/ai-crawlers">crawler page</Link> and the{" "}
-            <Link href="/llms-txt">llms.txt page</Link>.
-          </li>
-        </ul>
-        <p>
-          Entity markup, FAQPage JSON-LD, author attribution, and visible
-          dates still move the overall 0–100. They matter more for the{" "}
-          <Link href="/ai-overviews">AI Overviews</Link> and{" "}
-          <Link href="/perplexity-citations">Perplexity</Link> rows than they
-          do for the ChatGPT threshold, which is why a single score can look
-          “fine” while one engine line says Absent.
-        </p>
-
-        <h2>What a citation check cannot see</h2>
-        <p>
-          ChatGPT answers move with the prompt, the memory on that account,
-          whether browsing is on, and the day the model was willing to fetch.
-          A check of your homepage cannot reproduce that. If you need “for
-          these 40 prompts, did ChatGPT mention us this week?”, that is a
-          monitoring product.{" "}
-          <Link href="/alternatives/otterly">Otterly</Link>,{" "}
-          <Link href="/alternatives/peec-ai">Peec AI</Link>, and{" "}
-          <Link href="/alternatives/profound">Profound</Link> sell that job.
-          CiteScore sells the prior job: make the page worth mentioning
-          before you pay to watch prompts.
-        </p>
-        <p>
-          We also do not parse every OpenAI user-agent. GPTBot is the token
-          on the crawler dimension. ChatGPT-User and OAI-SearchBot — the
-          agents OpenAI documents for user-triggered browsing and search —
-          are not read. Allowing those two while disallowing GPTBot is a real
-          configuration. Our ChatGPT row will still treat the GPTBot disallow
-          as a negative crawler signal. If that disallow is deliberate (you
-          opted out of training crawls), read the crawler dimension with that
-          policy in mind.
-        </p>
-
-        <h2>Checklist, then the paid check</h2>
-        <p>
-          The{" "}
-          <Link href="/blog/chatgpt-citation-checklist">
-            citation checklist
+      <SiteHeader />
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+        <p className="kicker">{topic.kicker}</p>
+        <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
+          Free ChatGPT citation check, then the {fixPackIntroPriceLabel} Fix Pack.
+        </h1>
+        <p className="mt-4 text-lg leading-8 text-ink-soft">
+          A real ChatGPT citation check asks who was named. The free AI Answer
+          Snapshot asks logged-out ChatGPT and Perplexity who they name
+          instead of a local business, and records the answer. The{" "}
+          <Link href="/fix-pack" className="text-forest underline">
+            Fix Pack
           </Link>{" "}
-          is the unpaid version: twelve homepage checks, including the
-          definition, the FAQ, the dated fact, and the robots.txt own-goal.
-          Use it if you want to edit before you buy. Buy the check when you
-          want those checks scored against the URL you actually ship, with
-          the fixes ordered and written down.
+          is {fixPackIntroPriceLabel}. AI answers vary run to run. This is a
+          snapshot, not a ranking, and not a promise that any assistant will
+          name the business.
         </p>
-        <p>
-          Same product as the{" "}
-          <Link href="/blog/what-is-geo">GEO explainer</Link> describes. The
-          URL is different because the search is different. One charge, one
-          PDF, no account.
+        <p className="mt-4 text-sm leading-6">
+          <Link href="/sample-snapshot" className="font-medium text-forest underline">
+            See an example snapshot
+          </Link>
+          <span className="text-ink-soft"> · </span>
+          <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+            See an example Fix Pack
+          </Link>
+          <span className="text-ink-soft">
+            . Example pages use illustrative numbers. Not a customer result.
+          </span>
         </p>
+        <p className="mt-3 text-sm leading-6 text-ink-soft">
+          Prepared by the CiteScore Team. Sold by {sellerName}.
+        </p>
+        <div
+          data-funnel-cta
+          className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+        >
+          <Link
+            href="#snapshot"
+            className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep"
+          >
+            Get a free AI Answer Snapshot
+          </Link>
+          <FixPackBuyLink
+            compact
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+          />
+        </div>
+        <div className="mt-4">
+          <TrustLinks />
+        </div>
+        <InlineSnapshotRequest source="/chatgpt-citation-check" />
 
-        <h2>Questions the check gets</h2>
-        {faqs.map((item) => (
-          <div key={item.q}>
-            <h3 className="mt-6 font-serif text-xl text-ink">{item.q}</h3>
-            <p>{item.a}</p>
-          </div>
-        ))}
-      </ArticleShell>
+        <section className="mt-14 border-t border-rule pt-10" aria-labelledby="signal-check">
+          <p className="kicker">Secondary</p>
+          <h2 id="signal-check" className="mt-3 font-serif text-3xl tracking-tight">
+            Public-file signal check
+          </h2>
+          <p className="mt-4 leading-7 text-ink-soft">
+            This check is not the citation. It reads public files on one host.
+            It does not query ChatGPT or Perplexity. Run it on the{" "}
+            <Link href="/free-check" className="text-forest underline">
+              free check
+            </Link>{" "}
+            page.
+          </p>
+          <h3 className="mt-8 font-serif text-2xl tracking-tight">
+            What the signal check can see
+          </h3>
+          <ul className="mt-4 list-disc space-y-3 pl-5 leading-7 text-ink-soft">
+            <li>
+              <strong className="font-medium text-ink">Answer fitness.</strong>{" "}
+              A self-contained “X is a Y that helps Z” in the first screen,
+              plus question-shaped headings. A slogan under eight words with
+              no period is a weak lead.
+            </li>
+            <li>
+              <strong className="font-medium text-ink">Citable evidence.</strong>{" "}
+              Dates, counts, and a comparison URL on the same host. Off-site
+              mention share is not crawled.
+            </li>
+            <li>
+              <strong className="font-medium text-ink">Crawler access.</strong>{" "}
+              Allow, disallow, or unspecified in <code>robots.txt</code> for
+              GPTBot, PerplexityBot, and Google-Extended, plus whether{" "}
+              <code>/llms.txt</code> returned a non-empty body. llms.txt is{" "}
+              <LlmsTxtCaveat />. Detail is on the{" "}
+              <Link href="/ai-crawlers" className="text-forest underline">
+                crawler page
+              </Link>
+              .
+            </li>
+          </ul>
+          <p className="mt-4 leading-7 text-ink-soft">
+            The signal check reads GPTBot. It does not read ChatGPT-User or
+            OAI-SearchBot, the agents OpenAI documents for user-triggered
+            browsing and search. Allowing those two while disallowing GPTBot
+            is a real configuration. The snapshot still asks the assistants
+            who they name.
+          </p>
+          <p className="mt-4 leading-7 text-ink-soft">
+            A file check cannot reproduce a prompt, the memory on an account,
+            or a different day. If you need a prompt list watched over time,
+            that is{" "}
+            <Link href="/alternatives/otterly" className="text-forest underline">
+              Otterly
+            </Link>
+            ,{" "}
+            <Link href="/alternatives/peec-ai" className="text-forest underline">
+              Peec AI
+            </Link>
+            , or{" "}
+            <Link href="/alternatives/profound" className="text-forest underline">
+              Profound
+            </Link>
+            . CiteScore asks one local prompt and one variant, records who is
+            named, then the Fix Pack is the work on the business.
+          </p>
+          <p className="mt-4 leading-7 text-ink-soft">
+            The{" "}
+            <Link
+              href="/blog/chatgpt-citation-checklist"
+              className="text-forest underline"
+            >
+              citation checklist
+            </Link>{" "}
+            is twelve homepage checks you can run yourself. It is not the
+            snapshot.
+          </p>
+        </section>
+
+        <section id="faq" className="mt-12">
+          <h2 className="font-serif text-3xl tracking-tight">
+            Questions about the check
+          </h2>
+          {faqs.map((item) => (
+            <div key={item.q}>
+              <h3 className="mt-6 font-serif text-xl text-ink">{item.q}</h3>
+              <p className="mt-2 leading-7 text-ink-soft">{item.a}</p>
+            </div>
+          ))}
+        </section>
+
+        <OtherDigitalProducts />
+
+        <nav className="mt-10 border-t border-rule pt-6" aria-label="Related">
+          <p className="kicker">Keep reading</p>
+          <ul className="mt-3 space-y-2">
+            {related.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-sm font-medium text-forest underline-offset-4 hover:underline"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </main>
+      <SiteFooter />
+      <StickySnapshotOffer path="/chatgpt-citation-check" />
     </>
   );
 }
