@@ -172,11 +172,8 @@ export default function LlmsTxtPage() {
             A file that matches the proposal, using a fictional product
           </h3>
           <p className="mt-4 leading-7 text-ink-soft">
-            Northbound is the fictional company in the older{" "}
-            <Link href="/sample" className="text-forest underline">
-              sample report
-            </Link>
-            . This file illustrates the shape. It is not a template that
+            Northbound is a fictional company from an older illustrative
+            audit. This file illustrates the shape. It is not a template that
             earns citations, and not a file hosted for them. The current
             examples are the{" "}
             <Link href="/sample-snapshot" className="text-forest underline">

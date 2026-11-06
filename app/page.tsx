@@ -4,7 +4,6 @@ import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
-import { ScoreRing } from "@/components/ScoreRing";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
@@ -14,7 +13,6 @@ import { rootOpenGraph, rootTwitter, rssFeedAlternate } from "@/lib/content/meta
 import { topicPages } from "@/lib/content/topics";
 import { fixPackDeliverables } from "@/lib/fix-pack-offer";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
-import { sampleReport } from "@/lib/sample-report";
 import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
@@ -233,51 +231,42 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl px-5 py-14">
             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
               <div>
-                <p className="kicker">Sample report</p>
+                <p className="kicker">Example snapshot</p>
                 <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
-                  See the artifact before you buy.
+                  See the snapshot before you request one.
                 </h2>
               </div>
               <Link
-                href="/sample"
+                href="/sample-snapshot"
                 className="text-sm font-medium text-forest underline-offset-4 hover:underline"
               >
-                Open the Northbound sample
+                Open the example snapshot
               </Link>
             </div>
             <p className="mt-4 max-w-2xl text-ink-soft leading-7">
-              Fictional SaaS, real format. Score {sampleReport.overall}/100,
-              eight dimensions, ten fixes. Labeled as a sample throughout —
-              not a disguised testimonial.{" "}
-              <Link href="/sample-snapshot" className="text-forest underline">
-                The example AI Answer Snapshot
+              Example Plumbing Co. is a fictional business in Riverton, USA, a
+              made-up place. The page uses the same one-page layout as a real
+              snapshot: prompts, who was named, sources, and gaps. Every
+              figure on it was invented to show that layout. It is not a
+              customer result.{" "}
+              <Link href="/sample-fix-pack" className="text-forest underline">
+                The sample Fix Pack
               </Link>{" "}
-              is the one-page snapshot.
+              is the work that follows, also for a fictional business.
             </p>
-            <div className="mt-8 overflow-hidden rounded-2xl border border-rule report-sheet">
-              <div className="grid gap-6 p-6 sm:grid-cols-[auto_1fr] sm:items-center">
-                <ScoreRing score={sampleReport.overall} />
-                <div>
-                  <p className="font-serif text-2xl">{sampleReport.product}</p>
-                  <p className="mt-1 text-sm text-ink-soft">
-                    {sampleReport.url} · {sampleReport.grade}
-                  </p>
-                  <p className="mt-4 max-w-xl text-sm leading-6 text-ink-soft">
-                    {sampleReport.summary}
-                  </p>
-                </div>
-              </div>
-              <div className="grid border-t border-rule sm:grid-cols-4">
-                {sampleReport.dimensions.slice(0, 4).map((dimension) => (
-                  <div
-                    key={dimension.id}
-                    className="border-rule px-5 py-4 sm:border-r last:border-r-0"
-                  >
-                    <p className="kicker">{dimension.name}</p>
-                    <p className="mt-2 font-serif text-3xl">{dimension.score}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
+              <Link
+                href="/free-snapshot"
+                className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep sm:w-auto"
+              >
+                Get a free AI Answer Snapshot
+              </Link>
+              <Link
+                href="/sample-snapshot"
+                className="inline-flex h-12 w-full items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink sm:w-auto"
+              >
+                Open the example snapshot
+              </Link>
             </div>
           </div>
         </section>

@@ -35,7 +35,8 @@ Requires Node 20+.
 | `/alternatives/otterly` | CiteScore vs Otterly |
 | `/alternatives/peec-ai` | CiteScore vs Peec AI |
 | `/organization-schema-generator` | Free Organization and optional WebSite JSON-LD generator |
-| `/sample` | Printable HTML sample report (fictional SaaS “Northbound”) |
+| `/sample` | Permanent redirect to `/sample-snapshot` |
+| `/sample-snapshot` | Example AI Answer Snapshot (fictional business) |
 | `/sitemap.xml` | Generated from `app/sitemap.ts` |
 | `/robots.txt` | Generated from `app/robots.ts` |
 | `/api/reports/sample/pdf` | Same sample, as a PDF |

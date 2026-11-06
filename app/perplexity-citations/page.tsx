@@ -13,8 +13,8 @@ const faqs = [
     a: "No. The Perplexity row is inferred from public HTML: evidence, structured markup, comparison language, and whether robots.txt allows PerplexityBot. We do not have a Perplexity session.",
   },
   {
-    q: "Why does the sample say Competitor cited?",
-    a: "On the fictional Northbound report, the homepage is marketing copy while better-known tools in the same category publish definitions, tables, and dated posts. Competitor cited is the status we use when the page gives a model a reason to footnote someone else. It is not a measurement of Perplexity’s live source list.",
+    q: "Why would an audit say Competitor cited?",
+    a: "On an older illustrative audit for the fictional company Northbound, the homepage is marketing copy while better-known tools in the same category publish definitions, tables, and dated posts. Competitor cited is the status that audit used when the page gives a model a reason to footnote someone else. It is not a measurement of Perplexity’s live source list.",
   },
   {
     q: "Does blocking PerplexityBot remove me from answers?",
@@ -69,7 +69,7 @@ export default function PerplexityCitationsPage() {
             label: "On-page citation checklist",
           },
           { href: "/geo-audit", label: "GEO audit" },
-          { href: "/sample", label: "Sample report" },
+          { href: "/sample-snapshot", label: "Example snapshot" },
         ]}
       >
         <p>
@@ -104,12 +104,14 @@ export default function PerplexityCitationsPage() {
           Competitor cited is an inference, not a live source list. It means
           the page we fetched reads like a brochure next to the kind of URL
           Perplexity’s answers usually number: a definition, a table, a dated
-          post, a methodology. The{" "}
-          <Link href="/sample">Northbound sample</Link> uses that status and
-          names Dovetail and Grain as the footnotes a model would prefer.
-          Northbound is fictional. Those product names are there so you can
-          see how specific the sentence is supposed to be. Your report names
-          the gap on your pages. It does not invent a ranking of your market.
+          post, a methodology. An older illustrative audit for the fictional
+          company Northbound used that status and named Dovetail and Grain as
+          the footnotes a model would prefer. Northbound is fictional. Those
+          product names were there so you can see how specific the sentence
+          was supposed to be. The current example is the{" "}
+          <Link href="/sample-snapshot">example AI Answer Snapshot</Link>.
+          Your report names the gap on your pages. It does not invent a
+          ranking of your market.
         </p>
 
         <h2>What earns the footnote shape</h2>

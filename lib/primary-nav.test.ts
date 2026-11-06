@@ -35,7 +35,6 @@ test("primary nav stays on the snapshot and Fix Pack path", () => {
     "/free-snapshot",
     "/fix-pack",
     "/pricing",
-    "/sample",
     "/sample-snapshot",
     "/how-it-works",
     "/faq",
@@ -49,6 +48,9 @@ test("primary nav stays on the snapshot and Fix Pack path", () => {
   ]) {
     assert.match(header, new RegExp(`href="${href}"`), href);
   }
+  assert.match(header, />\s*Example snapshot\s*</);
+  assert.doesNotMatch(header, /href="\/sample"/);
+  assert.doesNotMatch(footer, /href="\/sample"/);
   assert.doesNotMatch(header, /templatePack|agencyKit|buy\.polar\.sh/);
   assert.doesNotMatch(header, /GEO Content Template Pack|GEO Agency Kit/);
   assert.doesNotMatch(header, /Samuel|Lamphier/);

@@ -124,9 +124,10 @@ export function CitationChecklistArticle() {
       </p>
       <p>
         See the{" "}
-        <Link href="/sample">Northbound sample report</Link> for how these
-        checks show up as dimension scores and a ten-item fix list. The
-        company is fictional. The format is the one you buy.
+        <Link href="/sample-snapshot">example AI Answer Snapshot</Link> for
+        the one-page layout CiteScore sends, and the{" "}
+        <Link href="/sample-fix-pack">sample Fix Pack</Link> for the gap list
+        that follows it. Both use a fictional business.
       </p>
     </>
   );

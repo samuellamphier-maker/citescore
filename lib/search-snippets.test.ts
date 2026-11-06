@@ -56,11 +56,6 @@ const marketingInput: Record<string, { title: string; description: string }> = {
     description:
       "How the free AI Answer Snapshot and the Fix Pack compare with Otterly, Profound, and Peec AI — ongoing AI-visibility monitors — and when to buy which.",
   },
-  "/sample": {
-    title: "Sample report — Northbound",
-    description:
-      "A fictional CiteScore audit for Northbound, a sample SaaS product. Labeled as a sample throughout.",
-  },
   "/about": {
     title: "About",
     description: `CiteScore is operated by the CiteScore Team. The free AI Answer Snapshot and the ${fixPackIntroPriceLabel} Fix Pack are sold by ${sellerName}. Contact ${contactEmail}.`,
@@ -162,7 +157,7 @@ function headFromMetadata(metadata: Metadata) {
 test("sitemap titles stay within 65 characters and descriptions within 160", () => {
   assert.match(layout, /template:\s*`%s · \$\{site\.name\}`/);
   const paths = sitemapPaths();
-  assert.equal(paths.length, 119);
+  assert.equal(paths.length, 118);
 
   const homeTitle = `${site.name} — ${site.tagline}`;
   assert.ok(homeTitle.length <= TITLE_LIMIT, `/: title ${homeTitle.length}`);

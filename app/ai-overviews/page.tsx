@@ -65,7 +65,7 @@ export default function AiOverviewsPage() {
           { href: "/chatgpt-citation-check", label: "ChatGPT citation check" },
           { href: "/perplexity-citations", label: "Perplexity citations" },
           { href: "/blog/what-is-geo", label: "What is GEO?" },
-          { href: "/sample", label: "Sample report" },
+          { href: "/sample-snapshot", label: "Example snapshot" },
         ]}
       >
         <p>
@@ -105,11 +105,12 @@ export default function AiOverviewsPage() {
           live Search result.
         </p>
         <p>
-          On the{" "}
-          <Link href="/sample">Northbound sample</Link> the Overview line is
-          Absent, with the note that head terms have no inclusion and FAQ /
-          SoftwareApplication markup is missing. That company is fictional.
-          The sentence is the kind of sentence the report writes.
+          An older illustrative audit for a fictional company wrote the
+          Overview line as Absent, with a note that head terms had no
+          inclusion and FAQ / SoftwareApplication markup was missing. That
+          sentence is the kind of sentence that audit wrote. The current
+          example of what CiteScore sends is the{" "}
+          <Link href="/sample-snapshot">example AI Answer Snapshot</Link>.
         </p>
 
         <h2>Google-Extended is a different switch</h2>

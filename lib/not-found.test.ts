@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { test } from "node:test";
-import { marketingPaths } from "./content/blog.ts";
+import { blogPosts, marketingPaths } from "./content/blog.ts";
 
 const notFound = readFileSync(new URL("../app/not-found.tsx", import.meta.url), "utf8");
 const nextConfig = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
@@ -96,6 +96,13 @@ const purchaseAndTrustAliases = [
   { source: "/signup", destination: "/free-snapshot" },
   { source: "/sign-up", destination: "/free-snapshot" },
   { source: "/plans", destination: "/pricing" },
+  { source: "/sample", destination: "/sample-snapshot" },
+  { source: "/signal-check", destination: "/free-check" },
+  { source: "/file-check", destination: "/free-check" },
+  { source: "/template-pack", destination: "/pricing" },
+  { source: "/agency-kit", destination: "/pricing" },
+  { source: "/white-label", destination: "/pricing" },
+  { source: "/geo", destination: "/geo-for-local-businesses" },
 ] as const;
 
 function escapeRegExp(value: string) {
@@ -122,4 +129,15 @@ test("purchase and trust guesses permanently redirect and stay out of the sitema
       destination,
     );
   }
+
+  assert.match(
+    nextConfig,
+    /source:\s*"\/what-is-geo",\s*destination:\s*"\/blog\/what-is-geo",\s*permanent:\s*true/,
+  );
+  assert.equal(existsSync(new URL("../app/what-is-geo/page.tsx", import.meta.url)), false);
+  assert.equal(existsSync(new URL("../app/what-is-geo/route.ts", import.meta.url)), false);
+  assert.equal(indexed.has("/what-is-geo"), false);
+  assert.equal(indexed.has("/blog/what-is-geo"), true);
+  assert.equal(blogPosts.some((post) => post.slug === "what-is-geo"), true);
+  assert.equal(existsSync(new URL("../app/blog/[slug]/page.tsx", import.meta.url)), true);
 });

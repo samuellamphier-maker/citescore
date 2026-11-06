@@ -90,7 +90,6 @@ export const marketingPaths: MarketingPath[] = [
     changeFrequency: "monthly",
     priority: 0.8,
   },
-  { path: "/sample", changeFrequency: "monthly", priority: 0.7 },
   {
     path: "/sample-snapshot",
     changeFrequency: "monthly",

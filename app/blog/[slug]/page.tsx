@@ -73,7 +73,7 @@ export default async function BlogPostPage({
     [
       ...(topicRelated[post.slug as keyof typeof topicRelated] ?? []),
       { href: "/alternatives/otterly", label: "CiteScore vs Otterly" },
-      { href: "/sample", label: "Sample report" },
+      { href: "/sample-snapshot", label: "Example snapshot" },
     ],
   );
 
