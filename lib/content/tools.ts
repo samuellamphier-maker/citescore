@@ -25,14 +25,15 @@ export function toolPageLabel(page: TopicPage) {
 }
 
 /**
- * Free tools already published: the free check, the robots.txt checker,
+ * Free tools already published: the public-file signal check, the robots.txt checker,
  * the llms.txt and robots.txt generators, and every schema generator.
  */
 const groupDefs = [
   {
     id: "checks",
     title: "Checks",
-    intro: "The free check and the robots.txt checker already on this site.",
+    intro:
+      "The public-file signal check and the robots.txt checker already on this site. The signal check does not query ChatGPT or Perplexity.",
     include: isChecker,
   },
   {

@@ -436,17 +436,29 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     ["../app/guides/page.tsx", "/guides"],
     ["../app/industries/page.tsx", "/industries"],
     ["../app/tools/page.tsx", "/tools"],
+    ["../app/contact/page.tsx", "/contact"],
+    ["../app/free-check/page.tsx", "/free-check"],
   ] as const;
   for (const [rel, source] of placed) {
     const file = readFileSync(new URL(rel, import.meta.url), "utf8");
     assert.match(file, new RegExp(`<InlineSnapshotRequest source="${source}"`));
     assert.doesNotMatch(file, /defaultService=/);
   }
+  const northbound = readFileSync(new URL("../app/sample/page.tsx", import.meta.url), "utf8");
+  assert.match(northbound, /href="\/sample-snapshot"/);
+  assert.match(northbound, /href="\/sample-fix-pack"/);
+  assert.match(northbound, /older illustrative audit-style sample/);
+  assert.match(northbound, /fictional company, not a customer/i);
+  const signalCheck = readFileSync(new URL("../app/free-check/page.tsx", import.meta.url), "utf8");
+  assert.match(signalCheck, /Public-file signal check/);
+  assert.match(signalCheck, /does not query live\s+ChatGPT or Perplexity/);
+  assert.match(signalCheck, /\{topic\.kicker\}/);
+  assert.match(signalCheck, /\{topic\.title\}/);
+  assert.match(signalCheck, /\{topic\.description\}/);
   for (const rel of [
     "../app/privacy/page.tsx",
     "../app/terms/page.tsx",
     "../app/refunds/page.tsx",
-    "../app/contact/page.tsx",
     "../app/llms-txt/page.tsx",
   ]) {
     const file = readFileSync(new URL(rel, import.meta.url), "utf8");
