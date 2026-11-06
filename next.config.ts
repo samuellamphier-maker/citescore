@@ -367,6 +367,46 @@ const nextConfig: NextConfig = {
         destination: "/pricing",
         permanent: true,
       },
+      {
+        source: "/sample",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/signal-check",
+        destination: "/free-check",
+        permanent: true,
+      },
+      {
+        source: "/file-check",
+        destination: "/free-check",
+        permanent: true,
+      },
+      {
+        source: "/template-pack",
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/agency-kit",
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/white-label",
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/geo",
+        destination: "/geo-for-local-businesses",
+        permanent: true,
+      },
+      {
+        source: "/what-is-geo",
+        destination: "/blog/what-is-geo",
+        permanent: true,
+      },
     ];
   },
 };

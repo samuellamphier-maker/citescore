@@ -385,9 +385,9 @@ export default function ForAgenciesPage() {
                 </article>
               </div>
               <p className="pb-4 text-sm leading-6 text-ink-soft">
-                The company on the{" "}
-                <Link href="/sample" className="text-forest underline">
-                  sample report
+                The business on the{" "}
+                <Link href="/sample-snapshot" className="text-forest underline">
+                  example snapshot
                 </Link>{" "}
                 is fictional, and the page says so.{" "}
                 <Link href="/terms" className="text-forest underline">

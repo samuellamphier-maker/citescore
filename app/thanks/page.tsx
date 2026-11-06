@@ -36,8 +36,8 @@ export default function ThanksPage() {
           </p>
         </div>
         <div className="mt-8 flex gap-4 text-sm">
-          <Link href="/sample" className="text-forest underline">
-            Preview the sample format
+          <Link href="/sample-snapshot" className="text-forest underline">
+            See an example snapshot
           </Link>
           <Link href="/" className="text-forest underline">
             Back home

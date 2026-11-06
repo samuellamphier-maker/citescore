@@ -30,9 +30,9 @@ const extras = [
     dek: "One-off punch list versus a monthly AI-search monitor. Different jobs.",
   },
   {
-    href: "/sample",
-    title: "Sample report",
-    dek: "Fictional SaaS, real format. Labeled as a sample — not a testimonial.",
+    href: "/sample-snapshot",
+    title: "Example snapshot",
+    dek: "A fictional AI Answer Snapshot. Illustrative names and numbers — not a customer result.",
   },
 ];
 

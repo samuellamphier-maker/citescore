@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 import { marketingPaths } from "./content/blog.ts";
 
@@ -14,6 +14,7 @@ const industryCta = readFileSync(
 const shell = readFileSync(new URL("../components/ArticleShell.tsx", import.meta.url), "utf8");
 const footer = readFileSync(new URL("../components/SiteFooter.tsx", import.meta.url), "utf8");
 const about = readFileSync(new URL("../app/about/page.tsx", import.meta.url), "utf8");
+const nextConfig = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
 
 test("example snapshot is fictional and labeled", () => {
   assert.match(page, /Example only: fictional business, fictional competitors, illustrative numbers\./);
@@ -55,4 +56,15 @@ test("snapshot example is linked from the conversion surfaces and the sitemap", 
     true,
   );
   assert.equal(marketingPaths.some((item) => item.path === "/about"), true);
+  assert.equal(marketingPaths.some((item) => item.path === "/sample"), false);
+  assert.match(
+    nextConfig,
+    /source:\s*"\/sample",\s*destination:\s*"\/sample-snapshot",\s*permanent:\s*true/,
+  );
+  assert.equal(existsSync(new URL("../app/sample/page.tsx", import.meta.url)), false);
+  assert.doesNotMatch(home, /href="\/sample"/);
+  assert.doesNotMatch(header, /href="\/sample"/);
+  assert.doesNotMatch(footer, /href="\/sample"/);
+  assert.match(home, /Open the example snapshot/);
+  assert.doesNotMatch(home, /Northbound/);
 });

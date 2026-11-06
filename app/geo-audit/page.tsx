@@ -150,11 +150,11 @@ export default async function GeoAuditPage({
               <AuditForm id="geo-audit-form" defaultUrl={siteUrl} size="compact" />
             </div>
             <p className="mt-4 text-sm leading-6">
-              <Link href="/sample" className="font-medium text-forest underline">
-                Northbound sample
+              <Link href="/sample-snapshot" className="font-medium text-forest underline">
+                Example snapshot
               </Link>
               <span className="text-ink-soft">
-                . Fictional company, labeled throughout.
+                . Fictional business, labeled throughout.
               </span>
             </p>
             <p className="mt-2 text-sm leading-6 text-ink-soft">

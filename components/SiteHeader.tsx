@@ -43,9 +43,6 @@ export function SiteHeader() {
           <Logo />
         </NavLink>
         <nav className="flex flex-wrap items-center justify-end gap-x-2 gap-y-1 text-sm text-ink-soft sm:gap-x-3">
-          <NavLink href="/sample" className={navLink}>
-            Sample
-          </NavLink>
           <NavLink href="/sample-snapshot" className={navLink}>
             Example snapshot
           </NavLink>

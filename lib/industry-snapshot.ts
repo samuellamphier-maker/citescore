@@ -58,7 +58,6 @@ export const inlineSnapshotPaths = [
   "/pricing",
   "/how-it-works",
   "/faq",
-  "/sample",
   "/sample-fix-pack",
   "/methodology",
   "/about",
@@ -237,7 +236,6 @@ const stickyExcludedPaths = new Set([
 export const highIntentStickyPaths = [
   "/pricing",
   "/fix-pack",
-  "/sample",
   "/sample-snapshot",
   "/sample-fix-pack",
   "/how-it-works",

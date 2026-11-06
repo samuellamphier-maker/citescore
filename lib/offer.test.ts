@@ -428,7 +428,6 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     ["../app/pricing/page.tsx", "/pricing"],
     ["../app/how-it-works/page.tsx", "/how-it-works"],
     ["../app/faq/page.tsx", "/faq"],
-    ["../app/sample/page.tsx", "/sample"],
     ["../app/sample-fix-pack/page.tsx", "/sample-fix-pack"],
     ["../app/methodology/page.tsx", "/methodology"],
     ["../app/about/page.tsx", "/about"],
@@ -451,11 +450,6 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     assert.match(file, new RegExp(`<InlineSnapshotRequest source="${source}"`));
     assert.doesNotMatch(file, /defaultService=/);
   }
-  const northbound = readFileSync(new URL("../app/sample/page.tsx", import.meta.url), "utf8");
-  assert.match(northbound, /href="\/sample-snapshot"/);
-  assert.match(northbound, /href="\/sample-fix-pack"/);
-  assert.match(northbound, /older illustrative audit-style sample/);
-  assert.match(northbound, /fictional company, not a customer/i);
   const signalCheck = readFileSync(new URL("../app/free-check/page.tsx", import.meta.url), "utf8");
   assert.match(signalCheck, /Public-file signal check/);
   assert.match(signalCheck, /does not query live\s+ChatGPT or Perplexity/);
@@ -509,7 +503,7 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
 });
 
 test("the sticky snapshot bar is on high-intent pages and off legal pages", () => {
-  assert.equal(highIntentStickyPaths.length, 42);
+  assert.equal(highIntentStickyPaths.length, 41);
   const shellPages = new Set([
     "/free-check",
     "/robots-txt-for-ai-crawlers",
@@ -535,7 +529,6 @@ test("the sticky snapshot bar is on high-intent pages and off legal pages", () =
   const representative = [
     "/pricing",
     "/fix-pack",
-    "/sample",
     "/sample-snapshot",
     "/blog",
     "/guides",
