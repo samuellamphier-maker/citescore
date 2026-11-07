@@ -5,6 +5,7 @@ import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { FreeSnapshotLead } from "@/components/FreeSnapshotLead";
 import { JsonLd } from "@/components/JsonLd";
+import { SampleSnapshotExcerpt } from "@/components/SampleSnapshotExcerpt";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -36,61 +37,98 @@ export default function FreeSnapshotPage() {
       <JsonLd data={faqPageJsonLd(freeSnapshotPageFaqs)} />
       <JsonLd data={freeSnapshotServiceJsonLd(publicOrigin())} />
       <SiteHeader />
-      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-4 sm:py-14">
         <p className="kicker">Free · no checkout</p>
         <FreeSnapshotLead />
-        <p className="mt-4 leading-7 text-ink-soft">
+
+        <div className="mt-3 lg:hidden">
+          <SampleSnapshotExcerpt variant="compact" />
+          <p className="mt-1 text-xs leading-5 text-ink-soft">
+            Fictional business, illustrative numbers. Not a customer result, and not a live ChatGPT or Perplexity answer.
+          </p>
+        </div>
+
+        <div className="mt-4 grid items-start gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
+          <div className="min-w-0">
+            <section className="rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5">
+              <p className="kicker">Request</p>
+              <h2 className="mt-2 font-serif text-2xl tracking-tight">
+                Request the free snapshot.
+              </h2>
+              <div className="mt-3">
+                <SnapshotRequestForm />
+              </div>
+              <p className="mt-4 text-sm leading-6 text-ink-soft">
+                Prepared by the CiteScore Team. Sold by {sellerName}.
+              </p>
+            </section>
+
+            <p className="mt-4 text-sm leading-6">
+              <Link href="/fix-pack" className="font-medium text-forest underline">
+                Skip straight to the {fixPackIntroPriceLabel} Fix Pack
+              </Link>
+              <span className="text-ink-soft">
+                . The Fix Pack is the done-for-you work after you have seen who
+                was named. Introductory price {fixPackIntroPriceLabel}. List
+                price {fixPackListPriceLabel}. It is not a promise that any
+                assistant will name the business.
+              </span>
+            </p>
+
+            <section className="mt-6" aria-labelledby="after-submit">
+              <h2 id="after-submit" className="font-serif text-2xl tracking-tight sm:text-3xl">
+                What happens after you submit
+              </h2>
+              <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
+                <li>
+                  You submit the form. The button sends the business name, city, service, website, and email to {contactEmail} through FlowForm. The subject is “Free AI Answer Snapshot.” No account and no paid checkout. If that send fails, the email button, the address, and the copy buttons stay on this page.
+                </li>
+                <li>
+                  We ask logged-out ChatGPT and Perplexity who they name for
+                  that trade and city, and record who is named.
+                </li>
+                <li>
+                  We reply with the one-page snapshot by email. There is no set delivery time.
+                </li>
+              </ol>
+              <p className="mt-4 text-sm leading-7 text-ink-soft">
+                AI answers vary run to run. This is a snapshot, not a ranking.
+                The free snapshot comes first.
+              </p>
+            </section>
+          </div>
+
+          <aside className="min-w-0" aria-labelledby="snapshot-sample-preview">
+            <p className="kicker">Sample</p>
+            <h2
+              id="snapshot-sample-preview"
+              className="mt-2 font-serif text-2xl tracking-tight sm:text-3xl"
+            >
+              What the one-page snapshot looks like
+            </h2>
+            <p className="mt-3 text-sm leading-6">
+              <Link href="/sample-snapshot" className="font-medium text-forest underline">
+                See the full example snapshot
+              </Link>
+              <span className="text-ink-soft">
+                . Fictional business, illustrative numbers. Not a customer
+                result, and not a live ChatGPT or Perplexity answer.
+              </span>
+            </p>
+            <div className="mt-4">
+              <SampleSnapshotExcerpt />
+            </div>
+          </aside>
+        </div>
+
+        <div className="max-w-3xl">
+        <p className="mt-12 leading-7 text-ink-soft">
           CiteScore asks logged-out ChatGPT and Perplexity who they name for
           that trade and city. The business receives a one-page snapshot: who
           is named, which sources are cited, and how the Google rating and
           review count compare. A real snapshot prints the day the prompts
           were asked. AI answers vary run to run. This is a snapshot, not a
           ranking. No payment.
-        </p>
-        <p className="mt-4 text-sm leading-6">
-          <Link href="/sample-snapshot" className="font-medium text-forest underline">
-            See an example snapshot
-          </Link>
-          <span className="text-ink-soft">
-            . Fictional business, illustrative numbers. Not a customer result,
-            and not a live ChatGPT or Perplexity answer.
-          </span>
-        </p>
-
-        <section className="mt-10 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8">
-          <p className="kicker">Request</p>
-          <h2 className="mt-2 font-serif text-3xl tracking-tight">
-            Submit the business, the city, the service, and the website.
-          </h2>
-          <p className="mt-3 text-sm leading-6 text-ink-soft">
-            The button sends the business name, city, service, website, and email
-            to {contactEmail} through FlowForm. The subject is “Free AI Answer
-            Snapshot.” No account and no paid checkout. If that send fails, the
-            email button, the address, and the copy buttons stay on this page.
-          </p>
-          <div className="mt-5">
-            <SnapshotRequestForm />
-          </div>
-          <p className="mt-4 text-sm leading-6 text-ink-soft">
-            Prepared by the CiteScore Team. Sold by {sellerName}.
-          </p>
-        </section>
-
-        <h2 className="mt-12 font-serif text-3xl tracking-tight">What happens next</h2>
-        <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
-          <li>
-            You submit the form. FlowForm delivers the business name, city,
-            service, website, and email. No account and no paid checkout.
-          </li>
-          <li>
-            We ask logged-out ChatGPT and Perplexity who they name for that
-            trade and city, and record who is named.
-          </li>
-          <li>We reply with the one-page snapshot.</li>
-        </ol>
-        <p className="mt-4 text-sm leading-7 text-ink-soft">
-          AI answers vary run to run. This is a snapshot, not a ranking. The
-          free snapshot comes first.
         </p>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">
@@ -139,6 +177,7 @@ export default function FreeSnapshotPage() {
           </p>
           <FaqList items={freeSnapshotPageFaqs} />
         </section>
+        </div>
       </main>
       <SiteFooter />
     </>

@@ -26,6 +26,25 @@ import {
 const fieldClass =
   "mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft";
 
+function describedBy(hintId: string, errorId?: string) {
+  return [hintId, errorId].filter(Boolean).join(" ");
+}
+
+function FieldLabel({
+  htmlFor,
+  children,
+}: {
+  htmlFor: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label htmlFor={htmlFor} className="flex items-baseline justify-between gap-3 text-sm font-medium">
+      <span>{children}</span>
+      <span className="shrink-0 text-xs font-normal text-ink-soft">Required</span>
+    </label>
+  );
+}
+
 type FieldKey = "business" | "city" | "service" | "website" | "email";
 
 const fieldIds: Record<FieldKey, string> = {
@@ -167,10 +186,11 @@ export function SnapshotRequestForm({
       onSubmit={onSubmit}
       className="scroll-mt-24 space-y-3"
     >
+      <p id="snapshot-required-note" className="text-sm leading-6 text-ink-soft">
+        All fields are required.
+      </p>
       <div>
-        <label htmlFor="snapshot-business" className="text-sm font-medium">
-          Business name
-        </label>
+        <FieldLabel htmlFor="snapshot-business">Business name</FieldLabel>
         <input
           id="snapshot-business"
           name="Business name"
@@ -178,7 +198,10 @@ export function SnapshotRequestForm({
           autoComplete="organization"
           onInvalid={onInvalid}
           aria-invalid={fieldErrors.business ? true : undefined}
-          aria-describedby={fieldErrors.business ? "snapshot-business-error" : undefined}
+          aria-describedby={describedBy(
+            "snapshot-required-note",
+            fieldErrors.business ? "snapshot-business-error" : undefined,
+          )}
           value={business}
           onChange={(event) => {
             setBusiness(event.target.value);
@@ -194,9 +217,7 @@ export function SnapshotRequestForm({
       </div>
       <div className="grid gap-3 sm:grid-cols-2">
         <div>
-          <label htmlFor="snapshot-city" className="text-sm font-medium">
-            City
-          </label>
+          <FieldLabel htmlFor="snapshot-city">City</FieldLabel>
           <input
             id="snapshot-city"
             name="City"
@@ -204,7 +225,10 @@ export function SnapshotRequestForm({
             autoComplete="address-level2"
             onInvalid={onInvalid}
             aria-invalid={fieldErrors.city ? true : undefined}
-            aria-describedby={fieldErrors.city ? "snapshot-city-error" : undefined}
+            aria-describedby={describedBy(
+              "snapshot-required-note",
+              fieldErrors.city ? "snapshot-city-error" : undefined,
+            )}
             value={city}
             onChange={(event) => {
               setCity(event.target.value);
@@ -219,9 +243,7 @@ export function SnapshotRequestForm({
           ) : null}
         </div>
         <div>
-          <label htmlFor="snapshot-service" className="text-sm font-medium">
-            Service
-          </label>
+          <FieldLabel htmlFor="snapshot-service">Service</FieldLabel>
           <input
             id="snapshot-service"
             name="Service"
@@ -230,7 +252,10 @@ export function SnapshotRequestForm({
             onInvalid={onInvalid}
             placeholder="Plumber"
             aria-invalid={fieldErrors.service ? true : undefined}
-            aria-describedby={fieldErrors.service ? "snapshot-service-error" : undefined}
+            aria-describedby={describedBy(
+              "snapshot-required-note",
+              fieldErrors.service ? "snapshot-service-error" : undefined,
+            )}
             value={serviceValue}
             onChange={(event) => {
               setService(event.target.value);
@@ -246,9 +271,7 @@ export function SnapshotRequestForm({
         </div>
       </div>
       <div>
-        <label htmlFor="snapshot-website" className="text-sm font-medium">
-          Website
-        </label>
+        <FieldLabel htmlFor="snapshot-website">Website</FieldLabel>
         <input
           id="snapshot-website"
           name="Website"
@@ -262,7 +285,10 @@ export function SnapshotRequestForm({
           spellCheck={false}
           placeholder="https://"
           aria-invalid={fieldErrors.website ? true : undefined}
-          aria-describedby={fieldErrors.website ? "snapshot-website-error" : undefined}
+          aria-describedby={describedBy(
+            "snapshot-required-note",
+            fieldErrors.website ? "snapshot-website-error" : undefined,
+          )}
           value={website}
           onChange={(event) => {
             setWebsite(event.target.value);
@@ -277,9 +303,7 @@ export function SnapshotRequestForm({
         ) : null}
       </div>
       <div>
-        <label htmlFor="snapshot-email" className="text-sm font-medium">
-          Email
-        </label>
+        <FieldLabel htmlFor="snapshot-email">Email</FieldLabel>
         <input
           id="snapshot-email"
           name="Email"
@@ -292,7 +316,10 @@ export function SnapshotRequestForm({
           autoCorrect="off"
           spellCheck={false}
           aria-invalid={fieldErrors.email ? true : undefined}
-          aria-describedby={fieldErrors.email ? "snapshot-email-error" : undefined}
+          aria-describedby={describedBy(
+            "snapshot-privacy",
+            fieldErrors.email ? "snapshot-email-error" : undefined,
+          )}
           value={email}
           onChange={(event) => {
             setEmail(event.target.value);
@@ -323,8 +350,11 @@ export function SnapshotRequestForm({
         aria-hidden="true"
         style={{ display: "none" }}
       />
-      <p id="snapshot-privacy" className="text-xs leading-5 text-ink-soft">
-        We email the snapshot to this address. We do not sell emails.{" "}
+      <p
+        id="snapshot-privacy"
+        className="rounded-lg border border-rule bg-paper px-3 py-2 text-sm leading-6 text-ink-soft"
+      >
+        We email the snapshot to this address. We do not ask for passwords, cookies, or content behind a login. We do not sell emails.{" "}
         <Link href="/privacy" className="text-forest underline">
           Privacy
         </Link>
