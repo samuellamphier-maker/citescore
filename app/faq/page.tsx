@@ -73,7 +73,7 @@ export default function FaqPage() {
             href="/fix-pack"
             className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
           >
-            See the Fix Pack
+            See what&apos;s in the Fix Pack
           </Link>
         </div>
         <p className="mt-4 text-sm leading-6">
@@ -139,7 +139,7 @@ export default function FaqPage() {
             href="/fix-pack"
             className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
           >
-            See the Fix Pack
+            See what&apos;s in the Fix Pack
           </Link>
         </div>
         <div className="mt-6">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { fixPackPageLinkLabel, snapshotRequestCtaLabel } from "@/lib/site";
 
 const navItem =
   "min-h-11 min-w-11 items-center justify-center px-2 hover:text-ink";
@@ -71,7 +72,7 @@ export function SiteHeader() {
             FAQ
           </NavLink>
           <NavLink href="/fix-pack" className={navLink}>
-            Fix Pack
+            {fixPackPageLinkLabel()}
           </NavLink>
           <NavLink href="/trust" className={navLink}>
             Trust
@@ -84,7 +85,7 @@ export function SiteHeader() {
             prefetch
             className="inline-flex min-h-11 items-center justify-center rounded-full bg-ink px-4 text-cream hover:bg-forest-deep"
           >
-            Free snapshot
+            {snapshotRequestCtaLabel}
           </NavLink>
         </nav>
       </div>

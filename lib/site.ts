@@ -28,15 +28,25 @@ export function fixPackHref() {
   return `mailto:${contactEmail}?subject=${encodeURIComponent("Fix Pack request")}`;
 }
 
-export function fixPackCtaLabel() {
-  return FIX_PACK_CHECKOUT_URL.trim()
-    ? `Buy the Fix Pack · ${fixPackIntroPriceLabel}`
-    : "Request the Fix Pack";
+/** Visible label for the free snapshot request. Same words on every CTA. */
+export const snapshotRequestCtaLabel = "Get a free AI Answer Snapshot";
+
+/** Link to the Fix Pack page, including the introductory price. */
+export function fixPackPageLinkLabel() {
+  return `Fix Pack, ${fixPackIntroPriceLabel}`;
 }
+
+/** Standalone link whose action is opening the Fix Pack page. */
+export const fixPackDetailsCtaLabel = "See what's in the Fix Pack";
 
 /** Direct Payhip purchase label used beside a free-snapshot CTA. */
 export function fixPackGetCtaLabel() {
   return `Get the Fix Pack · ${fixPackIntroPriceLabel}`;
+}
+
+export function fixPackCtaLabel() {
+  if (!FIX_PACK_CHECKOUT_URL.trim()) return "Request the Fix Pack";
+  return fixPackGetCtaLabel();
 }
 
 /** Canonical public origin. Prefer an explicit env, then Vercel production. */

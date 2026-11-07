@@ -28,7 +28,7 @@ test("checkout buyer copy hides payment internals and keeps the URL on the link"
   assert.match(checkout, /<AuditCheckout/);
   assert.match(checkout, /emphasis="primary"/);
   assert.match(checkout, /href="\/free-snapshot"/);
-  assert.match(checkout, /Request the free snapshot/);
+  assert.match(checkout, /Get a free AI Answer Snapshot/);
   assert.match(site, /searchParams\.set\("client_reference_id"/);
   assert.match(site, /searchParams\.set\("site_url"/);
 
@@ -53,7 +53,7 @@ test("checkout buyer copy hides payment internals and keeps the URL on the link"
   assert.match(otherProducts, /Buy the white-label audit/);
   assert.doesNotMatch(primaryOffer, /<AuditCheckout/);
   assert.doesNotMatch(primaryOffer, /agencyKitUrl|doneForYouAuditUrl|whiteLabelAuditUrl/);
-  assert.match(primaryOffer, /Request the free snapshot/);
+  assert.match(primaryOffer, /Get a free AI Answer Snapshot/);
   assert.match(primaryOffer, /FixPackBuyLink/);
   assert.match(primaryOffer, /<FixPackOfferFacts/);
   assert.match(primaryOffer, /<TrustLinks/);

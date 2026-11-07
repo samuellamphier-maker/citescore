@@ -129,7 +129,7 @@ export default function GuidesPage() {
                     href={page.path}
                     className="font-medium text-forest underline-offset-4 hover:underline"
                   >
-                    {page.title}
+                    {page.navLabel ?? page.title}
                   </Link>
                   <p className="mt-1 text-sm leading-6 text-ink-soft">{page.card}</p>
                 </li>

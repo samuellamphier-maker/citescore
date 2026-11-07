@@ -4,6 +4,8 @@ import {
   agencyKitLabel,
   agencyKitUrl,
   fixPackIntroPriceLabel,
+  fixPackPageLinkLabel,
+  snapshotRequestCtaLabel,
   templatePackLabel,
   templatePackUrl,
 } from "@/lib/site";
@@ -58,8 +60,8 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-soft">
-          <FooterLink href="/free-snapshot">Free snapshot</FooterLink>
-          <FooterLink href="/fix-pack">Fix Pack</FooterLink>
+          <FooterLink href="/free-snapshot">{snapshotRequestCtaLabel}</FooterLink>
+          <FooterLink href="/fix-pack">{fixPackPageLinkLabel()}</FooterLink>
           <FooterLink href="/sample-snapshot">Example snapshot</FooterLink>
           <FooterLink href="/guides">Guides</FooterLink>
           <FooterLink href="/industries">Industries</FooterLink>
@@ -105,8 +107,8 @@ export function SiteFooter() {
             </span>
           </summary>
           <div className="flex flex-wrap gap-x-5 gap-y-1 pb-4 text-sm text-ink-soft">
-            <FooterLink href="/geo-audit">Free AI Answer Snapshot and Fix Pack</FooterLink>
-            <FooterLink href="/free-check">Free AI Answer Snapshot</FooterLink>
+            <FooterLink href="/geo-audit">Self-serve PDF audit</FooterLink>
+            <FooterLink href="/free-check">Public-file check</FooterLink>
             <ExternalProductLink href={templatePackUrl}>
               {templatePackLabel}
             </ExternalProductLink>

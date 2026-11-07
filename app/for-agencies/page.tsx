@@ -54,7 +54,7 @@ const kitContents = [
 const clientSteps = [
   {
     n: "01",
-    title: "Request the free snapshot",
+    title: "Get a free AI Answer Snapshot",
     body: "Ask for the business name, the city, the main service, and the public site. The form is on the free snapshot page. No CiteScore account, and no payment.",
   },
   {
@@ -172,7 +172,7 @@ export default function ForAgenciesPage() {
                 <div className="border-t border-rule pt-5">
                   <dt className="font-medium text-ink">
                     <Link href="/fix-pack" className="text-forest underline">
-                      Fix Pack ({fixPackIntroPriceLabel})
+                      Fix Pack, {fixPackIntroPriceLabel}
                     </Link>
                   </dt>
                   <dd className="mt-1 text-ink-soft">
@@ -216,7 +216,7 @@ export default function ForAgenciesPage() {
                   href="/free-snapshot"
                   className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
                 >
-                  Request a free snapshot
+                  Get a free AI Answer Snapshot
                 </Link>
               </div>
               <div className="rounded-2xl border border-rule p-6">
@@ -242,7 +242,7 @@ export default function ForAgenciesPage() {
                   href="/fix-pack"
                   className="mt-6 inline-flex text-sm font-medium text-forest underline-offset-4 hover:underline"
                 >
-                  What is in the Fix Pack
+                  See what&apos;s in the Fix Pack
                 </Link>
               </div>
             </div>

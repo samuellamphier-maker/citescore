@@ -174,11 +174,11 @@ export default function VsAgencyPage() {
         </div>
         <p className="mt-8 text-sm leading-6">
           <Link href="/fix-pack" className="font-medium text-forest underline">
-            What is in the Fix Pack
+            See what&apos;s in the Fix Pack
           </Link>
           {" · "}
           <Link href="/free-snapshot" className="font-medium text-forest underline">
-            Free AI Answer Snapshot
+            Get a free AI Answer Snapshot
           </Link>
           {" · "}
           <Link href="/pricing" className="font-medium text-forest underline">
