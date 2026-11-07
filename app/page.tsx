@@ -38,7 +38,7 @@ const steps = [
   {
     n: "03",
     title: `Fix Pack, ${fixPackIntroPriceLabel}`,
-    body: `Introductory price, ${fixPackListPriceLabel} list. A Google Business Profile gap list, a review-gap plan and script, the directories AI cited, paste-ready LocalBusiness and Service JSON-LD with install steps, and a re-check 14 days later.`,
+    body: `Introductory price, ${fixPackListPriceLabel} list, for one business, one city, and one service.`,
   },
 ];
 
@@ -121,9 +121,7 @@ export default function HomePage() {
                   . Fictional business, illustrative numbers.
                 </span>
               </p>
-              <FixPackOfferFacts className="mt-4 max-w-xl" />
               <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
-                AI answers vary run to run. This is a snapshot, not a ranking.
                 The{" "}
                 <Link href="/free-snapshot" className="text-forest underline">
                   free AI Answer Snapshot
@@ -150,7 +148,7 @@ export default function HomePage() {
                 .
               </p>
               <div className="mt-5">
-                <SnapshotRequestForm />
+                <SnapshotRequestForm caveat={false} />
               </div>
             </aside>
           </div>
@@ -206,11 +204,9 @@ export default function HomePage() {
                 A one-page snapshot, then the fixes a local business can use.
               </h2>
               <p className="mt-4 text-ink-soft leading-7">
-                The snapshot records a real answer from that day: who is
-                named, which sources are cited, and how your Google rating
-                and review count compare. The Fix Pack is the Google
-                Business Profile, reviews, directories, and LocalBusiness
-                markup that match what those answers cite.
+                The snapshot records who was named that day. The Fix Pack is
+                the Google Business Profile, reviews, directories, and
+                LocalBusiness markup that match what those answers cite.
               </p>
             </div>
             <div>
@@ -282,16 +278,9 @@ export default function HomePage() {
                 Fix Pack, {fixPackIntroPriceLabel}. List {fixPackListPriceLabel}.
               </h2>
               <p className="mt-4 max-w-xl text-ink-soft leading-7">
-                One business, one city, one service. The snapshot is free.
-                The Fix Pack is the gap list, the review script, the cited
-                directories, the JSON-LD, and the 14-day re-check. Full
-                refund within 14 days if it is not useful.
+                The snapshot is free. The Fix Pack is optional, after you have
+                seen who was named.
               </p>
-              <ul className="mt-6 space-y-2 text-sm text-ink-soft">
-                <li>— Introductory {fixPackIntroPriceLabel}, list {fixPackListPriceLabel}</li>
-                <li>— {fixPackIntroPriceLabel} card checkout on the buy button</li>
-                <li>— Full refund within 14 days if the Fix Pack is not useful</li>
-              </ul>
               <div className="mt-6">
                 <TrustLinks />
               </div>

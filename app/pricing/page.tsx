@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
-import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
@@ -63,10 +62,8 @@ export default function PricingPage() {
           The snapshot is free. The Fix Pack is {fixPackIntroPriceLabel}.
         </h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-ink-soft">
-          The snapshot is free. The Fix Pack is the done-for-you work after
-          you have seen who was named. Introductory price{" "}
-          {fixPackIntroPriceLabel}. List price {fixPackListPriceLabel}. One
-          business, one city, one service.
+          The Fix Pack is the done-for-you work after you have seen who was
+          named. One business, one city, one service.
         </p>
         <p className="mt-4 text-sm leading-6 text-ink-soft">
           Prepared by the CiteScore Team. Sold by {sellerName}. The steps are
@@ -160,9 +157,6 @@ export default function PricingPage() {
                 <li key={item.title}>{item.title}</li>
               ))}
             </ul>
-            <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
-              It is not a promise that any assistant will name the business.
-            </p>
             <h3 className="mt-6 font-medium">How delivery works</h3>
             <p className="mt-2 text-sm leading-6 text-[#d7c7b0]">
               The free snapshot comes first. The buy button opens{" "}
@@ -170,6 +164,9 @@ export default function PricingPage() {
               within a few business days after payment, once we have the
               business name, city, service, and public site URL. Do not send
               passwords, cookies, or pages behind a login.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
+              It is not a promise that any assistant will name the business. Full refund within 14 days of delivery if the Fix Pack is not useful.
             </p>
             <div className="mt-6">
               <FixPackBuyLink
@@ -219,11 +216,7 @@ export default function PricingPage() {
           .
         </p>
 
-        <h2 className="mt-12 font-serif text-3xl tracking-tight">
-          Price, delivery, and refunds
-        </h2>
-        <FixPackOfferFacts className="mt-4" />
-        <div className="mt-4">
+        <div className="mt-8">
           <TrustLinks />
         </div>
 
@@ -237,7 +230,7 @@ export default function PricingPage() {
           <FaqList items={pricingFaqs} />
         </section>
         <div className="max-w-2xl">
-          <InlineSnapshotRequest source="/pricing" />
+          <InlineSnapshotRequest source="/pricing" caveat={false} />
         </div>
 
         <details className="group mt-12 border-t border-rule">

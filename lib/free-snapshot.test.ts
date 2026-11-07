@@ -17,6 +17,10 @@ const form = readFileSync(
   "utf8",
 );
 const trust = readFileSync(new URL("../components/TrustLinks.tsx", import.meta.url), "utf8");
+
+function occurrences(source: string, needle: string) {
+  return source.split(needle).length - 1;
+}
 const offerFaq = readFileSync(new URL("./offer-faq.ts", import.meta.url), "utf8");
 
 test("free snapshot page is the linkable request, with the existing email path", () => {
@@ -24,7 +28,7 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /title: "Free AI Answer Snapshot"/);
   assert.match(page, /faqPageJsonLd\(freeSnapshotPageFaqs\)/);
   assert.match(page, /freeSnapshotServiceJsonLd\(publicOrigin\(\)\)/);
-  assert.match(page, /<SnapshotRequestForm \/>/);
+  assert.match(page, /<SnapshotRequestForm caveat=\{false\} deliveryNote=\{false\} \/>/);
   assert.match(page, /href="\/sample-snapshot"/);
   assert.match(page, /Fictional business, illustrative numbers/);
   assert.match(page, /href="\/fix-pack"/);
@@ -111,7 +115,23 @@ test("/thank-you confirms the snapshot request, stays out of the index, and alia
   assert.match(thankYou, /authors: \[\{ name: "CiteScore Team" \}\]/);
   assert.match(thankYou, /Request received\. We reply with your one-page snapshot by email\./);
   assert.match(thankYou, /The CiteScore Team prepares the one-page snapshot and emails it\./);
-  assert.match(thankYou, /There is no set delivery time\./);
+  assert.equal(
+    occurrences(
+      thankYou,
+      "FlowForm delivers the business name, city, service, website, and email. No account and no paid checkout.",
+    ),
+    1,
+  );
+  assert.equal(occurrences(thankYou, "There is no set delivery time."), 1);
+  assert.equal(
+    occurrences(thankYou, "AI answers vary run to run. This is a snapshot, not a ranking."),
+    1,
+  );
+  assert.equal(
+    occurrences(thankYou, "It is not a promise that any assistant will name the business."),
+    1,
+  );
+  assert.equal(occurrences(thankYou, "Fictional business, illustrative numbers."), 1);
   assert.match(thankYou, /What happens next/);
   assert.match(thankYou, /href="\/sample-snapshot"/);
   assert.match(thankYou, /Fictional business, illustrative numbers/);
