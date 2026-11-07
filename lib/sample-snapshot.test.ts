@@ -16,6 +16,56 @@ const footer = readFileSync(new URL("../components/SiteFooter.tsx", import.meta.
 const about = readFileSync(new URL("../app/about/page.tsx", import.meta.url), "utf8");
 const nextConfig = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
 
+test("the request-page preview reuses the example snapshot wording", () => {
+  const excerpt = readFileSync(
+    new URL("../components/SampleSnapshotExcerpt.tsx", import.meta.url),
+    "utf8",
+  );
+  const flat = (source: string) => source.replace(/\s+/g, " ");
+  const preview = flat(excerpt);
+  const sample = flat(page);
+  const phrases = [
+    "Example only: fictional business, fictional competitors, illustrative numbers.",
+    "Example Plumbing Co.",
+    "Plumber · Riverton, USA (a made-up place) · 100 Example Street",
+    "example-plumbing.example",
+    "24 October 2026. A real snapshot prints the day the prompts were asked. This date is a placeholder. These prompts were not run.",
+    "CiteScore Team, as an example.",
+    "best plumber in Riverton, USA",
+    "ChatGPT, logged out",
+    "Sample Rooter Co.",
+    "Fictional Fixture Works",
+    "Demo Drain Co.",
+    "Example Plumbing Co. is not named on either prompt.",
+    "Written for this example. Not a transcript of an assistant.",
+    "Example Trades Directory",
+    "example-trades.example/riverton",
+    "Cited in both the ChatGPT example and the Perplexity example.",
+    "Example City List",
+    "example.com/riverton-trades",
+    "Cited in the Perplexity example only.",
+    "Illustrative Google rating and review count, written so the comparison is visible. Not looked up. Not a research finding.",
+    "Not named",
+    "ChatGPT and Perplexity",
+    "ChatGPT only",
+    "4.6",
+    "22",
+    "4.9",
+    "310",
+    "4.8",
+    "180",
+    "4.7",
+    "95",
+  ];
+  for (const phrase of phrases) {
+    assert.ok(preview.includes(phrase), phrase);
+    assert.ok(sample.includes(phrase), phrase);
+  }
+  assert.match(excerpt, /href="\/sample-snapshot"/);
+  assert.match(excerpt, /See the full example snapshot/);
+  assert.doesNotMatch(excerpt, /Samuel|Lamphier|testimonial|customers served|guarantee/i);
+});
+
 test("example snapshot is fictional and labeled", () => {
   assert.match(page, /Example only: fictional business, fictional competitors, illustrative numbers\./);
   assert.match(page, /Example Plumbing Co\./);

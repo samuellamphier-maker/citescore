@@ -33,6 +33,11 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /<TrustLinks \/>/);
   assert.match(page, /CiteScore Team/);
   assert.match(page, /We reply with the one-page snapshot/);
+  assert.match(page, /What happens after you submit/);
+  assert.match(page, /There is no set delivery time/);
+  assert.match(page, /SampleSnapshotExcerpt/);
+  assert.match(page, /See the full example snapshot/);
+  assert.match(page, /Skip straight to the \{fixPackIntroPriceLabel\} Fix Pack/);
   assert.match(page, /within a few\s+business days after payment/);
   assert.match(page, /business name, city, service, website, and email/);
   assert.match(page, /through FlowForm/);
@@ -44,6 +49,8 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(form, /snapshotMailto/);
   assert.match(form, /EmailRequestFallback/);
   assert.match(form, /Website/);
+  assert.match(form, /All fields are required/);
+  assert.match(form, /We do not ask for passwords, cookies, or content behind a login/);
   assert.match(trust, /href="\/about"/);
   assert.match(trust, /href="\/refunds"/);
   assert.match(trust, /href="\/privacy"/);
