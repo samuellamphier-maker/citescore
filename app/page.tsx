@@ -65,7 +65,7 @@ const faqs = [
   },
   {
     q: "Do you actually query ChatGPT?",
-    a: "The free AI Answer Snapshot does. We ask logged-out ChatGPT and Perplexity a local recommendation prompt and record who they name. The free signal check does not. That check reads public files. AI answers vary run to run.",
+    a: "The free AI Answer Snapshot does. We ask logged-out ChatGPT and Perplexity a local recommendation prompt and record who they name. A public-file read does not. That read looks at public files. AI answers vary run to run.",
   },
   {
     q: "When is the Fix Pack delivered?",
@@ -126,9 +126,9 @@ export default function HomePage() {
                 AI answers vary run to run. This is a snapshot, not a ranking.
                 The{" "}
                 <Link href="/free-check" className="text-forest underline">
-                  free signal check
+                  free AI Answer Snapshot
                 </Link>{" "}
-                is still available. It reads public files and does not ask
+                page also has a public-file read. That read does not ask
                 ChatGPT who it names.
               </p>
             </div>
@@ -415,7 +415,7 @@ export default function HomePage() {
                   </Link>
                   {" · "}
                   <Link href="/geo-audit" className="text-forest underline">
-                    GEO audit
+                    Free AI Answer Snapshot
                   </Link>
                 </p>
               </li>
@@ -496,7 +496,7 @@ export default function HomePage() {
                     {item.q.includes("actually query") ? (
                       <>
                         <Link href="/geo-audit" className="text-forest underline">
-                          GEO audit methodology
+                          Free AI Answer Snapshot
                         </Link>
                         {" · "}
                         <Link
