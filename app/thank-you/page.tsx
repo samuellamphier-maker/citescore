@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ...pageMeta({
     title: "Free snapshot request received",
     description:
-      "We received your free AI Answer Snapshot request. The CiteScore Team prepares the one-page snapshot and emails it. There is no set delivery time. No payment.",
+      "We received your free AI Answer Snapshot request. No payment.",
     path: "/thank-you",
   }),
   authors: [{ name: "CiteScore Team" }],
@@ -33,59 +33,33 @@ export default function ThankYouPage() {
         </h1>
         <p className="mt-4 leading-7 text-ink-soft">
           The CiteScore Team prepares the one-page snapshot and emails it.
-          There is no set delivery time. FlowForm delivers the business name,
-          city, service, website, and email. No account and no paid checkout.
-        </p>
-        <p className="mt-4 leading-7 text-ink-soft">
-          The one-page snapshot records who is named, which sources are cited,
-          and how the Google rating and review count compare. A real snapshot
-          prints the day the prompts were asked. AI answers vary run to run.
-          This is a snapshot, not a ranking. No payment. The free snapshot
-          comes first.
         </p>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What happens next</h2>
         <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
           <li>
-            FlowForm delivers the business name, city, service, website, and
-            email. No account and no paid checkout.
+            FlowForm delivers the business name, city, service, website, and email. No account and no paid checkout.
           </li>
           <li>
             The CiteScore Team asks logged-out ChatGPT and Perplexity who they
             name for that trade and city, and records who is named.
           </li>
           <li>
-            The CiteScore Team emails the one-page snapshot. There is no set
-            delivery time.
+            The CiteScore Team emails the one-page snapshot: who is named,
+            which sources are cited, and how the Google rating and review
+            count compare. A real snapshot prints the day the prompts were
+            asked. There is no set delivery time.
           </li>
         </ol>
         <p className="mt-4 text-sm leading-7 text-ink-soft">
           AI answers vary run to run. This is a snapshot, not a ranking.
         </p>
 
-        <p className="mt-8 text-sm leading-6">
-          <Link href="/sample-snapshot" className="font-medium text-forest underline">
-            See an example snapshot
-          </Link>
-          <span className="text-ink-soft">
-            . Fictional business, illustrative numbers. Not a customer result,
-            and not a live ChatGPT or Perplexity answer.
-          </span>
-        </p>
-        <p className="mt-3 text-sm leading-6">
-          <Link href="/sample-fix-pack" className="font-medium text-forest underline">
-            See a sample Fix Pack
-          </Link>
-          <span className="text-ink-soft">
-            . Illustrative example content, not a real client or real results.
-          </span>
-        </p>
-
         <h2 className="mt-12 font-serif text-3xl tracking-tight">
           Optional next step: the Fix Pack
         </h2>
         <p className="mt-4 leading-7 text-ink-soft">
-          The snapshot is free. The{" "}
+          The{" "}
           <Link href="/fix-pack" className="text-forest underline">
             Fix Pack
           </Link>{" "}
@@ -93,8 +67,7 @@ export default function ThankYouPage() {
           Introductory price {fixPackIntroPriceLabel}. List price{" "}
           {fixPackListPriceLabel}. We email the Fix Pack within a few business
           days after payment, once we have the business name, city, service,
-          and public site URL. It is not a promise that any assistant will name
-          the business. The buy button opens {fixPackIntroPriceLabel} card
+          and public site URL. It is not a promise that any assistant will name the business. The buy button opens {fixPackIntroPriceLabel} card
           checkout.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -106,6 +79,25 @@ export default function ThankYouPage() {
             See what&apos;s in the Fix Pack
           </Link>
         </div>
+        <ul className="mt-6 space-y-3 text-sm leading-6">
+          <li>
+            <Link href="/sample-snapshot" className="font-medium text-forest underline">
+              See an example snapshot
+            </Link>
+            <span className="text-ink-soft">
+              . Fictional business, illustrative numbers. Not a customer result,
+              and not a live ChatGPT or Perplexity answer.
+            </span>
+          </li>
+          <li>
+            <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+              See a sample Fix Pack
+            </Link>
+            <span className="text-ink-soft">
+              . Illustrative example content, not a real client or real results.
+            </span>
+          </li>
+        </ul>
         <p className="mt-6 text-sm leading-6 text-ink-soft">
           We email the snapshot to the address you submitted. We do not sell
           emails.{" "}

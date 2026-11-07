@@ -43,8 +43,7 @@ export default function FixPackPage() {
         </h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">
           The snapshot is free. The Fix Pack is the done-for-you work after
-          you have seen who was named. Introductory price{" "}
-          {fixPackIntroPriceLabel}. List price {fixPackListPriceLabel}.
+          you have seen who was named.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
@@ -64,14 +63,6 @@ export default function FixPackPage() {
           </span>
         </p>
         <FixPackOfferFacts className="mt-4" />
-        <p className="mt-4 text-sm leading-6">
-          <Link href="/sample-snapshot" className="font-medium text-forest underline">
-            See an example snapshot
-          </Link>
-          <span className="text-ink-soft">
-            . Fictional business, illustrative numbers.
-          </span>
-        </p>
         <p className="mt-4 text-sm leading-6 text-ink-soft">
           AI answers vary run to run. This is a snapshot, not a ranking. A
           published test of local ChatGPT answers found that only 40% of
@@ -158,22 +149,11 @@ export default function FixPackPage() {
             free signal check
           </Link>{" "}
           is still there if you only want a read of public files. It does not
-          ask ChatGPT who it names. We email the Fix Pack within a few
-          business days after payment, once we have the business name, city,
-          service, and public site URL.
+          ask ChatGPT who it names.
         </p>
         <div className="mt-6">
           <FixPackBuyLink />
         </div>
-        <p className="mt-4 text-sm leading-6">
-          <Link href="/sample-fix-pack" className="font-medium text-forest underline">
-            See a sample Fix Pack
-          </Link>
-          <span className="text-ink-soft">
-            . Illustrative example content, not a real client or real results.
-          </span>
-        </p>
-        <FixPackOfferFacts className="mt-4" />
         <div className="mt-4">
           <TrustLinks />
         </div>
@@ -194,7 +174,7 @@ export default function FixPackPage() {
         </p>
         <FaqList items={fixPackMoreFaqs()} />
         <div className="max-w-2xl">
-          <InlineSnapshotRequest source="/fix-pack" />
+          <InlineSnapshotRequest source="/fix-pack" caveat={false} />
         </div>
       </main>
       <SiteFooter />

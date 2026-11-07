@@ -92,8 +92,8 @@ test("buying path pages render the facts beside Fix Pack buy buttons", () => {
   for (const source of [home, fixPack, checkout, sample]) {
     assert.match(source, /FixPackOfferFacts/);
   }
-  assert.equal((home.match(/<FixPackOfferFacts/g) ?? []).length, 2);
-  assert.equal((fixPack.match(/<FixPackOfferFacts/g) ?? []).length, 2);
+  assert.equal((home.match(/<FixPackOfferFacts/g) ?? []).length, 1);
+  assert.equal((fixPack.match(/<FixPackOfferFacts/g) ?? []).length, 1);
   assert.match(fixPack, /fixPackProductJsonLd/);
   assert.match(facts, /What you get/);
   assert.match(facts, /How delivery works/);

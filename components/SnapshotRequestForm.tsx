@@ -58,11 +58,17 @@ const fieldIds: Record<FieldKey, string> = {
 export function SnapshotRequestForm({
   defaultService,
   source,
+  caveat = true,
+  deliveryNote = true,
 }: {
   /** Prefills Service when the page is already about one trade. */
   defaultService?: string;
   /** Page path posted as a hidden source field. */
   source?: string;
+  /** Omit when the page already states that answers vary and this is not a ranking. */
+  caveat?: boolean;
+  /** Omit when the page already says where the form sends the fields. */
+  deliveryNote?: boolean;
 } = {}) {
   const [business, setBusiness] = useState("");
   const [city, setCity] = useState("");
@@ -401,12 +407,21 @@ export function SnapshotRequestForm({
         requestReady={ready}
       />
       <p className="text-xs leading-5 text-ink-soft">
-        Sends the business name, city, service, website, and email to{" "}
-        {contactEmail} through FlowForm.
-        {sourceValue ? " This page path is included." : ""} No account and no
-        paid checkout. If that send fails, use the email button or the copy
-        buttons. AI answers vary run to run. This is a snapshot, not a
-        ranking, and not a promise that any assistant will name the business.
+        {deliveryNote ? (
+          <>
+            Sends the business name, city, service, website, and email to{" "}
+            {contactEmail} through FlowForm.
+            {sourceValue ? " This page path is included." : ""} No account and no paid checkout.{" "}
+          </>
+        ) : null}
+        If that send fails, use the email button or the copy buttons.
+        {caveat ? (
+          <>
+            {" "}
+            AI answers vary run to run. This is a snapshot, not a ranking, and
+            not a promise that any assistant will name the business.
+          </>
+        ) : null}
       </p>
     </form>
   );

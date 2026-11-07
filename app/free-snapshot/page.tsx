@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
-import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { FreeSnapshotLead } from "@/components/FreeSnapshotLead";
 import { JsonLd } from "@/components/JsonLd";
 import { SampleSnapshotExcerpt } from "@/components/SampleSnapshotExcerpt";
@@ -43,9 +42,6 @@ export default function FreeSnapshotPage() {
 
         <div className="mt-3 lg:hidden">
           <SampleSnapshotExcerpt variant="compact" />
-          <p className="mt-1 text-xs leading-5 text-ink-soft">
-            Fictional business, illustrative numbers. Not a customer result, and not a live ChatGPT or Perplexity answer.
-          </p>
         </div>
 
         <div className="mt-4 grid items-start gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
@@ -56,7 +52,7 @@ export default function FreeSnapshotPage() {
                 Request the free snapshot.
               </h2>
               <div className="mt-3">
-                <SnapshotRequestForm />
+                <SnapshotRequestForm caveat={false} deliveryNote={false} />
               </div>
               <p className="mt-4 text-sm leading-6 text-ink-soft">
                 Prepared by the CiteScore Team. Sold by {sellerName}.
@@ -68,10 +64,8 @@ export default function FreeSnapshotPage() {
                 Skip straight to the {fixPackIntroPriceLabel} Fix Pack
               </Link>
               <span className="text-ink-soft">
-                . The Fix Pack is the done-for-you work after you have seen who
-                was named. Introductory price {fixPackIntroPriceLabel}. List
-                price {fixPackListPriceLabel}. It is not a promise that any
-                assistant will name the business.
+                {" "}
+                if you already want the done-for-you work.
               </span>
             </p>
 
@@ -88,12 +82,14 @@ export default function FreeSnapshotPage() {
                   that trade and city, and record who is named.
                 </li>
                 <li>
-                  We reply with the one-page snapshot by email. There is no set delivery time.
+                  We reply with the one-page snapshot by email: who is named,
+                  which sources are cited, and how the Google rating and review
+                  count compare. A real snapshot prints the day the prompts were
+                  asked. There is no set delivery time.
                 </li>
               </ol>
               <p className="mt-4 text-sm leading-7 text-ink-soft">
                 AI answers vary run to run. This is a snapshot, not a ranking.
-                The free snapshot comes first.
               </p>
             </section>
           </div>
@@ -122,20 +118,11 @@ export default function FreeSnapshotPage() {
         </div>
 
         <div className="max-w-3xl">
-        <p className="mt-12 leading-7 text-ink-soft">
-          CiteScore asks logged-out ChatGPT and Perplexity who they name for
-          that trade and city. The business receives a one-page snapshot: who
-          is named, which sources are cited, and how the Google rating and
-          review count compare. A real snapshot prints the day the prompts
-          were asked. AI answers vary run to run. This is a snapshot, not a
-          ranking. No payment.
-        </p>
-
         <h2 className="mt-12 font-serif text-3xl tracking-tight">
           Optional next step: the Fix Pack
         </h2>
         <p className="mt-4 leading-7 text-ink-soft">
-          The snapshot is free. The{" "}
+          The{" "}
           <Link href="/fix-pack" className="text-forest underline">
             Fix Pack
           </Link>{" "}
@@ -143,8 +130,7 @@ export default function FreeSnapshotPage() {
           Introductory price {fixPackIntroPriceLabel}. List price{" "}
           {fixPackListPriceLabel}. We email the Fix Pack within a few
           business days after payment, once we have the business name, city,
-          service, and public site URL. It is not a promise that any assistant
-          will name the business. The buy button opens {fixPackIntroPriceLabel}{" "}
+          service, and public site URL. It is not a promise that any assistant will name the business. The buy button opens {fixPackIntroPriceLabel}{" "}
           card checkout.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -164,7 +150,6 @@ export default function FreeSnapshotPage() {
             . The {fixPackIntroPriceLabel} Fix Pack is on that page.
           </span>
         </p>
-        <FixPackOfferFacts className="mt-4" />
         <div className="mt-6">
           <TrustLinks />
         </div>
