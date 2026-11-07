@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { snapshotRequestCtaLabel } from "@/lib/site";
 import {
   STICKY_SNAPSHOT_DISMISS_KEY,
   STICKY_SNAPSHOT_DISMISS_MS,
@@ -9,7 +10,7 @@ import {
   readStickySnapshotDismissed,
 } from "@/lib/sticky-snapshot";
 
-const label = "Free AI Answer Snapshot: see who ChatGPT recommends instead of you";
+const label = snapshotRequestCtaLabel;
 
 function rememberDismissal() {
   try {

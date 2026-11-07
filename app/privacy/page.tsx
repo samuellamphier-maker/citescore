@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FunnelCtaRow } from "@/components/FunnelCtaRow";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
@@ -28,6 +29,7 @@ export default function PrivacyPage() {
           </a>
           .
         </p>
+        <FunnelCtaRow />
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
           <p>
             CiteScore is a one-time audit product. We collect the minimum

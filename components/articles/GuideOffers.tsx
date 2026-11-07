@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { fixPackIntroPriceLabel, templatePackLabel, templatePackUrl } from "@/lib/site";
+import { fixPackPageLinkLabel, templatePackLabel, templatePackUrl } from "@/lib/site";
 
 export function GuideOffers({ freeCheck }: { freeCheck: ReactNode }) {
   return (
@@ -10,7 +10,7 @@ export function GuideOffers({ freeCheck }: { freeCheck: ReactNode }) {
         The <Link href="/free-snapshot">free AI Answer Snapshot</Link> asks
         logged-out ChatGPT and Perplexity who they name for a local business
         and sends one page. AI answers vary run to run. No payment. The{" "}
-        <Link href="/fix-pack">Fix Pack ({fixPackIntroPriceLabel})</Link> is
+        <Link href="/fix-pack">{fixPackPageLinkLabel()}</Link> is
         the done-for-you work after you have seen who was named.
       </p>
       <p>{freeCheck}</p>

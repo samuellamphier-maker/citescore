@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FunnelCtaRow } from "@/components/FunnelCtaRow";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
@@ -25,6 +26,7 @@ export default function RefundsPage() {
         <p className="mt-4 text-sm text-ink-soft">
           Sold by {sellerName}. Effective 23 October 2026.
         </p>
+        <FunnelCtaRow />
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
           <h2 className="font-serif text-2xl text-ink">Fix Pack</h2>
           <p>

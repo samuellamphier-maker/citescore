@@ -66,7 +66,7 @@ export default function HowToGetCitedByAiAnswerEnginesPage() {
         <div dangerouslySetInnerHTML={{ __html: html }} />
       <p>
         <Link href="/free-snapshot">Get a free AI Answer Snapshot</Link>. The{" "}
-        <Link href="/fix-pack">Fix Pack ({fixPackIntroPriceLabel})</Link> is
+        <Link href="/fix-pack">Fix Pack, {fixPackIntroPriceLabel}</Link> is
         the paid next step. The{" "}
         <a href={templatePackUrl} target="_blank" rel="noopener noreferrer">
           {templatePackLabel}

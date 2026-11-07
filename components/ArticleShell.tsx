@@ -18,7 +18,7 @@ import {
   showsGuideSnapshotCallout,
   snapshotOfferForPage,
 } from "@/lib/industry-snapshot";
-import { fixPackIntroPriceLabel } from "@/lib/site";
+import { fixPackPageLinkLabel, snapshotRequestCtaLabel } from "@/lib/site";
 
 type Related = {
   href: string;
@@ -70,10 +70,10 @@ export function ArticleShell({
     related.length === 0
       ? related
       : [
-          { href: "/free-snapshot", label: "Free AI Answer Snapshot" },
+          { href: "/free-snapshot", label: snapshotRequestCtaLabel },
           {
             href: "/fix-pack",
-            label: `Fix Pack (${fixPackIntroPriceLabel})`,
+            label: fixPackPageLinkLabel(),
           },
           ...related.filter(
             (item) => item.href !== "/free-snapshot" && item.href !== "/fix-pack",

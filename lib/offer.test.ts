@@ -36,7 +36,7 @@ test("Fix Pack checkout URL is the live Payhip product", () => {
     source,
     /export const FIX_PACK_CHECKOUT_URL = "https:\/\/payhip\.com\/b\/AjFxC";/,
   );
-  assert.match(source, /Buy the Fix Pack/);
+  assert.match(source, /return fixPackGetCtaLabel\(\)/);
   assert.match(source, /fixPackIntroPriceLabel/);
   assert.match(source, /mailto:\$\{contactEmail\}/);
 });
@@ -240,7 +240,7 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
   assert.match(sticky, /aria-label="Dismiss free snapshot offer"/);
   assert.match(
     sticky,
-    /Free AI Answer Snapshot: see who ChatGPT recommends instead of you/,
+    /const label = snapshotRequestCtaLabel/,
   );
   assert.match(sticky, /href="\/sample-snapshot"/);
   assert.match(sticky, /See an example snapshot/);

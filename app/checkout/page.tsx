@@ -152,7 +152,7 @@ export default async function CheckoutPage({
                 href="/free-snapshot"
                 className="flex h-12 items-center justify-center rounded-lg bg-cream font-medium text-ink hover:bg-paper"
               >
-                Request the free snapshot
+                Get a free AI Answer Snapshot
               </Link>
               <FixPackBuyLink
                 tone="dark"
@@ -162,7 +162,7 @@ export default async function CheckoutPage({
             <FixPackOfferFacts tone="dark" className="mt-5" />
             <p className="mt-3 text-sm leading-6">
               <Link href="/fix-pack" className="text-cream underline">
-                What is in the pack
+                See what&apos;s in the Fix Pack
               </Link>
             </p>
           </Offer>

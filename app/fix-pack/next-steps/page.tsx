@@ -87,7 +87,7 @@ export default function FixPackNextStepsPage() {
         </p>
         <p className="mt-8 text-sm leading-6">
           <Link href="/fix-pack" className="font-medium text-forest underline">
-            What is in the Fix Pack
+            See what&apos;s in the Fix Pack
           </Link>
         </p>
       </main>

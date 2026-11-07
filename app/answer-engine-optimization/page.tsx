@@ -36,8 +36,8 @@ const faqs = [
 ];
 
 const related = [
-  { href: "/free-snapshot", label: "Free AI Answer Snapshot" },
-  { href: "/fix-pack", label: `Fix Pack (${fixPackIntroPriceLabel})` },
+  { href: "/free-snapshot", label: "Get a free AI Answer Snapshot" },
+  { href: "/fix-pack", label: `Fix Pack, ${fixPackIntroPriceLabel}` },
   { href: "/sample-snapshot", label: "Example snapshot" },
   { href: "/sample-fix-pack", label: "Example Fix Pack" },
   { href: "/blog/what-is-geo", label: "What is GEO?" },

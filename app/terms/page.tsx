@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FunnelCtaRow } from "@/components/FunnelCtaRow";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
@@ -30,6 +31,7 @@ export default function TermsPage() {
         <p className="mt-4 text-sm text-ink-soft">
           Effective 23 October 2026. Sold by CiteScore.
         </p>
+        <FunnelCtaRow />
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
           <p>
             These terms cover the digital products CiteScore sells on this

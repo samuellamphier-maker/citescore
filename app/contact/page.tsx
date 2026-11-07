@@ -15,8 +15,8 @@ export const metadata: Metadata = pageMeta({
 const include = ["Business name", "Website", "City or trade"] as const;
 
 const pages = [
-  { href: "/free-snapshot", label: "Free AI Answer Snapshot" },
-  { href: "/fix-pack", label: "AI Visibility Fix Pack" },
+  { href: "/free-snapshot", label: "Get a free AI Answer Snapshot" },
+  { href: "/fix-pack", label: `Fix Pack, ${fixPackIntroPriceLabel}` },
   { href: "/sample-snapshot", label: "Example snapshot" },
   { href: "/sample-fix-pack", label: "Example Fix Pack" },
   { href: "/refunds", label: "Refunds" },
@@ -50,7 +50,7 @@ export default function ContactPage() {
           </Link>
           <span className="text-ink-soft"> · </span>
           <Link href="/fix-pack" className="font-medium text-forest underline">
-            See the Fix Pack
+            See what&apos;s in the Fix Pack
           </Link>
           <span className="text-ink-soft">
             . Example pages use illustrative numbers.

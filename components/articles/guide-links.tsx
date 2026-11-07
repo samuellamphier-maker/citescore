@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { fixPackIntroPriceLabel } from "@/lib/site";
+import { fixPackPageLinkLabel, snapshotRequestCtaLabel } from "@/lib/site";
 
 export const preClass =
   "overflow-x-auto rounded-xl border border-rule bg-cream p-4 font-mono text-[13px] leading-6 text-ink";
 
 const shared = [
-  { href: "/free-snapshot", label: "Free AI Answer Snapshot" },
-  { href: "/fix-pack", label: `Fix Pack (${fixPackIntroPriceLabel})` },
+  { href: "/free-snapshot", label: snapshotRequestCtaLabel },
+  { href: "/fix-pack", label: fixPackPageLinkLabel() },
   { href: "/free-check", label: "Free check" },
   { href: "/checkout", label: "Checkout" },
   { href: "/ai-crawlers", label: "GPTBot, PerplexityBot, and Google-Extended" },
@@ -35,7 +35,7 @@ export function CheckLinks({ children }: { children: ReactNode }) {
         The <Link href="/free-snapshot">free AI Answer Snapshot</Link> asks
         logged-out ChatGPT and Perplexity who they name for a local business
         and sends one page. AI answers vary run to run. No payment. The{" "}
-        <Link href="/fix-pack">Fix Pack ({fixPackIntroPriceLabel})</Link> is
+        <Link href="/fix-pack">{fixPackPageLinkLabel()}</Link> is
         the done-for-you work after you have seen who was named.
       </p>
       <p>{children}</p>

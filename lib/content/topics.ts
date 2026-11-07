@@ -305,6 +305,7 @@ export const topicPages: TopicPage[] = [
   {
     path: "/free-check",
     title: "Free AI Answer Snapshot",
+    navLabel: "Public-file check",
     description:
       "Request a free AI Answer Snapshot: who ChatGPT and Perplexity name for one local business. The $49 Fix Pack is the paid next step. A public-file signal check sits below. It reads robots.txt, the sitemap, JSON-LD, and the homepage, and it does not query those assistants.",
     kicker: "Free · no checkout",

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const steps = [
   {
     n: "01",
-    title: "Request a free snapshot",
+    title: "Get a free AI Answer Snapshot",
     body: "Submit the business name, city, service, website, and email. We ask logged-out ChatGPT and Perplexity who they name for that trade and city. No payment.",
   },
   {
@@ -125,11 +125,14 @@ export default function HomePage() {
               <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
                 AI answers vary run to run. This is a snapshot, not a ranking.
                 The{" "}
-                <Link href="/free-check" className="text-forest underline">
+                <Link href="/free-snapshot" className="text-forest underline">
                   free AI Answer Snapshot
                 </Link>{" "}
-                page also has a public-file read. That read does not ask
-                ChatGPT who it names.
+                asks who is named. The{" "}
+                <Link href="/free-check" className="text-forest underline">
+                  public-file check
+                </Link>{" "}
+                does not ask ChatGPT who it names.
               </p>
             </div>
 
@@ -414,8 +417,8 @@ export default function HomePage() {
                     vs Peec AI
                   </Link>
                   {" · "}
-                  <Link href="/geo-audit" className="text-forest underline">
-                    Free AI Answer Snapshot
+                  <Link href="/free-snapshot" className="text-forest underline">
+                    Get a free AI Answer Snapshot
                   </Link>
                 </p>
               </li>
@@ -444,7 +447,7 @@ export default function HomePage() {
                   <p className="kicker">{page.kicker}</p>
                   <h3 className="mt-3 font-serif text-xl">
                     <Link href={page.path} className="hover:text-forest">
-                      {page.title}
+                      {page.navLabel ?? page.title}
                     </Link>
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-ink-soft">
@@ -495,8 +498,8 @@ export default function HomePage() {
                     ) : null}
                     {item.q.includes("actually query") ? (
                       <>
-                        <Link href="/geo-audit" className="text-forest underline">
-                          Free AI Answer Snapshot
+                        <Link href="/free-snapshot" className="text-forest underline">
+                          Get a free AI Answer Snapshot
                         </Link>
                         {" · "}
                         <Link
