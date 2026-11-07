@@ -114,8 +114,7 @@ export default function CourseSchemaGeneratorPage() {
           engine that quotes that page still has to decide which string is the course, which string is the school, and
           which number is the price. <a href={courseType}>schema.org Course</a> is that decision written down. It
           defines <code>name</code>, <code>description</code>, <code>provider</code>, <code>url</code>,{" "}
-          <code>offers</code>, and <code>hasCourseInstance</code>. A parser, including the ones behind ChatGPT,
-          Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without guessing which line is the
+          <code>offers</code>, and <code>hasCourseInstance</code>. A parser can read those labels without guessing which line is the
           fee. The script does not create a citation, and it does not rank the page. The same point, for You.com’s
           cited answers, is on <Link href="/how-to-get-cited-by-you-com">how to get cited by You.com</Link>.
           DuckDuckGo’s Search Assist answers are on{" "}

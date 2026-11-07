@@ -131,8 +131,7 @@ export default function ServiceSchemaGeneratorPage() {
           string is the service, which string is the firm, and which number is the price.{" "}
           <a href={serviceType}>schema.org Service</a> is that decision written down. It defines <code>name</code>,{" "}
           <code>serviceType</code>, <code>description</code>, <code>provider</code>, <code>areaServed</code>,{" "}
-          <code>url</code>, and <code>offers</code>. A parser, including the ones behind ChatGPT, Perplexity, Claude,
-          Gemini, and Google AI Overviews, can read those labels without guessing which line is the fee. The script
+          <code>url</code>, and <code>offers</code>. A parser can read those labels without guessing which line is the fee. The script
           does not create a citation, and it does not rank the page. The same point, for Brave Search’s AI answers, is
           on <Link href="/how-to-get-cited-by-brave-search">how to get cited by Brave Search</Link>.
         </p>

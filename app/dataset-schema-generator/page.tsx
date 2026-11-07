@@ -133,8 +133,7 @@ export default function DatasetSchemaGeneratorPage() {
           A dataset page can put the title in the H1, a paragraph of summary under it, a license link in the footer,
           and a CSV link in a button. An answer engine that quotes the page still has to decide which string is the
           name, which URL is the license, and which link is the file. <a href={datasetType}>schema.org Dataset</a> is
-          that decision written down. A parser, including the ones behind ChatGPT, Perplexity, Claude, Gemini, and
-          Google AI Overviews, can read those labels without guessing which link was the download. The script does not
+          that decision written down. A parser can read those labels without guessing which link was the download. The script does not
           create a citation, and it does not rank the page.
         </p>
         <p>

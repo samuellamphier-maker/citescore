@@ -10,8 +10,8 @@ const topic = getTopic("/organization-schema-generator");
 
 const faqs = [
   {
-    q: "Why does Organization schema help an answer engine identify a brand?",
-    a: "It repeats the name, canonical URL, logo, description, and profiles the page already shows, in a shape a parser can read without guessing which words are the brand. ChatGPT, Perplexity, Claude, and Google AI Overviews can use that label when they extract an entity. The script does not create a citation, and it does not rank the page. A name that exists only inside the script describes a brand the page does not show.",
+    q: "Does Organization schema make an answer engine name the brand?",
+    a: "No. It repeats the name, canonical URL, logo, description, and profiles the page already shows, in a shape a parser can read without guessing which words are the brand. The script does not create a citation, and it does not rank the page. A name that exists only inside the script describes a brand the page does not show.",
   },
   {
     q: "Where should the Organization script go?",
@@ -105,10 +105,10 @@ export default function OrganizationSchemaGeneratorPage() {
         related={related.filter((item) => item.href !== topic.path)}
       >
         <OrganizationSchemaGenerator />
-        <h2>Why answer engines use the name</h2>
+        <h2>What the name repeats</h2>
         <p>
           An answer engine has to decide which string is the brand before it can mention the brand. Organization JSON-LD is that label: the name, the canonical URL, and the profiles that are actually yours, copied from the page into{" "}
-          <code>application/ld+json</code>. Google’s structured-data docs describe JSON-LD as a way to state facts that are already visible. The same habit helps a model that is extracting an entity from HTML. The{" "}
+          <code>application/ld+json</code>. Google’s structured-data docs describe JSON-LD as a way to state facts that are already visible. The script does not make an answer engine cite the page. The{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link> shows the fields CiteScore publishes on its own pages, and the fields it leaves out.
         </p>
         <p>

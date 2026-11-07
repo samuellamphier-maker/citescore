@@ -24,7 +24,7 @@ const labels: Record<string, string> = {
  * Industry phrase for a schema generator that is already about one trade.
  * Generic generators are omitted and get the unscoped snapshot CTA.
  */
-const schemaIndustries: Record<string, string> = {
+export const schemaIndustries: Record<string, string> = {
   "attorney-schema-generator": "law firm",
   "dentist-schema-generator": "dental",
   "electrician-schema-generator": "electrician",
@@ -39,6 +39,27 @@ const schemaIndustries: Record<string, string> = {
 /** Schema generators that are already about one local business or trade. */
 export function industrySchemaGeneratorPaths() {
   return Object.keys(schemaIndustries).map((id) => `/${id}`);
+}
+
+/**
+ * Who the free snapshot asks about on a schema generator.
+ * "local" and "dental" are categories, so the sentence names a business a person would ask for.
+ */
+const schemaAudience: Record<string, string> = {
+  "law firm": "a law firm in your city",
+  dental: "a dentist in your city",
+  electrician: "an electrician in your city",
+  hotel: "a hotel in your city",
+  local: "a local business in your city",
+  clinic: "a clinic in your city",
+  plumber: "a plumber in your city",
+  "real estate": "a real estate agent in your city",
+  restaurant: "a restaurant in your city",
+};
+
+export function schemaGeneratorAudience(industry?: string) {
+  if (!industry) return "your trade in your city";
+  return schemaAudience[industry] ?? `a ${industry} in your city`;
 }
 
 export type InlineSnapshotRequest = {
@@ -348,6 +369,7 @@ export function contentStickySnapshotHref(input: {
     if (trade) return trade;
   }
   if (stickySnapshotUsesOnPageForm(path)) return "#snapshot";
+  if (path.endsWith("-schema-generator")) return "#snapshot";
   return "/free-snapshot";
 }
 

@@ -114,8 +114,7 @@ export default function QaPageSchemaGeneratorPage() {
           <a href={qaType}>schema.org QAPage</a> is that decision written down. The question is{" "}
           <code>mainEntity</code>. The short form is <code>name</code>. The longer form, when the page has one, is{" "}
           <code>text</code>. The accepted reply is <code>acceptedAnswer</code>. The other replies are{" "}
-          <code>suggestedAnswer</code>. A parser, including the ones behind ChatGPT, Perplexity, Claude, and Google AI
-          Overviews, can read those labels without guessing. The script does not create a citation, and it does not
+          <code>suggestedAnswer</code>. A parser can read those labels without guessing. The script does not create a citation, and it does not
           rank the page. The practical version for a software company is{" "}
           <Link href="/ai-search-visibility-for-b2b-saas">AI search visibility for B2B SaaS</Link>.
         </p>

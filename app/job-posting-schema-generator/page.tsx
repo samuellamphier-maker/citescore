@@ -116,8 +116,7 @@ export default function JobPostingSchemaGeneratorPage() {
           written down. It defines <code>title</code>, <code>description</code>, <code>datePosted</code>,{" "}
           <code>validThrough</code>, <code>employmentType</code>, <code>hiringOrganization</code>,{" "}
           <code>jobLocation</code>, <code>jobLocationType</code>, <code>applicantLocationRequirements</code>,{" "}
-          <code>baseSalary</code>, and <code>directApply</code>. A parser, including the ones behind ChatGPT,
-          Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without guessing which line is
+          <code>baseSalary</code>, and <code>directApply</code>. A parser can read those labels without guessing which line is
           the pay. The script does not create a citation, and it does not rank the page. The same point, for
           DuckDuckGo’s AI-assisted answers, is on{" "}
           <Link href="/how-to-get-cited-by-duckduckgo-ai">how to get cited by DuckDuckGo</Link>.

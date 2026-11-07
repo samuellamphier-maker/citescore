@@ -137,8 +137,7 @@ export default function HotelSchemaGeneratorPage() {
           A hotel page can put the name in the H1, the address in the footer, the official stars beside a badge, and
           the check-in time in a policy paragraph. An answer engine that quotes the page still has to decide which
           string is the name, which number is the star class, and which clock time is check-in.{" "}
-          <a href={hotelType}>schema.org Hotel</a> is that decision written down. A parser, including the ones behind
-          ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without guessing which
+          <a href={hotelType}>schema.org Hotel</a> is that decision written down. A parser can read those labels without guessing which
           number was the guest average. The script does not create a citation, and it does not rank the page.
         </p>
         <p>

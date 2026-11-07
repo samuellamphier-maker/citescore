@@ -140,8 +140,7 @@ export default function DentistSchemaGeneratorPage() {
           A dental office page can put the name in the H1, the specialty in a sentence, the hours in a footer, and the
           phone in a header. An answer engine that quotes the page still has to decide which string is the office, which
           word is the specialty, and which clock time is the public hours. <a href={dentist}>schema.org Dentist</a> is
-          that decision written down. A parser, including the ones behind ChatGPT, Perplexity, Claude, Gemini, and
-          Google AI Overviews, can read those labels without guessing which URL was a patient portal. The script does
+          that decision written down. A parser can read those labels without guessing which URL was a patient portal. The script does
           not create a citation, and it does not rank the page. CiteScore does not give dental or medical advice.
         </p>
         <p>

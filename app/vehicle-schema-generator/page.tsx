@@ -138,8 +138,7 @@ export default function VehicleSchemaGeneratorPage() {
           A vehicle page can put the name in the H1, the brand in a caption, the model year beside the price, and the
           VIN in a specification table. An answer engine that quotes the page still has to decide which string is the
           name, which number is the odometer, and which code is the VIN. <a href={vehicleType}>schema.org Vehicle</a>{" "}
-          is that decision written down. A parser, including the ones behind ChatGPT, Perplexity, Claude, Gemini, and
-          Google AI Overviews, can read those labels without guessing which number was the price. The script does not
+          is that decision written down. A parser can read those labels without guessing which number was the price. The script does not
           create a citation, and it does not rank the page.
         </p>
         <p>

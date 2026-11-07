@@ -115,8 +115,7 @@ export default function RecipeSchemaGeneratorPage() {
           written down. It defines <code>name</code>, <code>image</code>, <code>description</code>, <code>author</code>
           , <code>prepTime</code>, <code>cookTime</code>, <code>totalTime</code>, <code>recipeYield</code>,{" "}
           <code>recipeIngredient</code>, <code>recipeInstructions</code>, <code>nutrition</code>, and{" "}
-          <code>aggregateRating</code>. A parser, including the ones behind ChatGPT, Perplexity, Claude, Gemini, and
-          Google AI Overviews, can read those labels without guessing which line is the yield. The script does not
+          <code>aggregateRating</code>. A parser can read those labels without guessing which line is the yield. The script does not
           create a citation, and it does not rank the page. The same point, for Comet’s browser assistant, is on{" "}
           <Link href="/how-to-get-cited-by-perplexity-comet">how to get cited by Perplexity Comet</Link>. DuckDuckGo’s
           Search Assist answers are on{" "}

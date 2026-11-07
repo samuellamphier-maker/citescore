@@ -148,8 +148,7 @@ export default function ReviewSchemaGeneratorPage() {
           it came from, and which paragraph is one person’s review. <code>AggregateRating</code> and <code>Review</code>{" "}
           are that decision written down. schema.org defines <code>ratingValue</code>, <code>reviewCount</code>,{" "}
           <code>ratingCount</code>, <code>bestRating</code>, <code>worstRating</code>, <code>reviewBody</code>,{" "}
-          <code>author</code>, and <code>datePublished</code>. A parser, including the ones behind ChatGPT, Perplexity,
-          Claude, and Google AI Overviews, can read those labels without guessing which number is the price. The script
+          <code>author</code>, and <code>datePublished</code>. A parser can read those labels without guessing which number is the price. The script
           does not create a citation, and it does not rank the page. The same point, for the other answer engines, is
           on <Link href="/how-to-get-cited-by-mistral">how to get cited by Mistral</Link> and the{" "}
           <Link href="/schema-markup-for-ai-search">schema guide</Link>.

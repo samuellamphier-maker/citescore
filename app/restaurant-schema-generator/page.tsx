@@ -135,8 +135,7 @@ export default function RestaurantSchemaGeneratorPage() {
           A restaurant page can put the name in the H1, the cuisine in a sentence, the hours in a footer, and the menu
           on another URL. An answer engine that quotes the page still has to decide which string is the name, which
           words are the cuisine, and which link is the menu. <a href={restaurantType}>schema.org Restaurant</a> is that
-          decision written down. A parser, including the ones behind ChatGPT, Perplexity, Claude, Gemini, and Google AI
-          Overviews, can read those labels without guessing which number was a dish price. The script does not create a
+          decision written down. A parser can read those labels without guessing which number was a dish price. The script does not create a
           citation, and it does not rank the page.
         </p>
         <p>

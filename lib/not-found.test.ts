@@ -75,6 +75,8 @@ const purchaseAndTrustAliases = [
   { source: "/offer", destination: "/free-snapshot" },
   { source: "/start", destination: "/free-snapshot" },
   { source: "/case-studies", destination: "/sample-snapshot" },
+  { source: "/case-study", destination: "/sample-snapshot" },
+  { source: "/before-after", destination: "/sample-snapshot" },
   { source: "/testimonials", destination: "/sample-snapshot" },
   { source: "/reviews", destination: "/sample-snapshot" },
   { source: "/security", destination: "/.well-known/security.txt" },
