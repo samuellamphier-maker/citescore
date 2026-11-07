@@ -103,7 +103,7 @@ export default function HowToSchemaGeneratorPage() {
         <HowToSchemaGenerator />
         <h2>Why the steps are written twice</h2>
         <p>
-          An answer engine asked how to do something has to decide which sentences are steps, which words are supplies, and which sentences are asides. HowTo JSON-LD is that decision written down. schema.org defines the type as a procedure: a name, a description, <code>totalTime</code> as an ISO 8601 duration, <code>estimatedCost</code> as a MonetaryAmount, each supply as a HowToSupply, each tool as a HowToTool, and an ordered list of HowToStep values. A parser, including the ones behind ChatGPT, Perplexity, Claude, and Google AI Overviews, can read those labels without guessing which paragraph is step two.
+          An answer engine asked how to do something has to decide which sentences are steps, which words are supplies, and which sentences are asides. HowTo JSON-LD is that decision written down. schema.org defines the type as a procedure: a name, a description, <code>totalTime</code> as an ISO 8601 duration, <code>estimatedCost</code> as a MonetaryAmount, each supply as a HowToSupply, each tool as a HowToTool, and an ordered list of HowToStep values. A parser can read those labels without guessing which paragraph is step two.
         </p>
         <p>
           Google Search stopped showing How-to rich results on 13 September 2023, on desktop and on mobile. The Search Central post of 14 September 2023 calls the result type deprecated, and the How-to documentation was removed. This script will not put a step list under a blue link. Keep it when a person can already read the steps. It does not create a citation, and it does not rank the page.

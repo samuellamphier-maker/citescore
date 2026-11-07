@@ -115,8 +115,7 @@ export default function EventSchemaGeneratorPage() {
           whether it is in a room or on a URL, and what a ticket costs. Event is that decision written down. schema.org
           defines the type with a <code>name</code>, a <code>startDate</code>, an <code>endDate</code>, an{" "}
           <code>eventStatus</code>, an <code>eventAttendanceMode</code>, a <code>location</code>, an <code>image</code>,
-          a <code>description</code>, an <code>organizer</code>, and <code>offers</code>. A parser, including the ones
-          behind ChatGPT, Perplexity, Claude, DeepSeek, and Google AI Overviews, can read those labels without guessing
+          a <code>description</code>, an <code>organizer</code>, and <code>offers</code>. A parser can read those labels without guessing
           which line is the date. The script does not create a citation, and it does not rank the page.
         </p>
         <p>

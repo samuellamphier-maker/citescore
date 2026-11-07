@@ -115,8 +115,7 @@ export default function VideoSchemaGeneratorPage() {
           thumbnail, how long the video is, and which URL is the file. VideoObject is that decision written down.
           schema.org defines the type with a <code>name</code>, a <code>description</code>, a <code>thumbnailUrl</code>
           , an <code>uploadDate</code>, a <code>duration</code>, a <code>contentUrl</code>, an <code>embedUrl</code>,
-          and an optional <code>publisher</code>. A parser, including the ones behind ChatGPT, Perplexity, Claude, and
-          Google AI Overviews, can read those labels without guessing which link is the player. The script does not
+          and an optional <code>publisher</code>. A parser can read those labels without guessing which link is the player. The script does not
           create a citation, and it does not rank the page.
         </p>
         <p>

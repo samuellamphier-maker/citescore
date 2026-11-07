@@ -104,7 +104,7 @@ export default function ProductSchemaGeneratorPage() {
         <ProductSchemaGenerator />
         <h2>Why the price is written twice</h2>
         <p>
-          Google’s product documentation says structured data on a product page can show price, availability, and ratings in Search results, including Google Images and Google Lens. Each experience decides whether to show them. Product JSON-LD is the labeled copy: the name, the image, the brand, the SKU, and an Offer with the price, an ISO 4217 currency, and one availability URL. A parser extracting a product from HTML can read the same labels, which is the habit that helps an answer engine tell the price from the surrounding page. The script does not create a citation, and it does not rank the page.
+          Google’s product documentation says structured data on a product page can show price, availability, and ratings in Search results, including Google Images and Google Lens. Each experience decides whether to show them. Product JSON-LD is the labeled copy: the name, the image, the brand, the SKU, and an Offer with the price, an ISO 4217 currency, and one availability URL. A parser extracting a product from HTML can read the same labels. The script does not create a citation, and it does not rank the page.
         </p>
         <p>
           The copy block is one <code>script</code> tag. Paste it into the HTML the server sends on the product URL, not on every guide. The{" "}

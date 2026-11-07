@@ -11,7 +11,7 @@ const topic = getTopic("/person-schema-generator");
 const faqs = [
   {
     q: "Does Person schema make an answer engine cite the author?",
-    a: "No. The script repeats the name, job title, URL, image, profiles, employer, school, and topics a person can already see. ChatGPT, Perplexity, Claude, and Google AI Overviews can use that label when they extract an entity. The script does not create expertise, and it does not create a citation. A fact that exists only inside the script describes a person the page does not show.",
+    a: "No. The script repeats the name, job title, URL, image, profiles, employer, school, and topics a person can already see. A parser can read that label. The script does not create expertise, and it does not create a citation. A fact that exists only inside the script describes a person the page does not show.",
   },
   {
     q: "How does a Person block relate to E-E-A-T?",

@@ -343,7 +343,7 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
   );
   assert.equal(
     contentStickySnapshotHref({ ctaId: "faq-schema-generator" }),
-    "/free-snapshot",
+    "#snapshot",
   );
   assert.equal(
     contentStickySnapshotHref({ guidePath: "/how-to-get-cited-by-chatgpt" }),
@@ -377,7 +377,10 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
       topic.path === "/llms-txt-generator" ||
       topic.path === "/robots-txt-ai-crawler-generator";
     const highIntent = (highIntentStickyPaths as readonly string[]).includes(topic.path);
-    if (legacy) {
+    if (topic.path.endsWith("-schema-generator")) {
+      stickyTopics += 1;
+      assert.equal(href, "#snapshot", topic.path);
+    } else if (legacy) {
       stickyTopics += 1;
       assert.ok(href?.startsWith("/free-snapshot"), topic.path);
     } else if (highIntent) {
@@ -400,7 +403,9 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
   assert.match(shell, /variant=\{generalSnapshot \? "general" : "industry"\}/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
   assert.match(shell, /snapshotOffer \|\| generalSnapshot/);
-  assert.match(shell, /inlineSnapshotRequestForPath\(\s*shellContentPath\(\{ guidePath, ctaId \}\),\s*\)/);
+  assert.match(shell, /const contentPath = shellContentPath\(\{ guidePath, ctaId \}\)/);
+  assert.match(shell, /inlineSnapshotRequestForPath\(\s*contentPath\s*\)/);
+  assert.match(shell, /<SchemaGeneratorLead/);
   assert.match(shell, /<InlineSnapshotRequest/);
   assert.match(shell, /defaultService=\{inlineSnapshot\.service\}/);
   assert.match(shell, /source=\{inlineSnapshot\.source\}/);

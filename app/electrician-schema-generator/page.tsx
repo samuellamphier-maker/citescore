@@ -142,8 +142,7 @@ export default function ElectricianSchemaGeneratorPage() {
           a footer, the phone in a header, and a license number in a line under the name. An answer engine that quotes
           the page still has to decide which string is the business, which words are a place served, which clock time
           is the public hours, and which token is the license. <a href={electrician}>schema.org Electrician</a> is that
-          decision written down. A parser, including the ones behind ChatGPT, Perplexity, Claude, Gemini, and Google AI
-          Overviews, can read those labels without guessing which URL was a customer’s invoice. The script does not
+          decision written down. A parser can read those labels without guessing which URL was a customer’s invoice. The script does not
           create a citation, and it does not rank the page. CiteScore does not give electrical, licensing, or code
           advice.
         </p>

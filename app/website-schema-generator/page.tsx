@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Does WebSite schema make an answer engine cite the site?",
-    a: "No. The script repeats the name, an alternate name, the URL, an optional search template, and an optional publisher a person can already see. ChatGPT, Perplexity, Claude, Google AI Overviews, and Meta AI can use that label when they extract an entity. The script does not create a citation, and it does not rank the page. A name that exists only inside the script describes a site the page does not show.",
+    a: "No. The script repeats the name, an alternate name, the URL, an optional search template, and an optional publisher a person can already see. A parser can read that label. The script does not create a citation, and it does not rank the page. A name that exists only inside the script describes a site the page does not show.",
   },
   {
     q: "When should the search URL template be included?",
@@ -115,8 +115,7 @@ export default function WebsiteSchemaGeneratorPage() {
           as a website: a <code>name</code>, an optional <code>alternateName</code>, a <code>url</code>, an optional{" "}
           <code>publisher</code>, and an optional <code>potentialAction</code>. A SearchAction names the site’s own
           search with an <code>urlTemplate</code> and <code>query-input</code> of{" "}
-          <code>required name=search_term_string</code>. A parser, including the ones behind ChatGPT, Perplexity,
-          Claude, Google AI Overviews, and Meta AI, can read those labels without guessing which words in the header
+          <code>required name=search_term_string</code>. A parser can read those labels without guessing which words in the header
           are the brand.
         </p>
         <p>

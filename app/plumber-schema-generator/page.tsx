@@ -138,8 +138,7 @@ export default function PlumberSchemaGeneratorPage() {
           A plumbing business page can put the name in the H1, the places it serves in a sentence, the hours in a
           footer, and the phone in a header. An answer engine that quotes the page still has to decide which string is
           the business, which words are a place served, and which clock time is the public hours.{" "}
-          <a href={plumber}>schema.org Plumber</a> is that decision written down. A parser, including the ones behind
-          ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without guessing which
+          <a href={plumber}>schema.org Plumber</a> is that decision written down. A parser can read those labels without guessing which
           URL was a customer’s invoice. The script does not create a citation, and it does not rank the page. CiteScore
           does not give plumbing, licensing, or code advice.
         </p>

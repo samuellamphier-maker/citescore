@@ -204,6 +204,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/case-study",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
+        source: "/before-after",
+        destination: "/sample-snapshot",
+        permanent: true,
+      },
+      {
         source: "/testimonials",
         destination: "/sample-snapshot",
         permanent: true,

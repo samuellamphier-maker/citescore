@@ -133,8 +133,7 @@ export default function PodcastSchemaGeneratorPage() {
           list, and a host credit in the footer. An episode page can add a date, a length, and a download. An answer
           engine that quotes the page still has to decide which string is the show, which URL is the feed, and which
           file is that episode. <a href={seriesType}>schema.org PodcastSeries</a> and{" "}
-          <a href={episodeType}>schema.org PodcastEpisode</a> are that decision written down. A parser, including the
-          ones behind ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without
+          <a href={episodeType}>schema.org PodcastEpisode</a> are that decision written down. A parser can read those labels without
           guessing which link was the RSS feed. The script does not create a citation, and it does not rank the page.
         </p>
         <p>

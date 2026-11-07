@@ -138,8 +138,7 @@ export default function MedicalClinicSchemaGeneratorPage() {
           A clinic page can put the name in the H1, the specialty in a sentence, the hours in a footer, and the phone
           in a header. An answer engine that quotes the page still has to decide which string is the clinic, which
           words are the specialty, and which clock time is the public hours.{" "}
-          <a href={clinicType}>schema.org MedicalClinic</a> is that decision written down. A parser, including the ones
-          behind ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without guessing
+          <a href={clinicType}>schema.org MedicalClinic</a> is that decision written down. A parser can read those labels without guessing
           which URL was a patient portal. The script does not create a citation, and it does not rank the page.
           CiteScore does not give medical advice.
         </p>

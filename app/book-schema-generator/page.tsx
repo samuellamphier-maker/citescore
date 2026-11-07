@@ -132,8 +132,7 @@ export default function BookSchemaGeneratorPage() {
           and which number is the ISBN. <a href={bookType}>schema.org Book</a> is that decision written down. It
           defines <code>name</code>, <code>author</code>, <code>isbn</code>, <code>bookFormat</code>,{" "}
           <code>numberOfPages</code>, <code>datePublished</code>, <code>publisher</code>, <code>inLanguage</code>,{" "}
-          <code>description</code>, <code>image</code>, <code>url</code>, and <code>workExample</code>. A parser,
-          including the ones behind ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels
+          <code>description</code>, <code>image</code>, <code>url</code>, and <code>workExample</code>. A parser can read those labels
           without guessing which line was the ISBN. The script does not create a citation, and it does not rank the
           page.
         </p>

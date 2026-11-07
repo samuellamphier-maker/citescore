@@ -135,8 +135,7 @@ export default function MovieSchemaGeneratorPage() {
           A film page can put the title in the H1, a one-sentence description under it, a director credit in the
           footer, and a running time next to the poster. An answer engine that quotes the page still has to decide
           which string is the title, which name is the director, and which number is the length.{" "}
-          <a href={movieType}>schema.org Movie</a> is that decision written down. A parser, including the ones behind
-          ChatGPT, Perplexity, Claude, Gemini, and Google AI Overviews, can read those labels without guessing which
+          <a href={movieType}>schema.org Movie</a> is that decision written down. A parser can read those labels without guessing which
           credit was the director. The script does not create a citation, and it does not rank the page.
         </p>
         <p>

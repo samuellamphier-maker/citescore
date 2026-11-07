@@ -5,6 +5,7 @@ import { HomeServiceGuideCallout } from "@/components/HomeServiceGuideCallout";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { IndustrySnapshotCta } from "@/components/IndustrySnapshotCta";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { SchemaGeneratorLead } from "@/components/SchemaGeneratorLead";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TradeGuideStickyCta } from "@/components/TradeGuideStickyCta";
@@ -56,9 +57,9 @@ export function ArticleShell({
 }: Props) {
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
   const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
-  const inlineSnapshot = inlineSnapshotRequestForPath(
-    shellContentPath({ guidePath, ctaId }),
-  );
+  const contentPath = shellContentPath({ guidePath, ctaId });
+  const inlineSnapshot = inlineSnapshotRequestForPath(contentPath);
+  const schemaGenerator = Boolean(contentPath?.endsWith("-schema-generator"));
   const stickyHref = contentStickySnapshotHref({ guidePath, ctaId });
   const generalSnapshot =
     !snapshotOffer &&
@@ -79,34 +80,54 @@ export function ArticleShell({
             (item) => item.href !== "/free-snapshot" && item.href !== "/fix-pack",
           ),
         ];
+  const byline = publishedAt ? (
+    <p className="mt-3 text-sm text-ink-soft">
+      {formatDisplayDate(publishedAt)}
+      {author ? ` · ${author}` : null}
+      {minutes ? ` · ${minutes} min read` : null}
+    </p>
+  ) : null;
   return (
     <>
       <SiteHeader />
       <main id="main" className="mx-auto w-full max-w-2xl flex-1 px-5 py-14">
         <p className="kicker">{kicker}</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">{title}</h1>
-        {homeService ? (
-          <div className="mt-6">
-            <HomeServiceGuideCallout trade={homeService} />
-          </div>
-        ) : null}
-        <p className="mt-4 text-lg leading-8 text-ink-soft">{dek}</p>
-        {publishedAt ? (
-          <p className="mt-3 text-sm text-ink-soft">
-            {formatDisplayDate(publishedAt)}
-            {author ? ` · ${author}` : null}
-            {minutes ? ` · ${minutes} min read` : null}
-          </p>
-        ) : null}
-        {!homeService && (snapshotOffer || generalSnapshot) ? (
-          <div className="mt-8">
-            <IndustrySnapshotCta
-              industry={snapshotOffer?.industry}
-              variant={generalSnapshot ? "general" : "industry"}
-            />
-          </div>
-        ) : null}
-        <div className="article-prose mt-10">{children}</div>
+        {schemaGenerator ? (
+          <>
+            {byline}
+            <SchemaGeneratorLead industry={snapshotOffer?.industry} />
+            {inlineSnapshot ? (
+              <InlineSnapshotRequest
+                source={inlineSnapshot.source}
+                defaultService={inlineSnapshot.service}
+                snapshotHref="/free-snapshot"
+              />
+            ) : null}
+          </>
+        ) : (
+          <>
+            {homeService ? (
+              <div className="mt-6">
+                <HomeServiceGuideCallout trade={homeService} />
+              </div>
+            ) : null}
+            <p className="mt-4 text-lg leading-8 text-ink-soft">{dek}</p>
+            {byline}
+            {!homeService && (snapshotOffer || generalSnapshot) ? (
+              <div className="mt-8">
+                <IndustrySnapshotCta
+                  industry={snapshotOffer?.industry}
+                  variant={generalSnapshot ? "general" : "industry"}
+                />
+              </div>
+            ) : null}
+          </>
+        )}
+        <div className="article-prose mt-10">
+          {schemaGenerator ? <p>{dek}</p> : null}
+          {children}
+        </div>
         {snapshotOffer || generalSnapshot ? (
           <div className="mt-12">
             <IndustrySnapshotCta
@@ -116,7 +137,7 @@ export function ArticleShell({
             />
           </div>
         ) : null}
-        {inlineSnapshot ? (
+        {inlineSnapshot && !schemaGenerator ? (
           <InlineSnapshotRequest
             source={inlineSnapshot.source}
             defaultService={inlineSnapshot.service}
