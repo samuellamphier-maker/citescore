@@ -71,8 +71,9 @@ test("Fix Pack next steps stay off the sitemap and sit beside checkout", () => {
   assert.match(facts, /\/fix-pack\/next-steps/);
   assert.match(facts, /What happens after you buy/);
   assert.match(checkout, /FixPackOfferFacts/);
-  assert.match(fixPack, /FixPackOfferFacts/);
-  assert.equal((fixPack.match(/<FixPackOfferFacts/g) ?? []).length, 1);
+  assert.match(fixPack, /href="\/fix-pack\/next-steps"/);
+  assert.match(fixPack, /What happens after you buy/);
+  assert.doesNotMatch(fixPack, /FixPackOfferFacts/);
   assert.equal(marketingPaths.some((item) => item.path === "/fix-pack/next-steps"), false);
 });
 

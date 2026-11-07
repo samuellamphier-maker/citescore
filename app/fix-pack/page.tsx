@@ -3,14 +3,19 @@ import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { InlineSnapshotRequest } from "@/components/InlineSnapshotRequest";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
-import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
 import { pageMeta } from "@/lib/content/meta";
-import { fixPackDeliverables, fixPackProductJsonLd } from "@/lib/fix-pack-offer";
+import {
+  fixPackDeliverables,
+  fixPackHowDeliveryWorks,
+  fixPackProductJsonLd,
+  fixPackRefund,
+  fixPackTurnaround,
+} from "@/lib/fix-pack-offer";
 import {
   faqPageJsonLd,
   fixPackFaqs,
@@ -19,10 +24,14 @@ import {
   sonickStudyUrl,
 } from "@/lib/offer-faq";
 import {
+  contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
   publicOrigin,
 } from "@/lib/site";
+
+const buyLinkClassName =
+  "inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-transparent bg-forest px-5 py-3 text-center text-base font-medium leading-6 text-cream hover:bg-forest-deep sm:w-auto";
 
 export const metadata: Metadata = pageMeta({
   title: `AI Visibility Fix Pack, ${fixPackIntroPriceLabel}`,
@@ -45,14 +54,17 @@ export default function FixPackPage() {
           The snapshot is free. The Fix Pack is the done-for-you work after
           you have seen who was named.
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div
+          data-funnel-cta
+          className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+        >
+          <FixPackBuyLink className={buyLinkClassName} />
           <Link
             href="/free-snapshot"
-            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+            className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 py-3 text-center text-base font-medium leading-6 text-ink hover:border-ink sm:w-auto"
           >
             Get a free AI Answer Snapshot
           </Link>
-          <FixPackBuyLink />
         </div>
         <p className="mt-4 text-sm leading-6">
           <Link href="/sample-fix-pack" className="font-medium text-forest underline">
@@ -61,21 +73,6 @@ export default function FixPackPage() {
           <span className="text-ink-soft">
             . Illustrative example content, not a real client or real results.
           </span>
-        </p>
-        <FixPackOfferFacts className="mt-4" />
-        <p className="mt-4 text-sm leading-6 text-ink-soft">
-          AI answers vary run to run. This is a snapshot, not a ranking. A
-          published test of local ChatGPT answers found that only 40% of
-          businesses appeared in all three runs (
-          <a href={sonickStudyUrl} className="text-forest underline">
-            SoNick Marketing
-          </a>
-          ).
-        </p>
-        <p className="mt-4 text-sm leading-6">
-          <Link href="/contact" className="font-medium text-forest underline">
-            Questions before you buy
-          </Link>
         </p>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What you get</h2>
@@ -88,6 +85,54 @@ export default function FixPackPage() {
             </li>
           ))}
         </ol>
+        <p className="mt-4 text-sm leading-6 text-ink-soft">
+          It is not a promise that any assistant will name the business.
+        </p>
+        <p className="mt-4 text-sm leading-6 text-ink-soft">
+          AI answers vary run to run. This is a snapshot, not a ranking. A
+          published test of local ChatGPT answers found that only 40% of
+          businesses appeared in all three runs (
+          <a href={sonickStudyUrl} className="text-forest underline">
+            SoNick Marketing
+          </a>
+          ).
+        </p>
+
+        <h2 className="mt-12 font-serif text-3xl tracking-tight">After you pay</h2>
+        <p className="mt-4 text-sm leading-7 text-ink-soft">
+          {fixPackHowDeliveryWorks} {fixPackTurnaround}{" "}
+          <Link href="/fix-pack/next-steps" className="text-forest underline">
+            What happens after you buy
+          </Link>
+          .
+        </p>
+
+        <h2 className="mt-12 font-serif text-3xl tracking-tight">Refunds</h2>
+        <p className="mt-4 text-sm leading-7 text-ink-soft">
+          {fixPackRefund}{" "}
+          <Link href="/refunds" className="text-forest underline">
+            Refund policy
+          </Link>
+          .
+        </p>
+        <p className="mt-3 text-sm leading-6 text-ink-soft">
+          Operated by the CiteScore Team.{" "}
+          <Link href="/about" className="text-forest underline underline-offset-4">
+            Who runs this
+          </Link>
+          {" · "}
+          <a
+            href={`mailto:${contactEmail}`}
+            className="text-forest underline underline-offset-4"
+          >
+            {contactEmail}
+          </a>
+        </p>
+        <p className="mt-4 text-sm leading-6">
+          <Link href="/contact" className="font-medium text-forest underline">
+            Questions before you buy
+          </Link>
+        </p>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">Where the JSON-LD goes</h2>
         <p className="mt-4 text-sm leading-7 text-ink-soft">
@@ -139,25 +184,6 @@ export default function FixPackPage() {
           </Link>
         </p>
 
-        <h2 className="mt-12 font-serif text-3xl tracking-tight">Price</h2>
-        <p className="mt-4 text-ink-soft leading-7">
-          <span className="font-serif text-5xl text-ink">{fixPackIntroPriceLabel}</span>{" "}
-          <span className="text-ink-soft line-through">{fixPackListPriceLabel}</span>{" "}
-          introductory. One business, one city, one service. The free
-          snapshot comes first. The{" "}
-          <Link href="/free-check" className="text-forest underline">
-            free signal check
-          </Link>{" "}
-          is still there if you only want a read of public files. It does not
-          ask ChatGPT who it names.
-        </p>
-        <div className="mt-6">
-          <FixPackBuyLink />
-        </div>
-        <div className="mt-4">
-          <TrustLinks />
-        </div>
-
         <h2 id="faq" className="mt-12 font-serif text-3xl tracking-tight">
           FAQ
         </h2>
@@ -173,6 +199,25 @@ export default function FixPackPage() {
           ask.
         </p>
         <FaqList items={fixPackMoreFaqs()} />
+
+        <h2 className="mt-12 font-serif text-3xl tracking-tight">Price</h2>
+        <p className="mt-4 text-ink-soft leading-7">
+          <span className="font-serif text-5xl text-ink">{fixPackIntroPriceLabel}</span>{" "}
+          <span className="text-ink-soft line-through">{fixPackListPriceLabel}</span>{" "}
+          introductory. One business, one city, one service. The free
+          snapshot comes first. The{" "}
+          <Link href="/free-check" className="text-forest underline">
+            free signal check
+          </Link>{" "}
+          is still there if you only want a read of public files. It does not
+          ask ChatGPT who it names.
+        </p>
+        <div className="mt-6" data-funnel-cta>
+          <FixPackBuyLink className={buyLinkClassName} />
+        </div>
+        <div className="mt-4">
+          <TrustLinks />
+        </div>
         <div className="max-w-2xl">
           <InlineSnapshotRequest source="/fix-pack" caveat={false} />
         </div>

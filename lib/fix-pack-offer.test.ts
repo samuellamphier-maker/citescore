@@ -89,12 +89,42 @@ test("buying path pages render the facts beside Fix Pack buy buttons", () => {
   );
   const about = readFileSync(new URL("../app/about/page.tsx", import.meta.url), "utf8");
 
-  for (const source of [home, fixPack, checkout, sample]) {
+  for (const source of [home, checkout, sample]) {
     assert.match(source, /FixPackOfferFacts/);
   }
   assert.equal((home.match(/<FixPackOfferFacts/g) ?? []).length, 1);
-  assert.equal((fixPack.match(/<FixPackOfferFacts/g) ?? []).length, 1);
+  assert.doesNotMatch(fixPack, /FixPackOfferFacts/);
+  assert.doesNotMatch(fixPack, /fixPackWhatYouGet/);
+  assert.doesNotMatch(fixPack, /How delivery works/);
+  assert.doesNotMatch(fixPack, /How long it takes/);
+  assert.equal((fixPack.match(/What you get/g) ?? []).length, 1);
+  assert.equal((fixPack.match(/After you pay/g) ?? []).length, 1);
+  assert.equal((fixPack.match(/>Refunds</g) ?? []).length, 1);
+  assert.match(fixPack, /fixPackHowDeliveryWorks/);
+  assert.match(fixPack, /fixPackTurnaround/);
+  assert.match(fixPack, /fixPackRefund/);
+  assert.match(fixPack, /It is not a promise that any assistant will name the business/);
+  assert.match(fixPack, /AI answers vary run to run\. This is a snapshot, not a ranking\./);
+  assert.match(fixPack, /SoNick Marketing/);
+  assert.match(fixPack, /Illustrative example content, not a real client or real results/);
+  assert.match(fixPack, /Operated by the CiteScore Team/);
+  assert.match(fixPack, /mailto:\$\{contactEmail\}/);
   assert.match(fixPack, /fixPackProductJsonLd/);
+  const deliverablesAt = fixPack.indexOf("{fixPackDeliverables.map");
+  const afterPayAt = fixPack.indexOf("After you pay");
+  const refundsAt = fixPack.indexOf(">Refunds<");
+  const installAt = fixPack.indexOf("Where the JSON-LD goes");
+  const faqAt = fixPack.indexOf('id="faq"');
+  const buys = [...fixPack.matchAll(/<FixPackBuyLink/g)].map((match) => match.index ?? -1);
+  assert.equal((fixPack.match(/data-funnel-cta/g) ?? []).length, 2);
+  assert.equal(buys.length, 2);
+  assert.ok(buys[0] !== -1 && buys[0] < deliverablesAt);
+  assert.ok(deliverablesAt < afterPayAt);
+  assert.ok(afterPayAt < refundsAt);
+  assert.ok(refundsAt < installAt);
+  assert.ok(installAt < faqAt);
+  assert.ok(faqAt < buys[1]);
+  assert.ok(buys[0] < fixPack.indexOf('href="/free-snapshot"'));
   assert.match(facts, /What you get/);
   assert.match(facts, /How delivery works/);
   assert.match(facts, /How long it takes/);
