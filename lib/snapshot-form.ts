@@ -52,6 +52,112 @@ export function snapshotWebsiteValue(value: string) {
   return `https://${trimmed}`;
 }
 
+const GENERIC_BUSINESS_NAMES = new Set([
+  "home",
+  "homepage",
+  "welcome",
+  "untitled",
+  "index",
+]);
+
+function codePointFromEntity(raw: string, radix: number) {
+  const code = Number.parseInt(raw, radix);
+  if (!Number.isFinite(code) || code < 32 || code > 0x10ffff) return "";
+  if (code >= 0xd800 && code <= 0xdfff) return "";
+  return String.fromCodePoint(code);
+}
+
+function decodeBasicEntities(value: string) {
+  return value
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex: string) => codePointFromEntity(hex, 16))
+    .replace(/&#(\d+);/g, (_, dec: string) => codePointFromEntity(dec, 10))
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&amp;/gi, "&");
+}
+
+function cleanBusinessText(value: string) {
+  const decoded = decodeBasicEntities(value);
+  if (/[<>]/.test(decoded)) return "";
+  return decoded
+    .replace(/[\u0000-\u001f\u007f]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function usableBusinessName(value: string) {
+  if (value.length < 2 || value.length > 80) return false;
+  if (/^https?:\/\//i.test(value)) return false;
+  if (!/\p{L}/u.test(value)) return false;
+  return !GENERIC_BUSINESS_NAMES.has(value.toLowerCase());
+}
+
+/**
+ * Website carried from the signal check into the snapshot request.
+ * Query strings, hashes, and credentials are dropped. An empty string means
+ * the field stays blank.
+ */
+export function snapshotWebsitePrefill(value: string | null | undefined) {
+  const trimmed = (value ?? "").trim();
+  if (!trimmed || trimmed.length > 300) return "";
+  const withScheme = snapshotWebsiteValue(trimmed);
+  if (!withScheme || withScheme.length > 300) return "";
+  try {
+    const url = new URL(withScheme);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return "";
+    if (url.username || url.password) return "";
+    const hostname = url.hostname.toLowerCase();
+    if (!hostname.includes(".")) return "";
+    if (
+      hostname === "localhost" ||
+      hostname.endsWith(".local") ||
+      hostname.endsWith(".localhost")
+    ) {
+      return "";
+    }
+    const path = url.pathname === "/" ? "" : url.pathname.replace(/\/+$/, "");
+    return `${url.protocol}//${url.host}${path}`;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Business name carried from a homepage title. The first usable segment
+ * before a title separator is kept. Generic titles such as "Home" are not.
+ */
+export function snapshotBusinessPrefill(value: string | null | undefined) {
+  const raw = value ?? "";
+  if (raw.trim() === "" || raw.length > 500) return "";
+  const cleaned = cleanBusinessText(raw);
+  if (!cleaned) return "";
+  const parts = cleaned
+    .split(/\s+[|–—]\s+|\s+-\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  for (const part of parts.length > 0 ? parts : [cleaned]) {
+    if (usableBusinessName(part)) return part;
+  }
+  return "";
+}
+
+/** Snapshot request URL with the checked site filled in when it is usable. */
+export function freeSnapshotRequestHref(input?: {
+  website?: string | null;
+  business?: string | null;
+}) {
+  const params = new URLSearchParams();
+  const website = snapshotWebsitePrefill(input?.website);
+  const business = snapshotBusinessPrefill(input?.business);
+  if (website) params.set("website", website);
+  if (business) params.set("business", business);
+  const query = params.toString();
+  return query ? `/free-snapshot?${query}` : "/free-snapshot";
+}
+
 export function snapshotFieldsComplete(fields: SnapshotFields) {
   return Object.keys(snapshotFieldErrors(fields)).length === 0;
 }

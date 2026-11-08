@@ -87,7 +87,8 @@ test("header, footer, and legal pages use the snapshot request CTA", () => {
   assert.doesNotMatch(footer, /href="\/geo-audit">Free AI Answer Snapshot/);
 
   const funnel = readFileSync(new URL("../components/FunnelCtaRow.tsx", import.meta.url), "utf8");
-  assert.match(funnel, /href="\/free-snapshot"/);
+  assert.match(funnel, /snapshotHref = "\/free-snapshot"/);
+  assert.match(funnel, /href=\{snapshotHref\}/);
   assert.match(funnel, /\{snapshotRequestCtaLabel\}/);
   assert.match(funnel, /data-funnel-cta/);
   assert.match(funnel, /fixPackGetCtaLabel\(\)/);

@@ -28,7 +28,13 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /title: "Free AI Answer Snapshot"/);
   assert.match(page, /faqPageJsonLd\(freeSnapshotPageFaqs\)/);
   assert.match(page, /freeSnapshotServiceJsonLd\(publicOrigin\(\)\)/);
-  assert.match(page, /<SnapshotRequestForm caveat=\{false\} deliveryNote=\{false\} \/>/);
+  assert.match(page, /<SnapshotRequestForm/);
+  assert.match(page, /caveat=\{false\}/);
+  assert.match(page, /deliveryNote=\{false\}/);
+  assert.match(page, /defaultWebsite=\{website\}/);
+  assert.match(page, /defaultBusiness=\{business\}/);
+  assert.match(page, /snapshotWebsitePrefill/);
+  assert.match(page, /snapshotBusinessPrefill/);
   assert.match(page, /href="\/sample-snapshot"/);
   assert.match(page, /Fictional business, illustrative numbers/);
   assert.match(page, /href="\/fix-pack"/);

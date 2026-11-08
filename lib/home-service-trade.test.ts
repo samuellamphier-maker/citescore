@@ -135,6 +135,8 @@ test("guides render the short callout and the snapshot page reads trade on the c
   assert.match(form, /snapshotSubjectForTrade/);
   assert.doesNotMatch(form, /useSearchParams|useEffect/);
   assert.match(page, /<FreeSnapshotLead \/>/);
-  assert.doesNotMatch(page, /searchParams|useSearchParams/);
+  assert.match(page, /searchParams/);
+  assert.doesNotMatch(page, /useSearchParams/);
+  assert.doesNotMatch(page, /params\.trade|get\("trade"\)|\?trade=/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
 });

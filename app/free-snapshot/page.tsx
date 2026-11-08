@@ -19,6 +19,14 @@ import {
   sellerName,
 } from "@/lib/site";
 import { freeSnapshotServiceJsonLd } from "@/lib/site-schema";
+import {
+  snapshotBusinessPrefill,
+  snapshotWebsitePrefill,
+} from "@/lib/snapshot-form";
+
+function firstQuery(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
 
 export const metadata: Metadata = {
   ...pageMeta({
@@ -30,7 +38,18 @@ export const metadata: Metadata = {
   creator: sellerName,
 };
 
-export default function FreeSnapshotPage() {
+export default async function FreeSnapshotPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    website?: string | string[];
+    business?: string | string[];
+  }>;
+}) {
+  const params = await searchParams;
+  const website = snapshotWebsitePrefill(firstQuery(params.website));
+  const business = snapshotBusinessPrefill(firstQuery(params.business));
+
   return (
     <>
       <JsonLd data={faqPageJsonLd(freeSnapshotPageFaqs)} />
@@ -52,7 +71,13 @@ export default function FreeSnapshotPage() {
                 Request the free snapshot.
               </h2>
               <div className="mt-3">
-                <SnapshotRequestForm caveat={false} deliveryNote={false} />
+                <SnapshotRequestForm
+                  key={`${website}\n${business}`}
+                  caveat={false}
+                  deliveryNote={false}
+                  defaultWebsite={website}
+                  defaultBusiness={business}
+                />
               </div>
               <p className="mt-4 text-sm leading-6 text-ink-soft">
                 Prepared by the CiteScore Team. Sold by {sellerName}.

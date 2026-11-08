@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import Link from "next/link";
-import { FixPackBuyLink } from "@/components/FixPackBuyLink";
+import { FunnelCtaRow } from "@/components/FunnelCtaRow";
 import { LlmsTxtCaveat } from "@/components/LlmsTxtCaveat";
 import { freeCheckAuditPitch } from "@/lib/free-check-pitch";
-import { fixPackGetCtaLabel } from "@/lib/site";
+import { freeSnapshotRequestHref } from "@/lib/snapshot-form";
 
 type Result = {
   origin: string;
@@ -42,34 +41,21 @@ const botLabel = (v: string) => (v === "disallow" ? "blocked" : v === "allow" ? 
 
 function AuditUpsell({
   pitch,
+  snapshotHref,
 }: {
   pitch: ReturnType<typeof freeCheckAuditPitch>;
+  snapshotHref: string;
 }) {
   return (
     <aside className="mt-8 rounded-2xl border border-rule bg-cream p-6">
       <p className="kicker text-copper">Free snapshot</p>
       <h2 className="mt-2 font-serif text-2xl">{pitch.heading}</h2>
       <p className="mt-2 text-sm leading-6 text-ink-soft">{pitch.detail}</p>
-      <div
-        data-funnel-cta
-        className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-      >
-        <Link
-          href="/free-snapshot"
-          className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 font-medium text-cream hover:bg-forest-deep"
-        >
-          Get a free AI Answer Snapshot
-        </Link>
-        <FixPackBuyLink
-          compact
-          label={fixPackGetCtaLabel()}
-          className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-sm font-medium text-ink hover:border-ink"
-        />
-      </div>
-      <p className="mt-4 text-sm leading-6 text-ink-soft">
-        The free snapshot shows who is named. The Fix Pack is the done-for-you
-        work after that.
+      <p className="mt-3 text-sm leading-6 text-ink-soft">
+        The site you checked is filled in on the request. The free snapshot
+        shows who is named. The Fix Pack is the done-for-you work after that.
       </p>
+      <FunnelCtaRow className="mt-4" snapshotHref={snapshotHref} />
     </aside>
   );
 }
@@ -148,7 +134,13 @@ export function FreeCheckTool() {
             <Row ok={result.homepage.reachable && result.schema.found} label="Structured data (JSON-LD)" detail={!result.homepage.reachable ? "Not checked — the homepage did not load." : result.schema.found ? result.schema.types.join(", ") : "No JSON-LD on the homepage. FAQ or Organization schema is a citation-readiness signal."} />
             <Row ok={result.homepage.reachable && result.homepage.hasMetaDescription} label="Meta description" detail={!result.homepage.reachable ? "Not checked — the homepage did not load." : result.homepage.hasMetaDescription ? "Present." : "Missing. Answer engines often quote a meta description when one is present."} />
           </ul>
-          <AuditUpsell pitch={freeCheckAuditPitch(result)} />
+          <AuditUpsell
+            pitch={freeCheckAuditPitch(result)}
+            snapshotHref={freeSnapshotRequestHref({
+              website: result.origin,
+              business: result.homepage.title,
+            })}
+          />
         </div>
       )}
     </div>
