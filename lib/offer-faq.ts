@@ -82,11 +82,11 @@ export const fixPackPurchaseFaqs: readonly FaqItem[] = [
   },
   {
     q: "What happens after I purchase?",
-    a: "The buy button opens card checkout. After you pay, email the business name, city, service, and public site URL. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. Do not send passwords, cookies, or pages behind a login.",
+    a: "The buy button opens card checkout. After you pay, send the business name, city, service, and public site URL on the next-steps page, or email those fields. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. Do not send passwords, cookies, or pages behind a login.",
   },
   {
     q: "What do I need to provide?",
-    a: `After you pay, email the business name, city, main service, and public site URL. Do not send passwords, cookies, or pages behind a login. The free snapshot request asks for the business name, city, service, website, and email. The form sends those fields through FlowForm to ${contactEmail}. No account and no paid checkout.`,
+    a: `After you pay, send the business name, city, main service, public site URL, and email on the next-steps page. The button sends those fields through FlowForm to ${contactEmail}. The subject is “Fix Pack intake after payment.” This is not a new free AI Answer Snapshot request. If that send fails, use the email button or copy the request and email those same fields. Do not send passwords, cookies, or pages behind a login. The free snapshot request asks for the business name, city, service, website, and email. The form sends those fields through FlowForm to ${contactEmail}. No account and no paid checkout.`,
   },
   {
     q: "What is the refund policy?",

@@ -1,6 +1,18 @@
 export const SNAPSHOT_SUBJECT = "Free AI Answer Snapshot";
 export const FIX_PACK_SUBJECT = "Fix Pack request";
-export const FIX_PACK_DETAILS_SUBJECT = "Fix Pack details";
+export const FIX_PACK_DETAILS_SUBJECT = "Fix Pack intake after payment";
+
+/** Body line that keeps a paid Fix Pack intake out of the free-snapshot queue. */
+export const FIX_PACK_INTAKE_NOTE =
+  "This is Fix Pack intake after payment. It is not a new free AI Answer Snapshot request.";
+
+export type FixPackDetailsInput = {
+  business?: string;
+  city?: string;
+  service?: string;
+  website?: string;
+  email?: string;
+};
 
 export function noMailAppInstruction(inbox: string) {
   return `No mail app opened? Copy this and email it to ${inbox} from any inbox.`;
@@ -93,20 +105,31 @@ export function fixPackRequestText(inbox: string) {
   );
 }
 
-/** Blank intake after a Fix Pack purchase. The buyer fills the four fields. */
-export function fixPackDetailsBody() {
+function detailLine(label: string, value: string | undefined) {
+  return `${label}: ${value?.trim() ?? ""}`;
+}
+
+/**
+ * Intake after a Fix Pack purchase. Blank fields stay in the template so a
+ * buyer can still email them. Filled fields match the on-page form.
+ */
+export function fixPackDetailsBody(input: FixPackDetailsInput = {}) {
   return [
-    "Business name:",
-    "City:",
-    "Main service:",
-    "Public site URL:",
+    detailLine("Business name", input.business),
+    detailLine("City", input.city),
+    detailLine("Main service", input.service),
+    detailLine("Public site URL", input.website),
+    detailLine("Email", input.email),
+    "Source: /fix-pack/next-steps",
+    "",
+    FIX_PACK_INTAKE_NOTE,
   ].join("\n");
 }
 
-export function fixPackDetailsMailto(inbox: string) {
-  return mailtoHref(inbox, FIX_PACK_DETAILS_SUBJECT, fixPackDetailsBody());
+export function fixPackDetailsMailto(inbox: string, input?: FixPackDetailsInput) {
+  return mailtoHref(inbox, FIX_PACK_DETAILS_SUBJECT, fixPackDetailsBody(input));
 }
 
-export function fixPackDetailsRequestText(inbox: string) {
-  return requestClipboard(inbox, FIX_PACK_DETAILS_SUBJECT, fixPackDetailsBody());
+export function fixPackDetailsRequestText(inbox: string, input?: FixPackDetailsInput) {
+  return requestClipboard(inbox, FIX_PACK_DETAILS_SUBJECT, fixPackDetailsBody(input));
 }

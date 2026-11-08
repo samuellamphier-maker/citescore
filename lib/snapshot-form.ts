@@ -256,15 +256,11 @@ export type SnapshotPost = (
 ) => Promise<SnapshotPostResponse>;
 
 /**
- * Posts the same FlowForm body the no-JS form would submit.
+ * Posts one urlencoded body to the same FlowForm inbox as the snapshot form.
  * JSON is required so a failure stays on the page instead of navigating away.
  * A network error and a non-success body are both failures.
  */
-export async function postSnapshotForm(
-  fields: SnapshotFields,
-  source: string | undefined,
-  post: SnapshotPost,
-) {
+export async function postFlowForm(body: string, post: SnapshotPost) {
   try {
     const response = await post(snapshotFormPageEndpoint, {
       method: "POST",
@@ -272,16 +268,27 @@ export async function postSnapshotForm(
         Accept: "application/json",
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: snapshotFormEncoded(fields, source),
+      body,
     });
-    let body: unknown = null;
+    let parsed: unknown = null;
     try {
-      body = await response.json();
+      parsed = await response.json();
     } catch {
-      body = null;
+      parsed = null;
     }
-    return snapshotSubmitSucceeded(response.status, body) ? "sent" : "error";
+    return snapshotSubmitSucceeded(response.status, parsed) ? "sent" : "error";
   } catch {
     return "error";
   }
+}
+
+/**
+ * Posts the same FlowForm body the no-JS snapshot form would submit.
+ */
+export async function postSnapshotForm(
+  fields: SnapshotFields,
+  source: string | undefined,
+  post: SnapshotPost,
+) {
+  return postFlowForm(snapshotFormEncoded(fields, source), post);
 }

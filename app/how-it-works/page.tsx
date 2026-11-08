@@ -123,11 +123,16 @@ export default function HowItWorksPage() {
               Introductory price {fixPackIntroPriceLabel}. List price{" "}
               {fixPackListPriceLabel}. One business, one city, one service.
               The free snapshot comes first. The buy button opens{" "}
-              {fixPackIntroPriceLabel} card checkout. We email the Fix Pack
-              within a few business days after payment, once we have the
-              business name, city, service, and public site URL. It is not a
-              promise that any assistant will name the business. Do not send
-              passwords, cookies, or pages behind a login.
+              {fixPackIntroPriceLabel} card checkout. After you pay, send the
+              business name, city, service, and public site URL on the{" "}
+              <Link href="/fix-pack/next-steps" className="text-forest underline">
+                next-steps page
+              </Link>
+              , or email those fields. We email the Fix Pack within a few
+              business days after payment, once we have the business name,
+              city, service, and public site URL. It is not a promise that any
+              assistant will name the business. Do not send passwords, cookies,
+              or pages behind a login.
             </p>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-ink-soft">
               {fixPackDeliverables.map((item) => (

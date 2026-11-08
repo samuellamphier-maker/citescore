@@ -46,7 +46,7 @@ export const fixPackTrustFaqs: readonly FaqItem[] = [
   },
   {
     q: "How is the Fix Pack delivered?",
-    a: `The buy button opens ${fixPackIntroPriceLabel} card checkout. Payhip handles the AI Visibility Fix Pack. After you pay, email the business name, city, main service, and public site URL to ${contactEmail}. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. Do not send passwords, cookies, or pages behind a login. ${sellerName} does not see full card numbers.`,
+    a: `The buy button opens ${fixPackIntroPriceLabel} card checkout. Payhip handles the AI Visibility Fix Pack. After you pay, send the business name, city, main service, and public site URL on the next-steps page, or email those fields to ${contactEmail}. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. Do not send passwords, cookies, or pages behind a login. ${sellerName} does not see full card numbers.`,
   },
   {
     q: "What if I want a refund on the Fix Pack?",

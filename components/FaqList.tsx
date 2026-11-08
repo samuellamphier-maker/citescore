@@ -14,6 +14,7 @@ const phrases: { phrase: string; href: string; external?: boolean }[] = [
   { phrase: "refunds page", href: "/refunds" },
   { phrase: "privacy page", href: "/privacy" },
   { phrase: "free snapshot page", href: "/free-snapshot" },
+  { phrase: "next-steps page", href: "/fix-pack/next-steps" },
   { phrase: "Fix Pack page", href: "/fix-pack" },
   { phrase: "SoNick Marketing", href: sonickStudyUrl, external: true },
   { phrase: "Search Engine Land", href: llmsTxtSourceUrl, external: true },

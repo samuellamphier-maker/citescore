@@ -24,6 +24,28 @@ const rows = [
   },
 ] as const;
 
+function LinkedPhrase({
+  text,
+  phrase,
+  linkClass,
+}: {
+  text: string;
+  phrase: string;
+  linkClass: string;
+}) {
+  const at = text.indexOf(phrase);
+  if (at === -1) return text;
+  return (
+    <>
+      {text.slice(0, at)}
+      <Link href="/fix-pack/next-steps" className={linkClass}>
+        {phrase}
+      </Link>
+      {text.slice(at + phrase.length)}
+    </>
+  );
+}
+
 export function FixPackOfferFacts({
   tone = "light",
   className = "",
@@ -45,7 +67,7 @@ export function FixPackOfferFacts({
           <div key={row.term}>
             <dt className={`font-medium ${strong}`}>{row.term}</dt>
             <dd className={muted}>
-              {row.body}
+              <LinkedPhrase text={row.body} phrase="next-steps page" linkClass={linkClass} />
               {"href" in row ? (
                 <>
                   {" "}

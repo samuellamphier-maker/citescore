@@ -172,11 +172,16 @@ export default function MethodologyPage() {
           </ul>
           <p className="mt-4 text-sm leading-7 text-ink-soft">
             The buy button opens {fixPackIntroPriceLabel} card checkout.
-            Payhip handles the AI Visibility Fix Pack. After you pay, email
-            the business name, city, main service, and public site URL to{" "}
-            {contactEmail}. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and
-            public site URL. Do not send passwords, cookies, or pages behind
-            a login. {sellerName} does not see full card numbers.
+            Payhip handles the AI Visibility Fix Pack. After you pay, send
+            the business name, city, main service, and public site URL on the{" "}
+            <Link href="/fix-pack/next-steps" className="text-forest underline">
+              next-steps page
+            </Link>
+            , or email those fields to {contactEmail}. We email the Fix Pack
+            within a few business days after payment, once we have the business
+            name, city, service, and public site URL. Do not send passwords,
+            cookies, or pages behind a login. {sellerName} does not see full
+            card numbers.
           </p>
           <p className="mt-4 text-sm leading-7 text-ink-soft">
             Full refund within 14 days of delivery if the Fix Pack is not

@@ -363,8 +363,11 @@ export default function SampleFixPackPage() {
         </p>
         <p className="mt-4 text-sm leading-6 text-ink-soft">
           After you pay, email the business name, city, main service, and
-          public site URL. Do not send passwords, cookies, or pages behind a
-          login.
+          public site URL, or send them on the{" "}
+          <Link href="/fix-pack/next-steps" className="text-forest underline">
+            next-steps page
+          </Link>
+          . Do not send passwords, cookies, or pages behind a login.
         </p>
         <div className="mt-6">
           <SampleCtas />

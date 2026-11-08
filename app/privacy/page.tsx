@@ -74,6 +74,19 @@ export default function PrivacyPage() {
             trade guide or a how-to-get-cited guide, the form also sends that
             page path so the request shows where it was submitted.
           </p>
+          <p>
+            After you pay for the AI Visibility Fix Pack, the form on the
+            next-steps page sends the business name, city, main service,
+            public site URL, and email through FlowForm to {contactEmail}.
+            The browser posts that form directly to FlowForm. The subject is
+            “Fix Pack intake after payment.” This is not a new free AI Answer
+            Snapshot request. The same email is set as the reply-to address.
+            A hidden honeypot field is checked in the browser and is left out
+            of the post when it is empty. If the post fails, the email button
+            opens your email app with those same fields, or you can copy the
+            address and the request text. We receive the details when FlowForm
+            delivers them, or when you send the email yourself.
+          </p>
           <h2 className="font-serif text-2xl text-ink">Payments</h2>
           <p>
             Card data is handled by Stripe, Polar, or Payhip via a payment
