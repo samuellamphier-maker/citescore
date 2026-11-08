@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
+import { HowSnapshotIsMade } from "@/components/HowSnapshotIsMade";
 import { JsonLd } from "@/components/JsonLd";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -199,7 +200,11 @@ export default function SampleSnapshotPage() {
         </p>
         <p className="mt-3 text-sm leading-6 text-ink-soft">
           Example prepared by the CiteScore Team. Sold by {sellerName}. Not a
-          customer result, and not a live ChatGPT or Perplexity answer.
+          customer result, and not a live ChatGPT or Perplexity answer.{" "}
+          <Link href="#how-the-snapshot-is-made" className="text-forest underline">
+            How the snapshot is made
+          </Link>
+          .
         </p>
         <div className="mt-8">
           <SnapshotCtas />
@@ -410,8 +415,7 @@ export default function SampleSnapshotPage() {
               <ExampleBanner />
             </div>
             <p className="mt-4 text-sm leading-6 text-ink-soft">
-              AI answers vary run to run. This is a snapshot, not a ranking. A
-              published test of local ChatGPT answers found that only 40% of
+              A published test of local ChatGPT answers found that only 40% of
               businesses appeared in all three runs (
               <a href={sonickStudy} className="text-forest underline">
                 SoNick Marketing
@@ -435,7 +439,8 @@ export default function SampleSnapshotPage() {
           className="mt-12 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8"
           data-funnel-cta
         >
-          <p className="kicker">Request</p>
+          <HowSnapshotIsMade />
+          <p className="kicker mt-8">Request</p>
           <h2 className="mt-2 font-serif text-3xl tracking-tight">
             Get a snapshot for a real business.
           </h2>
@@ -446,7 +451,7 @@ export default function SampleSnapshotPage() {
             No checkout.
           </p>
           <div className="mt-5">
-            <SnapshotRequestForm />
+            <SnapshotRequestForm caveat={false} />
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <FixPackBuyLink compact label={fixPackGetCtaLabel()} />

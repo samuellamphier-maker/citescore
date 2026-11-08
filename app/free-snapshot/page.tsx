@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaqList } from "@/components/FaqList";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FreeSnapshotLead } from "@/components/FreeSnapshotLead";
+import { HowSnapshotIsMade } from "@/components/HowSnapshotIsMade";
 import { JsonLd } from "@/components/JsonLd";
 import { SampleSnapshotExcerpt } from "@/components/SampleSnapshotExcerpt";
 import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
@@ -66,7 +67,8 @@ export default async function FreeSnapshotPage({
 
         <div className="mt-4 grid items-start gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
           <div className="min-w-0">
-            <section className="rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5">
+            <HowSnapshotIsMade />
+            <section className="mt-4 rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5">
               <p className="kicker">Request</p>
               <h2 className="mt-2 font-serif text-2xl tracking-tight">
                 Request the free snapshot.
@@ -104,19 +106,9 @@ export default async function FreeSnapshotPage({
                   You submit the form. The button sends the business name, city, service, website, and email to {contactEmail} through FlowForm. The subject is “Free AI Answer Snapshot.” No account and no paid checkout. If that send fails, the email button, the address, and the copy buttons stay on this page.
                 </li>
                 <li>
-                  We ask logged-out ChatGPT and Perplexity who they name for
-                  that trade and city, and record who is named.
-                </li>
-                <li>
-                  We reply with the one-page snapshot by email: who is named,
-                  which sources are cited, and how the Google rating and review
-                  count compare. A real snapshot prints the day the prompts were
-                  asked. There is no set delivery time.
+                  We reply with the one-page snapshot by email. There is no set delivery time.
                 </li>
               </ol>
-              <p className="mt-4 text-sm leading-7 text-ink-soft">
-                AI answers vary run to run. This is a snapshot, not a ranking.
-              </p>
             </section>
           </div>
 

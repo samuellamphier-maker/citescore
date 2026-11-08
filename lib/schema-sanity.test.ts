@@ -30,6 +30,7 @@ const { freeSnapshotHeadingDefault, freeSnapshotLeadDefault } = await import(
 const { freeSnapshotServiceDescription, freeSnapshotServiceJsonLd } = await import(
   "./site-schema.ts"
 );
+const { howSnapshotIsMadeBody } = await import("./snapshot-method.ts");
 const { assertCoreOfferSchema, lintJsonLd } = await import("./schema-sanity.ts");
 
 const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
@@ -156,15 +157,26 @@ test("offer descriptions are the sentences those pages render", () => {
   assert.match(fixPack, /The snapshot is free/);
 
   const collapsed = collapse(freeSnapshot);
+  const method = readFileSync(
+    new URL("../components/HowSnapshotIsMade.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(freeSnapshot, /<HowSnapshotIsMade/);
+  assert.match(method, /howSnapshotIsMadeBody/);
+  assert.ok(freeSnapshotServiceDescription.includes(howSnapshotIsMadeBody));
   for (const sentence of [
-    "We ask logged-out ChatGPT and Perplexity who they name for that trade and city, and record who is named.",
-    "We reply with the one-page snapshot by email: who is named, which sources are cited, and how the Google rating and review count compare.",
-    "A real snapshot prints the day the prompts were asked.",
+    "We reply with the one-page snapshot by email.",
     "There is no set delivery time.",
   ]) {
     assert.ok(collapsed.includes(sentence), sentence);
     assert.ok(freeSnapshotServiceDescription.includes(sentence), sentence);
   }
+  assert.equal(
+    collapsed.includes(
+      "We reply with the one-page snapshot by email: who is named, which sources are cited, and how the Google rating and review count compare.",
+    ),
+    false,
+  );
   assert.match(freeSnapshot, /<FreeSnapshotLead/);
   assert.ok(freeSnapshotServiceDescription.startsWith(freeSnapshotHeadingDefault));
   assert.ok(freeSnapshotServiceDescription.includes(freeSnapshotLeadDefault));
