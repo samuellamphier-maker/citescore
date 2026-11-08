@@ -5,6 +5,8 @@ import { SNAPSHOT_SUBJECT } from "./email-request.ts";
 import {
   freeSnapshotRequestHref,
   snapshotBusinessPrefill,
+  postSnapshotForm,
+  snapshotDeliveredToMessage,
   snapshotFieldErrors,
   snapshotFieldsComplete,
   snapshotFormEncoded,
@@ -15,6 +17,8 @@ import {
   snapshotSentMessage,
   snapshotSourceValue,
   snapshotSubmitSucceeded,
+  snapshotWebsiteAccepted,
+  snapshotWebsiteInvalidMessage,
   snapshotWebsitePrefill,
   snapshotWebsiteValue,
 } from "./snapshot-form.ts";
@@ -84,8 +88,92 @@ test("snapshot payload posts the visitor fields through FlowForm", () => {
     false,
   );
   assert.equal(snapshotSubmitSucceeded(422, { success: "true" }), false);
-  assert.equal(snapshotSentMessage, "Request sent. We reply with your one-page snapshot by email.");
+  assert.equal(
+    snapshotSentMessage,
+    "Request received. We reply with your one-page snapshot by email.",
+  );
+  assert.equal(
+    snapshotDeliveredToMessage(" owner@example.com "),
+    "We email the snapshot to owner@example.com.",
+  );
   assert.match(snapshotSendErrorMessage, /email button/);
+  assert.equal(snapshotWebsiteAccepted(" example.com "), true);
+  assert.equal(snapshotWebsiteAccepted("http://example.com/services"), true);
+  assert.equal(snapshotWebsiteAccepted("not a url"), false);
+  assert.equal(snapshotWebsiteAccepted("https://localhost/admin"), false);
+  assert.equal(snapshotWebsiteAccepted("https://user:pass@example.com"), false);
+  assert.equal(snapshotWebsiteAccepted(""), false);
+  assert.equal(
+    snapshotFieldsComplete({ ...fields, website: "example.com" }),
+    true,
+  );
+  assert.equal(
+    snapshotFieldsComplete({ ...fields, website: "not a url" }),
+    false,
+  );
+  assert.equal(snapshotFieldErrors({ ...fields, website: "example.com" }).website, undefined);
+  assert.equal(
+    snapshotFieldErrors({ ...fields, website: "notaurl" }).website,
+    snapshotWebsiteInvalidMessage,
+  );
+  assert.equal(
+    snapshotWebsiteInvalidMessage,
+    "Enter a website, with or without https://.",
+  );
+});
+
+test("postSnapshotForm stays on the FlowForm path and reports failures", async () => {
+  const calls: Array<{ url: string; body: string; accept: string }> = [];
+  const sent = await postSnapshotForm(fields, "/free-check", async (url, init) => {
+    calls.push({
+      url,
+      body: init.body,
+      accept: init.headers.Accept,
+    });
+    return {
+      status: 200,
+      json: async () => ({ success: true }),
+    };
+  });
+  assert.equal(sent, "sent");
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0]?.url, "https://flowform.to/citescore@mail.grokbot.com");
+  assert.equal(calls[0]?.accept, "application/json");
+  assert.match(calls[0]?.body ?? "", /Business\+name=CiteScore\+Team\+activation\+test/);
+  assert.match(calls[0]?.body ?? "", /City=Riverton/);
+  assert.match(calls[0]?.body ?? "", /Service=plumber/);
+  assert.match(calls[0]?.body ?? "", /Website=https%3A%2F%2Fexample-plumbing\.example/);
+  assert.match(calls[0]?.body ?? "", /Email=citescore%40mail\.grokbot\.com/);
+  assert.match(calls[0]?.body ?? "", /source=%2Ffree-check/);
+  assert.match(calls[0]?.body ?? "", /_subject=Free\+AI\+Answer\+Snapshot/);
+  assert.match(calls[0]?.body ?? "", /_replyto=citescore%40mail\.grokbot\.com/);
+  assert.doesNotMatch(calls[0]?.body ?? "", /_honey/);
+  assert.doesNotMatch(calls[0]?.body ?? "", /_next/);
+
+  const rejected = await postSnapshotForm(fields, undefined, async () => ({
+    status: 200,
+    json: async () => ({ success: "false", message: "This form needs Activation" }),
+  }));
+  assert.equal(rejected, "error");
+
+  const badStatus = await postSnapshotForm(fields, undefined, async () => ({
+    status: 500,
+    json: async () => ({ success: true }),
+  }));
+  assert.equal(badStatus, "error");
+
+  const badJson = await postSnapshotForm(fields, undefined, async () => ({
+    status: 200,
+    json: async () => {
+      throw new Error("not json");
+    },
+  }));
+  assert.equal(badJson, "error");
+
+  const network = await postSnapshotForm(fields, undefined, async () => {
+    throw new Error("network down");
+  });
+  assert.equal(network, "error");
 });
 
 test("privacy names FlowForm and the fields that are sent", () => {
@@ -105,11 +193,12 @@ test("the request form posts, keeps mailto, and requires the website", () => {
     "utf8",
   );
   assert.match(form, /snapshotFormPageEndpoint/);
+  assert.match(form, /postSnapshotForm/);
+  assert.doesNotMatch(form, /form\.submit\(\)/);
   assert.match(form, /name="_next"/);
   assert.match(form, /\/thank-you/);
   assert.doesNotMatch(form, /free-snapshot\/thanks/);
   assert.doesNotMatch(form, /free-snapshot\?sent=1/);
-  assert.match(form, /form\.submit\(\)/);
   assert.match(form, /snapshotMailto/);
   assert.match(form, /Email this request instead/);
   assert.match(form, /name="_honey"/);
@@ -149,7 +238,18 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.doesNotMatch(form, /noValidate/);
   assert.match(form, /required/);
   assert.match(form, /snapshotSentMessage/);
+  assert.match(form, /snapshotDeliveredToMessage/);
+  assert.match(form, /id="snapshot-received"/);
+  assert.match(form, /What happens next/);
+  assert.match(form, /There is no set delivery time/);
+  assert.match(form, /href="\/sample-snapshot"/);
+  assert.match(form, /Fictional business, illustrative numbers/);
+  assert.match(form, /href="\/fix-pack"/);
+  assert.match(form, /fixPackPageLinkLabel/);
   assert.match(form, /snapshotSendErrorMessage/);
+  assert.match(form, /id="snapshot-send-error"/);
+  assert.match(form, /mailto:\$\{contactEmail\}/);
+  assert.match(form, /snapshotWebsiteAccepted/);
   assert.match(form, /EmailRequestFallback/);
   assert.doesNotMatch(form, /useSearchParams|useEffect/);
   assert.match(form, /name="source"/);

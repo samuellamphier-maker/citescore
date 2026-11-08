@@ -14,10 +14,19 @@ export const snapshotFormPageEndpoint =
 const snapshotSubject = "Free AI Answer Snapshot";
 
 export const snapshotSentMessage =
-  "Request sent. We reply with your one-page snapshot by email.";
+  "Request received. We reply with your one-page snapshot by email.";
+
+/** Names the address the one-page snapshot is emailed to. */
+export function snapshotDeliveredToMessage(email: string) {
+  return `We email the snapshot to ${email.trim()}.`;
+}
 
 export const snapshotSendErrorMessage =
   "The request did not send. Use the email button below, or copy the address and the request text.";
+
+/** Shown when a website was typed but is not an http(s) address. */
+export const snapshotWebsiteInvalidMessage =
+  "Enter a website, with or without https://.";
 
 export const snapshotValidationMessage =
   "Enter a business name, city, service, website, and email.";
@@ -30,10 +39,6 @@ export type SnapshotFields = {
   email: string;
 };
 
-/**
- * Bare domains are accepted. FlowForm and the email fallback both need a
- * scheme, and a URL input rejects a value that has none.
- */
 /**
  * Page path posted with a guide form. Only a same-site path is kept.
  * Query strings, hashes, and off-site values are dropped.
@@ -50,6 +55,33 @@ export function snapshotWebsiteValue(value: string) {
   if (!trimmed) return "";
   if (/^https?:\/\//i.test(trimmed)) return trimmed;
   return `https://${trimmed}`;
+}
+
+/**
+ * True when the website can be posted. A bare domain is accepted.
+ * Local hosts, credentials, and values that are not http(s) URLs are not.
+ */
+export function snapshotWebsiteAccepted(value: string) {
+  const normalized = snapshotWebsiteValue(value);
+  if (!normalized) return false;
+  let url: URL;
+  try {
+    url = new URL(normalized);
+  } catch {
+    return false;
+  }
+  if (url.protocol !== "http:" && url.protocol !== "https:") return false;
+  if (url.username || url.password) return false;
+  const hostname = url.hostname.toLowerCase();
+  if (!hostname.includes(".")) return false;
+  if (
+    hostname === "localhost" ||
+    hostname.endsWith(".localhost") ||
+    hostname.endsWith(".local")
+  ) {
+    return false;
+  }
+  return true;
 }
 
 const GENERIC_BUSINESS_NAMES = new Set([
@@ -168,7 +200,10 @@ export function snapshotFieldErrors(fields: SnapshotFields) {
   if (fields.business.trim() === "") errors.business = "Enter a business name.";
   if (fields.city.trim() === "") errors.city = "Enter a city.";
   if (fields.service.trim() === "") errors.service = "Enter a service.";
-  if (snapshotWebsiteValue(fields.website) === "") errors.website = "Enter a website.";
+  if (fields.website.trim() === "") errors.website = "Enter a website.";
+  else if (!snapshotWebsiteAccepted(fields.website)) {
+    errors.website = snapshotWebsiteInvalidMessage;
+  }
   if (!EMAIL_RE.test(fields.email.trim())) errors.email = "Enter an email address.";
   return errors;
 }
@@ -201,4 +236,52 @@ export function snapshotSubmitSucceeded(status: number, body: unknown) {
   if (!body || typeof body !== "object") return false;
   const success = (body as { success?: unknown }).success;
   return success === true || success === "true";
+}
+
+export type SnapshotPostResponse = {
+  status: number;
+  json: () => Promise<unknown>;
+};
+
+export type SnapshotPost = (
+  url: string,
+  init: {
+    method: "POST";
+    headers: {
+      Accept: "application/json";
+      "Content-Type": "application/x-www-form-urlencoded";
+    };
+    body: string;
+  },
+) => Promise<SnapshotPostResponse>;
+
+/**
+ * Posts the same FlowForm body the no-JS form would submit.
+ * JSON is required so a failure stays on the page instead of navigating away.
+ * A network error and a non-success body are both failures.
+ */
+export async function postSnapshotForm(
+  fields: SnapshotFields,
+  source: string | undefined,
+  post: SnapshotPost,
+) {
+  try {
+    const response = await post(snapshotFormPageEndpoint, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: snapshotFormEncoded(fields, source),
+    });
+    let body: unknown = null;
+    try {
+      body = await response.json();
+    } catch {
+      body = null;
+    }
+    return snapshotSubmitSucceeded(response.status, body) ? "sent" : "error";
+  } catch {
+    return "error";
+  }
 }
