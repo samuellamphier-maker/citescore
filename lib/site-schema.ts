@@ -1,8 +1,8 @@
 import {
-  contactEmail,
-  fixPackIntroPriceLabel,
-  site,
-} from "@/lib/site";
+  freeSnapshotHeadingDefault,
+  freeSnapshotLeadDefault,
+} from "@/lib/home-service-trade";
+import { contactEmail, site } from "@/lib/site";
 
 /** Brand icon already published from `public/icon-512.png` and the web manifest. */
 export const organizationLogoPath = "/icon-512.png";
@@ -56,18 +56,35 @@ export function organizationRef(origin: string): Record<string, unknown> {
   return { "@id": organizationId(origin) };
 }
 
-/** Same description already used as the free snapshot page meta description. */
-export const freeSnapshotServiceDescription = `Request a free AI Answer Snapshot for one local business. We ask logged-out ChatGPT and Perplexity who they name for that trade and city, and reply with a one-page snapshot. The ${fixPackIntroPriceLabel} Fix Pack is optional.`;
+/**
+ * Sentences already visible on /free-snapshot: the default heading and lead,
+ * then the “what happens after you submit” steps. Not the meta description.
+ */
+export const freeSnapshotServiceDescription = [
+  freeSnapshotHeadingDefault,
+  freeSnapshotLeadDefault,
+  "We ask logged-out ChatGPT and Perplexity who they name for that trade and city, and record who is named.",
+  "We reply with the one-page snapshot by email: who is named, which sources are cited, and how the Google rating and review count compare.",
+  "A real snapshot prints the day the prompts were asked.",
+  "There is no set delivery time.",
+].join(" ");
 
-export function freeSnapshotServiceJsonLd(origin: string): Record<string, unknown> {
+export function freeSnapshotServiceJsonLd(
+  origin: string,
+  copy: { name?: string; description?: string } = {},
+): Record<string, unknown> {
   const base = origin.replace(/\/$/, "");
   const url = `${base}/free-snapshot`;
+  const name = copy.name ?? "Free AI Answer Snapshot";
+  const description = copy.description ?? freeSnapshotServiceDescription;
+  const canonical =
+    name === "Free AI Answer Snapshot" && description === freeSnapshotServiceDescription;
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${url}#service`,
-    name: "Free AI Answer Snapshot",
-    description: freeSnapshotServiceDescription,
+    ...(canonical ? { "@id": `${url}#service` } : {}),
+    name,
+    description,
     url,
     provider: organizationRef(base),
     offers: {

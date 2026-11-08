@@ -30,11 +30,15 @@ test("pricing page compares the free snapshot and the Fix Pack", () => {
   assert.match(pricing, /through FlowForm/);
   assert.match(pricing, /business name, city, service, website, and/);
   assert.doesNotMatch(pricing, /does not post to a server/);
+  assert.match(pricing, /\{pricingSnapshotOfferDescription\}/);
+  assert.match(pricing, /\{pricingFixPackDeliveryDescription\}/);
+  assert.match(pricing, /\{pricingFixPackLimitDescription\}/);
+  const offerCopy = readFileSync(new URL("./core-offer-schema.ts", import.meta.url), "utf8");
   assert.match(
-    pricing,
-    /AI answers vary run to run\.\s+This is a snapshot, not a ranking\./,
+    offerCopy,
+    /AI answers vary run to run\. This is a snapshot, not a ranking\./,
   );
-  assert.match(pricing, /not a promise that any assistant will name the business/);
+  assert.match(offerCopy, /not a promise that any assistant will name the business/);
   assert.doesNotMatch(pricing, invented);
 });
 

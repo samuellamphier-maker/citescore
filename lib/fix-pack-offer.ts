@@ -45,7 +45,10 @@ export const fixPackTurnaround =
 export const fixPackRefund =
   "Full refund within 14 days of delivery if the Fix Pack is not useful. You do not need to show that you installed the markup or sent the review script. The 14 days start when the Fix Pack is delivered, not when you request the free snapshot. The free AI Answer Snapshot has no charge.";
 
-export function fixPackProductJsonLd(origin: string): Record<string, unknown> {
+export function fixPackProductJsonLd(
+  origin: string,
+  copy: { name?: string; description?: string } = {},
+): Record<string, unknown> {
   const offer: Record<string, unknown> = {
     "@type": "Offer",
     price: fixPackIntroPriceLabel.replace(/^\$/, ""),
@@ -62,8 +65,8 @@ export function fixPackProductJsonLd(origin: string): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "AI Visibility Fix Pack",
-    description: `${fixPackWhatYouGet} ${fixPackTurnaround}`,
+    name: copy.name ?? "AI Visibility Fix Pack",
+    description: copy.description ?? `${fixPackWhatYouGet} ${fixPackTurnaround}`,
     brand: {
       "@type": "Brand",
       name: sellerName,

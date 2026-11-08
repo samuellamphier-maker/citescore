@@ -72,8 +72,10 @@ test("free snapshot service JSON-LD parses as a price-0 offer", () => {
   assert.equal(service["@type"], "Service");
   assert.equal(service.name, "Free AI Answer Snapshot");
   assert.equal(service.description, freeSnapshotServiceDescription);
-  assert.match(freeSnapshotServiceDescription, /free AI Answer Snapshot/);
+  assert.match(freeSnapshotServiceDescription, /Request a free AI Answer Snapshot\./);
   assert.match(freeSnapshotServiceDescription, /logged-out ChatGPT and Perplexity/);
+  assert.match(freeSnapshotServiceDescription, /There is no set delivery time\./);
+  assert.doesNotMatch(freeSnapshotServiceDescription, /for one local business/);
   assert.equal(service.url, `${origin}/free-snapshot`);
   assert.equal(service["@id"], `${origin}/free-snapshot#service`);
   assert.deepEqual(provider, { "@id": organizationId(origin) });

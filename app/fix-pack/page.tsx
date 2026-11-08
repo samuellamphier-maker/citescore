@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
+import { fixPackPageSnapshotServiceJsonLd } from "@/lib/core-offer-schema";
 import { pageMeta } from "@/lib/content/meta";
 import {
   fixPackDeliverables,
@@ -44,6 +45,7 @@ export default function FixPackPage() {
     <>
       <JsonLd data={faqPageJsonLd(fixPackFaqs())} />
       <JsonLd data={fixPackProductJsonLd(publicOrigin())} />
+      <JsonLd data={fixPackPageSnapshotServiceJsonLd(publicOrigin())} />
       <SiteHeader />
       <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
         <p className="kicker">AI Visibility Fix Pack</p>

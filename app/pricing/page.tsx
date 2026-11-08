@@ -8,6 +8,13 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
+import {
+  pricingFixPackDeliveryDescription,
+  pricingFixPackLimitDescription,
+  pricingFixPackProductJsonLd,
+  pricingSnapshotOfferDescription,
+  pricingSnapshotServiceJsonLd,
+} from "@/lib/core-offer-schema";
 import { pageMeta } from "@/lib/content/meta";
 import { fixPackDeliverables } from "@/lib/fix-pack-offer";
 import {
@@ -22,6 +29,7 @@ import {
   contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  publicOrigin,
   sellerName,
   templatePackLabel,
   templatePackUrl,
@@ -55,6 +63,8 @@ export default function PricingPage() {
   return (
     <>
       <JsonLd data={faqPageJsonLd(pricingFaqs)} />
+      <JsonLd data={pricingSnapshotServiceJsonLd(publicOrigin())} />
+      <JsonLd data={pricingFixPackProductJsonLd(publicOrigin())} />
       <SiteHeader />
       <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-14">
         <p className="kicker">Pricing</p>
@@ -107,12 +117,7 @@ export default function PricingPage() {
             </p>
             <h3 className="mt-6 font-medium">What you get</h3>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
-              CiteScore asks logged-out ChatGPT and Perplexity who they name
-              for that trade and city. The business receives a one-page
-              snapshot: who is named, which sources are cited, and how the
-              Google rating and review count compare. A real snapshot prints
-              the day the prompts were asked. AI answers vary run to run.
-              This is a snapshot, not a ranking.
+              {pricingSnapshotOfferDescription}
             </p>
             <h3 className="mt-6 font-medium">How delivery works</h3>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
@@ -159,14 +164,10 @@ export default function PricingPage() {
             </ul>
             <h3 className="mt-6 font-medium">How delivery works</h3>
             <p className="mt-2 text-sm leading-6 text-[#d7c7b0]">
-              The free snapshot comes first. The buy button opens{" "}
-              {fixPackIntroPriceLabel} card checkout. We email the Fix Pack
-              within a few business days after payment, once we have the
-              business name, city, service, and public site URL. Do not send
-              passwords, cookies, or pages behind a login.
+              {pricingFixPackDeliveryDescription}
             </p>
             <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
-              It is not a promise that any assistant will name the business. Full refund within 14 days of delivery if the Fix Pack is not useful.
+              {pricingFixPackLimitDescription}
             </p>
             <div className="mt-6">
               <FixPackBuyLink

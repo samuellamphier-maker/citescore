@@ -48,7 +48,9 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /SampleSnapshotExcerpt/);
   assert.match(page, /See the full example snapshot/);
   assert.match(page, /Skip straight to the \{fixPackIntroPriceLabel\} Fix Pack/);
-  assert.match(page, /within a few\s+business days after payment/);
+  assert.match(page, /\{freeSnapshotPageFixPackRest\}/);
+  const offerCopy = readFileSync(new URL("./core-offer-schema.ts", import.meta.url), "utf8");
+  assert.match(offerCopy, /within a few business days after payment/);
   assert.match(page, /business name, city, service, website, and email/);
   assert.match(page, /through FlowForm/);
   assert.doesNotMatch(page, /does not post to a server/);
