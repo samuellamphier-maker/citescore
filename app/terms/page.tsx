@@ -127,7 +127,11 @@ export default function TermsPage() {
           <p>
             The Fix Pack is delivered by email within a few business days after
             payment, once we have the business name, city, service, and public
-            site URL. The free AI Answer Snapshot is not a purchase.
+            site URL. After you pay, send those fields on the{" "}
+            <Link href="/fix-pack/next-steps" className="text-forest underline">
+              next-steps page
+            </Link>
+            , or email them. The free AI Answer Snapshot is not a purchase.
           </p>
 
           <h2 className="font-serif text-2xl text-ink">Refunds</h2>

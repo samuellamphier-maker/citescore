@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EmailRequestFallback } from "@/components/EmailRequestFallback";
+import { FixPackIntakeForm } from "@/components/FixPackIntakeForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
-import {
-  fixPackDetailsMailto,
-  fixPackDetailsRequestText,
-} from "@/lib/email-request";
 import { contactEmail, fixPackIntroPriceLabel, sellerName } from "@/lib/site";
 
 export const metadata: Metadata = {
   ...pageMeta({
     title: "What happens after you buy the Fix Pack",
-    description: `After you pay for the ${fixPackIntroPriceLabel} AI Visibility Fix Pack, email the business name, city, main service, and public site URL to ${contactEmail}. The pack is emailed within a few business days. Full refund within 14 days of delivery if it is not useful.`,
+    description: `After you pay for the ${fixPackIntroPriceLabel} AI Visibility Fix Pack, send the business name, city, main service, public site URL, and email on this page. The pack is emailed within a few business days. Full refund within 14 days of delivery if it is not useful.`,
     path: "/fix-pack/next-steps",
   }),
   robots: { index: false, follow: false },
@@ -24,10 +20,21 @@ const details = [
   "City",
   "Main service",
   "Public site URL",
+  "Email",
 ];
 
-export default function FixPackNextStepsPage() {
-  const mailto = fixPackDetailsMailto(contactEmail);
+function sentParam(value: string | string[] | undefined) {
+  const values = Array.isArray(value) ? value : [value];
+  return values.includes("1");
+}
+
+export default async function FixPackNextStepsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ sent?: string | string[] }>;
+}) {
+  const params = await searchParams;
+  const initialSent = sentParam(params.sent);
 
   return (
     <>
@@ -39,11 +46,16 @@ export default function FixPackNextStepsPage() {
         </h1>
         <p className="mt-4 text-ink-soft leading-7">
           After you pay for the AI Visibility Fix Pack ({fixPackIntroPriceLabel}),
-          send the business name, city, main service, and public site URL to{" "}
-          <a href={mailto} className="text-forest underline">
+          send the business name, city, service, and public site URL on the
+          next-steps page, or email those fields. The form also asks for your
+          email. The button sends the business name, city, main service, public
+          site URL, and email through FlowForm to{" "}
+          <a href={`mailto:${contactEmail}`} className="text-forest underline">
             {contactEmail}
           </a>
-          .
+          . The subject is “Fix Pack intake after payment.” This is not a new
+          free AI Answer Snapshot request. If that send fails, use the email
+          button or copy the request and email those same fields.
         </p>
         <ul className="mt-6 list-disc space-y-2 pl-5 text-[15px] leading-7 text-ink-soft">
           {details.map((item) => (
@@ -54,15 +66,7 @@ export default function FixPackNextStepsPage() {
           Do not send passwords, cookies, or pages behind a login.
         </p>
         <div className="mt-6">
-          <a
-            href={mailto}
-            className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep"
-          >
-            Email these details
-          </a>
-        </div>
-        <div className="mt-4">
-          <EmailRequestFallback requestText={fixPackDetailsRequestText(contactEmail)} />
+          <FixPackIntakeForm initialSent={initialSent} />
         </div>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">Delivery</h2>

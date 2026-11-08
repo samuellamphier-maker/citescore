@@ -164,6 +164,15 @@ export default async function FreeSnapshotPage({
           </Link>
         </div>
         <p className="mt-4 text-sm leading-6">
+          <Link href="/fix-pack/next-steps" className="font-medium text-forest underline">
+            What happens after you buy
+          </Link>
+          <span className="text-ink-soft">
+            . Send the business name, city, service, and public site URL there,
+            or email those fields.
+          </span>
+        </p>
+        <p className="mt-4 text-sm leading-6">
           <Link href="/checkout" className="font-medium text-forest underline">
             Open checkout
           </Link>

@@ -51,9 +51,28 @@ test("Fix Pack next steps stay off the sitemap and sit beside checkout", () => {
   const site = readFileSync(new URL("./site.ts", import.meta.url), "utf8");
   assert.match(next, /robots: \{ index: false, follow: false \}/);
   assert.match(next, /What happens after you buy/);
-  assert.match(next, /fixPackDetailsMailto\(contactEmail\)/);
-  assert.match(next, /EmailRequestFallback/);
-  assert.match(next, /fixPackDetailsRequestText\(contactEmail\)/);
+  assert.match(next, /<FixPackIntakeForm/);
+  assert.match(next, /through FlowForm/);
+  assert.match(next, /Fix Pack intake after payment/);
+  assert.match(next, /not a new\s+free AI Answer Snapshot request/);
+  const intake = readFileSync(
+    new URL("../components/FixPackIntakeForm.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(intake, /postFixPackIntake/);
+  assert.match(intake, /snapshotFormPageEndpoint/);
+  assert.match(intake, /fixPackDetailsMailto\(contactEmail/);
+  assert.match(intake, /EmailRequestFallback/);
+  assert.match(intake, /fixPackDetailsRequestText\(contactEmail/);
+  assert.match(intake, /Email these details instead/);
+  assert.match(intake, /id="fix-pack-received"/);
+  assert.match(intake, /id="fix-pack-send-error"/);
+  assert.match(intake, /role="alert"/);
+  assert.match(intake, /Full refund within 14 days of delivery if the Fix Pack is not useful/);
+  assert.match(intake, /It is not a promise that any assistant will name the business/);
+  assert.match(intake, /Do not send passwords, cookies, or pages behind a login/);
+  assert.doesNotMatch(intake, /\/thank-you/);
+  assert.doesNotMatch(intake, /Get a free AI Answer Snapshot/);
   assert.match(
     next,
     /within a few business days after payment, once\s+we have the business name, city, service, and public site URL/,

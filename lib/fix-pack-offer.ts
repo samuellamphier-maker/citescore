@@ -36,8 +36,11 @@ export const fixPackDeliverables = [
 
 export const fixPackWhatYouGet = `Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. One business, one city, one service. A Google Business Profile gap list, a review-gap plan and script, the directories an AI answer cited, paste-ready LocalBusiness and Service JSON-LD with install steps, and a re-check 14 days later. It is not a promise that any assistant will name the business.`;
 
+export const fixPackAfterPayIntake =
+  "After you pay, send the business name, city, service, and public site URL on the next-steps page, or email those fields.";
+
 export const fixPackHowDeliveryWorks =
-  "The buy button opens card checkout. After you pay, email the business name, city, service, and public site URL. We email the Fix Pack. Do not send passwords, cookies, or pages behind a login.";
+  `The buy button opens card checkout. ${fixPackAfterPayIntake} We email the Fix Pack. Do not send passwords, cookies, or pages behind a login.`;
 
 export const fixPackTurnaround =
   "Within a few business days after payment, once we have the business name, city, service, and public site URL.";

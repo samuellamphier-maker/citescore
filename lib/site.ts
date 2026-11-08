@@ -19,6 +19,8 @@ export const fixPackListPriceLabel = "$97";
 
 /**
  * Live $49 Fix Pack card checkout. An empty string falls back to a mailto request.
+ * This product link does not accept a success or return URL. Payhip's redirect
+ * after payment is a dashboard setting, which this repo cannot set.
  */
 export const FIX_PACK_CHECKOUT_URL = "https://payhip.com/b/AjFxC";
 

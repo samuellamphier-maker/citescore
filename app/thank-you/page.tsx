@@ -67,7 +67,11 @@ export default function ThankYouPage() {
           Introductory price {fixPackIntroPriceLabel}. List price{" "}
           {fixPackListPriceLabel}. We email the Fix Pack within a few business
           days after payment, once we have the business name, city, service,
-          and public site URL. It is not a promise that any assistant will name the business. The buy button opens {fixPackIntroPriceLabel} card
+          and public site URL. After you pay, send those fields on the{" "}
+          <Link href="/fix-pack/next-steps" className="text-forest underline">
+            next-steps page
+          </Link>
+          , or email them. It is not a promise that any assistant will name the business. The buy button opens {fixPackIntroPriceLabel} card
           checkout.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">

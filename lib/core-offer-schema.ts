@@ -14,13 +14,13 @@ export const homeSnapshotOfferDescription =
 export const pricingSnapshotOfferDescription =
   "CiteScore asks logged-out ChatGPT and Perplexity who they name for that trade and city. The business receives a one-page snapshot: who is named, which sources are cited, and how the Google rating and review count compare. A real snapshot prints the day the prompts were asked. AI answers vary run to run. This is a snapshot, not a ranking.";
 
-export const pricingFixPackDeliveryDescription = `The free snapshot comes first. The buy button opens ${fixPackIntroPriceLabel} card checkout. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. Do not send passwords, cookies, or pages behind a login.`;
+export const pricingFixPackDeliveryDescription = `The free snapshot comes first. The buy button opens ${fixPackIntroPriceLabel} card checkout. After you pay, send the business name, city, service, and public site URL on the next-steps page, or email those fields. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. Do not send passwords, cookies, or pages behind a login.`;
 
 export const pricingFixPackLimitDescription =
   "It is not a promise that any assistant will name the business. Full refund within 14 days of delivery if the Fix Pack is not useful.";
 
 /** Text after the linked words “Fix Pack” on /free-snapshot. */
-export const freeSnapshotPageFixPackRest = `is the done-for-you work after you have seen who was named. Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. It is not a promise that any assistant will name the business. The buy button opens ${fixPackIntroPriceLabel} card checkout.`;
+export const freeSnapshotPageFixPackRest = `is the done-for-you work after you have seen who was named. Introductory price ${fixPackIntroPriceLabel}. List price ${fixPackListPriceLabel}. We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. After you pay, send those fields on the next-steps page, or email them. It is not a promise that any assistant will name the business. The buy button opens ${fixPackIntroPriceLabel} card checkout.`;
 
 export const freeSnapshotPageFixPackDescription = `The Fix Pack ${freeSnapshotPageFixPackRest}`;
 

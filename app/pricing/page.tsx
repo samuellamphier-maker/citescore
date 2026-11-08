@@ -166,6 +166,11 @@ export default function PricingPage() {
             <p className="mt-2 text-sm leading-6 text-[#d7c7b0]">
               {pricingFixPackDeliveryDescription}
             </p>
+            <p className="mt-3 text-sm leading-6">
+              <Link href="/fix-pack/next-steps" className="font-medium text-cream underline">
+                What happens after you buy
+              </Link>
+            </p>
             <p className="mt-3 text-sm leading-6 text-[#d7c7b0]">
               {pricingFixPackLimitDescription}
             </p>

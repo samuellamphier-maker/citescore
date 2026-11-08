@@ -81,17 +81,47 @@ test("fix pack and industry templates use the same inbox", () => {
   const details = fixPackDetailsBody();
   assert.equal(
     details,
-    ["Business name:", "City:", "Main service:", "Public site URL:"].join("\n"),
+    [
+      "Business name: ",
+      "City: ",
+      "Main service: ",
+      "Public site URL: ",
+      "Email: ",
+      "Source: /fix-pack/next-steps",
+      "",
+      "This is Fix Pack intake after payment. It is not a new free AI Answer Snapshot request.",
+    ].join("\n"),
   );
-  const detailsClip = fixPackDetailsRequestText(contactEmail);
+  assert.equal(FIX_PACK_DETAILS_SUBJECT, "Fix Pack intake after payment");
+  const filled = fixPackDetailsBody({
+    business: "Example Plumbing Co.",
+    city: "Riverton",
+    service: "plumber",
+    website: "https://example-plumbing.example",
+    email: "owner@example.com",
+  });
+  assert.match(filled, /Business name: Example Plumbing Co\./);
+  assert.match(filled, /Main service: plumber/);
+  assert.match(filled, /Public site URL: https:\/\/example-plumbing\.example/);
+  assert.match(filled, /Email: owner@example.com/);
+  assert.match(filled, /It is not a new free AI Answer Snapshot request\./);
+  assert.doesNotMatch(filled, /Please send a free AI Answer Snapshot/);
+  const detailsClip = fixPackDetailsRequestText(contactEmail, {
+    business: "Example Plumbing Co.",
+    city: "Riverton",
+    service: "plumber",
+    website: "https://example-plumbing.example",
+    email: "owner@example.com",
+  });
   assert.match(detailsClip, new RegExp(`^To: ${contactEmail}`));
   assert.match(detailsClip, new RegExp(`Subject: ${FIX_PACK_DETAILS_SUBJECT}`));
-  assert.match(detailsClip, /Main service:/);
+  assert.match(detailsClip, /Main service: plumber/);
   assert.match(detailsClip, /Public site URL:/);
   const detailsHref = fixPackDetailsMailto(contactEmail);
   assert.equal(detailsHref, mailtoHref(contactEmail, FIX_PACK_DETAILS_SUBJECT, details));
   assert.match(detailsHref, /subject=/);
   assert.match(detailsHref, /body=/);
+  assert.match(detailsHref, /Fix%20Pack%20intake%20after%20payment/);
 });
 
 test("snapshot, fix pack, and industry CTAs share one email fallback", () => {
