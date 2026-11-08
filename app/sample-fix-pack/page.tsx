@@ -36,7 +36,7 @@ const serviceJson = sampleJsonLdText(sampleServiceJsonLd);
 export const metadata: Metadata = {
   ...pageMeta({
     title: `Sample Fix Pack: what you get for ${fixPackIntroPriceLabel}`,
-    description: `An illustrative example of the ${fixPackIntroPriceLabel} AI Visibility Fix Pack before you pay: Google Business Profile gaps, a review-gap plan and script, the directories an AI answer cited, placeholder LocalBusiness and Service JSON-LD with install steps, and a 14-day re-check for a fictional plumber. Not a real client or real results.`,
+    description: `An illustrative example of the ${fixPackIntroPriceLabel} AI Visibility Fix Pack before you pay: Google Business Profile gaps, a review-gap plan and script, the directories an AI answer cited, example LocalBusiness and Service JSON-LD with install steps, and a 14-day re-check for a fictional plumber. Not a real client or real results.`,
     path: "/sample-fix-pack",
   }),
   authors: [{ name: "CiteScore Team" }],
@@ -128,13 +128,20 @@ export default function SampleFixPackPage() {
               Example Plumbing Co.
             </h2>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
-              Plumber · Riverton, USA (a made-up place) · example-plumbing.example
+              Plumber · Riverton, USA (a made-up place) · 100 Example Street
+            </p>
+            <p className="mt-1 font-mono text-xs text-ink-soft">
+              example-plumbing.example
             </p>
             <p className="mt-3 text-sm leading-6 text-ink-soft">
-              Bracketed fields are placeholders. This illustration does not
-              fill in a rating, a review count, or a phone number. On a real
-              Fix Pack those fields come from the business you send and from
-              the snapshot for that business.
+              The name, street, city, illustrative ratings, and review counts
+              below are the ones already published on the example AI Answer
+              Snapshot. They were invented to show the layout. This
+              illustration does not add a phone number, because the example
+              snapshot does not publish one. On a real Fix Pack those fields
+              come from the business you send and from the snapshot for that
+              business. Not a customer result, and not a live ChatGPT or
+              Perplexity answer.
             </p>
           </header>
 
@@ -146,11 +153,17 @@ export default function SampleFixPackPage() {
               businesses the snapshot says AI named. In this illustration those
               businesses are the fictional names from the example snapshot:
               Sample Rooter Co., Fictional Fixture Works, and Demo Drain Co.
+              The cells use the gaps already written on that snapshot: a
+              shorter service list than Sample Rooter Co., no photos, and
+              hours that do not match example-plumbing.example. The category
+              cell repeats the trade already written on the example. This
+              illustration does not add a clock time, a photo count, or a
+              question the example snapshot did not publish.
             </p>
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <caption className="sr-only">
-                  Placeholder Google Business Profile comparison for Example Plumbing Co. and the fictional businesses named in the example snapshot.
+                  Illustrative Google Business Profile comparison for Example Plumbing Co. The gaps are the ones written on the example snapshot.
                 </caption>
                 <thead className="border-b border-rule text-xs uppercase tracking-wide text-ink-soft">
                   <tr>
@@ -178,18 +191,21 @@ export default function SampleFixPackPage() {
             <p className="mt-2 text-sm leading-6 text-ink-soft">
               How your Google rating and review count compare, plus a
               copy-paste SMS and email you can send to ask for a review. The
-              cells below stay in brackets.
+              cells below repeat the illustrative Google figures already
+              published on the example snapshot. They were invented to show
+              the layout. Not looked up. Not a research finding. Not a
+              customer result.
             </p>
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <caption className="sr-only">
-                  Placeholder Google rating and review count for Example Plumbing Co. and three fictional competitors.
+                  Illustrative Google rating and review count for Example Plumbing Co. and three fictional competitors, copied from the example snapshot. Not looked up.
                 </caption>
                 <thead className="border-b border-rule text-xs uppercase tracking-wide text-ink-soft">
                   <tr>
                     <th className="py-3 pr-4 font-medium">Fictional business</th>
-                    <th className="py-3 pr-4 font-medium">Google rating</th>
-                    <th className="py-3 font-medium">Review count</th>
+                    <th className="py-3 pr-4 font-medium">Illustrative Google rating</th>
+                    <th className="py-3 font-medium">Illustrative reviews</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -253,11 +269,14 @@ export default function SampleFixPackPage() {
             </h2>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
               Markup for your site, plus install steps for WordPress, Wix,
-              Squarespace, and Shopify. The script matches the name, phone,
-              and address already on the page. In this illustration every
-              business field is a placeholder. Paste each block in its own
-              script in the head of the public site, and keep every field
-              visible on the page.
+              Squarespace, and Shopify. On a real Fix Pack the script matches
+              the name, phone, and address already on the page. In this
+              illustration the script uses the name, street, and city from
+              the example snapshot, and leaves telephone out because that
+              page does not publish a phone number. Paste each block in its
+              own script in the head of the public site, and keep every field
+              visible on the page. These blocks are an example for a
+              fictional business. They are not markup from a live site.
             </p>
             <h3 className="mt-5 font-medium">LocalBusiness</h3>
             <pre className="mt-2 overflow-x-auto rounded-xl border border-rule bg-paper p-4 font-mono text-xs leading-6">
@@ -289,15 +308,17 @@ export default function SampleFixPackPage() {
             <h2 className="mt-2 font-serif text-2xl">14-day re-check</h2>
             <p className="mt-2 text-sm leading-6 text-ink-soft">
               The same prompts, run again 14 days later, with who is named the
-              second time written next to the first snapshot. The prompts below
-              are the example wording from the example snapshot. These prompts
-              were not run for this page. The date on a real Fix Pack is the
-              day the prompts were asked.
+              second time written next to the first snapshot. The first column
+              repeats who the example snapshot writes as named. The example
+              date on that snapshot is 24 October 2026, and that date is a
+              placeholder. These prompts were not run. The 14-days-later
+              column is not run. This is an example layout. The date on a
+              real Fix Pack is the day the prompts were asked.
             </p>
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <caption className="sr-only">
-                  Placeholder re-check of the example prompts, with who is named left blank.
+                  Example re-check layout. The first column repeats the names on the example snapshot. The later column was not run.
                 </caption>
                 <thead className="border-b border-rule text-xs uppercase tracking-wide text-ink-soft">
                   <tr>

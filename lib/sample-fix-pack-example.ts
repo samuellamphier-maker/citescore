@@ -1,7 +1,9 @@
 /**
  * Illustrative Fix Pack sample for Example Plumbing Co.
- * Bracketed strings are placeholders. This module has no ratings,
- * review counts, prices, or other digits.
+ * Names, the street, ratings, and review counts are the ones already
+ * published on the example snapshot. They were invented to show the layout.
+ * This module does not add a phone number, a postal code, or a figure the
+ * example snapshot does not publish.
  */
 
 export const sampleFixPackExampleBanner =
@@ -10,34 +12,30 @@ export const sampleFixPackExampleBanner =
 export const sampleLocalBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "[business name]",
-  url: "[public site URL]",
-  telephone: "[phone on the page]",
+  name: "Example Plumbing Co.",
+  url: "https://example-plumbing.example",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "[street on the page]",
-    addressLocality: "[city]",
-    addressRegion: "[region]",
-    postalCode: "[postal code]",
+    streetAddress: "100 Example Street",
+    addressLocality: "Riverton",
+    addressCountry: "USA",
   },
 } as const;
 
 export const sampleServiceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "[service name]",
-  serviceType: "[service]",
-  areaServed: "[city]",
+  name: "Plumber",
+  serviceType: "Plumber",
+  areaServed: "Riverton, USA",
   provider: {
     "@type": "LocalBusiness",
-    name: "[business name]",
-    telephone: "[phone on the page]",
+    name: "Example Plumbing Co.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "[street on the page]",
-      addressLocality: "[city]",
-      addressRegion: "[region]",
-      postalCode: "[postal code]",
+      streetAddress: "100 Example Street",
+      addressLocality: "Riverton",
+      addressCountry: "USA",
     },
   },
 } as const;
@@ -47,38 +45,38 @@ export function sampleJsonLdText(data: object) {
 }
 
 export const sampleReviewSms =
-  "Hi, this is [business name] in [city]. If the job was what you expected, a Google review helps the next neighbor find a plumber. The link is [Google review link].";
+  "Hi, this is Example Plumbing Co. in Riverton, USA. If the job was what you expected, a Google review helps the next neighbor find a plumber. A real Fix Pack pastes the Google review link. This illustration does not invent one.";
 
-export const sampleReviewEmailSubject = "A Google review for [business name]";
+export const sampleReviewEmailSubject = "A Google review for Example Plumbing Co.";
 
 export const sampleReviewEmailBody =
-  "Thank you for hiring [business name] in [city]. If you have a minute, a Google review tells the next person what the job was like. The link is [Google review link].";
+  "Thank you for hiring Example Plumbing Co. in Riverton, USA. If you have a minute, a Google review tells the next person what the job was like. A real Fix Pack pastes the Google review link. This illustration does not invent one.";
 
 export const sampleProfileGaps = [
   {
     check: "Category",
-    prospect: "[category on the profile]",
-    named: "[category the named businesses use]",
+    prospect: "Plumber, as this illustration writes the trade.",
+    named: "The example snapshot does not publish a separate Google category for the named businesses.",
   },
   {
     check: "Services",
-    prospect: "[services listed]",
-    named: "[services the named businesses list]",
+    prospect: "Shorter service list than Sample Rooter Co., in this illustration.",
+    named: "Sample Rooter Co. is written with the longer service list. The example does not name the services.",
   },
   {
     check: "Hours",
-    prospect: "[hours on the profile]",
-    named: "[hours on their profiles]",
+    prospect: "Hours in this illustration do not match example-plumbing.example.",
+    named: "The example snapshot does not publish hours for the named businesses.",
   },
   {
     check: "Photos",
-    prospect: "[their photo count]",
-    named: "[competitor photo count]",
+    prospect: "No photos, in this illustration.",
+    named: "The example snapshot does not publish a photo count for the named businesses.",
   },
   {
     check: "Q&A",
-    prospect: "[questions on the profile]",
-    named: "[questions on the named profiles]",
+    prospect: "The example snapshot does not publish questions on this profile.",
+    named: "The example snapshot does not publish questions on the named profiles.",
   },
 ] as const;
 
@@ -86,26 +84,26 @@ export const sampleReviewRows = [
   {
     business: "Example Plumbing Co.",
     role: "Prospect in this illustration",
-    rating: "[their rating]",
-    reviews: "[their review count]",
+    rating: "4.6",
+    reviews: "22",
   },
   {
     business: "Sample Rooter Co.",
     role: "Fictional competitor",
-    rating: "[competitor rating]",
-    reviews: "[competitor review count]",
+    rating: "4.9",
+    reviews: "310",
   },
   {
     business: "Fictional Fixture Works",
     role: "Fictional competitor",
-    rating: "[competitor rating]",
-    reviews: "[competitor review count]",
+    rating: "4.8",
+    reviews: "180",
   },
   {
     business: "Demo Drain Co.",
     role: "Fictional competitor",
-    rating: "[competitor rating]",
-    reviews: "[competitor review count]",
+    rating: "4.7",
+    reviews: "95",
   },
 ] as const;
 
@@ -115,41 +113,45 @@ export const sampleDirectories = [
     where: "example-trades.example/riverton",
     cited:
       "The example snapshot writes this directory as cited in both the ChatGPT example and the Perplexity example.",
-    status: "Missing in this illustration.",
+    status: "Example Plumbing Co. is written as absent. Missing in this illustration.",
   },
   {
     name: "Example City List",
     where: "example.com/riverton-trades",
     cited:
       "The example snapshot writes this directory as cited in the Perplexity example only.",
-    status: "Missing in this illustration.",
+    status: "Example Plumbing Co. is written as absent. Missing in this illustration.",
   },
 ] as const;
+
+const sampleRecheckNotRun = "Not run. This is an example layout.";
 
 export const sampleRecheckRows = [
   {
     engine: "ChatGPT, logged out",
     prompt: "best plumber in Riverton, USA",
-    first: "[who was named]",
-    later: "[who is named the second time]",
+    first:
+      "Sample Rooter Co., Fictional Fixture Works, and Demo Drain Co. Example Plumbing Co. is not named.",
+    later: sampleRecheckNotRun,
   },
   {
     engine: "ChatGPT, logged out",
     prompt: "best emergency plumber in Riverton, USA",
-    first: "[who was named]",
-    later: "[who is named the second time]",
+    first:
+      "Sample Rooter Co., Fictional Fixture Works, and Demo Drain Co. Example Plumbing Co. is not named.",
+    later: sampleRecheckNotRun,
   },
   {
     engine: "Perplexity",
     prompt: "best plumber in Riverton, USA",
-    first: "[who was named]",
-    later: "[who is named the second time]",
+    first: "Fictional Fixture Works and Sample Rooter Co. Example Plumbing Co. is not named.",
+    later: sampleRecheckNotRun,
   },
   {
     engine: "Perplexity",
     prompt: "best emergency plumber in Riverton, USA",
-    first: "[who was named]",
-    later: "[who is named the second time]",
+    first: "Fictional Fixture Works and Sample Rooter Co. Example Plumbing Co. is not named.",
+    later: sampleRecheckNotRun,
   },
 ] as const;
 

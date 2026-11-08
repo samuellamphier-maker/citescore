@@ -184,6 +184,9 @@ export default function PricingPage() {
               <Link href="/sample-fix-pack" className="font-medium text-cream underline">
                 See a sample Fix Pack
               </Link>
+              <span className="text-[#d7c7b0]">
+                . A filled example for the fictional plumber.
+              </span>
             </p>
           </article>
         </div>

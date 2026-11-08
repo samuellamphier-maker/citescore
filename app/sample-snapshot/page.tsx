@@ -208,7 +208,7 @@ export default function SampleSnapshotPage() {
               See a sample Fix Pack
             </Link>
             <span className="text-ink-soft">
-              . Illustrative example content, not a real client or real results.
+              . A filled illustrative example for the same fictional plumber, not a real client or real results.
             </span>
           </p>
           <FixPackOfferFacts className="mt-4" />
@@ -462,7 +462,7 @@ export default function SampleSnapshotPage() {
               See a sample Fix Pack
             </Link>
             <span className="text-ink-soft">
-              . Illustrative example content, not a real client or real results.
+              . A filled illustrative example for the same fictional plumber, not a real client or real results.
             </span>
           </p>
           <FixPackOfferFacts className="mt-4" />
