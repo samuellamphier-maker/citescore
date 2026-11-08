@@ -11,11 +11,17 @@ import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { TrustLinks } from "@/components/TrustLinks";
 import { rootOpenGraph, rootTwitter, rssFeedAlternate } from "@/lib/content/meta";
 import { topicPages } from "@/lib/content/topics";
+import {
+  homeFixPackProductJsonLd,
+  homeSnapshotOfferDescription,
+  homeSnapshotServiceJsonLd,
+} from "@/lib/core-offer-schema";
 import { fixPackDeliverables } from "@/lib/fix-pack-offer";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
 import {
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  publicOrigin,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -28,7 +34,7 @@ const steps = [
   {
     n: "01",
     title: "Get a free AI Answer Snapshot",
-    body: "Submit the business name, city, service, website, and email. We ask logged-out ChatGPT and Perplexity who they name for that trade and city. No payment.",
+    body: homeSnapshotOfferDescription,
   },
   {
     n: "02",
@@ -73,9 +79,17 @@ const faqs = [
   },
 ];
 
+const homePageFaqItems = [
+  ...snapshotOfferFaqs,
+  ...faqs.filter((item) => item.q !== "When is the Fix Pack delivered?"),
+];
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqPageJsonLd(homePageFaqItems)} />
+      <JsonLd data={homeSnapshotServiceJsonLd(publicOrigin())} />
+      <JsonLd data={homeFixPackProductJsonLd(publicOrigin())} />
       <SiteHeader />
       <main id="main">
         <section className="border-b border-rule/80">
@@ -179,7 +193,6 @@ export default function HomePage() {
 
         <section id="faq" className="border-b border-rule/80">
           <div className="mx-auto max-w-5xl px-5 py-14">
-            <JsonLd data={faqPageJsonLd(snapshotOfferFaqs)} />
             <p className="kicker">FAQ</p>
             <h2 className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">
               Before you request a snapshot or the Fix Pack.

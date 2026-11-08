@@ -9,12 +9,12 @@ import { SnapshotRequestForm } from "@/components/SnapshotRequestForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustLinks } from "@/components/TrustLinks";
+import { freeSnapshotPageFixPackJsonLd, freeSnapshotPageFixPackRest } from "@/lib/core-offer-schema";
 import { pageMeta } from "@/lib/content/meta";
 import { faqPageJsonLd, freeSnapshotPageFaqs } from "@/lib/offer-faq";
 import {
   contactEmail,
   fixPackIntroPriceLabel,
-  fixPackListPriceLabel,
   publicOrigin,
   sellerName,
 } from "@/lib/site";
@@ -54,6 +54,7 @@ export default async function FreeSnapshotPage({
     <>
       <JsonLd data={faqPageJsonLd(freeSnapshotPageFaqs)} />
       <JsonLd data={freeSnapshotServiceJsonLd(publicOrigin())} />
+      <JsonLd data={freeSnapshotPageFixPackJsonLd(publicOrigin())} />
       <SiteHeader />
       <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-4 sm:py-14">
         <p className="kicker">Free · no checkout</p>
@@ -151,12 +152,7 @@ export default async function FreeSnapshotPage({
           <Link href="/fix-pack" className="text-forest underline">
             Fix Pack
           </Link>{" "}
-          is the done-for-you work after you have seen who was named.
-          Introductory price {fixPackIntroPriceLabel}. List price{" "}
-          {fixPackListPriceLabel}. We email the Fix Pack within a few
-          business days after payment, once we have the business name, city,
-          service, and public site URL. It is not a promise that any assistant will name the business. The buy button opens {fixPackIntroPriceLabel}{" "}
-          card checkout.
+          {freeSnapshotPageFixPackRest}
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <FixPackBuyLink />

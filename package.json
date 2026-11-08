@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --experimental-strip-types --test lib/*.test.ts",
+    "schema-sanity": "node --experimental-strip-types scripts/schema-sanity.mjs",
     "indexnow": "node scripts/indexnow-ping.mjs"
   },
   "dependencies": {
