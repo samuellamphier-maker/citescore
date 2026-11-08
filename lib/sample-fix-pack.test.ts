@@ -22,38 +22,28 @@ const nextConfig = readFileSync(new URL("../next.config.ts", import.meta.url), "
 const industry = readFileSync(new URL("./industry-snapshot.ts", import.meta.url), "utf8");
 
 const invented =
-  /Samuel|Lamphier|testimonial|customers served|guarantee|few minutes|24 hours|48 hours|\b\d\.\d\b|%/i;
+  /Samuel|Lamphier|testimonial|customers served|guarantee|few minutes|24 hours|48 hours|%/i;
 
-function assertPlaceholderJsonLd(data: object, type: string) {
+const publishedDigits = new Set(["4.6", "22", "4.9", "310", "4.8", "180", "4.7", "95", "100"]);
+
+function assertFilledJsonLd(data: object, type: string) {
   const text = sampleJsonLdText(data);
   const parsed = JSON.parse(text) as Record<string, unknown>;
   assert.equal(parsed["@context"], "https://schema.org");
   assert.equal(parsed["@type"], type);
   assert.equal(JSON.stringify(parsed), JSON.stringify(data));
-  const values: string[] = [];
-  const walk = (value: unknown) => {
-    if (Array.isArray(value)) {
-      for (const item of value) walk(item);
-      return;
-    }
-    if (value && typeof value === "object") {
-      for (const [key, item] of Object.entries(value)) {
-        if (key !== "@context" && key !== "@type") walk(item);
-      }
-      return;
-    }
-    assert.equal(typeof value, "string");
-    values.push(String(value));
-  };
-  walk(parsed);
-  assert.ok(values.length > 0);
-  for (const value of values) {
-    assert.match(value, /^\[[^\]]+\]$/);
-    assert.equal(/\d/.test(value), false, value);
-  }
+  const flat = JSON.stringify(parsed);
+  assert.equal(flat.includes("telephone"), false);
+  assert.equal(flat.includes("["), false);
+  assert.equal(flat.includes("postalCode"), false);
+  assert.match(flat, /Example Plumbing Co\./);
+  assert.match(flat, /100 Example Street/);
+  assert.match(flat, /Riverton/);
+  assert.match(flat, /example-plumbing\.example|Plumber/);
+  assert.doesNotMatch(flat, invented);
 }
 
-test("sample Fix Pack is a labeled fictional preview with placeholder JSON-LD", () => {
+test("sample Fix Pack is a labeled fictional preview filled from the example snapshot", () => {
   assert.match(page, /path: "\/sample-fix-pack"/);
   assert.match(page, /Sample Fix Pack: what you get for \$\{fixPackIntroPriceLabel\}/);
   assert.match(page, /before you pay/);
@@ -61,12 +51,46 @@ test("sample Fix Pack is a labeled fictional preview with placeholder JSON-LD", 
   assert.match(page, /CiteScore Team/);
   assert.match(page, /Example Plumbing Co\./);
   assert.match(page, /Riverton, USA/);
+  assert.match(page, /100 Example Street/);
   assert.match(page, /sampleFixPackExampleBanner/);
   assert.match(example, new RegExp(sampleFixPackExampleBanner.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   assert.equal((page.match(/<ExampleBanner \/>/g) ?? []).length >= 3, true);
-  assert.match(example, /\[their rating\]/);
-  assert.match(example, /\[competitor review count\]/);
+  const flat = page.replace(/\s+/g, " ");
+  assert.match(flat, /fictional/i);
+  assert.match(flat, /illustrative/i);
+  assert.match(flat, /Not a customer result, and not a live ChatGPT or Perplexity answer/);
+  assert.match(flat, /Not looked up\. Not a research finding\. Not a customer result/);
+  assert.match(flat, /does not add a phone number/);
+  assert.match(flat, /These prompts were not run/);
+  assert.match(flat, /The 14-days-later column is not run\. This is an example layout/);
   assert.match(page, /sampleReviewRows/);
+  assert.match(page, /Illustrative Google rating/);
+  assert.match(example, /rating: "4\.6"/);
+  assert.match(example, /reviews: "22"/);
+  assert.match(example, /rating: "4\.9"/);
+  assert.match(example, /reviews: "310"/);
+  assert.match(example, /rating: "4\.8"/);
+  assert.match(example, /reviews: "180"/);
+  assert.match(example, /rating: "4\.7"/);
+  assert.match(example, /reviews: "95"/);
+  assert.match(example, /Shorter service list than Sample Rooter Co\./);
+  assert.match(example, /No photos, in this illustration/);
+  assert.match(example, /do not match example-plumbing\.example/);
+  assert.match(example, /Sample Rooter Co\., Fictional Fixture Works, and Demo Drain Co\./);
+  assert.match(example, /Fictional Fixture Works and Sample Rooter Co\./);
+  assert.match(example, /Not run\. This is an example layout\./);
+  assert.match(example, /100 Example Street/);
+  assert.doesNotMatch(example, /\[their rating\]|\[competitor review count\]|\[business name\]|\[who was named\]/);
+  assert.doesNotMatch(example, /telephone/);
+  assert.doesNotMatch(page, /does not fill in a rating/);
+  assert.doesNotMatch(page, /cells below stay in brackets/);
+  assert.doesNotMatch(page, /\[their rating\]|\[competitor review count\]/);
+  const digits =
+    example.replace(/JSON\.stringify\(data, null, 2\)/, "").match(/\d+(?:\.\d+)?/g) ?? [];
+  assert.ok(digits.length > 0);
+  for (const token of digits) {
+    assert.equal(publishedDigits.has(token), true, token);
+  }
   assert.match(page, /Google Business Profile gap list/);
   assert.match(page, /Review-gap plan and script/);
   assert.match(page, /Directories the answer cited/);
@@ -85,10 +109,10 @@ test("sample Fix Pack is a labeled fictional preview with placeholder JSON-LD", 
   assert.match(page, /<StickySnapshotOffer path="\/sample-fix-pack" \/>/);
   assert.doesNotMatch(page, /application\/ld\+json/);
   assert.doesNotMatch(page, invented);
-  assert.doesNotMatch(example.replace(/JSON\.stringify\(data, null, 2\)/, ""), /\d/);
   assert.doesNotMatch(example, invented);
-  assertPlaceholderJsonLd(sampleLocalBusinessJsonLd, "LocalBusiness");
-  assertPlaceholderJsonLd(sampleServiceJsonLd, "Service");
+  assertFilledJsonLd(sampleLocalBusinessJsonLd, "LocalBusiness");
+  assertFilledJsonLd(sampleServiceJsonLd, "Service");
+  assert.equal(sampleLocalBusinessJsonLd.url, "https://example-plumbing.example");
   assert.equal(isStickySnapshotContentPath("/sample-fix-pack"), true);
   assert.match(industry, /"\/sample-fix-pack"/);
 });

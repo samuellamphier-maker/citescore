@@ -60,7 +60,7 @@ export const llmsTxtSections: { heading: string; links: LlmsLink[] }[] = [
       {
         title: "Sample Fix Pack",
         path: "/sample-fix-pack",
-        note: `An illustrative example of the ${fixPackIntroPriceLabel} AI Visibility Fix Pack before you pay: Google Business Profile gaps, a review-gap plan and script, the directories an AI answer cited, placeholder LocalBusiness and Service JSON-LD with install steps, and a 14-day re-check for a fictional plumber. Not a real client or real results.`,
+        note: `An illustrative example of the ${fixPackIntroPriceLabel} AI Visibility Fix Pack before you pay: Google Business Profile gaps, a review-gap plan and script, the directories an AI answer cited, example LocalBusiness and Service JSON-LD with install steps, and a 14-day re-check for a fictional plumber. Not a real client or real results.`,
       },
       {
         title: "AI Visibility Fix Pack",

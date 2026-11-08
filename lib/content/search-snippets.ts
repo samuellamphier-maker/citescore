@@ -38,7 +38,7 @@ export const searchSnippetOverrides: Record<string, SearchSnippetOverride> = {
       "Example only: a fictional AI Answer Snapshot for Example Plumbing in Riverton. Prompts, names, and review counts are illustrative. Not a customer result.",
   },
   "/sample-fix-pack": {
-    description: `Illustrative ${fixPackIntroPriceLabel} Fix Pack before you pay: profile gaps, a review script, cited directories, placeholder JSON-LD, and a 14-day re-check. Not real results.`,
+    description: `Illustrative ${fixPackIntroPriceLabel} Fix Pack for fictional Example Plumbing Co.: filled profile gaps, review counts, directories, JSON-LD, and a re-check. Not real results.`,
   },
   "/free-snapshot": {
     description: `Request a free AI Answer Snapshot. Logged-out ChatGPT and Perplexity are asked who they name for that trade and city. The ${fixPackIntroPriceLabel} Fix Pack is optional.`,

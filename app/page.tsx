@@ -264,7 +264,7 @@ export default function HomePage() {
               <Link href="/sample-fix-pack" className="text-forest underline">
                 The sample Fix Pack
               </Link>{" "}
-              is the work that follows, also for a fictional business.
+              is a filled example of that work for the same fictional business.
             </p>
             <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
               <Link

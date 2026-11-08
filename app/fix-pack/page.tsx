@@ -74,6 +74,7 @@ export default function FixPackPage() {
           </Link>
           <span className="text-ink-soft">
             . Illustrative example content, not a real client or real results.
+            The example is filled in for the same fictional plumber.
           </span>
         </p>
 

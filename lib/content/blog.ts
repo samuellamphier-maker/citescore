@@ -100,7 +100,7 @@ export const marketingPaths: MarketingPath[] = [
     path: "/sample-fix-pack",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-11-01",
+    lastModified: "2026-11-08",
   },
   {
     path: "/free-snapshot",
