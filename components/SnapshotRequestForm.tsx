@@ -13,6 +13,7 @@ import {
 } from "@/lib/email-request";
 import { contactEmail, productionOrigin } from "@/lib/site";
 import {
+  snapshotBusinessPrefill,
   snapshotFieldErrors,
   snapshotFieldsComplete,
   snapshotFormPageEndpoint,
@@ -20,14 +21,15 @@ import {
   snapshotSentMessage,
   snapshotSourceValue,
   snapshotValidationMessage,
+  snapshotWebsitePrefill,
   snapshotWebsiteValue,
 } from "@/lib/snapshot-form";
 
 const fieldClass =
   "mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft";
 
-function describedBy(hintId: string, errorId?: string) {
-  return [hintId, errorId].filter(Boolean).join(" ");
+function describedBy(...ids: Array<string | undefined>) {
+  return ids.filter(Boolean).join(" ");
 }
 
 function FieldLabel({
@@ -57,12 +59,18 @@ const fieldIds: Record<FieldKey, string> = {
 
 export function SnapshotRequestForm({
   defaultService,
+  defaultWebsite,
+  defaultBusiness,
   source,
   caveat = true,
   deliveryNote = true,
 }: {
   /** Prefills Service when the page is already about one trade. */
   defaultService?: string;
+  /** Website carried from the signal check. Invalid values stay blank. */
+  defaultWebsite?: string;
+  /** Business name carried from the checked homepage title. */
+  defaultBusiness?: string;
   /** Page path posted as a hidden source field. */
   source?: string;
   /** Omit when the page already states that answers vary and this is not a ranking. */
@@ -70,11 +78,13 @@ export function SnapshotRequestForm({
   /** Omit when the page already says where the form sends the fields. */
   deliveryNote?: boolean;
 } = {}) {
-  const [business, setBusiness] = useState("");
+  const carriedWebsite = snapshotWebsitePrefill(defaultWebsite);
+  const carriedBusiness = snapshotBusinessPrefill(defaultBusiness);
+  const [business, setBusiness] = useState(carriedBusiness);
   const [city, setCity] = useState("");
   // null means the visitor has not edited service, so the page trade or ?trade= can fill it.
   const [service, setService] = useState<string | null>(null);
-  const [website, setWebsite] = useState("");
+  const [website, setWebsite] = useState(carriedWebsite);
   const [email, setEmail] = useState("");
   const [phase, setPhase] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [validationMessage, setValidationMessage] = useState("");
@@ -195,6 +205,11 @@ export function SnapshotRequestForm({
       <p id="snapshot-required-note" className="text-sm leading-6 text-ink-soft">
         All fields are required.
       </p>
+      {carriedWebsite || carriedBusiness ? (
+        <p id="snapshot-prefill" className="text-sm leading-6 text-ink-soft">
+          Filled in from the site you checked. Change anything that is wrong.
+        </p>
+      ) : null}
       <div>
         <FieldLabel htmlFor="snapshot-business">Business name</FieldLabel>
         <input
@@ -202,10 +217,12 @@ export function SnapshotRequestForm({
           name="Business name"
           required
           autoComplete="organization"
+          autoFocus={Boolean(carriedWebsite) && !carriedBusiness}
           onInvalid={onInvalid}
           aria-invalid={fieldErrors.business ? true : undefined}
           aria-describedby={describedBy(
             "snapshot-required-note",
+            carriedWebsite || carriedBusiness ? "snapshot-prefill" : undefined,
             fieldErrors.business ? "snapshot-business-error" : undefined,
           )}
           value={business}
@@ -229,10 +246,12 @@ export function SnapshotRequestForm({
             name="City"
             required
             autoComplete="address-level2"
+            autoFocus={Boolean(carriedBusiness)}
             onInvalid={onInvalid}
             aria-invalid={fieldErrors.city ? true : undefined}
             aria-describedby={describedBy(
               "snapshot-required-note",
+              carriedBusiness ? "snapshot-prefill" : undefined,
               fieldErrors.city ? "snapshot-city-error" : undefined,
             )}
             value={city}
@@ -293,6 +312,7 @@ export function SnapshotRequestForm({
           aria-invalid={fieldErrors.website ? true : undefined}
           aria-describedby={describedBy(
             "snapshot-required-note",
+            carriedWebsite ? "snapshot-prefill" : undefined,
             fieldErrors.website ? "snapshot-website-error" : undefined,
           )}
           value={website}
