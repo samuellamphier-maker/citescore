@@ -11,9 +11,11 @@ import {
   snapshotRequestClipboard,
   snapshotSubjectForTrade,
 } from "@/lib/email-request";
-import { contactEmail, productionOrigin } from "@/lib/site";
+import { contactEmail, fixPackPageLinkLabel, productionOrigin } from "@/lib/site";
 import {
+  postSnapshotForm,
   snapshotBusinessPrefill,
+  snapshotDeliveredToMessage,
   snapshotFieldErrors,
   snapshotFieldsComplete,
   snapshotFormPageEndpoint,
@@ -21,6 +23,7 @@ import {
   snapshotSentMessage,
   snapshotSourceValue,
   snapshotValidationMessage,
+  snapshotWebsiteAccepted,
   snapshotWebsitePrefill,
   snapshotWebsiteValue,
 } from "@/lib/snapshot-form";
@@ -87,6 +90,7 @@ export function SnapshotRequestForm({
   const [website, setWebsite] = useState(carriedWebsite);
   const [email, setEmail] = useState("");
   const [phase, setPhase] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [sentEmail, setSentEmail] = useState("");
   const [validationMessage, setValidationMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldKey, string>>>({});
   const submitLock = useRef(false);
@@ -112,8 +116,10 @@ export function SnapshotRequestForm({
     const input = form.elements.namedItem("Website");
     if (!(input instanceof HTMLInputElement)) return "";
     const next = snapshotWebsiteValue(input.value);
-    if (next !== input.value) input.value = next;
-    if (next !== website) setWebsite(next);
+    if (snapshotWebsiteAccepted(input.value)) {
+      if (next !== input.value) input.value = next;
+      if (next !== website) setWebsite(next);
+    }
     return next;
   }
 
@@ -145,7 +151,7 @@ export function SnapshotRequestForm({
     revealErrors(writeWebsite(form));
   }
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitLock.current || phase === "sent") return;
 
@@ -153,7 +159,7 @@ export function SnapshotRequestForm({
     const websiteValue = writeWebsite(form);
     const posted = { ...fields, website: websiteValue };
     const errors = snapshotFieldErrors(posted);
-    if (!form.checkValidity() || Object.keys(errors).length > 0) {
+    if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
       setValidationMessage(snapshotValidationMessage);
       setPhase("idle");
@@ -172,6 +178,7 @@ export function SnapshotRequestForm({
     if (honey.trim()) {
       submitLock.current = true;
       setValidationMessage("");
+      setSentEmail(posted.email.trim());
       setPhase("sent");
       return;
     }
@@ -184,12 +191,22 @@ export function SnapshotRequestForm({
     if (next instanceof HTMLInputElement) {
       next.value = new URL("/thank-you", window.location.origin).toString();
     }
-    try {
-      form.submit();
-    } catch {
+    const result = await postSnapshotForm(
+      posted,
+      sourceValue || undefined,
+      (url, init) =>
+        fetch(url, init).then((response) => ({
+          status: response.status,
+          json: () => response.json() as Promise<unknown>,
+        })),
+    );
+    if (result !== "sent") {
       submitLock.current = false;
       setPhase("error");
+      return;
     }
+    setSentEmail(posted.email.trim());
+    setPhase("sent");
   }
 
   const sent = phase === "sent";
@@ -316,6 +333,11 @@ export function SnapshotRequestForm({
             fieldErrors.website ? "snapshot-website-error" : undefined,
           )}
           value={website}
+          onBlur={(event) => {
+            if (!snapshotWebsiteAccepted(event.target.value)) return;
+            const next = snapshotWebsiteValue(event.target.value);
+            if (next !== website) setWebsite(next);
+          }}
           onChange={(event) => {
             setWebsite(event.target.value);
             clearFieldError("website");
@@ -405,13 +427,59 @@ export function SnapshotRequestForm({
         </p>
       ) : null}
       {sent ? (
-        <p role="status" aria-live="polite" className="text-sm font-medium leading-6 text-forest">
-          {snapshotSentMessage}
-        </p>
+        <div
+          id="snapshot-received"
+          role="status"
+          aria-live="polite"
+          className="rounded-lg border border-rule bg-paper px-3 py-3 text-sm leading-6 text-ink"
+        >
+          <p className="font-medium text-forest">{snapshotSentMessage}</p>
+          {sentEmail ? <p className="mt-2">{snapshotDeliveredToMessage(sentEmail)}</p> : null}
+          <p className="mt-2 text-ink-soft">
+            The CiteScore Team prepares the one-page snapshot and emails it.
+          </p>
+          <p className="mt-4 font-medium text-ink">What happens next</p>
+          <ol className="mt-2 list-decimal space-y-2 pl-5 text-ink-soft">
+            <li>
+              FlowForm delivers the business name, city, service, website, and email. No account and no paid checkout.
+            </li>
+            <li>
+              The CiteScore Team asks logged-out ChatGPT and Perplexity who they
+              name for that trade and city, and records who is named.
+            </li>
+            <li>
+              The CiteScore Team emails the one-page snapshot: who is named,
+              which sources are cited, and how the Google rating and review
+              count compare. A real snapshot prints the day the prompts were
+              asked. There is no set delivery time.
+            </li>
+          </ol>
+          <p className="mt-3 text-ink-soft">
+            AI answers vary run to run. This is a snapshot, not a ranking.
+          </p>
+          <p className="mt-3">
+            <Link href="/sample-snapshot" className="font-medium text-forest underline">
+              See an example snapshot
+            </Link>
+            <span className="text-ink-soft">
+              . Fictional business, illustrative numbers. Not a customer result,
+              and not a live ChatGPT or Perplexity answer.
+            </span>
+          </p>
+          <p className="mt-2">
+            <Link href="/fix-pack" className="font-medium text-forest underline">
+              {fixPackPageLinkLabel()}
+            </Link>
+          </p>
+        </div>
       ) : null}
       {phase === "error" ? (
         <p id="snapshot-send-error" role="alert" className="text-sm leading-6 text-ink">
-          {snapshotSendErrorMessage}
+          {snapshotSendErrorMessage} Email{" "}
+          <a href={`mailto:${contactEmail}`} className="text-forest underline">
+            {contactEmail}
+          </a>
+          .
         </p>
       ) : null}
       <a
