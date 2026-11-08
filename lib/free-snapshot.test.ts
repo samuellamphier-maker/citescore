@@ -45,6 +45,18 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /We reply with the one-page snapshot/);
   assert.match(page, /What happens after you submit/);
   assert.match(page, /There is no set delivery time/);
+  assert.equal((page.match(/<HowSnapshotIsMade/g) ?? []).length, 1);
+  assert.equal(
+    occurrences(page, "AI answers vary run to run. This is a snapshot, not a ranking."),
+    0,
+  );
+  assert.equal(
+    occurrences(
+      page,
+      "We ask logged-out ChatGPT and Perplexity who they name for that trade and city, and record who is named.",
+    ),
+    0,
+  );
   assert.match(page, /SampleSnapshotExcerpt/);
   assert.match(page, /See the full example snapshot/);
   assert.match(page, /Skip straight to the \{fixPackIntroPriceLabel\} Fix Pack/);
@@ -87,7 +99,7 @@ test("main snapshot CTAs point at the free snapshot page", () => {
   assert.doesNotMatch(sample, /href="#snapshot"/);
   assert.doesNotMatch(industry, /href="\/#snapshot"/);
   assert.match(industry, /EmailRequestFallback/);
-  assert.match(sample, /<SnapshotRequestForm \/>/);
+  assert.match(sample, /<SnapshotRequestForm caveat=\{false\} \/>/);
 });
 
 test("/free-snapshot/thanks permanently redirects to /thank-you and stays out of the index", () => {

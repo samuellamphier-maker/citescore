@@ -3,6 +3,7 @@ import {
   freeSnapshotLeadDefault,
 } from "@/lib/home-service-trade";
 import { contactEmail, site } from "@/lib/site";
+import { howSnapshotIsMadeBody } from "@/lib/snapshot-method";
 
 /** Brand icon already published from `public/icon-512.png` and the web manifest. */
 export const organizationLogoPath = "/icon-512.png";
@@ -58,14 +59,14 @@ export function organizationRef(origin: string): Record<string, unknown> {
 
 /**
  * Sentences already visible on /free-snapshot: the default heading and lead,
- * then the “what happens after you submit” steps. Not the meta description.
+ * the “how the snapshot is made” note, then the reply step. Not the meta
+ * description.
  */
 export const freeSnapshotServiceDescription = [
   freeSnapshotHeadingDefault,
   freeSnapshotLeadDefault,
-  "We ask logged-out ChatGPT and Perplexity who they name for that trade and city, and record who is named.",
-  "We reply with the one-page snapshot by email: who is named, which sources are cited, and how the Google rating and review count compare.",
-  "A real snapshot prints the day the prompts were asked.",
+  howSnapshotIsMadeBody,
+  "We reply with the one-page snapshot by email.",
   "There is no set delivery time.",
 ].join(" ");
 

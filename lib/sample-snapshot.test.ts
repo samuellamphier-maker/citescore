@@ -71,7 +71,13 @@ test("example snapshot is fictional and labeled", () => {
   assert.match(page, /Example Plumbing Co\./);
   assert.match(page, /Riverton, USA/);
   assert.match(page, /example-plumbing\.example/);
-  assert.match(page, /AI answers vary run to run\. This is a snapshot, not a ranking\./);
+  assert.equal((page.match(/<HowSnapshotIsMade/g) ?? []).length, 1);
+  assert.match(page, /href="#how-the-snapshot-is-made"/);
+  assert.equal(
+    (page.match(/AI answers vary run to run\. This is a snapshot, not a ranking\./g) ?? [])
+      .length,
+    0,
+  );
   assert.match(page, /CiteScore Team/);
   assert.match(page, /Get a free AI Answer Snapshot/);
   assert.match(page, /Fix Pack,/);

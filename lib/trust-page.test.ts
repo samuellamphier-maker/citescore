@@ -69,6 +69,9 @@ test("trust is linked from the header, footer, and sitemap, and /offer redirects
   ]) {
     assert.match(page, new RegExp(`href="${href}"`), href);
   }
+  assert.match(page, /href="\/free-snapshot#how-the-snapshot-is-made"/);
+  assert.match(page, /href="\/sample-snapshot#how-the-snapshot-is-made"/);
+  assert.match(page, /How the snapshot is made/);
   assert.match(page, /example snapshot \(fictional business\)/i);
   assert.match(page, /sample Fix Pack \(fictional plumber\)/);
 });

@@ -211,7 +211,21 @@ export default function TrustPage() {
             <Link href="/sample-fix-pack" className="text-forest underline">
               sample Fix Pack (fictional plumber)
             </Link>
-            . {sampleFixPackExampleBanner} How a snapshot is produced is on{" "}
+            . {sampleFixPackExampleBanner}{" "}
+            <Link
+              href="/free-snapshot#how-the-snapshot-is-made"
+              className="text-forest underline"
+            >
+              How the snapshot is made
+            </Link>{" "}
+            is beside the request form. The same note is on the{" "}
+            <Link
+              href="/sample-snapshot#how-the-snapshot-is-made"
+              className="text-forest underline"
+            >
+              example snapshot
+            </Link>
+            . The longer write-up is on{" "}
             <Link href="/methodology" className="text-forest underline">
               methodology
             </Link>
