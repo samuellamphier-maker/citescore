@@ -46,6 +46,15 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /What happens after you submit/);
   assert.match(page, /There is no set delivery time/);
   assert.equal((page.match(/<HowSnapshotIsMade/g) ?? []).length, 1);
+  const leadAt = page.indexOf("<FreeSnapshotLead");
+  const formAt = page.indexOf("<SnapshotRequestForm");
+  const methodAt = page.indexOf("<HowSnapshotIsMade");
+  const sampleAt = page.indexOf("<SampleSnapshotExcerpt");
+  assert.ok(leadAt !== -1 && formAt > leadAt);
+  assert.ok(formAt < methodAt);
+  assert.ok(formAt < sampleAt);
+  assert.equal((page.match(/<SampleSnapshotExcerpt/g) ?? []).length, 1);
+  assert.doesNotMatch(page, /variant="compact"/);
   assert.equal(
     occurrences(page, "AI answers vary run to run. This is a snapshot, not a ranking."),
     0,

@@ -61,14 +61,9 @@ export default async function FreeSnapshotPage({
         <p className="kicker">Free · no checkout</p>
         <FreeSnapshotLead />
 
-        <div className="mt-3 lg:hidden">
-          <SampleSnapshotExcerpt variant="compact" />
-        </div>
-
         <div className="mt-4 grid items-start gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
           <div className="min-w-0">
-            <HowSnapshotIsMade />
-            <section className="mt-4 rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5">
+            <section className="rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5">
               <p className="kicker">Request</p>
               <h2 className="mt-2 font-serif text-2xl tracking-tight">
                 Request the free snapshot.
@@ -96,6 +91,8 @@ export default async function FreeSnapshotPage({
                 if you already want the done-for-you work.
               </span>
             </p>
+
+            <HowSnapshotIsMade className="mt-6" />
 
             <section className="mt-6" aria-labelledby="after-submit">
               <h2 id="after-submit" className="font-serif text-2xl tracking-tight sm:text-3xl">
