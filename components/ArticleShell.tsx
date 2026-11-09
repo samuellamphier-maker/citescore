@@ -115,11 +115,8 @@ export function ArticleShell({
               <div className="mt-6">
                 <HomeServiceGuideCallout trade={homeService} />
               </div>
-            ) : null}
-            <p className="mt-4 text-lg leading-8 text-ink-soft">{dek}</p>
-            {byline}
-            {!homeService && (snapshotOffer || generalSnapshot) ? (
-              <div className="mt-8">
+            ) : snapshotOffer || generalSnapshot ? (
+              <div className="mt-6">
                 <IndustrySnapshotCta
                   industry={snapshotOffer?.industry}
                   snapshotHref={industrySnapshotHref}
@@ -127,6 +124,8 @@ export function ArticleShell({
                 />
               </div>
             ) : null}
+            <p className="mt-4 text-lg leading-8 text-ink-soft">{dek}</p>
+            {byline}
           </>
         )}
         <div className="article-prose mt-10">
