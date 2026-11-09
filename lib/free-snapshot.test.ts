@@ -105,6 +105,26 @@ test("free snapshot page is the linkable request, with the existing email path",
   );
 });
 
+test("homepage shows the request form before the Payhip buy on a phone", () => {
+  const hero = home.slice(home.indexOf("<main"), home.indexOf("</section>"));
+  const heading = hero.indexOf("When customers ask ChatGPT");
+  const form = hero.indexOf("<SnapshotRequestForm");
+  const buy = hero.indexOf("<FixPackBuyLink");
+  const headlineOrder = hero.indexOf('className="order-1"');
+  const formOrder = hero.indexOf("order-2");
+  assert.ok(form !== -1 && form < heading, "float source comes before the headline");
+  assert.ok(buy > heading, "Payhip buy stays under the headline");
+  assert.ok(formOrder !== -1 && formOrder < headlineOrder);
+  assert.match(hero, /order-1/);
+  assert.match(hero, /order-2/);
+  assert.match(hero, /order-3/);
+  assert.match(hero, /lg:float-right/);
+  assert.match(hero, /lg:flow-root/);
+  assert.match(hero, /min-h-12/);
+  assert.doesNotMatch(hero, /sm:flex-row/);
+  assert.doesNotMatch(hero, /(?<!min-)h-12/);
+});
+
 test("main snapshot CTAs point at the free snapshot page", () => {
   for (const source of [home, fixPack, sample]) {
     assert.match(source, /href="\/free-snapshot"/);
