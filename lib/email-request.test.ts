@@ -145,6 +145,7 @@ test("snapshot, fix pack, and industry CTAs share one email fallback", () => {
     new URL("../components/FixPackBuyLink.tsx", import.meta.url),
     "utf8",
   );
-  assert.match(fixPackLink, /checkout \? null :/);
+  assert.match(fixPackLink, /checkout \? \(/);
+  assert.match(fixPackLink, /fixPackPayhipCheckoutNote/);
   assert.match(fixPackLink, /fixPackRequestText\(contactEmail\)/);
 });

@@ -12,11 +12,25 @@ const { citeScoreOrganizationJsonLd, organizationId } = await import("./site-sch
 const {
   fixPackDeliverables,
   fixPackHowDeliveryWorks,
+  fixPackPayhipCheckoutNote,
   fixPackProductJsonLd,
   fixPackRefund,
   fixPackTurnaround,
   fixPackWhatYouGet,
 } = await import("./fix-pack-offer.ts");
+
+test("the buy button says Payhip lists a text file and the Fix Pack is emailed", () => {
+  assert.match(fixPackPayhipCheckoutNote, /Opens Payhip in a new tab\./);
+  assert.match(fixPackPayhipCheckoutNote, /Payhip lists a text file with the order\./);
+  assert.match(fixPackPayhipCheckoutNote, /We email the Fix Pack\./);
+  assert.doesNotMatch(fixPackPayhipCheckoutNote, /1KB|guarantee|testimonial|customers/);
+  const buy = readFileSync(new URL("../components/FixPackBuyLink.tsx", import.meta.url), "utf8");
+  assert.match(buy, /fixPackPayhipCheckoutNote/);
+  assert.match(buy, /data-funnel-cta/);
+  assert.match(buy, /href="\/fix-pack\/next-steps"/);
+  assert.match(buy, /What happens after you buy/);
+  assert.match(buy, /href=\{fixPackHref\(\)\}/);
+});
 
 test("Fix Pack product JSON-LD states the charged price and no ratings", () => {
   const origin = "https://citescore.vercel.app";

@@ -45,6 +45,13 @@ export const fixPackHowDeliveryWorks =
 export const fixPackTurnaround =
   "Within a few business days after payment, once we have the business name, city, service, and public site URL.";
 
+/**
+ * Sits under the buy button. The live Payhip product page lists a text file
+ * with the order. The Fix Pack itself is the email described on this site.
+ */
+export const fixPackPayhipCheckoutNote =
+  "Opens Payhip in a new tab. Payhip lists a text file with the order. We email the Fix Pack.";
+
 export const fixPackRefund =
   "Full refund within 14 days of delivery if the Fix Pack is not useful. You do not need to show that you installed the markup or sent the review script. The 14 days start when the Fix Pack is delivered, not when you request the free snapshot. The free AI Answer Snapshot has no charge.";
 
