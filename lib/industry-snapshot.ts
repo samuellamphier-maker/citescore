@@ -211,23 +211,72 @@ export function showsGuideSnapshotCallout(input: {
   return guideSnapshotCalloutPathSet.has(path);
 }
 
-/** Guide paths whose inline snapshot callout already prefills ?trade=. */
-const homeServiceTradeQuery: Record<string, string> = {
-  "/ai-search-visibility-for-plumbers": "plumber",
-  "/ai-search-visibility-for-hvac": "hvac",
-  "/ai-search-visibility-for-roofers": "roofer",
-  "/ai-search-visibility-for-electricians": "electrician",
+/**
+ * Service values the free snapshot form will accept from ?service=.
+ * "local" is a category, not a service someone would type.
+ * Home-service phrases stay in the set so a hand-built link can still fill the field.
+ */
+const snapshotServiceAllowlist = new Set<string>([
+  ...Object.values(labels),
+  ...Object.values(schemaIndustries).filter((service) => service !== "local"),
+]);
+
+/**
+ * Home-service query id for an industry phrase.
+ * Keys are the service label and the ?trade= id from home-service-trade.ts.
+ * Those four trades keep ?trade= so the request page can use the heading written for them.
+ */
+const homeServiceTradeIdByPhrase: Record<string, string> = {
+  plumber: "plumber",
+  HVAC: "hvac",
+  hvac: "hvac",
+  roofer: "roofer",
+  electrician: "electrician",
 };
 
 /**
+ * Free-snapshot URL that keeps the trade the visitor already named.
+ * The four home-service trades use ?trade= so the heading stays the one written for that trade.
+ * Every other known industry uses ?service= and fills only the service field.
+ * Unknown phrases stay on the plain request page.
+ */
+export function freeSnapshotHrefForIndustry(industry: string) {
+  const service = industry.trim();
+  const trade = homeServiceTradeIdByPhrase[service];
+  if (trade) return `/free-snapshot?trade=${trade}`;
+  if (!snapshotServiceAllowlist.has(service)) return "/free-snapshot";
+  return `/free-snapshot?${new URLSearchParams({ service }).toString()}`;
+}
+
+/**
+ * Service carried from an industry guide. Anything outside the allowlist is ignored,
+ * including different casing.
+ */
+export function snapshotServicePrefill(value: string | null | undefined) {
+  const service = (value ?? "").trim();
+  if (!service || service.length > 80) return "";
+  return snapshotServiceAllowlist.has(service) ? service : "";
+}
+
+/**
+ * Phrase that fits "for ___ in your city". Known schema trades use the sentence
+ * already written for that generator. Other industries keep the guide's service label.
+ */
+export function snapshotServiceAskPhrase(service: string) {
+  const known = schemaAudience[service];
+  if (!known) return service;
+  return known.replace(/ in your city$/, "");
+}
+
+/**
  * Free-snapshot URL for an industry visibility guide.
- * Home-service guides keep the same ?trade= prefill as the inline callout.
- * Other paths return null. The wider sticky decision lives in sticky-snapshot.
+ * Home-service guides keep ?trade=. Other industries keep ?service=.
+ * Other paths return null. The wider sticky decision lives in contentStickySnapshotHref.
  */
 export function tradeGuideStickySnapshotHref(path: string): string | null {
-  if (!industrySnapshotLabel(path)) return null;
-  const trade = homeServiceTradeQuery[path];
-  return trade ? `/free-snapshot?trade=${trade}` : "/free-snapshot";
+  const industry = industrySnapshotLabel(path);
+  if (!industry) return null;
+  return freeSnapshotHrefForIndustry(industry);
 }
 
 /**

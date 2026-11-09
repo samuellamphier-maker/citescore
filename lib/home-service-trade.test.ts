@@ -7,6 +7,7 @@ import {
   freeSnapshotHeadingDefault,
   freeSnapshotLead,
   freeSnapshotLeadDefault,
+  freeSnapshotLeadForService,
   freeSnapshotPath,
   homeServiceTradeForGuide,
   parseHomeServiceTrade,
@@ -92,6 +93,15 @@ test("without a trade the free snapshot heading stays the current sentence", () 
   assert.equal(freeSnapshotHeading(null), "Request a free AI Answer Snapshot.");
   assert.equal(freeSnapshotLead(null), freeSnapshotLeadDefault);
   assert.match(freeSnapshotLead(null), /a plumber \(or your trade\)/);
+  assert.equal(
+    freeSnapshotLeadForService("a dentist"),
+    "When customers ask ChatGPT or Perplexity for a dentist in your city, who do they name instead of the local business?",
+  );
+  assert.equal(
+    freeSnapshotLeadForService("landscaping"),
+    "When customers ask ChatGPT or Perplexity for landscaping in your city, who do they name instead of the local business?",
+  );
+  assert.doesNotMatch(freeSnapshotLeadForService("a dentist"), /guarantee|testimonial|Samuel|Lamphier/i);
   const plumber = parseHomeServiceTrade("plumber");
   assert.match(freeSnapshotHeading(plumber), /plumbing company/);
   assert.match(freeSnapshotLead(plumber), /for a plumber in your city/);
@@ -134,7 +144,7 @@ test("guides render the short callout and the snapshot page reads trade on the c
   assert.match(form, /useHomeServiceTradeParam/);
   assert.match(form, /snapshotSubjectForTrade/);
   assert.doesNotMatch(form, /useSearchParams|useEffect/);
-  assert.match(page, /<FreeSnapshotLead \/>/);
+  assert.match(page, /<FreeSnapshotLead service=\{service\} \/>/);
   assert.match(page, /searchParams/);
   assert.doesNotMatch(page, /useSearchParams/);
   assert.doesNotMatch(page, /params\.trade|get\("trade"\)|\?trade=/);

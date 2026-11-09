@@ -16,9 +16,12 @@ import {
   shellContentPath,
   showsGuideSnapshotCallout,
   contentStickySnapshotHref,
+  freeSnapshotHrefForIndustry,
   highIntentStickyPaths,
   isStickySnapshotContentPath,
   snapshotOfferForPage,
+  snapshotServiceAskPhrase,
+  snapshotServicePrefill,
   tradeGuideStickySnapshotHref,
 } from "./industry-snapshot.ts";
 import {
@@ -229,11 +232,48 @@ test("mobile sticky snapshot link follows the inline callout prefill", () => {
   );
   assert.equal(
     tradeGuideStickySnapshotHref("/ai-search-visibility-for-dentists"),
-    "/free-snapshot",
+    "/free-snapshot?service=dental",
   );
   assert.equal(
     tradeGuideStickySnapshotHref("/ai-search-visibility-for-landscapers"),
-    "/free-snapshot",
+    "/free-snapshot?service=landscaping",
+  );
+  assert.equal(
+    tradeGuideStickySnapshotHref("/ai-search-visibility-for-law-firms"),
+    "/free-snapshot?service=law+firm",
+  );
+  assert.equal(
+    tradeGuideStickySnapshotHref("/ai-search-visibility-for-b2b-saas"),
+    "/free-snapshot?service=B2B+SaaS",
+  );
+  assert.equal(freeSnapshotHrefForIndustry("plumber"), "/free-snapshot?trade=plumber");
+  assert.equal(freeSnapshotHrefForIndustry("HVAC"), "/free-snapshot?trade=hvac");
+  assert.equal(freeSnapshotHrefForIndustry("roofer"), "/free-snapshot?trade=roofer");
+  assert.equal(freeSnapshotHrefForIndustry("electrician"), "/free-snapshot?trade=electrician");
+  assert.equal(freeSnapshotHrefForIndustry("hotel"), "/free-snapshot?service=hotel");
+  assert.equal(freeSnapshotHrefForIndustry("clinic"), "/free-snapshot?service=clinic");
+  assert.equal(freeSnapshotHrefForIndustry("local"), "/free-snapshot");
+  assert.equal(freeSnapshotHrefForIndustry("not-a-trade"), "/free-snapshot");
+  assert.equal(snapshotServicePrefill("dental"), "dental");
+  assert.equal(snapshotServicePrefill("law firm"), "law firm");
+  assert.equal(snapshotServicePrefill("B2B SaaS"), "B2B SaaS");
+  assert.equal(snapshotServicePrefill(" Dental "), "");
+  assert.equal(snapshotServicePrefill("dentist"), "");
+  assert.equal(snapshotServicePrefill("local"), "");
+  assert.equal(snapshotServicePrefill("<script>"), "");
+  assert.equal(snapshotServicePrefill(null), "");
+  assert.equal(snapshotServiceAskPhrase("dental"), "a dentist");
+  assert.equal(snapshotServiceAskPhrase("law firm"), "a law firm");
+  assert.equal(snapshotServiceAskPhrase("real estate"), "a real estate agent");
+  assert.equal(snapshotServiceAskPhrase("landscaping"), "landscaping");
+  assert.equal(snapshotServiceAskPhrase("B2B SaaS"), "B2B SaaS");
+  assert.doesNotMatch(
+    [
+      snapshotServiceAskPhrase("dental"),
+      snapshotServiceAskPhrase("landscaping"),
+      freeSnapshotHrefForIndustry("restaurant"),
+    ].join("\n"),
+    /Samuel|Lamphier|testimonial|customers served|guarantee/i,
   );
   for (const path of [
     "/free-snapshot",
@@ -419,6 +459,9 @@ test("blog posts and general guides get one in-body snapshot callout", () => {
     new URL("../components/IndustrySnapshotCta.tsx", import.meta.url),
     "utf8",
   );
+  assert.match(shell, /freeSnapshotHrefForIndustry/);
+  assert.match(shell, /snapshotHref=\{industrySnapshotHref\}/);
+  assert.equal((shell.match(/snapshotHref=\{industrySnapshotHref\}/g) ?? []).length, 4);
   assert.match(shell, /showsGuideSnapshotCallout\(\{ guidePath, ctaId \}\)/);
   assert.match(shell, /variant=\{generalSnapshot \? "general" : "industry"\}/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);

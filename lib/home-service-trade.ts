@@ -97,6 +97,11 @@ export function freeSnapshotLead(trade: HomeServiceTradeInfo | null) {
   return `When customers ask ChatGPT or Perplexity for ${trade.askFor} in your city, who do they name instead of your ${trade.company}?`;
 }
 
+/** Lead when an industry guide already named the service. The phrase fits "for ___ in your city". */
+export function freeSnapshotLeadForService(askFor: string) {
+  return `When customers ask ChatGPT or Perplexity for ${askFor} in your city, who do they name instead of the local business?`;
+}
+
 /**
  * Read ?trade= from the current URL.
  * Safe inside useSyncExternalStore's client snapshot. Do not call it during

@@ -33,6 +33,11 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /deliveryNote=\{false\}/);
   assert.match(page, /defaultWebsite=\{website\}/);
   assert.match(page, /defaultBusiness=\{business\}/);
+  assert.match(page, /defaultService=\{service \|\| undefined\}/);
+  assert.match(page, /serviceNote=\{Boolean\(service\)\}/);
+  assert.match(form, /Service filled in from the page you came from/);
+  assert.match(page, /snapshotServicePrefill/);
+  assert.match(page, /<FreeSnapshotLead service=\{service\} \/>/);
   assert.match(page, /snapshotWebsitePrefill/);
   assert.match(page, /snapshotBusinessPrefill/);
   assert.match(page, /href="\/sample-snapshot"/);

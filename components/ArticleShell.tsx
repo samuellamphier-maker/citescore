@@ -11,9 +11,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { TradeGuideStickyCta } from "@/components/TradeGuideStickyCta";
 import type { BlogPost } from "@/lib/content/blog";
 import { formatDisplayDate } from "@/lib/content/meta";
-import { freeSnapshotPath, homeServiceTradeForGuide } from "@/lib/home-service-trade";
+import { homeServiceTradeForGuide } from "@/lib/home-service-trade";
 import {
   contentStickySnapshotHref,
+  freeSnapshotHrefForIndustry,
   inlineSnapshotRequestForPath,
   shellContentPath,
   showsGuideSnapshotCallout,
@@ -57,6 +58,9 @@ export function ArticleShell({
 }: Props) {
   const snapshotOffer = snapshotOfferForPage({ guidePath, ctaId });
   const homeService = guidePath ? homeServiceTradeForGuide(guidePath) : null;
+  const industrySnapshotHref = snapshotOffer?.industry
+    ? freeSnapshotHrefForIndustry(snapshotOffer.industry)
+    : "/free-snapshot";
   const contentPath = shellContentPath({ guidePath, ctaId });
   const inlineSnapshot = inlineSnapshotRequestForPath(contentPath);
   const schemaGenerator = Boolean(contentPath?.endsWith("-schema-generator"));
@@ -101,7 +105,7 @@ export function ArticleShell({
               <InlineSnapshotRequest
                 source={inlineSnapshot.source}
                 defaultService={inlineSnapshot.service}
-                snapshotHref="/free-snapshot"
+                snapshotHref={industrySnapshotHref}
               />
             ) : null}
           </>
@@ -118,6 +122,7 @@ export function ArticleShell({
               <div className="mt-8">
                 <IndustrySnapshotCta
                   industry={snapshotOffer?.industry}
+                  snapshotHref={industrySnapshotHref}
                   variant={generalSnapshot ? "general" : "industry"}
                 />
               </div>
@@ -132,7 +137,7 @@ export function ArticleShell({
           <div className="mt-12">
             <IndustrySnapshotCta
               industry={snapshotOffer?.industry}
-              snapshotHref={homeService ? freeSnapshotPath(homeService.id) : undefined}
+              snapshotHref={industrySnapshotHref}
               variant={generalSnapshot ? "general" : "industry"}
             />
           </div>
@@ -141,7 +146,7 @@ export function ArticleShell({
           <InlineSnapshotRequest
             source={inlineSnapshot.source}
             defaultService={inlineSnapshot.service}
-            snapshotHref={homeService ? freeSnapshotPath(homeService.id) : "/free-snapshot"}
+            snapshotHref={industrySnapshotHref}
           />
         ) : null}
         {showAuditCta ? (
