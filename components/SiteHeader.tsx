@@ -5,6 +5,7 @@ import { fixPackPageLinkLabel, snapshotRequestCtaLabel } from "@/lib/site";
 const navItem =
   "min-h-11 min-w-11 items-center justify-center px-2 hover:text-ink";
 const navLink = `inline-flex ${navItem}`;
+const menuLink = `flex w-full justify-start rounded-lg px-3 ${navItem} hover:bg-paper`;
 
 function NavLink({
   href,
@@ -26,6 +27,61 @@ function NavLink({
   );
 }
 
+function SnapshotCta({ className }: { className: string }) {
+  return (
+    <NavLink
+      href="/free-snapshot"
+      prefetch
+      className={className}
+    >
+      {snapshotRequestCtaLabel}
+    </NavLink>
+  );
+}
+
+function SecondaryLinks({ linkClass }: { linkClass: string }) {
+  return (
+    <>
+      <NavLink href="/sample-snapshot" className={linkClass}>
+        Example snapshot
+      </NavLink>
+      <NavLink href="/guides" className={linkClass}>
+        Guides
+      </NavLink>
+      <NavLink href="/industries" className={linkClass}>
+        Industries
+      </NavLink>
+      <NavLink href="/tools" className={linkClass}>
+        Tools
+      </NavLink>
+      <NavLink href="/checklist" className={linkClass}>
+        Checklist
+      </NavLink>
+      <NavLink href="/for-agencies" className={linkClass}>
+        For agencies
+      </NavLink>
+      <NavLink href="/how-it-works" className={linkClass}>
+        How it works
+      </NavLink>
+      <NavLink href="/pricing" className={linkClass}>
+        Pricing
+      </NavLink>
+      <NavLink href="/faq" className={linkClass}>
+        FAQ
+      </NavLink>
+      <NavLink href="/fix-pack" className={linkClass}>
+        {fixPackPageLinkLabel()}
+      </NavLink>
+      <NavLink href="/trust" className={linkClass}>
+        Trust
+      </NavLink>
+      <NavLink href="/contact" className={linkClass}>
+        Contact
+      </NavLink>
+    </>
+  );
+}
+
 export function SiteHeader() {
   return (
     <header className="no-print border-b border-rule/80">
@@ -35,7 +91,7 @@ export function SiteHeader() {
       >
         Skip to content
       </a>
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-2">
+      <div className="mx-auto flex max-w-5xl flex-nowrap items-center justify-between gap-3 px-5 py-2 sm:flex-wrap sm:gap-x-4 sm:gap-y-2">
         <NavLink
           href="/"
           className="inline-flex min-h-11 shrink-0 items-center"
@@ -43,50 +99,26 @@ export function SiteHeader() {
         >
           <Logo />
         </NavLink>
-        <nav className="flex flex-wrap items-center justify-end gap-x-2 gap-y-1 text-sm text-ink-soft sm:gap-x-3">
-          <NavLink href="/sample-snapshot" className={navLink}>
-            Example snapshot
-          </NavLink>
-          <NavLink href="/guides" className={navLink}>
-            Guides
-          </NavLink>
-          <NavLink href="/industries" className={navLink}>
-            Industries
-          </NavLink>
-          <NavLink href="/tools" className={navLink}>
-            Tools
-          </NavLink>
-          <NavLink href="/checklist" className={navLink}>
-            Checklist
-          </NavLink>
-          <NavLink href="/for-agencies" className={navLink}>
-            For agencies
-          </NavLink>
-          <NavLink href="/how-it-works" className={`hidden sm:inline-flex ${navItem}`}>
-            How it works
-          </NavLink>
-          <NavLink href="/pricing" className={`hidden sm:inline-flex ${navItem}`}>
-            Pricing
-          </NavLink>
-          <NavLink href="/faq" className={`hidden sm:inline-flex ${navItem}`}>
-            FAQ
-          </NavLink>
-          <NavLink href="/fix-pack" className={navLink}>
-            {fixPackPageLinkLabel()}
-          </NavLink>
-          <NavLink href="/trust" className={navLink}>
-            Trust
-          </NavLink>
-          <NavLink href="/contact" className={navLink}>
-            Contact
-          </NavLink>
-          <NavLink
-            href="/free-snapshot"
-            prefetch
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-ink px-4 text-cream hover:bg-forest-deep"
-          >
-            {snapshotRequestCtaLabel}
-          </NavLink>
+        <div className="flex shrink-0 items-center sm:hidden">
+          <details className="relative">
+            <summary className="flex h-11 cursor-pointer list-none items-center rounded-lg border border-ink/25 px-3 text-sm font-medium text-ink marker:content-none [&::-webkit-details-marker]:hidden">
+              Menu
+            </summary>
+            <nav
+              aria-label="Pages"
+              className="absolute right-0 z-50 mt-2 flex max-h-[70vh] w-64 flex-col gap-1 overflow-y-auto rounded-xl border border-rule bg-cream p-2 text-sm text-ink-soft shadow-[0_16px_40px_-24px_rgba(27,24,20,0.45)]"
+            >
+              <SnapshotCta className="inline-flex h-11 items-center justify-center rounded-lg bg-ink px-3 text-center text-sm font-medium text-cream hover:bg-forest-deep" />
+              <SecondaryLinks linkClass={menuLink} />
+            </nav>
+          </details>
+        </div>
+        <nav
+          aria-label="Pages"
+          className="hidden flex-wrap items-center justify-end gap-x-2 gap-y-1 text-sm text-ink-soft sm:flex sm:gap-x-3"
+        >
+          <SecondaryLinks linkClass={navLink} />
+          <SnapshotCta className="inline-flex min-h-11 items-center justify-center rounded-full bg-ink px-4 text-cream hover:bg-forest-deep" />
         </nav>
       </div>
     </header>

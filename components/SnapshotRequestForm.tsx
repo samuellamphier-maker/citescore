@@ -263,7 +263,7 @@ export function SnapshotRequestForm({
           </p>
         ) : null}
       </div>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3">
         <div>
           <FieldLabel htmlFor="snapshot-city">City</FieldLabel>
           <input
