@@ -29,6 +29,9 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /faqPageJsonLd\(freeSnapshotPageFaqs\)/);
   assert.match(page, /freeSnapshotServiceJsonLd\(publicOrigin\(\)\)/);
   assert.match(page, /<SnapshotRequestForm/);
+  assert.match(page, /id="free-snapshot-request"/);
+  assert.match(page, /className="sr-only"/);
+  assert.doesNotMatch(page, /kicker">Request/);
   assert.match(page, /caveat=\{false\}/);
   assert.match(page, /deliveryNote=\{false\}/);
   assert.match(page, /defaultWebsite=\{website\}/);

@@ -66,22 +66,22 @@ export default async function FreeSnapshotPage({
 
         <div className="mt-4 grid items-start gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
           <div className="min-w-0">
-            <section className="rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5">
-              <p className="kicker">Request</p>
-              <h2 className="mt-2 font-serif text-2xl tracking-tight">
+            <section
+              aria-labelledby="free-snapshot-request"
+              className="rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5"
+            >
+              <h2 id="free-snapshot-request" className="sr-only">
                 Request the free snapshot.
               </h2>
-              <div className="mt-3">
-                <SnapshotRequestForm
-                  key={`${website}\n${business}\n${service}`}
-                  caveat={false}
-                  deliveryNote={false}
-                  defaultWebsite={website}
-                  defaultBusiness={business}
-                  defaultService={service || undefined}
-                  serviceNote={Boolean(service)}
-                />
-              </div>
+              <SnapshotRequestForm
+                key={`${website}\n${business}\n${service}`}
+                caveat={false}
+                deliveryNote={false}
+                defaultWebsite={website}
+                defaultBusiness={business}
+                defaultService={service || undefined}
+                serviceNote={Boolean(service)}
+              />
               <p className="mt-4 text-sm leading-6 text-ink-soft">
                 Prepared by the CiteScore Team. Sold by {sellerName}.
               </p>

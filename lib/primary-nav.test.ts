@@ -50,6 +50,13 @@ test("primary nav stays on the snapshot and Fix Pack path", () => {
   }
   assert.match(header, />\s*Example snapshot\s*</);
   assert.doesNotMatch(header, /href="\/sample"/);
+  const menu = header.slice(header.indexOf("<details"), header.indexOf("</details>"));
+  assert.match(menu, /<summary[\s\S]*>\s*Menu\s*<\/summary>/);
+  assert.doesNotMatch(menu, /\bopen\b/);
+  assert.match(menu, /<SnapshotCta/);
+  assert.match(header, /sm:hidden/);
+  const phoneBar = header.slice(header.indexOf("sm:hidden"), header.indexOf("<details"));
+  assert.doesNotMatch(phoneBar, /<SnapshotCta/);
   assert.doesNotMatch(footer, /href="\/sample"/);
   assert.doesNotMatch(header, /templatePack|agencyKit|buy\.polar\.sh/);
   assert.doesNotMatch(header, /GEO Content Template Pack|GEO Agency Kit/);

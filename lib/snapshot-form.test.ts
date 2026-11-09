@@ -215,6 +215,7 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /autoComplete="url"/);
   assert.match(form, /autoComplete="email"/);
   assert.match(form, /htmlFor="snapshot-business"/);
+  assert.match(form, /grid grid-cols-2 gap-3/);
   assert.match(form, /htmlFor="snapshot-city"/);
   assert.match(form, /htmlFor="snapshot-service"/);
   assert.match(form, /htmlFor="snapshot-website"/);
