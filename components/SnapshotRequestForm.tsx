@@ -67,6 +67,7 @@ export function SnapshotRequestForm({
   source,
   caveat = true,
   deliveryNote = true,
+  serviceNote = false,
 }: {
   /** Prefills Service when the page is already about one trade. */
   defaultService?: string;
@@ -80,6 +81,8 @@ export function SnapshotRequestForm({
   caveat?: boolean;
   /** Omit when the page already says where the form sends the fields. */
   deliveryNote?: boolean;
+  /** Explain a service value carried from another page. Guide forms already name the trade. */
+  serviceNote?: boolean;
 } = {}) {
   const carriedWebsite = snapshotWebsitePrefill(defaultWebsite);
   const carriedBusiness = snapshotBusinessPrefill(defaultBusiness);
@@ -227,6 +230,11 @@ export function SnapshotRequestForm({
           Filled in from the site you checked. Change anything that is wrong.
         </p>
       ) : null}
+      {serviceNote && pageService ? (
+        <p id="snapshot-service-prefill" className="text-sm leading-6 text-ink-soft">
+          Service filled in from the page you came from. Change anything that is wrong.
+        </p>
+      ) : null}
       <div>
         <FieldLabel htmlFor="snapshot-business">Business name</FieldLabel>
         <input
@@ -296,6 +304,7 @@ export function SnapshotRequestForm({
             aria-invalid={fieldErrors.service ? true : undefined}
             aria-describedby={describedBy(
               "snapshot-required-note",
+              serviceNote && pageService ? "snapshot-service-prefill" : undefined,
               fieldErrors.service ? "snapshot-service-error" : undefined,
             )}
             value={serviceValue}

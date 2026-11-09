@@ -20,6 +20,7 @@ import {
   sellerName,
 } from "@/lib/site";
 import { freeSnapshotServiceJsonLd } from "@/lib/site-schema";
+import { snapshotServicePrefill } from "@/lib/industry-snapshot";
 import {
   snapshotBusinessPrefill,
   snapshotWebsitePrefill,
@@ -45,11 +46,13 @@ export default async function FreeSnapshotPage({
   searchParams: Promise<{
     website?: string | string[];
     business?: string | string[];
+    service?: string | string[];
   }>;
 }) {
   const params = await searchParams;
   const website = snapshotWebsitePrefill(firstQuery(params.website));
   const business = snapshotBusinessPrefill(firstQuery(params.business));
+  const service = snapshotServicePrefill(firstQuery(params.service));
 
   return (
     <>
@@ -59,7 +62,7 @@ export default async function FreeSnapshotPage({
       <SiteHeader />
       <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-4 sm:py-14">
         <p className="kicker">Free · no checkout</p>
-        <FreeSnapshotLead />
+        <FreeSnapshotLead service={service} />
 
         <div className="mt-4 grid items-start gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
           <div className="min-w-0">
@@ -70,11 +73,13 @@ export default async function FreeSnapshotPage({
               </h2>
               <div className="mt-3">
                 <SnapshotRequestForm
-                  key={`${website}\n${business}`}
+                  key={`${website}\n${business}\n${service}`}
                   caveat={false}
                   deliveryNote={false}
                   defaultWebsite={website}
                   defaultBusiness={business}
+                  defaultService={service || undefined}
+                  serviceNote={Boolean(service)}
                 />
               </div>
               <p className="mt-4 text-sm leading-6 text-ink-soft">
