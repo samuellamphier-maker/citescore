@@ -149,4 +149,13 @@ test("guides render the short callout and the snapshot page reads trade on the c
   assert.doesNotMatch(page, /useSearchParams/);
   assert.doesNotMatch(page, /params\.trade|get\("trade"\)|\?trade=/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
+  const offerBranch = shell.slice(
+    shell.indexOf("homeService ? ("),
+    shell.indexOf("article-prose"),
+  );
+  const dekAt = offerBranch.indexOf("{dek}");
+  assert.ok(offerBranch.indexOf("<HomeServiceGuideCallout") < dekAt);
+  assert.ok(offerBranch.indexOf("<IndustrySnapshotCta") < dekAt);
+  assert.equal(offerBranch.indexOf("{byline}"), offerBranch.lastIndexOf("{byline}"));
+  assert.ok(dekAt < offerBranch.indexOf("{byline}"));
 });
