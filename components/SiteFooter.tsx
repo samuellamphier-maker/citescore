@@ -54,9 +54,9 @@ export function SiteFooter() {
         <div>
           <Logo />
           <p className="mt-3 max-w-sm text-sm leading-6 text-ink-soft">
-            A free AI Answer Snapshot for local service businesses, and a{" "}
-            {fixPackIntroPriceLabel} Fix Pack when you want the gaps fixed.
-            Sold by CiteScore.
+            A free AI Answer Snapshot asks logged-out ChatGPT and Perplexity
+            who they name. The {fixPackIntroPriceLabel} Fix Pack is optional.
+            Sold by CiteScore. Operated by the CiteScore Team.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-soft">
