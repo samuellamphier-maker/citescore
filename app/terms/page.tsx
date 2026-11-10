@@ -8,6 +8,7 @@ import {
   agencyKitLabel,
   doneForYouAuditLabel,
   fixPackIntroPriceLabel,
+  fixPackListPriceLabel,
   templatePackLabel,
   whiteLabelAuditLabel,
 } from "@/lib/site";
@@ -29,7 +30,7 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="mt-4 text-sm text-ink-soft">
-          Effective 23 October 2026. Sold by CiteScore.
+          Effective 10 November 2026. Sold by CiteScore.
         </p>
         <FunnelCtaRow />
         <div className="mt-8 space-y-6 text-[15px] leading-7 text-ink-soft">
@@ -64,8 +65,21 @@ export default function TermsPage() {
           </p>
 
           <h2 className="font-serif text-2xl text-ink">What you buy</h2>
-          <p>Each product is a digital file, not a subscription and not a seat.</p>
+          <p>
+            The free AI Answer Snapshot is not a purchase. Each paid product
+            is a digital file, not a subscription and not a seat.
+          </p>
           <ul className="list-disc space-y-2 pl-5">
+            <li>
+              <strong className="text-ink">AI Visibility Fix Pack.</strong>{" "}
+              One business, one city, one service. A Google Business Profile
+              gap list, a review-gap plan and script, the directories an AI
+              answer cited, paste-ready LocalBusiness and Service JSON-LD
+              with install steps, and a re-check 14 days later. Introductory
+              price {fixPackIntroPriceLabel}, list price {fixPackListPriceLabel}. Paid through
+              Payhip. It is not a promise that any assistant will name the
+              business.
+            </li>
             <li>
               <strong className="text-ink">
                 <Link href="/geo-audit" className="text-forest underline">
@@ -94,14 +108,6 @@ export default function TermsPage() {
             <li>
               <strong className="text-ink">{templatePackLabel}.</strong> A
               separate digital download. Paid through Polar.
-            </li>
-            <li>
-              <strong className="text-ink">AI Visibility Fix Pack.</strong>{" "}
-              One business. A Google Business Profile gap list, a review-gap
-              plan and script, the directories an AI answer cited, paste-ready
-              LocalBusiness and Service JSON-LD with install steps, and a
-              re-check 14 days later. Introductory price $49, list price $97.
-              Paid through Payhip.
             </li>
           </ul>
           <p>
@@ -162,20 +168,25 @@ export default function TermsPage() {
             are not allowed to collect.
           </p>
           <p>
-            A report describes public pages and on-page signals. It is not a
-            live query of ChatGPT, Perplexity, Gemini, Copilot, or Google. Do
-            not tell a client that it is. You may give the unbranded $149 PDF
-            to your own client. Do not present CiteScore as your staff,
-            and do not resell the kit or the template pack as a competing
-            product.
+            An audit PDF describes public pages and on-page signals. That
+            PDF is not a live query of ChatGPT, Perplexity, Gemini, Copilot,
+            or Google. Do not tell a client that an audit PDF is. The free
+            AI Answer Snapshot is different: we ask logged-out ChatGPT and
+            Perplexity who they name for that trade and city, and the
+            one-page reply records who was named. AI answers vary run to
+            run. This is a snapshot, not a ranking, and not a promise that
+            any assistant will name the business. You may give the unbranded
+            $149 PDF to your own client. Do not present CiteScore as your
+            staff, and do not resell the kit or the template pack as a
+            competing product.
           </p>
 
           <h2 className="font-serif text-2xl text-ink">Liability</h2>
           <p>
             Audits and downloads are information about public pages. They are
             not legal, financial, or ranking advice, and they are not a
-            promise of citations, traffic, or revenue. Stripe and Polar are
-            responsible for their own checkout. To the extent the law allows,
+            promise of citations, traffic, or revenue. Stripe, Polar, and
+            Payhip are responsible for their own checkout. To the extent the law allows,
             CiteScore’s liability for a purchase is limited to the amount
             you paid for that purchase.
           </p>

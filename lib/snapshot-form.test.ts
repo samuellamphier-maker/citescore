@@ -185,6 +185,31 @@ test("privacy names FlowForm and the fields that are sent", () => {
   assert.match(privacy, /reply-to address/);
   assert.doesNotMatch(privacy, /captcha is turned off/);
   assert.doesNotMatch(privacy, /does not post to a server/);
+  assert.match(privacy, /The free AI Answer Snapshot is not a purchase/);
+  assert.match(privacy, /logged-out ChatGPT and\s+Perplexity/);
+  assert.doesNotMatch(privacy, /one-time audit product/);
+  assert.doesNotMatch(privacy, /if checkout is not live/);
+  assert.doesNotMatch(privacy, /Samuel|Lamphier/);
+});
+
+test("terms and the footer do not describe the snapshot as an audit that skips ChatGPT", () => {
+  const terms = readFileSync(new URL("../app/terms/page.tsx", import.meta.url), "utf8");
+  const footer = readFileSync(new URL("../components/SiteFooter.tsx", import.meta.url), "utf8");
+  assert.match(terms, /The free AI Answer Snapshot is not a purchase/);
+  assert.match(terms, /That\s+PDF is not a live query of ChatGPT/);
+  assert.match(terms, /The free\s+AI Answer Snapshot is different/);
+  assert.match(terms, /we ask logged-out ChatGPT and\s+Perplexity who they name/);
+  assert.match(terms, /Payhip are responsible for their own checkout/);
+  assert.match(terms, /Effective 10 November 2026/);
+  assert.doesNotMatch(terms, /It is not a live query of ChatGPT/);
+  assert.doesNotMatch(terms, /Samuel|Lamphier/);
+  assert.match(
+    footer,
+    /A free AI Answer Snapshot asks logged-out ChatGPT and Perplexity\s+who they name/,
+  );
+  assert.match(footer, /Operated by the CiteScore Team/);
+  assert.match(footer, /Sold by CiteScore/);
+  assert.doesNotMatch(footer, /Samuel|Lamphier/);
 });
 
 test("the request form posts, keeps mailto, and requires the website", () => {
