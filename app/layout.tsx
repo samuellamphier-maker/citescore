@@ -51,6 +51,9 @@ export const metadata: Metadata = {
   applicationName: site.name,
   verification: {
     google: "MC5jDg5-OJHO_BrY01y1P9p-7FEBLfKLy9U639OOvG4",
+    other: {
+      "rightaichoice-verify": "rac-8lgpdJ41vFHB9CHY_J5vo1sYYfTPPf19",
+    },
   },
   openGraph: rootOpenGraph,
   twitter: rootTwitter,
