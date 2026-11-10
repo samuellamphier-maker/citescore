@@ -10,6 +10,7 @@ const { contactEmail, fixPackIntroPriceLabel, fixPackListPriceLabel } = await im
 );
 const { citeScoreOrganizationJsonLd, organizationId } = await import("./site-schema.ts");
 const {
+  fixPackBuyAssurance,
   fixPackDeliverables,
   fixPackHowDeliveryWorks,
   fixPackPayhipCheckoutNote,
@@ -19,17 +20,37 @@ const {
   fixPackWhatYouGet,
 } = await import("./fix-pack-offer.ts");
 
-test("the buy button says Payhip lists a text file and the Fix Pack is emailed", () => {
+test("the buy button says when the Fix Pack arrives and the refund, then the Payhip note", () => {
   assert.match(fixPackPayhipCheckoutNote, /Opens Payhip in a new tab\./);
   assert.match(fixPackPayhipCheckoutNote, /Payhip lists a text file with the order\./);
   assert.match(fixPackPayhipCheckoutNote, /We email the Fix Pack\./);
   assert.doesNotMatch(fixPackPayhipCheckoutNote, /1KB|guarantee|testimonial|customers/);
+  assert.match(
+    fixPackBuyAssurance,
+    /We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL\./,
+  );
+  assert.match(
+    fixPackBuyAssurance,
+    /Full refund within 14 days of delivery if the Fix Pack is not useful\./,
+  );
+  assert.equal(
+    fixPackBuyAssurance,
+    `We email the Fix Pack ${fixPackTurnaround.replace(/^Within/, "within")} ${fixPackRefund.slice(0, fixPackRefund.indexOf(". ") + 1)}`,
+  );
+  assert.doesNotMatch(
+    fixPackBuyAssurance,
+    /1KB|guarantee|testimonial|customers served|24 hours|48 hours|few minutes/i,
+  );
   const buy = readFileSync(new URL("../components/FixPackBuyLink.tsx", import.meta.url), "utf8");
+  assert.match(buy, /fixPackBuyAssurance/);
+  assert.match(buy, /href="\/refunds"/);
+  assert.match(buy, /Refund policy/);
   assert.match(buy, /fixPackPayhipCheckoutNote/);
   assert.match(buy, /data-funnel-cta/);
   assert.match(buy, /href="\/fix-pack\/next-steps"/);
   assert.match(buy, /What happens after you buy/);
   assert.match(buy, /href=\{fixPackHref\(\)\}/);
+  assert.ok(buy.indexOf("fixPackBuyAssurance") < buy.indexOf("fixPackPayhipCheckoutNote"));
 });
 
 test("Fix Pack product JSON-LD states the charged price and no ratings", () => {

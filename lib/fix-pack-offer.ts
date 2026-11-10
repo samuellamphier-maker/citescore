@@ -52,6 +52,12 @@ export const fixPackTurnaround =
 export const fixPackPayhipCheckoutNote =
   "Opens Payhip in a new tab. Payhip lists a text file with the order. We email the Fix Pack.";
 
+/**
+ * Sits above the Payhip note, in the same view as the buy button.
+ * Uses the published turnaround and the refund already stated on /refunds.
+ */
+export const fixPackBuyAssurance = `We email the Fix Pack ${fixPackTurnaround.replace(/^Within/, "within")} Full refund within 14 days of delivery if the Fix Pack is not useful.`;
+
 export const fixPackRefund =
   "Full refund within 14 days of delivery if the Fix Pack is not useful. You do not need to show that you installed the markup or sent the review script. The 14 days start when the Fix Pack is delivered, not when you request the free snapshot. The free AI Answer Snapshot has no charge.";
 

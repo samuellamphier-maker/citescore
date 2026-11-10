@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { EmailRequestFallback } from "@/components/EmailRequestFallback";
 import { fixPackRequestText } from "@/lib/email-request";
-import { fixPackPayhipCheckoutNote } from "@/lib/fix-pack-offer";
+import { fixPackBuyAssurance, fixPackPayhipCheckoutNote } from "@/lib/fix-pack-offer";
 import { contactEmail, fixPackCtaLabel, fixPackHref, FIX_PACK_CHECKOUT_URL } from "@/lib/site";
 
 export function FixPackBuyLink({
@@ -22,16 +22,29 @@ export function FixPackBuyLink({
     tone === "dark"
       ? "max-w-xs text-xs leading-5 text-[#d7c7b0]"
       : "max-w-xs text-xs leading-5 text-ink-soft";
+  const assuranceClass =
+    tone === "dark"
+      ? "text-sm leading-6 text-[#d7c7b0]"
+      : "text-sm leading-6 text-ink-soft";
   const noteLinkClass =
     tone === "dark"
       ? "font-medium text-cream underline underline-offset-4"
       : "font-medium text-forest underline underline-offset-4";
+  const assurance = (
+    <p className={assuranceClass}>
+      {fixPackBuyAssurance}{" "}
+      <Link href="/refunds" className={noteLinkClass}>
+        Refund policy
+      </Link>
+      .
+    </p>
+  );
   return (
     <div
       data-funnel-cta
       className={
         compact
-          ? "flex w-auto max-w-full min-w-0 flex-col gap-2"
+          ? "flex w-full min-w-0 basis-full flex-col gap-2"
           : "flex min-w-0 flex-col gap-2"
       }
     >
@@ -43,6 +56,7 @@ export function FixPackBuyLink({
         {label ?? fixPackCtaLabel()}
         {checkout ? <span className="sr-only"> (opens in a new tab)</span> : null}
       </a>
+      {assurance}
       {checkout ? (
         <p className={noteClass}>
           {fixPackPayhipCheckoutNote}{" "}
