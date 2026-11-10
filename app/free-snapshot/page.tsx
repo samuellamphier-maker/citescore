@@ -60,15 +60,15 @@ export default async function FreeSnapshotPage({
       <JsonLd data={freeSnapshotServiceJsonLd(publicOrigin())} />
       <JsonLd data={freeSnapshotPageFixPackJsonLd(publicOrigin())} />
       <SiteHeader />
-      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-4 sm:py-14">
+      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-2 sm:py-14">
         <p className="kicker">Free · no checkout</p>
         <FreeSnapshotLead service={service} />
 
-        <div className="mt-4 grid items-start gap-6 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
+        <div className="mt-3 grid items-start gap-6 sm:mt-4 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
           <div className="min-w-0">
             <section
               aria-labelledby="free-snapshot-request"
-              className="rounded-2xl border border-rule bg-cream px-4 py-4 sm:px-6 sm:py-5"
+              className="rounded-2xl border border-rule bg-cream px-4 py-3 sm:px-6 sm:py-5"
             >
               <h2 id="free-snapshot-request" className="sr-only">
                 Request the free snapshot.
@@ -77,6 +77,7 @@ export default async function FreeSnapshotPage({
                 key={`${website}\n${business}\n${service}`}
                 caveat={false}
                 deliveryNote={false}
+                privacyAfterSubmit
                 defaultWebsite={website}
                 defaultBusiness={business}
                 defaultService={service || undefined}

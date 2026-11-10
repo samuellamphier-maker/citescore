@@ -36,7 +36,8 @@ function revealReceived(node: HTMLDivElement | null) {
 }
 
 function describedBy(...ids: Array<string | undefined>) {
-  return ids.filter(Boolean).join(" ");
+  const value = ids.filter(Boolean).join(" ");
+  return value || undefined;
 }
 
 function FieldLabel({
@@ -220,6 +221,11 @@ export function SnapshotRequestForm({
   }
 
   const sent = phase === "sent";
+  // Labels already say Required. Skip the extra line when a prefill note is showing.
+  const prefillVisible = Boolean(
+    carriedWebsite || carriedBusiness || (serviceNote && pageService),
+  );
+  const requiredNoteId = prefillVisible ? undefined : "snapshot-required-note";
   const privacyNote = (
     <p
       id="snapshot-privacy"
@@ -241,9 +247,11 @@ export function SnapshotRequestForm({
       onSubmit={onSubmit}
       className="scroll-mt-24 space-y-3"
     >
-      <p id="snapshot-required-note" className="text-sm leading-6 text-ink-soft">
-        All fields are required.
-      </p>
+      {requiredNoteId ? (
+        <p id={requiredNoteId} className="text-sm leading-6 text-ink-soft">
+          All fields are required.
+        </p>
+      ) : null}
       {carriedWebsite || carriedBusiness ? (
         <p id="snapshot-prefill" className="text-sm leading-6 text-ink-soft">
           Filled in from the site you checked. Change anything that is wrong.
@@ -265,7 +273,7 @@ export function SnapshotRequestForm({
           onInvalid={onInvalid}
           aria-invalid={fieldErrors.business ? true : undefined}
           aria-describedby={describedBy(
-            "snapshot-required-note",
+            requiredNoteId,
             carriedWebsite || carriedBusiness ? "snapshot-prefill" : undefined,
             fieldErrors.business ? "snapshot-business-error" : undefined,
           )}
@@ -294,7 +302,7 @@ export function SnapshotRequestForm({
             onInvalid={onInvalid}
             aria-invalid={fieldErrors.city ? true : undefined}
             aria-describedby={describedBy(
-              "snapshot-required-note",
+              requiredNoteId,
               carriedBusiness ? "snapshot-prefill" : undefined,
               fieldErrors.city ? "snapshot-city-error" : undefined,
             )}
@@ -322,7 +330,7 @@ export function SnapshotRequestForm({
             placeholder="Plumber"
             aria-invalid={fieldErrors.service ? true : undefined}
             aria-describedby={describedBy(
-              "snapshot-required-note",
+              requiredNoteId,
               serviceNote && pageService ? "snapshot-service-prefill" : undefined,
               fieldErrors.service ? "snapshot-service-error" : undefined,
             )}
@@ -356,7 +364,7 @@ export function SnapshotRequestForm({
           placeholder="https://"
           aria-invalid={fieldErrors.website ? true : undefined}
           aria-describedby={describedBy(
-            "snapshot-required-note",
+            requiredNoteId,
             carriedWebsite ? "snapshot-prefill" : undefined,
             fieldErrors.website ? "snapshot-website-error" : undefined,
           )}

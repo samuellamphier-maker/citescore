@@ -34,6 +34,7 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.doesNotMatch(page, /kicker">Request/);
   assert.match(page, /caveat=\{false\}/);
   assert.match(page, /deliveryNote=\{false\}/);
+  assert.match(page, /privacyAfterSubmit/);
   assert.match(page, /defaultWebsite=\{website\}/);
   assert.match(page, /defaultBusiness=\{business\}/);
   assert.match(page, /defaultService=\{service \|\| undefined\}/);
