@@ -123,6 +123,12 @@ test("homepage shows the request form before the Payhip buy on a phone", () => {
   assert.match(hero, /min-h-12/);
   assert.doesNotMatch(hero, /sm:flex-row/);
   assert.doesNotMatch(hero, /(?<!min-)h-12/);
+  assert.match(hero, /<SnapshotRequestForm caveat=\{false\} privacyAfterSubmit \/>/);
+  assert.doesNotMatch(
+    hero,
+    /href="\/free-snapshot"[^>]*>\s*Get a free AI Answer Snapshot\s*</,
+  );
+  assert.match(hero, /No checkout\. We email the one-page snapshot\./);
 });
 
 test("main snapshot CTAs point at the free snapshot page", () => {

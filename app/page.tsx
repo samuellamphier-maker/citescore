@@ -93,46 +93,34 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main">
         <section className="border-b border-rule/80">
-          <div className="mx-auto flex max-w-5xl flex-col gap-6 px-5 py-8 sm:py-14 lg:block lg:flow-root lg:py-20">
-            <aside className="report-sheet order-2 rounded-2xl border border-rule p-4 sm:p-6 lg:float-right lg:mb-8 lg:ml-12 lg:w-[min(26rem,42%)]">
-              <p className="kicker text-copper">Free · no checkout</p>
-              <h2 className="mt-2 font-serif text-2xl leading-tight">
+          <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-4 sm:gap-6 sm:py-10 lg:block lg:flow-root lg:py-8">
+            <aside className="report-sheet order-2 rounded-2xl border border-rule p-4 lg:float-right lg:mb-8 lg:ml-12 lg:w-[min(26rem,42%)]">
+              <h2 className="font-serif text-xl leading-tight sm:text-2xl">
                 Request the snapshot
               </h2>
-              <p className="mt-2 hidden text-sm leading-6 text-ink-soft sm:block">
-                Business name, city, service, website, and email. We reply with
-                the one-page snapshot. Same request as the{" "}
-                <Link href="/free-snapshot" className="text-forest underline">
-                  free snapshot page
-                </Link>
-                .
+              <p className="mt-1 text-sm leading-5 text-ink-soft">
+                No checkout. We email the one-page snapshot.
               </p>
-              <div className="mt-4 sm:mt-5">
-                <SnapshotRequestForm caveat={false} />
+              <div className="mt-3">
+                <SnapshotRequestForm caveat={false} privacyAfterSubmit />
               </div>
             </aside>
 
             <div className="order-1">
               <p className="kicker">Free AI Answer Snapshot</p>
-              <h1 className="mt-3 font-serif text-[2.35rem] leading-[1.12] tracking-tight text-ink sm:mt-4 sm:text-5xl sm:leading-[1.1]">
+              <h1 className="mt-2 font-serif text-[1.7rem] leading-[1.12] tracking-tight text-ink sm:mt-3 sm:text-5xl sm:leading-[1.08]">
                 When customers ask ChatGPT for a plumber (or your trade) in
                 your city, who does it name?
               </h1>
             </div>
 
             <div className="order-3">
-              <p className="max-w-xl text-lg leading-8 text-ink-soft lg:mt-5">
+              <p className="max-w-xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8 lg:mt-4">
                 Get a one-page snapshot of who is named, which sources are
                 cited, and how your Google reviews compare. Then the Fix
                 Pack, if you want the gaps closed.
               </p>
-              <div className="mt-6 flex max-w-xl flex-col items-start gap-3">
-                <Link
-                  href="/free-snapshot"
-                  className="inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep sm:w-auto"
-                >
-                  Get a free AI Answer Snapshot
-                </Link>
+              <div className="mt-4 flex max-w-xl flex-col items-start gap-3 sm:mt-6">
                 <FixPackBuyLink
                   compact
                   className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink sm:w-auto"

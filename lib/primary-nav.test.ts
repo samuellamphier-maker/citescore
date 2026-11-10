@@ -61,6 +61,8 @@ test("primary nav stays on the snapshot and Fix Pack path", () => {
   assert.doesNotMatch(header, /templatePack|agencyKit|buy\.polar\.sh/);
   assert.doesNotMatch(header, /GEO Content Template Pack|GEO Agency Kit/);
   assert.doesNotMatch(header, /Samuel|Lamphier/);
+  assert.match(header, /usePathname\(\) === "\/"/);
+  assert.match(header, /type="submit" form="snapshot"/);
 });
 
 test("footer and pricing keep the $19 and $29 products in a closed disclosure", () => {

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
 import { fixPackPageLinkLabel, snapshotRequestCtaLabel } from "@/lib/site";
 
@@ -28,12 +31,16 @@ function NavLink({
 }
 
 function SnapshotCta({ className }: { className: string }) {
+  const onHome = usePathname() === "/";
+  if (onHome) {
+    return (
+      <button type="submit" form="snapshot" className={className}>
+        {snapshotRequestCtaLabel}
+      </button>
+    );
+  }
   return (
-    <NavLink
-      href="/free-snapshot"
-      prefetch
-      className={className}
-    >
+    <NavLink href="/free-snapshot" prefetch className={className}>
       {snapshotRequestCtaLabel}
     </NavLink>
   );
