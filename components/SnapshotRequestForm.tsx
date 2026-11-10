@@ -31,6 +31,10 @@ import {
 const fieldClass =
   "mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft";
 
+function revealReceived(node: HTMLDivElement | null) {
+  node?.scrollIntoView({ block: "nearest" });
+}
+
 function describedBy(...ids: Array<string | undefined>) {
   return ids.filter(Boolean).join(" ");
 }
@@ -438,9 +442,11 @@ export function SnapshotRequestForm({
       {sent ? (
         <div
           id="snapshot-received"
+          ref={revealReceived}
           role="status"
           aria-live="polite"
-          className="rounded-lg border border-rule bg-paper px-3 py-3 text-sm leading-6 text-ink"
+          tabIndex={-1}
+          className="rounded-lg border border-rule bg-paper px-3 py-3 text-sm leading-6 text-ink outline-none"
         >
           <p className="font-medium text-forest">{snapshotSentMessage}</p>
           {sentEmail ? <p className="mt-2">{snapshotDeliveredToMessage(sentEmail)}</p> : null}
@@ -491,35 +497,55 @@ export function SnapshotRequestForm({
           .
         </p>
       ) : null}
-      <a
-        id="snapshot-mailto"
-        href={mailto}
-        aria-describedby={phase === "error" ? "snapshot-send-error" : undefined}
-        className="flex h-12 w-full items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
-      >
-        Email this request instead
-      </a>
-      <EmailRequestFallback
-        requestText={snapshotRequestClipboard(contactEmail, requestFields, subject)}
-        requestReady={ready}
-      />
-      <p className="text-xs leading-5 text-ink-soft">
-        {deliveryNote ? (
-          <>
-            Sends the business name, city, service, website, and email to{" "}
-            {contactEmail} through FlowForm.
-            {sourceValue ? " This page path is included." : ""} No account and no paid checkout.{" "}
-          </>
-        ) : null}
-        If that send fails, use the email button or the copy buttons.
-        {caveat ? (
-          <>
-            {" "}
-            AI answers vary run to run. This is a snapshot, not a ranking, and
-            not a promise that any assistant will name the business.
-          </>
-        ) : null}
-      </p>
+      {sent ? null : phase === "error" ? (
+        <a
+          id="snapshot-mailto"
+          href={mailto}
+          aria-describedby="snapshot-send-error"
+          className="flex h-12 w-full items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+        >
+          Email this request instead
+        </a>
+      ) : null}
+      {sent ? null : (
+        <EmailRequestFallback
+          requestText={snapshotRequestClipboard(contactEmail, requestFields, subject)}
+          requestReady={ready}
+        />
+      )}
+      {sent ? null : (
+        <p className="text-xs leading-5 text-ink-soft">
+          {deliveryNote ? (
+            <>
+              Sends the business name, city, service, website, and email to{" "}
+              {contactEmail} through FlowForm.
+              {sourceValue ? " This page path is included." : ""} No account and no paid checkout.{" "}
+            </>
+          ) : null}
+          {phase === "error" ? (
+            "Use the email button or the copy buttons."
+          ) : (
+            <>
+              If that send fails,{" "}
+              <a
+                id="snapshot-mailto"
+                href={mailto}
+                className="font-medium text-forest underline"
+              >
+                email this request instead
+              </a>
+              , or use the copy buttons.
+            </>
+          )}
+          {caveat ? (
+            <>
+              {" "}
+              AI answers vary run to run. This is a snapshot, not a ranking, and
+              not a promise that any assistant will name the business.
+            </>
+          ) : null}
+        </p>
+      )}
     </form>
   );
 }
