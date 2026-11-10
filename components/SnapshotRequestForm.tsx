@@ -72,6 +72,7 @@ export function SnapshotRequestForm({
   caveat = true,
   deliveryNote = true,
   serviceNote = false,
+  privacyAfterSubmit = false,
 }: {
   /** Prefills Service when the page is already about one trade. */
   defaultService?: string;
@@ -87,6 +88,8 @@ export function SnapshotRequestForm({
   deliveryNote?: boolean;
   /** Explain a service value carried from another page. Guide forms already name the trade. */
   serviceNote?: boolean;
+  /** Homepage puts the same privacy note directly under the submit button. */
+  privacyAfterSubmit?: boolean;
 } = {}) {
   const carriedWebsite = snapshotWebsitePrefill(defaultWebsite);
   const carriedBusiness = snapshotBusinessPrefill(defaultBusiness);
@@ -217,6 +220,18 @@ export function SnapshotRequestForm({
   }
 
   const sent = phase === "sent";
+  const privacyNote = (
+    <p
+      id="snapshot-privacy"
+      className="rounded-lg border border-rule bg-paper px-3 py-2 text-sm leading-6 text-ink-soft"
+    >
+      We email the snapshot to this address. We do not ask for passwords, cookies, or content behind a login. We do not sell emails.{" "}
+      <Link href="/privacy" className="text-forest underline">
+        Privacy
+      </Link>
+      .
+    </p>
+  );
 
   return (
     <form
@@ -411,16 +426,7 @@ export function SnapshotRequestForm({
         aria-hidden="true"
         style={{ display: "none" }}
       />
-      <p
-        id="snapshot-privacy"
-        className="rounded-lg border border-rule bg-paper px-3 py-2 text-sm leading-6 text-ink-soft"
-      >
-        We email the snapshot to this address. We do not ask for passwords, cookies, or content behind a login. We do not sell emails.{" "}
-        <Link href="/privacy" className="text-forest underline">
-          Privacy
-        </Link>
-        .
-      </p>
+      {privacyAfterSubmit ? null : privacyNote}
       <button
         type="submit"
         aria-describedby="snapshot-privacy"
@@ -439,6 +445,7 @@ export function SnapshotRequestForm({
           {validationMessage}
         </p>
       ) : null}
+      {privacyAfterSubmit ? privacyNote : null}
       {sent ? (
         <div
           id="snapshot-received"
