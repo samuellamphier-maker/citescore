@@ -93,8 +93,16 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main">
         <section className="border-b border-rule/80">
-          <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-4 sm:gap-6 sm:py-10 lg:block lg:flow-root lg:py-8">
-            <aside className="report-sheet order-2 rounded-2xl border border-rule p-4 lg:float-right lg:mb-8 lg:ml-12 lg:w-[min(26rem,42%)]">
+          <div className="mx-auto grid max-w-5xl items-start gap-4 px-5 py-4 sm:gap-6 sm:py-10 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-4 lg:py-8">
+            <div className="lg:col-start-1 lg:row-start-1">
+              <p className="kicker">Free AI Answer Snapshot</p>
+              <h1 className="mt-2 font-serif text-[1.7rem] leading-[1.12] tracking-tight text-ink sm:mt-3 sm:text-5xl sm:leading-[1.08]">
+                When customers ask ChatGPT for a plumber (or your trade) in
+                your city, who does it name?
+              </h1>
+            </div>
+
+            <aside className="report-sheet rounded-2xl border border-rule p-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
               <h2 className="font-serif text-xl leading-tight sm:text-2xl">
                 Request the snapshot
               </h2>
@@ -106,16 +114,8 @@ export default function HomePage() {
               </div>
             </aside>
 
-            <div className="order-1">
-              <p className="kicker">Free AI Answer Snapshot</p>
-              <h1 className="mt-2 font-serif text-[1.7rem] leading-[1.12] tracking-tight text-ink sm:mt-3 sm:text-5xl sm:leading-[1.08]">
-                When customers ask ChatGPT for a plumber (or your trade) in
-                your city, who does it name?
-              </h1>
-            </div>
-
-            <div className="order-3">
-              <p className="max-w-xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8 lg:mt-4">
+            <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
+              <p className="max-w-xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 Get a one-page snapshot of who is named, which sources are
                 cited, and how your Google reviews compare. Then the Fix
                 Pack, if you want the gaps closed.
