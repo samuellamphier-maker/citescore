@@ -130,7 +130,12 @@ test("homepage shows the request form before the Payhip buy on a phone", () => {
   assert.match(hero, /min-h-12/);
   assert.doesNotMatch(hero, /sm:flex-row/);
   assert.doesNotMatch(hero, /(?<!min-)h-12/);
-  assert.match(hero, /<SnapshotRequestForm caveat=\{false\} privacyAfterSubmit replyTiming \/>/);
+  assert.match(
+    hero,
+    /<SnapshotRequestForm\s+caveat=\{false\}\s+privacyAfterSubmit\s+replyTiming\s+hideRequiredNote\s+\/>/,
+  );
+  assert.match(hero, /gap-2 px-5 py-2 sm:gap-6 sm:py-10/);
+  assert.match(hero, /p-3 sm:p-4/);
   assert.doesNotMatch(
     hero,
     /href="\/free-snapshot"[^>]*>\s*Get a free AI Answer Snapshot\s*</,

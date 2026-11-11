@@ -93,7 +93,7 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main">
         <section className="border-b border-rule/80">
-          <div className="mx-auto grid max-w-5xl items-start gap-4 px-5 py-4 sm:gap-6 sm:py-10 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-4 lg:py-8">
+          <div className="mx-auto grid max-w-5xl items-start gap-2 px-5 py-2 sm:gap-6 sm:py-10 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-4 lg:py-8">
             <div className="lg:col-start-1 lg:row-start-1">
               <p className="kicker">Free AI Answer Snapshot</p>
               <h1 className="mt-2 font-serif text-[1.7rem] leading-[1.12] tracking-tight text-ink sm:mt-3 sm:text-5xl sm:leading-[1.08]">
@@ -102,7 +102,7 @@ export default function HomePage() {
               </h1>
             </div>
 
-            <aside className="report-sheet rounded-2xl border border-rule p-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
+            <aside className="report-sheet rounded-2xl border border-rule p-3 sm:p-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
               <h2 className="font-serif text-xl leading-tight sm:text-2xl">
                 Request the snapshot
               </h2>
@@ -110,7 +110,12 @@ export default function HomePage() {
                 No checkout. We email the one-page snapshot.
               </p>
               <div className="mt-3">
-                <SnapshotRequestForm caveat={false} privacyAfterSubmit replyTiming />
+                <SnapshotRequestForm
+                  caveat={false}
+                  privacyAfterSubmit
+                  replyTiming
+                  hideRequiredNote
+                />
               </div>
             </aside>
 

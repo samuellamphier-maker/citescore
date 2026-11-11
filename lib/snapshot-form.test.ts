@@ -271,8 +271,11 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /href="\/privacy"/);
   assert.match(form, /We do not sell emails/);
   assert.match(form, /All fields are required/);
+  assert.match(form, /hideRequiredNote/);
+  assert.match(form, /hideRequiredNote \|\| prefillVisible/);
   assert.match(form, /prefillVisible/);
   assert.match(form, /requiredNoteId \? \(/);
+  assert.match(form, /hideRequiredNote \? "scroll-mt-24 space-y-2" : "scroll-mt-24 space-y-3"/);
   assert.match(form, /We do not ask for passwords, cookies, or content behind a login/);
   assert.match(form, />Required</);
   assert.match(form, /snapshotWebsiteValue/);

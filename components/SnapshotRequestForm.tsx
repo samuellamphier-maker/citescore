@@ -75,6 +75,7 @@ export function SnapshotRequestForm({
   serviceNote = false,
   privacyAfterSubmit = false,
   replyTiming = false,
+  hideRequiredNote = false,
 }: {
   /** Prefills Service when the page is already about one trade. */
   defaultService?: string;
@@ -97,6 +98,11 @@ export function SnapshotRequestForm({
    * Same sentences as the how-it-works step and the free-snapshot page.
    */
   replyTiming?: boolean;
+  /**
+   * Homepage labels already say Required. The extra line pushes the submit
+   * button below the first phone screen.
+   */
+  hideRequiredNote?: boolean;
 } = {}) {
   const carriedWebsite = snapshotWebsitePrefill(defaultWebsite);
   const carriedBusiness = snapshotBusinessPrefill(defaultBusiness);
@@ -227,11 +233,13 @@ export function SnapshotRequestForm({
   }
 
   const sent = phase === "sent";
-  // Labels already say Required. Skip the extra line when a prefill note is showing.
+  // Labels already say Required. Skip the extra line when a prefill note is showing,
+  // and on the homepage, where that line pushes the submit below the first phone screen.
   const prefillVisible = Boolean(
     carriedWebsite || carriedBusiness || (serviceNote && pageService),
   );
-  const requiredNoteId = prefillVisible ? undefined : "snapshot-required-note";
+  const requiredNoteId =
+    hideRequiredNote || prefillVisible ? undefined : "snapshot-required-note";
   const privacyNote = (
     <p
       id="snapshot-privacy"
@@ -251,7 +259,7 @@ export function SnapshotRequestForm({
       action={snapshotFormPageEndpoint}
       method="POST"
       onSubmit={onSubmit}
-      className="scroll-mt-24 space-y-3"
+      className={hideRequiredNote ? "scroll-mt-24 space-y-2" : "scroll-mt-24 space-y-3"}
     >
       {requiredNoteId ? (
         <p id={requiredNoteId} className="text-sm leading-6 text-ink-soft">
