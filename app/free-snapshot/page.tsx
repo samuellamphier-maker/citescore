@@ -88,18 +88,6 @@ export default async function FreeSnapshotPage({
               </p>
             </section>
 
-            <p className="mt-4 text-sm leading-6">
-              <Link href="/fix-pack" className="font-medium text-forest underline">
-                Skip straight to the {fixPackIntroPriceLabel} Fix Pack
-              </Link>
-              <span className="text-ink-soft">
-                {" "}
-                if you already want the done-for-you work.
-              </span>
-            </p>
-
-            <HowSnapshotIsMade className="mt-6" />
-
             <section className="mt-6" aria-labelledby="after-submit">
               <h2 id="after-submit" className="font-serif text-2xl tracking-tight sm:text-3xl">
                 What happens after you submit
@@ -113,6 +101,18 @@ export default async function FreeSnapshotPage({
                 </li>
               </ol>
             </section>
+
+            <p className="mt-4 text-sm leading-6">
+              <Link href="/fix-pack" className="font-medium text-forest underline">
+                Skip straight to the {fixPackIntroPriceLabel} Fix Pack
+              </Link>
+              <span className="text-ink-soft">
+                {" "}
+                if you already want the done-for-you work.
+              </span>
+            </p>
+
+            <HowSnapshotIsMade className="mt-6" />
           </div>
 
           <aside className="min-w-0" aria-labelledby="snapshot-sample-preview">

@@ -57,10 +57,13 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.equal((page.match(/<HowSnapshotIsMade/g) ?? []).length, 1);
   const leadAt = page.indexOf("<FreeSnapshotLead");
   const formAt = page.indexOf("<SnapshotRequestForm");
+  const afterSubmitAt = page.indexOf('id="after-submit"');
+  const skipAt = page.indexOf("Skip straight to the");
   const methodAt = page.indexOf("<HowSnapshotIsMade");
   const sampleAt = page.indexOf("<SampleSnapshotExcerpt");
   assert.ok(leadAt !== -1 && formAt > leadAt);
-  assert.ok(formAt < methodAt);
+  assert.ok(formAt < afterSubmitAt && afterSubmitAt < skipAt);
+  assert.ok(skipAt < methodAt);
   assert.ok(formAt < sampleAt);
   assert.equal((page.match(/<SampleSnapshotExcerpt/g) ?? []).length, 1);
   assert.doesNotMatch(page, /variant="compact"/);
@@ -127,7 +130,7 @@ test("homepage shows the request form before the Payhip buy on a phone", () => {
   assert.match(hero, /min-h-12/);
   assert.doesNotMatch(hero, /sm:flex-row/);
   assert.doesNotMatch(hero, /(?<!min-)h-12/);
-  assert.match(hero, /<SnapshotRequestForm caveat=\{false\} privacyAfterSubmit \/>/);
+  assert.match(hero, /<SnapshotRequestForm caveat=\{false\} privacyAfterSubmit replyTiming \/>/);
   assert.doesNotMatch(
     hero,
     /href="\/free-snapshot"[^>]*>\s*Get a free AI Answer Snapshot\s*</,

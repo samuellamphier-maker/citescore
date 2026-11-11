@@ -283,6 +283,12 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /id="snapshot-received"/);
   assert.match(form, /What happens next/);
   assert.match(form, /There is no set delivery time/);
+  assert.match(form, /replyTiming\?: boolean/);
+  assert.match(form, /replyTiming && !sent/);
+  assert.match(
+    form,
+    /The one-page snapshot lists who is named, which sources are cited, and\s+how your Google rating and review count compare\. There is no set\s+delivery time\./,
+  );
   assert.match(form, /href="\/sample-snapshot"/);
   assert.match(form, /Fictional business, illustrative numbers/);
   assert.match(form, /href="\/fix-pack"/);
