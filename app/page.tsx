@@ -110,7 +110,7 @@ export default function HomePage() {
                 No checkout. We email the one-page snapshot.
               </p>
               <div className="mt-3">
-                <SnapshotRequestForm caveat={false} privacyAfterSubmit />
+                <SnapshotRequestForm caveat={false} privacyAfterSubmit replyTiming />
               </div>
             </aside>
 

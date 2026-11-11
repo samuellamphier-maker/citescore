@@ -74,6 +74,7 @@ export function SnapshotRequestForm({
   deliveryNote = true,
   serviceNote = false,
   privacyAfterSubmit = false,
+  replyTiming = false,
 }: {
   /** Prefills Service when the page is already about one trade. */
   defaultService?: string;
@@ -91,6 +92,11 @@ export function SnapshotRequestForm({
   serviceNote?: boolean;
   /** Homepage puts the same privacy note directly under the submit button. */
   privacyAfterSubmit?: boolean;
+  /**
+   * Homepage has no other line for what the email contains or when it arrives.
+   * Same sentences as the how-it-works step and the free-snapshot page.
+   */
+  replyTiming?: boolean;
 } = {}) {
   const carriedWebsite = snapshotWebsitePrefill(defaultWebsite);
   const carriedBusiness = snapshotBusinessPrefill(defaultBusiness);
@@ -451,6 +457,13 @@ export function SnapshotRequestForm({
       {validationMessage ? (
         <p role="alert" className="text-sm leading-6 text-ink">
           {validationMessage}
+        </p>
+      ) : null}
+      {replyTiming && !sent ? (
+        <p className="text-sm leading-6 text-ink-soft">
+          The one-page snapshot lists who is named, which sources are cited, and
+          how your Google rating and review count compare. There is no set
+          delivery time.
         </p>
       ) : null}
       {privacyAfterSubmit ? privacyNote : null}
