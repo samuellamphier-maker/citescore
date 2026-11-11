@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CheckLinks, preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const productIntro =
   "https://developers.google.com/search/docs/appearance/structured-data/product";
@@ -185,6 +186,8 @@ export function AiSearchVisibilityForEcommerceArticle() {
         as well as the on-page markup. Some experiences combine the two, and
         a snippet may use a feed price when the page has none.
       </p>
+
+      <IndustryArticleSnapshot industry="ecommerce" />
 
       <h2>What an answer can quote</h2>
       <p>

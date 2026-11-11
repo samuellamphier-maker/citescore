@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const homeBusiness = "https://schema.org/HomeAndConstructionBusiness";
 const gardenStore = "https://schema.org/GardenStore";
@@ -328,6 +329,8 @@ export function AiSearchVisibilityForLandscapersArticle() {
         sentence an assistant should be able to quote, when the business is willing to say it, is what the crew will
         look at on a visit. If that sentence is not on the page, do not hide it in the script.
       </p>
+
+      <IndustryArticleSnapshot industry="landscaping" />
 
       <h2>Customer files stay out</h2>
       <p>

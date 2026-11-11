@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const roofer = "https://schema.org/RoofingContractor";
 const homeBusiness = "https://schema.org/HomeAndConstructionBusiness";
@@ -326,6 +327,8 @@ export function AiSearchVisibilityForRoofersArticle() {
         <a href={searchUpdates}>Search updates</a> say the FAQ rich result stopped appearing on 7 May 2026, so the
         reason to keep the block is the visible answer, not an accordion under a Google listing.
       </p>
+
+      <IndustryArticleSnapshot industry="roofer" />
 
       <h2>Customer files stay out</h2>
       <p>

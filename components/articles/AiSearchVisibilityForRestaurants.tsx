@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const restaurant = "https://schema.org/Restaurant";
 const hasMenu = "https://schema.org/hasMenu";
@@ -268,6 +269,8 @@ export function AiSearchVisibilityForRestaurantsArticle() {
         it by hand only when the page shows the same fact. A reservation link that only works after a login is not a
         public page for a crawler.
       </p>
+
+      <IndustryArticleSnapshot industry="restaurant" />
 
       <h2>robots.txt for the search crawlers</h2>
       <p>

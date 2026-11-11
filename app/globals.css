@@ -182,6 +182,30 @@ summary:focus-visible {
   color: var(--color-forest-deep);
 }
 
+/* The prose link color is unlayered, so it would repaint a button link.
+   Restore the forest button and keep the quiet links at a 44px tap height. */
+.article-prose .industry-article-snapshot h2 {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.article-prose .industry-article-snapshot a.snapshot-button,
+.article-prose .industry-article-snapshot a.snapshot-button:hover {
+  color: var(--color-cream);
+  text-decoration: none;
+}
+
+.article-prose .industry-article-snapshot a.snapshot-button:hover {
+  background: var(--color-forest-deep);
+}
+
+.article-prose .industry-article-snapshot a.snapshot-quiet {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
 .article-prose code {
   font-family: var(--font-mono);
   font-size: 0.8em;

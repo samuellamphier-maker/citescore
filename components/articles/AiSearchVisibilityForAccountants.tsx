@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const accountingService = "https://schema.org/AccountingService";
 const financialService = "https://schema.org/FinancialService";
@@ -272,6 +273,8 @@ export function AiSearchVisibilityForAccountantsArticle() {
         not write LocalBusiness. A star count copied from a review site into JSON-LD, when the office page does not
         show those reviews, describes a rating the reader cannot see.
       </p>
+
+      <IndustryArticleSnapshot industry="accountant" />
 
       <h2>The client portal stays out</h2>
       <p>

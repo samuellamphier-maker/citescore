@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const medicalClinic = "https://schema.org/MedicalClinic";
 const medicalBusiness = "https://schema.org/MedicalBusiness";
@@ -307,6 +308,8 @@ export function AiSearchVisibilityForChiropractorsArticle() {
         show those reviews, describes a rating the reader cannot see. A patient story that includes health details
         does not belong in the script or in <code>llms.txt</code>.
       </p>
+
+      <IndustryArticleSnapshot industry="chiropractic" />
 
       <h2>The patient portal stays out</h2>
       <p>

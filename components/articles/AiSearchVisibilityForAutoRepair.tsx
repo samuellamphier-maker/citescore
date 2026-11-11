@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const autoRepair = "https://schema.org/AutoRepair";
 const automotive = "https://schema.org/AutomotiveBusiness";
@@ -319,6 +320,8 @@ export function AiSearchVisibilityForAutoRepairArticle() {
         will look at and which vehicles the page already lists. If that sentence is not on the page, do not hide it
         in the script.
       </p>
+
+      <IndustryArticleSnapshot industry="auto repair" />
 
       <h2>Customer files stay out</h2>
       <p>

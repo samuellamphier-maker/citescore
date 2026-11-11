@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const legalService = "https://schema.org/LegalService";
 const attorney = "https://schema.org/Attorney";
@@ -228,6 +229,8 @@ export function AiSearchVisibilityForLawFirmsArticle() {
         firewall 403. A client portal, a matter file, and an intake draft that is not a public page stay disallowed.
         The public practice page has to be allowed if you want it fetched.
       </p>
+
+      <IndustryArticleSnapshot industry="law firm" />
 
       <h2>llms.txt is a reading list</h2>
       <p>

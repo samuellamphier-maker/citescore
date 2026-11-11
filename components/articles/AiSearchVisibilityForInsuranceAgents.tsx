@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const insuranceAgency = "https://schema.org/InsuranceAgency";
 const financialService = "https://schema.org/FinancialService";
@@ -302,6 +303,8 @@ export function AiSearchVisibilityForInsuranceAgentsArticle() {
         does and where it does it. If that sentence is not on the page, do not hide it in the script. This guide does
         not describe a coverage decision.
       </p>
+
+      <IndustryArticleSnapshot industry="insurance" />
 
       <h2>Customer files stay out</h2>
       <p>
