@@ -159,6 +159,15 @@ export default async function CheckoutPage({
                 className="flex h-12 items-center justify-center rounded-lg border border-cream/50 bg-forest font-medium text-cream hover:bg-forest-deep"
               />
             </div>
+            <p className="mt-3 text-sm leading-6">
+              <Link href="/sample-fix-pack" className="font-medium text-cream underline">
+                See a sample Fix Pack
+              </Link>
+              <span className="text-[#d7c7b0]">
+                . Illustrative example content, not a real client or real
+                results. The example is filled in for the fictional plumber.
+              </span>
+            </p>
             <FixPackOfferFacts tone="dark" className="mt-5" />
             <p className="mt-3 text-sm leading-6">
               <Link href="/fix-pack" className="text-cream underline">

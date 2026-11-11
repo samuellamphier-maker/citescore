@@ -55,6 +55,14 @@ test("checkout buyer copy hides payment internals and keeps the URL on the link"
   assert.doesNotMatch(primaryOffer, /agencyKitUrl|doneForYouAuditUrl|whiteLabelAuditUrl/);
   assert.match(primaryOffer, /Get a free AI Answer Snapshot/);
   assert.match(primaryOffer, /FixPackBuyLink/);
+  assert.match(primaryOffer, /href="\/sample-fix-pack"/);
+  assert.match(primaryOffer, /See a sample Fix Pack/);
+  assert.match(primaryOffer, /fictional plumber/);
+  assert.match(primaryOffer, /not a real client or real\s+results/);
+  const sampleAt = primaryOffer.indexOf('href="/sample-fix-pack"');
+  const buyAt = primaryOffer.indexOf("<FixPackBuyLink");
+  const factsAt = primaryOffer.indexOf("<FixPackOfferFacts");
+  assert.ok(buyAt !== -1 && sampleAt > buyAt && factsAt > sampleAt);
   assert.match(primaryOffer, /<FixPackOfferFacts/);
   assert.match(primaryOffer, /<TrustLinks/);
   const trust = readFileSync(
