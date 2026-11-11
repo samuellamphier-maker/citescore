@@ -80,6 +80,10 @@ test("example snapshot is fictional and labeled", () => {
   );
   assert.match(page, /CiteScore Team/);
   assert.match(page, /Get a free AI Answer Snapshot/);
+  assert.match(page, /id="get-your-own"/);
+  assert.match(page, /Get your own snapshot\./);
+  assert.match(page, /source="\/sample-snapshot"/);
+  assert.match(page, /The example above stays fictional\./);
   assert.match(page, /Fix Pack,/);
   assert.match(page, /FixPackBuyLink/);
   assert.match(page, /fixPackGetCtaLabel\(\)/);
