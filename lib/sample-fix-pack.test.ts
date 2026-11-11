@@ -14,6 +14,7 @@ const page = readFileSync(new URL("../app/sample-fix-pack/page.tsx", import.meta
 const example = readFileSync(new URL("./sample-fix-pack-example.ts", import.meta.url), "utf8");
 const fixPack = readFileSync(new URL("../app/fix-pack/page.tsx", import.meta.url), "utf8");
 const pricing = readFileSync(new URL("../app/pricing/page.tsx", import.meta.url), "utf8");
+const checkout = readFileSync(new URL("../app/checkout/page.tsx", import.meta.url), "utf8");
 const sampleSnapshot = readFileSync(
   new URL("../app/sample-snapshot/page.tsx", import.meta.url),
   "utf8",
@@ -118,7 +119,7 @@ test("sample Fix Pack is a labeled fictional preview filled from the example sna
 });
 
 test("sample Fix Pack is linked from the buy surfaces, sitemap, and permanent redirects", () => {
-  for (const source of [fixPack, pricing, sampleSnapshot]) {
+  for (const source of [fixPack, pricing, checkout, sampleSnapshot]) {
     assert.match(source, /href="\/sample-fix-pack"/);
     assert.match(source, /See a sample Fix Pack/);
   }
