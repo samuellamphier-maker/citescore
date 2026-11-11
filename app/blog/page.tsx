@@ -65,7 +65,7 @@ export default function BlogIndexPage() {
           </Link>{" "}
           page. No fake customer stories. No “we logged into ChatGPT for you.”
           If you already know you want the audit,{" "}
-          <Link href="/#audit" className="text-forest underline">
+          <Link href="/geo-audit#audit" className="text-forest underline">
             paste a URL
           </Link>
           .

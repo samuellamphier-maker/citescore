@@ -50,6 +50,15 @@ test("sitemap paths are real pages and are not redirect sources", () => {
   }
 });
 
+test("the blog index audit link opens the URL form on the audit page", () => {
+  const blog = readFileSync(new URL("../app/blog/page.tsx", import.meta.url), "utf8");
+  const audit = readFileSync(new URL("../app/geo-audit/page.tsx", import.meta.url), "utf8");
+  assert.match(blog, /href="\/geo-audit#audit"/);
+  assert.match(blog, /paste a URL/);
+  assert.doesNotMatch(blog, /href="\/#audit"/);
+  assert.match(audit, /id="audit"/);
+});
+
 test("rendered internal links do not point at redirect sources", () => {
   const sources = redirectSources();
   const roots = [new URL("../app/", import.meta.url), new URL("../components/", import.meta.url)];

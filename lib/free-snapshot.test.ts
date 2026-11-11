@@ -146,7 +146,7 @@ test("main snapshot CTAs point at the free snapshot page", () => {
   assert.doesNotMatch(sample, /href="#snapshot"/);
   assert.doesNotMatch(industry, /href="\/#snapshot"/);
   assert.match(industry, /EmailRequestFallback/);
-  assert.match(sample, /<SnapshotRequestForm caveat=\{false\} \/>/);
+  assert.match(sample, /<SnapshotRequestForm caveat=\{false\} source="\/sample-snapshot" \/>/);
 });
 
 test("/free-snapshot/thanks permanently redirects to /thank-you and stays out of the index", () => {

@@ -435,14 +435,15 @@ export default function SampleSnapshotPage() {
           <FaqList items={snapshotOfferFaqs} />
         </section>
 
+        <HowSnapshotIsMade className="mt-12" />
         <section
-          className="mt-12 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8"
+          className="mt-8 rounded-2xl border border-rule bg-cream px-5 py-6 sm:px-8"
           data-funnel-cta
+          aria-labelledby="get-your-own"
         >
-          <HowSnapshotIsMade />
-          <p className="kicker mt-8">Request</p>
-          <h2 className="mt-2 font-serif text-3xl tracking-tight">
-            Get a snapshot for a real business.
+          <p className="kicker">Your business</p>
+          <h2 id="get-your-own" className="mt-2 font-serif text-3xl tracking-tight">
+            Get your own snapshot.
           </h2>
           <p className="mt-3 text-sm leading-6 text-ink-soft">
             The example above stays fictional. This form is the same request
@@ -451,7 +452,7 @@ export default function SampleSnapshotPage() {
             No checkout.
           </p>
           <div className="mt-5">
-            <SnapshotRequestForm caveat={false} />
+            <SnapshotRequestForm caveat={false} source="/sample-snapshot" />
           </div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <FixPackBuyLink compact label={fixPackGetCtaLabel()} />
