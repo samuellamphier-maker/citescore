@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const realEstateAgent = "https://schema.org/RealEstateAgent";
 const singleFamily = "https://schema.org/SingleFamilyResidence";
@@ -263,6 +264,8 @@ export function AiSearchVisibilityForRealEstateArticle() {
         not a substitute for the HTML. A page behind a client login is one the crawler does not receive. The longer
         local note is <Link href="/geo-for-local-businesses">GEO for local businesses</Link>.
       </p>
+
+      <IndustryArticleSnapshot industry="real estate" />
 
       <h2>robots.txt for the search crawlers</h2>
       <p>

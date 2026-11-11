@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const medicalOrganization = "https://schema.org/MedicalOrganization";
 const medicalClinic = "https://schema.org/MedicalClinic";
@@ -270,6 +271,8 @@ export function AiSearchVisibilityForHealthcareArticle() {
         login is one the crawler does not receive. A health-tech product with no public address skips this section.
         The longer local note is <Link href="/geo-for-local-businesses">GEO for local businesses</Link>.
       </p>
+
+      <IndustryArticleSnapshot industry="healthcare" />
 
       <h2>robots.txt for the search crawlers</h2>
       <p>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const botsDoc = "https://developers.openai.com/api/docs/bots";
 const perplexityCrawlers = "https://docs.perplexity.ai/docs/resources/perplexity-crawlers";
@@ -160,6 +161,8 @@ export function AiSearchVisibilityForB2bSaasArticle() {
         <Link href="/llms-txt">checker</Link> only looks for a non-empty file. Ten live files are on{" "}
         <Link href="/llms-txt-examples">llms.txt examples</Link>.
       </p>
+
+      <IndustryArticleSnapshot industry="B2B SaaS" />
 
       <h2>Schema that copies the page</h2>
       <p>

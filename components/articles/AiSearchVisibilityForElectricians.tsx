@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const electrician = "https://schema.org/Electrician";
 const homeBusiness = "https://schema.org/HomeAndConstructionBusiness";
@@ -313,6 +314,8 @@ export function AiSearchVisibilityForElectriciansArticle() {
         a query. The sentence an assistant should be able to quote, when the business is willing to say it, is to
         stop and call. If that sentence is not on the page, do not hide it in the script.
       </p>
+
+      <IndustryArticleSnapshot industry="electrician" />
 
       <h2>Customer files stay out</h2>
       <p>

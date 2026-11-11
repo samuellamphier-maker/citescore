@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GuideOffers } from "@/components/articles/GuideOffers";
 import { preClass } from "@/components/articles/guide-links";
+import { IndustryArticleSnapshot } from "@/components/IndustryArticleSnapshot";
 
 const veterinaryCare = "https://schema.org/VeterinaryCare";
 const medicalOrganization = "https://schema.org/MedicalOrganization";
@@ -313,6 +314,8 @@ export function AiSearchVisibilityForVeterinariansArticle() {
         clinic does and where it does it. If that sentence is not on the page, do not hide it in the script. This guide
         does not describe a diagnosis or a treatment.
       </p>
+
+      <IndustryArticleSnapshot industry="veterinarian" />
 
       <h2>Patient records stay out</h2>
       <p>
