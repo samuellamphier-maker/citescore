@@ -84,9 +84,14 @@ test("example snapshot is fictional and labeled", () => {
   assert.match(page, /Get your own snapshot\./);
   assert.match(page, /source="\/sample-snapshot"/);
   assert.match(page, /The example above stays fictional\./);
-  assert.match(page, /Fix Pack,/);
+  assert.match(page, /\{fixPackDetailsCtaLabel\}/);
+  assert.match(page, /href="#get-your-own"/);
   assert.match(page, /FixPackBuyLink/);
   assert.match(page, /fixPackGetCtaLabel\(\)/);
+  const exampleAt = page.indexOf('className="report-sheet');
+  const buyAt = page.indexOf("<FixPackBuyLink");
+  assert.ok(exampleAt > 0 && buyAt > exampleAt);
+  assert.equal((page.match(/<FixPackBuyLink/g) ?? []).length, 1);
   assert.match(page, /href="\/free-snapshot"/);
   assert.match(page, /href="\/fix-pack"/);
   assert.match(page, /mailto:\$\{contactEmail\}/);
