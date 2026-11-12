@@ -22,7 +22,7 @@ import {
   snapshotSendErrorMessage,
   snapshotSentMessage,
   snapshotSourceValue,
-  snapshotValidationMessage,
+  snapshotValidationSummary,
   snapshotWebsiteAccepted,
   snapshotWebsitePrefill,
   snapshotWebsiteValue,
@@ -158,7 +158,8 @@ export function SnapshotRequestForm({
   function revealErrors(websiteValue: string) {
     const errors = snapshotFieldErrors({ ...fields, website: websiteValue });
     setFieldErrors(errors);
-    if (Object.keys(errors).length > 0) setValidationMessage(snapshotValidationMessage);
+    const summary = snapshotValidationSummary(errors);
+    if (summary) setValidationMessage(summary);
     return errors;
   }
 
@@ -184,7 +185,7 @@ export function SnapshotRequestForm({
     const errors = snapshotFieldErrors(posted);
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
-      setValidationMessage(snapshotValidationMessage);
+      setValidationMessage(snapshotValidationSummary(errors));
       setPhase("idle");
       const first = (Object.keys(fieldIds) as FieldKey[]).find((key) => errors[key]);
       if (first) {
@@ -341,7 +342,6 @@ export function SnapshotRequestForm({
             required
             autoComplete="off"
             onInvalid={onInvalid}
-            placeholder="Plumber"
             aria-invalid={fieldErrors.service ? true : undefined}
             aria-describedby={describedBy(
               requiredNoteId,
