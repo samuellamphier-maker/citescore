@@ -13,8 +13,8 @@ import { pageMeta } from "@/lib/content/meta";
 import { faqPageJsonLd, snapshotOfferFaqs } from "@/lib/offer-faq";
 import {
   contactEmail,
+  fixPackDetailsCtaLabel,
   fixPackGetCtaLabel,
-  fixPackIntroPriceLabel,
   sellerName,
 } from "@/lib/site";
 
@@ -163,33 +163,13 @@ function ExampleBanner() {
   );
 }
 
-function SnapshotCtas() {
-  return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-      <Link
-        href="/free-snapshot"
-        className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream transition-colors hover:bg-forest-deep"
-      >
-        Get a free AI Answer Snapshot
-      </Link>
-      <FixPackBuyLink compact label={fixPackGetCtaLabel()} />
-      <Link
-        href="/fix-pack"
-        className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink transition-colors hover:border-ink"
-      >
-        Fix Pack, {fixPackIntroPriceLabel}
-      </Link>
-    </div>
-  );
-}
-
 export default function SampleSnapshotPage() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-6 sm:py-14">
         <ExampleBanner />
-        <p className="kicker mt-8">Example AI Answer Snapshot</p>
+        <p className="kicker mt-4">Example AI Answer Snapshot</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
           What a one-page snapshot looks like.
         </h1>
@@ -204,41 +184,20 @@ export default function SampleSnapshotPage() {
           <Link href="#how-the-snapshot-is-made" className="text-forest underline">
             How the snapshot is made
           </Link>
+          .{" "}
+          <Link href="#get-your-own" className="font-medium text-forest underline">
+            Get a free AI Answer Snapshot
+          </Link>{" "}
+          at the bottom of this page. It is the same request as the{" "}
+          <Link href="/free-snapshot" className="text-forest underline">
+            free snapshot page
+          </Link>
           .
         </p>
-        <div className="mt-8">
-          <SnapshotCtas />
-          <p className="mt-4 text-sm leading-6">
-            <Link href="/sample-fix-pack" className="font-medium text-forest underline">
-              See a sample Fix Pack
-            </Link>
-            <span className="text-ink-soft">
-              . A filled illustrative example for the same fictional plumber, not a real client or real results.
-            </span>
-          </p>
-          <FixPackOfferFacts className="mt-4" />
-        </div>
-        <p className="mt-3 text-sm leading-6 text-ink-soft">
-          The button above opens the{" "}
-          <Link href="/free-snapshot" className="text-forest underline">
-            free snapshot request page
-          </Link>
-          . The form on this page is the same request. It sends the business
-          name, city, service, website, and email through FlowForm to{" "}
-          <a
-            className="text-forest underline"
-            href={`mailto:${contactEmail}?subject=${encodeURIComponent("Free AI Answer Snapshot")}`}
-          >
-            {contactEmail}
-          </a>
-          . If that send fails, the email button on the form opens a message
-          to that address.
-        </p>
 
-        <article className="report-sheet mt-10 overflow-hidden rounded-2xl border border-rule">
-          <header className="border-b border-rule px-5 py-6 sm:px-8">
-            <ExampleBanner />
-            <p className="kicker mt-5 text-copper">Example only · fictional business</p>
+        <article className="report-sheet mt-6 overflow-hidden rounded-2xl border border-rule">
+          <header className="border-b border-rule px-5 py-5 sm:px-8 sm:py-6">
+            <p className="kicker text-copper">Example only · fictional business</p>
             <h2 className="mt-2 font-serif text-3xl tracking-tight">
               Example Plumbing Co.
             </h2>
@@ -248,6 +207,9 @@ export default function SampleSnapshotPage() {
             <p className="mt-1 font-mono text-xs text-ink-soft">
               example-plumbing.example
             </p>
+            <div className="mt-4">
+              <ExampleBanner />
+            </div>
             <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2">
               <div>
                 <dt className="kicker">Example date</dt>
@@ -448,8 +410,15 @@ export default function SampleSnapshotPage() {
           <p className="mt-3 text-sm leading-6 text-ink-soft">
             The example above stays fictional. This form is the same request
             as the free snapshot page. It sends the business name, city,
-            service, website, and email through FlowForm to {contactEmail}.
-            No checkout.
+            service, website, and email through FlowForm to{" "}
+            <a
+              className="text-forest underline"
+              href={`mailto:${contactEmail}?subject=${encodeURIComponent("Free AI Answer Snapshot")}`}
+            >
+              {contactEmail}
+            </a>
+            . If that send fails, the email button on the form opens a message
+            to that address. No checkout.
           </p>
           <div className="mt-5">
             <SnapshotRequestForm caveat={false} source="/sample-snapshot" />
@@ -460,7 +429,7 @@ export default function SampleSnapshotPage() {
               href="/fix-pack"
               className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-paper px-5 text-base font-medium text-ink hover:border-ink"
             >
-              Fix Pack, {fixPackIntroPriceLabel}
+              {fixPackDetailsCtaLabel}
             </Link>
           </div>
           <p className="mt-4 text-sm leading-6">
