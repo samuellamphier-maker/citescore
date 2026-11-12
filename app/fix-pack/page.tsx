@@ -204,16 +204,18 @@ export default function FixPackPage() {
         <FaqList items={fixPackMoreFaqs()} />
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">Price</h2>
-        <p className="mt-4 text-ink-soft leading-7">
-          <span className="font-serif text-5xl text-ink">{fixPackIntroPriceLabel}</span>{" "}
-          <span className="text-ink-soft line-through">{fixPackListPriceLabel}</span>{" "}
-          introductory. One business, one city, one service. The free
-          snapshot comes first. The{" "}
-          <Link href="/free-check" className="text-forest underline">
-            free signal check
-          </Link>{" "}
-          is still there if you only want a read of public files. It does not
-          ask ChatGPT who it names.
+        <p className="mt-4 leading-7">
+          <span className="font-serif text-5xl text-ink">{fixPackIntroPriceLabel}</span>
+          <span className="mt-2 block text-ink-soft">
+            introductory.{" "}
+            <span className="line-through">{fixPackListPriceLabel}</span> list. One
+            business, one city, one service. The free snapshot comes first. The{" "}
+            <Link href="/free-check" className="text-forest underline">
+              free signal check
+            </Link>{" "}
+            is still there if you only want a read of public files. It does not
+            ask ChatGPT who it names.
+          </span>
         </p>
         <div className="mt-6" data-funnel-cta>
           <FixPackBuyLink className={buyLinkClassName} />

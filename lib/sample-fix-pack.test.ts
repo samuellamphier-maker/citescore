@@ -105,6 +105,16 @@ test("sample Fix Pack is a labeled fictional preview filled from the example sna
   assert.match(page, /FixPackOfferFacts/);
   assert.match(page, /business name, city, main service, and/);
   assert.match(page, /within a few business days after\s+payment/);
+  for (const source of [page, fixPack]) {
+    const price = source.slice(source.indexOf("font-serif text-5xl"));
+    assert.match(price, /introductory\.\{" "\}/);
+    assert.match(price, /line-through">\{fixPackListPriceLabel\}<\/span> list\./);
+    assert.ok(price.indexOf("introductory.") < price.indexOf("line-through"));
+    assert.doesNotMatch(
+      price,
+      /line-through">\{fixPackListPriceLabel\}<\/span>\{" "\}\s*introductory/,
+    );
+  }
   assert.doesNotMatch(page, /payhip\.com/);
   assert.doesNotMatch(page, /FIX_PACK_CHECKOUT_URL/);
   assert.match(page, /<StickySnapshotOffer path="\/sample-fix-pack" \/>/);
