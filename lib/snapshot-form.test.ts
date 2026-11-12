@@ -17,6 +17,7 @@ import {
   snapshotSentMessage,
   snapshotSourceValue,
   snapshotSubmitSucceeded,
+  snapshotValidationSummary,
   snapshotWebsiteAccepted,
   snapshotWebsiteInvalidMessage,
   snapshotWebsitePrefill,
@@ -120,6 +121,15 @@ test("snapshot payload posts the visitor fields through FlowForm", () => {
     snapshotWebsiteInvalidMessage,
     "Enter a website, with or without https://.",
   );
+  const serviceOnly = snapshotFieldErrors({ ...fields, service: " " });
+  assert.equal(snapshotValidationSummary(serviceOnly), "Enter a service.");
+  assert.equal(
+    snapshotValidationSummary(
+      snapshotFieldErrors({ ...fields, website: "notaurl", email: "not-an-email" }),
+    ),
+    "Enter a website, with or without https://. Enter an email address.",
+  );
+  assert.equal(snapshotValidationSummary({}), "");
 });
 
 test("postSnapshotForm stays on the FlowForm path and reports failures", async () => {
@@ -256,6 +266,9 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /grid grid-cols-2 gap-3/);
   assert.match(form, /htmlFor="snapshot-city"/);
   assert.match(form, /htmlFor="snapshot-service"/);
+  assert.match(form, /snapshotValidationSummary/);
+  assert.doesNotMatch(form, /placeholder="Plumber"/);
+  assert.doesNotMatch(form, /snapshotValidationMessage/);
   assert.match(form, /htmlFor="snapshot-website"/);
   assert.match(form, /htmlFor="snapshot-email"/);
   for (const id of [

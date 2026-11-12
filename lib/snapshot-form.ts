@@ -28,9 +28,6 @@ export const snapshotSendErrorMessage =
 export const snapshotWebsiteInvalidMessage =
   "Enter a website, with or without https://.";
 
-export const snapshotValidationMessage =
-  "Enter a business name, city, service, website, and email.";
-
 export type SnapshotFields = {
   business: string;
   city: string;
@@ -206,6 +203,27 @@ export function snapshotFieldErrors(fields: SnapshotFields) {
   }
   if (!EMAIL_RE.test(fields.email.trim())) errors.email = "Enter an email address.";
   return errors;
+}
+
+const snapshotFieldOrder: (keyof SnapshotFields)[] = [
+  "business",
+  "city",
+  "service",
+  "website",
+  "email",
+];
+
+/**
+ * Alert under the submit button. Names only the fields that failed, in form
+ * order, so a filled business name is not listed again when service is empty.
+ */
+export function snapshotValidationSummary(
+  errors: Partial<Record<keyof SnapshotFields, string>>,
+) {
+  return snapshotFieldOrder
+    .map((key) => errors[key])
+    .filter((message): message is string => Boolean(message))
+    .join(" ");
 }
 
 /**
