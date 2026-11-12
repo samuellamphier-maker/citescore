@@ -92,4 +92,26 @@ test("checkout buyer copy hides payment internals and keeps the URL on the link"
     metadata,
     /agencyKitLabel|doneForYouAuditLabel|whiteLabelCheckoutLabel|site\.priceLabel|\$39|\$29|\$99|\$149/,
   );
+
+  const afterDetails = checkout.slice(detailsEnd);
+  assert.match(afterDetails, /\{fixPackRefund\}/);
+  assert.match(afterDetails, /href="\/refunds"/);
+  assert.match(
+    afterDetails,
+    /Other paid files are refunded within 14 days of payment if the\s+file is missing/,
+  );
+  assert.match(afterDetails, /an audit is about the wrong URL/);
+  assert.doesNotMatch(afterDetails, /By continuing you agree/);
+  assert.doesNotMatch(afterDetails, /to produce the audit/);
+  assert.doesNotMatch(afterDetails, /language model/);
+  assert.match(checkout, /import \{ fixPackRefund \} from "@\/lib\/fix-pack-offer"/);
+
+  assert.match(otherProducts, /This audit fetches publicly available pages from that URL/);
+  assert.match(otherProducts, /score AI-search visibility/);
+  assert.match(
+    otherProducts,
+    /Public page text from the submitted\s+URL may be sent to a large language model to help score\s+visibility and draft fixes/,
+  );
+  assert.match(otherProducts, /href="\/privacy"/);
+  assert.doesNotMatch(primaryOffer, /By continuing you agree|language model|to produce the audit/);
 });

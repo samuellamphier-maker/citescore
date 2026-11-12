@@ -8,6 +8,7 @@ import { pageMeta } from "@/lib/content/meta";
 import { FixPackBuyLink } from "@/components/FixPackBuyLink";
 import { FixPackOfferFacts } from "@/components/FixPackOfferFacts";
 import { TrustLinks } from "@/components/TrustLinks";
+import { fixPackRefund } from "@/lib/fix-pack-offer";
 import {
   agencyKitLabel,
   agencyKitUrl,
@@ -209,6 +210,16 @@ export default async function CheckoutPage({
               description="A self-serve PDF with a 0–100 score and about ten fixes, usually a few minutes after payment."
             >
               <AuditCheckout defaultUrl={siteUrl} />
+              <p className="mt-3 text-sm leading-6 text-ink-soft">
+                This audit fetches publicly available pages from that URL to
+                score AI-search visibility. Public page text from the submitted
+                URL may be sent to a large language model to help score
+                visibility and draft fixes.{" "}
+                <Link href="/privacy" className="text-forest underline">
+                  Privacy
+                </Link>
+                .
+              </p>
             </Offer>
 
             <Offer
@@ -235,14 +246,20 @@ export default async function CheckoutPage({
         </details>
 
         <p className="mt-8 text-sm leading-6 text-ink-soft">
-          By continuing you agree that the public URL may be fetched and sent
-          to a language model to produce the audit.{" "}
+          {fixPackRefund}{" "}
+          <Link href="/refunds" className="text-forest underline">
+            Refund policy
+          </Link>
+          . Other paid files are refunded within 14 days of payment if the
+          file is missing, unreadable, or an audit is about the wrong URL.{" "}
+          <Link href="/terms" className="text-forest underline">
+            Terms
+          </Link>
+          .{" "}
           <Link href="/privacy" className="text-forest underline">
             Privacy
           </Link>
-          . Other paid files: refund within 14 days if the file is missing,
-          unreadable, or about the wrong URL. The Fix Pack: full refund
-          within 14 days if it is not useful.
+          .
         </p>
       </main>
       <SiteFooter />
