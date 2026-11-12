@@ -353,13 +353,15 @@ export default function SampleFixPackPage() {
         <h2 className="mt-12 font-serif text-3xl tracking-tight">
           Price, delivery, and what to send
         </h2>
-        <p className="mt-4 text-ink-soft leading-7">
-          <span className="font-serif text-5xl text-ink">{fixPackIntroPriceLabel}</span>{" "}
-          <span className="text-ink-soft line-through">{fixPackListPriceLabel}</span>{" "}
-          introductory. One business, one city, one service. The free snapshot
-          comes first. We email the Fix Pack within a few business days after
-          payment, once we have the business name, city, service, and public
-          site URL.
+        <p className="mt-4 leading-7">
+          <span className="font-serif text-5xl text-ink">{fixPackIntroPriceLabel}</span>
+          <span className="mt-2 block text-ink-soft">
+            introductory.{" "}
+            <span className="line-through">{fixPackListPriceLabel}</span> list. One
+            business, one city, one service. The free snapshot comes first. We
+            email the Fix Pack within a few business days after payment, once we
+            have the business name, city, service, and public site URL.
+          </span>
         </p>
         <p className="mt-4 text-sm leading-6 text-ink-soft">
           After you pay, email the business name, city, main service, and
