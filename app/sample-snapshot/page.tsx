@@ -320,7 +320,35 @@ export default function SampleSnapshotPage() {
               Illustrative Google rating and review count, written so the
               comparison is visible. Not looked up. Not a research finding.
             </p>
-            <div className="mt-4 overflow-x-auto">
+            <ul className="mt-4 space-y-3 md:hidden">
+              {comparisons.map((row) => (
+                <li
+                  key={row.business}
+                  className="rounded-xl border border-rule px-4 py-3 text-sm leading-6"
+                >
+                  <p className="font-medium">{row.business}</p>
+                  <p className="mt-1 text-xs text-ink-soft">{row.role}</p>
+                  <p className="mt-1 font-mono text-xs text-ink-soft">{row.domain}</p>
+                  <p className="mt-3">
+                    <span className="text-ink-soft">Named in this example. </span>
+                    {row.named}
+                  </p>
+                  <p>
+                    <span className="text-ink-soft">Illustrative Google rating. </span>
+                    {row.rating}
+                  </p>
+                  <p>
+                    <span className="text-ink-soft">Illustrative reviews. </span>
+                    {row.reviews}
+                  </p>
+                  <p>
+                    <span className="text-ink-soft">Vs Example Plumbing Co. </span>
+                    {row.versus}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 hidden overflow-x-auto md:block">
               <table className="w-full min-w-[40rem] text-left text-sm">
                 <caption className="sr-only">
                   Illustrative Google rating and review count for Example Plumbing Co. and three fictional competitors.

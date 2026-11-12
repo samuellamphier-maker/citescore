@@ -66,6 +66,29 @@ test("the request-page preview reuses the example snapshot wording", () => {
   assert.doesNotMatch(excerpt, /Samuel|Lamphier|testimonial|customers served|guarantee/i);
 });
 
+test("the phone comparison lists every illustrative rating without a sideways table", () => {
+  const start = page.indexOf("Rating and review comparison");
+  const end = page.indexOf("Five gaps in this example");
+  const section = page.slice(start, end);
+  const listAt = section.indexOf('className="mt-4 space-y-3 md:hidden"');
+  const tableAt = section.indexOf('className="mt-4 hidden overflow-x-auto md:block"');
+  assert.ok(listAt !== -1 && tableAt > listAt);
+  const list = section.slice(listAt, tableAt);
+  assert.match(list, /comparisons\.map/);
+  assert.match(list, /Named in this example\./);
+  assert.match(list, /Illustrative Google rating\./);
+  assert.match(list, /Illustrative reviews\./);
+  assert.match(list, /Vs Example Plumbing Co\./);
+  assert.match(list, /\{row\.named\}/);
+  assert.match(list, /\{row\.rating\}/);
+  assert.match(list, /\{row\.reviews\}/);
+  assert.match(list, /\{row\.versus\}/);
+  assert.match(list, /\{row\.role\}/);
+  assert.match(list, /\{row\.domain\}/);
+  assert.doesNotMatch(list, /min-w-\[40rem\]/);
+  assert.match(section, /min-w-\[40rem\]/);
+});
+
 test("example snapshot is fictional and labeled", () => {
   assert.match(page, /Example only: fictional business, fictional competitors, illustrative numbers\./);
   assert.match(page, /Example Plumbing Co\./);
