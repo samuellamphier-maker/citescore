@@ -301,7 +301,7 @@ export default function HomePage() {
               </p>
               <p className="mt-2 text-sm text-[#d7c7b0]">
                 <span className="line-through">{fixPackListPriceLabel}</span>{" "}
-                list · one business · 14-day re-check
+                list · one business, one city, one service
               </p>
               <div className="mt-6">
                 <FixPackBuyLink

@@ -12,6 +12,7 @@ const { citeScoreOrganizationJsonLd, organizationId } = await import("./site-sch
 const {
   fixPackBuyAssurance,
   fixPackDeliverables,
+  fixPackRecheckTiming,
   fixPackHowDeliveryWorks,
   fixPackPayhipCheckoutNote,
   fixPackProductJsonLd,
@@ -34,8 +35,20 @@ test("the buy button says when the Fix Pack arrives and the refund, then the Pay
     /Full refund within 14 days of delivery if the Fix Pack is not useful\./,
   );
   assert.equal(
+    fixPackRecheckTiming,
+    "The re-check in the pack is the same prompts, run again 14 days later.",
+  );
+  assert.equal(
     fixPackBuyAssurance,
-    `We email the Fix Pack ${fixPackTurnaround.replace(/^Within/, "within")} ${fixPackRefund.slice(0, fixPackRefund.indexOf(". ") + 1)}`,
+    `We email the Fix Pack ${fixPackTurnaround.replace(/^Within/, "within")} ${fixPackRecheckTiming} ${fixPackRefund.slice(0, fixPackRefund.indexOf(". ") + 1)}`,
+  );
+  assert.ok(
+    fixPackBuyAssurance.indexOf("few business days") <
+      fixPackBuyAssurance.indexOf(fixPackRecheckTiming),
+  );
+  assert.ok(
+    fixPackBuyAssurance.indexOf(fixPackRecheckTiming) <
+      fixPackBuyAssurance.indexOf("Full refund within 14 days of delivery"),
   );
   assert.doesNotMatch(
     fixPackBuyAssurance,
@@ -51,6 +64,9 @@ test("the buy button says when the Fix Pack arrives and the refund, then the Pay
   assert.match(buy, /What happens after you buy/);
   assert.match(buy, /href=\{fixPackHref\(\)\}/);
   assert.ok(buy.indexOf("fixPackBuyAssurance") < buy.indexOf("fixPackPayhipCheckoutNote"));
+  assert.match(buy, /max-w-xl/);
+  assert.match(buy, /basis-full/);
+  assert.doesNotMatch(buy, /max-w-xs/);
 });
 
 test("Fix Pack product JSON-LD states the charged price and no ratings", () => {

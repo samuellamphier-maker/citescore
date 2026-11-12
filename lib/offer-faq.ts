@@ -1,3 +1,4 @@
+import { fixPackRecheckTiming } from "@/lib/fix-pack-offer";
 import {
   contactEmail,
   fixPackIntroPriceLabel,
@@ -36,7 +37,7 @@ export const snapshotOfferFaqs: readonly FaqItem[] = [
   },
   {
     q: "When is the Fix Pack delivered?",
-    a: "We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. The re-check in the pack is the same prompts, run again 14 days later.",
+    a: `We email the Fix Pack within a few business days after payment, once we have the business name, city, service, and public site URL. ${fixPackRecheckTiming}`,
   },
   {
     q: "What is in the Fix Pack, and what do I do with it?",
