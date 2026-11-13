@@ -37,7 +37,18 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /privacyAfterSubmit/);
   assert.match(page, /hideRequiredNote/);
   assert.match(page, /lg:col-start-2 lg:row-span-2 lg:row-start-1/);
+  assert.match(page, /max-lg:contents/);
+  assert.match(page, /max-lg:order-2/);
+  assert.match(page, /max-lg:order-4/);
   assert.doesNotMatch(page, /sm:py-14/);
+  assert.doesNotMatch(page, /sm:py-8/);
+  const leadComponent = readFileSync(
+    new URL("../components/FreeSnapshotLead.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(leadComponent, /max-lg:order-1/);
+  assert.match(leadComponent, /max-lg:order-3/);
+  assert.ok(leadComponent.indexOf("max-lg:order-1") < leadComponent.indexOf("max-lg:order-3"));
   assert.match(page, /defaultWebsite=\{website\}/);
   assert.match(page, /defaultBusiness=\{business\}/);
   assert.match(page, /defaultService=\{service \|\| undefined\}/);
@@ -123,11 +134,12 @@ test("homepage shows the request form before the Payhip buy on a phone", () => {
   assert.ok(heading < form, "headline comes before the form in DOM order");
   assert.ok(form < lead, "lead copy sits below the form");
   assert.ok(form < buy, "request form stays before the Payhip buy");
+  assert.match(hero, /sm:grid-cols-\[minmax\(0,1fr\)_minmax\(18rem,48%\)\]/);
   assert.match(hero, /lg:grid-cols-\[minmax\(0,1fr\)_min\(26rem,42%\)\]/);
-  assert.match(hero, /lg:grid-rows-\[auto_1fr\]/);
-  assert.match(hero, /lg:col-start-2/);
-  assert.match(hero, /lg:row-start-1/);
-  assert.match(hero, /lg:row-span-2/);
+  assert.match(hero, /sm:grid-rows-\[auto_1fr\]/);
+  assert.match(hero, /sm:col-start-2/);
+  assert.match(hero, /sm:row-start-1/);
+  assert.match(hero, /sm:row-span-2/);
   assert.doesNotMatch(hero, /order-[123]/);
   assert.doesNotMatch(hero, /lg:float-right/);
   assert.match(hero, /min-h-12/);
@@ -137,8 +149,12 @@ test("homepage shows the request form before the Payhip buy on a phone", () => {
     hero,
     /<SnapshotRequestForm\s+caveat=\{false\}\s+privacyAfterSubmit\s+replyTiming\s+hideRequiredNote\s+\/>/,
   );
-  assert.match(hero, /gap-2 px-5 py-2 sm:gap-6 sm:py-10/);
-  assert.match(hero, /p-3 sm:p-4/);
+  assert.match(hero, /gap-2 px-5 py-2 sm:grid-cols-\[minmax\(0,1fr\)_minmax\(18rem,48%\)\]/);
+  assert.match(hero, /lg:mt-3 lg:text-5xl lg:leading-\[1\.08\]/);
+  assert.doesNotMatch(hero, /sm:gap-6|sm:py-10|sm:text-5xl/);
+  assert.match(hero, /p-3 max-\[359px\]:py-2 sm:p-4/);
+  assert.match(hero, /max-\[359px\]:sr-only/);
+  assert.match(hero, /max-\[359px\]:text-lg/);
   assert.doesNotMatch(
     hero,
     /href="\/free-snapshot"[^>]*>\s*Get a free AI Answer Snapshot\s*</,
