@@ -93,20 +93,20 @@ export default function HomePage() {
       <SiteHeader />
       <main id="main">
         <section className="border-b border-rule/80">
-          <div className="mx-auto grid max-w-5xl items-start gap-2 px-5 py-2 sm:gap-6 sm:py-10 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-4 lg:py-8">
-            <div className="lg:col-start-1 lg:row-start-1">
+          <div className="mx-auto grid max-w-5xl items-start gap-2 px-5 py-2 sm:grid-cols-[minmax(0,1fr)_minmax(18rem,48%)] sm:grid-rows-[auto_1fr] sm:gap-x-6 sm:gap-y-4 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:gap-x-12 lg:py-8">
+            <div className="sm:col-start-1 sm:row-start-1">
               <p className="kicker">Free AI Answer Snapshot</p>
-              <h1 className="mt-2 font-serif text-[1.7rem] leading-[1.12] tracking-tight text-ink sm:mt-3 sm:text-5xl sm:leading-[1.08]">
+              <h1 className="mt-2 font-serif text-[1.7rem] leading-[1.12] tracking-tight text-ink max-[359px]:text-lg max-[359px]:leading-snug lg:mt-3 lg:text-5xl lg:leading-[1.08]">
                 When customers ask ChatGPT for a plumber (or your trade) in
                 your city, who does it name?
               </h1>
             </div>
 
-            <aside className="report-sheet rounded-2xl border border-rule p-3 sm:p-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
-              <h2 className="font-serif text-xl leading-tight sm:text-2xl">
+            <aside className="report-sheet rounded-2xl border border-rule p-3 max-[359px]:py-2 sm:p-4 sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:self-start">
+              <h2 className="font-serif text-xl leading-tight max-[359px]:sr-only sm:text-2xl">
                 Request the snapshot
               </h2>
-              <p className="mt-1 text-sm leading-5 text-ink-soft">
+              <p className="mt-1 text-sm leading-5 text-ink-soft max-[359px]:mt-0">
                 No checkout. We email the one-page snapshot.
               </p>
               <div className="mt-3">
@@ -119,7 +119,7 @@ export default function HomePage() {
               </div>
             </aside>
 
-            <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
+            <div className="sm:col-start-1 sm:row-start-2 sm:self-start">
               <p className="max-w-xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">
                 Get a one-page snapshot of who is named, which sources are
                 cited, and how your Google reviews compare. Then the Fix

@@ -60,16 +60,16 @@ export default async function FreeSnapshotPage({
       <JsonLd data={freeSnapshotServiceJsonLd(publicOrigin())} />
       <JsonLd data={freeSnapshotPageFixPackJsonLd(publicOrigin())} />
       <SiteHeader />
-      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-2 sm:py-8">
-        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-6">
-          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-            <p className="kicker">Free · no checkout</p>
+      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-2 lg:py-8">
+        <div className="grid items-start gap-y-3 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-6">
+          <div className="min-w-0 max-lg:contents lg:col-start-1 lg:row-start-1">
+            <p className="kicker max-lg:order-1">Free · no checkout</p>
             <FreeSnapshotLead service={service} />
           </div>
 
           <section
             aria-labelledby="free-snapshot-request"
-            className="min-w-0 rounded-2xl border border-rule bg-cream px-4 py-3 sm:px-6 sm:py-4 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+            className="min-w-0 rounded-2xl border border-rule bg-cream px-4 py-3 max-lg:order-2 sm:px-6 sm:py-4 lg:col-start-2 lg:row-span-2 lg:row-start-1"
           >
             <h2 id="free-snapshot-request" className="sr-only">
               Request the free snapshot.
@@ -91,7 +91,7 @@ export default async function FreeSnapshotPage({
           </section>
 
           <aside
-            className="min-w-0 lg:col-start-1 lg:row-start-2"
+            className="min-w-0 max-lg:order-4 lg:col-start-1 lg:row-start-2"
             aria-labelledby="snapshot-sample-preview"
           >
             <p className="kicker">Sample</p>

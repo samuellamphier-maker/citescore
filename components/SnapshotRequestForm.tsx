@@ -29,7 +29,7 @@ import {
 } from "@/lib/snapshot-form";
 
 const fieldClass =
-  "mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft";
+  "mt-1 h-11 w-full rounded-lg border border-rule bg-cream px-3 text-ink placeholder:text-ink-soft max-[359px]:h-10";
 
 function revealReceived(node: HTMLDivElement | null) {
   node?.scrollIntoView({ block: "nearest" });
@@ -260,7 +260,11 @@ export function SnapshotRequestForm({
       action={snapshotFormPageEndpoint}
       method="POST"
       onSubmit={onSubmit}
-      className={hideRequiredNote ? "scroll-mt-24 space-y-2" : "scroll-mt-24 space-y-3"}
+      className={
+        hideRequiredNote
+          ? "scroll-mt-24 space-y-2 max-[359px]:space-y-1"
+          : "scroll-mt-24 space-y-3"
+      }
     >
       {requiredNoteId ? (
         <p id={requiredNoteId} className="text-sm leading-6 text-ink-soft">
@@ -454,7 +458,7 @@ export function SnapshotRequestForm({
         aria-describedby="snapshot-privacy"
         onClick={onSubmitClick}
         disabled={phase === "sending" || sent}
-        className="flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex h-12 w-full items-center justify-center whitespace-nowrap rounded-lg bg-forest px-3 text-sm font-medium text-cream hover:bg-forest-deep disabled:cursor-not-allowed disabled:opacity-60 sm:px-4 sm:text-[15px] lg:px-5 lg:text-base"
       >
         {phase === "sending"
           ? "Sending…"

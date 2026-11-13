@@ -288,7 +288,10 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /hideRequiredNote \|\| prefillVisible/);
   assert.match(form, /prefillVisible/);
   assert.match(form, /requiredNoteId \? \(/);
-  assert.match(form, /hideRequiredNote \? "scroll-mt-24 space-y-2" : "scroll-mt-24 space-y-3"/);
+  assert.match(
+    form,
+    /hideRequiredNote\s+\? "scroll-mt-24 space-y-2 max-\[359px\]:space-y-1"\s+: "scroll-mt-24 space-y-3"/,
+  );
   assert.match(form, /We do not ask for passwords, cookies, or content behind a login/);
   assert.match(form, />Required</);
   assert.match(form, /snapshotWebsiteValue/);
