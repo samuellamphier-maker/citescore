@@ -34,6 +34,10 @@ test("schema generator pages lead with the snapshot and Fix Pack above the form"
   assert.match(lead, /Free AI Answer Snapshot/);
   assert.match(lead, /When customers ask ChatGPT or Perplexity for \{audience\}/);
   assert.match(lead, /logged-out ChatGPT and/);
+  const questionAt = lead.indexOf("When customers ask ChatGPT or Perplexity");
+  const ctaAt = lead.indexOf("data-funnel-cta");
+  const explainsAt = lead.indexOf("logged-out ChatGPT and");
+  assert.ok(questionAt !== -1 && ctaAt > questionAt && explainsAt > ctaAt);
   assert.match(lead, /It does not make an assistant name the business/);
   assert.match(lead, /href="#snapshot"/);
   assert.match(lead, /\{snapshotRequestCtaLabel\}/);

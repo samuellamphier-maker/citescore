@@ -8,20 +8,38 @@ import {
 } from "@/lib/site";
 
 /**
- * Above-the-fold offer on schema generator pages.
- * The generator stays below this block.
+ * Offer on schema generator pages. The buttons sit under one question so
+ * they stay on the first phone and laptop screen. The longer explanation
+ * and the generator stay below the buttons.
  */
 export function SchemaGeneratorLead({ industry }: { industry?: string }) {
   const audience = schemaGeneratorAudience(industry);
   return (
-    <section className="mt-8" aria-labelledby="schema-snapshot-lead">
-      <h2 id="schema-snapshot-lead" className="font-serif text-3xl tracking-tight">
+    <section className="mt-4" aria-labelledby="schema-snapshot-lead">
+      <h2 id="schema-snapshot-lead" className="font-serif text-2xl tracking-tight sm:text-3xl">
         Free AI Answer Snapshot
       </h2>
-      <p className="mt-4 text-lg leading-8 text-ink-soft">
-        When customers ask ChatGPT or Perplexity for {audience}, who do they
-        name? The free AI Answer Snapshot asks logged-out ChatGPT and
-        Perplexity and records the answer. The{" "}
+      <p className="mt-2 text-base leading-6 text-ink-soft">
+        When customers ask ChatGPT or Perplexity for {audience}, who do they name?
+      </p>
+      <div
+        data-funnel-cta
+        className="mt-4 flex max-w-xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+      >
+        <Link
+          href="#snapshot"
+          className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep sm:w-auto"
+        >
+          {snapshotRequestCtaLabel}
+        </Link>
+        <FixPackBuyLink
+          compact
+          className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+        />
+      </div>
+      <p className="mt-4 text-sm leading-6 text-ink-soft">
+        The free AI Answer Snapshot asks logged-out ChatGPT and Perplexity and
+        records the answer. The{" "}
         <Link href="/fix-pack" className="text-forest underline">
           Fix Pack
         </Link>{" "}
@@ -45,21 +63,6 @@ export function SchemaGeneratorLead({ industry }: { industry?: string }) {
         </span>
       </p>
       <p className="mt-3 text-sm leading-6 text-ink-soft">Prepared by the CiteScore Team.</p>
-      <div
-        data-funnel-cta
-        className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-      >
-        <Link
-          href="#snapshot"
-          className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep"
-        >
-          {snapshotRequestCtaLabel}
-        </Link>
-        <FixPackBuyLink
-          compact
-          className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
-        />
-      </div>
     </section>
   );
 }
