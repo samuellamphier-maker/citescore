@@ -24,6 +24,9 @@ export const fixPackListPriceLabel = "$97";
  */
 export const FIX_PACK_CHECKOUT_URL = "https://payhip.com/b/AjFxC";
 
+/** Header name on the Payhip product page for FIX_PACK_CHECKOUT_URL. */
+export const payhipShopName = "DeskOps Templates";
+
 export function fixPackHref() {
   const checkout = FIX_PACK_CHECKOUT_URL.trim();
   if (checkout) return checkout;

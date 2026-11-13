@@ -13,6 +13,7 @@ import {
   contactEmail,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  payhipShopName,
   sellerName,
 } from "@/lib/site";
 
@@ -172,7 +173,8 @@ export default function MethodologyPage() {
           </ul>
           <p className="mt-4 text-sm leading-7 text-ink-soft">
             The buy button opens {fixPackIntroPriceLabel} card checkout.
-            Payhip handles the AI Visibility Fix Pack. After you pay, send
+            Payhip handles the AI Visibility Fix Pack. The shop name on that
+            page is {payhipShopName}. After you pay, send
             the business name, city, main service, and public site URL on the{" "}
             <Link href="/fix-pack/next-steps" className="text-forest underline">
               next-steps page

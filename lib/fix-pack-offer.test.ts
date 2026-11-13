@@ -23,6 +23,7 @@ const {
 
 test("the buy button says when the Fix Pack arrives and the refund, then the Payhip note", () => {
   assert.match(fixPackPayhipCheckoutNote, /Opens Payhip in a new tab\./);
+  assert.match(fixPackPayhipCheckoutNote, /The shop name on that page is DeskOps Templates\./);
   assert.match(fixPackPayhipCheckoutNote, /Payhip lists a text file with the order\./);
   assert.match(fixPackPayhipCheckoutNote, /We email the Fix Pack\./);
   assert.doesNotMatch(fixPackPayhipCheckoutNote, /1KB|guarantee|testimonial|customers/);
@@ -67,6 +68,20 @@ test("the buy button says when the Fix Pack arrives and the refund, then the Pay
   assert.match(buy, /max-w-xl/);
   assert.match(buy, /basis-full/);
   assert.doesNotMatch(buy, /max-w-xs/);
+
+  const shopName = "DeskOps Templates";
+  for (const file of [
+    "../app/about/page.tsx",
+    "../app/methodology/page.tsx",
+    "../app/terms/page.tsx",
+    "../app/trust/page.tsx",
+    "../lib/trust-faq.ts",
+    "./site.ts",
+  ]) {
+    const source = readFileSync(new URL(file, import.meta.url), "utf8");
+    assert.match(source, /payhipShopName/, file);
+    assert.equal(source.includes(`"${shopName}"`) || source.includes("{payhipShopName}"), true, file);
+  }
 });
 
 test("Fix Pack product JSON-LD states the charged price and no ratings", () => {

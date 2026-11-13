@@ -5,7 +5,7 @@ import {
   sonickStudyUrl,
   type FaqItem,
 } from "@/lib/offer-faq";
-import { contactEmail } from "@/lib/site";
+import { contactEmail, FIX_PACK_CHECKOUT_URL, payhipShopName } from "@/lib/site";
 
 const phrases: { phrase: string; href: string; external?: boolean }[] = [
   { phrase: contactEmail, href: `mailto:${contactEmail}` },
@@ -16,6 +16,7 @@ const phrases: { phrase: string; href: string; external?: boolean }[] = [
   { phrase: "free snapshot page", href: "/free-snapshot" },
   { phrase: "next-steps page", href: "/fix-pack/next-steps" },
   { phrase: "Fix Pack page", href: "/fix-pack" },
+  { phrase: payhipShopName, href: FIX_PACK_CHECKOUT_URL, external: true },
   { phrase: "SoNick Marketing", href: sonickStudyUrl, external: true },
   { phrase: "Search Engine Land", href: llmsTxtSourceUrl, external: true },
 ];
