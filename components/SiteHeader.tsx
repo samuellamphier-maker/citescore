@@ -31,8 +31,11 @@ function NavLink({
 }
 
 function SnapshotCta({ className }: { className: string }) {
-  const onHome = usePathname() === "/";
-  if (onHome) {
+  const pathname = usePathname();
+  // Homepage and the request page already render the snapshot form.
+  // A link to /free-snapshot on that page reloads the page and does not send it.
+  const submitsPageForm = pathname === "/" || pathname === "/free-snapshot";
+  if (submitsPageForm) {
     return (
       <button type="submit" form="snapshot" className={className}>
         {snapshotRequestCtaLabel}

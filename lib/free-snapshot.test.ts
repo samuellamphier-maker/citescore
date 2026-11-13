@@ -35,6 +35,9 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /caveat=\{false\}/);
   assert.match(page, /deliveryNote=\{false\}/);
   assert.match(page, /privacyAfterSubmit/);
+  assert.match(page, /hideRequiredNote/);
+  assert.match(page, /lg:col-start-2 lg:row-span-2 lg:row-start-1/);
+  assert.doesNotMatch(page, /sm:py-14/);
   assert.match(page, /defaultWebsite=\{website\}/);
   assert.match(page, /defaultBusiness=\{business\}/);
   assert.match(page, /defaultService=\{service \|\| undefined\}/);
