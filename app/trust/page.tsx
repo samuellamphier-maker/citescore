@@ -15,6 +15,7 @@ import {
   doneForYouAuditUrl,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  payhipShopName,
   sellerName,
   site,
   templatePackLabel,
@@ -42,7 +43,7 @@ const pages = [
 const trustPageFaqs: readonly FaqItem[] = [
   {
     q: "Who sells CiteScore?",
-    a: `CiteScore is operated by the CiteScore Team. The seller name on this site is ${sellerName}. Questions go to ${contactEmail}.`,
+    a: `CiteScore is operated by the CiteScore Team. The seller name on this site is ${sellerName}. Payhip handles the AI Visibility Fix Pack. The shop name on that page is ${payhipShopName}. Questions go to ${contactEmail}.`,
   },
   {
     q: "What is for sale?",
@@ -236,8 +237,8 @@ export default function TrustPage() {
           <p>
             Stripe, Polar, and Payhip process card payments for the products
             that use them. {sellerName} does not see full card numbers.
-            Payhip handles the AI Visibility Fix Pack ({fixPackIntroPriceLabel}
-            ). Stripe handles the{" "}
+            Payhip handles the AI Visibility Fix Pack ({fixPackIntroPriceLabel}).
+            The shop name on that page is {payhipShopName}. Stripe handles the{" "}
             <Link href="/geo-audit" className="text-forest underline">
               GEO audit
             </Link>

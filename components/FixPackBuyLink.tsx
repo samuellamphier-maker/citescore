@@ -2,7 +2,29 @@ import Link from "next/link";
 import { EmailRequestFallback } from "@/components/EmailRequestFallback";
 import { fixPackRequestText } from "@/lib/email-request";
 import { fixPackBuyAssurance, fixPackPayhipCheckoutNote } from "@/lib/fix-pack-offer";
-import { contactEmail, fixPackCtaLabel, fixPackHref, FIX_PACK_CHECKOUT_URL } from "@/lib/site";
+import {
+  contactEmail,
+  fixPackCtaLabel,
+  fixPackHref,
+  FIX_PACK_CHECKOUT_URL,
+  payhipShopName,
+} from "@/lib/site";
+
+function PayhipCheckoutNote({ noteClass }: { noteClass: string }) {
+  const note = fixPackPayhipCheckoutNote;
+  const at = note.indexOf(payhipShopName);
+  if (at === -1) return note;
+  return (
+    <>
+      {note.slice(0, at)}
+      <a href={FIX_PACK_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className={noteClass}>
+        {payhipShopName}
+        <span className="sr-only"> (opens in a new tab)</span>
+      </a>
+      {note.slice(at + payhipShopName.length)}
+    </>
+  );
+}
 
 export function FixPackBuyLink({
   className = "inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep",
@@ -53,7 +75,7 @@ export function FixPackBuyLink({
         {assurance}
         {checkout ? (
           <p className={noteClass}>
-            {fixPackPayhipCheckoutNote}{" "}
+            <PayhipCheckoutNote noteClass={noteLinkClass} />{" "}
             <Link href="/fix-pack/next-steps" className={noteLinkClass}>
               What happens after you buy
             </Link>

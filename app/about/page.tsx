@@ -7,8 +7,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { pageMeta } from "@/lib/content/meta";
 import {
   contactEmail,
+  FIX_PACK_CHECKOUT_URL,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  payhipShopName,
   sellerName,
 } from "@/lib/site";
 
@@ -58,7 +60,18 @@ export default function AboutPage() {
             LocalBusiness and Service JSON-LD with install steps, and a
             re-check of the same prompts 14 days later. It is not a promise
             that any assistant will name the business. The buy button opens{" "}
-            {fixPackIntroPriceLabel} card checkout. The free snapshot form
+            {fixPackIntroPriceLabel} card checkout on Payhip. The shop name on
+            that page is{" "}
+            <a
+              href={FIX_PACK_CHECKOUT_URL}
+              className="text-forest underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {payhipShopName}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+            . The free snapshot form
             sends the business name, city, service, website, and email
             through FlowForm. An{" "}
             <Link href="/sample-snapshot" className="text-forest underline">

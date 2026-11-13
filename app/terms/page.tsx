@@ -9,6 +9,7 @@ import {
   doneForYouAuditLabel,
   fixPackIntroPriceLabel,
   fixPackListPriceLabel,
+  payhipShopName,
   templatePackLabel,
   whiteLabelAuditLabel,
 } from "@/lib/site";
@@ -55,7 +56,7 @@ export default function TermsPage() {
           <p>
             The seller is CiteScore. Stripe, Polar, and Payhip process card
             payments for the products that use them. CiteScore does not see
-            full card numbers. Payhip handles the AI Visibility Fix Pack ({fixPackIntroPriceLabel}). Stripe handles the{" "}
+            full card numbers. Payhip handles the AI Visibility Fix Pack ({fixPackIntroPriceLabel}). The shop name on that page is {payhipShopName}. Stripe handles the{" "}
             <Link href="/geo-audit" className="text-forest underline">
               GEO audit
             </Link>
