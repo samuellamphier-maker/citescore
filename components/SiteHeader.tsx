@@ -4,6 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
 import { fixPackPageLinkLabel, snapshotRequestCtaLabel } from "@/lib/site";
+import {
+  firstSnapshotFieldError,
+  snapshotWebsiteAccepted,
+  snapshotWebsiteValue,
+  type SnapshotFields,
+} from "@/lib/snapshot-form";
 
 const navItem =
   "min-h-11 min-w-11 items-center justify-center px-2 hover:text-ink";
@@ -30,14 +36,62 @@ function NavLink({
   );
 }
 
+const snapshotFieldNames: Record<keyof SnapshotFields, string> = {
+  business: "Business name",
+  city: "City",
+  service: "Service",
+  website: "Website",
+  email: "Email",
+};
+
+function readSnapshotInput(form: HTMLFormElement, name: string) {
+  const input = form.elements.namedItem(name);
+  return input instanceof HTMLInputElement ? input.value : "";
+}
+
+function onSnapshotCtaClick(event: React.MouseEvent<HTMLButtonElement>) {
+  const form = document.getElementById("snapshot");
+  if (!(form instanceof HTMLFormElement)) return;
+
+  const website = form.elements.namedItem("Website");
+  if (website instanceof HTMLInputElement && snapshotWebsiteAccepted(website.value)) {
+    const next = snapshotWebsiteValue(website.value);
+    if (next !== website.value) website.value = next;
+  }
+
+  const fields: SnapshotFields = {
+    business: readSnapshotInput(form, snapshotFieldNames.business),
+    city: readSnapshotInput(form, snapshotFieldNames.city),
+    service: readSnapshotInput(form, snapshotFieldNames.service),
+    website: readSnapshotInput(form, snapshotFieldNames.website),
+    email: readSnapshotInput(form, snapshotFieldNames.email),
+  };
+  const first = firstSnapshotFieldError(fields);
+  const details = event.currentTarget.closest("details");
+  if (details) details.open = false;
+  if (!first) return;
+
+  event.preventDefault();
+  const input = form.elements.namedItem(snapshotFieldNames[first]);
+  if (input instanceof HTMLInputElement) input.focus();
+}
+
 function SnapshotCta({ className }: { className: string }) {
   const pathname = usePathname();
   // Homepage and the request page already render the snapshot form.
   // A link to /free-snapshot on that page reloads the page and does not send it.
+  // An incomplete form focuses the first empty field. Listing every error on
+  // this click covers the City and Service labels before the visitor has typed.
   const submitsPageForm = pathname === "/" || pathname === "/free-snapshot";
   if (submitsPageForm) {
     return (
-      <button type="submit" form="snapshot" className={className}>
+      <button
+        type="submit"
+        form="snapshot"
+        data-snapshot-cta="focus-first"
+        onClick={onSnapshotCtaClick}
+        className={className}
+      >
         {snapshotRequestCtaLabel}
       </button>
     );
@@ -94,7 +148,7 @@ function SecondaryLinks({ linkClass }: { linkClass: string }) {
 
 export function SiteHeader() {
   return (
-    <header className="no-print border-b border-rule/80">
+    <header className="no-print border-b border-rule/80" data-snapshot-cta="focus-first">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:inline-flex focus:h-11 focus:items-center focus:rounded-lg focus:bg-ink focus:px-4 focus:text-cream"
