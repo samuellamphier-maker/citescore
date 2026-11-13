@@ -60,62 +60,40 @@ export default async function FreeSnapshotPage({
       <JsonLd data={freeSnapshotServiceJsonLd(publicOrigin())} />
       <JsonLd data={freeSnapshotPageFixPackJsonLd(publicOrigin())} />
       <SiteHeader />
-      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-2 sm:py-14">
-        <p className="kicker">Free · no checkout</p>
-        <FreeSnapshotLead service={service} />
-
-        <div className="mt-3 grid items-start gap-6 sm:mt-4 lg:mt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.95fr)] lg:gap-8">
-          <div className="min-w-0">
-            <section
-              aria-labelledby="free-snapshot-request"
-              className="rounded-2xl border border-rule bg-cream px-4 py-3 sm:px-6 sm:py-5"
-            >
-              <h2 id="free-snapshot-request" className="sr-only">
-                Request the free snapshot.
-              </h2>
-              <SnapshotRequestForm
-                key={`${website}\n${business}\n${service}`}
-                caveat={false}
-                deliveryNote={false}
-                privacyAfterSubmit
-                defaultWebsite={website}
-                defaultBusiness={business}
-                defaultService={service || undefined}
-                serviceNote={Boolean(service)}
-              />
-              <p className="mt-4 text-sm leading-6 text-ink-soft">
-                Prepared by the CiteScore Team. Sold by {sellerName}.
-              </p>
-            </section>
-
-            <section className="mt-6" aria-labelledby="after-submit">
-              <h2 id="after-submit" className="font-serif text-2xl tracking-tight sm:text-3xl">
-                What happens after you submit
-              </h2>
-              <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
-                <li>
-                  You submit the form. The button sends the business name, city, service, website, and email to {contactEmail} through FlowForm. The subject is “Free AI Answer Snapshot.” No account and no paid checkout. If that send fails, the email button, the address, and the copy buttons stay on this page.
-                </li>
-                <li>
-                  We reply with the one-page snapshot by email. There is no set delivery time.
-                </li>
-              </ol>
-            </section>
-
-            <p className="mt-4 text-sm leading-6">
-              <Link href="/fix-pack" className="font-medium text-forest underline">
-                Skip straight to the {fixPackIntroPriceLabel} Fix Pack
-              </Link>
-              <span className="text-ink-soft">
-                {" "}
-                if you already want the done-for-you work.
-              </span>
-            </p>
-
-            <HowSnapshotIsMade className="mt-6" />
+      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-2 sm:py-8">
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_min(26rem,42%)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-6">
+          <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+            <p className="kicker">Free · no checkout</p>
+            <FreeSnapshotLead service={service} />
           </div>
 
-          <aside className="min-w-0" aria-labelledby="snapshot-sample-preview">
+          <section
+            aria-labelledby="free-snapshot-request"
+            className="min-w-0 rounded-2xl border border-rule bg-cream px-4 py-3 sm:px-6 sm:py-4 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+          >
+            <h2 id="free-snapshot-request" className="sr-only">
+              Request the free snapshot.
+            </h2>
+            <SnapshotRequestForm
+              key={`${website}\n${business}\n${service}`}
+              caveat={false}
+              deliveryNote={false}
+              privacyAfterSubmit
+              hideRequiredNote
+              defaultWebsite={website}
+              defaultBusiness={business}
+              defaultService={service || undefined}
+              serviceNote={Boolean(service)}
+            />
+            <p className="mt-4 text-sm leading-6 text-ink-soft">
+              Prepared by the CiteScore Team. Sold by {sellerName}.
+            </p>
+          </section>
+
+          <aside
+            className="min-w-0 lg:col-start-1 lg:row-start-2"
+            aria-labelledby="snapshot-sample-preview"
+          >
             <p className="kicker">Sample</p>
             <h2
               id="snapshot-sample-preview"
@@ -139,9 +117,35 @@ export default async function FreeSnapshotPage({
         </div>
 
         <div className="max-w-3xl">
-        <h2 className="mt-12 font-serif text-3xl tracking-tight">
-          Optional next step: the Fix Pack
-        </h2>
+          <section className="mt-8" aria-labelledby="after-submit">
+            <h2 id="after-submit" className="font-serif text-2xl tracking-tight sm:text-3xl">
+              What happens after you submit
+            </h2>
+            <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
+              <li>
+                You submit the form. The button sends the business name, city, service, website, and email to {contactEmail} through FlowForm. The subject is “Free AI Answer Snapshot.” No account and no paid checkout. If that send fails, the email button, the address, and the copy buttons stay on this page.
+              </li>
+              <li>
+                We reply with the one-page snapshot by email. There is no set delivery time.
+              </li>
+            </ol>
+          </section>
+
+          <p className="mt-4 text-sm leading-6">
+            <Link href="/fix-pack" className="font-medium text-forest underline">
+              Skip straight to the {fixPackIntroPriceLabel} Fix Pack
+            </Link>
+            <span className="text-ink-soft">
+              {" "}
+              if you already want the done-for-you work.
+            </span>
+          </p>
+
+          <HowSnapshotIsMade className="mt-6" />
+
+          <h2 className="mt-12 font-serif text-3xl tracking-tight">
+            Optional next step: the Fix Pack
+          </h2>
         <p className="mt-4 leading-7 text-ink-soft">
           The{" "}
           <Link href="/fix-pack" className="text-forest underline">
