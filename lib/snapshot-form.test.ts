@@ -7,6 +7,7 @@ import {
   snapshotBusinessPrefill,
   postSnapshotForm,
   snapshotDeliveredToMessage,
+  firstSnapshotFieldError,
   snapshotFieldErrors,
   snapshotFieldsComplete,
   snapshotFormEncoded,
@@ -130,6 +131,22 @@ test("snapshot payload posts the visitor fields through FlowForm", () => {
     "Enter a website, with or without https://. Enter an email address.",
   );
   assert.equal(snapshotValidationSummary({}), "");
+  assert.equal(
+    firstSnapshotFieldError({
+      business: "",
+      city: "",
+      service: "",
+      website: "",
+      email: "",
+    }),
+    "business",
+  );
+  assert.equal(firstSnapshotFieldError({ ...fields, service: " " }), "service");
+  assert.equal(
+    firstSnapshotFieldError({ ...fields, website: "notaurl" }),
+    "website",
+  );
+  assert.equal(firstSnapshotFieldError(fields), "");
 });
 
 test("postSnapshotForm stays on the FlowForm path and reports failures", async () => {

@@ -214,6 +214,16 @@ const snapshotFieldOrder: (keyof SnapshotFields)[] = [
 ];
 
 /**
+ * First field the header snapshot button should focus.
+ * An empty string means the form can be submitted.
+ * Header clicks use this instead of listing every empty field at once.
+ */
+export function firstSnapshotFieldError(fields: SnapshotFields) {
+  const errors = snapshotFieldErrors(fields);
+  return snapshotFieldOrder.find((key) => errors[key]) ?? "";
+}
+
+/**
  * Alert under the submit button. Names only the fields that failed, in form
  * order, so a filled business name is not listed again when service is empty.
  */

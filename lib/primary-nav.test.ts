@@ -63,7 +63,17 @@ test("primary nav stays on the snapshot and Fix Pack path", () => {
   assert.doesNotMatch(header, /Samuel|Lamphier/);
   assert.match(header, /pathname === "\/"/);
   assert.match(header, /pathname === "\/free-snapshot"/);
-  assert.match(header, /type="submit" form="snapshot"/);
+  assert.match(header, /type="submit"\s+form="snapshot"/);
+  assert.match(header, /data-snapshot-cta="focus-first"/);
+  assert.match(header, /firstSnapshotFieldError/);
+  assert.match(header, /snapshotWebsiteAccepted/);
+  assert.match(header, /event\.preventDefault\(\)/);
+  assert.doesNotMatch(header, /checkValidity|reportValidity/);
+  assert.match(header, /details\.open = false/);
+  const ctaClick = header.slice(header.indexOf("function onSnapshotCtaClick"));
+  const preventAt = ctaClick.indexOf("event.preventDefault()");
+  const firstAt = ctaClick.indexOf("const first = firstSnapshotFieldError");
+  assert.ok(firstAt !== -1 && preventAt > firstAt);
 });
 
 test("footer and pricing keep the $19 and $29 products in a closed disclosure", () => {
