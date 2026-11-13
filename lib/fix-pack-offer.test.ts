@@ -176,7 +176,9 @@ test("buying path pages render the facts beside Fix Pack buy buttons", () => {
   assert.match(fixPack, /Operated by the CiteScore Team/);
   assert.match(fixPack, /mailto:\$\{contactEmail\}/);
   assert.match(fixPack, /fixPackProductJsonLd/);
-  const deliverablesAt = fixPack.indexOf("{fixPackDeliverables.map");
+  const maps = [...fixPack.matchAll(/fixPackDeliverables\.map/g)].map(
+    (match) => match.index ?? -1,
+  );
   const afterPayAt = fixPack.indexOf("After you pay");
   const refundsAt = fixPack.indexOf(">Refunds<");
   const installAt = fixPack.indexOf("Where the JSON-LD goes");
@@ -184,8 +186,13 @@ test("buying path pages render the facts beside Fix Pack buy buttons", () => {
   const buys = [...fixPack.matchAll(/<FixPackBuyLink/g)].map((match) => match.index ?? -1);
   assert.equal((fixPack.match(/data-funnel-cta/g) ?? []).length, 2);
   assert.equal(buys.length, 2);
-  assert.ok(buys[0] !== -1 && buys[0] < deliverablesAt);
-  assert.ok(deliverablesAt < afterPayAt);
+  assert.equal(maps.length, 2);
+  assert.match(fixPack, /The snapshot is free\./);
+  assert.match(fixPack, /pt-6 sm:py-14/);
+  assert.ok(fixPack.indexOf('aria-label="Included in the Fix Pack"') < buys[0]);
+  assert.ok(maps[0] !== -1 && maps[0] < buys[0]);
+  assert.ok(buys[0] < maps[1]);
+  assert.ok(maps[1] < afterPayAt);
   assert.ok(afterPayAt < refundsAt);
   assert.ok(refundsAt < installAt);
   assert.ok(installAt < faqAt);

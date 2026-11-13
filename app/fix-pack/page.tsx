@@ -47,18 +47,26 @@ export default function FixPackPage() {
       <JsonLd data={fixPackProductJsonLd(publicOrigin())} />
       <JsonLd data={fixPackPageSnapshotServiceJsonLd(publicOrigin())} />
       <SiteHeader />
-      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 py-14">
+      <main id="main" className="mx-auto w-full max-w-3xl flex-1 px-5 pb-14 pt-6 sm:py-14">
         <p className="kicker">AI Visibility Fix Pack</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight sm:text-5xl">
           Who AI recommends instead of you, and the fixes.
         </h1>
-        <p className="mt-4 text-lg leading-8 text-ink-soft">
-          The snapshot is free. The Fix Pack is the done-for-you work after
-          you have seen who was named.
+        <p className="mt-3 text-sm leading-5 text-ink-soft sm:mt-4">
+          The snapshot is free.{" "}
+          <span className="font-medium text-ink">Included:</span>
         </p>
+        <ul
+          aria-label="Included in the Fix Pack"
+          className="mt-2 grid grid-cols-1 gap-y-0 text-sm leading-5 text-ink sm:grid-cols-2 sm:gap-x-4 sm:gap-y-1"
+        >
+          {fixPackDeliverables.map((item) => (
+            <li key={item.title}>{item.title}</li>
+          ))}
+        </ul>
         <div
           data-funnel-cta
-          className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+          className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
         >
           <FixPackBuyLink className={buyLinkClassName} />
           <Link
