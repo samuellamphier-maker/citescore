@@ -6,11 +6,17 @@ import { test } from "node:test";
 register("./alias-hook.mjs", import.meta.url);
 
 const { marketingPaths } = await import("./content/blog.ts");
-const { expectedIndustryHubPaths, industryGroups, industryPageLabel } = await import(
-  "./content/industries.ts"
-);
+const { expectedIndustryHubPaths, industryGroups, industryHubSnapshotLink, industryPageLabel } =
+  await import("./content/industries.ts");
 const { topicPages } = await import("./content/topics.ts");
-const { industrySchemaGeneratorPaths } = await import("./industry-snapshot.ts");
+const {
+  freeSnapshotHrefForIndustry,
+  industrySchemaGeneratorPaths,
+  industrySnapshotLabel,
+  schemaIndustries,
+  snapshotServicePrefill,
+} = await import("./industry-snapshot.ts");
+const { parseHomeServiceTrade } = await import("./home-service-trade.ts");
 
 const page = readFileSync(new URL("../app/industries/page.tsx", import.meta.url), "utf8");
 const nextConfig = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
@@ -77,6 +83,9 @@ test("industries page leads with the snapshot and Fix Pack and uses existing blu
   assert.match(page, /Fix Pack, \$\{fixPackIntroPriceLabel\}/);
   assert.match(page, /industryPageLabel\(page\)/);
   assert.match(page, /\{page\.card\}/);
+  assert.match(page, /industryHubSnapshotLink\(page\.path\)/);
+  assert.match(page, /Free snapshot for \$\{snapshot\.trade\}/);
+  assert.match(page, /href=\{snapshot\.href\}/);
   assert.match(page, /industryGroups\(\)/);
   assert.match(page, /id=\{group\.id\}/);
   assert.doesNotMatch(page, invented);
@@ -91,6 +100,65 @@ test("industries page leads with the snapshot and Fix Pack and uses existing blu
   const snapshotAt = page.indexOf('href="/free-snapshot"');
   const fixPackAt = page.indexOf('href="/fix-pack"');
   assert.ok(snapshotAt > -1 && fixPackAt > snapshotAt);
+});
+
+test("each industry row reuses that page's snapshot CTA and the form accepts it", () => {
+  const listed = industryGroups().flatMap((group) => group.pages.map((item) => item.path));
+  const linked = listed.filter((itemPath) => industryHubSnapshotLink(itemPath));
+  assert.ok(linked.length >= 17);
+
+  for (const itemPath of listed) {
+    const link = industryHubSnapshotLink(itemPath);
+    const guideTrade = industrySnapshotLabel(itemPath);
+    const schemaTrade = schemaIndustries[itemPath.slice(1)];
+    const trade = guideTrade ?? schemaTrade;
+
+    if (!trade || freeSnapshotHrefForIndustry(trade) === "/free-snapshot") {
+      assert.equal(link, null, itemPath);
+      continue;
+    }
+
+    assert.deepEqual(link, { href: freeSnapshotHrefForIndustry(trade), trade }, itemPath);
+    const url = new URL(link.href, "https://citescore.vercel.app");
+    const tradeId = url.searchParams.get("trade");
+    if (tradeId) {
+      const parsed = parseHomeServiceTrade(tradeId);
+      assert.ok(parsed, itemPath);
+      assert.equal(parsed.service.length > 0, true, itemPath);
+      assert.equal(url.searchParams.get("service"), null, itemPath);
+      continue;
+    }
+    const service = url.searchParams.get("service");
+    assert.equal(snapshotServicePrefill(service), service, itemPath);
+  }
+
+  assert.equal(industryHubSnapshotLink("/geo-for-local-businesses"), null);
+  assert.equal(industryHubSnapshotLink("/local-business-schema-generator"), null);
+  assert.equal(
+    industryHubSnapshotLink("/ai-search-visibility-for-plumbers")?.href,
+    "/free-snapshot?trade=plumber",
+  );
+  assert.equal(
+    industryHubSnapshotLink("/plumber-schema-generator")?.href,
+    "/free-snapshot?trade=plumber",
+  );
+  assert.equal(
+    industryHubSnapshotLink("/ai-search-visibility-for-dentists")?.href,
+    "/free-snapshot?service=dental",
+  );
+  assert.equal(
+    industryHubSnapshotLink("/ai-search-visibility-for-law-firms")?.href,
+    "/free-snapshot?service=law+firm",
+  );
+  assert.equal(
+    industryHubSnapshotLink("/hotel-schema-generator")?.href,
+    "/free-snapshot?service=hotel",
+  );
+  assert.equal(
+    industryHubSnapshotLink("/medical-clinic-schema-generator")?.href,
+    "/free-snapshot?service=clinic",
+  );
+  assert.doesNotMatch(page, invented);
 });
 
 test("/examples, /example, and /industry permanently redirect", () => {
