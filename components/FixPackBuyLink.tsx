@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { EmailRequestFallback } from "@/components/EmailRequestFallback";
 import { fixPackRequestText } from "@/lib/email-request";
-import { fixPackBuyAssurance, fixPackPayhipCheckoutNote } from "@/lib/fix-pack-offer";
+import {
+  fixPackBuyAssurance,
+  fixPackPayhipCheckoutNote,
+  fixPackPayhipShopNote,
+} from "@/lib/fix-pack-offer";
 import {
   contactEmail,
   fixPackCtaLabel,
@@ -10,8 +14,13 @@ import {
   payhipShopName,
 } from "@/lib/site";
 
-function PayhipCheckoutNote({ noteClass }: { noteClass: string }) {
-  const note = fixPackPayhipCheckoutNote;
+function PayhipCheckoutNote({
+  noteClass,
+  note = fixPackPayhipCheckoutNote,
+}: {
+  noteClass: string;
+  note?: string;
+}) {
   const at = note.indexOf(payhipShopName);
   if (at === -1) return note;
   return (
@@ -31,6 +40,8 @@ export function FixPackBuyLink({
   tone = "light",
   label,
   compact: _compact = false,
+  showAssurance = true,
+  payhipNote = "full",
 }: {
   className?: string;
   tone?: "light" | "dark";
@@ -38,6 +49,16 @@ export function FixPackBuyLink({
   label?: string;
   /** Kept for existing call sites. The refund and Payhip lines use their own row. */
   compact?: boolean;
+  /**
+   * Guide cards pass false. The refund paragraph stays under buy buttons on
+   * the homepage, Fix Pack page, and checkout.
+   */
+  showAssurance?: boolean;
+  /**
+   * "shop" is the shop-name sentence only. The text-file line and the
+   * next-steps link stay on the full note used at checkout.
+   */
+  payhipNote?: "full" | "shop";
 }) {
   const checkout = FIX_PACK_CHECKOUT_URL.trim();
   const noteClass =
@@ -72,14 +93,22 @@ export function FixPackBuyLink({
           {label ?? fixPackCtaLabel()}
           {checkout ? <span className="sr-only"> (opens in a new tab)</span> : null}
         </a>
-        {assurance}
+        {showAssurance ? assurance : null}
         {checkout ? (
           <p className={noteClass}>
-            <PayhipCheckoutNote noteClass={noteLinkClass} />{" "}
-            <Link href="/fix-pack/next-steps" className={noteLinkClass}>
-              What happens after you buy
-            </Link>
-            .
+            <PayhipCheckoutNote
+              noteClass={noteLinkClass}
+              note={payhipNote === "shop" ? fixPackPayhipShopNote : fixPackPayhipCheckoutNote}
+            />
+            {payhipNote === "full" ? (
+              <>
+                {" "}
+                <Link href="/fix-pack/next-steps" className={noteLinkClass}>
+                  What happens after you buy
+                </Link>
+                .
+              </>
+            ) : null}
           </p>
         ) : (
           <EmailRequestFallback tone={tone} requestText={fixPackRequestText(contactEmail)} />
