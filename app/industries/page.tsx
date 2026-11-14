@@ -5,7 +5,11 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickySnapshotOffer } from "@/components/StickySnapshotOffer";
 import { SiteHeader } from "@/components/SiteHeader";
-import { industryGroups, industryPageLabel } from "@/lib/content/industries";
+import {
+  industryGroups,
+  industryHubSnapshotLink,
+  industryPageLabel,
+} from "@/lib/content/industries";
 import { pageMeta } from "@/lib/content/meta";
 import {
   fixPackIntroPriceLabel,
@@ -135,17 +139,28 @@ export default function IndustriesPage() {
             <h2 className="font-serif text-3xl tracking-tight">{group.title}</h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-ink-soft">{group.intro}</p>
             <ul className="mt-4 divide-y divide-rule border-y border-rule">
-              {group.pages.map((page) => (
-                <li key={page.path} className="py-4">
-                  <Link
-                    href={page.path}
-                    className="font-medium text-forest underline-offset-4 hover:underline"
-                  >
-                    {industryPageLabel(page)}
-                  </Link>
-                  <p className="mt-1 text-sm leading-6 text-ink-soft">{page.card}</p>
-                </li>
-              ))}
+              {group.pages.map((page) => {
+                const snapshot = industryHubSnapshotLink(page.path);
+                return (
+                  <li key={page.path} className="py-4">
+                    <Link
+                      href={page.path}
+                      className="font-medium text-forest underline-offset-4 hover:underline"
+                    >
+                      {industryPageLabel(page)}
+                    </Link>
+                    <p className="mt-1 text-sm leading-6 text-ink-soft">{page.card}</p>
+                    {snapshot ? (
+                      <Link
+                        href={snapshot.href}
+                        className="mt-2 inline-flex min-h-11 max-w-full items-center text-sm font-medium text-forest underline underline-offset-4"
+                      >
+                        {`Free snapshot for ${snapshot.trade}`}
+                      </Link>
+                    ) : null}
+                  </li>
+                );
+              })}
             </ul>
           </section>
         ))}

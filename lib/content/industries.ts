@@ -1,4 +1,9 @@
-import { industrySchemaGeneratorPaths } from "@/lib/industry-snapshot";
+import {
+  freeSnapshotHrefForIndustry,
+  industrySchemaGeneratorPaths,
+  industrySnapshotLabel,
+  schemaIndustries,
+} from "@/lib/industry-snapshot";
 import { topicPages, type TopicPage } from "@/lib/content/topics";
 
 export type IndustryGroup = {
@@ -97,6 +102,31 @@ function pageFor(path: string) {
 /** Short label already stored on the topic. Falls back to the page title. */
 export function industryPageLabel(page: TopicPage) {
   return page.navLabel ?? page.title;
+}
+
+export type IndustryHubSnapshotLink = {
+  /** Same free-snapshot href that page's snapshot CTA already uses. */
+  href: string;
+  /** Industry phrase already passed to that page's snapshot CTA. */
+  trade: string;
+};
+
+/**
+ * Prefill link for one industries-hub row.
+ * A visibility guide uses industrySnapshotLabel, the same phrase
+ * IndustryArticleSnapshot and ArticleShell pass to freeSnapshotHrefForIndustry.
+ * A schema generator uses schemaIndustries, the phrase ArticleShell uses there.
+ * "local" and other phrases with no query stay off the row. The hub already
+ * has the unscoped /free-snapshot button.
+ */
+export function industryHubSnapshotLink(path: string): IndustryHubSnapshotLink | null {
+  const fromGuide = industrySnapshotLabel(path);
+  const fromSchema = schemaIndustries[path.replace(/^\//, "")];
+  const trade = fromGuide ?? fromSchema;
+  if (!trade) return null;
+  const href = freeSnapshotHrefForIndustry(trade);
+  if (href === "/free-snapshot") return null;
+  return { href, trade };
 }
 
 export function industryGroups(): IndustryGroup[] {
