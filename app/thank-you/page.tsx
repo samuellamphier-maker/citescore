@@ -34,6 +34,26 @@ export default function ThankYouPage() {
         <p className="mt-4 leading-7 text-ink-soft">
           The CiteScore Team prepares the one-page snapshot and emails it.
         </p>
+        <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap">
+          <div>
+            <Link
+              href="/sample-snapshot"
+              className="inline-flex h-12 items-center justify-center rounded-lg bg-forest px-5 text-base font-medium text-cream hover:bg-forest-deep"
+            >
+              See an example snapshot
+            </Link>
+            <p className="mt-2 max-w-sm text-sm leading-6 text-ink-soft">
+              Fictional business, illustrative numbers. Not a customer result,
+              and not a live ChatGPT or Perplexity answer.
+            </p>
+          </div>
+          <Link
+            href="/fix-pack"
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
+          >
+            See what&apos;s in the Fix Pack
+          </Link>
+        </div>
 
         <h2 className="mt-12 font-serif text-3xl tracking-tight">What happens next</h2>
         <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
@@ -74,34 +94,17 @@ export default function ThankYouPage() {
           , or email them. It is not a promise that any assistant will name the business. The buy button opens {fixPackIntroPriceLabel} card
           checkout.
         </p>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <div className="mt-6">
           <FixPackBuyLink />
-          <Link
-            href="/fix-pack"
-            className="inline-flex h-12 items-center justify-center rounded-lg border border-ink/25 bg-cream px-5 text-base font-medium text-ink hover:border-ink"
-          >
-            See what&apos;s in the Fix Pack
-          </Link>
         </div>
-        <ul className="mt-6 space-y-3 text-sm leading-6">
-          <li>
-            <Link href="/sample-snapshot" className="font-medium text-forest underline">
-              See an example snapshot
-            </Link>
-            <span className="text-ink-soft">
-              . Fictional business, illustrative numbers. Not a customer result,
-              and not a live ChatGPT or Perplexity answer.
-            </span>
-          </li>
-          <li>
-            <Link href="/sample-fix-pack" className="font-medium text-forest underline">
-              See a sample Fix Pack
-            </Link>
-            <span className="text-ink-soft">
-              . Illustrative example content, not a real client or real results.
-            </span>
-          </li>
-        </ul>
+        <p className="mt-6 text-sm leading-6">
+          <Link href="/sample-fix-pack" className="font-medium text-forest underline">
+            See a sample Fix Pack
+          </Link>
+          <span className="text-ink-soft">
+            . Illustrative example content, not a real client or real results.
+          </span>
+        </p>
         <p className="mt-6 text-sm leading-6 text-ink-soft">
           We email the snapshot to the address you submitted. We do not sell
           emails.{" "}

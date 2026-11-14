@@ -504,6 +504,24 @@ export function SnapshotRequestForm({
           <p className="mt-2 text-ink-soft">
             The CiteScore Team prepares the one-page snapshot and emails it.
           </p>
+          <div className="mt-4 flex flex-col gap-2">
+            <Link
+              href="/sample-snapshot"
+              className="inline-flex h-11 items-center justify-center rounded-lg bg-forest px-4 text-sm font-medium text-cream hover:bg-forest-deep"
+            >
+              See an example snapshot
+            </Link>
+            <p className="text-ink-soft">
+              Fictional business, illustrative numbers. Not a customer result,
+              and not a live ChatGPT or Perplexity answer.
+            </p>
+            <Link
+              href="/fix-pack"
+              className="inline-flex h-11 items-center justify-center rounded-lg border border-ink/25 bg-cream px-4 text-sm font-medium text-ink hover:border-ink"
+            >
+              {fixPackPageLinkLabel()}
+            </Link>
+          </div>
           <p className="mt-4 font-medium text-ink">What happens next</p>
           <ol className="mt-2 list-decimal space-y-2 pl-5 text-ink-soft">
             <li>
@@ -522,20 +540,6 @@ export function SnapshotRequestForm({
           </ol>
           <p className="mt-3 text-ink-soft">
             AI answers vary run to run. This is a snapshot, not a ranking.
-          </p>
-          <p className="mt-3">
-            <Link href="/sample-snapshot" className="font-medium text-forest underline">
-              See an example snapshot
-            </Link>
-            <span className="text-ink-soft">
-              . Fictional business, illustrative numbers. Not a customer result,
-              and not a live ChatGPT or Perplexity answer.
-            </span>
-          </p>
-          <p className="mt-2">
-            <Link href="/fix-pack" className="font-medium text-forest underline">
-              {fixPackPageLinkLabel()}
-            </Link>
           </p>
         </div>
       ) : null}
