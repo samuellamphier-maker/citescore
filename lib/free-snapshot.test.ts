@@ -160,6 +160,21 @@ test("homepage shows the request form before the Payhip buy on a phone", () => {
     /href="\/free-snapshot"[^>]*>\s*Get a free AI Answer Snapshot\s*</,
   );
   assert.match(hero, /No checkout\. We email the one-page snapshot\./);
+  assert.match(hero, /snapshot-short-phone/);
+  assert.match(hero, /snapshot-short-phone-title/);
+  assert.match(hero, /snapshot-short-phone-note/);
+  assert.match(hero, /snapshot-short-phone-gap/);
+  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /@media \(max-width: 360px\) and \(max-height: 680px\)/);
+  assert.match(css, /\.snapshot-short-phone-title \{/);
+  assert.match(css, /\.snapshot-short-phone-form input \{/);
+});
+
+test("a 360px-wide short phone keeps the homepage snapshot submit in view", () => {
+  assert.match(form, /snapshot-short-phone-form/);
+  assert.match(home, /snapshot-short-phone-title/);
+  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /@media \(max-width: 360px\) and \(max-height: 680px\)/);
 });
 
 test("main snapshot CTAs point at the free snapshot page", () => {

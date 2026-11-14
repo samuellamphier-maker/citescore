@@ -255,6 +255,46 @@ summary:focus-visible {
   border-bottom: 0;
 }
 
+/*
+ * Phones that are exactly 360px wide miss the max-width: 359px rules.
+ * At 640px tall the homepage submit is below that fold. Tighten only
+ * that short window so a taller 360px phone keeps the card heading.
+ */
+@media (max-width: 360px) and (max-height: 680px) {
+  .snapshot-short-phone {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .snapshot-short-phone-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .snapshot-short-phone-note {
+    margin-top: 0;
+  }
+
+  .snapshot-short-phone-gap {
+    margin-top: 0.5rem;
+  }
+
+  .snapshot-short-phone-form > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.25rem;
+  }
+
+  .snapshot-short-phone-form input {
+    height: 2.5rem;
+  }
+}
+
 @media print {
   html,
   body {

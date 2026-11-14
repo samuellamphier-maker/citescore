@@ -307,7 +307,7 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /requiredNoteId \? \(/);
   assert.match(
     form,
-    /hideRequiredNote\s+\? "scroll-mt-24 space-y-2 max-\[359px\]:space-y-1"\s+: "scroll-mt-24 space-y-3"/,
+    /hideRequiredNote\s+\? "snapshot-short-phone-form scroll-mt-24 space-y-2 max-\[359px\]:space-y-1"\s+: "snapshot-short-phone-form scroll-mt-24 space-y-3"/,
   );
   assert.match(form, /We do not ask for passwords, cookies, or content behind a login/);
   assert.match(form, />Required</);

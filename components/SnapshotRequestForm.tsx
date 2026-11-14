@@ -262,8 +262,8 @@ export function SnapshotRequestForm({
       onSubmit={onSubmit}
       className={
         hideRequiredNote
-          ? "scroll-mt-24 space-y-2 max-[359px]:space-y-1"
-          : "scroll-mt-24 space-y-3"
+          ? "snapshot-short-phone-form scroll-mt-24 space-y-2 max-[359px]:space-y-1"
+          : "snapshot-short-phone-form scroll-mt-24 space-y-3"
       }
     >
       {requiredNoteId ? (

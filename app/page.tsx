@@ -102,14 +102,14 @@ export default function HomePage() {
               </h1>
             </div>
 
-            <aside className="report-sheet rounded-2xl border border-rule p-3 max-[359px]:py-2 sm:p-4 sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:self-start">
-              <h2 className="font-serif text-xl leading-tight max-[359px]:sr-only sm:text-2xl">
+            <aside className="snapshot-short-phone report-sheet rounded-2xl border border-rule p-3 max-[359px]:py-2 sm:p-4 sm:col-start-2 sm:row-span-2 sm:row-start-1 sm:self-start">
+              <h2 className="snapshot-short-phone-title font-serif text-xl leading-tight max-[359px]:sr-only sm:text-2xl">
                 Request the snapshot
               </h2>
-              <p className="mt-1 text-sm leading-5 text-ink-soft max-[359px]:mt-0">
+              <p className="snapshot-short-phone-note mt-1 text-sm leading-5 text-ink-soft max-[359px]:mt-0">
                 No checkout. We email the one-page snapshot.
               </p>
-              <div className="mt-3">
+              <div className="snapshot-short-phone-gap mt-3">
                 <SnapshotRequestForm
                   caveat={false}
                   privacyAfterSubmit
