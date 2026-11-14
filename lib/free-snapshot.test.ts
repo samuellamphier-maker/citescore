@@ -248,6 +248,12 @@ test("/thank-you confirms the snapshot request, stays out of the index, and alia
   assert.equal(occurrences(thankYou, "Fictional business, illustrative numbers."), 1);
   assert.match(thankYou, /What happens next/);
   assert.match(thankYou, /href="\/sample-snapshot"/);
+  assert.ok(
+    thankYou.indexOf('href="/sample-snapshot"') < thankYou.indexOf("What happens next"),
+  );
+  assert.ok(
+    thankYou.indexOf('href="/fix-pack"') < thankYou.indexOf("What happens next"),
+  );
   assert.match(thankYou, /Fictional business, illustrative numbers/);
   assert.match(thankYou, /href="\/sample-fix-pack"/);
   assert.match(thankYou, /Illustrative example content, not a real client or real results/);

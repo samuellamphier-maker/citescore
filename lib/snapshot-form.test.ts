@@ -340,6 +340,10 @@ test("the request form posts, keeps mailto, and requires the website", () => {
     /The one-page snapshot lists who is named, which sources are cited, and\s+how your Google rating and review count compare\. There is no set\s+delivery time\./,
   );
   assert.match(form, /href="\/sample-snapshot"/);
+  assert.ok(
+    form.indexOf('href="/sample-snapshot"') < form.indexOf("What happens next"),
+  );
+  assert.ok(form.indexOf('href="/fix-pack"') < form.indexOf("What happens next"));
   assert.match(form, /Fictional business, illustrative numbers/);
   assert.match(form, /href="\/fix-pack"/);
   assert.match(form, /fixPackPageLinkLabel/);
