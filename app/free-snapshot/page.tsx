@@ -79,6 +79,7 @@ export default async function FreeSnapshotPage({
               caveat={false}
               deliveryNote={false}
               privacyAfterSubmit
+              afterSubmitReply
               hideRequiredNote
               defaultWebsite={website}
               defaultBusiness={business}
@@ -121,14 +122,9 @@ export default async function FreeSnapshotPage({
             <h2 id="after-submit" className="font-serif text-2xl tracking-tight sm:text-3xl">
               What happens after you submit
             </h2>
-            <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink-soft">
-              <li>
-                You submit the form. The button sends the business name, city, service, website, and email to {contactEmail} through FlowForm. The subject is “Free AI Answer Snapshot.” No account and no paid checkout. If that send fails, the email button, the address, and the copy buttons stay on this page.
-              </li>
-              <li>
-                We reply with the one-page snapshot by email. There is no set delivery time.
-              </li>
-            </ol>
+            <p className="mt-4 text-sm leading-7 text-ink-soft">
+              You submit the form. The button sends the business name, city, service, website, and email to {contactEmail} through FlowForm. The subject is “Free AI Answer Snapshot.” No account and no paid checkout. If that send fails, the email button, the address, and the copy buttons stay on this page.
+            </p>
           </section>
 
           <p className="mt-4 text-sm leading-6">

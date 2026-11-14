@@ -75,6 +75,7 @@ export function SnapshotRequestForm({
   serviceNote = false,
   privacyAfterSubmit = false,
   replyTiming = false,
+  afterSubmitReply = false,
   hideRequiredNote = false,
 }: {
   /** Prefills Service when the page is already about one trade. */
@@ -95,9 +96,14 @@ export function SnapshotRequestForm({
   privacyAfterSubmit?: boolean;
   /**
    * Homepage has no other line for what the email contains or when it arrives.
-   * Same sentences as the how-it-works step and the free-snapshot page.
+   * The free-snapshot page uses afterSubmitReply instead, directly under the button.
    */
   replyTiming?: boolean;
+  /**
+   * Free-snapshot page. The reply sentence used to sit below the sample.
+   * It belongs under the submit button, where the visitor decides to send the form.
+   */
+  afterSubmitReply?: boolean;
   /**
    * Homepage labels already say Required. The extra line pushes the submit
    * button below the first phone screen.
@@ -476,6 +482,11 @@ export function SnapshotRequestForm({
           The one-page snapshot lists who is named, which sources are cited, and
           how your Google rating and review count compare. There is no set
           delivery time.
+        </p>
+      ) : afterSubmitReply && !sent ? (
+        <p className="text-sm leading-6 text-ink-soft">
+          We reply with the one-page snapshot by email. There is no set delivery
+          time.
         </p>
       ) : null}
       {privacyAfterSubmit ? privacyNote : null}
