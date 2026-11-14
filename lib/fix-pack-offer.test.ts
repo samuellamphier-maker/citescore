@@ -65,6 +65,8 @@ test("the buy button says when the Fix Pack arrives and the refund, then the Pay
   assert.match(buy, /What happens after you buy/);
   assert.match(buy, /href=\{fixPackHref\(\)\}/);
   assert.ok(buy.indexOf("fixPackBuyAssurance") < buy.indexOf("fixPackPayhipCheckoutNote"));
+  assert.match(buy, /showAssurance \? assurance : null/);
+  assert.match(buy, /showAssurance = true/);
   assert.match(buy, /max-w-xl/);
   assert.match(buy, /basis-full/);
   assert.doesNotMatch(buy, /max-w-xs/);

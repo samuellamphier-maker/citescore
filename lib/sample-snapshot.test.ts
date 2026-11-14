@@ -131,6 +131,11 @@ test("snapshot example is linked from the conversion surfaces and the sitemap", 
   assert.match(industryCta, /Get a free AI Answer Snapshot/);
   assert.match(industryCta, /FixPackBuyLink/);
   assert.match(industryCta, /fixPackGetCtaLabel\(\)/);
+  assert.match(industryCta, /showAssurance=\{false\}/);
+  assert.match(industryCta, /payhipNote="shop"/);
+  assert.match(industryCta, /bg-cream/);
+  assert.doesNotMatch(industryCta, /bg-forest/);
+  assert.match(industryCta, /Email this request instead/);
   assert.equal((shell.match(/<IndustrySnapshotCta/g) ?? []).length, 2);
   assert.match(fixPack, /fixPackFaqs\(\)/);
   const offerFaq = readFileSync(new URL("./offer-faq.ts", import.meta.url), "utf8");

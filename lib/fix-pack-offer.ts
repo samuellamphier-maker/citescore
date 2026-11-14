@@ -54,8 +54,12 @@ export const fixPackRecheckTiming =
  * Sits under the buy button. The live Payhip product page lists a text file
  * with the order. The Fix Pack itself is the email described on this site.
  */
+/** Shop name only. Guide cards use this so the article can start on a phone. */
+export const fixPackPayhipShopNote =
+  `Opens Payhip in a new tab. The shop name on that page is ${payhipShopName}.`;
+
 export const fixPackPayhipCheckoutNote =
-  `Opens Payhip in a new tab. The shop name on that page is ${payhipShopName}. Payhip lists a text file with the order. We email the Fix Pack.`;
+  `${fixPackPayhipShopNote} Payhip lists a text file with the order. We email the Fix Pack.`;
 
 export const fixPackRefund =
   "Full refund within 14 days of delivery if the Fix Pack is not useful. You do not need to show that you installed the markup or sent the review script. The 14 days start when the Fix Pack is delivered, not when you request the free snapshot. The free AI Answer Snapshot has no charge.";
