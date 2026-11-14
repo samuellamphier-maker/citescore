@@ -156,7 +156,12 @@ test("offer descriptions are the sentences those pages render", () => {
   assert.match(fixPack, /<FaqList items=\{fixPackMoreFaqs\(\)\}/);
   assert.match(fixPack, /The snapshot is free/);
 
-  const collapsed = collapse(freeSnapshot);
+  const snapshotForm = readFileSync(
+    new URL("../components/SnapshotRequestForm.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(freeSnapshot, /afterSubmitReply/);
+  const collapsed = collapse(`${freeSnapshot}\n${snapshotForm}`);
   const method = readFileSync(
     new URL("../components/HowSnapshotIsMade.tsx", import.meta.url),
     "utf8",

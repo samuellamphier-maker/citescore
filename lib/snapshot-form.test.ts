@@ -328,7 +328,13 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.match(form, /What happens next/);
   assert.match(form, /There is no set delivery time/);
   assert.match(form, /replyTiming\?: boolean/);
+  assert.match(form, /afterSubmitReply\?: boolean/);
   assert.match(form, /replyTiming && !sent/);
+  assert.match(form, /afterSubmitReply && !sent/);
+  assert.match(
+    form,
+    /We reply with the one-page snapshot by email\. There is no set delivery\s+time\./,
+  );
   assert.match(
     form,
     /The one-page snapshot lists who is named, which sources are cited, and\s+how your Google rating and review count compare\. There is no set\s+delivery time\./,

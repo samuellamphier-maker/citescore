@@ -59,8 +59,8 @@ export function organizationRef(origin: string): Record<string, unknown> {
 
 /**
  * Sentences already visible on /free-snapshot: the default heading and lead,
- * the “how the snapshot is made” note, then the reply step. Not the meta
- * description.
+ * the “how the snapshot is made” note, then the reply step under the submit
+ * button. Not the meta description.
  */
 export const freeSnapshotServiceDescription = [
   freeSnapshotHeadingDefault,

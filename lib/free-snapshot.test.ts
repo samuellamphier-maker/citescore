@@ -65,9 +65,14 @@ test("free snapshot page is the linkable request, with the existing email path",
   assert.match(page, /<FixPackBuyLink \/>/);
   assert.match(page, /<TrustLinks \/>/);
   assert.match(page, /CiteScore Team/);
-  assert.match(page, /We reply with the one-page snapshot/);
   assert.match(page, /What happens after you submit/);
-  assert.match(page, /There is no set delivery time/);
+  assert.match(page, /afterSubmitReply/);
+  assert.doesNotMatch(page, /There is no set delivery time/);
+  assert.match(form, /afterSubmitReply && !sent/);
+  assert.match(
+    form,
+    /We reply with the one-page snapshot by email\. There is no set delivery\s+time\./,
+  );
   assert.equal((page.match(/<HowSnapshotIsMade/g) ?? []).length, 1);
   const leadAt = page.indexOf("<FreeSnapshotLead");
   const formAt = page.indexOf("<SnapshotRequestForm");
