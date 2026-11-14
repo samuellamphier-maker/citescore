@@ -547,13 +547,35 @@ export function SnapshotRequestForm({
           Email this request instead
         </a>
       ) : null}
-      {sent ? null : (
+      {sent ? null : phase === "error" ? (
         <EmailRequestFallback
           requestText={snapshotRequestClipboard(contactEmail, requestFields, subject)}
           requestReady={ready}
         />
+      ) : (
+        <details>
+          <summary className="flex min-h-11 cursor-pointer list-none items-center text-sm font-medium text-forest marker:content-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest [&::-webkit-details-marker]:hidden">
+            Email this request instead
+          </summary>
+          <EmailRequestFallback
+            className="mt-2"
+            requestText={snapshotRequestClipboard(contactEmail, requestFields, subject)}
+            requestReady={ready}
+          />
+          <p className="mt-2 text-xs leading-5 text-ink-soft">
+            If that send fails,{" "}
+            <a
+              id="snapshot-mailto"
+              href={mailto}
+              className="font-medium text-forest underline"
+            >
+              email this request instead
+            </a>
+            , or use the copy buttons.
+          </p>
+        </details>
       )}
-      {sent ? null : (
+      {sent || (!deliveryNote && !caveat && phase !== "error") ? null : (
         <p className="text-xs leading-5 text-ink-soft">
           {deliveryNote ? (
             <>
@@ -562,21 +584,7 @@ export function SnapshotRequestForm({
               {sourceValue ? " This page path is included." : ""} No account and no paid checkout.{" "}
             </>
           ) : null}
-          {phase === "error" ? (
-            "Use the email button or the copy buttons."
-          ) : (
-            <>
-              If that send fails,{" "}
-              <a
-                id="snapshot-mailto"
-                href={mailto}
-                className="font-medium text-forest underline"
-              >
-                email this request instead
-              </a>
-              , or use the copy buttons.
-            </>
-          )}
+          {phase === "error" ? "Use the email button or the copy buttons." : null}
           {caveat ? (
             <>
               {" "}

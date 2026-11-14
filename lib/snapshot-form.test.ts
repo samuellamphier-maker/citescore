@@ -264,7 +264,15 @@ test("the request form posts, keeps mailto, and requires the website", () => {
   assert.doesNotMatch(idleControl, /h-12 w-full/);
   assert.match(form, /If that send fails,/);
   assert.match(form, /or use the copy buttons\./);
-  assert.match(form, /\{sent \? null : \(/);
+  assert.match(form, /\{sent \? null : phase === "error" \? \(/);
+  const details = form.slice(form.indexOf("<details>"), form.indexOf("</details>"));
+  assert.match(details, /<summary[\s\S]*>\s*Email this request instead\s*<\/summary>/);
+  assert.match(details, /<EmailRequestFallback/);
+  assert.match(details, /email this request instead/);
+  assert.doesNotMatch(details, /\bopen\b/);
+  assert.doesNotMatch(form, /<details[^>]*\bopen\b/);
+  const errorFallback = form.indexOf("<EmailRequestFallback");
+  assert.ok(errorFallback !== -1 && errorFallback < form.indexOf("<details>"));
   assert.equal((form.match(/id="snapshot-mailto"/g) ?? []).length, 2);
   assert.match(form, /name="_honey"/);
   assert.match(form, /name="_subject"/);
